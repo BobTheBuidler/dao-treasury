@@ -15,6 +15,7 @@ else:
             "--strict",
             "--install-types", 
             "--non-interactive",
+            "--disable-error-code=unused-ignore",
             "--disable-error-code=import-not-found",
         ]
     )
