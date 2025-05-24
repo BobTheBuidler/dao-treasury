@@ -352,7 +352,7 @@ class TreasuryTx(DbEntity):
         return self.from_address.nickname  # type: ignore [no-any-return]
 
     @property
-    def _symbol(self) -> str:
+    def symbol(self) -> str:
         return self.token.symbol  # type: ignore [no-any-return]
 
     @staticmethod
