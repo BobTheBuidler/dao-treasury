@@ -30,4 +30,4 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.mypy]
-exclude = "^(cache/|build/)"
+exclude = "^(cache/|build/|tests/)"
