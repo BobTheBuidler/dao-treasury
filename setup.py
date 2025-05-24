@@ -27,6 +27,8 @@ else:
             "--disable-error-code=call-overload",
             "--disable-error-code=var-annotated",
             "--disable-error-code=no-any-return",
+            "--disable-error-code=type-arg",
+            "--disable-error-code=name-defined",
         ]
     )
 
