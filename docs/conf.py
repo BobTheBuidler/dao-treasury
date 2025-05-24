@@ -29,10 +29,20 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # Looks for objects in documentation of external libraries
 intersphinx_mapping = {
-    "dictstruct": ("https://bobthebuidler.github.io/dictstruct/", None),
+    "a_sync": ("https://bobthebuidler.github.io/ez-a-sync", None),
+    "brownie": ("https://eth-brownie.readthedocs.io/en/stable/", None),
+    "checksum_dict": ("https://bobthebuidler.github.io/checksum_dict", None),
+    "dank_mids": ("https://bobthebuidler.github.io/dank_mids", None),
+    "dictstruct": ("https://bobthebuidler.github.io/dictstruct", None),
+    "eth_typing": ("https://eth-typing.readthedocs.io/en/stable/", None),
+    "evmspec": ("https://bobthebuidler.github.io/evmspec", None),
     "hexbytes": ("https://hexbytes.readthedocs.io/en/stable/", None),
     "msgspec": ("https://jcristharif.com/msgspec/", None),
+    "pony": ("https://docs.ponyorm.org/", None),
     "python": ("https://docs.python.org/3", None),
+    "typed_envs": ("https://bobthebuidler.github.io/typed-envs/", None),
+    "typing_extensions": ("https://typing-extensions.readthedocs.io/en/latest/", None),
+    "web3": ("https://web3py.readthedocs.io/en/stable/", None),
 }
 
 # -- Options for HTML output -------------------------------------------------
