@@ -160,7 +160,7 @@ with open("README.md", "r", encoding="utf-8") as readme:
 setup(
     name=poetry_config["name"].replace("-", "_"),
     version=poetry_config["version"],
-    python_requires=">=3.10,<3.12",
+    python_requires=">=3.10,<3.13",
     packages=find_packages(),
     package_data={"dao_treasury": ["docker-compose.yaml", "py.typed"]},
     include_package_data=True,
