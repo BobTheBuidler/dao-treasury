@@ -1,0 +1,21 @@
+dao\_treasury.sorting package
+=============================
+
+Submodules
+----------
+
+dao\_treasury.sorting.rule module
+---------------------------------
+
+.. automodule:: dao_treasury.sorting.rule
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: dao_treasury.sorting
+   :members:
+   :undoc-members:
+   :show-inheritance:

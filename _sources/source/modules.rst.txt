@@ -1,0 +1,7 @@
+dao_treasury
+============
+
+.. toctree::
+   :maxdepth: 4
+
+   dao_treasury

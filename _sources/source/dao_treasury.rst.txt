@@ -1,0 +1,53 @@
+dao\_treasury package
+=====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   dao_treasury.sorting
+
+Submodules
+----------
+
+dao\_treasury.db module
+-----------------------
+
+.. automodule:: dao_treasury.db
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dao\_treasury.main module
+-------------------------
+
+.. automodule:: dao_treasury.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dao\_treasury.treasury module
+-----------------------------
+
+.. automodule:: dao_treasury.treasury
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dao\_treasury.types module
+--------------------------
+
+.. automodule:: dao_treasury.types
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: dao_treasury
+   :members:
+   :undoc-members:
+   :show-inheritance:
