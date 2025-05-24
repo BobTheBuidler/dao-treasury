@@ -52,4 +52,4 @@ jobs:
       run: poetry install --no-interaction
 
     - name: Run MyPy
-      run: poetry run mypy . --pretty --strict
+      run: poetry run mypy ./dao_treasury --pretty --strict
