@@ -4,6 +4,7 @@
 build/
 cache/
 dao_treasury.egg-info/
+dist/
 env/
 __pycache__/
 .env
