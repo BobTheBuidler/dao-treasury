@@ -1,0 +1,212 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "hash"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/tx/${__value.raw}﻿"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "block"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/block/${__value.raw}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "to"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__value.raw}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "from"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__value.raw}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "from nickname"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__data.fields.from}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "to nickname"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__data.fields.to}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "select chain_name as chain, timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
+          "queryType": "table",
+          "rawQueryText": "select chain_name as chain, timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Transactions",
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Treasury Transactions",
+  "uid": "b21f1092-66a4-4fb0-90ef-ed77d2becaa4",
+  "version": 5,
+  "weekStart": ""
+}

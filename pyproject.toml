@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "dao-treasury"
+version = "0.0.1"
+description = "Produce financial reports for your on-chain org"
+authors = ["BobTheBuidler <bobthebuidlerdefi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.scripts]
+dao-treasury = "dao_treasury.main:main"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+eth-portfolio-temp = ">=0.0.5,<0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.5"
+pytest-asyncio = "^0.15.1"
+mypy = ">=1.15,<1.17"
+
+[build-system]
+requires = [
+    "setuptools", 
+    "wheel", 
+    "mypy[mypyc]", 
+    "tomli>=2.0.0; python_version < '3.11'", 
+    "types-tqdm", 
+    "types-PyYAML",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+exclude = "^(cache/|build/)"

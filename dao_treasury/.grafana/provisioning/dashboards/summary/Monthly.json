@@ -1,0 +1,112 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "month"
+          }
+        ]
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "SELECT\n  month,\n  SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS revenue,\n  SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"cost of revenue\",\n  SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS expenses,\n  SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"other income\",\n  SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"other expense\",\n  (\n    SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +\n    SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n  ) AS \"sorted net\",\n  SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"unsorted income\",\n  SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"unsorted expense\",\n  (\n    SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +\n    SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) +\n    SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n  ) AS net\nFROM (\n  SELECT\n    strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n    CASE\n      WHEN p.name IS NOT NULL THEN p.name\n      ELSE tg.name\n    END AS top_category,\n    COALESCE(t.value_usd, 0) AS value_usd\n    --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost\n  FROM treasury_txs t\n  JOIN txgroups tg ON t.txgroup_id = tg.txgroup_id\n  LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id\n  WHERE t.timestamp >= strftime('%s', '2025-01-01') and tg.name <> 'Ignore'\n) as s\nGROUP BY month;",
+          "queryType": "table",
+          "rawQueryText": "SELECT\n  month,\n  SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS revenue,\n  SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"cost of revenue\",\n  SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS expenses,\n  SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"other income\",\n  SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"other expense\",\n  (\n    SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +\n    SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n  ) AS \"sorted net\",\n  SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"unsorted income\",\n  SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"unsorted expense\",\n  (\n    SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +\n    SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) +\n    SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) -\n    SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n  ) AS net\nFROM (\n  SELECT\n    strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n    CASE\n      WHEN p.name IS NOT NULL THEN p.name\n      ELSE tg.name\n    END AS top_category,\n    COALESCE(t.value_usd, 0) AS value_usd\n    --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost\n  FROM treasury_txs t\n  JOIN txgroups tg ON t.txgroup_id = tg.txgroup_id\n  LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id\n  WHERE t.timestamp >= strftime('%s', '2025-01-01') and tg.name <> 'Ignore'\n) as s\nGROUP BY month;",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Panel Title",
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Monthly P&L",
+  "uid": "a63fa9a7-d4f3-4092-9bde-194add8bcbeb",
+  "version": 1,
+  "weekStart": ""
+}

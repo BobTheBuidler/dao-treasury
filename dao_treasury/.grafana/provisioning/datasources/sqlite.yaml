@@ -1,0 +1,10 @@
+apiVersion: 1
+
+datasources:
+  - name: SQLite
+    type: frser-sqlite-datasource
+    isDefault: true
+    editable: false
+    jsonData:
+      path: /app/dao-treasury-data/dao-treasury.sqlite
+    secureJsonData: {}

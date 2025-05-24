@@ -1,0 +1,10 @@
+apiVersion: 1
+
+providers:
+- name: 'Treasury Transactions'
+  folder: 'transactions'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/transactions

@@ -1,0 +1,2 @@
+recursive-include dao_treasury *.json
+recursive-include dao_treasury *.yaml

@@ -1,0 +1,1 @@
+This library extends eth_portfolio with additional functionality centered around producing financial reports for DAOs and other on-chain orgs.
