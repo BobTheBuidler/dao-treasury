@@ -491,7 +491,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
 
 
 def sort_basic_entity(entry: TreasuryTx) -> TxGroupDbid:
-    txgroup_dbid: Optional[TxGroupDbid] = None
+    txgroup_dbid: typing.Optional[TxGroupDbid] = None
     if entry.from_address:
         if from_wallet := TreasuryWallet._get_instance(entry.from_address.address):
             # TODO: asyncify the start and end block stuff
