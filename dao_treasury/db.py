@@ -334,6 +334,20 @@ class TreasuryTx(DbEntity):
     txgroup = Required("TxGroup", reverse="treasury_tx", column="txgroup_id", index=True)
     composite_index(chain, txgroup)
 
+    @property
+    def to_nickname(self) -> typing.Optional[str]:
+        if to_address := self.to_address:
+            return to_address.nickname or to_address.address
+        return None
+
+    @property
+    def from_nickname(self) -> str:
+        return self.from_address.nickname or self.from_address.address
+
+    @property
+    def symbol(self) -> str:
+        return self.token.symbol  # type: ignore [no-any-return]
+
     # Helpers
     @property
     def _events(self) -> typing.Optional[EventDict]:
@@ -342,18 +356,6 @@ class TreasuryTx(DbEntity):
     @property
     def _transaction(self) -> TransactionReceipt:
         return get_transaction(self.hash)
-
-    @property
-    def to_nickname(self) -> typing.Optional[str]:
-        return self.to_address.nickname if self.to_address else None
-
-    @property
-    def from_nickname(self) -> typing.Optional[str]:
-        return self.from_address.nickname  # type: ignore [no-any-return]
-
-    @property
-    def symbol(self) -> str:
-        return self.token.symbol  # type: ignore [no-any-return]
 
     @staticmethod
     async def insert(entry: LedgerEntry) -> None:
