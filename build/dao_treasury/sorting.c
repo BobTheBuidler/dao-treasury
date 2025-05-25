@@ -1,14 +1,14 @@
 #include <Python.h>
 
 PyMODINIT_FUNC
-PyInit__matchers(void)
+PyInit_sorting(void)
 {
     PyObject *tmp;
     if (!(tmp = PyImport_ImportModule("a41eac93fcd5a912b943__mypyc"))) return NULL;
-    PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury___sorting____matchers");
+    PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury___sorting");
     Py_DECREF(tmp);
     if (capsule == NULL) return NULL;
-    void *init_func = PyCapsule_GetPointer(capsule, "a41eac93fcd5a912b943__mypyc.init_dao_treasury___sorting____matchers");
+    void *init_func = PyCapsule_GetPointer(capsule, "a41eac93fcd5a912b943__mypyc.init_dao_treasury___sorting");
     Py_DECREF(capsule);
     if (!init_func) {
         return NULL;
@@ -18,4 +18,4 @@ PyInit__matchers(void)
 
 // distutils sometimes spuriously tells cl to export CPyInit___init__,
 // so provide that so it chills out
-PyMODINIT_FUNC PyInit___init__(void) { return PyInit__matchers(); }
+PyMODINIT_FUNC PyInit___init__(void) { return PyInit_sorting(); }
