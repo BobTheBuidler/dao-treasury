@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Callable, ClassVar, Dict, Final, List, Optional
 
 from brownie.convert.datatypes import EthAddress
+from eth_typing import HexStr
 
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.types import TxGroupDbid
@@ -18,16 +19,22 @@ _match_all: Final[Dict[TxGroupDbid, List[str]]] = {}
 @dataclass(kw_only=True, frozen=True)
 class _SortRule:
     txgroup: TxGroupDbid
+    hash: Optional[HexStr] = None
     from_address: Optional[EthAddress] = None
+    from_nickname: Optional[str] = None
     to_address: Optional[EthAddress] = None
+    to_nickname: Optional[str] = None
     token_address: Optional[EthAddress] = None
     symbol: Optional[str] = None
     func: Optional[Callable[["TreasuryTx"], bool]] = None
 
     __instances__: ClassVar[List["_SortRule"]] = []
     __matching_attrs__: ClassVar[List[str]] = [
+        "hash",
         "from_address",
+        "from_nickname",
         "to_address",
+        "to_nickname",
         "token_address",
         "symbol",
     ]
