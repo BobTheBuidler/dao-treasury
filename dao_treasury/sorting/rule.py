@@ -1,21 +1,14 @@
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Awaitable, Callable, ClassVar, Dict, Final, List, Optional, Union
+from typing import TYPE_CHECKING, ClassVar, Dict, Final, List, Optional
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
 
 from dao_treasury._wallet import TreasuryWallet
+from dao_treasury.types import SortFunction, TxGroupName
 
 if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
-
-
-TxGroupName = str
-
-SortFunction = Union[
-    Callable[["TreasuryTx"], bool], 
-    Callable[["TreasuryTx"], Awaitable[bool]],
-]
 
 
 SORT_RULES: List["_SortRule"] = []
