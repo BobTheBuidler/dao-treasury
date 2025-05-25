@@ -18,6 +18,9 @@ SortFunction = Union[
 ]
 
 
+SORT_RULES: List["_SortRule"] = []
+
+
 _match_all: Final[Dict[TxGroupName, List[str]]] = {}
 """An internal cache defining a list of which matcher attributes are used for each SortRule"""
 
