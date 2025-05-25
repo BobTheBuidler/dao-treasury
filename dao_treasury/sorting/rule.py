@@ -6,19 +6,20 @@ from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
 
 from dao_treasury._wallet import TreasuryWallet
-from dao_treasury.types import TxGroupDbid
 
 if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
 
 
-_match_all: Final[Dict[TxGroupDbid, List[str]]] = {}
+TxGroupName = str
+
+_match_all: Final[Dict[TxGroupName, List[str]]] = {}
 """An internal cache defining a list of which matcher attributes are used for each SortRule"""
 
 
 @dataclass(kw_only=True, frozen=True)
 class _SortRule:
-    txgroup: TxGroupDbid
+    txgroup: TxGroupName
     hash: Optional[HexStr] = None
     from_address: Optional[EthAddress] = None
     from_nickname: Optional[str] = None
