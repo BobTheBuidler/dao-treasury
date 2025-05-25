@@ -165,7 +165,7 @@ class Address(DbEntity):
 
         commit()
 
-        return address  # type: ignore [no-any-return]
+        return entity  # type: ignore [no-any-return]
 
 
 UNI_V3_POS: Final = {
