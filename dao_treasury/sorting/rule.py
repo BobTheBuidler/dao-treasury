@@ -1,6 +1,5 @@
-import asyncio
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Callable, ClassVar, Dict, Final, List, Optional
+from typing import TYPE_CHECKING, Awaitable, Callable, ClassVar, Dict, Final, List, Optional, Union
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
@@ -12,6 +11,12 @@ if TYPE_CHECKING:
 
 
 TxGroupName = str
+
+SortFunction = Union[
+    Callable[["TreasuryTx"], bool], 
+    Callable[["TreasuryTx"], Awaitable[bool]],
+]
+
 
 _match_all: Final[Dict[TxGroupName, List[str]]] = {}
 """An internal cache defining a list of which matcher attributes are used for each SortRule"""
@@ -27,7 +32,7 @@ class _SortRule:
     to_nickname: Optional[str] = None
     token_address: Optional[EthAddress] = None
     symbol: Optional[str] = None
-    func: Optional[Callable[["TreasuryTx"], bool]] = None
+    func: Optional[SortFunction] = None
 
     __instances__: ClassVar[List["_SortRule"]] = []
     __matching_attrs__: ClassVar[List[str]] = [
@@ -73,6 +78,9 @@ class _SortRule:
             raise ValueError(
                 "You must specify attributes for matching or pass in a custom matching function."
             )
+        
+        if self.func is not None and not callable(self.func):
+            raise TypeError(f"func must be callable. You passed {self.func}")
 
         # append new instance to instances classvar
         self.__instances__.append(self)
@@ -84,12 +92,9 @@ class _SortRule:
                 getattr(self, matcher) == getattr(tx, matcher)
                 for matcher in matchers
             )
-        elif asyncio.iscoroutinefunction(self.func):
-            return await self.func(tx)  # type: ignore [no-any-return]
-        elif callable(self.func):
-            return self.func(tx)
-        else:
-            raise TypeError(f"func must be callable. You passed {self.func}")
+
+        match = self.func(tx)  # type: ignore [misc]
+        return match if isinstance(match, bool) else await match
 
 
 class _InboundSortRule(_SortRule):
