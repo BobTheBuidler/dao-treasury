@@ -178,6 +178,7 @@ setup(
     packages=find_packages(),
     package_data={"dao_treasury": ["docker-compose.yaml", "py.typed"]},
     include_package_data=True,
+    description=poetry_config["description"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=poetry_dependencies_to_install_requires(poetry_config["dependencies"]),
