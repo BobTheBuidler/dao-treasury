@@ -427,14 +427,7 @@ class TreasuryTx(DbEntity):
         except TransactionIntegrityError as e:
             #logger.error(e, entry, exc_info=True)
             # TODO: implement this
-            try:
-                _validate_integrity_error(entry, log_index)
-            except Exception as e:
-                stre = str(e)
-                if stre.startswith("(Decimal('") and stre.split(", ")[1].startswith("Decimal('") and stre.endswith("))"):
-                    logger.warning("slight rounding error in value for %s due to sqlite decimal handling", entry)
-                else:
-                    logger.exception("integrity error:")
+            _validate_integrity_error(entry, log_index)
             return None
         except Exception as e:
             e.args = *e.args, entry
@@ -639,10 +632,13 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> None:
         entry.from_address,
         existing_object.from_address.address,
     )
-    assert entry.value in [existing_object.amount, -1 * existing_object.amount], (
-        entry.value,
-        existing_object.amount,
-    )
+    try:
+        assert entry.value in [existing_object.amount, -1 * existing_object.amount], (
+            entry.value,
+            existing_object.amount,
+        )
+    except AssertionError:
+        logger.warning("slight rounding error in value for %s due to sqlite decimal handling", entry)
     assert entry.block_number == existing_object.block, (
         entry.block_number,
         existing_object.block,
