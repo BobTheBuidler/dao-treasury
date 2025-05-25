@@ -45,7 +45,7 @@ SQLITE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
-_SORT_THREAD = AsyncThreadPoolExecutor(1)
+_SORT_SEMAPHORE = AsyncThreadPoolExecutor(50)
 
 
 db = Database()
@@ -369,11 +369,13 @@ class TreasuryTx(DbEntity):
     async def insert(entry: LedgerEntry) -> None:
         timestamp = int(await get_block_timestamp_async(entry.block_number))
         if txid := await _INSERT_THREAD.run(TreasuryTx.__insert, entry, timestamp):
-            pass
-            #await _SORT_THREAD.run(accountant.sort_tx, txid)
+            async with _SORT_SEMAPHORE:
+                from dao_treasury.sorting import sort_advanced
+
+                await sort_advanced(TreasuryTx[txid])
     
     @classmethod
-    def __insert(cls, entry: LedgerEntry, ts: int) -> typing.Optional[int]:
+    def __insert(cls, entry: LedgerEntry, ts: int) -> typing.Optional[TxGroupDbid]:
         try:
             with db_session:
                 if isinstance(entry, TokenTransfer):
@@ -433,8 +435,9 @@ class TreasuryTx(DbEntity):
             e.args = *e.args, entry
             raise
         else:
-            if dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
+            if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
                 logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
+                return None
             return dbid  # type: ignore [no-any-return]
 
 

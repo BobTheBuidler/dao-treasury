@@ -155,5 +155,20 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
     return txgroup_dbid  # type: ignore [no-any-return]
 
 
+async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
+    txgroup_dbid = sort_basic(entry)
+
+    if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
+        for rule in SORT_RULES:
+            if await rule.match(entry):
+                txgroup_dbid = db.TxGroup.get_dbid(rule.txgroup)
+                break
+    
+    if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
+        logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
+    
+    return txgroup_dbid  # type: ignore [no-any-return]
+
+
 must_sort_inbound_txgroup_dbid: Final = db.must_sort_inbound_txgroup_dbid
 must_sort_outbound_txgroup_dbid: Final = db.must_sort_outbound_txgroup_dbid
