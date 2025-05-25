@@ -11,6 +11,14 @@ typedef struct tuple_T3OOO {
 } tuple_T3OOO;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T2OO
+#define MYPYC_DECLARED_tuple_T2OO
+typedef struct tuple_T2OO {
+    PyObject *f0;
+    PyObject *f1;
+} tuple_T2OO;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T4CIOO
 #define MYPYC_DECLARED_tuple_T4CIOO
 typedef struct tuple_T4CIOO {
@@ -21,20 +29,36 @@ typedef struct tuple_T4CIOO {
 } tuple_T4CIOO;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T2OO
-#define MYPYC_DECLARED_tuple_T2OO
-typedef struct tuple_T2OO {
-    PyObject *f0;
-    PyObject *f1;
-} tuple_T2OO;
-#endif
-
 #ifndef MYPYC_DECLARED_tuple_T0
 #define MYPYC_DECLARED_tuple_T0
 typedef struct tuple_T0 {
     int empty_struct_error_flag;
 } tuple_T0;
 #endif
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_entry;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *_txgroup_dbid;
+    PyObject *___mypyc_temp__0;
+    CPyTagged ___mypyc_temp__1;
+    PyObject *_rule;
+    PyObject *___mypyc_temp__2;
+    tuple_T3OOO ___mypyc_temp__3;
+} dao_treasury___sorting___sort_advanced_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___sorting___sort_advanced_genObject;
 
 typedef struct {
     PyObject_HEAD
@@ -118,8 +142,20 @@ struct export_table_a41eac93fcd5a912b943 {
     PyObject **CPyStatic_sorting___logger;
     PyObject **CPyStatic_sorting___must_sort_inbound_txgroup_dbid;
     PyObject **CPyStatic_sorting___must_sort_outbound_txgroup_dbid;
+    PyTypeObject **CPyType_sorting___sort_advanced_env;
+    PyObject *(*CPyDef_sorting___sort_advanced_env)(void);
+    PyTypeObject **CPyType_sorting___sort_advanced_gen;
+    PyObject *(*CPyDef_sorting___sort_advanced_gen)(void);
     PyObject *(*CPyDef_sorting___sort_basic)(PyObject *cpy_r_entry);
     PyObject *(*CPyDef_sorting___sort_basic_entity)(PyObject *cpy_r_entry);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_sorting___sort_advanced_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_sorting___sort_advanced)(PyObject *cpy_r_entry);
     char (*CPyDef_sorting_____top_level__)(void);
     PyObject **CPyStatic__matchers___logger;
     PyTypeObject **CPyType__matchers____Matcher;
