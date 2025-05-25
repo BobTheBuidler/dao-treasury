@@ -220,10 +220,20 @@ class Token(DbEntity):
             name, symbol = {Network.Mainnet: ("Ethereum", "ETH")}[chain.id]
             decimals = 18
         else:
+            # TODO: use erc20 class from async context before entering this func
             contract = Contract(address)
-            name = contract.name()
-            symbol = contract.symbol()
-            decimals = contract.decimals()
+            try:
+                name = contract.name()
+            except AttributeError:
+                name = "(Unknown)"
+            try:
+                symbol = contract.symbol()
+            except AttributeError:
+                symbol = "(Unknown)"
+            try:
+                decimals = contract.decimals()
+            except AttributeError:
+                decimals = 0
         
         # MKR contract returns name and symbol as bytes32 which is converted to a brownie HexString
         # try to decode it
