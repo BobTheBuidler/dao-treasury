@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_766dc6d0559f5bd7a716_H
-#define MYPYC_NATIVE_INTERNAL_766dc6d0559f5bd7a716_H
+#ifndef MYPYC_NATIVE_INTERNAL_a41eac93fcd5a912b943_H
+#define MYPYC_NATIVE_INTERNAL_a41eac93fcd5a912b943_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_766dc6d0559f5bd7a716.h"
+#include "__native_a41eac93fcd5a912b943.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[182];
+extern PyObject *CPyStatics[217];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -14,31 +14,45 @@ extern const double CPyLit_Float[];
 extern const double CPyLit_Complex[];
 extern const int CPyLit_Tuple[];
 extern const int CPyLit_FrozenSet[];
-extern CPyModule *CPyModule_dao_treasury___sorting____matchers_internal;
-extern CPyModule *CPyModule_dao_treasury___sorting____matchers;
-extern PyObject *CPyStatic__matchers___globals;
+extern CPyModule *CPyModule_dao_treasury___sorting_internal;
+extern CPyModule *CPyModule_dao_treasury___sorting;
+extern PyObject *CPyStatic_sorting___globals;
 extern CPyModule *CPyModule_builtins;
 extern CPyModule *CPyModule_logging;
 extern CPyModule *CPyModule_typing;
+extern CPyModule *CPyModule_eth_portfolio___structs;
+extern CPyModule *CPyModule_evmspec___data;
+extern CPyModule *CPyModule_dao_treasury;
+extern CPyModule *CPyModule_dao_treasury____wallet_internal;
+extern CPyModule *CPyModule_dao_treasury____wallet;
+extern CPyModule *CPyModule_dao_treasury___sorting____matchers_internal;
+extern CPyModule *CPyModule_dao_treasury___sorting____matchers;
+extern CPyModule *CPyModule_dao_treasury___sorting___rule;
+extern CPyModule *CPyModule_dao_treasury___types;
+extern PyObject *CPyStatic__matchers___globals;
 extern CPyModule *CPyModule_eth_typing;
 extern CPyModule *CPyModule_eth_utils;
 extern CPyModule *CPyModule_pony___orm;
 extern CPyModule *CPyModule_typing_extensions;
 extern CPyModule *CPyModule_y;
-extern CPyModule *CPyModule_dao_treasury___types;
 extern CPyModule *CPyModule_dao_treasury___db;
 extern CPyModule *CPyModule_dao_treasury___sorting____rules_internal;
 extern CPyModule *CPyModule_dao_treasury___sorting____rules;
 extern PyObject *CPyStatic__rules___globals;
 extern CPyModule *CPyModule_pathlib;
 extern CPyModule *CPyModule_yaml;
-extern CPyModule *CPyModule_dao_treasury___sorting;
-extern CPyModule *CPyModule_dao_treasury____wallet_internal;
-extern CPyModule *CPyModule_dao_treasury____wallet;
 extern PyObject *CPyStatic__wallet___globals;
 extern CPyModule *CPyModule_dataclasses;
 extern CPyModule *CPyModule_brownie___convert___datatypes;
 extern CPyModule *CPyModule_y___time;
+extern PyObject *CPyStatic_sorting___logger;
+extern PyObject *CPyStatic_sorting___must_sort_inbound_txgroup_dbid;
+extern PyObject *CPyStatic_sorting___must_sort_outbound_txgroup_dbid;
+extern PyObject *CPyDef_sorting___sort_basic(PyObject *cpy_r_entry);
+extern PyObject *CPyPy_sorting___sort_basic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_sorting___sort_basic_entity(PyObject *cpy_r_entry);
+extern PyObject *CPyPy_sorting___sort_basic_entity(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_sorting_____top_level__(void);
 extern PyObject *CPyStatic__matchers___logger;
 extern PyTypeObject *CPyType__matchers____Matcher;
 extern PyObject *CPyDef__matchers____Matcher(PyObject *cpy_r_txgroup, PyObject *cpy_r_validated_values);

@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_766dc6d0559f5bd7a716_H
-#define MYPYC_NATIVE_766dc6d0559f5bd7a716_H
+#ifndef MYPYC_NATIVE_a41eac93fcd5a912b943_H
+#define MYPYC_NATIVE_a41eac93fcd5a912b943_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -114,7 +114,13 @@ typedef struct {
 } dao_treasury____wallet___TreasuryWalletObject;
 
 
-struct export_table_766dc6d0559f5bd7a716 {
+struct export_table_a41eac93fcd5a912b943 {
+    PyObject **CPyStatic_sorting___logger;
+    PyObject **CPyStatic_sorting___must_sort_inbound_txgroup_dbid;
+    PyObject **CPyStatic_sorting___must_sort_outbound_txgroup_dbid;
+    PyObject *(*CPyDef_sorting___sort_basic)(PyObject *cpy_r_entry);
+    PyObject *(*CPyDef_sorting___sort_basic_entity)(PyObject *cpy_r_entry);
+    char (*CPyDef_sorting_____top_level__)(void);
     PyObject **CPyStatic__matchers___logger;
     PyTypeObject **CPyType__matchers____Matcher;
     PyObject *(*CPyDef__matchers____Matcher)(PyObject *cpy_r_txgroup, PyObject *cpy_r_validated_values);
