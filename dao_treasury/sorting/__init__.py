@@ -86,7 +86,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
             entry.to_address
             and (to_wallet := TreasuryWallet._get_instance(entry.to_address))
             and to_wallet._start_block <= entry.block_number
-            and to_wallet._end_block is None or entry.block_number <= to_wallet._end_block  # type: ignore [union-attr]
+            and to_wallet._end_block is None or entry.block_number <= to_wallet._end_block  # type: ignore [union-attr, operator]
         ):
             txgroup_dbid = db.must_sort_inbound_txgroup_dbid
         
@@ -142,7 +142,7 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
             entry.to_address
             and (to_wallet := TreasuryWallet._get_instance(entry.to_address.address))
             and to_wallet._start_block <= entry.block
-            and to_wallet._end_block is None or entry.block <= to_wallet._end_block  # type: ignore [union-attr]
+            and to_wallet._end_block is None or entry.block <= to_wallet._end_block  # type: ignore [union-attr, operator]
         ):
             txgroup_dbid = must_sort_inbound_txgroup_dbid
         
