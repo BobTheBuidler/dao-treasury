@@ -19,7 +19,6 @@ from eth_portfolio.structs import (
     TokenTransfer,
     Transaction,
 )
-from evmspec.data import TransactionHash
 from pony.orm import (
     Database,
     Optional,
