@@ -37,9 +37,7 @@ from y.constants import CHAINID
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
-from dao_treasury.sorting import FromAddressMatcher, HashMatcher, ToAddressMatcher
 from dao_treasury.types import TxGroupDbid
-from dao_treasury._wallet import TreasuryWallet
 
 
 SQLITE_DIR = Path(path.expanduser("~")) / ".dao-treasury"
@@ -389,6 +387,9 @@ class TreasuryTx(DbEntity):
                 if from_address := entry.from_address:
                     from_address = Address.get_dbid(from_address)
 
+                # TODO: resolve this circ import
+                from dao_treasury.sorting import sort_basic
+
                 txgroup_dbid = sort_basic(entry)
 
                 entity = TreasuryTx(
@@ -434,120 +435,6 @@ db.bind(
 )
 
 db.generate_mapping(create_tables=True)
-
-
-def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
-    txgroup_dbid: Optional[TxGroupDbid] = None
-    if from_wallet := TreasuryWallet._get_instance(entry.from_address):
-        # TODO: asyncify the start and end block stuff
-        start_block_for_wallet = from_wallet._start_block
-        end_block_for_wallet =  from_wallet._end_block
-        if (
-            start_block_for_wallet <= entry.block_number
-            and (end_block_for_wallet is None or entry.block_number <= end_block_for_wallet)
-        ):
-            if to_wallet := TreasuryWallet._get_instance(entry.to_address):
-                start_block_for_wallet = to_wallet._start_block
-                end_block_for_wallet =  to_wallet._end_block
-                if (
-                    start_block_for_wallet <= entry.block_number
-                    and (end_block_for_wallet is None or entry.block_number <= end_block_for_wallet)
-                ):
-                    txgroup_dbid = TxGroup.get_dbid(
-                        name="Internal Transfer",
-                        parent=TxGroup.get_dbid("Ignore"),
-                    )
-
-    if txgroup_dbid is None:
-        if isinstance(txhash := entry.hash, TransactionHash):
-            txhash = txhash.hex()
-        txgroup_dbid = HashMatcher.match(txhash)
-
-    if txgroup_dbid is None:
-        txgroup_dbid = FromAddressMatcher.match(entry.from_address)
-
-    if txgroup_dbid is None:
-        txgroup_dbid = ToAddressMatcher.match(entry.to_address)
-        
-    if txgroup_dbid is None:
-        if (
-            entry.from_address
-            and (from_wallet := TreasuryWallet._get_instance(entry.from_address))
-            # TODO: asyncify the start and end block stuff
-            and from_wallet._start_block <= entry.block_number
-            and (from_wallet._end_block is None or from_wallet._end_block >= entry.block_number)
-        ):
-            txgroup_dbid = must_sort_outbound_txgroup_dbid
-        
-        elif (
-            entry.to_address
-            and (to_wallet := TreasuryWallet._get_instance(entry.to_address))
-            and to_wallet._start_block <= entry.block_number
-            and to_wallet._end_block is None or entry.block_number <= to_wallet._end_block  # type: ignore [union-attr]
-        ):
-            txgroup_dbid = must_sort_inbound_txgroup_dbid
-        
-        else:
-            raise NotImplementedError("this isnt supposed to happen")
-    return txgroup_dbid  # type: ignore [no-any-return]
-
-
-def sort_basic_entity(entry: TreasuryTx) -> TxGroupDbid:
-    txgroup_dbid: typing.Optional[TxGroupDbid] = None
-    if entry.from_address:
-        if from_wallet := TreasuryWallet._get_instance(entry.from_address.address):
-            # TODO: asyncify the start and end block stuff
-            start_block_for_wallet = from_wallet._start_block
-            end_block_for_wallet =  from_wallet._end_block
-            if (
-                start_block_for_wallet <= entry.block
-                and (end_block_for_wallet is None or entry.block <= end_block_for_wallet)
-                and entry.to_address
-            ):
-                if to_wallet := TreasuryWallet._get_instance(entry.to_address.address):
-                    start_block_for_wallet = to_wallet._start_block
-                    end_block_for_wallet =  to_wallet._end_block
-                    if (
-                        start_block_for_wallet <= entry.block
-                        and (end_block_for_wallet is None or entry.block <= end_block_for_wallet)
-                    ):
-                        txgroup_dbid = TxGroup.get_dbid(
-                            name="Internal Transfer",
-                            parent=TxGroup.get_dbid("Ignore"),
-                        )
-
-    if txgroup_dbid is None:
-        txgroup_dbid = HashMatcher.match(entry.hash)
-    if txgroup_dbid is None:
-        txgroup_dbid = FromAddressMatcher.match(entry.from_address.address)
-    if txgroup_dbid is None and entry.to_address:
-        txgroup_dbid = ToAddressMatcher.match(entry.to_address.address)
-    if txgroup_dbid is None:
-        if (
-            entry.from_address
-            and (from_wallet := TreasuryWallet._get_instance(entry.from_address.address))
-            # TODO: asyncify the start and end block stuff
-            and from_wallet._start_block <= entry.block
-            and (from_wallet._end_block is None or from_wallet._end_block >= entry.block)
-        ):
-            txgroup_dbid = must_sort_outbound_txgroup_dbid
-        
-        elif (
-            entry.to_address
-            and (to_wallet := TreasuryWallet._get_instance(entry.to_address.address))
-            and to_wallet._start_block <= entry.block
-            and to_wallet._end_block is None or entry.block <= to_wallet._end_block  # type: ignore [union-attr]
-        ):
-            txgroup_dbid = must_sort_inbound_txgroup_dbid
-        
-        else:
-            raise NotImplementedError("this isnt supposed to happen")
-    
-    if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
-        logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
-    
-    return txgroup_dbid  # type: ignore [no-any-return]
-
 
 
 def create_stream_ledger_view() -> None:
@@ -756,6 +643,9 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> None:
     # TODO: put this somewhere more appropriate
     txgroup = existing_object.txgroup
     if txgroup.txgroup_id in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
+        # TODO: resolve this circ import
+        from dao_treasury.sorting import sort_basic_entity
+
         new_txgroup_dbid = sort_basic_entity(existing_object)
         if new_txgroup_dbid != txgroup.txgroup_id:
             existing_object.txgroup = new_txgroup_dbid
