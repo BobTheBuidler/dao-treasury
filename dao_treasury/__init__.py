@@ -1,4 +1,5 @@
 from dao_treasury._wallet import TreasuryWallet
+from dao_treasury.db import TreasuryTx
 from dao_treasury.sorting import (
     CostOfRevenueSortRule, 
     ExpenseSortRule, 
@@ -19,4 +20,5 @@ __all__ = [
     "OtherExpenseSortRule", 
     "OtherIncomeSortRule", 
     "RevenueSortRule",
+    "TreasuryTx",
 ]
