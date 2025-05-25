@@ -641,7 +641,7 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> None:
             existing_object.amount,
         )
     except AssertionError:
-        logger.warning("slight rounding error in value for %s due to sqlite decimal handling", entry)
+        logger.warning("slight rounding error in value for TreasuryTx[%s] due to sqlite decimal handling", existing_object.treasury_tx_id)
     assert entry.block_number == existing_object.block, (
         entry.block_number,
         existing_object.block,
