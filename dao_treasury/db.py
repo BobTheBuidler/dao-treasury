@@ -1,5 +1,6 @@
 # mypy: disable-error-code="operator,valid-type,misc"
 import typing
+from asyncio import Semaphore
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
@@ -44,7 +45,7 @@ SQLITE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
-_SORT_SEMAPHORE = AsyncThreadPoolExecutor(50)
+_SORT_SEMAPHORE = Semaphore(50)
 
 
 db = Database()
