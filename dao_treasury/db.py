@@ -1,6 +1,6 @@
 # mypy: disable-error-code="operator,valid-type,misc"
 import typing
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
 from os import path
@@ -411,6 +411,9 @@ class TreasuryTx(DbEntity):
                     txgroup=txgroup_dbid,
                 )
                 dbid = entity.treasury_tx_id
+        except InvalidOperation as e:
+            logger.error(e)
+            return None
         except TransactionIntegrityError as e:
             #logger.error(e, entry, exc_info=True)
             # TODO: implement this
