@@ -13,7 +13,7 @@ from brownie import chain
 from brownie.convert.datatypes import HexString
 from brownie.network.event import EventDict
 from brownie.network.transaction import TransactionReceipt
-from eth_typing import HexAddress
+from eth_typing import ChecksumAddress, HexAddress
 from eth_portfolio.structs import (
     InternalTransfer,
     LedgerEntry,
@@ -128,6 +128,11 @@ class Address(DbEntity):
     # vests_received = Set("VestingEscrow", reverse="recipient")
     # vests_funded = Set("VestingEscrow", reverse="funder")
 
+    def __eq__(self, other: ChecksumAddress) -> bool:
+        if not isinstance(other, str):
+            raise TypeError("Address can only be compared to a string")
+        return other == self.address
+
     @classmethod
     @lru_cache(maxsize=None)
     def get_dbid(cls, address: HexAddress) -> int:
@@ -199,6 +204,11 @@ class Token(DbEntity):
     address = Required(Address, column="address_id")
     # streams = Set('Stream', reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
+
+    def __eq__(self, other: ChecksumAddress) -> bool:
+        if not isinstance(other, str):
+            raise TypeError("Token can only be compared to a string")
+        return other == self.address
 
     @property
     def scale(self) -> int:
