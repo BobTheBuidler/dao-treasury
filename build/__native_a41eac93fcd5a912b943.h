@@ -172,7 +172,7 @@ struct export_table_a41eac93fcd5a912b943 {
     PyObject *(*CPyDef__matchers___HashMatcher)(PyObject *cpy_r_txgroup, PyObject *cpy_r_hashes);
     PyObject *(*CPyDef__matchers____Matcher___match)(PyObject *cpy_r_cls, PyObject *cpy_r_string);
     char (*CPyDef__matchers____Matcher_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_validated_values);
-    char (*CPyDef__matchers____Matcher_____contains__)(PyObject *cpy_r_self, PyObject *cpy_r_txhash);
+    char (*CPyDef__matchers____Matcher_____contains__)(PyObject *cpy_r_self, PyObject *cpy_r_string);
     PyObject *(*CPyDef__matchers____Matcher___values)(PyObject *cpy_r_self);
     PyObject *(*CPyDef__matchers____HexStringMatcher____validate_hexstr)(PyObject *cpy_r_cls, PyObject *cpy_r_hexstr);
     char (*CPyDef__matchers____AddressMatcher_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_addresses);

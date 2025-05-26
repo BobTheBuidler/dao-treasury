@@ -43,8 +43,8 @@ class _Matcher:
         self.__value: Final = list(validated_values)[0] if self.__one_value else ""
         self.__values: Final = validated_values
     
-    def __contains__(self, txhash: str) -> bool:
-        return txhash == self.__value if self.__one_value else txhash in self.values
+    def __contains__(self, string: str) -> bool:
+        return string == self.__value if self.__one_value else string in self.values
     
     @property
     def values(self) -> Set[HexStr]:
