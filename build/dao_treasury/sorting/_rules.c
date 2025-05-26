@@ -4,11 +4,11 @@ PyMODINIT_FUNC
 PyInit__rules(void)
 {
     PyObject *tmp;
-    if (!(tmp = PyImport_ImportModule("a41eac93fcd5a912b943__mypyc"))) return NULL;
+    if (!(tmp = PyImport_ImportModule("0f022764114a9600a25d__mypyc"))) return NULL;
     PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury___sorting____rules");
     Py_DECREF(tmp);
     if (capsule == NULL) return NULL;
-    void *init_func = PyCapsule_GetPointer(capsule, "a41eac93fcd5a912b943__mypyc.init_dao_treasury___sorting____rules");
+    void *init_func = PyCapsule_GetPointer(capsule, "0f022764114a9600a25d__mypyc.init_dao_treasury___sorting____rules");
     Py_DECREF(capsule);
     if (!init_func) {
         return NULL;
