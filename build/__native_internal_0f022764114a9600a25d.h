@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[237];
+extern PyObject *CPyStatics[241];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -124,21 +124,22 @@ extern PyObject *CPyPy__rules___Rules_____build_matchers_for_group(PyObject *sel
 extern PyObject *CPyDef__rules___Rules_____get_rule_file(PyObject *cpy_r_self, PyObject *cpy_r_path, PyObject *cpy_r_filename);
 extern PyObject *CPyPy__rules___Rules_____get_rule_file(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__rules_____top_level__(void);
+extern PyObject *CPyStatic_decorator___CHAINID;
 extern PyTypeObject *CPyType_decorator___SortRuleDecorator;
-extern PyObject *CPyDef_decorator___SortRuleDecorator(PyObject *cpy_r_txgroup, PyObject *cpy_r_rule_type);
-extern PyObject *CPyDef_decorator___revenue(PyObject *cpy_r_txgroup);
+extern PyObject *CPyDef_decorator___SortRuleDecorator(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
+extern PyObject *CPyDef_decorator___revenue(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___revenue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_decorator___cost_of_revenue(PyObject *cpy_r_txgroup);
+extern PyObject *CPyDef_decorator___cost_of_revenue(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___cost_of_revenue(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_decorator___expense(PyObject *cpy_r_txgroup);
+extern PyObject *CPyDef_decorator___expense(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___expense(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_decorator___other_income(PyObject *cpy_r_txgroup);
+extern PyObject *CPyDef_decorator___other_income(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___other_income(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_decorator___other_expense(PyObject *cpy_r_txgroup);
+extern PyObject *CPyDef_decorator___other_expense(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___other_expense(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_decorator___ignore(PyObject *cpy_r_txgroup);
+extern PyObject *CPyDef_decorator___ignore(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___ignore(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern char CPyDef_decorator___SortRuleDecorator_____init__(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_rule_type);
+extern char CPyDef_decorator___SortRuleDecorator_____init__(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
 extern PyObject *CPyPy_decorator___SortRuleDecorator_____init__(PyObject *self, PyObject *args, PyObject *kw);
 extern PyObject *CPyDef_decorator___SortRuleDecorator_____call__(PyObject *cpy_r_self, PyObject *cpy_r_func);
 extern PyObject *CPyPy_decorator___SortRuleDecorator_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);

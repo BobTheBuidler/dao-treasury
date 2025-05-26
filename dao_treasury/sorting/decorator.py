@@ -1,4 +1,6 @@
-from typing import Final, Union, final, overload
+from typing import Final, Iterable, Union, final, overload
+
+from y import Network, constants
 
 from dao_treasury.sorting.rule import (
     CostOfRevenueSortRule, 
@@ -11,29 +13,40 @@ from dao_treasury.sorting.rule import (
 from dao_treasury.types import SortFunction, SortRuleType, TxGroupName
 
 
-def revenue(txgroup: TxGroupName) -> "SortRuleDecorator":
-    return SortRuleDecorator(txgroup, RevenueSortRule)
+Networks = Union[Network, Iterable[Network]]
 
-def cost_of_revenue(txgroup: TxGroupName) -> "SortRuleDecorator":
-    return SortRuleDecorator(txgroup, CostOfRevenueSortRule)
+CHAINID: Final = constants.CHAINID
 
-def expense(txgroup: TxGroupName) -> "SortRuleDecorator":
-    return SortRuleDecorator(txgroup, ExpenseSortRule)
 
-def other_income(txgroup: TxGroupName) -> "SortRuleDecorator":
-    return SortRuleDecorator(txgroup, OtherIncomeSortRule)
+def revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator":
+    return SortRuleDecorator(txgroup, networks, RevenueSortRule)
 
-def other_expense(txgroup: TxGroupName) -> "SortRuleDecorator":
-    return SortRuleDecorator(txgroup, OtherExpenseSortRule)
+def cost_of_revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator":
+    return SortRuleDecorator(txgroup, networks, CostOfRevenueSortRule)
 
-def ignore(txgroup: TxGroupName) -> "SortRuleDecorator":
-    return SortRuleDecorator(txgroup, IgnoreSortRule)
+def expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator":
+    return SortRuleDecorator(txgroup, networks, ExpenseSortRule)
+
+def other_income(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator":
+    return SortRuleDecorator(txgroup, networks, OtherIncomeSortRule)
+
+def other_expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator":
+    return SortRuleDecorator(txgroup, networks, OtherExpenseSortRule)
+
+def ignore(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator":
+    return SortRuleDecorator(txgroup, networks, IgnoreSortRule)
 
 
 @final
 class SortRuleDecorator:
-    def __init__(self, txgroup: TxGroupName, rule_type: SortRuleType) -> None:
+    def __init__(
+        self,
+        txgroup: TxGroupName, 
+        networks: Networks,
+        rule_type: SortRuleType, 
+    ) -> None:
         self.txgroup: Final = txgroup
+        self.networks: Final = [networks] if isinstance(networks, int) else list(networks)
         self.rule_type: Final = rule_type
     @overload
     def __call__(self, txgroup_name: TxGroupName) -> "SortRuleDecorator":...
@@ -44,8 +57,9 @@ class SortRuleDecorator:
         func: Union[TxGroupName, SortFunction],
     ) -> Union["SortRuleDecorator", SortFunction]:
         if isinstance(func, str):
-            return SortRuleDecorator(f"{self.txgroup}:{func}", self.rule_type)
+            return SortRuleDecorator(f"{self.txgroup}:{func}", self.networks, self.rule_type)
         elif callable(func):
-            self.rule_type(txgroup=self.txgroup, func=func)
+            if CHAINID in self.networks:
+                self.rule_type(txgroup=self.txgroup, func=func)
             return func
         raise ValueError(func)
