@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, ClassVar, Dict, Final, List, Optional
+from typing import TYPE_CHECKING, ClassVar, Dict, Final, List, Optional, Type, final
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
@@ -149,3 +149,32 @@ class IgnoreSortRule(_SortRule):
         """Prepends `self.txgroup` with 'Ignore:'."""
         object.__setattr__(self, "txgroup", f"Ignore:{self.txgroup}")
         super().__post_init__()
+
+
+@final
+class _Decorator:
+    def __init__(self, txgroup: str, rule_type: Type[_SortRule]) -> None:
+        self.txgroup: Final = txgroup
+        self.rule_type: Final = rule_type
+    def __call__(self, func: SortFunction) -> SortFunction:
+        self.rule_type(txgroup=self.txgroup, func=func)
+        return func
+
+
+def revenue(txgroup: str) -> _Decorator:
+    return _Decorator(txgroup, RevenueSortRule)
+
+def cost_of_revenue(txgroup: str) -> _Decorator:
+    return _Decorator(txgroup, CostOfRevenueSortRule)
+
+def expense(txgroup: str) -> _Decorator:
+    return _Decorator(txgroup, ExpenseSortRule)
+
+def other_income(txgroup: str) -> _Decorator:
+    return _Decorator(txgroup, OtherIncomeSortRule)
+
+def other_expense(txgroup: str) -> _Decorator:
+    return _Decorator(txgroup, OtherExpenseSortRule)
+
+def ignore(txgroup: str) -> _Decorator:
+    return _Decorator(txgroup, IgnoreSortRule)

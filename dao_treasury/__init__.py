@@ -7,6 +7,12 @@ from dao_treasury.sorting import (
     OtherExpenseSortRule, 
     OtherIncomeSortRule,
     RevenueSortRule,
+    cost_of_revenue,
+    expense,
+    ignore,
+    other_expense,
+    other_income,
+    revenue,
 )
 from dao_treasury.treasury import Treasury
 
@@ -20,5 +26,11 @@ __all__ = [
     "OtherExpenseSortRule", 
     "OtherIncomeSortRule", 
     "RevenueSortRule",
+    "cost_of_revenue",
+    "expense",
+    "ignore",
+    "other_expense",
+    "other_income",
+    "revenue",
     "TreasuryTx",
 ]
