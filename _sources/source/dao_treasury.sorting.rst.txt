@@ -4,6 +4,14 @@ dao\_treasury.sorting package
 Submodules
 ----------
 
+dao\_treasury.sorting.decorator module
+--------------------------------------
+
+.. automodule:: dao_treasury.sorting.decorator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dao\_treasury.sorting.rule module
 ---------------------------------
 
