@@ -18,6 +18,12 @@ from dao_treasury.sorting.rule import (
     OtherExpenseSortRule, 
     OtherIncomeSortRule, 
     RevenueSortRule,
+    cost_of_revenue,
+    expense,
+    ignore,
+    other_expense,
+    other_income,
+    revenue,
 )
 from dao_treasury.types import TxGroupDbid
 
@@ -32,6 +38,12 @@ __all__ = [
     "OtherExpenseSortRule", 
     "OtherIncomeSortRule", 
     "RevenueSortRule",
+    "cost_of_revenue",
+    "expense",
+    "ignore",
+    "other_expense",
+    "other_income",
+    "revenue",
     "HashMatcher", 
     "FromAddressMatcher", 
     "ToAddressMatcher", 
