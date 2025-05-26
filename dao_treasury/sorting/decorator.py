@@ -57,7 +57,7 @@ class SortRuleDecorator:
         func: Union[TxGroupName, SortFunction],
     ) -> Union["SortRuleDecorator", SortFunction]:
         if isinstance(func, str):
-            return SortRuleDecorator(f"{self.txgroup}:{func}", self.rule_type)
+            return SortRuleDecorator(f"{self.txgroup}:{func}", self.networks, self.rule_type)
         elif callable(func):
             if CHAINID in self.networks:
                 self.rule_type(txgroup=self.txgroup, func=func)
