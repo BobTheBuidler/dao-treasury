@@ -53,6 +53,12 @@ __all__ = [
     "_Matcher",
 ]
 
+# C constants
+TxGroup: Final = db.TxGroup
+must_sort_inbound_txgroup_dbid: Final = db.must_sort_inbound_txgroup_dbid
+must_sort_outbound_txgroup_dbid: Final = db.must_sort_outbound_txgroup_dbid
+
+
 def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
     txgroup_dbid: Optional[TxGroupDbid] = None
     if from_wallet := TreasuryWallet._get_instance(entry.from_address):
@@ -70,9 +76,9 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
                     start_block_for_wallet <= entry.block_number
                     and (end_block_for_wallet is None or entry.block_number <= end_block_for_wallet)
                 ):
-                    txgroup_dbid = db.TxGroup.get_dbid(
+                    txgroup_dbid = TxGroup.get_dbid(
                         name="Internal Transfer",
-                        parent=db.TxGroup.get_dbid("Ignore"),
+                        parent=TxGroup.get_dbid("Ignore"),
                     )
 
     if txgroup_dbid is None:
@@ -94,7 +100,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
             and from_wallet._start_block <= entry.block_number
             and (from_wallet._end_block is None or from_wallet._end_block >= entry.block_number)
         ):
-            txgroup_dbid = db.must_sort_outbound_txgroup_dbid
+            txgroup_dbid = must_sort_outbound_txgroup_dbid
         
         elif (
             entry.to_address
@@ -102,7 +108,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
             and to_wallet._start_block <= entry.block_number
             and to_wallet._end_block is None or entry.block_number <= to_wallet._end_block  # type: ignore [union-attr, operator]
         ):
-            txgroup_dbid = db.must_sort_inbound_txgroup_dbid
+            txgroup_dbid = must_sort_inbound_txgroup_dbid
         
         else:
             raise NotImplementedError("this isnt supposed to happen")
@@ -128,9 +134,9 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
                         start_block_for_wallet <= entry.block
                         and (end_block_for_wallet is None or entry.block <= end_block_for_wallet)
                     ):
-                        txgroup_dbid = db.TxGroup.get_dbid(
+                        txgroup_dbid = TxGroup.get_dbid(
                             name="Internal Transfer",
-                            parent=db.TxGroup.get_dbid("Ignore"),
+                            parent=TxGroup.get_dbid("Ignore"),
                         )
 
     if txgroup_dbid is None:
@@ -175,14 +181,10 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
     if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
         for rule in SORT_RULES:
             if await rule.match(entry):
-                txgroup_dbid = db.TxGroup.get_dbid(rule.txgroup)
+                txgroup_dbid = TxGroup.get_dbid(rule.txgroup)
                 break
     
     if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
         logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
     
     return txgroup_dbid  # type: ignore [no-any-return]
-
-
-must_sort_inbound_txgroup_dbid: Final = db.must_sort_inbound_txgroup_dbid
-must_sort_outbound_txgroup_dbid: Final = db.must_sort_outbound_txgroup_dbid
