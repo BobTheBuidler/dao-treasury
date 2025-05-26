@@ -10,6 +10,14 @@ from evmspec.data import TransactionHash
 from dao_treasury import db
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.sorting._matchers import _Matcher, FromAddressMatcher, HashMatcher, ToAddressMatcher
+from dao_treasury.sorting.decorator import (
+    cost_of_revenue,
+    expense,
+    ignore,
+    other_expense,
+    other_income,
+    revenue,
+)
 from dao_treasury.sorting.rule import (
     SORT_RULES,
     CostOfRevenueSortRule, 
@@ -18,12 +26,6 @@ from dao_treasury.sorting.rule import (
     OtherExpenseSortRule, 
     OtherIncomeSortRule, 
     RevenueSortRule,
-    cost_of_revenue,
-    expense,
-    ignore,
-    other_expense,
-    other_income,
-    revenue,
 )
 from dao_treasury.types import TxGroupDbid
 
