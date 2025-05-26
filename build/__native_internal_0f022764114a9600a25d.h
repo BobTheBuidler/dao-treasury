@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[241];
+extern PyObject *CPyStatics[245];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -141,7 +141,7 @@ extern PyObject *CPyDef_decorator___ignore(PyObject *cpy_r_txgroup, PyObject *cp
 extern PyObject *CPyPy_decorator___ignore(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_decorator___SortRuleDecorator_____init__(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
 extern PyObject *CPyPy_decorator___SortRuleDecorator_____init__(PyObject *self, PyObject *args, PyObject *kw);
-extern PyObject *CPyDef_decorator___SortRuleDecorator_____call__(PyObject *cpy_r_self, PyObject *cpy_r_func);
+extern PyObject *CPyDef_decorator___SortRuleDecorator_____call__(PyObject *cpy_r_self, PyObject *cpy_r_func, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_decorator___SortRuleDecorator_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_decorator_____top_level__(void);
 extern PyObject *CPyStatic__wallet___WALLETS;

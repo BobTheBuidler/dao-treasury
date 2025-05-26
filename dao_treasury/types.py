@@ -23,14 +23,3 @@ SortFunction = Union[
     Callable[["TreasuryTx"], bool], 
     Callable[["TreasuryTx"], Awaitable[bool]],
 ]
-
-SortRuleType = Type[
-    Union[
-        "RevenueSortRule",
-        "CostOfRevenueSortRule",
-        "ExpenseSortRule",
-        "OtherIncomeSortRule",
-        "OtherExpenseSortRule",
-        "IgnoreSortRule",
-    ]
-]

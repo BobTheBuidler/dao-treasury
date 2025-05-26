@@ -210,7 +210,7 @@ struct export_table_0f022764114a9600a25d {
     PyObject *(*CPyDef_decorator___other_expense)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
     PyObject *(*CPyDef_decorator___ignore)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
     char (*CPyDef_decorator___SortRuleDecorator_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
-    PyObject *(*CPyDef_decorator___SortRuleDecorator_____call__)(PyObject *cpy_r_self, PyObject *cpy_r_func);
+    PyObject *(*CPyDef_decorator___SortRuleDecorator_____call__)(PyObject *cpy_r_self, PyObject *cpy_r_func, PyObject *cpy_r_networks);
     char (*CPyDef_decorator_____top_level__)(void);
     PyObject **CPyStatic__wallet___WALLETS;
     PyTypeObject **CPyType__wallet___TreasuryWallet;
