@@ -132,6 +132,7 @@ typedef struct {
     CPyVTableItem *vtable;
     vectorcallfunc vectorcall;
     PyObject *_txgroup;
+    PyObject *_networks;
     PyObject *_rule_type;
 } dao_treasury___sorting___decorator___SortRuleDecoratorObject;
 
@@ -199,15 +200,16 @@ struct export_table_0f022764114a9600a25d {
     char (*CPyDef__rules___Rules_____build_matchers_for_group)(PyObject *cpy_r_self, PyObject *cpy_r_top_level_name, PyObject *cpy_r_rules, PyObject *cpy_r_filename, PyObject *cpy_r_matcher_cls);
     PyObject *(*CPyDef__rules___Rules_____get_rule_file)(PyObject *cpy_r_self, PyObject *cpy_r_path, PyObject *cpy_r_filename);
     char (*CPyDef__rules_____top_level__)(void);
+    PyObject **CPyStatic_decorator___CHAINID;
     PyTypeObject **CPyType_decorator___SortRuleDecorator;
-    PyObject *(*CPyDef_decorator___SortRuleDecorator)(PyObject *cpy_r_txgroup, PyObject *cpy_r_rule_type);
-    PyObject *(*CPyDef_decorator___revenue)(PyObject *cpy_r_txgroup);
-    PyObject *(*CPyDef_decorator___cost_of_revenue)(PyObject *cpy_r_txgroup);
-    PyObject *(*CPyDef_decorator___expense)(PyObject *cpy_r_txgroup);
-    PyObject *(*CPyDef_decorator___other_income)(PyObject *cpy_r_txgroup);
-    PyObject *(*CPyDef_decorator___other_expense)(PyObject *cpy_r_txgroup);
-    PyObject *(*CPyDef_decorator___ignore)(PyObject *cpy_r_txgroup);
-    char (*CPyDef_decorator___SortRuleDecorator_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_rule_type);
+    PyObject *(*CPyDef_decorator___SortRuleDecorator)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
+    PyObject *(*CPyDef_decorator___revenue)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
+    PyObject *(*CPyDef_decorator___cost_of_revenue)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
+    PyObject *(*CPyDef_decorator___expense)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
+    PyObject *(*CPyDef_decorator___other_income)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
+    PyObject *(*CPyDef_decorator___other_expense)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
+    PyObject *(*CPyDef_decorator___ignore)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
+    char (*CPyDef_decorator___SortRuleDecorator_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
     PyObject *(*CPyDef_decorator___SortRuleDecorator_____call__)(PyObject *cpy_r_self, PyObject *cpy_r_func);
     char (*CPyDef_decorator_____top_level__)(void);
     PyObject **CPyStatic__wallet___WALLETS;
