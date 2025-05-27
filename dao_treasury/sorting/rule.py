@@ -5,7 +5,7 @@ from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
 
 from dao_treasury._wallet import TreasuryWallet
-from dao_treasury.types import SortFunction, TxGroupName
+from dao_treasury.types import SortFunction, TxGroupDbid, TxGroupName
 
 if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
@@ -80,6 +80,15 @@ class _SortRule:
 
         # append new instance to instances classvar
         self.__instances__.append(self)
+    
+    @property
+    def txgroup_dbid(self) -> TxGroupDbid:
+        from dao_treasury.db import TxGroup
+
+        txgroup = None
+        for part in reversed(self.txgroup.split(":")):
+            txgroup = TxGroup.get_dbid(part, txgroup)
+        return txgroup
 
     async def match(self, tx: "TreasuryTx") -> bool:
         """Returns True if `tx` matches this SortRule, False otherwise"""
