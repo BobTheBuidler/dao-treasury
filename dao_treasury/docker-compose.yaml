@@ -28,6 +28,7 @@ services:
     restart: always
 
   renderer:
+    platform: linux/amd64
     image: grafana/grafana-image-renderer:latest
     ports:
       - 127.0.0.1:${DAO_TREASURY_RENDERER_PORT:-8092}:8091
