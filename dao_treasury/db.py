@@ -37,7 +37,7 @@ from y.constants import CHAINID
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
-from dao_treasury.types import TxGroupDbid
+from dao_treasury.types import TxGroupDbid, TxGroupName
 
 
 SQLITE_DIR = Path(path.expanduser("~")) / ".dao-treasury"
@@ -310,12 +310,12 @@ class TxGroup(DbEntity):
     
     @classmethod
     @lru_cache(maxsize=None)
-    def get_dbid(cls, name: str, parent: typing.Optional["TxGroup"] = None) -> TxGroupDbid:
+    def get_dbid(cls, name: TxGroupName, parent: typing.Optional["TxGroup"] = None) -> TxGroupDbid:
         with db_session:
             return TxGroupDbid(cls.get_or_insert(name, parent).txgroup_id)
     
     @classmethod
-    def get_or_insert(cls, name: str, parent: typing.Optional["TxGroup"]) -> "TxGroup":
+    def get_or_insert(cls, name: TxGroupName, parent: typing.Optional["TxGroup"]) -> "TxGroup":
         if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
             return txgroup  # type: ignore [no-any-return]
         txgroup = TxGroup(name=name, parent_txgroup=parent)
@@ -384,10 +384,11 @@ class TreasuryTx(DbEntity):
             async with _SORT_SEMAPHORE:
                 from dao_treasury.sorting import sort_advanced
 
-                await sort_advanced(TreasuryTx[txid])
+                with db_session:
+                    await sort_advanced(TreasuryTx[txid])
     
     @classmethod
-    def __insert(cls, entry: LedgerEntry, ts: int) -> typing.Optional[TxGroupDbid]:
+    def __insert(cls, entry: LedgerEntry, ts: int) -> typing.Optional[int]:
         try:
             with db_session:
                 if isinstance(entry, TokenTransfer):
@@ -441,8 +442,7 @@ class TreasuryTx(DbEntity):
         except TransactionIntegrityError as e:
             #logger.error(e, entry, exc_info=True)
             # TODO: implement this
-            _validate_integrity_error(entry, log_index)
-            return None
+            return _validate_integrity_error(entry, log_index)
         except Exception as e:
             e.args = *e.args, entry
             raise
@@ -615,7 +615,7 @@ with db_session:
 
 
 @db_session
-def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> None:
+def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Optional[int]:
     '''Raises AssertionError if existing object that causes a TransactionIntegrityError is not an EXACT MATCH to the attempted insert.'''
     txhash = entry.hash.hex()
     chain_dbid = Chain.get_dbid()
@@ -666,14 +666,11 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> None:
     else:
         assert existing_object.token == EEE_ADDRESS
     # NOTE All good!
-
-    # if the existing object hasn't been sorted yet, we will try to
-    # TODO: put this somewhere more appropriate
-    txgroup = existing_object.txgroup
-    if txgroup.txgroup_id in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
-        # TODO: resolve this circ import
-        from dao_treasury.sorting import sort_basic_entity
-
-        new_txgroup_dbid = sort_basic_entity(existing_object)
-        if new_txgroup_dbid != txgroup.txgroup_id:
-            existing_object.txgroup = new_txgroup_dbid
+    return (
+        existing_object.treasury_tx_id
+        if existing_object.txgroup.txgroup_id in (
+            must_sort_inbound_txgroup_dbid, 
+            must_sort_outbound_txgroup_dbid,
+        )
+        else None
+    )
