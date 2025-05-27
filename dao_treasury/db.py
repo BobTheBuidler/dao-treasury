@@ -6,7 +6,7 @@ from functools import lru_cache
 from logging import getLogger
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Final, final
+from typing import TYPE_CHECKING, Final, Union, final
 
 from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
@@ -128,10 +128,12 @@ class Address(DbEntity):
     # vests_received = Set("VestingEscrow", reverse="recipient")
     # vests_funded = Set("VestingEscrow", reverse="funder")
 
-    def __eq__(self, other: ChecksumAddress) -> bool:
-        if not isinstance(other, str):
-            raise TypeError("Address can only be compared to a string")
-        return other == self.address
+    def __eq__(self, other: Union["Address", ChecksumAddress]) -> bool:
+        if isinstance(other, str):
+            return CHAINID == self.chain.chainid and other == self.address
+        return super().__eq__(other)
+    
+    __hash__ = DbEntity.__hash__
 
     @classmethod
     @lru_cache(maxsize=None)
@@ -205,10 +207,10 @@ class Token(DbEntity):
     # streams = Set('Stream', reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
-    def __eq__(self, other: ChecksumAddress) -> bool:
-        if not isinstance(other, str):
-            raise TypeError("Token can only be compared to a string")
-        return other == self.address
+    def __eq__(self, other: Union["Token", ChecksumAddress]) -> bool:
+        return self.address == other if isinstance(other, str) else super().__eq__(other)
+    
+    __hash__ = DbEntity.__hash__
 
     @property
     def scale(self) -> int:
