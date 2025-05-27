@@ -109,7 +109,7 @@ extern PyObject *CPyPy__matchers___HashMatcher_____init__(PyObject *self, PyObje
 extern PyObject *CPyDef__matchers___HashMatcher_____repr__(PyObject *cpy_r_self);
 extern PyObject *CPyPy__matchers___HashMatcher_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__matchers_____top_level__(void);
-extern PyObject *CPyStatic__rules___CHAINID;
+extern CPyTagged CPyStatic__rules___CHAINID;
 extern PyObject *CPyStatic__rules___logger;
 extern PyTypeObject *CPyType__rules___Rules;
 extern PyObject *CPyDef__rules___Rules(PyObject *cpy_r_path);
@@ -124,7 +124,7 @@ extern PyObject *CPyPy__rules___Rules_____build_matchers_for_group(PyObject *sel
 extern PyObject *CPyDef__rules___Rules_____get_rule_file(PyObject *cpy_r_self, PyObject *cpy_r_path, PyObject *cpy_r_filename);
 extern PyObject *CPyPy__rules___Rules_____get_rule_file(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__rules_____top_level__(void);
-extern PyObject *CPyStatic_decorator___CHAINID;
+extern CPyTagged CPyStatic_decorator___CHAINID;
 extern PyTypeObject *CPyType_decorator___SortRuleDecorator;
 extern PyObject *CPyDef_decorator___SortRuleDecorator(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
 extern PyObject *CPyDef_decorator___revenue(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
