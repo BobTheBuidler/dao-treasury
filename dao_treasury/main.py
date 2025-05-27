@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 import brownie
+from eth_typing import BlockNumber
 
 
 logger = logging.getLogger(__name__)
@@ -58,16 +59,16 @@ os.environ['GF_PORT'] = str(args.grafana_port)
 os.environ['RENDERER_PORT'] = str(args.renderer_port)
 
 # TODO: run forever arg
-def main():
+def main() -> None:
     asyncio.run(export(args))
 
-async def export(args):
+async def export(args) -> None:
     from dao_treasury import _docker, Treasury
     # TODO pass interval to the eth-portfolio portfolio exporter, but make the dashboard files more specific to dao treasury-ing
     #interval = parse_timedelta(args.interval)
 
     treasury = Treasury(args.wallet, args.sort_rules, asynchronous=True)
-    await _docker.ensure_containers(treasury.populate_db)(0, brownie.chain.height)
+    await _docker.ensure_containers(treasury.populate_db)(BlockNumber(0), brownie.chain.height)
 
 if __name__ == "__main__":
     os.environ['BROWNIE_NETWORK_ID'] = args.network
