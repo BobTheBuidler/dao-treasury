@@ -1,16 +1,15 @@
 from asyncio import create_task
-from functools import lru_cache
 from logging import getLogger
 from pathlib import Path
 from typing import Final, Iterable, List, Optional, Union
 
 import a_sync
 from a_sync.a_sync.abstract import ASyncABC
-from eth_typing import BlockNumber, HexAddress
+from eth_typing import BlockNumber
+from eth_portfolio.structs import LedgerEntry
 from eth_portfolio.typing import PortfolioBalances
 from eth_portfolio_scripts._portfolio import ExportablePortfolio
 from tqdm.asyncio import tqdm_asyncio
-from y import convert
 
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.db import TreasuryTx
@@ -48,7 +47,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         """The collection of wallets owned or controlled by the on-chain org"""
         for wallet in wallets:
             if isinstance(wallet, str):
-                self.wallets.append(TreasuryWallet(wallet))
+                self.wallets.append(TreasuryWallet(wallet))  # type: ignore [type-arg]
             elif isinstance(wallet, TreasuryWallet):
                 self.wallets.append(wallet)
             else:
@@ -79,7 +78,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         return await self.portfolio.describe(block)
 
     @property
-    def txs(self) -> a_sync.ASyncIterator:
+    def txs(self) -> a_sync.ASyncIterator[LedgerEntry]:
         return self.portfolio.ledger.all_entries
 
     async def populate_db(self, start_block: BlockNumber, end_block: BlockNumber) -> None:
