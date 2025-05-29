@@ -42,7 +42,14 @@ jobs:
           python -m pip uninstall -y dao-treasury || echo "Ignore uninstall failure"
           python -m pip install .
           
+      - name: Setup brownie networks
+        run: |
+          brownie networks modify mainnet host=${{ secrets[matrix.provider] }}
+        continue-on-error: true
+        
       - name: Test import after pip install .
+        env:
+          BROWNIE_NETWORK_ID: mainnet
         run: python -c "import dao_treasury"
 
       - name: pip install -e .
@@ -51,6 +58,8 @@ jobs:
           python -m pip install -e .
           
       - name: Test import after pip install -e .
+        env:
+          BROWNIE_NETWORK_ID: mainnet
         run: python -c "import dao_treasury"
 
       - name: poetry lock on python3.8
@@ -66,6 +75,8 @@ jobs:
         
       - name: Test import after poetry install
         if: ${{ matrix.os != 'windows-latest' }}
+        env:
+          BROWNIE_NETWORK_ID: mainnet
         run: poetry run python -c "import dao_treasury"
 
       - name: Build Wheel and Install
@@ -79,6 +90,8 @@ jobs:
 
       - name: Test import after wheel install
         if: ${{ matrix.os != 'windows-latest' }}
+        env:
+          BROWNIE_NETWORK_ID: mainnet
         run: python -c "import dao_treasury"
 
       - name: pip install with extras [dev]
@@ -87,6 +100,8 @@ jobs:
           python -m pip install .[dev]
 
       - name: Test import after pip install with extras [dev]
+        env:
+          BROWNIE_NETWORK_ID: mainnet
         run: python -c "import dao_treasury"
         
       - name: Test install with uv
@@ -96,5 +111,7 @@ jobs:
           uv pip install .
 
       - name: Test import after uv install
+        env:
+          BROWNIE_NETWORK_ID: mainnet
         run: uv run python -c "import dao_treasury"
         
