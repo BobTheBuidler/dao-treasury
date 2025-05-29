@@ -4,10 +4,10 @@ dao\_treasury.sorting package
 Submodules
 ----------
 
-dao\_treasury.sorting.decorator module
---------------------------------------
+dao\_treasury.sorting.factory module
+------------------------------------
 
-.. automodule:: dao_treasury.sorting.decorator
+.. automodule:: dao_treasury.sorting.factory
    :members:
    :undoc-members:
    :show-inheritance:
