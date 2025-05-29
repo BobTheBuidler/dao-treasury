@@ -44,7 +44,7 @@ jobs:
           
       - name: Setup brownie networks
         run: |
-          brownie networks modify mainnet host=${{ secrets[matrix.provider] }}
+          brownie networks modify mainnet host=${{ secrets.WEB3_PROVIDER }}
         continue-on-error: true
         
       - name: Test import after pip install .
