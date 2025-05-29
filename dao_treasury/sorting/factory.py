@@ -29,27 +29,27 @@ Networks = Union[Network, Iterable[Network]]
 CHAINID: Final = constants.CHAINID
 
 
-def revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator[RevenueSortRule]":
-    return SortRuleDecorator(txgroup, networks, RevenueSortRule)
+def revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[RevenueSortRule]":
+    return SortRuleFactory(txgroup, networks, RevenueSortRule)
 
-def cost_of_revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator[CostOfRevenueSortRule]":
-    return SortRuleDecorator(txgroup, networks, CostOfRevenueSortRule)
+def cost_of_revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[CostOfRevenueSortRule]":
+    return SortRuleFactory(txgroup, networks, CostOfRevenueSortRule)
 
-def expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator[ExpenseSortRule]":
-    return SortRuleDecorator(txgroup, networks, ExpenseSortRule)
+def expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[ExpenseSortRule]":
+    return SortRuleFactory(txgroup, networks, ExpenseSortRule)
 
-def other_income(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator[OtherIncomeSortRule]":
-    return SortRuleDecorator(txgroup, networks, OtherIncomeSortRule)
+def other_income(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[OtherIncomeSortRule]":
+    return SortRuleFactory(txgroup, networks, OtherIncomeSortRule)
 
-def other_expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator[OtherExpenseSortRule]":
-    return SortRuleDecorator(txgroup, networks, OtherExpenseSortRule)
+def other_expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[OtherExpenseSortRule]":
+    return SortRuleFactory(txgroup, networks, OtherExpenseSortRule)
 
-def ignore(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleDecorator[IgnoreSortRule]":
-    return SortRuleDecorator(txgroup, networks, IgnoreSortRule)
+def ignore(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[IgnoreSortRule]":
+    return SortRuleFactory(txgroup, networks, IgnoreSortRule)
 
 
 @final
-class SortRuleDecorator(Generic[TRule]):
+class SortRuleFactory(Generic[TRule]):
     def __init__(
         self,
         txgroup: TxGroupName, 
@@ -60,16 +60,16 @@ class SortRuleDecorator(Generic[TRule]):
         self.networks: Final = [networks] if isinstance(networks, int) else list(networks)
         self.rule_type: Final = rule_type
     @overload
-    def __call__(self, txgroup_name: TxGroupName, networks: Optional[Networks] = None) -> "SortRuleDecorator":...
+    def __call__(self, txgroup_name: TxGroupName, networks: Optional[Networks] = None) -> "SortRuleFactory":...
     @overload
     def __call__(self, func: SortFunction) -> SortFunction:...
     def __call__(  # type: ignore [misc]
         self, 
         func: Union[TxGroupName, SortFunction],
         networks: Optional[Networks] = None,
-    ) -> Union["SortRuleDecorator", SortFunction]:
+    ) -> Union["SortRuleFactory", SortFunction]:
         if isinstance(func, str):
-            return SortRuleDecorator(f"{self.txgroup}:{func}", networks or self.networks, self.rule_type)
+            return SortRuleFactory(f"{self.txgroup}:{func}", networks or self.networks, self.rule_type)
         elif callable(func):
             if networks:
                 raise RuntimeError("you can only pass networks if `func` is a string")
