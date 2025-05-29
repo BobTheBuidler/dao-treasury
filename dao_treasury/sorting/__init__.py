@@ -10,7 +10,7 @@ from evmspec.data import TransactionHash
 from dao_treasury import db
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.sorting._matchers import _Matcher, FromAddressMatcher, HashMatcher, ToAddressMatcher
-from dao_treasury.sorting.decorator import (
+from dao_treasury.sorting.factory import (
     cost_of_revenue,
     expense,
     ignore,
