@@ -50,7 +50,7 @@ jobs:
       - name: Test import after pip install .
         env:
           BROWNIE_NETWORK_ID: mainnet
-          ETHERSCAN_TOKEN: ${{ sercets.ETHERSCAN_TOKEN }}
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
         run: python -c "import dao_treasury"
 
       - name: pip install -e .
@@ -61,7 +61,7 @@ jobs:
       - name: Test import after pip install -e .
         env:
           BROWNIE_NETWORK_ID: mainnet
-          ETHERSCAN_TOKEN: ${{ sercets.ETHERSCAN_TOKEN }}
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
         run: python -c "import dao_treasury"
 
       - name: poetry lock on python3.8
@@ -79,7 +79,7 @@ jobs:
         if: ${{ matrix.os != 'windows-latest' }}
         env:
           BROWNIE_NETWORK_ID: mainnet
-          ETHERSCAN_TOKEN: ${{ sercets.ETHERSCAN_TOKEN }}
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
         run: poetry run python -c "import dao_treasury"
 
       - name: Build Wheel and Install
@@ -95,7 +95,7 @@ jobs:
         if: ${{ matrix.os != 'windows-latest' }}
         env:
           BROWNIE_NETWORK_ID: mainnet
-          ETHERSCAN_TOKEN: ${{ sercets.ETHERSCAN_TOKEN }}
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
         run: python -c "import dao_treasury"
 
       - name: pip install with extras [dev]
@@ -106,7 +106,7 @@ jobs:
       - name: Test import after pip install with extras [dev]
         env:
           BROWNIE_NETWORK_ID: mainnet
-          ETHERSCAN_TOKEN: ${{ sercets.ETHERSCAN_TOKEN }}
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
         run: python -c "import dao_treasury"
         
       - name: Test install with uv
@@ -118,6 +118,6 @@ jobs:
       - name: Test import after uv install
         env:
           BROWNIE_NETWORK_ID: mainnet
-          ETHERSCAN_TOKEN: ${{ sercets.ETHERSCAN_TOKEN }}
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
         run: uv run python -c "import dao_treasury"
         
