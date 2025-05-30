@@ -1,6 +1,6 @@
-from typing import Final, Generic, Iterable, Optional, TypeVar, Union, final, overload
+from typing import Final, Generic, Optional, TypeVar, Union, final, overload
 
-from y import Network, constants
+from y import constants
 
 from dao_treasury.sorting.rule import (
     CostOfRevenueSortRule, 
@@ -10,7 +10,7 @@ from dao_treasury.sorting.rule import (
     OtherIncomeSortRule, 
     RevenueSortRule,
 )
-from dao_treasury.types import SortFunction, TxGroupName
+from dao_treasury.types import Networks, SortFunction, TxGroupName
 
 
 TRule = TypeVar(
@@ -22,8 +22,6 @@ TRule = TypeVar(
     OtherExpenseSortRule,
     IgnoreSortRule,
 )
-
-Networks = Union[Network, Iterable[Network]]
 
 
 CHAINID: Final = constants.CHAINID
