@@ -216,6 +216,9 @@ class Token(DbEntity):
     def scale(self) -> int:
         return 10**self.decimals  # type: ignore [no-any-return]
     
+    def scale_value(self, value: int) -> Decimal:
+        return Decimal(value) / self.scale
+    
     @classmethod
     @lru_cache(maxsize=None)
     def get_dbid(cls, address: HexAddress) -> int:
@@ -370,7 +373,7 @@ class TreasuryTx(DbEntity):
 
     # Helpers
     @property
-    def _events(self) -> typing.Optional[EventDict]:
+    def _events(self) -> EventDict:
         return self._transaction.events
 
     @property
