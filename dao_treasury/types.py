@@ -1,5 +1,3 @@
-# dao_treasury/types.py
-
 from typing import TYPE_CHECKING, Awaitable, Callable, Iterable, Literal, NewType, Union
 
 from y import Network
