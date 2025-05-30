@@ -13,6 +13,7 @@ else:
             "dao_treasury/sorting/_rules.py", 
             "dao_treasury/sorting/factory.py",
             "dao_treasury/_wallet.py",
+            "dao_treasury/types.py",
             "--pretty",
             "--strict",
             "--install-types", 
