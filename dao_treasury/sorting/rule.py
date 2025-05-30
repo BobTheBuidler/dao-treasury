@@ -28,6 +28,7 @@ class _SortRule:
     to_nickname: Optional[str] = None
     token_address: Optional[EthAddress] = None
     symbol: Optional[str] = None
+    log_index: Optional[int] = None
     func: Optional[SortFunction] = None
 
     __instances__: ClassVar[List["_SortRule"]] = []
@@ -39,6 +40,7 @@ class _SortRule:
         "to_nickname",
         "token_address",
         "symbol",
+        "log_index",
     ]
 
     def __post_init__(self) -> None:
