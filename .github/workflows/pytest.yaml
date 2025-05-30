@@ -54,6 +54,9 @@ jobs:
       - name: Install Dependencies
         run: poetry install
 
+      - name: Install Setuptools for `pkg_resources`
+        run: poetry run pip install -U setuptools
+        
       - name: Install DAO Treasury
         run: poetry run python -m pip install .
 
