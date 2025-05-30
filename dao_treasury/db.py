@@ -128,7 +128,7 @@ class Address(DbEntity):
     # vests_received = Set("VestingEscrow", reverse="recipient")
     # vests_funded = Set("VestingEscrow", reverse="funder")
 
-    def __eq__(self, other: Union["Address", ChecksumAddress]) -> bool:
+    def __eq__(self, other: Union["Address", ChecksumAddress]) -> bool:  # type: ignore [override]
         if isinstance(other, str):
             return CHAINID == self.chain.chainid and other == self.address
         return super().__eq__(other)
@@ -207,7 +207,7 @@ class Token(DbEntity):
     # streams = Set('Stream', reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
-    def __eq__(self, other: Union["Token", ChecksumAddress]) -> bool:
+    def __eq__(self, other: Union["Token", ChecksumAddress]) -> bool:  # type: ignore [override]
         return self.address == other if isinstance(other, str) else super().__eq__(other)
     
     __hash__ = DbEntity.__hash__
