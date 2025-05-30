@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[244];
+extern PyObject *CPyStatics[252];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -143,6 +143,12 @@ extern char CPyDef_factory___SortRuleFactory_____init__(PyObject *cpy_r_self, Py
 extern PyObject *CPyPy_factory___SortRuleFactory_____init__(PyObject *self, PyObject *args, PyObject *kw);
 extern PyObject *CPyDef_factory___SortRuleFactory_____call__(PyObject *cpy_r_self, PyObject *cpy_r_func, PyObject *cpy_r_networks);
 extern PyObject *CPyPy_factory___SortRuleFactory_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef_factory___SortRuleFactory___rule(PyObject *cpy_r_self);
+extern PyObject *CPyPy_factory___SortRuleFactory___rule(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_factory___SortRuleFactory___match(PyObject *cpy_r_self, char cpy_r_func, PyObject *cpy_r_match_values);
+extern PyObject *CPyPy_factory___SortRuleFactory___match(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef_factory___SortRuleFactory_____check_locked(PyObject *cpy_r_self);
+extern PyObject *CPyPy_factory___SortRuleFactory_____check_locked(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_factory_____top_level__(void);
 extern PyObject *CPyStatic__wallet___WALLETS;
 extern PyTypeObject *CPyType__wallet___TreasuryWallet;

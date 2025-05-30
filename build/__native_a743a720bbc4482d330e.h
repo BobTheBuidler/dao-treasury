@@ -134,6 +134,8 @@ typedef struct {
     PyObject *_txgroup;
     PyObject *_networks;
     PyObject *_rule_type;
+    PyObject *__rule;
+    char _locked;
 } dao_treasury___sorting___factory___SortRuleFactoryObject;
 
 typedef struct {
@@ -211,6 +213,9 @@ struct export_table_a743a720bbc4482d330e {
     PyObject *(*CPyDef_factory___ignore)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
     char (*CPyDef_factory___SortRuleFactory_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
     PyObject *(*CPyDef_factory___SortRuleFactory_____call__)(PyObject *cpy_r_self, PyObject *cpy_r_func, PyObject *cpy_r_networks);
+    PyObject *(*CPyDef_factory___SortRuleFactory___rule)(PyObject *cpy_r_self);
+    char (*CPyDef_factory___SortRuleFactory___match)(PyObject *cpy_r_self, char cpy_r_func, PyObject *cpy_r_match_values);
+    char (*CPyDef_factory___SortRuleFactory_____check_locked)(PyObject *cpy_r_self);
     char (*CPyDef_factory_____top_level__)(void);
     PyObject **CPyStatic__wallet___WALLETS;
     PyTypeObject **CPyType__wallet___TreasuryWallet;
