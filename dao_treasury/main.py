@@ -1,10 +1,11 @@
 """Command-line interface for exporting DAO treasury transactions.
 
-This module defines the `main` entrypoint script for running a one-time export of treasury transactions,
-populating the local SQLite database, and launching Grafana with its renderer. It uses Brownie and
-:class:`dao_treasury.Treasury` to fetch on-chain ledger entries, then applies optional sorting rules
-before inserting them via the portfolio and database routines (see :class:`dao_treasury.Treasury`
-and :func:`dao_treasury.db.TreasuryTx.insert`).
+This module parses command-line arguments, sets up environment variables for
+Grafana and its renderer, and defines the entrypoint for a one-time export of
+DAO treasury transactions. It populates the local SQLite database and starts
+the required Docker services for Grafana dashboards. Transactions are fetched
+via :class:`dao_treasury.Treasury`, sorted according to optional rules, and
+inserted using the database routines (:func:`dao_treasury.db.TreasuryTx.insert`).
 
 Example:
     Running from the shell::
@@ -13,9 +14,10 @@ Example:
             --interval 6h --grafana-port 3000 --renderer-port 8091
 
 See Also:
-    :func:`dao_treasury._docker.up`
-    :func:`dao_treasury._docker.down`
-    :class:`dao_treasury.Treasury`
+    :func:`dao_treasury._docker.up`,
+    :func:`dao_treasury._docker.down`,
+    :class:`dao_treasury.Treasury`,
+    :func:`dao_treasury.db.TreasuryTx.insert`
 """
 
 import argparse
@@ -92,35 +94,52 @@ os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
 # TODO: run forever arg
 def main() -> None:
-    """Run the export process synchronously by invoking the asynchronous export.
+    """Entrypoint for the `dao-treasury` console script.
 
-    This function is the entrypoint for the `dao-treasury` console script. It
-    parses command-line arguments and invokes :func:`export`.
+    This function invokes the export coroutine using the arguments parsed at import time.
+    It runs the asynchronous export to completion.
 
     Example:
         From the command line::
 
             $ dao-treasury --network mainnet --sort-rules=./rules --wallet 0xABC123... 0xDEF456...
+
+    See Also:
+        :func:`export`
     """
     asyncio.get_event_loop().run_until_complete(export(args))
 
 
 async def export(args) -> None:
-    """Perform a one-time export of treasury transactions and start Grafana services.
+    """Perform one-time export of treasury transactions and manage Docker services.
 
-    This coroutine instantiates a :class:`dao_treasury.Treasury` object using
-    `args.wallet` and `args.sort_rules`, then ensures that the necessary Docker
-    containers (Grafana and the renderer) are running before populating the
-    database with transactions from block 0 to the current chain height.
+    This coroutine creates a :class:`dao_treasury.Treasury` instance using the
+    provided wallets and sort rules, brings up the Grafana and renderer containers,
+    then concurrently exports balance snapshots and populates the transaction database
+    for blocks from 0 to the current chain height.
 
     Args:
-        args: Parsed command-line arguments with attributes:
-            - wallet: List of wallet address strings to include as treasury wallets.
-            - sort_rules: Directory of sorting rules.
-            - interval: Time interval between balance snapshots.
-            - daemon: Whether to run as a daemon (currently ignored).
-            - grafana_port: Port for Grafana.
-            - renderer_port: Port for the renderer service.
+        args: Parsed command-line arguments containing:
+            wallet: Treasury wallet address strings.
+            sort_rules: Directory of sorting rules.
+            interval: Time interval for balance snapshots.
+            daemon: Ignored flag.
+            grafana_port: Port for Grafana (sets DAO_TREASURY_GRAFANA_PORT).
+            renderer_port: Port for renderer (sets DAO_TREASURY_RENDERER_PORT).
+
+    Note:
+        Inside this coroutine, the environment variable GRAFANA_PORT is overridden to "3003"
+        to satisfy current dashboard requirements.
+
+    Example:
+        In code::
+
+            await export(args)  # where args come from parser.parse_args()
+
+    See Also:
+        :func:`dao_treasury._docker.up`,
+        :func:`dao_treasury._docker.down`,
+        :class:`dao_treasury.Treasury.populate_db`
     """
     from dao_treasury import _docker, Treasury
 
