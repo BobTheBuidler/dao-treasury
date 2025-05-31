@@ -537,9 +537,9 @@ class TxGroup(DbEntity):
         with db_session:
             return TxGroupDbid(cls.get_or_insert(name, parent).txgroup_id)
 
-    @classmethod
+    @staticmethod
     @lru_cache(maxsize=None)
-    def get_fullname(cls, dbid: TxGroupDbid) -> TxGroupName:
+    def get_fullname(dbid: TxGroupDbid) -> TxGroupName:
         with db_session:
             if txgroup := TxGroup.get(txgroup_id=dbid):
                 return txgroup.fullname
