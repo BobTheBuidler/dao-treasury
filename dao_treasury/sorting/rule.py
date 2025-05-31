@@ -16,9 +16,19 @@ See Also:
     :const:`~dao_treasury.sorting.rule.SORT_RULES`
     :class:`~dao_treasury.sorting.rule._SortRule`
 """
+
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, DefaultDict, Dict, Final, List, Optional, Type, TypeVar
+from typing import (
+    TYPE_CHECKING,
+    DefaultDict,
+    Dict,
+    Final,
+    List,
+    Optional,
+    Type,
+    TypeVar,
+)
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
@@ -47,6 +57,7 @@ _MATCHING_ATTRS: Final = (
     "symbol",
     "log_index",
 )
+
 
 @mypyc_attr(native_class=False)
 @dataclass(kw_only=True, frozen=True)
@@ -88,7 +99,7 @@ class _SortRule:
     func: Optional[SortFunction] = None
     """Custom matching function that takes a `TreasuryTx` and returns a bool or an awaitable that returns a bool."""
 
-    #__instances__: ClassVar[List[Self]] = []
+    # __instances__: ClassVar[List[Self]] = []
 
     def __post_init__(self) -> None:
         """Validate inputs, checksum addresses, and register the rule.
@@ -133,7 +144,7 @@ class _SortRule:
 
         # append new instance to instances classvar
         # TODO: fix dataclass ClassVar handling in mypyc and reenable
-        #self.__instances__.append(self)
+        # self.__instances__.append(self)
         SORT_RULES[type(self)].append(self)
 
     @property

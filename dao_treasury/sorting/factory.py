@@ -14,7 +14,6 @@ from dao_treasury.sorting.rule import (
 from dao_treasury.types import Networks, SortFunction, TxGroupName
 
 
-
 CHAINID: Final = constants.CHAINID
 
 
