@@ -24,29 +24,38 @@ logger: Final = getLogger("dao_treasury.rules")
 class Rules:
     """Loader for transaction‐sorting rule matchers defined in YAML files.
 
-    This class locates rule definitions under a base directory structured by
-    top‐level categories (`revenue`, `cost_of_revenue`, `expenses`, `other_income`,
-    `other_expense`, `ignore`). Within each category, it searches for YAML files
-    named `match_on_hash.{yml,yaml}`, `match_on_from_address.{yml,yaml}`, and
-    `match_on_to_address.{yml,yaml}`. Each file may define mapping of transaction
-    identifiers to subgroup names under the current chain ID, and those mappings
-    are used to create corresponding matcher instances.
+    This class discovers and instantiates matchers based on simple YAML definitions
+    organized under subdirectories for each top‐level category in a given base path.
 
-    Upon initialization, all matchers are built exactly once, and each matcher
-    registers itself in the global in‐memory registry so that incoming transactions
-    can be routed accordingly.
+    The expected directory layout is:
+
+        base_path/
+            revenue/
+            cost_of_revenue/
+            expenses/
+            other_income/
+            other_expense/
+            ignore/
+
+    Under each category directory, files named `match_on_hash.(yml|yaml)`,
+    `match_on_from_address.(yml|yaml)`, and `match_on_to_address.(yml|yaml)`
+    define mappings of subgroup names to lists or nested dicts of values keyed by
+    the active chain ID.
+
+    Upon initialization, all available matchers are built exactly once and registered
+    in the global in‐memory registry, allowing transactions to be routed to the
+    appropriate `TxGroup` by hash, sender address, or recipient address.
 
     Examples:
         >>> from pathlib import Path
         >>> from dao_treasury.sorting._rules import Rules
         >>> rules = Rules(Path("config/sorting_rules"))
-        # Given a file config/sorting_rules/revenue/match_on_hash.yml containing:
-        #  1:
-        #    DonationReceived:
-        #      - 0xabc123...
-        #
-        # The above will create a `TxGroup` named "Revenue:DonationReceived"
-        # and a `HashMatcher` that routes tx hash "0xabc123..." to it.
+        # If config/sorting_rules/revenue/match_on_hash.yml contains:
+        #   1:
+        #     DonationReceived:
+        #       - 0xabc123...
+        # Then this creates a `TxGroup` named "Revenue:DonationReceived"
+        # and a `HashMatcher` that routes hash "0xabc123..." accordingly.
 
     See Also:
         :class:`dao_treasury.sorting.HashMatcher`
@@ -59,18 +68,8 @@ class Rules:
 
         Args:
             path: Base directory containing subdirectories for each top‐level category.
-                  Expected layout:
-                  ├ revenue/
-                  ├ cost_of_revenue/
-                  ├ expenses/
-                  ├ other_income/
-                  ├ other_expense/
-                  └ ignore/
 
-        This will set up internal directory attributes and immediately invoke
-        the private method to scan and register all matchers.
-
-        Examples:
+        Example:
             >>> from pathlib import Path
             >>> rules = Rules(Path("/absolute/path/to/rules"))
         """
@@ -88,22 +87,16 @@ class Rules:
     def __build_matchers(self) -> None:
         """Scan all categories and rule types, instantiate matchers.
 
-        This method must be called exactly once per `Rules` instance. It will
-        raise a `RuntimeError` if re‐invoked.
-
-        It iterates over three file prefixes:
-          - "match_on_hash"
-          - "match_on_from_address"
-          - "match_on_to_address"
-
-        For each prefix, it calls `__build_matchers_for_all_groups`.
+        This method must only run once per `Rules` instance, raising a RuntimeError
+        if invoked again. It iterates over the three rule file prefixes and calls
+        :meth:`__build_matchers_for_all_groups` for each.
 
         Raises:
-            RuntimeError: If this method is invoked a second time on the same object.
+            RuntimeError: If this method is called more than once on the same object.
 
-        Examples:
+        Example:
             >>> rules = Rules(Path("rules_dir"))
-            # Building matchers again raises:
+            # Second build attempt:
             >>> rules._Rules__build_matchers()
             RuntimeError: You cannot initialize the rules more than once
         """
@@ -122,16 +115,16 @@ class Rules:
         """Register one type of matcher across all top‐level categories.
 
         Args:
-            match_rules_filename: Base name of the YAML rule files to load
-                                  (without extension), e.g. `"match_on_hash"`.
-            matcher_cls: Matcher class to instantiate (e.g. `HashMatcher`,
-                         `FromAddressMatcher`, or `ToAddressMatcher`).
+            match_rules_filename: Base filename of the YAML rule files (without extension),
+                                  e.g. `"match_on_hash"`.
+            matcher_cls: Matcher class to instantiate
+                         (HashMatcher, FromAddressMatcher, or ToAddressMatcher).
 
-        This will call `__build_matchers_for_group` for each category in the
-        fixed listing:
-          Revenue, Cost of Revenue, Expenses, Other Income, Other Expenses, Ignore
+        This will call :meth:`__build_matchers_for_group` for each of the
+        fixed categories: Revenue, Cost of Revenue, Expenses, Other Income,
+        Other Expenses, Ignore.
 
-        Examples:
+        Example:
             >>> rules = Rules(Path("rules"))
             >>> rules._Rules__build_matchers_for_all_groups("match_on_hash", HashMatcher)
         """
@@ -166,35 +159,25 @@ class Rules:
     ) -> None:
         """Load and instantiate matchers defined in a specific category directory.
 
-        Args:
-            top_level_name: Top‐level category name used as the parent TxGroup
-                            (e.g. `"Revenue"`, `"Expenses"`, `"Ignore"`).
-            rules: Path to the directory containing the YAML rule file for this group.
-            filename: Base filename of the rules (without `.yml`/`.yaml`).
-            matcher_cls: Matcher class to register rules (subclass of `_Matcher`).
+        This method locates `<filename>.yml` or `<filename>.yaml` under `rules`
+        and parses it. If the file is missing, it is skipped silently. If the file
+        is empty, a warning is logged. Otherwise:
 
-        Behavior:
-            1. Search for `filename.yml` or `filename.yaml` in `rules`.
-            2. If not found, skip silently.
-            3. Otherwise, read the file bytes and parse YAML with `safe_load`.
-            4. Warn and return if file is empty.
-            5. From parsed content, extract the mapping for the current `CHAINID`.
-            6. For each key (subgroup name) and its list/dict of values,
-               compute or create a child TxGroup, then instantiate the matcher.
+          1. Reads and YAML-parses the file.
+          2. Extracts the mapping for the current `CHAINID`.
+          3. For each subgroup name and its values (list or dict),
+             obtains or creates a child `TxGroup`, then instantiates `matcher_cls`
+             for the values.
+
+        Args:
+            top_level_name: Top‐level category name used as parent TxGroup
+                            (e.g. `"Revenue"`, `"Expenses"`, `"Ignore"`).
+            rules: Path to the directory containing the rule file.
+            filename: Base filename of the rules (no extension).
+            matcher_cls: Matcher class to register rules.
 
         Raises:
-            FileNotFoundError: If no rule file is present under the directory.
-            ValueError: If the YAML structure for a chain ID is neither list nor dict.
-
-        Examples:
-            >>> rules = Rules(Path("rules"))
-            >>> # Attempt to load hash‐based rules for 'Expenses'
-            >>> rules._Rules__build_matchers_for_group(
-            ...     "Expenses",
-            ...     rules.expenses_dir,
-            ...     "match_on_hash",
-            ...     HashMatcher
-            ... )
+            ValueError: If the YAML mapping under the chain ID is neither a list nor a dict.
         """
         try:
             matchers = self.__get_rule_file(rules, filename)
@@ -239,7 +222,7 @@ class Rules:
         Raises:
             FileNotFoundError: If neither `<filename>.yml` nor `<filename>.yaml` exists.
 
-        Examples:
+        Example:
             >>> rules_dir = Path("rules/revenue")
             >>> path = rules._Rules__get_rule_file(rules_dir, "match_on_hash")
             >>> print(path.name)
