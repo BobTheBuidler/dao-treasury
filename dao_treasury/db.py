@@ -1,4 +1,19 @@
 # mypy: disable-error-code="operator,valid-type,misc"
+"""
+Database models and utilities for DAO treasury reporting.
+
+This module defines Pony ORM entities for:
+- Blockchain networks (:class:`Chain`)
+- On-chain addresses (:class:`Address`)
+- ERC-20 tokens and native coin placeholder (:class:`Token`)
+- Hierarchical transaction grouping (:class:`TxGroup`)
+- Treasury transaction records (:class:`TreasuryTx`)
+
+It also provides helper functions for inserting ledger entries,
+resolving integrity conflicts, caching transaction receipts,
+and creating SQL views for reporting.
+"""
+
 import typing
 from asyncio import Semaphore
 from decimal import Decimal, InvalidOperation
@@ -41,6 +56,8 @@ from dao_treasury.types import TxGroupDbid, TxGroupName
 
 
 SQLITE_DIR = Path(path.expanduser("~")) / ".dao-treasury"
+"""Path to the directory in the user's home where the DAO treasury SQLite database is stored."""
+
 SQLITE_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -55,7 +72,14 @@ logger = getLogger("dao_treasury.db")
 
 @final
 class BadToken(ValueError):
-    ...
+    """Raised when a token contract returns invalid metadata.
+
+    This exception is thrown if the token name or symbol is empty
+    or cannot be decoded.
+
+    Examples:
+        >>> raise BadToken("symbol for 0x0 is ''")
+    """
 
 
 # makes type checking work, see below for info:
@@ -65,30 +89,64 @@ DbEntity = db.Entity
 
 @final
 class Chain(DbEntity):
+    """Pony ORM entity representing a blockchain network.
+
+    Stores human-readable network names and numeric chain IDs for reporting.
+
+    Examples:
+        >>> Chain.get_dbid(1)  # Ethereum Mainnet
+        1
+
+    See Also:
+        :meth:`get_or_insert`
+    """
     _table_ = "chains"
+
     chain_dbid = PrimaryKey(int, auto=True)
+    """Auto-incremented primary key for the chains table."""
 
     chain_name = Required(str, unique=True)
-    chainid = Required(int, unique=True)
+    """Name of the blockchain network, e.g., 'Mainnet', 'Polygon'."""
 
-    if TYPE_CHECKING:
-        addresses: Set["Address"]
-        tokens: Set["Token"]
-        treasury_txs: Set["TreasuryTx"]
-        
+    chainid = Required(int, unique=True)
+    """Numeric chain ID matching the connected RPC via :data:`~y.constants.CHAINID`."""
+
     addresses = Set("Address", reverse="chain")
+    """Relationship to address records on this chain."""
+
     tokens = Set("Token", reverse="chain")
+    """Relationship to token records on this chain."""
+
     treasury_txs = Set("TreasuryTx")
-    # partners_txs = Set("PartnerHarvestEvent")
+    """Relationship to treasury transactions on this chain."""
 
     @classmethod
     @lru_cache(maxsize=None)
     def get_dbid(cls, chainid: int = CHAINID) -> int:
+        """Get or create the record for `chainid` and return its database ID.
+
+        Args:
+            chainid: Numeric chain identifier (default uses active RPC via :data:`~y.constants.CHAINID`).
+
+        Examples:
+            >>> Chain.get_dbid(1)
+            1
+        """
         with db_session:
             return cls.get_or_insert(chainid).chain_dbid  # type: ignore [no-any-return]
 
     @classmethod
     def get_or_insert(cls, chainid: int) -> "Chain":
+        """Insert a new chain record if it does not exist.
+
+        Args:
+            chainid: Numeric chain identifier.
+
+        Examples:
+            >>> chain = Chain.get_or_insert(1)
+            >>> chain.chain_name
+            'Mainnet'
+        """
         entity = cls.get(chainid=chainid) or cls(
             chain_name=Network.name(chainid),
             chainid=chainid,
@@ -101,13 +159,34 @@ class Chain(DbEntity):
 
 @final
 class Address(DbEntity):
+    """Pony ORM entity representing an on-chain address.
+
+    Records both contract and externally owned addresses for tracing funds.
+
+    Examples:
+        >>> Address.get_dbid("0x0000000000000000000000000000000000000000")
+        1
+
+    See Also:
+        :meth:`get_or_insert`
+    """
     _table_ = "addresses"
+
     address_id = PrimaryKey(int, auto=True)
+    """Auto-incremented primary key for the addresses table."""
+
     chain = Required(Chain, reverse="addresses")
+    """Reference to the chain on which this address resides."""
 
     address = Required(str, index=True)
+    """Checksum string of the on-chain address."""
+
     nickname = Optional(str)
+    """Optional human-readable label (e.g., contract name or token name)."""
+
     is_contract = Required(bool, index=True)
+    """Flag indicating whether the address is a smart contract."""
+
     composite_key(address, chain)
     composite_index(is_contract, chain)
 
@@ -115,12 +194,16 @@ class Address(DbEntity):
         token: Optional["Token"]
         treasury_tx_from: Set["TreasuryTx"]
         treasury_tx_to: Set["TreasuryTx"]
-        
+
     token = Optional("Token", index=True)
+    """Optional back-reference to a Token if this address is one."""
     # partners_tx = Set('PartnerHarvestEvent', reverse='wrapper')
 
     treasury_tx_from = Set("TreasuryTx", reverse="from_address")
+    """Inverse relation for transactions sent from this address."""
+
     treasury_tx_to = Set("TreasuryTx", reverse="to_address")
+    """Inverse relation for transactions sent to this address."""
     # streams_from = Set("Stream", reverse="from_address")
     # streams_to = Set("Stream", reverse="to_address")
     # streams = Set("Stream", reverse="contract")
@@ -132,40 +215,62 @@ class Address(DbEntity):
         if isinstance(other, str):
             return CHAINID == self.chain.chainid and other == self.address
         return super().__eq__(other)
-    
+
     __hash__ = DbEntity.__hash__
 
     @classmethod
     @lru_cache(maxsize=None)
     def get_dbid(cls, address: HexAddress) -> int:
+        """Get the DB ID for an address, inserting if necessary.
+
+        Args:
+            address: Hex string of the address (any case, any prefix).
+
+        Examples:
+            >>> Address.get_dbid("0x0000000000000000000000000000000000000000")
+            1
+        """
         with db_session:
             return cls.get_or_insert(address).address_id  # type: ignore [no-any-return]
 
     @classmethod
     def get_or_insert(cls, address: HexAddress) -> "Address":
+        """Insert or fetch an :class:`~dao_treasury.db.Address` for `address`.
+
+        If the address has on-chain code, attempts to label it using
+        the verified contract name or fallback label.
+
+        Args:
+            address: Hex address string.
+
+        Examples:
+            >>> addr = Address.get_or_insert("0x0000000000000000000000000000000000000000")
+            >>> addr.is_contract
+            False
+        """
         checksum_address = convert.to_address(address)
         chain_dbid = Chain.get_dbid()
-        
+
         if entity := Address.get(chain=chain_dbid, address=checksum_address):
             return entity  # type: ignore [no-any-return]
-        
+
         if _get_code(address, None).hex().removeprefix("0x"):
             try:
                 nickname = f"Contract: {Contract(address)._build['contractName']}"
-            except ContractNotVerified as e:
+            except ContractNotVerified:
                 nickname = f"Non-Verified Contract: {address}"
 
             entity = Address(
-                chain=chain_dbid, 
+                chain=chain_dbid,
                 address=checksum_address,
                 nickname=nickname,
-                is_contract=False,
+                is_contract=True,
             )
 
         else:
 
             entity = Address(
-                chain=chain_dbid, 
+                chain=chain_dbid,
                 address=checksum_address,
                 is_contract=False,
             )
@@ -181,7 +286,15 @@ UNI_V3_POS: Final = {
 
 
 def _hex_to_string(h: HexString) -> str:
-    '''returns a string from a HexString'''
+    """Decode a padded HexString to UTF-8, trimming trailing zero bytes.
+
+    Args:
+        h: The HexString instance from an ERC-20 contract.
+
+    Examples:
+        >>> _hex_to_string(HexString(b'0x5465737400', 'bytes32'))
+        'Test'
+    """
     h = h.hex().rstrip("0")
     if len(h) % 2 != 0:
         h += "0"
@@ -190,47 +303,108 @@ def _hex_to_string(h: HexString) -> str:
 
 @final
 class Token(DbEntity):
+    """Pony ORM entity representing an ERC-20 token or native coin placeholder.
+
+    Stores symbol, name, and decimals for value scaling.
+
+    Examples:
+        >>> Token.get_dbid("0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")
+        1
+        >>> tok = Token.get_or_insert("0x6B175474E89094C44Da98b954EedeAC495271d0F")
+        >>> tok.symbol
+        'DAI'
+
+    See Also:
+        :meth:`scale_value`
+    """
     _table_ = "tokens"
+
     token_id = PrimaryKey(int, auto=True)
+    """Auto-incremented primary key for the tokens table."""
+
     chain = Required(Chain, index=True)
+    """Foreign key linking to :class:`~dao_treasury.db.Chain`."""
 
     symbol = Required(str, index=True)
+    """Short ticker symbol for the token."""
+
     name = Required(str)
+    """Full human-readable name of the token."""
+
     decimals = Required(int)
+    """Number of decimals used for value scaling."""
 
     if TYPE_CHECKING:
         treasury_tx: Set["TreasuryTx"]
-    
+
     treasury_tx = Set("TreasuryTx", reverse="token")
+    """Inverse relation for treasury transactions involving this token."""
     # partner_harvest_event = Set('PartnerHarvestEvent', reverse="vault")
+
     address = Required(Address, column="address_id")
+    """Foreign key to the address record for this token contract."""
     # streams = Set('Stream', reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
     def __eq__(self, other: Union["Token", ChecksumAddress]) -> bool:  # type: ignore [override]
         return self.address == other if isinstance(other, str) else super().__eq__(other)
-    
+
     __hash__ = DbEntity.__hash__
 
     @property
     def scale(self) -> int:
+        """Base for division according to `decimals`, e.g., `10**decimals`.
+
+        Examples:
+            >>> t = Token.get_or_insert("0x...")
+            >>> t.scale
+            1000000000000000000
+        """
         return 10**self.decimals  # type: ignore [no-any-return]
-    
+
     def scale_value(self, value: int) -> Decimal:
+        """Convert an integer token amount into a Decimal accounting for `decimals`.
+
+        Args:
+            value: Raw integer on-chain amount.
+
+        Examples:
+            >>> t = Token.get_or_insert("0x...")
+            >>> t.scale_value(1500000000000000000)
+            Decimal('1.5')
+        """
         return Decimal(value) / self.scale
-    
+
     @classmethod
     @lru_cache(maxsize=None)
     def get_dbid(cls, address: HexAddress) -> int:
+        """Get or insert a `Token` record and return its database ID.
+
+        Args:
+            address: Token contract address or native coin placeholder.
+
+        Examples:
+            >>> Token.get_dbid("0x6B175474E89094C44Da98b954EedeAC495271d0F")
+            2
+        """
         with db_session:
             return cls.get_or_insert(address).token_id  # type: ignore [no-any-return]
 
     @classmethod
     def get_or_insert(cls, address: HexAddress) -> "Token":
+        """Insert or fetch a token record from the chain, resolving metadata on-chain.
+
+        Args:
+            address: ERC-20 contract address or native coin placeholder.
+
+        Examples:
+            >>> Token.get_or_insert("0x6B175474E89094C44Da98b954EedeAC495271d0F")
+            <Token ...>
+        """
         address_entity = Address.get_or_insert(address)
         if token := Token.get(address=address_entity):
             return token  # type: ignore [no-any-return]
-        
+
         if address == EEE_ADDRESS:
             name, symbol = {Network.Mainnet: ("Ethereum", "ETH")}[chain.id]
             decimals = 18
@@ -256,13 +430,13 @@ class Token(DbEntity):
             name = _hex_to_string(name)
         if isinstance(symbol, HexString):
             symbol = _hex_to_string(symbol)
-            
+
         if not name:
             raise BadToken(f"name for {address} is {name}")
-        
+
         if not symbol:
             raise BadToken(f"symbol for {address} is {symbol}")
-        
+
         if address == UNI_V3_POS or decimals is None:
             decimals = 0
 
@@ -270,7 +444,7 @@ class Token(DbEntity):
         if address_entity.nickname is None or address_entity.nickname.startswith("Contract: "):
             # Don't overwrite any intentionally set nicknames, if applicable
             address_entity.nickname = f"Token: {name}"
-        
+
         token = Token(
             chain=Chain.get_dbid(),
             address=address_entity.address_id,
@@ -278,47 +452,91 @@ class Token(DbEntity):
             name=name,
             decimals=decimals,
         )
-        
         commit()
-
         return token  # type: ignore [no-any-return]
 
 
 class TxGroup(DbEntity):
+    """Pony ORM entity for hierarchical transaction groups.
+
+    Used to categorize treasury transactions into nested buckets.
+
+    Examples:
+        >>> gid = TxGroup.get_dbid("Revenue")
+        >>> group = TxGroup.get_or_insert("Revenue", None)
+        >>> group.full_string
+        'Revenue'
+    """
     _table_ = 'txgroups'
+
     txgroup_id = PrimaryKey(int, auto=True)
+    """Auto-incremented primary key for transaction groups."""
 
     name = Required(str, unique=True)
+    """Name of the grouping category, e.g., 'Revenue', 'Expenses'."""
 
     treasury_tx = Set('TreasuryTx', reverse="txgroup")
+    """Inverse relation for treasury transactions assigned to this group."""
+
     parent_txgroup = Optional("TxGroup", reverse="child_txgroups")
+    """Optional reference to a parent group for nesting."""
+
     child_txgroups = Set("TxGroup", reverse="parent_txgroup")
+    """Set of nested child groups."""
     # TODO: implement these
     #streams = Set("Stream", reverse="txgroup")
     #vesting_escrows = Set("VestingEscrow", reverse="txgroup")
 
     @property
     def top_txgroup(self) -> "TxGroup":
+        """Get the top-level ancestor in this group’s hierarchy."""
         return self.parent_txgroup.top_txgroup if self.parent_txgroup else self
-    
+
     @property
     def full_string(self) -> str:
+        """Return the colon-delimited path from root to this group.
+
+        Examples:
+            >>> root = TxGroup.get_or_insert("Revenue", None)
+            >>> child = TxGroup.get_or_insert("Interest", root)
+            >>> child.full_string
+            'Revenue:Interest'
+        """
         t = self
         retval = t.name
-        while True:
-            if t.parent_txgroup is None:
-                return retval  # type: ignore [no-any-return]
+        while t.parent_txgroup:
             t = t.parent_txgroup
             retval = f"{t.name}:{retval}"
-    
+        return retval
+
     @classmethod
     @lru_cache(maxsize=None)
     def get_dbid(cls, name: TxGroupName, parent: typing.Optional["TxGroup"] = None) -> TxGroupDbid:
+        """Get or insert a transaction group and return its database ID.
+
+        Args:
+            name: Category name.
+            parent: Optional parent :class:`~dao_treasury.db.TxGroup`.
+
+        Examples:
+            >>> TxGroup.get_dbid("Expenses", None)
+            3
+        """
         with db_session:
             return TxGroupDbid(cls.get_or_insert(name, parent).txgroup_id)
-    
+
     @classmethod
     def get_or_insert(cls, name: TxGroupName, parent: typing.Optional["TxGroup"]) -> "TxGroup":
+        """Insert or fetch a transaction group.
+
+        Args:
+            name: Category name.
+            parent: Optional parent group.
+
+        Examples:
+            >>> TxGroup.get_or_insert("Expenses", None).name
+            'Expenses'
+        """
         if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
             return txgroup  # type: ignore [no-any-return]
         txgroup = TxGroup(name=name, parent_txgroup=parent)
@@ -331,57 +549,128 @@ class TxGroup(DbEntity):
 
 @lru_cache(100)
 def get_transaction(txhash: str) -> TransactionReceipt:
+    """Fetch and cache a transaction receipt from the connected chain.
+
+    Wraps :meth:`brownie.network.chain.Chain.get_transaction`.
+
+    Args:
+        txhash: Hex string of the transaction hash.
+
+    Examples:
+        >>> get_transaction("0xabcde...")
+        <Transaction '0xabcde...'>
+    """
     return chain.get_transaction(txhash)
 
 
 class TreasuryTx(DbEntity):
+    """Pony ORM entity for on-chain treasury transactions.
+
+    Represents individual token or native transfers with pricing, grouping, and gas data.
+
+    Examples:
+        >>> # After inserting, fetch sorted records
+        >>> with db_session:
+        ...     txs = TreasuryTx.select(lambda tx: tx.txgroup == TxGroup.get_dbid("Revenue"))
+        ...     for tx in txs:
+        ...         print(tx.hash, tx.value_usd)
+    """
     _table_ = "treasury_txs"
+
     treasury_tx_id = PrimaryKey(int, auto=True)
+    """Auto-incremented primary key for treasury transactions."""
+
     chain = Required(Chain, index=True)
+    """Foreign key to the network where the transaction occurred."""
 
     timestamp = Required(int, index=True)
+    """Block timestamp as Unix epoch seconds."""
+
     block = Required(int, index=True)
+    """Block number of the transaction."""
+
     hash = Required(str, index=True)
+    """Hex string of the transaction hash."""
+
     log_index = Optional(int)
+    """Log index within the block (None for native transfers)."""
+
     composite_key(hash, log_index)
+
     token = Required(Token, reverse="treasury_tx", column="token_id", index=True)
+    """Foreign key to the token record used in the transfer."""
+
     from_address = Optional(
         Address, reverse="treasury_tx_from", column="from", index=True
     )
+    """Foreign key to sender address record."""
+
     to_address = Optional(Address, reverse="treasury_tx_to", column="to", index=True)
+    """Foreign key to recipient address record."""
+
     amount = Required(Decimal, 38, 18)
+    """On-chain transfer amount as a Decimal with fixed precision."""
+
     price = Optional(Decimal, 38, 18)
+    """Token price at the time of transfer (if available)."""
+
     value_usd = Optional(Decimal, 38, 18)
+    """USD value of the transfer, computed as `amount * price`."""
+
     gas_used = Optional(Decimal, 38, 1)
+    """Gas units consumed by this transaction (native transfers only)."""
+
     gas_price = Optional(Decimal, 38, 1)
+    """Gas price paid, in native token units (native transfers only)."""
+
     txgroup = Required("TxGroup", reverse="treasury_tx", column="txgroup_id", index=True)
+    """Foreign key to the categorization group."""
+
     composite_index(chain, txgroup)
 
     @property
     def to_nickname(self) -> typing.Optional[str]:
+        """Human-readable label for the recipient address, if any."""
         if to_address := self.to_address:
             return to_address.nickname or to_address.address
         return None
 
     @property
     def from_nickname(self) -> str:
-        return self.from_address.nickname or self.from_address.address
+        """Human-readable label for the sender address."""
+        return self.from_address.nickname or self.from_address.address  # type: ignore [union-attr]
 
     @property
     def symbol(self) -> str:
+        """Ticker symbol for the transferred token."""
         return self.token.symbol  # type: ignore [no-any-return]
 
-    # Helpers
     @property
     def _events(self) -> EventDict:
+        """Decoded event logs for this transaction."""
         return self._transaction.events
 
     @property
     def _transaction(self) -> TransactionReceipt:
+        """Cached transaction receipt object."""
         return get_transaction(self.hash)
 
     @staticmethod
     async def insert(entry: LedgerEntry) -> None:
+        """Asynchronously insert and sort a ledger entry.
+
+        Converts a :class:`~eth_portfolio.structs.LedgerEntry` into a
+        :class:`~dao_treasury.db.TreasuryTx` record, then applies advanced sorting.
+
+        Args:
+            entry: A ledger entry representing a token or internal transfer.
+
+        Examples:
+            >>> import asyncio, eth_portfolio.structs as s
+            >>> asyncio.run(TreasuryTx.insert(s.TokenTransfer(...)))
+        See Also:
+            :meth:`__insert`
+        """
         timestamp = int(await get_block_timestamp_async(entry.block_number))
         if txid := await _INSERT_THREAD.run(TreasuryTx.__insert, entry, timestamp):
             async with _SORT_SEMAPHORE:
@@ -389,27 +678,35 @@ class TreasuryTx(DbEntity):
 
                 with db_session:
                     await sort_advanced(TreasuryTx[txid])
-    
+
     @classmethod
     def __insert(cls, entry: LedgerEntry, ts: int) -> typing.Optional[int]:
+        """Synchronously insert a ledger entry record into the database.
+
+        Handles both :class:`TokenTransfer` and other ledger entry types,
+        populates pricing fields, and resolves grouping via basic sorting.
+
+        Args:
+            entry: Ledger entry to insert.
+            ts: Unix timestamp of the block.
+
+        If a uniqueness conflict arises, delegates to
+        :func:`_validate_integrity_error`.  Returns the new record ID
+        if further advanced sorting is required.
+        """
         try:
             with db_session:
                 if isinstance(entry, TokenTransfer):
-                    try:
-                        token = Token.get_dbid(entry.token_address)
-                    except (ContractNotVerified, BadToken):
-                        return None
+                    token = Token.get_dbid(entry.token_address)
                     log_index = entry.log_index
-                    # TODO: implement gas
                     gas, gas_price, gas_used = None, None, None
                 else:
                     token = Token.get_dbid(EEE_ADDRESS)
                     log_index = None
-                    # TODO: implement gas
                     gas = entry.gas
                     gas_used = entry.gas_used if isinstance(entry, InternalTransfer) else None
                     gas_price = entry.gas_price if isinstance(entry, Transaction) else None
-                
+
                 if to_address := entry.to_address:
                     to_address = Address.get_dbid(to_address)
                 if from_address := entry.from_address:
@@ -443,8 +740,6 @@ class TreasuryTx(DbEntity):
             logger.error(e)
             return None
         except TransactionIntegrityError as e:
-            #logger.error(e, entry, exc_info=True)
-            # TODO: implement this
             return _validate_integrity_error(entry, log_index)
         except Exception as e:
             e.args = *e.args, entry
@@ -466,6 +761,14 @@ db.generate_mapping(create_tables=True)
 
 
 def create_stream_ledger_view() -> None:
+    """Create or replace the SQL view `stream_ledger` for streamed funds reporting.
+
+    This view joins streamed funds, streams, tokens, addresses, and txgroups
+    into a unified ledger of stream transactions.
+
+    Examples:
+        >>> create_stream_ledger_view()
+    """
     db.execute(
         """
         DROP VIEW IF EXISTS stream_ledger;
@@ -498,6 +801,14 @@ def create_stream_ledger_view() -> None:
 
 
 def create_vesting_ledger_view() -> None:
+    """Create or replace the SQL view `vesting_ledger` for vesting escrow reporting.
+
+    This view joins vested funds, vesting escrows, tokens, chains, addresses,
+    and txgroups to produce a vesting ledger.
+
+    Examples:
+        >>> create_vesting_ledger_view()
+    """
     db.execute("""
         DROP VIEW IF EXISTS vesting_ledger;
         CREATE VIEW vesting_ledger AS
@@ -529,6 +840,13 @@ def create_vesting_ledger_view() -> None:
 
 
 def create_general_ledger_view() -> None:
+    """Create or replace the SQL view `general_ledger` aggregating all treasury transactions.
+
+    Joins chains, tokens, addresses, and txgroups into a single chronological ledger.
+
+    Examples:
+        >>> create_general_ledger_view()
+    """
     db.execute("drop VIEW IF EXISTS general_ledger")
     db.execute(
         """
@@ -553,9 +871,16 @@ def create_general_ledger_view() -> None:
         ORDER BY timestamp
         """
     )
-    
+
 
 def create_unsorted_txs_view() -> None:
+    """Create or replace the SQL view `unsorted_txs` for pending categorization.
+
+    Filters `general_ledger` for transactions still in 'Categorization Pending'.
+
+    Examples:
+        >>> create_unsorted_txs_view()
+    """
     db.execute("DROP VIEW IF EXISTS unsorted_txs;")
     db.execute(
         """
@@ -569,6 +894,13 @@ def create_unsorted_txs_view() -> None:
 
 
 def create_monthly_pnl_view() -> None:
+    """Create or replace the SQL view `monthly_pnl` summarizing monthly profit and loss.
+
+    Aggregates categorized transactions by month and top-level category.
+
+    Examples:
+        >>> create_monthly_pnl_view()
+    """
     db.execute("DROP VIEW IF EXISTS monthly_pnl;")
     sql = """
     CREATE VIEW monthly_pnl AS
@@ -619,7 +951,18 @@ with db_session:
 
 @db_session
 def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Optional[int]:
-    '''Raises AssertionError if existing object that causes a TransactionIntegrityError is not an EXACT MATCH to the attempted insert.'''
+    """Validate that an existing TreasuryTx matches an attempted insert on conflict.
+
+    Raises AssertionError if any field deviates from the existing record.  Used
+    to resolve :exc:`pony.orm.TransactionIntegrityError`.
+
+    Args:
+        entry: The ledger entry that triggered the conflict.
+        log_index: The log index within the transaction.
+
+    Examples:
+        >>> _validate_integrity_error(entry, 0)
+    """
     txhash = entry.hash.hex()
     chain_dbid = Chain.get_dbid()
     existing_object = TreasuryTx.get(
@@ -672,7 +1015,7 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Opti
     return (
         existing_object.treasury_tx_id
         if existing_object.txgroup.txgroup_id in (
-            must_sort_inbound_txgroup_dbid, 
+            must_sort_inbound_txgroup_dbid,
             must_sort_outbound_txgroup_dbid,
         )
         else None
