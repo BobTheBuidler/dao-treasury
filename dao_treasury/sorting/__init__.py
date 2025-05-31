@@ -1,6 +1,7 @@
 """
 This module contains logic for sorting transactions into various categories.
 """
+
 from logging import getLogger
 from typing import Final, Optional
 
