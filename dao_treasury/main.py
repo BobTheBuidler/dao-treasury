@@ -49,7 +49,6 @@ parser.add_argument(
         "DAO treasury wallet address(es) to include in the export. "
         "Specify one or more addresses separated by spaces."
     ),
-    required=True,
     nargs="+",
 )
 parser.add_argument(
