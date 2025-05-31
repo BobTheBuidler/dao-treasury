@@ -555,6 +555,8 @@ class TxGroup(DbEntity):
         try:
             commit()
         except TransactionIntegrityError as e:
+            if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
+                return txgroup  # type: ignore [no-any-return]
             raise Exception(e, name, parent) from e
         return txgroup  # type: ignore [no-any-return]
 
