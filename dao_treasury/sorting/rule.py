@@ -16,27 +16,37 @@ See Also:
     :const:`~dao_treasury.sorting.rule.SORT_RULES`
     :class:`~dao_treasury.sorting.rule._SortRule`
 """
-
+from collections import defaultdict
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, ClassVar, Dict, Final, List, Optional
+from typing import TYPE_CHECKING, DefaultDict, Dict, Final, List, Optional, Type, TypeVar
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
 from mypy_extensions import mypyc_attr
 
 from dao_treasury._wallet import TreasuryWallet
-from dao_treasury.types import SortFunction, TxGroupDbid, TxGroupName
+from dao_treasury.types import SortFunction, SortRule, TxGroupDbid, TxGroupName
 
 if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
 
 
-SORT_RULES: List["_SortRule"] = []
+SORT_RULES: DefaultDict[Type[SortRule], List[SortRule]] = defaultdict(list)
 """List of all instantiated sorting rules, in order of creation."""
 
 _match_all: Final[Dict[TxGroupName, List[str]]] = {}
 """An internal cache defining which matcher attributes are used for each `txgroup`."""
 
+_MATCHING_ATTRS: Final = (
+    "hash",
+    "from_address",
+    "from_nickname",
+    "to_address",
+    "to_nickname",
+    "token_address",
+    "symbol",
+    "log_index",
+)
 
 @mypyc_attr(native_class=False)
 @dataclass(kw_only=True, frozen=True)
@@ -78,17 +88,7 @@ class _SortRule:
     func: Optional[SortFunction] = None
     """Custom matching function that takes a `TreasuryTx` and returns a bool or an awaitable that returns a bool."""
 
-    __instances__: ClassVar[List["_SortRule"]] = []
-    __matching_attrs__: ClassVar[List[str]] = [
-        "hash",
-        "from_address",
-        "from_nickname",
-        "to_address",
-        "to_nickname",
-        "token_address",
-        "symbol",
-        "log_index",
-    ]
+    #__instances__: ClassVar[List[Self]] = []
 
     def __post_init__(self) -> None:
         """Validate inputs, checksum addresses, and register the rule.
@@ -114,9 +114,7 @@ class _SortRule:
 
         # define matchers used for this instance
         # TODO: maybe import the string matchers and use them here too? They're a lot faster
-        matchers = [
-            attr for attr in self.__matching_attrs__ if getattr(self, attr) is not None
-        ]
+        matchers = [attr for attr in _MATCHING_ATTRS if getattr(self, attr) is not None]
 
         _match_all[self.txgroup] = matchers
 
@@ -134,7 +132,9 @@ class _SortRule:
             raise TypeError(f"func must be callable. You passed {self.func}")
 
         # append new instance to instances classvar
-        self.__instances__.append(self)
+        # TODO: fix dataclass ClassVar handling in mypyc and reenable
+        #self.__instances__.append(self)
+        SORT_RULES[type(self)].append(self)
 
     @property
     def txgroup_dbid(self) -> TxGroupDbid:
@@ -291,3 +291,14 @@ class IgnoreSortRule(_SortRule):
         """Prepends `self.txgroup` with 'Ignore:'."""
         object.__setattr__(self, "txgroup", f"Ignore:{self.txgroup}")
         super().__post_init__()
+
+
+TRule = TypeVar(
+    "TRule",
+    RevenueSortRule,
+    CostOfRevenueSortRule,
+    ExpenseSortRule,
+    OtherIncomeSortRule,
+    OtherExpenseSortRule,
+    IgnoreSortRule,
+)
