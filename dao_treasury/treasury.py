@@ -73,7 +73,9 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         """
         global TREASURY
         if TREASURY is not None:
-            raise RuntimeError(f"You can only initialize one {type(self).__name__} object")
+            raise RuntimeError(
+                f"You can only initialize one {type(self).__name__} object"
+            )
         ASyncABC.__init__(self)
 
         self.wallets: Final[List[TreasuryWallet]] = []
@@ -112,7 +114,9 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
     def txs(self) -> a_sync.ASyncIterator[LedgerEntry]:
         return self.portfolio.ledger.all_entries
 
-    async def populate_db(self, start_block: BlockNumber, end_block: BlockNumber) -> None:
+    async def populate_db(
+        self, start_block: BlockNumber, end_block: BlockNumber
+    ) -> None:
         """Populate the database with treasury transactions in a block range.
 
         Streams ledger entries from `start_block` up to (but not including)

@@ -27,7 +27,9 @@ TRule = TypeVar(
 CHAINID: Final = constants.CHAINID
 
 
-def revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[RevenueSortRule]":
+def revenue(
+    txgroup: TxGroupName, networks: Networks = CHAINID
+) -> "SortRuleFactory[RevenueSortRule]":
     """Create a factory to register revenue sort rules for a given txgroup.
 
     Args:
@@ -47,7 +49,9 @@ def revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFact
     return SortRuleFactory(txgroup, networks, RevenueSortRule)
 
 
-def cost_of_revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[CostOfRevenueSortRule]":
+def cost_of_revenue(
+    txgroup: TxGroupName, networks: Networks = CHAINID
+) -> "SortRuleFactory[CostOfRevenueSortRule]":
     """Create a factory to register cost‐of‐revenue sort rules for a given txgroup.
 
     Args:
@@ -67,7 +71,9 @@ def cost_of_revenue(txgroup: TxGroupName, networks: Networks = CHAINID) -> "Sort
     return SortRuleFactory(txgroup, networks, CostOfRevenueSortRule)
 
 
-def expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[ExpenseSortRule]":
+def expense(
+    txgroup: TxGroupName, networks: Networks = CHAINID
+) -> "SortRuleFactory[ExpenseSortRule]":
     """Create a factory to register expense sort rules for a given txgroup.
 
     Args:
@@ -89,7 +95,9 @@ def expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFact
     return SortRuleFactory(txgroup, networks, ExpenseSortRule)
 
 
-def other_income(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[OtherIncomeSortRule]":
+def other_income(
+    txgroup: TxGroupName, networks: Networks = CHAINID
+) -> "SortRuleFactory[OtherIncomeSortRule]":
     """Create a factory to register other‐income sort rules for a given txgroup.
 
     Args:
@@ -109,7 +117,9 @@ def other_income(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRul
     return SortRuleFactory(txgroup, networks, OtherIncomeSortRule)
 
 
-def other_expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[OtherExpenseSortRule]":
+def other_expense(
+    txgroup: TxGroupName, networks: Networks = CHAINID
+) -> "SortRuleFactory[OtherExpenseSortRule]":
     """Create a factory to register other‐expense sort rules for a given txgroup.
 
     Args:
@@ -129,7 +139,9 @@ def other_expense(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRu
     return SortRuleFactory(txgroup, networks, OtherExpenseSortRule)
 
 
-def ignore(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[IgnoreSortRule]":
+def ignore(
+    txgroup: TxGroupName, networks: Networks = CHAINID
+) -> "SortRuleFactory[IgnoreSortRule]":
     """Create a factory to register ignore sort rules for a given txgroup.
 
     Args:
@@ -181,14 +193,18 @@ class SortRuleFactory(Generic[TRule]):
             rule_type: Sort rule class (e.g., RevenueSortRule) to instantiate.
         """
         self.txgroup: Final = txgroup
-        self.networks: Final = [networks] if isinstance(networks, int) else list(networks)
+        self.networks: Final = (
+            [networks] if isinstance(networks, int) else list(networks)
+        )
         self.rule_type: Final = rule_type
         self._rule: Optional[TRule] = None
 
     @overload
-    def __call__(self, txgroup_name: TxGroupName, networks: Optional[Networks] = None) -> "SortRuleFactory":
+    def __call__(
+        self, txgroup_name: TxGroupName, networks: Optional[Networks] = None
+    ) -> "SortRuleFactory":
         """Configure a nested sub‐group.
-        
+
         Args:
             txgroup_name: Sub‐group name.
             networks: Optional network specification.
@@ -231,7 +247,9 @@ class SortRuleFactory(Generic[TRule]):
             ...     return tx.symbol == "ETH"
         """
         if isinstance(func, str):
-            return SortRuleFactory(f"{self.txgroup}:{func}", networks or self.networks, self.rule_type)
+            return SortRuleFactory(
+                f"{self.txgroup}:{func}", networks or self.networks, self.rule_type
+            )
         elif callable(func):
             if networks:
                 raise RuntimeError("you can only pass networks if `func` is a string")
@@ -255,7 +273,9 @@ class SortRuleFactory(Generic[TRule]):
         """
         return self._rule
 
-    def match(self, func: None = None, **match_values: Any) -> None:  # TODO: give this proper kwargs
+    def match(
+        self, func: None = None, **match_values: Any
+    ) -> None:  # TODO: give this proper kwargs
         """Define static matching attributes for the sort rule.
 
         Call this method with keyword matchers corresponding to rule attributes

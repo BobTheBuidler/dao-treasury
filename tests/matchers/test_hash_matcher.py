@@ -12,9 +12,11 @@ def test_instance_creation_and_contains():
     result = HashMatcher.match(valid_hash)
     assert result == txgroup
 
+
 def test_empty_hashes_error():
     with pytest.raises(ValueError):
         HashMatcher(21, [])
+
 
 def test_duplicate_txgroup_error():
     txgroup = 22
@@ -23,6 +25,7 @@ def test_duplicate_txgroup_error():
     HashMatcher(txgroup, [valid_hash1])
     with pytest.raises(ValueError):
         HashMatcher(txgroup, [valid_hash2])
+
 
 def test_duplicate_hash_warning():
     txgroup = 23

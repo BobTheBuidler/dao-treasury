@@ -6,7 +6,12 @@ import yaml
 from pony.orm import db_session
 from y import constants
 
-from dao_treasury.sorting import _Matcher, FromAddressMatcher, HashMatcher, ToAddressMatcher
+from dao_treasury.sorting import (
+    _Matcher,
+    FromAddressMatcher,
+    HashMatcher,
+    ToAddressMatcher,
+)
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
 
 
@@ -105,7 +110,9 @@ class Rules:
         if self.__initialized:
             raise RuntimeError("You cannot initialize the rules more than once")
         self.__build_matchers_for_all_groups("match_on_hash", HashMatcher)
-        self.__build_matchers_for_all_groups("match_on_from_address", FromAddressMatcher)
+        self.__build_matchers_for_all_groups(
+            "match_on_from_address", FromAddressMatcher
+        )
         self.__build_matchers_for_all_groups("match_on_to_address", ToAddressMatcher)
         self.__initialized = True
 
@@ -128,12 +135,27 @@ class Rules:
             >>> rules = Rules(Path("rules"))
             >>> rules._Rules__build_matchers_for_all_groups("match_on_hash", HashMatcher)
         """
-        self.__build_matchers_for_group("Revenue", self.revenue_dir, match_rules_filename, matcher_cls)
-        self.__build_matchers_for_group("Cost of Revenue", self.cost_of_revenue_dir, match_rules_filename, matcher_cls)
-        self.__build_matchers_for_group("Expenses", self.expenses_dir, match_rules_filename, matcher_cls)
-        self.__build_matchers_for_group("Other Income", self.other_income_dir, match_rules_filename, matcher_cls)
-        self.__build_matchers_for_group("Other Expenses", self.other_expense_dir, match_rules_filename, matcher_cls)
-        self.__build_matchers_for_group("Ignore", self.ignore_dir, match_rules_filename, matcher_cls)
+        self.__build_matchers_for_group(
+            "Revenue", self.revenue_dir, match_rules_filename, matcher_cls
+        )
+        self.__build_matchers_for_group(
+            "Cost of Revenue",
+            self.cost_of_revenue_dir,
+            match_rules_filename,
+            matcher_cls,
+        )
+        self.__build_matchers_for_group(
+            "Expenses", self.expenses_dir, match_rules_filename, matcher_cls
+        )
+        self.__build_matchers_for_group(
+            "Other Income", self.other_income_dir, match_rules_filename, matcher_cls
+        )
+        self.__build_matchers_for_group(
+            "Other Expenses", self.other_expense_dir, match_rules_filename, matcher_cls
+        )
+        self.__build_matchers_for_group(
+            "Ignore", self.ignore_dir, match_rules_filename, matcher_cls
+        )
 
     def __build_matchers_for_group(
         self,
@@ -181,7 +203,9 @@ class Rules:
 
         from dao_treasury.db import TxGroup
 
-        parent: Union[TxGroup, TxGroupDbid] = TxGroup.get_or_insert(top_level_name, None)
+        parent: Union[TxGroup, TxGroupDbid] = TxGroup.get_or_insert(
+            top_level_name, None
+        )
         parsed = yaml.safe_load(matchers.read_bytes())
         if not parsed:
             logger.warning(f"no content in rule file: {rules}")

@@ -33,7 +33,7 @@ parser = argparse.ArgumentParser(
     description="Run a single DAO Treasury export and populate the database.",
 )
 parser.add_argument(
-    '--network', 
+    "--network",
     type=str,
     help="Brownie network identifier for the RPC to use. Default: mainnet",
     default="mainnet",
@@ -55,18 +55,18 @@ parser.add_argument(
 #     default='1d',
 # )
 parser.add_argument(
-    '--daemon', 
+    "--daemon",
     action="store_true",
     help="TODO: If True, run as a background daemon. Not currently supported.",
 )
 parser.add_argument(
-    '--grafana-port',
+    "--grafana-port",
     type=int,
     help="Port for the DAO Treasury dashboard web interface. Default: 3000",
     default=3000,
 )
 parser.add_argument(
-    '--renderer-port',
+    "--renderer-port",
     type=int,
     help="Port for the Grafana rendering service. Default: 8091",
     default=8091,
@@ -74,8 +74,8 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-os.environ['GF_PORT'] = str(args.grafana_port)
-os.environ['RENDERER_PORT'] = str(args.renderer_port)
+os.environ["GF_PORT"] = str(args.grafana_port)
+os.environ["RENDERER_PORT"] = str(args.renderer_port)
 
 
 # TODO: run forever arg
@@ -110,12 +110,16 @@ async def export(args) -> None:
             - renderer_port: Port for the renderer service.
     """
     from dao_treasury import _docker, Treasury
+
     # TODO pass interval to the eth-portfolio portfolio exporter, but make the dashboard files more specific to dao treasury-ing
-    #interval = parse_timedelta(args.interval)
+    # interval = parse_timedelta(args.interval)
 
     treasury = Treasury(args.wallet, args.sort_rules, asynchronous=True)
-    await _docker.ensure_containers(treasury.populate_db)(BlockNumber(0), brownie.chain.height)
+    await _docker.ensure_containers(treasury.populate_db)(
+        BlockNumber(0), brownie.chain.height
+    )
+
 
 if __name__ == "__main__":
-    os.environ['BROWNIE_NETWORK_ID'] = args.network
+    os.environ["BROWNIE_NETWORK_ID"] = args.network
     brownie.project.run(__file__)

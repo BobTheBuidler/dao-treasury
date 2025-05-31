@@ -100,6 +100,7 @@ class Chain(DbEntity):
     See Also:
         :meth:`get_or_insert`
     """
+
     _table_ = "chains"
 
     chain_dbid = PrimaryKey(int, auto=True)
@@ -151,7 +152,7 @@ class Chain(DbEntity):
             chain_name=Network.name(chainid),
             chainid=chainid,
             # TODO: either remove this or implement it when the dash pieces are together
-            #victoria_metrics_label=Network.label(chainid),
+            # victoria_metrics_label=Network.label(chainid),
         )
         commit()
         return entity
@@ -170,6 +171,7 @@ class Address(DbEntity):
     See Also:
         :meth:`get_or_insert`
     """
+
     _table_ = "addresses"
 
     address_id = PrimaryKey(int, auto=True)
@@ -282,7 +284,7 @@ class Address(DbEntity):
 
 UNI_V3_POS: Final = {
     Network.Mainnet: "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-}.get(CHAINID, 'not on this chain')
+}.get(CHAINID, "not on this chain")
 
 
 def _hex_to_string(h: HexString) -> str:
@@ -317,6 +319,7 @@ class Token(DbEntity):
     See Also:
         :meth:`scale_value`
     """
+
     _table_ = "tokens"
 
     token_id = PrimaryKey(int, auto=True)
@@ -347,7 +350,9 @@ class Token(DbEntity):
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
     def __eq__(self, other: Union["Token", ChecksumAddress]) -> bool:  # type: ignore [override]
-        return self.address == other if isinstance(other, str) else super().__eq__(other)
+        return (
+            self.address == other if isinstance(other, str) else super().__eq__(other)
+        )
 
     __hash__ = DbEntity.__hash__
 
@@ -423,7 +428,7 @@ class Token(DbEntity):
                 decimals = contract.decimals()
             except AttributeError:
                 decimals = 0
-        
+
         # MKR contract returns name and symbol as bytes32 which is converted to a brownie HexString
         # try to decode it
         if isinstance(name, HexString):
@@ -441,7 +446,9 @@ class Token(DbEntity):
             decimals = 0
 
         # update address nickname for token
-        if address_entity.nickname is None or address_entity.nickname.startswith("Contract: "):
+        if address_entity.nickname is None or address_entity.nickname.startswith(
+            "Contract: "
+        ):
             # Don't overwrite any intentionally set nicknames, if applicable
             address_entity.nickname = f"Token: {name}"
 
@@ -467,7 +474,8 @@ class TxGroup(DbEntity):
         >>> group.full_string
         'Revenue'
     """
-    _table_ = 'txgroups'
+
+    _table_ = "txgroups"
 
     txgroup_id = PrimaryKey(int, auto=True)
     """Auto-incremented primary key for transaction groups."""
@@ -475,7 +483,7 @@ class TxGroup(DbEntity):
     name = Required(str, unique=True)
     """Name of the grouping category, e.g., 'Revenue', 'Expenses'."""
 
-    treasury_tx = Set('TreasuryTx', reverse="txgroup")
+    treasury_tx = Set("TreasuryTx", reverse="txgroup")
     """Inverse relation for treasury transactions assigned to this group."""
 
     parent_txgroup = Optional("TxGroup", reverse="child_txgroups")
@@ -484,8 +492,8 @@ class TxGroup(DbEntity):
     child_txgroups = Set("TxGroup", reverse="parent_txgroup")
     """Set of nested child groups."""
     # TODO: implement these
-    #streams = Set("Stream", reverse="txgroup")
-    #vesting_escrows = Set("VestingEscrow", reverse="txgroup")
+    # streams = Set("Stream", reverse="txgroup")
+    # vesting_escrows = Set("VestingEscrow", reverse="txgroup")
 
     @property
     def top_txgroup(self) -> "TxGroup":
@@ -511,7 +519,9 @@ class TxGroup(DbEntity):
 
     @classmethod
     @lru_cache(maxsize=None)
-    def get_dbid(cls, name: TxGroupName, parent: typing.Optional["TxGroup"] = None) -> TxGroupDbid:
+    def get_dbid(
+        cls, name: TxGroupName, parent: typing.Optional["TxGroup"] = None
+    ) -> TxGroupDbid:
         """Get or insert a transaction group and return its database ID.
 
         Args:
@@ -526,7 +536,9 @@ class TxGroup(DbEntity):
             return TxGroupDbid(cls.get_or_insert(name, parent).txgroup_id)
 
     @classmethod
-    def get_or_insert(cls, name: TxGroupName, parent: typing.Optional["TxGroup"]) -> "TxGroup":
+    def get_or_insert(
+        cls, name: TxGroupName, parent: typing.Optional["TxGroup"]
+    ) -> "TxGroup":
         """Insert or fetch a transaction group.
 
         Args:
@@ -575,6 +587,7 @@ class TreasuryTx(DbEntity):
         ...     for tx in txs:
         ...         print(tx.hash, tx.value_usd)
     """
+
     _table_ = "treasury_txs"
 
     treasury_tx_id = PrimaryKey(int, auto=True)
@@ -623,7 +636,9 @@ class TreasuryTx(DbEntity):
     gas_price = Optional(Decimal, 38, 1)
     """Gas price paid, in native token units (native transfers only)."""
 
-    txgroup = Required("TxGroup", reverse="treasury_tx", column="txgroup_id", index=True)
+    txgroup = Required(
+        "TxGroup", reverse="treasury_tx", column="txgroup_id", index=True
+    )
     """Foreign key to the categorization group."""
 
     composite_index(chain, txgroup)
@@ -704,8 +719,12 @@ class TreasuryTx(DbEntity):
                     token = Token.get_dbid(EEE_ADDRESS)
                     log_index = None
                     gas = entry.gas
-                    gas_used = entry.gas_used if isinstance(entry, InternalTransfer) else None
-                    gas_price = entry.gas_price if isinstance(entry, Transaction) else None
+                    gas_used = (
+                        entry.gas_used if isinstance(entry, InternalTransfer) else None
+                    )
+                    gas_price = (
+                        entry.gas_price if isinstance(entry, Transaction) else None
+                    )
 
                 if to_address := entry.to_address:
                     to_address = Address.get_dbid(to_address)
@@ -745,7 +764,10 @@ class TreasuryTx(DbEntity):
             e.args = *e.args, entry
             raise
         else:
-            if txgroup_dbid not in (must_sort_inbound_txgroup_dbid, must_sort_outbound_txgroup_dbid):
+            if txgroup_dbid not in (
+                must_sort_inbound_txgroup_dbid,
+                must_sort_outbound_txgroup_dbid,
+            ):
                 logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
                 return None
             return dbid  # type: ignore [no-any-return]
@@ -809,7 +831,8 @@ def create_vesting_ledger_view() -> None:
     Examples:
         >>> create_vesting_ledger_view()
     """
-    db.execute("""
+    db.execute(
+        """
         DROP VIEW IF EXISTS vesting_ledger;
         CREATE VIEW vesting_ledger AS
         SELECT  d.chain_name, 
@@ -836,7 +859,8 @@ def create_vesting_ledger_view() -> None:
         LEFT JOIN addresses f ON b.recipient = f.address_id
         LEFT JOIN txgroups g ON b.txgroup = g.txgroup_id
         left JOIN txgroups h ON g.parent_txgroup = h.txgroup_id
-    """)
+    """
+    )
 
 
 def create_general_ledger_view() -> None:
@@ -939,18 +963,20 @@ def create_monthly_pnl_view() -> None:
 
 
 with db_session:
-    #create_stream_ledger_view()
-    #create_vesting_ledger_view()
+    # create_stream_ledger_view()
+    # create_vesting_ledger_view()
     create_general_ledger_view()
     create_unsorted_txs_view()
-    #create_monthly_pnl_view()
+    # create_monthly_pnl_view()
 
     must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
     must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
 
 
 @db_session
-def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Optional[int]:
+def _validate_integrity_error(
+    entry: LedgerEntry, log_index: int
+) -> typing.Optional[int]:
     """Validate that an existing TreasuryTx matches an attempted insert on conflict.
 
     Raises AssertionError if any field deviates from the existing record.  Used
@@ -965,9 +991,7 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Opti
     """
     txhash = entry.hash.hex()
     chain_dbid = Chain.get_dbid()
-    existing_object = TreasuryTx.get(
-        hash=txhash, log_index=log_index, chain=chain_dbid
-    )
+    existing_object = TreasuryTx.get(hash=txhash, log_index=log_index, chain=chain_dbid)
     if existing_object is None:
         existing_objects = list(
             TreasuryTx.select(
@@ -977,7 +1001,7 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Opti
             )
         )
         raise ValueError(
-            f'unable to `.get` due to multiple entries: {existing_objects}'
+            f"unable to `.get` due to multiple entries: {existing_objects}"
         )
     if entry.to_address:
         assert entry.to_address == existing_object.to_address.address, (
@@ -999,7 +1023,10 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Opti
             existing_object.amount,
         )
     except AssertionError:
-        logger.warning("slight rounding error in value for TreasuryTx[%s] due to sqlite decimal handling", existing_object.treasury_tx_id)
+        logger.warning(
+            "slight rounding error in value for TreasuryTx[%s] due to sqlite decimal handling",
+            existing_object.treasury_tx_id,
+        )
     assert entry.block_number == existing_object.block, (
         entry.block_number,
         existing_object.block,
@@ -1014,7 +1041,8 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> typing.Opti
     # NOTE All good!
     return (
         existing_object.treasury_tx_id
-        if existing_object.txgroup.txgroup_id in (
+        if existing_object.txgroup.txgroup_id
+        in (
             must_sort_inbound_txgroup_dbid,
             must_sort_outbound_txgroup_dbid,
         )

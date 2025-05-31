@@ -9,14 +9,14 @@ else:
     ext_modules = mypycify(
         [
             "dao_treasury/sorting/__init__.py",
-            "dao_treasury/sorting/_matchers.py", 
-            "dao_treasury/sorting/_rules.py", 
+            "dao_treasury/sorting/_matchers.py",
+            "dao_treasury/sorting/_rules.py",
             "dao_treasury/sorting/factory.py",
             "dao_treasury/_wallet.py",
             "dao_treasury/types.py",
             "--pretty",
             "--strict",
-            "--install-types", 
+            "--install-types",
             "--non-interactive",
             "--disable-error-code=unused-ignore",
             "--disable-error-code=import-not-found",
@@ -183,7 +183,9 @@ setup(
     description=poetry_config["description"],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=poetry_dependencies_to_install_requires(poetry_config["dependencies"]),
+    install_requires=poetry_dependencies_to_install_requires(
+        poetry_config["dependencies"]
+    ),
     ext_modules=ext_modules,
     zip_safe=False,
     classifiers=[

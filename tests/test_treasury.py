@@ -46,7 +46,10 @@ def test_asynchronous_creation():
     assert treasury.asynchronous == True
 
 
-@patch("eth_portfolio_scripts._portfolio.ExportablePortfolio.describe", new_callable=AsyncMock)
+@patch(
+    "eth_portfolio_scripts._portfolio.ExportablePortfolio.describe",
+    new_callable=AsyncMock,
+)
 # @pytest.mark.asyncio
 def test_describe(mock_describe):
     wallets = ["0x0000000000000000000000000000000000000001"]
