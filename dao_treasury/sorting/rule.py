@@ -170,7 +170,7 @@ class _SortRule:
         # append new instance to instances classvar
         # TODO: fix dataclass ClassVar handling in mypyc and reenable
         # self.__instances__.append(self)
-        
+
         # append new instance under its class key
         SORT_RULES[type(self)].append(self)
 
