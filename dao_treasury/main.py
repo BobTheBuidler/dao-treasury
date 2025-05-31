@@ -50,10 +50,10 @@ parser.add_argument(
     default=None,
 )
 parser.add_argument(
-    '--interval',
+    "--interval",
     type=str,
-    help='The time interval between datapoints. default: 1d',
-    default='1d',
+    help="The time interval between datapoints. default: 1d",
+    default="1d",
 )
 parser.add_argument(
     "--daemon",
@@ -121,7 +121,7 @@ async def export(args) -> None:
     _docker.up()
     try:
         await asyncio.gather(
-            export_balances(args), 
+            export_balances(args),
             treasury.populate_db(BlockNumber(0), brownie.chain.height),
         )
     finally:
