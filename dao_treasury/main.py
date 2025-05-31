@@ -74,8 +74,8 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-os.environ["GF_PORT"] = str(args.grafana_port)
-os.environ["RENDERER_PORT"] = str(args.renderer_port)
+os.environ["DAO_TREASURY_GRAFANA_PORT"] = str(args.grafana_port)
+os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
 
 # TODO: run forever arg
