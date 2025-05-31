@@ -25,6 +25,8 @@ from pathlib import Path
 import brownie
 from eth_typing import BlockNumber
 
+from eth_portfolio_scripts.balances import export_balances
+
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -47,13 +49,12 @@ parser.add_argument(
     ),
     default=None,
 )
-# TODO pass interval to the eth-portfolio portfolio exporter, but make the dashboard files more specific to dao treasury-ing
-# parser.add_argument(
-#     '--interval',
-#     type=str,
-#     help='The time interval between datapoints. default: 1d',
-#     default='1d',
-# )
+parser.add_argument(
+    '--interval',
+    type=str,
+    help='The time interval between datapoints. default: 1d',
+    default='1d',
+)
 parser.add_argument(
     "--daemon",
     action="store_true",
@@ -90,7 +91,7 @@ def main() -> None:
 
             $ dao-treasury --network mainnet --sort-rules=./rules --wallet 0xABC123...
     """
-    asyncio.run(export(args))
+    asyncio.get_event_loop().run_until_complete(export(args))
 
 
 async def export(args) -> None:
@@ -111,13 +112,20 @@ async def export(args) -> None:
     """
     from dao_treasury import _docker, Treasury
 
-    # TODO pass interval to the eth-portfolio portfolio exporter, but make the dashboard files more specific to dao treasury-ing
-    # interval = parse_timedelta(args.interval)
+    # TODO: remove this after refactoring eth-port a bit so we arent required to bring up the e-p dashboards
+    os.environ["GRAFANA_PORT"] = "3003"
+
+    # TODO but make the dashboard files more specific to dao treasury-ing
 
     treasury = Treasury(args.wallet, args.sort_rules, asynchronous=True)
-    await _docker.ensure_containers(treasury.populate_db)(
-        BlockNumber(0), brownie.chain.height
-    )
+    _docker.up()
+    try:
+        await asyncio.gather(
+            export_balances(args), 
+            treasury.populate_db(BlockNumber(0), brownie.chain.height),
+        )
+    finally:
+        _docker.down()
 
 
 if __name__ == "__main__":
