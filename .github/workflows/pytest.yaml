@@ -59,8 +59,14 @@ jobs:
         
       - name: Install DAO Treasury
         run: poetry run python -m pip install .
+        
+      - name: Setup brownie networks
+        run: |
+          poetry run brownie networks modify mainnet host=${{ secrets.WEB3_PROVIDER }}
+        continue-on-error: true
 
       - name: Run test suite
         env:
+          BROWNIE_NETWORK_ID: mainnet
           ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN  }}
         run: poetry run pytest
