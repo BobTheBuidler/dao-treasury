@@ -503,7 +503,7 @@ class TxGroup(DbEntity):
         return self.parent_txgroup.top_txgroup if self.parent_txgroup else self
 
     @property
-    def full_string(self) -> str:
+    def fullname(self) -> str:
         """Return the colon-delimited path from root to this group.
 
         Examples:
@@ -536,6 +536,14 @@ class TxGroup(DbEntity):
         """
         with db_session:
             return TxGroupDbid(cls.get_or_insert(name, parent).txgroup_id)
+
+    @classmethod
+    @lru_cache(maxsize=None)
+    def get_fullname(cls, dbid: TxGroupDbid) -> TxGroupName:
+        with db_session:
+            if txgroup := TxGroup.get(txgroup_id=dbid):
+                return txgroup.fullname
+            raise ValueError(f"TxGroup[{dbid}] not found")
 
     @classmethod
     def get_or_insert(
@@ -772,7 +780,7 @@ class TreasuryTx(DbEntity):
                 must_sort_inbound_txgroup_dbid,
                 must_sort_outbound_txgroup_dbid,
             ):
-                logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
+                logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
                 return None
             return dbid  # type: ignore [no-any-return]
 

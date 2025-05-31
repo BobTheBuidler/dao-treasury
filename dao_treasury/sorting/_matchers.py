@@ -263,7 +263,7 @@ class _AddressMatcher(_HexStringMatcher):
         from dao_treasury.db import TxGroup
 
         txgroup = TxGroup.get(txgroup_id=self.txgroup_id)
-        return f"{type(self).__name__}(txgroup='{txgroup.full_string}', addresses={list(self.values)})"
+        return f"{type(self).__name__}(txgroup='{txgroup.fullname}', addresses={list(self.values)})"
 
 
 @final
@@ -384,4 +384,4 @@ class HashMatcher(_HexStringMatcher):
         from dao_treasury.db import TxGroup
 
         txgroup = TxGroup.get(txgroup_id=self.txgroup_id)
-        return f"{type(self).__name__}(txgroup='{txgroup.full_string}', hashes={list(self.values)})"
+        return f"{type(self).__name__}(txgroup='{txgroup.fullname}', hashes={list(self.values)})"
