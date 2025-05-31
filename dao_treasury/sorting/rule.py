@@ -1,16 +1,28 @@
+# dao_treasury/sorting/rule.py
+
 """Module defining transaction sorting rules for the DAO treasury.
 
 This module provides the `_SortRule` base class and subclasses for categorizing
 `TreasuryTx` entries based on their attributes or a custom function. When a rule
-is instantiated, it registers itself in the global `SORT_RULES` list and
-configures which transaction attributes to match via `_match_all`.
+is instantiated, it registers itself in the global `SORT_RULES` mapping under its
+class and configures which transaction attributes to match via `_match_all`.
 
 Examples:
+    # Define a revenue rule for sales (assuming you only transact in DAI for sales)
     >>> from dao_treasury.sorting.rule import RevenueSortRule, SORT_RULES
-    >>> # Define a revenue rule for DAI sales
-    >>> RevenueSortRule(txgroup='Sale', token_address='0x6B175474E89094d879c81e570a...', symbol='DAI')
-    >>> len(SORT_RULES)
+    >>> RevenueSortRule(
+    ...     txgroup='Sale',
+    ...     token_address='0x6B175474E89094d879c81e570a000000000000',
+    ...     symbol='DAI'
+    ... )
+    # Inspect rules registered for RevenueSortRule
+    >>> len(SORT_RULES[RevenueSortRule])
     1
+
+    # Iterate over all ExpenseSortRule instances
+    >>> from dao_treasury.sorting.rule import ExpenseSortRule
+    >>> for rule in SORT_RULES[ExpenseSortRule]:
+    ...     print(rule.txgroup)
 
 See Also:
     :const:`~dao_treasury.sorting.rule.SORT_RULES`
@@ -42,7 +54,17 @@ if TYPE_CHECKING:
 
 
 SORT_RULES: DefaultDict[Type[SortRule], List[SortRule]] = defaultdict(list)
-"""List of all instantiated sorting rules, in order of creation."""
+"""Mapping from sort rule classes to lists of instantiated rules, in creation order per class.
+
+Each key is a subclass of :class:`~dao_treasury.types.SortRule` and the corresponding
+value is the list of rule instances of that class.
+
+Examples:
+    >>> from dao_treasury.sorting.rule import RevenueSortRule, SORT_RULES
+    >>> RevenueSortRule(txgroup='Interest', symbol='DAI')
+    >>> SORT_RULES[RevenueSortRule][0].txgroup
+    'Revenue:Interest'
+"""
 
 _match_all: Final[Dict[TxGroupName, List[str]]] = {}
 """An internal cache defining which matcher attributes are used for each `txgroup`."""
@@ -65,8 +87,13 @@ class _SortRule:
     """Base class for defining transaction matching rules.
 
     When instantiated, a rule validates its inputs, determines which transaction
-    attributes to match (or uses a custom function), and registers itself. Matched
-    transactions are assigned to the specified `txgroup`.
+    attributes to match (or uses a custom function), and registers itself
+    in the global `SORT_RULES` mapping under its class.
+
+    Matched transactions are assigned to the specified `txgroup`.
+
+    See Also:
+        :const:`dao_treasury.sorting.rule.SORT_RULES`
     """
 
     txgroup: TxGroupName
@@ -108,7 +135,7 @@ class _SortRule:
         - Converts address fields to checksummed format.
         - Determines which attributes will be used for direct matching.
         - Validates that exactly one of attribute-based or function-based matching is provided.
-        - Registers the instance in `__instances__` and `_match_all`.
+        - Registers the instance in :attr:`SORT_RULES` and :data:`_match_all`.
         """
         if self.txgroup in _match_all:
             raise ValueError(
@@ -124,9 +151,7 @@ class _SortRule:
                 object.__setattr__(self, attr, checksummed)
 
         # define matchers used for this instance
-        # TODO: maybe import the string matchers and use them here too? They're a lot faster
         matchers = [attr for attr in _MATCHING_ATTRS if getattr(self, attr) is not None]
-
         _match_all[self.txgroup] = matchers
 
         if self.func is not None and matchers:
@@ -145,6 +170,8 @@ class _SortRule:
         # append new instance to instances classvar
         # TODO: fix dataclass ClassVar handling in mypyc and reenable
         # self.__instances__.append(self)
+        
+        # append new instance under its class key
         SORT_RULES[type(self)].append(self)
 
     @property
@@ -174,7 +201,7 @@ class _SortRule:
             True if the transaction matches the rule criteria; otherwise False.
 
         Examples:
-            >>> # match by symbol and recipient
+            # match by symbol and recipient
             >>> rule = _SortRule(txgroup='Foo', symbol='DAI', to_address='0xabc...')
             >>> await rule.match(tx)  # where tx.symbol == 'DAI' and tx.to_address == '0xabc...'
             True
@@ -228,7 +255,6 @@ class RevenueSortRule(_InboundSortRule):
     Prepends 'Revenue:' to the `txgroup` name before registration.
 
     Examples:
-        >>> # Revenue from sales
         >>> RevenueSortRule(txgroup='Sale', to_address='0xabc...', symbol='DAI')
         # results in a rule with txgroup 'Revenue:Sale'
     """
