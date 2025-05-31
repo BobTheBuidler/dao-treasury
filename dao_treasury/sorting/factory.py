@@ -30,7 +30,7 @@ CHAINID: Final = constants.CHAINID
 def revenue(
     txgroup: TxGroupName, networks: Networks = CHAINID
 ) -> "SortRuleFactory[RevenueSortRule]":
-    """Create a factory to register revenue sort rules for a given txgroup.
+    """Create a factory to register revenue sort rules for a given transaction group.
 
     Args:
         txgroup: Base name of the transaction group to categorize as revenue.
@@ -52,7 +52,7 @@ def revenue(
 def cost_of_revenue(
     txgroup: TxGroupName, networks: Networks = CHAINID
 ) -> "SortRuleFactory[CostOfRevenueSortRule]":
-    """Create a factory to register cost‐of‐revenue sort rules for a given txgroup.
+    """Create a factory to register cost‐of‐revenue sort rules for a given transaction group.
 
     Args:
         txgroup: Base name of the transaction group to categorize as cost of revenue.
@@ -74,7 +74,7 @@ def cost_of_revenue(
 def expense(
     txgroup: TxGroupName, networks: Networks = CHAINID
 ) -> "SortRuleFactory[ExpenseSortRule]":
-    """Create a factory to register expense sort rules for a given txgroup.
+    """Create a factory to register expense sort rules for a given transaction group.
 
     Args:
         txgroup: Base name of the transaction group to categorize as expense.
@@ -89,8 +89,6 @@ def expense(
         >>> @expense("Office Supplies")
         ... def match_supplies(tx):
         ...     return tx.symbol == "USD" and tx.amount < 500
-        >>> rule = factory.rule
-        <ExpenseSortRule txgroup='Expenses:OfficeSupplies' ...>
     """
     return SortRuleFactory(txgroup, networks, ExpenseSortRule)
 
@@ -98,7 +96,7 @@ def expense(
 def other_income(
     txgroup: TxGroupName, networks: Networks = CHAINID
 ) -> "SortRuleFactory[OtherIncomeSortRule]":
-    """Create a factory to register other‐income sort rules for a given txgroup.
+    """Create a factory to register other‐income sort rules for a given transaction group.
 
     Args:
         txgroup: Base name of the transaction group to categorize as other income.
@@ -120,7 +118,7 @@ def other_income(
 def other_expense(
     txgroup: TxGroupName, networks: Networks = CHAINID
 ) -> "SortRuleFactory[OtherExpenseSortRule]":
-    """Create a factory to register other‐expense sort rules for a given txgroup.
+    """Create a factory to register other‐expense sort rules for a given transaction group.
 
     Args:
         txgroup: Base name of the transaction group to categorize as other expense.
@@ -142,7 +140,7 @@ def other_expense(
 def ignore(
     txgroup: TxGroupName, networks: Networks = CHAINID
 ) -> "SortRuleFactory[IgnoreSortRule]":
-    """Create a factory to register ignore sort rules for a given txgroup.
+    """Create a factory to register ignore sort rules for a given transaction group.
 
     Args:
         txgroup: Base name of the transaction group to categorize as ignored.
@@ -162,15 +160,15 @@ def ignore(
 
 @final
 class SortRuleFactory(Generic[TRule]):
-    """Builder for creating sort rule instances for a specific txgroup and network(s).
+    """Builder for creating sort rule instances for a specific transaction group and network(s).
 
     This factory supports two patterns:
 
     1. Decorating a function to register a dynamic matching rule.
     2. Calling :meth:`match` to supply static match attributes.
 
-    Use the convenience functions :func:`revenue`, :func:`expense`, etc., to
-    obtain an instance of this factory preconfigured with the appropriate rule type.
+    Use the convenience functions like :func:`revenue`, :func:`expense`, etc.,
+    to obtain an instance of this factory preconfigured with the appropriate rule type.
 
     Examples:
         >>> from dao_treasury.sorting.factory import revenue
