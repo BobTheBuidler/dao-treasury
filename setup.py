@@ -8,10 +8,7 @@ except ImportError:
 else:
     ext_modules = mypycify(
         [
-            "dao_treasury/sorting/__init__.py",
-            "dao_treasury/sorting/_matchers.py",
-            "dao_treasury/sorting/_rules.py",
-            "dao_treasury/sorting/factory.py",
+            "dao_treasury/sorting",
             "dao_treasury/_wallet.py",
             "dao_treasury/types.py",
             "--pretty",

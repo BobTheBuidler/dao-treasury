@@ -4,11 +4,11 @@ PyMODINIT_FUNC
 PyInit__wallet(void)
 {
     PyObject *tmp;
-    if (!(tmp = PyImport_ImportModule("3fa617ac9ac2a449ccf4__mypyc"))) return NULL;
+    if (!(tmp = PyImport_ImportModule("52b51d40e96d4333695d__mypyc"))) return NULL;
     PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury____wallet");
     Py_DECREF(tmp);
     if (capsule == NULL) return NULL;
-    void *init_func = PyCapsule_GetPointer(capsule, "3fa617ac9ac2a449ccf4__mypyc.init_dao_treasury____wallet");
+    void *init_func = PyCapsule_GetPointer(capsule, "52b51d40e96d4333695d__mypyc.init_dao_treasury____wallet");
     Py_DECREF(capsule);
     if (!init_func) {
         return NULL;

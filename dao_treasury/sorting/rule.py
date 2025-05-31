@@ -22,6 +22,7 @@ from typing import TYPE_CHECKING, ClassVar, Dict, Final, List, Optional
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
+from mypy_extensions import mypyc_attr
 
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.types import SortFunction, TxGroupDbid, TxGroupName
@@ -37,6 +38,7 @@ _match_all: Final[Dict[TxGroupName, List[str]]] = {}
 """An internal cache defining which matcher attributes are used for each `txgroup`."""
 
 
+@mypyc_attr(native_class=False)
 @dataclass(kw_only=True, frozen=True)
 class _SortRule:
     """Base class for defining transaction matching rules.
@@ -178,6 +180,7 @@ class _SortRule:
         return match if isinstance(match, bool) else await match
 
 
+@mypyc_attr(native_class=False)
 class _InboundSortRule(_SortRule):
     """Sort rule that applies only to inbound transactions (to the DAO's wallet).
 
@@ -193,6 +196,7 @@ class _InboundSortRule(_SortRule):
         )
 
 
+@mypyc_attr(native_class=False)
 class _OutboundSortRule(_SortRule):
     """Sort rule that applies only to outbound transactions (from the DAO's wallet).
 
@@ -206,6 +210,7 @@ class _OutboundSortRule(_SortRule):
         ) is not None and await super().match(tx)
 
 
+@mypyc_attr(native_class=False)
 class RevenueSortRule(_InboundSortRule):
     """Rule to categorize inbound transactions as revenue.
 
@@ -223,6 +228,7 @@ class RevenueSortRule(_InboundSortRule):
         super().__post_init__()
 
 
+@mypyc_attr(native_class=False)
 class CostOfRevenueSortRule(_OutboundSortRule):
     """Rule to categorize outbound transactions as cost of revenue.
 
@@ -235,6 +241,7 @@ class CostOfRevenueSortRule(_OutboundSortRule):
         super().__post_init__()
 
 
+@mypyc_attr(native_class=False)
 class ExpenseSortRule(_OutboundSortRule):
     """Rule to categorize outbound transactions as expenses.
 
@@ -247,6 +254,7 @@ class ExpenseSortRule(_OutboundSortRule):
         super().__post_init__()
 
 
+@mypyc_attr(native_class=False)
 class OtherIncomeSortRule(_InboundSortRule):
     """Rule to categorize inbound transactions as other income.
 
@@ -259,6 +267,7 @@ class OtherIncomeSortRule(_InboundSortRule):
         super().__post_init__()
 
 
+@mypyc_attr(native_class=False)
 class OtherExpenseSortRule(_OutboundSortRule):
     """Rule to categorize outbound transactions as other expenses.
 
@@ -271,6 +280,7 @@ class OtherExpenseSortRule(_OutboundSortRule):
         super().__post_init__()
 
 
+@mypyc_attr(native_class=False)
 class IgnoreSortRule(_SortRule):
     """Rule to ignore certain transactions.
 
