@@ -211,7 +211,7 @@ class _SortRule:
         """
         if matchers := _match_all[self.txgroup]:
             return all(
-                getattr(self, matcher) == getattr(tx, matcher) for matcher in matchers
+                getattr(tx, matcher) == getattr(self, matcher) for matcher in matchers
             )
 
         match = self.func(tx)  # type: ignore [misc]
