@@ -780,7 +780,9 @@ class TreasuryTx(DbEntity):
                 must_sort_inbound_txgroup_dbid,
                 must_sort_outbound_txgroup_dbid,
             ):
-                logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
+                logger.info(
+                    "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
+                )
                 return None
             return dbid  # type: ignore [no-any-return]
 
