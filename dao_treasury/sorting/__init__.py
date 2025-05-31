@@ -189,7 +189,7 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
         must_sort_inbound_txgroup_dbid,
         must_sort_outbound_txgroup_dbid,
     ):
-        logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
+        logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
 
     return txgroup_dbid  # type: ignore [no-any-return]
 
@@ -211,7 +211,7 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
         must_sort_inbound_txgroup_dbid,
         must_sort_outbound_txgroup_dbid,
     ):
-        logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
+        logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
         entry.txgroup = txgroup_dbid
 
     return txgroup_dbid  # type: ignore [no-any-return]

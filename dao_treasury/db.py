@@ -121,9 +121,9 @@ class Chain(DbEntity):
     treasury_txs = Set("TreasuryTx")
     """Relationship to treasury transactions on this chain."""
 
-    @classmethod
+    @staticmethod
     @lru_cache(maxsize=None)
-    def get_dbid(cls, chainid: int = CHAINID) -> int:
+    def get_dbid(chainid: int = CHAINID) -> int:
         """Get or create the record for `chainid` and return its database ID.
 
         Args:
@@ -134,10 +134,10 @@ class Chain(DbEntity):
             1
         """
         with db_session:
-            return cls.get_or_insert(chainid).chain_dbid  # type: ignore [no-any-return]
+            return Chain.get_or_insert(chainid).chain_dbid  # type: ignore [no-any-return]
 
-    @classmethod
-    def get_or_insert(cls, chainid: int) -> "Chain":
+    @staticmethod
+    def get_or_insert(chainid: int) -> "Chain":
         """Insert a new chain record if it does not exist.
 
         Args:
@@ -148,7 +148,7 @@ class Chain(DbEntity):
             >>> chain.chain_name
             'Mainnet'
         """
-        entity = cls.get(chainid=chainid) or cls(
+        entity = Chain.get(chainid=chainid) or Chain(
             chain_name=Network.name(chainid),
             chainid=chainid,
             # TODO: either remove this or implement it when the dash pieces are together
@@ -220,9 +220,9 @@ class Address(DbEntity):
 
     __hash__ = DbEntity.__hash__
 
-    @classmethod
+    @staticmethod
     @lru_cache(maxsize=None)
-    def get_dbid(cls, address: HexAddress) -> int:
+    def get_dbid(address: HexAddress) -> int:
         """Get the DB ID for an address, inserting if necessary.
 
         Args:
@@ -233,10 +233,10 @@ class Address(DbEntity):
             1
         """
         with db_session:
-            return cls.get_or_insert(address).address_id  # type: ignore [no-any-return]
+            return Address.get_or_insert(address).address_id  # type: ignore [no-any-return]
 
-    @classmethod
-    def get_or_insert(cls, address: HexAddress) -> "Address":
+    @staticmethod
+    def get_or_insert(address: HexAddress) -> "Address":
         """Insert or fetch an :class:`~dao_treasury.db.Address` for `address`.
 
         If the address has on-chain code, attempts to label it using
@@ -380,9 +380,9 @@ class Token(DbEntity):
         """
         return Decimal(value) / self.scale
 
-    @classmethod
+    @staticmethod
     @lru_cache(maxsize=None)
-    def get_dbid(cls, address: HexAddress) -> int:
+    def get_dbid(address: HexAddress) -> int:
         """Get or insert a `Token` record and return its database ID.
 
         Args:
@@ -393,10 +393,10 @@ class Token(DbEntity):
             2
         """
         with db_session:
-            return cls.get_or_insert(address).token_id  # type: ignore [no-any-return]
+            return Token.get_or_insert(address).token_id  # type: ignore [no-any-return]
 
-    @classmethod
-    def get_or_insert(cls, address: HexAddress) -> "Token":
+    @staticmethod
+    def get_or_insert(address: HexAddress) -> "Token":
         """Insert or fetch a token record from the chain, resolving metadata on-chain.
 
         Args:
@@ -503,7 +503,7 @@ class TxGroup(DbEntity):
         return self.parent_txgroup.top_txgroup if self.parent_txgroup else self
 
     @property
-    def full_string(self) -> str:
+    def fullname(self) -> str:
         """Return the colon-delimited path from root to this group.
 
         Examples:
@@ -519,10 +519,10 @@ class TxGroup(DbEntity):
             retval = f"{t.name}:{retval}"
         return retval
 
-    @classmethod
+    @staticmethod
     @lru_cache(maxsize=None)
     def get_dbid(
-        cls, name: TxGroupName, parent: typing.Optional["TxGroup"] = None
+        name: TxGroupName, parent: typing.Optional["TxGroup"] = None
     ) -> TxGroupDbid:
         """Get or insert a transaction group and return its database ID.
 
@@ -535,11 +535,19 @@ class TxGroup(DbEntity):
             3
         """
         with db_session:
-            return TxGroupDbid(cls.get_or_insert(name, parent).txgroup_id)
+            return TxGroupDbid(TxGroup.get_or_insert(name, parent).txgroup_id)
 
-    @classmethod
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def get_fullname(dbid: TxGroupDbid) -> TxGroupName:
+        with db_session:
+            if txgroup := TxGroup.get(txgroup_id=dbid):
+                return txgroup.fullname
+            raise ValueError(f"TxGroup[{dbid}] not found")
+
+    @staticmethod
     def get_or_insert(
-        cls, name: TxGroupName, parent: typing.Optional["TxGroup"]
+        name: TxGroupName, parent: typing.Optional["TxGroup"]
     ) -> "TxGroup":
         """Insert or fetch a transaction group.
 
@@ -698,8 +706,8 @@ class TreasuryTx(DbEntity):
                 with db_session:
                     await sort_advanced(TreasuryTx[txid])
 
-    @classmethod
-    def __insert(cls, entry: LedgerEntry, ts: int) -> typing.Optional[int]:
+    @staticmethod
+    def __insert(entry: LedgerEntry, ts: int) -> typing.Optional[int]:
         """Synchronously insert a ledger entry record into the database.
 
         Handles both :class:`TokenTransfer` and other ledger entry types,
@@ -772,7 +780,9 @@ class TreasuryTx(DbEntity):
                 must_sort_inbound_txgroup_dbid,
                 must_sort_outbound_txgroup_dbid,
             ):
-                logger.info("Sorted %s to txgroup %s", entry, txgroup_dbid)
+                logger.info(
+                    "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
+                )
                 return None
             return dbid  # type: ignore [no-any-return]
 
