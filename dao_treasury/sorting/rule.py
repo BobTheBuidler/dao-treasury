@@ -187,7 +187,7 @@ class _SortRule:
         from dao_treasury.db import TxGroup
 
         txgroup = None
-        for part in reversed(self.txgroup.split(":")):
+        for part in self.txgroup.split(":"):
             txgroup = TxGroup.get_dbid(part, txgroup)
         return txgroup
 
