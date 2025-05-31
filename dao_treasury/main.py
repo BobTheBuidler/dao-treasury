@@ -1,3 +1,20 @@
+"""Command-line interface for exporting DAO treasury transactions.
+
+This module defines the `main` entrypoint script for running a one-time export of treasury transactions,
+populating the local SQLite database, and launching Grafana with its renderer. It uses Brownie and
+:class:`dao_treasury.Treasury` to fetch on-chain ledger entries, then applies optional sorting rules
+before inserting them via :func:`dao_treasury._docker.ensure_containers`.
+
+Example:
+    Running from the shell:
+
+        $ dao-treasury --network mainnet --sort-rules ./rules --wallet 0xABC123... \
+            --grafana-port 3000 --renderer-port 8091
+
+See Also:
+    :func:`dao_treasury._docker.ensure_containers`
+    :class:`dao_treasury.Treasury`
+"""
 
 import argparse
 import asyncio
@@ -15,12 +32,11 @@ logging.basicConfig(level=logging.INFO)
 parser = argparse.ArgumentParser(
     description="Run a single DAO Treasury export and populate the database.",
 )
-
 parser.add_argument(
     '--network', 
     type=str,
-    help='The brownie network identifier for the rpc you wish to use. default: mainnet',
-    default='mainnet', 
+    help="Brownie network identifier for the RPC to use. Default: mainnet",
+    default="mainnet",
 )
 parser.add_argument(
     "--sort-rules",
@@ -32,16 +48,16 @@ parser.add_argument(
     default=None,
 )
 # TODO pass interval to the eth-portfolio portfolio exporter, but make the dashboard files more specific to dao treasury-ing
-#parser.add_argument(
-#    '--interval', 
-#    type=str,
-#    help='The time interval between datapoints. default: 1d',
-#    default='1d', 
-#)
+# parser.add_argument(
+#     '--interval',
+#     type=str,
+#     help='The time interval between datapoints. default: 1d',
+#     default='1d',
+# )
 parser.add_argument(
     '--daemon', 
     action="store_true",
-    help='TODO: If True, starts a daemon process instead of running in your terminal. Not currently supported.',
+    help="TODO: If True, run as a background daemon. Not currently supported.",
 )
 parser.add_argument(
     '--grafana-port',
