@@ -287,9 +287,11 @@ class SortRuleFactory(Generic[TRule]):
             raise ValueError(
                 f"You cannot pass a func here, call {self} with the function as the sole arg instead"
             )
-        self.__check_locked()
-        self._rule = self.rule_type(txgroup=self.txgroup, **match_values)
-        self.locked = True
+        # Only instantiate when we're on an allowed network
+        if CHAINID in self.networks:
+            self.__check_locked()
+            self._rule = self.rule_type(txgroup=self.txgroup, **match_values)
+            self.locked = True
 
     def __check_locked(self) -> None:
         """Ensure that no matcher has already been registered.
