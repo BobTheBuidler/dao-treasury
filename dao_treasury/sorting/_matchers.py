@@ -53,8 +53,9 @@ class _Matcher:
         Examples:
             >>> from dao_treasury.sorting._matchers import HashMatcher
             >>> from dao_treasury.types import TxGroupDbid
-            >>> hmatch = HashMatcher(TxGroupDbid(2), ["0xdeadbeef" + "00"*28])
-            >>> HashMatcher.match("0xdeadbeef" + "00"*28)
+            >>> hash_str = "0xdeadbeef" + "00"*28
+            >>> hmatch = HashMatcher(TxGroupDbid(2), [hash_str])
+            >>> HashMatcher.match(hash_str)
             TxGroupDbid(2)
             >>> HashMatcher.match("0xother")
             None
@@ -122,11 +123,16 @@ class _Matcher:
         Returns:
             The original set of strings passed at initialization.
 
-        Examples:
-            >>> from dao_treasury.sorting._matchers import _Matcher
-            >>> m = _Matcher(TxGroupDbid(4), {"x"})
-            >>> m.values
-            {'x'}
+        Example:
+            >>> from dao_treasury.sorting._matchers import HashMatcher
+            >>> from dao_treasury.types import TxGroupDbid
+            >>> hex_str = "0x" + "f"*64
+            >>> matcher = HashMatcher(TxGroupDbid(4), [hex_str])
+            >>> matcher.values
+            {'0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'}
+
+        See Also:
+            :meth:`match`
         """
         return self.__values
 
@@ -233,7 +239,7 @@ class _AddressMatcher(_HexStringMatcher):
                         f"address {address} already has a matcher: {matcher}"
                     )
             if address in validated:
-                logger.warning("duplicate hash %s", address)
+                logger.warning("duplicate address %s", address)
             validated.add(address)
 
         super().__init__(txgroup, validated)
