@@ -480,7 +480,7 @@ class TxGroup(DbEntity):
     txgroup_id = PrimaryKey(int, auto=True)
     """Auto-incremented primary key for transaction groups."""
 
-    name = Required(str, unique=True)
+    name = Required(str)
     """Name of the grouping category, e.g., 'Revenue', 'Expenses'."""
 
     treasury_tx = Set("TreasuryTx", reverse="txgroup")
@@ -488,6 +488,8 @@ class TxGroup(DbEntity):
 
     parent_txgroup = Optional("TxGroup", reverse="child_txgroups")
     """Optional reference to a parent group for nesting."""
+
+    composite_key(name, parent_txgroup)
 
     child_txgroups = Set("TxGroup", reverse="parent_txgroup")
     """Set of nested child groups."""
