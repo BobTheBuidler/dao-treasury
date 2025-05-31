@@ -3,16 +3,18 @@
 This module defines the `main` entrypoint script for running a one-time export of treasury transactions,
 populating the local SQLite database, and launching Grafana with its renderer. It uses Brownie and
 :class:`dao_treasury.Treasury` to fetch on-chain ledger entries, then applies optional sorting rules
-before inserting them via :func:`dao_treasury._docker.ensure_containers`.
+before inserting them via the portfolio and database routines (see :class:`dao_treasury.Treasury`
+and :func:`dao_treasury.db.TreasuryTx.insert`).
 
 Example:
-    Running from the shell:
+    Running from the shell::
 
         $ dao-treasury --network mainnet --sort-rules ./rules --wallet 0xABC123... \
-            --grafana-port 3000 --renderer-port 8091
+            --interval 6h --grafana-port 3000 --renderer-port 8091
 
 See Also:
-    :func:`dao_treasury._docker.ensure_containers`
+    :func:`dao_treasury._docker.up`
+    :func:`dao_treasury._docker.down`
     :class:`dao_treasury.Treasury`
 """
 
@@ -39,6 +41,16 @@ parser.add_argument(
     type=str,
     help="Brownie network identifier for the RPC to use. Default: mainnet",
     default="mainnet",
+)
+parser.add_argument(
+    "--wallet",
+    type=str,
+    help=(
+        "DAO treasury wallet address(es) to include in the export. "
+        "Specify one or more addresses separated by spaces."
+    ),
+    required=True,
+    nargs="+",
 )
 parser.add_argument(
     "--sort-rules",
@@ -86,10 +98,10 @@ def main() -> None:
     This function is the entrypoint for the `dao-treasury` console script. It
     parses command-line arguments and invokes :func:`export`.
 
-    Examples:
+    Example:
         From the command line::
 
-            $ dao-treasury --network mainnet --sort-rules=./rules --wallet 0xABC123...
+            $ dao-treasury --network mainnet --sort-rules=./rules --wallet 0xABC123... 0xDEF456...
     """
     asyncio.get_event_loop().run_until_complete(export(args))
 
@@ -104,8 +116,9 @@ async def export(args) -> None:
 
     Args:
         args: Parsed command-line arguments with attributes:
-            - wallet: Wallet address(es) for the DAO treasury.
+            - wallet: List of wallet address strings to include as treasury wallets.
             - sort_rules: Directory of sorting rules.
+            - interval: Time interval between balance snapshots.
             - daemon: Whether to run as a daemon (currently ignored).
             - grafana_port: Port for Grafana.
             - renderer_port: Port for the renderer service.
