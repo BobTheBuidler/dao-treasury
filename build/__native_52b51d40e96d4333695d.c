@@ -16591,12 +16591,12 @@ CPyL23: ;
         CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 213, CPyStatic_rule___globals);
         goto CPyL95;
     }
-    cpy_r_r39 = ((dao_treasury___sorting___rule___match__SortRule_envObject *)cpy_r_r2)->_self;
+    cpy_r_r39 = ((dao_treasury___sorting___rule___match__SortRule_envObject *)cpy_r_r2)->_tx;
     if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_env", "self", 214, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_env", "tx", 214, CPyStatic_rule___globals);
         goto CPyL95;
     }
-    CPy_INCREF_NO_IMM(cpy_r_r39);
+    CPy_INCREF(cpy_r_r39);
 CPyL26: ;
     cpy_r_r40 = ((dao_treasury___sorting___rule___match__SortRule_envObject *)cpy_r_r2)->_matcher;
     if (unlikely(cpy_r_r40 == NULL)) {
@@ -16606,18 +16606,18 @@ CPyL26: ;
     CPy_INCREF(cpy_r_r40);
 CPyL27: ;
     cpy_r_r41 = CPyObject_GetAttr(cpy_r_r39, cpy_r_r40);
-    CPy_DECREF_NO_IMM(cpy_r_r39);
+    CPy_DECREF(cpy_r_r39);
     CPy_DECREF(cpy_r_r40);
     if (unlikely(cpy_r_r41 == NULL)) {
         CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals);
         goto CPyL95;
     }
-    cpy_r_r42 = ((dao_treasury___sorting___rule___match__SortRule_envObject *)cpy_r_r2)->_tx;
+    cpy_r_r42 = ((dao_treasury___sorting___rule___match__SortRule_envObject *)cpy_r_r2)->_self;
     if (unlikely(cpy_r_r42 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_env", "tx", 214, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_env", "self", 214, CPyStatic_rule___globals);
         goto CPyL98;
     }
-    CPy_INCREF(cpy_r_r42);
+    CPy_INCREF_NO_IMM(cpy_r_r42);
 CPyL29: ;
     cpy_r_r43 = ((dao_treasury___sorting___rule___match__SortRule_envObject *)cpy_r_r2)->_matcher;
     if (unlikely(cpy_r_r43 == NULL)) {
@@ -16627,7 +16627,7 @@ CPyL29: ;
     CPy_INCREF(cpy_r_r43);
 CPyL30: ;
     cpy_r_r44 = CPyObject_GetAttr(cpy_r_r42, cpy_r_r43);
-    CPy_DECREF(cpy_r_r42);
+    CPy_DECREF_NO_IMM(cpy_r_r42);
     CPy_DECREF(cpy_r_r43);
     if (unlikely(cpy_r_r44 == NULL)) {
         CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals);
