@@ -17,6 +17,7 @@ from dao_treasury.sorting._matchers import (
     ToAddressMatcher,
 )
 from dao_treasury.sorting.factory import (
+    SortRuleFactory,
     cost_of_revenue,
     expense,
     ignore,
@@ -52,6 +53,7 @@ __all__ = [
     "other_expense",
     "other_income",
     "revenue",
+    "SortRuleFactory",
     "HashMatcher",
     "FromAddressMatcher",
     "ToAddressMatcher",

@@ -7,6 +7,7 @@ from dao_treasury.sorting import (
     OtherExpenseSortRule,
     OtherIncomeSortRule,
     RevenueSortRule,
+    SortRuleFactory,
     cost_of_revenue,
     expense,
     ignore,
@@ -33,4 +34,5 @@ __all__ = [
     "other_income",
     "revenue",
     "TreasuryTx",
+    "SortRuleFactory",
 ]
