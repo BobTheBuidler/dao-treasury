@@ -201,10 +201,11 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
         must_sort_inbound_txgroup_dbid,
         must_sort_outbound_txgroup_dbid,
     ):
-        for rule in SORT_RULES:
-            if await rule.match(entry):
-                txgroup_dbid = rule.txgroup_dbid
-                break
+        for rules in SORT_RULES.values():
+            for rule in rules:
+                if await rule.match(entry):
+                    txgroup_dbid = rule.txgroup_dbid
+                    break
 
     if txgroup_dbid not in (
         must_sort_inbound_txgroup_dbid,

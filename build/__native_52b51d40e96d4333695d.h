@@ -2,6 +2,15 @@
 #define MYPYC_NATIVE_52b51d40e96d4333695d_H
 #include <Python.h>
 #include <CPy.h>
+#ifndef MYPYC_DECLARED_tuple_T3CIO
+#define MYPYC_DECLARED_tuple_T3CIO
+typedef struct tuple_T3CIO {
+    char f0;
+    CPyTagged f1;
+    PyObject *f2;
+} tuple_T3CIO;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T3OOO
 #define MYPYC_DECLARED_tuple_T3OOO
 typedef struct tuple_T3OOO {
@@ -27,6 +36,20 @@ typedef struct tuple_T4CIOO {
     PyObject *f2;
     PyObject *f3;
 } tuple_T4CIOO;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T8OOOOOOOO
+#define MYPYC_DECLARED_tuple_T8OOOOOOOO
+typedef struct tuple_T8OOOOOOOO {
+    PyObject *f0;
+    PyObject *f1;
+    PyObject *f2;
+    PyObject *f3;
+    PyObject *f4;
+    PyObject *f5;
+    PyObject *f6;
+    PyObject *f7;
+} tuple_T8OOOOOOOO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T0
@@ -61,9 +84,14 @@ typedef struct {
     PyObject *_txgroup_dbid;
     PyObject *___mypyc_temp__0;
     CPyTagged ___mypyc_temp__1;
+    CPyTagged ___mypyc_temp__2;
+    PyObject *___mypyc_temp__3;
+    PyObject *_rules;
+    PyObject *___mypyc_temp__4;
+    CPyTagged ___mypyc_temp__5;
     PyObject *_rule;
-    PyObject *___mypyc_temp__2;
-    tuple_T3OOO ___mypyc_temp__3;
+    PyObject *___mypyc_temp__6;
+    tuple_T3OOO ___mypyc_temp__7;
 } dao_treasury___sorting___sort_advanced_envObject;
 
 typedef struct {
@@ -364,6 +392,7 @@ struct export_table_52b51d40e96d4333695d {
     char (*CPyDef_factory___SortRuleFactory_____check_locked)(PyObject *cpy_r_self);
     char (*CPyDef_factory_____top_level__)(void);
     PyObject **CPyStatic_rule____match_all;
+    tuple_T8OOOOOOOO *CPyStatic_rule____MATCHING_ATTRS;
     PyTypeObject **CPyType_rule____SortRule;
     PyTypeObject **CPyType_rule____InboundSortRule;
     PyTypeObject **CPyType_rule____OutboundSortRule;

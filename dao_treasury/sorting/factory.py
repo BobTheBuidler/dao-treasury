@@ -9,19 +9,9 @@ from dao_treasury.sorting.rule import (
     OtherExpenseSortRule,
     OtherIncomeSortRule,
     RevenueSortRule,
+    TRule,
 )
 from dao_treasury.types import Networks, SortFunction, TxGroupName
-
-
-TRule = TypeVar(
-    "TRule",
-    RevenueSortRule,
-    CostOfRevenueSortRule,
-    ExpenseSortRule,
-    OtherIncomeSortRule,
-    OtherExpenseSortRule,
-    IgnoreSortRule,
-)
 
 
 CHAINID: Final = constants.CHAINID
