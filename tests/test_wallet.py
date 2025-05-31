@@ -65,27 +65,67 @@ def test_conflicting_start_timestamp_and_end_block():
     "wallet_address, other, expected, id",
     [
         # Happy path: same address, both as hex strings
-        ("0x000000000000000000000000000000000000dead", "0x000000000000000000000000000000000000dead", True, "same_hex_string"),
+        (
+            "0x000000000000000000000000000000000000dead",
+            "0x000000000000000000000000000000000000dead",
+            True,
+            "same_hex_string",
+        ),
         # Happy path: same address, other as checksummed
-        ("0x000000000000000000000000000000000000dEaD", "0x000000000000000000000000000000000000dead", True, "same_mixed_case"),
+        (
+            "0x000000000000000000000000000000000000dEaD",
+            "0x000000000000000000000000000000000000dead",
+            True,
+            "same_mixed_case",
+        ),
         # Happy path: different addresses
-        ("0x000000000000000000000000000000000000dead", "0x000000000000000000000000000000000000beef", False, "different_addresses"),
+        (
+            "0x000000000000000000000000000000000000dead",
+            "0x000000000000000000000000000000000000beef",
+            False,
+            "different_addresses",
+        ),
         # Edge: other is already a bytes address
-        ("0x000000000000000000000000000000000000dead", bytes.fromhex("000000000000000000000000000000000000dead"), TypeError, "other_bytes"),
+        (
+            "0x000000000000000000000000000000000000dead",
+            bytes.fromhex("000000000000000000000000000000000000dead"),
+            TypeError,
+            "other_bytes",
+        ),
         # Edge: wallet address is checksummed, other is lower
-        ("0x000000000000000000000000000000000000dEaD", "0x000000000000000000000000000000000000dead", True, "wallet_checksummed"),
+        (
+            "0x000000000000000000000000000000000000dEaD",
+            "0x000000000000000000000000000000000000dead",
+            True,
+            "wallet_checksummed",
+        ),
         # Edge: wallet address is lower, other is checksummed
-        ("0x000000000000000000000000000000000000dead", "0x000000000000000000000000000000000000dEaD", True, "other_checksummed"),
+        (
+            "0x000000000000000000000000000000000000dead",
+            "0x000000000000000000000000000000000000dEaD",
+            True,
+            "other_checksummed",
+        ),
         # Edge: other is an int (invalid, should raise)
         ("0x000000000000000000000000000000000000dead", 12345, TypeError, "other_int"),
         # Edge: other is None (invalid, should raise)
         ("0x000000000000000000000000000000000000dead", None, TypeError, "other_none"),
         # Edge: wallet address is invalid (should raise on instantiation)
-        ("not_an_address", "0x000000000000000000000000000000000000dead", ValueError, "wallet_invalid"),
+        (
+            "not_an_address",
+            "0x000000000000000000000000000000000000dead",
+            ValueError,
+            "wallet_invalid",
+        ),
         # Edge: other is invalid address string (should raise)
-        ("0x000000000000000000000000000000000000dead", "not_an_address", TypeError, "other_invalid"),
+        (
+            "0x000000000000000000000000000000000000dead",
+            "not_an_address",
+            TypeError,
+            "other_invalid",
+        ),
     ],
-    ids=lambda x: x if isinstance(x, str) else None
+    ids=lambda x: x if isinstance(x, str) else None,
 )
 def test_wallet_eq(wallet_address, other, expected, id):
     # sourcery skip: no-conditionals-in-tests
@@ -93,7 +133,7 @@ def test_wallet_eq(wallet_address, other, expected, id):
         exc_expected = issubclass(expected, Exception)
     except TypeError:
         exc_expected = False
-    
+
     if exc_expected:
         with pytest.raises(expected):
             wallet = TreasuryWallet(address=wallet_address)
@@ -111,6 +151,7 @@ def test_wallet_eq(wallet_address, other, expected, id):
 # closest_block_after_timestamp will be called with the provided timestamp.
 # For edge cases, we can use 0 or very large/small timestamps.
 
+
 @pytest.mark.parametrize(
     "start_block, start_timestamp, expected, id",
     [
@@ -125,7 +166,7 @@ def test_wallet_eq(wallet_address, other, expected, id):
         # Edge: start_timestamp is 0
         (None, 0, None, "start_timestamp_zero"),
     ],
-    ids=lambda x: x if isinstance(x, str) else None
+    ids=lambda x: x if isinstance(x, str) else None,
 )
 def test_start_block_property(start_block, start_timestamp, expected, id):
     # Arrange
@@ -152,6 +193,7 @@ def test_start_block_property(start_block, start_timestamp, expected, id):
     else:
         assert result == 0
 
+
 @pytest.mark.parametrize(
     "start_block, start_timestamp, expected_exception, id",
     [
@@ -168,9 +210,11 @@ def test_start_block_property(start_block, start_timestamp, expected, id):
         # Error: start_timestamp is negative
         (None, -100, ValueError, "start_timestamp_negative"),
     ],
-    ids=lambda x: x if isinstance(x, str) else None
+    ids=lambda x: x if isinstance(x, str) else None,
 )
-def test_start_block_property_errors(start_block, start_timestamp, expected_exception, id):
+def test_start_block_property_errors(
+    start_block, start_timestamp, expected_exception, id
+):
     # Arrange
     address = "0x000000000000000000000000000000000000dead"
 
@@ -197,7 +241,7 @@ def test_start_block_property_errors(start_block, start_timestamp, expected_exce
         # Edge: end_timestamp is 0
         (None, 0, None, "end_timestamp_zero"),
     ],
-    ids=lambda x: x if isinstance(x, str) else None
+    ids=lambda x: x if isinstance(x, str) else None,
 )
 def test_end_block_property(end_block, end_timestamp, expected, id):
     # Arrange
@@ -222,6 +266,7 @@ def test_end_block_property(end_block, end_timestamp, expected, id):
     else:
         assert result is None
 
+
 @pytest.mark.parametrize(
     "end_block, end_timestamp, expected_exception, id",
     [
@@ -238,7 +283,7 @@ def test_end_block_property(end_block, end_timestamp, expected, id):
         # Edge: end_timestamp is negative
         (None, -100, ValueError, "end_timestamp_negative"),
     ],
-    ids=lambda x: x if isinstance(x, str) else None
+    ids=lambda x: x if isinstance(x, str) else None,
 )
 def test_end_block_property_errors(end_block, end_timestamp, expected_exception, id):
     # Arrange

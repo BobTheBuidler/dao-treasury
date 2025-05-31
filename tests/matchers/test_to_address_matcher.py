@@ -14,9 +14,11 @@ def test_instance_creation_and_contains():
     result = ToAddressMatcher.match(checksummed)
     assert result == txgroup
 
+
 def test_empty_addresses_error():
     with pytest.raises(ValueError):
         ToAddressMatcher(11, [])
+
 
 def test_duplicate_txgroup_error():
     txgroup = 12
@@ -25,6 +27,7 @@ def test_duplicate_txgroup_error():
     ToAddressMatcher(txgroup, [addr1])
     with pytest.raises(ValueError):
         ToAddressMatcher(txgroup, [addr2])
+
 
 def test_duplicate_address_warning():
     txgroup = 13

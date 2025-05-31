@@ -98,7 +98,9 @@ class _SortRule:
         - Registers the instance in `__instances__` and `_match_all`.
         """
         if self.txgroup in _match_all:
-            raise ValueError(f"there is already a matcher defined for txgroup {self.txgroup}: {self}")
+            raise ValueError(
+                f"there is already a matcher defined for txgroup {self.txgroup}: {self}"
+            )
 
         # ensure addresses are checksummed if applicable
         for attr in ["from_address", "to_address", "token_address"]:
@@ -111,9 +113,7 @@ class _SortRule:
         # define matchers used for this instance
         # TODO: maybe import the string matchers and use them here too? They're a lot faster
         matchers = [
-            attr
-            for attr in self.__matching_attrs__
-            if getattr(self, attr) is not None
+            attr for attr in self.__matching_attrs__ if getattr(self, attr) is not None
         ]
 
         _match_all[self.txgroup] = matchers
@@ -171,8 +171,7 @@ class _SortRule:
         """
         if matchers := _match_all[self.txgroup]:
             return all(
-                getattr(self, matcher) == getattr(tx, matcher)
-                for matcher in matchers
+                getattr(self, matcher) == getattr(tx, matcher) for matcher in matchers
             )
 
         match = self.func(tx)  # type: ignore [misc]
@@ -202,10 +201,9 @@ class _OutboundSortRule(_SortRule):
     """
 
     async def match(self, tx: "TreasuryTx") -> bool:
-        return (
-            TreasuryWallet._get_instance(tx.from_address.address) is not None
-            and await super().match(tx)
-        )
+        return TreasuryWallet._get_instance(
+            tx.from_address.address
+        ) is not None and await super().match(tx)
 
 
 class RevenueSortRule(_InboundSortRule):

@@ -1,6 +1,11 @@
 import logging
 import pytest
-from dao_treasury.sorting._matchers import FromAddressMatcher, ToAddressMatcher, HashMatcher, logger
+from dao_treasury.sorting._matchers import (
+    FromAddressMatcher,
+    ToAddressMatcher,
+    HashMatcher,
+    logger,
+)
 
 
 # Ensure that INFO logging is disabled so that __repr__ is not invoked during tests.

@@ -44,7 +44,7 @@ class TreasuryWallet:
                 raise ValueError("start_block can not be negative")
         if start_timestamp is not None and start_timestamp < 0:
             raise ValueError("start_timestamp can not be negative")
-        
+
         end_block = self.end_block
         end_timestamp = self.end_timestamp
         if end_block is not None:
@@ -56,7 +56,7 @@ class TreasuryWallet:
                 raise ValueError("end_block can not be negative")
         if end_timestamp is not None and end_timestamp < 0:
             raise ValueError("end_timestamp can not be negative")
-        
+
         addr = ChecksumAddress(str(self.address))
         if addr in WALLETS:
             raise ValueError(f"TreasuryWallet {addr} already exists")

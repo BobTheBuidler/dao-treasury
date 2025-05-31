@@ -165,7 +165,9 @@ class _HexStringMatcher(_Matcher):
         if not hexstr.startswith("0x"):
             hexstr = f"0x{hexstr}"
         if len(hexstr) != cls.expected_length:
-            raise ValueError(f"{hexstr} has incorrect length (expected {cls.expected_length}, actual {len(hexstr)})")
+            raise ValueError(
+                f"{hexstr} has incorrect length (expected {cls.expected_length}, actual {len(hexstr)})"
+            )
         return hexstr
 
 
@@ -227,7 +229,9 @@ class _AddressMatcher(_HexStringMatcher):
             address = convert.to_address(self._validate_hexstr(address))
             for matcher in self.__instances__:
                 if address in matcher:
-                    raise ValueError(f"address {address} already has a matcher: {matcher}")
+                    raise ValueError(
+                        f"address {address} already has a matcher: {matcher}"
+                    )
             if address in validated:
                 logger.warning("duplicate hash %s", address)
             validated.add(address)

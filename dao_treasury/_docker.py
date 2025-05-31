@@ -10,8 +10,9 @@ from typing_extensions import ParamSpec
 logger = logging.getLogger(__name__)
 
 compose_file = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), 'docker-compose.yaml'
+    os.path.dirname(os.path.abspath(__file__)), "docker-compose.yaml"
 )
+
 
 def up() -> None:
     """Build and start Grafana containers defined in the compose file.
@@ -31,8 +32,9 @@ def up() -> None:
         :func:`_exec_command`
     """
     build()
-    print('starting the grafana containers')
-    _exec_command(['up', '-d'])
+    print("starting the grafana containers")
+    _exec_command(["up", "-d"])
+
 
 def down(*_) -> None:
     """Stop and remove Grafana containers.
@@ -47,7 +49,8 @@ def down(*_) -> None:
     See Also:
         :func:`up`
     """
-    _exec_command(['down'])
+    _exec_command(["down"])
+
 
 def build() -> None:
     """Build Docker images for Grafana containers.
@@ -65,10 +68,12 @@ def build() -> None:
         :func:`_exec_command`
     """
     print("building the grafana containers")
-    _exec_command(['build'])
+    _exec_command(["build"])
 
-_P = ParamSpec('_P')
-_T = TypeVar('_T')
+
+_P = ParamSpec("_P")
+_T = TypeVar("_T")
+
 
 def ensure_containers(fn: Callable[_P, _T]) -> Callable[_P, _T]:
     """Decorator to ensure Grafana containers are running before execution.
@@ -97,13 +102,14 @@ def ensure_containers(fn: Callable[_P, _T]) -> Callable[_P, _T]:
         :func:`up`
         :func:`down`
     """
+
     @wraps(fn)
     async def compose_wrap(*args: _P.args, **kwargs: _P.kwargs):
         # register shutdown sequence
         # TODO: argument to leave them up
-        # NOTE: do we need both this and the finally? 
-        #signal.signal(signal.SIGINT, down)
-        
+        # NOTE: do we need both this and the finally?
+        # signal.signal(signal.SIGINT, down)
+
         # start Grafana containers
         up()
 
@@ -112,11 +118,13 @@ def ensure_containers(fn: Callable[_P, _T]) -> Callable[_P, _T]:
             await fn(*args, **kwargs)
         finally:
             # stop and remove containers
-            #down()
+            # down()
             ...
+
     return compose_wrap
 
-def _exec_command(command: Iterable[str], *, compose_options: Tuple[str]=()) -> None:
+
+def _exec_command(command: Iterable[str], *, compose_options: Tuple[str] = ()) -> None:
     """Execute a Docker Compose command with system checks and fallback.
 
     This internal function ensures that Docker and Docker Compose
@@ -143,9 +151,15 @@ def _exec_command(command: Iterable[str], *, compose_options: Tuple[str]=()) -> 
     """
     check_system()
     try:
-        subprocess.check_output(['docker', 'compose', *compose_options, '-f', compose_file, *command])
+        subprocess.check_output(
+            ["docker", "compose", *compose_options, "-f", compose_file, *command]
+        )
     except (subprocess.CalledProcessError, FileNotFoundError) as e:
         try:
-            subprocess.check_output(['docker-compose', *compose_options, '-f', compose_file, *command])
+            subprocess.check_output(
+                ["docker-compose", *compose_options, "-f", compose_file, *command]
+            )
         except (subprocess.CalledProcessError, FileNotFoundError) as _e:
-            raise RuntimeError(f"Error occurred while running {' '.join(command)}: {_e}") from _e
+            raise RuntimeError(
+                f"Error occurred while running {' '.join(command)}: {_e}"
+            ) from _e
