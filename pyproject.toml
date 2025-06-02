@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dao-treasury"
-version = "0.0.15"
+version = "0.0.16"
 description = "Produce financial reports for your on-chain org"
 authors = ["BobTheBuidler <bobthebuidlerdefi@gmail.com>"]
 license = "MIT"
