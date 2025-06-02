@@ -357,6 +357,10 @@ class Token(DbEntity):
     __hash__ = DbEntity.__hash__
 
     @property
+    def contract(self) -> Contract:
+        return Contract(self.address.address)
+
+    @property
     def scale(self) -> int:
         """Base for division according to `decimals`, e.g., `10**decimals`.
 
@@ -410,6 +414,7 @@ class Token(DbEntity):
         if token := Token.get(address=address_entity):
             return token  # type: ignore [no-any-return]
 
+        address = address_entity.address
         if address == EEE_ADDRESS:
             name, symbol = {Network.Mainnet: ("Ethereum", "ETH")}[chain.id]
             decimals = 18
@@ -498,11 +503,6 @@ class TxGroup(DbEntity):
     # vesting_escrows = Set("VestingEscrow", reverse="txgroup")
 
     @property
-    def top_txgroup(self) -> "TxGroup":
-        """Get the top-level ancestor in this group’s hierarchy."""
-        return self.parent_txgroup.top_txgroup if self.parent_txgroup else self
-
-    @property
     def fullname(self) -> str:
         """Return the colon-delimited path from root to this group.
 
@@ -518,6 +518,11 @@ class TxGroup(DbEntity):
             t = t.parent_txgroup
             retval = f"{t.name}:{retval}"
         return retval
+
+    @property
+    def top_txgroup(self) -> "TxGroup":
+        """Get the top-level ancestor in this group’s hierarchy."""
+        return self.parent_txgroup.top_txgroup if self.parent_txgroup else self
 
     @staticmethod
     @lru_cache(maxsize=None)
