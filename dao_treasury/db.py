@@ -26,6 +26,7 @@ from typing import TYPE_CHECKING, Final, Union, final
 from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
 from brownie.convert.datatypes import HexString
+from brownie.exceptions import EventLookupError
 from brownie.network.event import EventDict, _EventItem
 from brownie.network.transaction import TransactionReceipt
 from eth_typing import ChecksumAddress, HexAddress
@@ -685,11 +686,13 @@ class TreasuryTx(DbEntity):
     def get_events(self, event_name: str) -> _EventItem:
         try:
             return self.events[event_name]
+        except EventLookupError:
+            pass
         except KeyError as e:
             # This happens sometimes due to a busted abi and hopefully shouldnt impact you
-            if str(e) == "'components'":
-                return _EventItem(event_name, None, [], ())
-            raise
+            if str(e) != "'components'":
+                raise
+        return _EventItem(event_name, None, [], ())
 
     @property
     def _transaction(self) -> TransactionReceipt:
