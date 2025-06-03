@@ -678,13 +678,13 @@ class TreasuryTx(DbEntity):
         return self.token.symbol  # type: ignore [no-any-return]
 
     @property
-    def _events(self) -> EventDict:
+    def events(self) -> EventDict:
         """Decoded event logs for this transaction."""
         return self._transaction.events
 
     def get_events(self, event_name: str) -> _EventItem:
         try:
-            return self._events[event_name]
+            return self.events[event_name]
         except KeyError as e:
             # This happens sometimes due to a busted abi and hopefully shouldnt impact you
             if str(e) == "'components'":
