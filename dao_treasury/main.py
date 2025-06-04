@@ -27,6 +27,7 @@ import os
 from pathlib import Path
 
 import brownie
+import yaml
 from eth_typing import BlockNumber
 
 from eth_portfolio_scripts.balances import export_balances
@@ -59,6 +60,16 @@ parser.add_argument(
     help=(
         "Directory containing sort rules definitions. "
         "If omitted, transactions are exported without custom sorting."
+    ),
+    default=None,
+)
+parser.add_argument(
+    "--nicknames",
+    type=Path,
+    help=(
+        "File containing sort address nicknames. "
+        "If omitted, transactions are exported without custom sorting. "
+        "See https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/addresses.yaml for an example."
     ),
     default=None,
 )
@@ -141,12 +152,21 @@ async def export(args) -> None:
         :func:`dao_treasury._docker.down`,
         :class:`dao_treasury.Treasury.populate_db`
     """
-    from dao_treasury import _docker, Treasury
+    from y.constants import CHAINID
+
+    from dao_treasury import _docker, db, Treasury
 
     # TODO: remove this after refactoring eth-port a bit so we arent required to bring up the e-p dashboards
     os.environ["GRAFANA_PORT"] = "3003"
 
     # TODO but make the dashboard files more specific to dao treasury-ing
+
+    if args.nicknames:
+        for nickname, addresses in (
+            yaml.safe_load(args.nicknames.read_bytes()).get(CHAINID, {}).items()
+        ):
+            for address in addresses:
+                db.Address.set_nickname(address, nickname)
 
     treasury = Treasury(args.wallet, args.sort_rules, asynchronous=True)
     _docker.up()
