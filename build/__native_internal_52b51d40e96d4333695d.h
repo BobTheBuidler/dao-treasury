@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[305];
+extern PyObject *CPyStatics[308];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -22,6 +22,7 @@ extern CPyModule *CPyModule_logging;
 extern CPyModule *CPyModule_typing;
 extern CPyModule *CPyModule_eth_portfolio___structs;
 extern CPyModule *CPyModule_evmspec___data;
+extern CPyModule *CPyModule_y___exceptions;
 extern CPyModule *CPyModule_dao_treasury;
 extern CPyModule *CPyModule_dao_treasury____wallet_internal;
 extern CPyModule *CPyModule_dao_treasury____wallet;
