@@ -162,7 +162,9 @@ async def export(args) -> None:
     # TODO but make the dashboard files more specific to dao treasury-ing
 
     if args.nicknames:
-        for nickname, addresses in yaml.safe_load(args.nicknames.read_bytes()).get(CHAINID, {}).items():
+        for nickname, addresses in (
+            yaml.safe_load(args.nicknames.read_bytes()).get(CHAINID, {}).items()
+        ):
             for address in addresses:
                 db.Address.set_nickname(address, nickname)
 
