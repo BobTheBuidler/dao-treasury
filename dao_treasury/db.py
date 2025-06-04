@@ -258,11 +258,11 @@ class Address(DbEntity):
         if entity := Address.get(chain=chain_dbid, address=checksum_address):
             return entity  # type: ignore [no-any-return]
 
-        if _get_code(address, None).hex().removeprefix("0x"):
+        if _get_code(checksum_address, None).hex().removeprefix("0x"):
             try:
-                nickname = f"Contract: {Contract(address)._build['contractName']}"
+                nickname = f"Contract: {Contract(checksum_address)._build['contractName']}"
             except ContractNotVerified:
-                nickname = f"Non-Verified Contract: {address}"
+                nickname = f"Non-Verified Contract: {checksum_address}"
 
             entity = Address(
                 chain=chain_dbid,
@@ -285,8 +285,21 @@ class Address(DbEntity):
 
     @staticmethod
     def set_nickname(address: HexAddress, nickname: str) -> None:
+        if not nickname:
+            raise ValueError("You must provide an actual string")
         with db_session:
-            Address.get_or_insert(address).nickname = nickname
+            entity = Address.get_or_insert(address)
+            if entity.nickname == nickname:
+                return
+            if entity.nickname:
+                old = entity.nickname
+                entity.nickname = nickname
+                commit()
+                logger.info("%s nickname changed from %s to %s", entity.address, old, nickname)
+            else:
+                entity.nickname = nickname
+                commit()
+                logger.info("%s nickname set to %s", entity.address, nickname)
 
 
 UNI_V3_POS: Final = {
