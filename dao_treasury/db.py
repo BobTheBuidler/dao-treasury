@@ -47,6 +47,7 @@ from pony.orm import (
     composite_key,
     composite_index,
     db_session,
+    select,
 )
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
 from y.constants import CHAINID
@@ -818,6 +819,13 @@ db.bind(
 db.generate_mapping(create_tables=True)
 
 
+def _set_address_nicknames_for_tokens() -> None:
+    """Set address.nickname for addresses belonging to tokens."""
+    for address in select(a for a in Address if a.token and not a.nickname):
+        address.nickname = f"Token: {address.token.name}"
+        db.commit()
+
+
 def create_stream_ledger_view() -> None:
     """Create or replace the SQL view `stream_ledger` for streamed funds reporting.
 
@@ -1004,6 +1012,8 @@ with db_session:
     create_general_ledger_view()
     create_unsorted_txs_view()
     # create_monthly_pnl_view()
+
+    _set_address_nicknames_for_tokens()
 
     must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
     must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
