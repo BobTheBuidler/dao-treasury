@@ -820,7 +820,7 @@ db.generate_mapping(create_tables=True)
 
 
 def _set_address_nicknames_for_tokens() -> None:
-    """ Set address.nickname for addresses belonging to tokens. """
+    """Set address.nickname for addresses belonging to tokens."""
     for address in select(a for a in Address if a.token and not a.nickname):
         address.nickname = f"Token: {address.token.name}"
         db.commit()
