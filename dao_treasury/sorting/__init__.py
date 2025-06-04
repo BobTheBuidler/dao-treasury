@@ -7,6 +7,7 @@ from typing import Final, Optional
 
 from eth_portfolio.structs import LedgerEntry
 from evmspec.data import TransactionHash
+from y.exceptions import ContractNotVerified
 
 from dao_treasury import db
 from dao_treasury._wallet import TreasuryWallet
@@ -205,10 +206,12 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
     ):
         for rules in SORT_RULES.values():
             for rule in rules:
-                if await rule.match(entry):
-                    txgroup_dbid = rule.txgroup_dbid
-                    break
-
+                try:
+                    if await rule.match(entry):
+                        txgroup_dbid = rule.txgroup_dbid
+                        break
+                except ContractNotVerified:
+                    continue
     if txgroup_dbid not in (
         must_sort_inbound_txgroup_dbid,
         must_sort_outbound_txgroup_dbid,
