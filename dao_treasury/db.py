@@ -260,7 +260,9 @@ class Address(DbEntity):
 
         if _get_code(checksum_address, None).hex().removeprefix("0x"):
             try:
-                nickname = f"Contract: {Contract(checksum_address)._build['contractName']}"
+                nickname = (
+                    f"Contract: {Contract(checksum_address)._build['contractName']}"
+                )
             except ContractNotVerified:
                 nickname = f"Non-Verified Contract: {checksum_address}"
 
@@ -295,7 +297,9 @@ class Address(DbEntity):
                 old = entity.nickname
                 entity.nickname = nickname
                 commit()
-                logger.info("%s nickname changed from %s to %s", entity.address, old, nickname)
+                logger.info(
+                    "%s nickname changed from %s to %s", entity.address, old, nickname
+                )
             else:
                 entity.nickname = nickname
                 commit()
