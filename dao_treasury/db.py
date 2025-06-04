@@ -1013,8 +1013,6 @@ with db_session:
     create_unsorted_txs_view()
     # create_monthly_pnl_view()
 
-    _set_address_nicknames_for_tokens()
-
     must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
     must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
 
