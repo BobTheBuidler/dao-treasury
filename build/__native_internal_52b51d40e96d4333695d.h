@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[308];
+extern PyObject *CPyStatics[307];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -294,6 +294,8 @@ extern PyTypeObject *CPyType__wallet___TreasuryWallet;
 extern PyObject *CPyDef__wallet___TreasuryWallet(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 extern char CPyDef__wallet___TreasuryWallet_____post_init__(PyObject *cpy_r_self);
 extern PyObject *CPyPy__wallet___TreasuryWallet_____post_init__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__wallet___TreasuryWallet___check_membership(PyObject *cpy_r_address, PyObject *cpy_r_block);
+extern PyObject *CPyPy__wallet___TreasuryWallet___check_membership(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__wallet___TreasuryWallet____start_block(PyObject *cpy_r_self);
 extern PyObject *CPyPy__wallet___TreasuryWallet____start_block(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__wallet___TreasuryWallet____end_block(PyObject *cpy_r_self);

@@ -485,6 +485,7 @@ struct export_table_52b51d40e96d4333695d {
     PyTypeObject **CPyType__wallet___TreasuryWallet;
     PyObject *(*CPyDef__wallet___TreasuryWallet)(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
     char (*CPyDef__wallet___TreasuryWallet_____post_init__)(PyObject *cpy_r_self);
+    char (*CPyDef__wallet___TreasuryWallet___check_membership)(PyObject *cpy_r_address, PyObject *cpy_r_block);
     PyObject *(*CPyDef__wallet___TreasuryWallet____start_block)(PyObject *cpy_r_self);
     PyObject *(*CPyDef__wallet___TreasuryWallet____end_block)(PyObject *cpy_r_self);
     PyObject *(*CPyDef__wallet___TreasuryWallet____get_instance)(PyObject *cpy_r_address);
