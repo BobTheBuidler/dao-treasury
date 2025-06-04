@@ -282,6 +282,11 @@ class Address(DbEntity):
 
         return entity  # type: ignore [no-any-return]
 
+    @staticmethod
+    def set_nickname(address: HexAddress, nickname: str) -> None:
+        with db_session:
+            Address.get_or_insert(address).nickname = nickname
+
 
 UNI_V3_POS: Final = {
     Network.Mainnet: "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
