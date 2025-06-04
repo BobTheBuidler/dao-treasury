@@ -66,13 +66,11 @@ class TreasuryWallet:
     def check_membership(
         address: Optional[HexAddress], block: Optional[BlockNumber]
     ) -> bool:
-        if address is None:
-            return False
-        wallet = TreasuryWallet._get_instance(address)
-        if wallet is None:
-            return False
-        return wallet._start_block <= block and (
-            wallet._end_block is None or wallet._end_block >= block
+        return (
+            address is not None
+            and (wallet := TreasuryWallet._get_instance(address))
+            and wallet._start_block <= block
+            and (wallet._end_block is None or wallet._end_block >= block)
         )
 
     @property
