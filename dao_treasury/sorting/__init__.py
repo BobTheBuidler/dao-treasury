@@ -70,10 +70,9 @@ must_sort_outbound_txgroup_dbid: Final = db.must_sort_outbound_txgroup_dbid
 
 def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
     txgroup_dbid: Optional[TxGroupDbid] = None
-    if (
-        TreasuryWallet.check_membership(entry.from_address, entry.block_number)
-        and TreasuryWallet.check_membership(entry.to_address, entry.block_number)
-    ):
+    if TreasuryWallet.check_membership(
+        entry.from_address, entry.block_number
+    ) and TreasuryWallet.check_membership(entry.to_address, entry.block_number):
         txgroup_dbid = TxGroup.get_dbid(
             name="Internal Transfer",
             parent=TxGroup.get_dbid("Ignore"),
