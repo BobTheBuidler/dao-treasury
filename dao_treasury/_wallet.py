@@ -69,6 +69,8 @@ class TreasuryWallet:
         if address is None:
             return False
         wallet = TreasuryWallet._get_instance(address)
+        if wallet is None:
+            return False
         return wallet._start_block <= block and (
             wallet._end_block is None or wallet._end_block >= block
         )
