@@ -229,7 +229,7 @@ class _InboundSortRule(_SortRule):
     async def match(self, tx: "TreasuryTx") -> bool:
         return (
             tx.to_address is not None
-            and TreasuryWallet._get_instance(tx.to_address.address) is not None
+            and TreasuryWallet.check_membership(tx.to_address.address, tx.block)
             and await super().match(tx)
         )
 
@@ -243,9 +243,9 @@ class _OutboundSortRule(_SortRule):
     """
 
     async def match(self, tx: "TreasuryTx") -> bool:
-        return TreasuryWallet._get_instance(
-            tx.from_address.address
-        ) is not None and await super().match(tx)
+        return TreasuryWallet.check_membership(
+            tx.from_address.address, tx.block
+        ) and await super().match(tx)
 
 
 @mypyc_attr(native_class=False)

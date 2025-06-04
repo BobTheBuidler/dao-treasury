@@ -62,6 +62,17 @@ class TreasuryWallet:
             raise ValueError(f"TreasuryWallet {addr} already exists")
         WALLETS[addr] = self
 
+    @staticmethod
+    def check_membership(
+        address: Optional[HexAddress], block: Optional[BlockNumber] = None
+    ) -> bool:
+        if address is not None and (wallet := TreasuryWallet._get_instance(address)):
+            return block is None or (
+                wallet._start_block <= block
+                and (wallet._end_block is None or wallet._end_block >= block)
+            )
+        return False
+
     @property
     def _start_block(self) -> BlockNumber:
         start_block = self.start_block
