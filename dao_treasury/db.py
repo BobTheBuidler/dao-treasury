@@ -215,9 +215,11 @@ class Address(DbEntity):
     # vests_received = Set("VestingEscrow", reverse="recipient")
     # vests_funded = Set("VestingEscrow", reverse="funder")
 
-    def __eq__(self, other: Union["Address", ChecksumAddress]) -> bool:  # type: ignore [override]
+    def __eq__(self, other: Union["Address", ChecksumAddress, "Token"]) -> bool:  # type: ignore [override]
         if isinstance(other, str):
             return CHAINID == self.chain.chainid and other == self.address
+        elif isinstance(other, Token):
+            return self.address_id == other.address.address_id
         return super().__eq__(other)
 
     __hash__ = DbEntity.__hash__
@@ -373,10 +375,12 @@ class Token(DbEntity):
     # streams = Set('Stream', reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
-    def __eq__(self, other: Union["Token", ChecksumAddress]) -> bool:  # type: ignore [override]
-        return (
-            self.address == other if isinstance(other, str) else super().__eq__(other)
-        )
+    def __eq__(self, other: Union["Token", Address, ChecksumAddress]) -> bool:  # type: ignore [override]
+        if isinstance(other, str):
+            return self.address == other
+        elif isinstance(other, Address):
+            return self.address.address_id == other.address_id
+        return super().__eq__(other)
 
     __hash__ = DbEntity.__hash__
 
