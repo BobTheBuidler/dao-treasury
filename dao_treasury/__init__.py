@@ -1,3 +1,4 @@
+from dao_treasury._nicknames import setup_address_nicknames_in_db
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.db import TreasuryTx
 from dao_treasury.sorting import (
@@ -16,6 +17,9 @@ from dao_treasury.sorting import (
     revenue,
 )
 from dao_treasury.treasury import Treasury
+
+
+setup_address_nicknames_in_db()
 
 
 __all__ = [
