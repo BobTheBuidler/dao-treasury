@@ -72,9 +72,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"balance\",token=\"YFI\"})",
                     "interval": "",
@@ -82,6 +83,7 @@
                     "refId": "A"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",token=\"YFI\"})",
                     "hide": false,
@@ -90,6 +92,7 @@
                     "refId": "B"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",token=\"yvYFI\"})",
                     "hide": false,
@@ -201,9 +204,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",token=\"YFI\"}) + sum(treasury_assets{param=\"usd value\",token=\"yvYFI\"})",
                     "format": "time_series",
@@ -263,9 +267,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\", bucket!=\"Other long term assets\"})",
                     "format": "time_series",
@@ -325,9 +330,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"})",
                     "interval": "",
@@ -385,9 +391,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"})",
                     "interval": "",
@@ -445,9 +452,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\", bucket=\"Cash & cash equivalents\"})",
                     "format": "time_series",
@@ -507,9 +515,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_debt{param=\"usd value\"})",
                     "format": "time_series",
@@ -569,9 +578,10 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "10.2.0",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}) - sum(treasury_debt{param=\"usd value\"})",
                     "interval": "",
@@ -590,6 +600,9 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
@@ -601,6 +614,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -644,14 +658,17 @@
                         "lastNotNull"
                     ],
                     "displayMode": "list",
-                    "placement": "bottom"
+                    "placement": "bottom",
+                    "showLegend": true
                 },
                 "tooltip": {
-                    "mode": "single"
+                    "mode": "single",
+                    "sort": "none"
                 }
             },
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\", bucket!=\"Other long term assets\"}) by (bucket)",
                     "hide": false,
@@ -660,6 +677,7 @@
                     "refId": "A"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",token=\"YFI\"}) by (bucket)",
                     "hide": true,
@@ -679,6 +697,9 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
@@ -690,6 +711,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -737,14 +759,17 @@
                         "lastNotNull"
                     ],
                     "displayMode": "list",
-                    "placement": "bottom"
+                    "placement": "bottom",
+                    "showLegend": true
                 },
                 "tooltip": {
-                    "mode": "single"
+                    "mode": "single",
+                    "sort": "none"
                 }
             },
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_debt{param=\"usd value\"}) by (token)",
                     "interval": "",
@@ -763,6 +788,9 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
@@ -774,6 +802,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -821,14 +850,17 @@
                         "lastNotNull"
                     ],
                     "displayMode": "list",
-                    "placement": "bottom"
+                    "placement": "bottom",
+                    "showLegend": true
                 },
                 "tooltip": {
-                    "mode": "single"
+                    "mode": "single",
+                    "sort": "none"
                 }
             },
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\",bucket!=\"Other long term assets\"})",
                     "hide": false,
@@ -837,6 +869,7 @@
                     "refId": "C"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"})",
                     "hide": false,
@@ -845,6 +878,7 @@
                     "refId": "E"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_debt{param=\"usd value\"})",
                     "hide": false,
@@ -853,6 +887,7 @@
                     "refId": "B"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}) - sum(treasury_debt{param=\"usd value\"})",
                     "hide": false,
@@ -861,6 +896,7 @@
                     "refId": "D"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\"}) - sum(treasury_debt{param=\"usd value\"})",
                     "hide": false,
@@ -880,6 +916,9 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
@@ -891,6 +930,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -936,15 +976,18 @@
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
-                    "placement": "bottom"
+                    "placement": "bottom",
+                    "showLegend": true
                 },
                 "tooltip": {
-                    "mode": "single"
+                    "mode": "single",
+                    "sort": "none"
                 }
             },
             "pluginVersion": "8.2.1",
             "targets": [
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_debt{param=\"usd value\"})",
                     "interval": "",
@@ -952,6 +995,7 @@
                     "refId": "A"
                 },
                 {
+                    "datasource": "PROMETHEUS",
                     "exemplar": true,
                     "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"Other long term assets\"})",
                     "hide": false,
@@ -984,7 +1028,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1047,6 +1094,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}) by (token)",
                             "hide": false,
@@ -1056,9 +1104,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid Cash",
                     "tooltip": {
                         "shared": true,
@@ -1067,9 +1113,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1077,26 +1121,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid Cash",
@@ -1104,7 +1150,7 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": "PROMETHEUS",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1167,6 +1213,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}) by (token)",
                             "hide": false,
@@ -1176,9 +1223,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid ETH",
                     "tooltip": {
                         "shared": true,
@@ -1187,9 +1232,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1197,26 +1240,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid ETH",
@@ -1224,7 +1269,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1287,6 +1335,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}) by (token)",
                             "hide": false,
@@ -1296,9 +1345,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid BTC",
                     "tooltip": {
                         "shared": true,
@@ -1307,9 +1354,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1317,26 +1362,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid BTC",
@@ -1344,7 +1391,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1407,6 +1457,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}) by (token)",
                             "hide": false,
@@ -1416,9 +1467,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid Everything Else",
                     "tooltip": {
                         "shared": true,
@@ -1427,9 +1476,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1437,26 +1484,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid Everything Else",
@@ -1464,7 +1513,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1527,6 +1579,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}) by (token,wallet)",
                             "hide": false,
@@ -1536,9 +1589,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid Cash by Wallet",
                     "tooltip": {
                         "shared": true,
@@ -1547,9 +1598,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1557,26 +1606,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid Cash by Wallet",
@@ -1584,7 +1635,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1601,7 +1655,7 @@
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
-                            "unit": "currencyUSD"
+                        "unit": "currencyUSD"
                         },
                         "overrides": []
                     },
@@ -1647,6 +1701,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}) by (token,wallet)",
                             "hide": false,
@@ -1656,9 +1711,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid ETH by Wallet",
                     "tooltip": {
                         "shared": true,
@@ -1667,9 +1720,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1677,26 +1728,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid ETH by Wallet",
@@ -1704,7 +1757,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1767,6 +1823,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}) by (token, wallet)",
                             "hide": false,
@@ -1776,9 +1833,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid BTC by Wallet",
                     "tooltip": {
                         "shared": true,
@@ -1787,9 +1842,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1797,26 +1850,28 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                    }
+                ],
+                "targets": [
+                    {
+                    "datasource": {
+                        "type": "frser-sqlite-datasource",
+                        "uid": "P2D2EEF3E092AF52B"
+                    },
+                    "refId": "A"
                 }
             ],
             "title": "Liquid BTC by Wallet",
@@ -1824,7 +1879,10 @@
         },
         {
             "collapsed": true,
-            "datasource": null,
+            "datasource": {
+                "type": "frser-sqlite-datasource",
+                "uid": "P2D2EEF3E092AF52B"
+            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1887,6 +1945,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
+                            "datasource": "PROMETHEUS",
                             "exemplar": true,
                             "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}) by (token, wallet)",
                             "hide": false,
@@ -1896,9 +1955,7 @@
                         }
                     ],
                     "thresholds": [],
-                    "timeFrom": null,
                     "timeRegions": [],
-                    "timeShift": null,
                     "title": "Liquid Everything Else by Wallet",
                     "tooltip": {
                         "shared": true,
@@ -1907,9 +1964,7 @@
                     },
                     "type": "graph",
                     "xaxis": {
-                        "buckets": null,
                         "mode": "time",
-                        "name": null,
                         "show": true,
                         "values": []
                     },
@@ -1917,196 +1972,36 @@
                         {
                             "$$hashKey": "object:72",
                             "format": "currencyUSD",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": true
                         },
                         {
                             "$$hashKey": "object:73",
                             "format": "short",
-                            "label": null,
                             "logBase": 1,
-                            "max": null,
-                            "min": null,
                             "show": false
                         }
                     ],
                     "yaxis": {
-                        "align": false,
-                        "alignLevel": null
+                        "align": false
                     }
+                }
+            ],
+            "targets": [
+                {
+                "datasource": {
+                    "type": "frser-sqlite-datasource",
+                    "uid": "P2D2EEF3E092AF52B"
+                },
+                "refId": "A"
                 }
             ],
             "title": "Liquid Everything Else by Wallet",
             "type": "row"
-        },
-        {
-            "datasource": "PROMETHEUS",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "custom": {
-                        "align": "auto",
-                        "displayMode": "auto"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "currencyUSD"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 13,
-                "w": 24,
-                "x": 0,
-                "y": 24
-            },
-            "id": 51,
-            "options": {
-                "footer": {
-                    "fields": "",
-                    "reducer": [
-                        "sum"
-                    ],
-                    "show": false
-                },
-                "frameIndex": 0,
-                "showHeader": true,
-                "sortBy": [
-                    {
-                        "desc": true,
-                        "displayName": "Period End Value ($)"
-                    }
-                ]
-            },
-            "pluginVersion": "8.3.1",
-            "targets": [
-                {
-                    "datasource": "PROMETHEUS",
-                    "exemplar": true,
-                    "expr": "treasury_assets{}",
-                    "format": "table",
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                }
-            ],
-            "title": "Panel Title",
-            "transformations": [
-                {
-                    "id": "filterByValue",
-                    "options": {
-                        "filters": [
-                            {
-                                "config": {
-                                    "id": "equal",
-                                    "options": {
-                                        "value": "usd value"
-                                    }
-                                },
-                                "fieldName": "param"
-                            }
-                        ],
-                        "match": "any",
-                        "type": "include"
-                    }
-                },
-                {
-                    "id": "groupBy",
-                    "options": {
-                        "fields": {
-                            "Value #A": {
-                                "aggregations": [
-                                    "first",
-                                    "last"
-                                ],
-                                "operation": "aggregate"
-                            },
-                            "__name__": {
-                                "aggregations": [],
-                                "operation": "groupby"
-                            },
-                            "balance": {
-                                "aggregations": []
-                            },
-                            "bucket": {
-                                "aggregations": [],
-                                "operation": "groupby"
-                            },
-                            "network": {
-                                "aggregations": []
-                            },
-                            "param": {
-                                "aggregations": []
-                            },
-                            "token": {
-                                "aggregations": [],
-                                "operation": "groupby"
-                            },
-                            "usd value": {
-                                "aggregations": [
-                                    "lastNotNull",
-                                    "firstNotNull"
-                                ],
-                                "operation": "aggregate"
-                            }
-                        }
-                    }
-                },
-                {
-                    "id": "organize",
-                    "options": {
-                        "excludeByName": {},
-                        "indexByName": {},
-                        "renameByName": {
-                            "Value #A (first)": "Period Start Value ($)",
-                            "Value #A (last)": "Period End Value ($)",
-                            "__name__": "Label",
-                            "bucket": "Bucket",
-                            "param": "",
-                            "token": "Token"
-                        }
-                    }
-                },
-                {
-                    "id": "calculateField",
-                    "options": {
-                        "alias": "+/-",
-                        "binary": {
-                            "left": "Period End Value ($)",
-                            "operator": "-",
-                            "reducer": "sum",
-                            "right": "Period Start Value ($)"
-                        },
-                        "mode": "binary",
-                        "reduce": {
-                            "reducer": "sum"
-                        }
-                    }
-                }
-            ],
-            "type": "table"
         }
     ],
     "refresh": "30s",
-    "schemaVersion": 31,
-    "style": "dark",
+    "schemaVersion": 38,
     "tags": [],
     "templating": {
         "list": []
@@ -2119,5 +2014,5 @@
     "timezone": "",
     "title": "Treasury Balances",
     "uid": "9_ppKhd7z",
-    "version": 45
+    "version": 1
 }
