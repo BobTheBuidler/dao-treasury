@@ -178,9 +178,9 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "select timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and ('$Chain' like '{%' or b.chain_name = '$Chain') and ('$Token' like '{%' or c.symbol = '$Token')\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
+          "queryText": "select timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and ('$Chain' like '{%' or b.chain_name = '$Chain') and ('$Token' like '{%' or c.symbol = '$Token') and ('$From' like '{%' or d.address = '$From') and ('$To' like '{%' or e.address = '$To')\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
           "queryType": "table",
-          "rawQueryText": "select timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and ('$Chain' like '{%' or b.chain_name = '$Chain') and ('$Token' like '{%' or c.symbol = '$Token')\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
+          "rawQueryText": "select timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and ('$Chain' like '{%' or b.chain_name = '$Chain') and ('$Token' like '{%' or c.symbol = '$Token') and ('$From' like '{%' or d.address = '$From') and ('$To' like '{%' or e.address = '$To')\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
           "refId": "A",
           "timeColumns": [
             "time",
@@ -199,18 +199,18 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "definition": "select distinct chain_name from chains",
+        "definition": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid",
         "description": "",
         "hide": 0,
         "includeAll": true,
         "multi": false,
         "name": "Chain",
         "options": [],
-        "query": "select distinct chain_name from chains",
+        "query": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -219,21 +219,61 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "definition": "select distinct symbol from tokens",
+        "definition": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id",
         "hide": 0,
         "includeAll": true,
         "multi": false,
         "name": "Token",
         "options": [],
-        "query": "select distinct symbol from tokens",
+        "query": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "From Address",
+        "multi": false,
+        "name": "From",
+        "options": [],
+        "query": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "To Address",
+        "multi": false,
+        "name": "To",
+        "options": [],
+        "query": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
         "type": "query"
       }
     ]
