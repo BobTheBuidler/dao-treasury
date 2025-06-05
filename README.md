@@ -38,4 +38,8 @@ To view the dashboards, just open your browser and navigate to [http://localhost
 
 Enjoy!
 
+## Screenshots
+
+#### [DAO Transactions Dashboard](https://bobthebuidler.github.io/dao-treasury/transactions.html)
+
 ![image](https://github.com/user-attachments/assets/64eb8947-bdd9-490e-a9ea-c9a8e4194df2)
