@@ -15,7 +15,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -179,9 +178,9 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "select chain_name as chain, timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
+          "queryText": "select chain_name as chain, timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and ('$Token' like '{%' or c.symbol = '$Token')\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
           "queryType": "table",
-          "rawQueryText": "select chain_name as chain, timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
+          "rawQueryText": "select chain_name as chain, timestamp, block, hash, token, \"from\", from_nickname as \"from nickname\", \"to\", to_nickname as \"to nickname\", amount, price, value_usd as \"value usd\", txgroup, parent_txgroup\nfrom (\n  SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id\n  FROM treasury_txs a\n      LEFT JOIN chains b ON a.chain = b.chain_dbid\n      LEFT JOIN tokens c ON a.token_id = c.token_id\n      LEFT JOIN addresses d ON a.\"from\" = d.address_id\n      LEFT JOIN addresses e ON a.\"to\" = e.address_id\n      LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id\n      LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id\n  WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and ('$Token' like '{%' or c.symbol = '$Token')\n  --UNION\n  --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, \"from\", from_nickname, \"to\", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id\n  --FROM stream_ledger\n  --UNION\n  --SELECT -1, *\n  --FROM vesting_ledger  \n) a\nORDER BY timestamp",
           "refId": "A",
           "timeColumns": [
             "time",
@@ -197,7 +196,27 @@
   "schemaVersion": 38,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "definition": "select distinct symbol from tokens",
+        "hide": 0,
+        "includeAll": true,
+        "multi": false,
+        "name": "Token",
+        "options": [],
+        "query": "select distinct symbol from tokens",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-7d",
@@ -207,6 +226,6 @@
   "timezone": "",
   "title": "Treasury Transactions",
   "uid": "b21f1092-66a4-4fb0-90ef-ed77d2becaa4",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }
