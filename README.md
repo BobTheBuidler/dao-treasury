@@ -37,3 +37,5 @@ After running the command, the export script will run continuously until you clo
 To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
 
 Enjoy!
+
+![image](https://github.com/user-attachments/assets/64eb8947-bdd9-490e-a9ea-c9a8e4194df2)
