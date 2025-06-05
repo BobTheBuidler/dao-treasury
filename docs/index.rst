@@ -6,6 +6,7 @@ Welcome to DAO Treasury's documentation!
    :caption: Contents:
 
    source/modules.rst
+   transactions
 
 Indices and tables
 ==================
