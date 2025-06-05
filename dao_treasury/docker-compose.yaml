@@ -1,5 +1,7 @@
 networks:
   dao_treasury:
+  docker_eth_portfolio:
+    external: true
 
 volumes:
   grafana_data: {}
@@ -25,6 +27,7 @@ services:
       - ./.grafana/provisioning/:/etc/grafana/provisioning/
     networks:
       - dao_treasury
+      - docker_eth_portfolio
     restart: always
 
   renderer:
@@ -37,4 +40,5 @@ services:
       - HTTP_PORT=8091
     networks:
       - dao_treasury
+      - docker_eth_portfolio
     restart: always

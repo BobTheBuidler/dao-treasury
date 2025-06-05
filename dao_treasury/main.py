@@ -138,10 +138,6 @@ async def export(args) -> None:
             grafana_port: Port for Grafana (sets DAO_TREASURY_GRAFANA_PORT).
             renderer_port: Port for renderer (sets DAO_TREASURY_RENDERER_PORT).
 
-    Note:
-        Inside this coroutine, the environment variable GRAFANA_PORT is overridden to "3003"
-        to satisfy current dashboard requirements.
-
     Example:
         In code::
 
@@ -170,6 +166,10 @@ async def export(args) -> None:
 
     treasury = Treasury(args.wallet, args.sort_rules, asynchronous=True)
     _docker.up()
+
+    # TODO: make this user configurable? would require some dynamic grafana dashboard files
+    args.label = "Treasury"
+
     try:
         await asyncio.gather(
             export_balances(args),

@@ -34,6 +34,6 @@ poetry run dao-treasury run --wallet 0x123 --network mainnet --interval 12h
 - `--victoria-port`: Set the port for the Victoria metrics reporting endpoint (default: 8430)
 
 After running the command, the export script will run continuously until you close your terminal.
-To access the dashboard, open your browser and navigate to [http://localhost:3003](http://localhost:3003) for the eth-portfolio dashboard and [http://localhost:3004](http://localhost:3004) for the dao-treasury dashboard. Soon I will combine them into one interface but for now you can check both.
+To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
 
 Enjoy!
