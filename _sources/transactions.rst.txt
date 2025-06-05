@@ -1,10 +1,5 @@
-========================================
-Transactions Dashboard Documentation
-========================================
-
-.. contents::
-   :local:
-   :depth: 2
+Transactions Dashboard 
+======================
 
 Overview
 ========
