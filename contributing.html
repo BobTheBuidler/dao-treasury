@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing to DAO Treasury &mdash; dao-treasury  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Transactions Dashboard" href="transactions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dao-treasury
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sort_rules.html">Defining Sort Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">dao_treasury</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions Dashboard</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to DAO Treasury</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-to-dao-treasury">Contributing to DAO Treasury</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-dashboard">Creating a New Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-an-existing-dashboard">Editing an Existing Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-your-changes">Submitting Your Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-notes">Additional Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dao-treasury</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing to DAO Treasury</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-to-dao-treasury">
+<h1>Contributing to DAO Treasury<a class="headerlink" href="#contributing-to-dao-treasury" title="Link to this heading"></a></h1>
+<section id="contributing-to-dao-treasury">
+<h2>Contributing to DAO Treasury<a class="headerlink" href="#contributing-to-dao-treasury" title="Link to this heading"></a></h2>
+<p>DAO Treasury was designed to make it easy for less technical users to contribute new dashboards and visuals. This guide explains how to contribute dashboard updates using Grafana’s user interface. Whether you are creating a new dashboard or editing an existing one, this guide will walk you through the steps in simple language.</p>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h3>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://web3py.readthedocs.io/en/stable/overview.html#overview" title="web3.py 7.12"><span class="xref myst">Overview</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-dashboard"><span class="xref myst">Creating a New Dashboard</span></a></p></li>
+<li><p><a class="reference internal" href="#editing-an-existing-dashboard"><span class="xref myst">Editing an Existing Dashboard</span></a></p></li>
+<li><p><a class="reference internal" href="#submitting-your-changes"><span class="xref myst">Submitting Your Changes</span></a></p></li>
+<li><p><a class="reference internal" href="#additional-notes"><span class="xref myst">Additional Notes</span></a></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h3>
+<p>This project provisions dashboards using JSON files loaded by Grafana. The dashboards are defined using the JSON configuration located in the <code class="docutils literal notranslate"><span class="pre">[.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning)</span></code> folder. Community contributions can update existing dashboard visuals or create new ones by using Grafana’s intuitive UI.</p>
+</section>
+<hr class="docutils" />
+<section id="creating-a-new-dashboard">
+<h3>Creating a New Dashboard<a class="headerlink" href="#creating-a-new-dashboard" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Access the Grafana UI</strong></p>
+<ul class="simple">
+<li><p>Open Grafana in your web browser.</p></li>
+<li><p>You can login to your local deployment as an administrator with username: <code class="docutils literal notranslate"><span class="pre">admin</span></code> and password: <code class="docutils literal notranslate"><span class="pre">admin</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Build Your Dashboard</strong></p>
+<ul class="simple">
+<li><p>Click on the <strong>“+”</strong> icon in the sidebar and choose <strong>Dashboard</strong>.</p></li>
+<li><p>Add new panels by clicking <strong>“Add new panel”</strong>.</p></li>
+<li><p>Configure each panel using the existing data sources available to you.</p></li>
+</ul>
+</li>
+<li><p><strong>Customize Visuals</strong></p>
+<ul class="simple">
+<li><p>Use the panel editor to choose the type of visualization (graph, table, etc.) and make any necessary styling or data configuration changes.</p></li>
+</ul>
+</li>
+<li><p><strong>Save Your Dashboard</strong></p>
+<ul class="simple">
+<li><p>Click the disk icon or choose <strong>Save</strong> from the dashboard menu.</p></li>
+<li><p>Provide a name and any additional details as prompted.</p></li>
+</ul>
+</li>
+<li><p><strong>Export the Dashboard JSON</strong></p>
+<ul class="simple">
+<li><p>Open the dashboard settings (click the gear icon).</p></li>
+<li><p>Navigate to the <strong>JSON model</strong> tab.</p></li>
+<li><p>Click <strong>“Export”</strong> to download the JSON file that represents your dashboard.</p></li>
+</ul>
+</li>
+<li><p><strong>Prepare Your Dashboard for Inclusion in the Repo</strong></p>
+<ul class="simple">
+<li><p>Save the exported JSON file with a descriptive name.</p></li>
+<li><p>Place the file into the appropriate subfolder within <code class="docutils literal notranslate"><span class="pre">[.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning)</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="editing-an-existing-dashboard">
+<h3>Editing an Existing Dashboard<a class="headerlink" href="#editing-an-existing-dashboard" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Access the Existing Dashboard</strong></p>
+<ul class="simple">
+<li><p>Open Grafana in your web browser.</p></li>
+<li><p>Login to your local deployment as an administrator with username: <code class="docutils literal notranslate"><span class="pre">admin</span></code> and password: <code class="docutils literal notranslate"><span class="pre">admin</span></code>.</p></li>
+<li><p>Navigate to the existing dashboard you wish to modify.</p></li>
+<li><p>Open the dashboard and click <strong>Edit</strong> to modify panels, queries, or visual styles.</p></li>
+</ul>
+</li>
+<li><p><strong>Make Your Changes</strong></p>
+<ul class="simple">
+<li><p>Adjust your panels or data queries as needed, using the same tools available when creating a new dashboard.</p></li>
+</ul>
+</li>
+<li><p><strong>Export the Updated JSON</strong></p>
+<ul class="simple">
+<li><p>After editing, open the dashboard settings and go to the <strong>JSON model</strong> tab.</p></li>
+<li><p>Export the updated JSON file.</p></li>
+</ul>
+</li>
+<li><p><strong>Update the Repo</strong></p>
+<ul class="simple">
+<li><p>Overwrite the existing JSON file in the appropriate folder (for example: <code class="docutils literal notranslate"><span class="pre">.grafana/provisioning/dashboards/treasury/Treasury.json</span></code> or <code class="docutils literal notranslate"><span class="pre">.grafana/provisioning/dashboards/transactions/Treasury</span> <span class="pre">Transactions.json</span></code>) with your updated version.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="submitting-your-changes">
+<h3>Submitting Your Changes<a class="headerlink" href="#submitting-your-changes" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Fork or Clone the Repository</strong></p>
+<ul class="simple">
+<li><p>Ensure you have your fork or a local working copy of the repository.</p></li>
+</ul>
+</li>
+<li><p><strong>Create a New Branch</strong></p>
+<ul class="simple">
+<li><p>For new dashboards, consider naming your branch something like <code class="docutils literal notranslate"><span class="pre">new-dashboard-&lt;short-name&gt;</span></code>.</p></li>
+<li><p>For edits, use a branch name like <code class="docutils literal notranslate"><span class="pre">update-dashboard-&lt;short-name&gt;</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Commit Your Changes</strong></p>
+<ul class="simple">
+<li><p>Add the new or updated JSON file(s) to your commit.</p></li>
+<li><p>Include a commit message that clearly explains your changes (e.g., “Added new sales dashboard” or “Updated layout for Treasury dashboard”).</p></li>
+</ul>
+</li>
+<li><p><strong>Open a Pull Request (PR)</strong></p>
+<ul class="simple">
+<li><p>Push your branch to your fork, then open a PR against the main repository.</p></li>
+<li><p>Provide a clear description of what you did and why.</p></li>
+<li><p>Follow any additional PR guidelines as mentioned in the project’s <a class="reference external" href="https://github.com/BobTheBuidler/dao-treasury/blob/master/README.md">README</a>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="additional-notes">
+<h3>Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Review Process:</strong>
+Your PR will be reviewed by the maintainers. They may provide feedback or ask for changes before merging.</p></li>
+<li><p><strong>Testing Changes:</strong>
+If possible, preview your dashboard changes in Grafana before exporting and submitting them. This can help catch any visual or configuration issues early.</p></li>
+<li><p><strong>Help and Questions:</strong>
+If you are not too technical or need clarification at any step, please don’t hesitate to ask for help via the project’s communication channels.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Thank you for contributing to the project and helping improve our Grafana dashboards!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="transactions.html" class="btn btn-neutral float-left" title="Transactions Dashboard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BobTheBuidler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
