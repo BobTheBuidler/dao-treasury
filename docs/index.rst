@@ -9,6 +9,7 @@ DAO Treasury Documentation
    :maxdepth: 2
    :caption: Contents:
 
+   sort_rules
    source/modules.rst
    transactions
    CONTRIBUTING
