@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defining Sort Rules &mdash; dao-treasury  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dao_treasury" href="source/modules.html" />
+    <link rel="prev" title="DAO Treasury Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dao-treasury
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Defining Sort Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-sort-rules-with-predefined-classes">1. Defining Sort Rules with Predefined Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registering-custom-matchers-using-sortrulefactory">2. Registering Custom Matchers Using SortRuleFactory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-yaml-based-sort-rules">3. External YAML-Based Sort Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matching-logic-in-sort-rules">4. Matching Logic in Sort Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">dao_treasury</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Transactions Dashboard</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dao-treasury</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Defining Sort Rules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sort_rules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="defining-sort-rules">
+<h1>Defining Sort Rules<a class="headerlink" href="#defining-sort-rules" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>DAO Treasury’s sorting system provides a flexible and extensible way to classify transactions.
+Sort rules can be defined either by specifying a set of transaction attributes to match or by
+supplying a custom matching function. The system is built around three main components:</p>
+<ol class="arabic simple">
+<li><p>Sort Rule Classes and Factories – Predefined sort rule classes (such as RevenueSortRule,
+ExpenseSortRule, etc.) are specialized tools that associate a provided transaction group
+identifier (txgroup) with a fixed category (e.g. “Revenue”, “Expenses”, “Other Income”).
+Internally, these classes register rules under their composite key fullname (e.g., “Revenue:Sales:Ice Cream”)
+for matching purposes.</p></li>
+<li><p>Custom Matching via SortRuleFactory – Factories (provided by functions like <cite>revenue</cite>,
+<cite>expense</cite>, etc. in <code class="file docutils literal notranslate"><span class="pre">dao_treasury/sorting/factory.py</span></code>) allow registration of custom
+synchronous or asynchronous matching functions.</p></li>
+<li><p>External YAML-Based Sort Rules – Declarative rules defined in YAML files can be loaded at
+runtime by passing the directory path to the CLI via the <cite>–sort-rules</cite> flag.</p></li>
+</ol>
+<p>This document details how to define and register your own sort rules, with real-world examples.</p>
+</section>
+<section id="defining-sort-rules-with-predefined-classes">
+<h2>1. Defining Sort Rules with Predefined Classes<a class="headerlink" href="#defining-sort-rules-with-predefined-classes" title="Link to this heading"></a></h2>
+<p>DAO Treasury provides specialized rule classes in <code class="file docutils literal notranslate"><span class="pre">dao_treasury/sorting/rule.py</span></code>
+to cover common transaction types:</p>
+<ul>
+<li><p><strong>RevenueSortRule</strong>: Intended for inbound transactions representing revenue.
+- When instantiated with a txgroup like “Sales”, it registers the rule internally using a composite key</p>
+<blockquote>
+<div><p>such as “Revenue:Sales”, signaling that the rule is for revenue transactions.</p>
+</div></blockquote>
+</li>
+<li><p><strong>CostOfRevenueSortRule</strong>: Designed for outbound transactions representing cost of revenue.
+- The rule is registered with a composite key like “Cost of Revenue:&lt;txgroup&gt;”.</p></li>
+<li><p><strong>ExpenseSortRule</strong>: For outbound transactions representing expenses.
+- A rule created with txgroup “Office” is registered under “Expenses:Office”.</p></li>
+<li><p><strong>OtherIncomeSortRule</strong>: For inbound transactions representing other income.
+- The composite key is formed by associating “Other Income” with the provided txgroup.</p></li>
+<li><p><strong>OtherExpenseSortRule</strong>: For outbound transactions representing other expenses.
+- The rule is similarly registered with an “Other Expenses” prefix.</p></li>
+<li><p><strong>IgnoreSortRule</strong>: For transactions that should be omitted from certain reports.
+- The rule is registered using a composite key prefixed with “Ignore:”.</p></li>
+</ul>
+<p>Example (static attribute matching):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting.rule</span><span class="w"> </span><span class="kn">import</span> <span class="n">RevenueSortRule</span>
+
+<span class="c1"># Create a revenue rule that matches inbound transactions where the token symbol</span>
+<span class="c1"># is &#39;DAI&#39; and the to_address is &#39;0xAbC1230000000000000000000000000000000000&#39;</span>
+<span class="c1"># The rule is registered under a composite key &quot;Revenue:Sales&quot;</span>
+<span class="c1"># Once defined, all transactions matching this rule will be sorted to group</span>
+<span class="c1"># &quot;Revenue:Sales&quot; in the db</span>
+<span class="n">rule</span> <span class="o">=</span> <span class="n">RevenueSortRule</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="o">=</span><span class="s1">&#39;Sales&#39;</span><span class="p">,</span>
+    <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;DAI&#39;</span><span class="p">,</span>
+    <span class="n">to_address</span><span class="o">=</span><span class="s1">&#39;0xAbC1230000000000000000000000000000000000&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="registering-custom-matchers-using-sortrulefactory">
+<h2>2. Registering Custom Matchers Using SortRuleFactory<a class="headerlink" href="#registering-custom-matchers-using-sortrulefactory" title="Link to this heading"></a></h2>
+<p>For more dynamic rules, DAO Treasury offers a decorator interface through
+<code class="file docutils literal notranslate"><span class="pre">dao_treasury/sorting/factory.py</span></code>. Factory functions such as <cite>revenue</cite>, <cite>expense</cite>,
+<cite>other_income</cite>, etc., return a SortRuleFactory preconfigured with the appropriate rule type.
+These factories support two patterns:</p>
+<p><strong>A. Decorator form</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting.factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">revenue</span>
+
+<span class="nd">@revenue</span><span class="p">(</span><span class="s2">&quot;Token Sales&quot;</span><span class="p">,</span> <span class="n">networks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">match_large_sales</span><span class="p">(</span><span class="n">tx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tx</span><span class="o">.</span><span class="n">value_usd</span> <span class="o">&gt;</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Real-world Yearn example: Vault fees rule using <cite>&#64;fees</cite> decorator:
+<a class="reference external" href="https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/rules/revenue/vaults.py">https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/rules/revenue/vaults.py</a></p>
+</div>
+<p>In this form, the factory registers the custom matching function via the rule’s <cite>func</cite> parameter.
+The network specification determines if the rule is instantiated (typically, the current CHAINID
+must be among the allowed networks).</p>
+<p><strong>B. Static attribute matching</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting.factory</span><span class="w"> </span><span class="kn">import</span> <span class="n">ignore</span>
+
+<span class="n">ignore</span><span class="p">(</span><span class="s2">&quot;Dust&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;WETH&quot;</span><span class="p">,</span> <span class="n">from_address</span><span class="o">=</span><span class="s2">&quot;0xAAA...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="external-yaml-based-sort-rules">
+<h2>3. External YAML-Based Sort Rules<a class="headerlink" href="#external-yaml-based-sort-rules" title="Link to this heading"></a></h2>
+<p>Define rules in YAML under category subfolders:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rules/
+├── revenue/
+│   ├── match_on_hash.yml
+│   └── match_on_to_address.yml
+├── other_income/
+├── other_expense/
+└── ignore/
+</pre></div>
+</div>
+<p>Example YAML mapping:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">1</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">DonationReceived</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0xabc123...</span>
+</pre></div>
+</div>
+<p>Real-world YAML examples:
+- Other Expense matcher:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/rules/other_expense/match_on_to_address.yaml">https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/rules/other_expense/match_on_to_address.yaml</a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Other Income matcher:
+<a class="reference external" href="https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/rules/other_income/match_on_hash.yaml">https://github.com/BobTheBuidler/yearn-treasury/blob/master/yearn_treasury/rules/other_income/match_on_hash.yaml</a></p></li>
+</ul>
+<p>Enable via CLI:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">dao-treasury --sort-rules ./rules …</span>
+</pre></div>
+</div>
+<p>Additionally, YAML definitions may include fields such as <cite>from_address</cite>, <cite>to_address</cite>, or full transaction <cite>hash</cite>—these values are validated under the hood by the library’s string matcher classes.</p>
+</section>
+<section id="matching-logic-in-sort-rules">
+<h2>4. Matching Logic in Sort Rules<a class="headerlink" href="#matching-logic-in-sort-rules" title="Link to this heading"></a></h2>
+<p>Sort rules extend the base class (_SortRule) which defines the matching behavior:</p>
+<ul class="simple">
+<li><p>If specific transaction attributes (like <cite>symbol</cite>, <cite>to_address</cite>, etc.) are provided,
+these are gathered into a cached list (stored in the internal <code class="docutils literal notranslate"><span class="pre">_match_all</span></code> dictionary)
+and used for direct attribute comparisons.</p></li>
+<li><p>If a custom matching function (<cite>func</cite>) is provided, that function is invoked on the
+transaction. It can be either synchronous (returning a boolean) or asynchronous (awaitable).</p></li>
+</ul>
+<p>The matching process is encapsulated in the <cite>match</cite> method of the rule classes, ensuring that
+only one matching strategy (either attribute-based or function-based) is used for a given rule.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>Defining custom sort rules involves:</p>
+<ul class="simple">
+<li><p>Using predefined rule classes for standard categories.</p></li>
+<li><p>Registering dynamic rules via decorator factories.</p></li>
+<li><p>Declaring rules in YAML for external, file-based configuration.</p></li>
+</ul>
+<p>This modular design enables DAO Treasury users to flexibly adapt its sorting strategy to the evolving requirements of their DAO.</p>
+<p>For details, see:
+- <code class="file docutils literal notranslate"><span class="pre">dao_treasury/sorting/rule.py</span></code>
+- <code class="file docutils literal notranslate"><span class="pre">dao_treasury/sorting/factory.py</span></code></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="DAO Treasury Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="source/modules.html" class="btn btn-neutral float-right" title="dao_treasury" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BobTheBuidler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
