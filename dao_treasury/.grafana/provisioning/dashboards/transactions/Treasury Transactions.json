@@ -29,6 +29,7 @@
             },
             "inspect": false
           },
+          "decimals": 8,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
