@@ -23,6 +23,7 @@ types-pyyaml = "*"
 [tool.poetry.group.docs.dependencies]
 sphinx = "*"
 sphinx-rtd-theme = "*"
+myst-parser = "*"
 
 [build-system]
 requires = [
