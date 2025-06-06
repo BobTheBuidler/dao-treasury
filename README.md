@@ -5,7 +5,7 @@ DAO Treasury is a comprehensive financial reporting and treasury management solu
 - **Financial Reporting for DAOs:** Extends core portfolio functionalities to generate detailed reports tailored for on-chain organizations.
 - **Dashboard Provisioning:** Utilizes Grafana dashboards—defined in JSON files within the .grafana/provisioning directories—to offer real-time, dynamic visualizations of treasury data.
 - **Automated Data Export:** Features a treasury export tool that, once configured (with a supported brownie network and Docker), continuously captures financial snapshots at set intervals.
-- **Ease of Contribution:** Non-technical users can easily update or create dashboard visuals using Grafana’s intuitive UI. The [Contributing Guidelines](../CONTRIBUTING.md) document provides a step-by-step guide to defining new visuals and dashboards and integrating those changes into the repository, ensuring that anyone can contribute to the visual reporting aspect of the project.
+- **Ease of Contribution:** Non-technical users can easily update or create dashboard visuals using Grafana’s intuitive UI. The [Contributing Guidelines](https://github.com/BobTheBuidler/dao-treasury/blob/master/CONTRIBUTING.md) document provides a step-by-step guide to defining new visuals and dashboards and integrating those changes into the repository, ensuring that anyone can contribute to the visual reporting aspect of the project.
 
 ## Installation
 
@@ -53,4 +53,4 @@ Enjoy!
 
 ## Contributing
 
-We welcome contributions to DAO Treasury! For detailed guidelines on how to contribute, please see the [Contributing Guidelines](../CONTRIBUTING.md).
+We welcome contributions to DAO Treasury! For detailed guidelines on how to contribute, please see the [Contributing Guidelines](https://github.com/BobTheBuidler/dao-treasury/blob/master/CONTRIBUTING.md).
