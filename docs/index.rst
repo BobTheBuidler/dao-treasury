@@ -12,7 +12,7 @@ DAO Treasury Documentation
    sort_rules
    source/modules.rst
    transactions
-   CONTRIBUTING
+   Contributing to DAO Treasury <../CONTRIBUTING.md>
 
 Indices and Tables
 ------------------
