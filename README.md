@@ -53,4 +53,4 @@ Enjoy!
 
 ## Contributing
 
-We welcome contributions to DAO Treasury! For detailed guidelines on how to contribute, please see the [CONTRIBUTING.md](CONTRIBUTING.md)file.
+We welcome contributions to DAO Treasury! For detailed guidelines on how to contribute, please see the [Contributing Guidelines](CONTRIBUTING.md).
