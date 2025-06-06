@@ -16,7 +16,7 @@ DAO Treasury was designed to make it easy for less technical users to contribute
 
 ## Overview
 
-This project provisions dashboards using JSON files loaded by Grafana. The dashboards are defined using the JSON configuration located in the `[.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning)` folder. Community contributions can update existing dashboard visuals or create new ones by using Grafana's intuitive UI.
+This project provisions dashboards using JSON files loaded by Grafana. The dashboards are defined using the JSON configuration located in the [.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning) folder. Community contributions can update existing dashboard visuals or create new ones by using Grafana's intuitive UI.
 
 ---
 
@@ -45,7 +45,7 @@ This project provisions dashboards using JSON files loaded by Grafana. The dashb
 
 6. **Prepare Your Dashboard for Inclusion in the Repo**  
    - Save the exported JSON file with a descriptive name.
-   - Place the file into the appropriate subfolder within `[.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning)`.
+   - Place the file into the appropriate subfolder within [.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning).
 
 ---
 
