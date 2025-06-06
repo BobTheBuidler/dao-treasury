@@ -1,4 +1,11 @@
-This library extends eth_portfolio with additional functionality centered around producing financial reports for DAOs and other on-chain orgs.
+DAO Treasury is a comprehensive financial reporting and treasury management solution designed specifically for decentralized organizations. Built as an extension to [eth-portfolio](https://github.com/BobTheBuidler/eth-portfolio), DAO Treasury automates the collection and visualization of financial data, enabling organizations to monitor and report on treasury activities with clarity and transparency.
+
+## Key Features
+
+- **Financial Reporting for DAOs:** Extends core portfolio functionalities to generate detailed reports tailored for on-chain organizations.
+- **Dashboard Provisioning:** Utilizes Grafana dashboards—defined in JSON files within the .grafana/provisioning directories—to offer real-time, dynamic visualizations of treasury data.
+- **Automated Data Export:** Features a treasury export tool that, once configured (with a supported brownie network and Docker), continuously captures financial snapshots at set intervals.
+- **Ease of Contribution:** Non-technical users can easily update or create dashboard visuals using Grafana’s intuitive UI. The [CONTRIBUTING.md](CONTRIBUTING.md) document provides a step-by-step guide to defining new visuals and dashboards, ensuring that anyone can contribute to the visual reporting aspect of the project.
 
 ## Installation
 
@@ -43,3 +50,7 @@ Enjoy!
 #### [DAO Transactions Dashboard](https://bobthebuidler.github.io/dao-treasury/transactions.html)
 
 ![image](https://github.com/user-attachments/assets/64eb8947-bdd9-490e-a9ea-c9a8e4194df2)
+
+## Contributing
+
+We welcome contributions to DAO Treasury! For detailed guidelines on how to contribute, please see the [CONTRIBUTING.md](CONTRIBUTING.md)file.
