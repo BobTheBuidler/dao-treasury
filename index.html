@@ -73,6 +73,49 @@
              
   <section id="welcome-to-dao-treasury-s-documentation">
 <h1>Welcome to DAO Treasury’s documentation!<a class="headerlink" href="#welcome-to-dao-treasury-s-documentation" title="Link to this heading"></a></h1>
+<p>This library extends eth_portfolio with additional functionality centered around producing financial reports for DAOs and other on-chain orgs.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dao-treasury
+</pre></div>
+</div>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>You must have a <a class="reference external" href="https://eth-brownie.readthedocs.io/en/stable/network-management.html">brownie network</a> configured to use your RPC.
+You will also need <a class="reference external" href="https://www.docker.com/get-started/">Docker</a> installed on your system.</p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>Run the treasury export tool:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For pip installations:</span>
+dao-treasury<span class="w"> </span>run<span class="w"> </span>--wallet<span class="w"> </span>0x123<span class="w"> </span>--network<span class="w"> </span>mainnet<span class="w"> </span>--interval<span class="w"> </span>12h
+</pre></div>
+</div>
+<p>For local development (from source installation), use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>dao-treasury<span class="w"> </span>run<span class="w"> </span>--wallet<span class="w"> </span>0x123<span class="w"> </span>--network<span class="w"> </span>mainnet<span class="w"> </span>--interval<span class="w"> </span>12h
+</pre></div>
+</div>
+<p><strong>CLI Options:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--network</span></code>: The id of the brownie network the exporter will connect to (default: mainnet)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--interval</span></code>: The time interval between each data snapshot (default: 12h)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--daemon</span></code>: Run the export process in the background (default: False) (NOTE: currently unsupported)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--grafana-port</span></code>: Set the port for the Grafana dashboard where you can view data (default: 3004)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--renderer-port</span></code>: Set the port for the report rendering service (default: 8080)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--victoria-port</span></code>: Set the port for the Victoria metrics reporting endpoint (default: 8430)</p></li>
+</ul>
+<p>After running the command, the export script will run continuously until you close your terminal.
+To view the dashboards, just open your browser and navigate to <a class="reference external" href="http://localhost:3004">http://localhost:3004</a>!</p>
+<p>Enjoy!</p>
+</section>
+<section id="screenshots">
+<h2>Screenshots<a class="headerlink" href="#screenshots" title="Link to this heading"></a></h2>
+<section id="dao-transactions-dashboard">
+<h3><a class="reference external" href="https://bobthebuidler.github.io/dao-treasury/transactions.html">DAO Transactions Dashboard</a><a class="headerlink" href="#dao-transactions-dashboard" title="Link to this heading"></a></h3>
+<p><img alt="image" src="https://github.com/user-attachments/assets/64eb8947-bdd9-490e-a9ea-c9a8e4194df2" /></p>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
