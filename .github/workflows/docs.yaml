@@ -41,8 +41,16 @@ jobs:
         
       - name: Build documentation config
         run: make docs
-
+        
+      - name: Setup brownie networks
+        run: |
+          poetry run brownie networks modify mainnet host=${{ secrets.WEB3_PROVIDER }}
+        continue-on-error: true
+        
       - name: Build documentation
+        env:
+          BROWNIE_NETWORK_ID: mainnet
+          ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN  }}
         run: |
           cd docs
           make html
