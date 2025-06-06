@@ -4,6 +4,11 @@ DAO Treasury Documentation
 .. include:: ../README.md
    :parser: myst_parser.sphinx_
 
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Contents:
+
    source/modules.rst
    transactions
    CONTRIBUTING
