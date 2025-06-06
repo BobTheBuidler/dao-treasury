@@ -35,7 +35,9 @@ jobs:
         uses: snok/install-poetry@v1
 
       - name: Install Project
-        run: poetry install --no-interaction
+        run: |
+          poetry install --no-interaction
+          poetry run pip install -U setuptools
         
       - name: Build documentation config
         run: make docs
