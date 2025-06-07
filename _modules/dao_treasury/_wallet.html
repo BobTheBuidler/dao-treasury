@@ -86,6 +86,8 @@
 
 <span class="n">WALLETS</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="s2">&quot;TreasuryWallet&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 
+<span class="n">to_address</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">to_address</span>
+
 
 <div class="viewcode-block" id="TreasuryWallet">
 <a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.TreasuryWallet">[docs]</a>
@@ -113,7 +115,9 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The networks where the DAO owns this wallet. If not provided, the wallet will be active on all networks.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">EthAddress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+        <span class="c1"># If a user provides a wallets yaml file but forgets to wrap the address</span>
+        <span class="c1"># keys with quotes, it will be an integer we must convert to an address.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">EthAddress</span><span class="p">(</span><span class="n">to_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">))</span>
 
         <span class="n">start_block</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_block</span>
         <span class="n">start_timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_timestamp</span>
@@ -190,7 +194,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">instance</span> <span class="o">=</span> <span class="n">WALLETS</span><span class="p">[</span><span class="n">address</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">checksummed</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">to_address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+            <span class="n">checksummed</span> <span class="o">=</span> <span class="n">to_address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">instance</span> <span class="o">=</span> <span class="n">WALLETS</span><span class="p">[</span><span class="n">address</span><span class="p">]</span> <span class="o">=</span> <span class="n">WALLETS</span><span class="p">[</span><span class="n">checksummed</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
