@@ -95,7 +95,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span>
@@ -403,6 +403,15 @@
                 <span class="n">entity</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="n">nickname</span>
                 <span class="n">commit</span><span class="p">()</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> nickname set to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">nickname</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Address.set_nicknames">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address.set_nicknames">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_nicknames</span><span class="p">(</span><span class="n">nicknames</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">HexAddress</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">address</span><span class="p">,</span> <span class="n">nickname</span> <span class="ow">in</span> <span class="n">nicknames</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">Address</span><span class="o">.</span><span class="n">set_nickname</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">nickname</span><span class="p">)</span></div>
 </div>
 
 
