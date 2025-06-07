@@ -64,7 +64,7 @@ Example YAML File
     0xAAAABBBBCCCCDDDDEEEEFFFF0000111122223333:
 
 Notes
------
+~~~~~
 
 - The top-level keys are wallet addresses.
 - Use the optional ``networks`` key (a list of integer chain IDs) to restrict a wallet to specific chains.
