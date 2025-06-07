@@ -51,7 +51,8 @@ parser.add_argument(
     type=str,
     help=(
         "DAO treasury wallet address(es) to include in the export. "
-        "Specify one or more addresses separated by spaces."
+        "Specify one or more addresses separated by spaces. "
+        "Check out https://bobthebuidler.github.io/dao-treasury/wallets.html for more info."
     ),
     nargs="+",
 )
@@ -61,7 +62,8 @@ parser.add_argument(
     help=(
         "Path to a YAML file mapping wallet addresses to advanced settings. "
         "Each address is a key, with nested 'start' and/or 'end' mappings containing "
-        "either 'block' or 'timestamp'."
+        "either 'block' or 'timestamp'. "
+        "Check out https://bobthebuidler.github.io/dao-treasury/wallets.html for more info."
     ),
     default=None,
 )
@@ -110,18 +112,6 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-
-# Ensure user does not supply both simple and advanced wallet inputs
-if args.wallet and args.wallets:
-    parser.error("Cannot specify both --wallet and --wallets")
-
-# Load advanced wallets from YAML if --wallets provided
-if args.wallets:
-    args.wallet = load_wallets_from_yaml(args.wallets)
-
-# Ensure at least one wallet source is provided
-if not args.wallet:
-    parser.error("Must specify either --wallet or --wallets")
 
 os.environ["DAO_TREASURY_GRAFANA_PORT"] = str(args.grafana_port)
 os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
@@ -176,6 +166,21 @@ async def export(args) -> None:
 
     from dao_treasury import _docker, db, Treasury
 
+    wallets = getattr(args, "wallet", None)
+    wallets_advanced = getattr(args, "wallets", None)
+
+    # Ensure user does not supply both simple and advanced wallet inputs
+    if wallets and wallets_advanced:
+        parser.error("Cannot specify both --wallet and --wallets")
+
+    # Load advanced wallets from YAML if --wallets provided
+    if wallets_advanced:
+        wallets = load_wallets_from_yaml(wallets_advanced)
+
+    # Ensure at least one wallet source is provided
+    if not wallets:
+        parser.error("Must specify either --wallet or --wallets")
+
     # TODO: remove this after refactoring eth-port a bit so we arent required to bring up the e-p dashboards
     os.environ["GRAFANA_PORT"] = "3003"
 
@@ -188,8 +193,17 @@ async def export(args) -> None:
             for address in addresses:
                 db.Address.set_nickname(address, nickname)
 
-    treasury = Treasury(args.wallet, args.sort_rules, asynchronous=True)
+    treasury = Treasury(wallets, args.sort_rules, asynchronous=True)
     _docker.up()
+
+    # eth-portfolio needs this present
+    # TODO: we need to update eth-portfolio to honor wallet join and exit times
+    args.wallet = [
+        wallet.address
+        for wallet in wallets
+        if wallet.networks is None
+        or CHAINID in wallet.networks
+    ]
 
     # TODO: make this user configurable? would require some dynamic grafana dashboard files
     args.label = "Treasury"

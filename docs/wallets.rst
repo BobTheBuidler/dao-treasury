@@ -12,7 +12,7 @@ The DAO Treasury CLI supports two modes for specifying wallets:
        dao-treasury --wallet 0xABC... 0xDEF...
 
 2. Advanced Mode  
-   Use the ``--wallets`` flag with a path to a YAML file. This YAML must map each wallet address to a configuration object using the pattern:
+   Use the ``--wallets`` flag with a path to a YAML file, which will be parsed by :func:`~load_wallets_from_yaml`. This YAML must map each wallet address to a configuration object using the pattern:
 
    ::
 
