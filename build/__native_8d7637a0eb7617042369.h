@@ -93,6 +93,8 @@ typedef struct {
     PyObject *___mypyc_temp__6;
     tuple_T3OOO ___mypyc_temp__7;
     tuple_T3OOO ___mypyc_temp__8;
+    PyObject *___mypyc_temp__9;
+    tuple_T3OOO ___mypyc_temp__10;
 } dao_treasury___sorting___sort_advanced_envObject;
 
 typedef struct {
