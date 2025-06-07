@@ -38,13 +38,10 @@ def test_full_config(tmp_path):
     - {chainid}
     - 420
   start:
-    timestamp: 1600000000
     block:
       {chainid}: 1000000
   end:
     timestamp: 1700000000
-    block:
-      {chainid}: 2000000
 
 0x1234567890ABCDEF1234567890ABCDEF12345678:
   start:
