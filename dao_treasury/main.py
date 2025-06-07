@@ -28,6 +28,7 @@ from pathlib import Path
 
 import brownie
 import yaml
+from dao_treasury._wallet import load_wallets_from_yaml
 from eth_typing import BlockNumber
 
 from eth_portfolio_scripts.balances import export_balances
@@ -53,6 +54,16 @@ parser.add_argument(
         "Specify one or more addresses separated by spaces."
     ),
     nargs="+",
+)
+parser.add_argument(
+    "--wallets",
+    type=Path,
+    help=(
+        "Path to a YAML file mapping wallet addresses to advanced settings. "
+        "Each address is a key, with nested 'start' and/or 'end' mappings containing "
+        "either 'block' or 'timestamp'."
+    ),
+    default=None,
 )
 parser.add_argument(
     "--sort-rules",
@@ -100,6 +111,18 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+# Ensure user does not supply both simple and advanced wallet inputs
+if args.wallet and args.wallets:
+    parser.error("Cannot specify both --wallet and --wallets")
+
+# Load advanced wallets from YAML if --wallets provided
+if args.wallets:
+    args.wallet = load_wallets_from_yaml(args.wallets)
+
+# Ensure at least one wallet source is provided
+if not args.wallet:
+    parser.error("Must specify either --wallet or --wallets")
+
 os.environ["DAO_TREASURY_GRAFANA_PORT"] = str(args.grafana_port)
 os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
@@ -132,7 +155,7 @@ async def export(args) -> None:
 
     Args:
         args: Parsed command-line arguments containing:
-            wallet: Treasury wallet address strings.
+            wallet: List of simple addresses or TreasuryWallet instances.
             sort_rules: Directory of sorting rules.
             interval: Time interval for balance snapshots.
             daemon: Ignored flag.

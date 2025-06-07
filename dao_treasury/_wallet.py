@@ -1,11 +1,13 @@
 from dataclasses import dataclass
-from typing import Dict, Final, Optional, final
+from pathlib import Path
+from typing import Dict, Final, List, Optional, final
 
+import yaml
 from brownie.convert.datatypes import EthAddress
 from eth_typing import BlockNumber, ChecksumAddress, HexAddress
 from y import convert
 from y.time import closest_block_after_timestamp
-
+from y.constants import CHAINID
 
 WALLETS: Final[Dict[ChecksumAddress, "TreasuryWallet"]] = {}
 
@@ -66,12 +68,15 @@ class TreasuryWallet:
     def check_membership(
         address: Optional[HexAddress], block: Optional[BlockNumber] = None
     ) -> bool:
-        if address is not None and (wallet := TreasuryWallet._get_instance(address)):
-            return block is None or (
-                wallet._start_block <= block
-                and (wallet._end_block is None or wallet._end_block >= block)
-            )
-        return False
+        if address is None:
+            return False
+        wallet = TreasuryWallet._get_instance(address)
+        if wallet is None:
+            return False
+        return block is None or (
+            wallet._start_block <= block
+            and (wallet._end_block is None or wallet._end_block >= block)
+        )
 
     @property
     def _start_block(self) -> BlockNumber:
@@ -107,3 +112,56 @@ class TreasuryWallet:
             return None
         else:
             return instance
+
+
+def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
+    """
+    Load a YAML mapping of wallet addresses to configuration and return a list of TreasuryWallets.
+    'timestamp' in top-level start is universal.
+    'block' in top-level start must be provided under the chain ID key.
+    """
+    try:
+        data = yaml.safe_load(path.read_bytes())
+    except Exception as e:
+        raise ValueError(f"Failed to parse wallets YAML: {e}")
+
+    if not isinstance(data, dict):
+        raise ValueError("Wallets YAML file must be a mapping of address to config")
+
+    wallets: List[TreasuryWallet] = []
+    for address, cfg in data.items():
+        # Allow bare keys
+        if cfg is None:
+            cfg = {}
+        elif not isinstance(cfg, dict):
+            raise ValueError(f"Invalid config for wallet {address}, expected mapping")
+
+        kwargs = {"address": address}
+
+        # Parse start: timestamp universal, block under chain key
+        start_cfg = cfg.get("start", {})
+        if not isinstance(start_cfg, dict):
+            raise ValueError(f"Invalid 'start' for wallet {address}, expected mapping")
+        if "timestamp" in start_cfg:
+            kwargs["start_timestamp"] = start_cfg["timestamp"]
+        chain_block = start_cfg.get(str(CHAINID)) or start_cfg.get(CHAINID)
+        if chain_block is not None:
+            if not isinstance(chain_block, int):
+                raise ValueError(f"Invalid start.block for chain {CHAINID} on {address}")
+            kwargs["start_block"] = chain_block
+
+        # Parse end: timestamp universal, block under chain key
+        end_cfg = cfg.get("end", {})
+        if not isinstance(end_cfg, dict):
+            raise ValueError(f"Invalid 'end' for wallet {address}, expected mapping")
+        if "timestamp" in end_cfg:
+            kwargs["end_timestamp"] = end_cfg["timestamp"]
+        chain_end_block = end_cfg.get(str(CHAINID)) or end_cfg.get(CHAINID)
+        if chain_end_block is not None:
+            if not isinstance(chain_end_block, int):
+                raise ValueError(f"Invalid end.block for chain {CHAINID} on {address}")
+            kwargs["end_block"] = chain_end_block
+
+        wallets.append(TreasuryWallet(**kwargs))
+
+    return wallets
