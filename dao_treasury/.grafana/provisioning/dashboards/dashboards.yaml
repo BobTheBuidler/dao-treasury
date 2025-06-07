@@ -9,6 +9,14 @@ providers:
   options:
     path: /etc/grafana/provisioning/dashboards/treasury
 
+- name: 'Cashflow Overview'
+  folder: 'treasury'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/treasury
+
 - name: 'Treasury Transactions'
   folder: 'transactions'
   type: file

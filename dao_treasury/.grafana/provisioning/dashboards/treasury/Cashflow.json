@@ -1,0 +1,1018 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 5,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Revenue'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Revenue'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Revenue",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Expenses'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Expenses'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Expenses",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Cost of Revenue'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Cost of Revenue'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Cost Of Revenue",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Other Income'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Other Income'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Other Income",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Other Expenses'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Other Expenses'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Other Expenses",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    (\n        -- Revenue\n        SUM(CASE WHEN gh.top_category = 'Revenue'         THEN t.value_usd ELSE 0 END)\n        -- Cost of Revenue\n      - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n        -- Expenses\n      - SUM(CASE WHEN gh.top_category = 'Expenses'        THEN t.value_usd ELSE 0 END)\n        -- Other Income\n      + SUM(CASE WHEN gh.top_category = 'Other Income'    THEN t.value_usd ELSE 0 END)\n        -- Other Expenses\n      - SUM(CASE WHEN gh.top_category = 'Other Expenses'  THEN t.value_usd ELSE 0 END)\n    ) AS total_net\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    (\n        -- Revenue\n        SUM(CASE WHEN gh.top_category = 'Revenue'         THEN t.value_usd ELSE 0 END)\n        -- Cost of Revenue\n      - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n        -- Expenses\n      - SUM(CASE WHEN gh.top_category = 'Expenses'        THEN t.value_usd ELSE 0 END)\n        -- Other Income\n      + SUM(CASE WHEN gh.top_category = 'Other Income'    THEN t.value_usd ELSE 0 END)\n        -- Other Expenses\n      - SUM(CASE WHEN gh.top_category = 'Other Expenses'  THEN t.value_usd ELSE 0 END)\n    ) AS total_net\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Sorted Total",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 70,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Net (sum)"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 19
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 20,
+        "x": 0,
+        "y": 4
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n        ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    t.timestamp,\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income')         THEN t.value_usd ELSE 0 END) AS \"Total Revenue\",\n    SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses')  THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\",\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses')  THEN t.value_usd ELSE 0 END) AS \"Net\"\nFROM treasury_txs AS t\nJOIN group_hierarchy gh\n    ON t.txgroup_id = gh.txgroup_id\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\nGROUP BY timestamp\nORDER BY timestamp;",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n        ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    t.timestamp,\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income')         THEN t.value_usd ELSE 0 END) AS \"Total Revenue\",\n    SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses')  THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\",\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses')  THEN t.value_usd ELSE 0 END) AS \"Net\"\nFROM treasury_txs AS t\nJOIN group_hierarchy gh\n    ON t.txgroup_id = gh.txgroup_id\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\nGROUP BY timestamp\nORDER BY timestamp;",
+          "refId": "A",
+          "timeColumns": [
+            "timestamp"
+          ]
+        }
+      ],
+      "title": "Weekly Cashflow",
+      "transformations": [
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "YYYY-WW",
+            "timeField": "timestamp",
+            "timezone": "browser",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "YYYY-WW",
+                "destinationType": "time",
+                "targetField": "timestamp"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Net": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Total Expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Total Revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "cost_of_revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "other_expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "other_income": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "timestamp": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": "SQLite",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 4
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Sort Me (Inbound)'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Sort Me (Inbound)'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Unsorted (Inbound)",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 8
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Sort Me (Outbound)'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT txgroup_id, name AS top_category, parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    SUM(t.value_usd) AS total_revenue\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE gh.top_category = 'Sort Me (Outbound)'\n  AND t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Unsorted (Outbound)",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 12
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    (\n        -- Revenue\n        SUM(CASE WHEN gh.top_category = 'Revenue'         THEN t.value_usd ELSE 0 END)\n        -- Cost of Revenue\n      - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n        -- Expenses\n      - SUM(CASE WHEN gh.top_category = 'Expenses'        THEN t.value_usd ELSE 0 END)\n        -- Other Income\n      + SUM(CASE WHEN gh.top_category = 'Other Income'    THEN t.value_usd ELSE 0 END)\n        -- Other Expenses\n      - SUM(CASE WHEN gh.top_category = 'Other Expenses'  THEN t.value_usd ELSE 0 END)\n        -- Sort Me (Inbound)\n      + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)'    THEN t.value_usd ELSE 0 END)\n        -- Sort Me (Outbound)\n      - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)'    THEN t.value_usd ELSE 0 END)\n    ) AS total_net\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n      ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    (\n        -- Revenue\n        SUM(CASE WHEN gh.top_category = 'Revenue'         THEN t.value_usd ELSE 0 END)\n        -- Cost of Revenue\n      - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n        -- Expenses\n      - SUM(CASE WHEN gh.top_category = 'Expenses'        THEN t.value_usd ELSE 0 END)\n        -- Other Income\n      + SUM(CASE WHEN gh.top_category = 'Other Income'    THEN t.value_usd ELSE 0 END)\n        -- Other Expenses\n      - SUM(CASE WHEN gh.top_category = 'Other Expenses'  THEN t.value_usd ELSE 0 END)\n        -- Sort Me (Inbound)\n      + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)'    THEN t.value_usd ELSE 0 END)\n        -- Sort Me (Outbound)\n      - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)'    THEN t.value_usd ELSE 0 END)\n    ) AS total_net\nFROM treasury_txs t\nJOIN group_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Total",
+      "type": "stat"
+    },
+    {
+      "datasource": "SQLite",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 70,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Net (incl. Unsorted) (sum)"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              },
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 19
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n        ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    t.timestamp,\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)')         THEN t.value_usd ELSE 0 END) AS \"Total Revenue (incl. Unsorted)\",\n    SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)')  THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses (incl. Unsorted)\",\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)')  THEN t.value_usd ELSE 0 END) AS \"Net (incl. Unsorted)\"\nFROM treasury_txs AS t\nJOIN group_hierarchy gh\n    ON t.txgroup_id = gh.txgroup_id\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\nGROUP BY timestamp\nORDER BY timestamp;",
+          "queryType": "table",
+          "rawQueryText": "WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (\n    SELECT\n        txgroup_id,\n        name AS top_category,\n        parent_txgroup\n    FROM txgroups\n    WHERE parent_txgroup IS NULL\n\n    UNION ALL\n\n    SELECT\n        child.txgroup_id,\n        parent.top_category,\n        child.parent_txgroup\n    FROM txgroups AS child\n    JOIN group_hierarchy AS parent\n        ON child.parent_txgroup = parent.txgroup_id\n)\nSELECT\n    t.timestamp,\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)')         THEN t.value_usd ELSE 0 END) AS \"Total Revenue (incl. Unsorted)\",\n    SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)')  THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses (incl. Unsorted)\",\n    SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)')  THEN t.value_usd ELSE 0 END) AS \"Net (incl. Unsorted)\"\nFROM treasury_txs AS t\nJOIN group_hierarchy gh\n    ON t.txgroup_id = gh.txgroup_id\nWHERE t.timestamp >= $__from/1000\n  AND t.timestamp <= $__to/1000\nGROUP BY timestamp\nORDER BY timestamp;",
+          "refId": "A",
+          "timeColumns": [
+            "timestamp"
+          ]
+        }
+      ],
+      "title": "Weekly Cashflow (incl. Unsorted)",
+      "transformations": [
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "YYYY-WW",
+            "timeField": "timestamp",
+            "timezone": "browser",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "YYYY-WW",
+                "destinationType": "time",
+                "targetField": "timestamp"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Net": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Net (incl. Unsorted)": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Total Expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Total Expenses (incl. Unsorted)": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Total Revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Total Revenue (incl. Unsorted)": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "cost_of_revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "other_expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "other_income": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "timestamp": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6M",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Cashflow Summary",
+  "uid": "fdf9969c-357a-4203-ae7b-12816e87bc7e",
+  "version": 1,
+  "weekStart": ""
+}
