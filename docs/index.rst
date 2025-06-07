@@ -9,6 +9,7 @@ DAO Treasury Documentation
    :maxdepth: 2
    :caption: Contents:
 
+   wallets
    sort_rules
    API Documentation <source/modules.rst>
    transactions

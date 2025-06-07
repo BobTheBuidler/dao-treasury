@@ -321,6 +321,7 @@ typedef struct {
     PyObject *_end_block;
     PyObject *_start_timestamp;
     PyObject *_end_timestamp;
+    PyObject *_networks;
 } dao_treasury____wallet___TreasuryWalletObject;
 
 
@@ -492,6 +493,7 @@ struct export_table_8d7637a0eb7617042369 {
     PyObject *(*CPyDef__wallet___TreasuryWallet____start_block)(PyObject *cpy_r_self);
     PyObject *(*CPyDef__wallet___TreasuryWallet____end_block)(PyObject *cpy_r_self);
     PyObject *(*CPyDef__wallet___TreasuryWallet____get_instance)(PyObject *cpy_r_address);
+    PyObject *(*CPyDef__wallet___load_wallets_from_yaml)(PyObject *cpy_r_path);
     char (*CPyDef__wallet_____top_level__)(void);
     tuple_T2OO *CPyStatic_constants___DISPERSE_APP;
     char (*CPyDef_constants_____top_level__)(void);

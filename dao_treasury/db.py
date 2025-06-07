@@ -307,7 +307,7 @@ class Address(DbEntity):
                 entity.nickname = nickname
                 commit()
                 logger.info("%s nickname set to %s", entity.address, nickname)
-    
+
     @staticmethod
     def set_nicknames(nicknames: Dict[HexAddress, str]) -> None:
         with db_session:
