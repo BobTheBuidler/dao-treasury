@@ -59,7 +59,8 @@ parser.add_argument(
     type=Path,
     help=(
         "Directory containing sort rules definitions. "
-        "If omitted, transactions are exported without custom sorting."
+        "If omitted, transactions are exported without custom sorting. "
+        "Check out https://bobthebuidler.github.io/dao-treasury/sort_rules.html for more info."
     ),
     default=None,
 )
