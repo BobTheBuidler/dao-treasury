@@ -22718,6 +22718,8 @@ PyObject *CPyInit_dao_treasury____wallet(void)
     Py_CLEAR(modname);
     CPy_XDECREF(CPyStatic__wallet___WALLETS);
     CPyStatic__wallet___WALLETS = NULL;
+    CPy_XDECREF(CPyStatic__wallet___to_address);
+    CPyStatic__wallet___to_address = NULL;
     Py_CLEAR(CPyType__wallet___TreasuryWallet);
     return NULL;
 }
@@ -22725,613 +22727,645 @@ PyObject *CPyInit_dao_treasury____wallet(void)
 char CPyDef__wallet___TreasuryWallet_____post_init__(PyObject *cpy_r_self) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
-    PyObject *cpy_r_r2;
-    PyObject *cpy_r_r3;
-    PyObject **cpy_r_r5;
+    char cpy_r_r2;
+    PyObject **cpy_r_r4;
+    PyObject *cpy_r_r5;
     PyObject *cpy_r_r6;
-    char cpy_r_r7;
+    PyObject *cpy_r_r7;
     PyObject *cpy_r_r8;
-    PyObject *cpy_r_r9;
-    PyObject *cpy_r_r10;
-    char cpy_r_r11;
-    PyObject *cpy_r_r12;
-    char cpy_r_r13;
+    PyObject **cpy_r_r10;
+    PyObject *cpy_r_r11;
+    char cpy_r_r12;
+    PyObject *cpy_r_r13;
     PyObject *cpy_r_r14;
     PyObject *cpy_r_r15;
-    PyObject *cpy_r_r16;
+    char cpy_r_r16;
     PyObject *cpy_r_r17;
-    PyObject **cpy_r_r19;
+    char cpy_r_r18;
+    PyObject *cpy_r_r19;
     PyObject *cpy_r_r20;
-    CPyTagged cpy_r_r21;
-    int64_t cpy_r_r22;
-    char cpy_r_r23;
-    int64_t cpy_r_r24;
-    char cpy_r_r25;
-    char cpy_r_r26;
-    char cpy_r_r27;
+    PyObject *cpy_r_r21;
+    PyObject *cpy_r_r22;
+    PyObject **cpy_r_r24;
+    PyObject *cpy_r_r25;
+    CPyTagged cpy_r_r26;
+    int64_t cpy_r_r27;
     char cpy_r_r28;
-    PyObject *cpy_r_r29;
-    PyObject *cpy_r_r30;
-    PyObject *cpy_r_r31;
-    PyObject *cpy_r_r32;
-    PyObject **cpy_r_r34;
+    int64_t cpy_r_r29;
+    char cpy_r_r30;
+    char cpy_r_r31;
+    char cpy_r_r32;
+    char cpy_r_r33;
+    PyObject *cpy_r_r34;
     PyObject *cpy_r_r35;
     PyObject *cpy_r_r36;
-    char cpy_r_r37;
-    CPyTagged cpy_r_r38;
-    int64_t cpy_r_r39;
-    char cpy_r_r40;
-    int64_t cpy_r_r41;
+    PyObject *cpy_r_r37;
+    PyObject **cpy_r_r39;
+    PyObject *cpy_r_r40;
+    PyObject *cpy_r_r41;
     char cpy_r_r42;
-    char cpy_r_r43;
-    char cpy_r_r44;
+    CPyTagged cpy_r_r43;
+    int64_t cpy_r_r44;
     char cpy_r_r45;
-    PyObject *cpy_r_r46;
-    PyObject *cpy_r_r47;
-    PyObject *cpy_r_r48;
-    PyObject *cpy_r_r49;
-    PyObject **cpy_r_r51;
+    int64_t cpy_r_r46;
+    char cpy_r_r47;
+    char cpy_r_r48;
+    char cpy_r_r49;
+    char cpy_r_r50;
+    PyObject *cpy_r_r51;
     PyObject *cpy_r_r52;
     PyObject *cpy_r_r53;
     PyObject *cpy_r_r54;
-    PyObject *cpy_r_r55;
-    char cpy_r_r56;
+    PyObject **cpy_r_r56;
     PyObject *cpy_r_r57;
-    char cpy_r_r58;
+    PyObject *cpy_r_r58;
     PyObject *cpy_r_r59;
     PyObject *cpy_r_r60;
-    PyObject *cpy_r_r61;
+    char cpy_r_r61;
     PyObject *cpy_r_r62;
-    PyObject **cpy_r_r64;
+    char cpy_r_r63;
+    PyObject *cpy_r_r64;
     PyObject *cpy_r_r65;
-    CPyTagged cpy_r_r66;
-    int64_t cpy_r_r67;
-    char cpy_r_r68;
-    int64_t cpy_r_r69;
-    char cpy_r_r70;
-    char cpy_r_r71;
-    char cpy_r_r72;
+    PyObject *cpy_r_r66;
+    PyObject *cpy_r_r67;
+    PyObject **cpy_r_r69;
+    PyObject *cpy_r_r70;
+    CPyTagged cpy_r_r71;
+    int64_t cpy_r_r72;
     char cpy_r_r73;
-    PyObject *cpy_r_r74;
-    PyObject *cpy_r_r75;
-    PyObject *cpy_r_r76;
-    PyObject *cpy_r_r77;
-    PyObject **cpy_r_r79;
+    int64_t cpy_r_r74;
+    char cpy_r_r75;
+    char cpy_r_r76;
+    char cpy_r_r77;
+    char cpy_r_r78;
+    PyObject *cpy_r_r79;
     PyObject *cpy_r_r80;
     PyObject *cpy_r_r81;
-    char cpy_r_r82;
-    CPyTagged cpy_r_r83;
-    int64_t cpy_r_r84;
-    char cpy_r_r85;
-    int64_t cpy_r_r86;
+    PyObject *cpy_r_r82;
+    PyObject **cpy_r_r84;
+    PyObject *cpy_r_r85;
+    PyObject *cpy_r_r86;
     char cpy_r_r87;
-    char cpy_r_r88;
-    char cpy_r_r89;
+    CPyTagged cpy_r_r88;
+    int64_t cpy_r_r89;
     char cpy_r_r90;
-    PyObject *cpy_r_r91;
-    PyObject *cpy_r_r92;
-    PyObject *cpy_r_r93;
-    PyObject *cpy_r_r94;
-    PyObject **cpy_r_r96;
+    int64_t cpy_r_r91;
+    char cpy_r_r92;
+    char cpy_r_r93;
+    char cpy_r_r94;
+    char cpy_r_r95;
+    PyObject *cpy_r_r96;
     PyObject *cpy_r_r97;
     PyObject *cpy_r_r98;
     PyObject *cpy_r_r99;
+    PyObject **cpy_r_r101;
+    PyObject *cpy_r_r102;
+    PyObject *cpy_r_r103;
+    PyObject *cpy_r_r104;
     PyObject *cpy_r_addr;
-    PyObject *cpy_r_r100;
-    char cpy_r_r101;
-    int32_t cpy_r_r102;
-    char cpy_r_r103;
-    char cpy_r_r104;
     PyObject *cpy_r_r105;
-    PyObject *cpy_r_r106;
-    PyObject *cpy_r_r107;
-    PyObject *cpy_r_r108;
-    PyObject *cpy_r_r109;
+    char cpy_r_r106;
+    int32_t cpy_r_r107;
+    char cpy_r_r108;
+    char cpy_r_r109;
     PyObject *cpy_r_r110;
     PyObject *cpy_r_r111;
-    PyObject **cpy_r_r113;
+    PyObject *cpy_r_r112;
+    PyObject *cpy_r_r113;
     PyObject *cpy_r_r114;
     PyObject *cpy_r_r115;
-    char cpy_r_r116;
-    int32_t cpy_r_r117;
-    char cpy_r_r118;
-    char cpy_r_r119;
+    PyObject *cpy_r_r116;
+    PyObject **cpy_r_r118;
+    PyObject *cpy_r_r119;
+    PyObject *cpy_r_r120;
+    char cpy_r_r121;
+    int32_t cpy_r_r122;
+    char cpy_r_r123;
+    char cpy_r_r124;
     cpy_r_r0 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "address", 39, CPyStatic__wallet___globals);
-        goto CPyL80;
+        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "address", 43, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     CPy_INCREF(cpy_r_r0);
 CPyL1: ;
-    cpy_r_r1 = CPyStatic__wallet___globals;
-    cpy_r_r2 = CPyStatics[195]; /* 'EthAddress' */
-    cpy_r_r3 = CPyDict_GetItem(cpy_r_r1, cpy_r_r2);
-    if (unlikely(cpy_r_r3 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 39, CPyStatic__wallet___globals);
-        goto CPyL81;
+    cpy_r_r1 = CPyStatic__wallet___to_address;
+    if (unlikely(cpy_r_r1 == NULL)) {
+        goto CPyL85;
+    } else
+        goto CPyL4;
+CPyL2: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"to_address\" was not set");
+    cpy_r_r2 = 0;
+    if (unlikely(!cpy_r_r2)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 43, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    PyObject *cpy_r_r4[1] = {cpy_r_r0};
-    cpy_r_r5 = (PyObject **)&cpy_r_r4;
-    cpy_r_r6 = PyObject_Vectorcall(cpy_r_r3, cpy_r_r5, 1, 0);
-    CPy_DECREF(cpy_r_r3);
-    if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 39, CPyStatic__wallet___globals);
-        goto CPyL81;
+    CPy_Unreachable();
+CPyL4: ;
+    PyObject *cpy_r_r3[1] = {cpy_r_r0};
+    cpy_r_r4 = (PyObject **)&cpy_r_r3;
+    cpy_r_r5 = PyObject_Vectorcall(cpy_r_r1, cpy_r_r4, 1, 0);
+    if (unlikely(cpy_r_r5 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 43, CPyStatic__wallet___globals);
+        goto CPyL86;
     }
     CPy_DECREF(cpy_r_r0);
+    cpy_r_r6 = CPyStatic__wallet___globals;
+    cpy_r_r7 = CPyStatics[195]; /* 'EthAddress' */
+    cpy_r_r8 = CPyDict_GetItem(cpy_r_r6, cpy_r_r7);
+    if (unlikely(cpy_r_r8 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 43, CPyStatic__wallet___globals);
+        goto CPyL87;
+    }
+    PyObject *cpy_r_r9[1] = {cpy_r_r5};
+    cpy_r_r10 = (PyObject **)&cpy_r_r9;
+    cpy_r_r11 = PyObject_Vectorcall(cpy_r_r8, cpy_r_r10, 1, 0);
+    CPy_DECREF(cpy_r_r8);
+    if (unlikely(cpy_r_r11 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 43, CPyStatic__wallet___globals);
+        goto CPyL87;
+    }
+    CPy_DECREF(cpy_r_r5);
     if (((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address != NULL) {
         CPy_DECREF(((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address);
     }
-    ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address = cpy_r_r6;
-    cpy_r_r7 = 1;
-    if (unlikely(!cpy_r_r7)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 39, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    cpy_r_r8 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_start_block;
-    if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "start_block", 41, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_INCREF(cpy_r_r8);
-CPyL5: ;
-    cpy_r_r9 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_start_timestamp;
-    if (unlikely(cpy_r_r9 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "start_timestamp", 42, CPyStatic__wallet___globals);
-        goto CPyL82;
-    }
-    CPy_INCREF(cpy_r_r9);
-CPyL6: ;
-    cpy_r_r10 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r11 = cpy_r_r8 != cpy_r_r10;
-    if (!cpy_r_r11) goto CPyL83;
-    cpy_r_r12 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r13 = cpy_r_r9 != cpy_r_r12;
-    if (cpy_r_r13) {
+    ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address = cpy_r_r11;
+    cpy_r_r12 = 1;
+    if (unlikely(!cpy_r_r12)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 43, CPyStatic__wallet___globals);
         goto CPyL84;
-    } else
-        goto CPyL12;
-CPyL8: ;
-    cpy_r_r14 = CPyStatics[245]; /* ('You can only pass a start block or a start timestamp, '
-                                    'not both.') */
-    cpy_r_r15 = CPyModule_builtins;
-    cpy_r_r16 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r17 = CPyObject_GetAttr(cpy_r_r15, cpy_r_r16);
-    if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 45, CPyStatic__wallet___globals);
-        goto CPyL80;
     }
-    PyObject *cpy_r_r18[1] = {cpy_r_r14};
-    cpy_r_r19 = (PyObject **)&cpy_r_r18;
-    cpy_r_r20 = PyObject_Vectorcall(cpy_r_r17, cpy_r_r19, 1, 0);
-    CPy_DECREF(cpy_r_r17);
-    if (unlikely(cpy_r_r20 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 45, CPyStatic__wallet___globals);
-        goto CPyL80;
+    cpy_r_r13 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_start_block;
+    if (unlikely(cpy_r_r13 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "start_block", 45, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    CPy_Raise(cpy_r_r20);
-    CPy_DECREF(cpy_r_r20);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 45, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_Unreachable();
-CPyL12: ;
-    if (likely(PyLong_Check(cpy_r_r8)))
-        cpy_r_r21 = CPyTagged_FromObject(cpy_r_r8);
-    else {
-        CPy_TypeError("int", cpy_r_r8); cpy_r_r21 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r8);
-    if (unlikely(cpy_r_r21 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 48, CPyStatic__wallet___globals);
-        goto CPyL85;
-    }
-    cpy_r_r22 = cpy_r_r21 & 1;
-    cpy_r_r23 = cpy_r_r22 != 0;
-    if (cpy_r_r23) goto CPyL15;
-    cpy_r_r24 = 0 & 1;
-    cpy_r_r25 = cpy_r_r24 != 0;
-    if (!cpy_r_r25) goto CPyL16;
-CPyL15: ;
-    cpy_r_r26 = CPyTagged_IsLt_(cpy_r_r21, 0);
-    cpy_r_r27 = cpy_r_r26;
-    goto CPyL17;
-CPyL16: ;
-    cpy_r_r28 = (Py_ssize_t)cpy_r_r21 < (Py_ssize_t)0;
-    cpy_r_r27 = cpy_r_r28;
-CPyL17: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    if (cpy_r_r27) {
-        goto CPyL86;
-    } else
-        goto CPyL22;
-CPyL18: ;
-    cpy_r_r29 = CPyStatics[246]; /* 'start_block can not be negative' */
-    cpy_r_r30 = CPyModule_builtins;
-    cpy_r_r31 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r32 = CPyObject_GetAttr(cpy_r_r30, cpy_r_r31);
-    if (unlikely(cpy_r_r32 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 49, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    PyObject *cpy_r_r33[1] = {cpy_r_r29};
-    cpy_r_r34 = (PyObject **)&cpy_r_r33;
-    cpy_r_r35 = PyObject_Vectorcall(cpy_r_r32, cpy_r_r34, 1, 0);
-    CPy_DECREF(cpy_r_r32);
-    if (unlikely(cpy_r_r35 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 49, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_Raise(cpy_r_r35);
-    CPy_DECREF(cpy_r_r35);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 49, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_Unreachable();
-CPyL22: ;
-    cpy_r_r36 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r37 = cpy_r_r9 != cpy_r_r36;
-    if (!cpy_r_r37) goto CPyL87;
-    if (likely(PyLong_Check(cpy_r_r9)))
-        cpy_r_r38 = CPyTagged_FromObject(cpy_r_r9);
-    else {
-        CPy_TypeError("int", cpy_r_r9); cpy_r_r38 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r9);
-    if (unlikely(cpy_r_r38 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 50, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    cpy_r_r39 = cpy_r_r38 & 1;
-    cpy_r_r40 = cpy_r_r39 != 0;
-    if (cpy_r_r40) goto CPyL26;
-    cpy_r_r41 = 0 & 1;
-    cpy_r_r42 = cpy_r_r41 != 0;
-    if (!cpy_r_r42) goto CPyL27;
-CPyL26: ;
-    cpy_r_r43 = CPyTagged_IsLt_(cpy_r_r38, 0);
-    cpy_r_r44 = cpy_r_r43;
-    goto CPyL28;
-CPyL27: ;
-    cpy_r_r45 = (Py_ssize_t)cpy_r_r38 < (Py_ssize_t)0;
-    cpy_r_r44 = cpy_r_r45;
-CPyL28: ;
-    CPyTagged_DECREF(cpy_r_r38);
-    if (!cpy_r_r44) goto CPyL33;
-    cpy_r_r46 = CPyStatics[247]; /* 'start_timestamp can not be negative' */
-    cpy_r_r47 = CPyModule_builtins;
-    cpy_r_r48 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r49 = CPyObject_GetAttr(cpy_r_r47, cpy_r_r48);
-    if (unlikely(cpy_r_r49 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 51, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    PyObject *cpy_r_r50[1] = {cpy_r_r46};
-    cpy_r_r51 = (PyObject **)&cpy_r_r50;
-    cpy_r_r52 = PyObject_Vectorcall(cpy_r_r49, cpy_r_r51, 1, 0);
-    CPy_DECREF(cpy_r_r49);
-    if (unlikely(cpy_r_r52 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 51, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_Raise(cpy_r_r52);
-    CPy_DECREF(cpy_r_r52);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 51, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_Unreachable();
-CPyL33: ;
-    cpy_r_r53 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_end_block;
-    if (unlikely(cpy_r_r53 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "end_block", 53, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_INCREF(cpy_r_r53);
-CPyL34: ;
-    cpy_r_r54 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_end_timestamp;
-    if (unlikely(cpy_r_r54 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "end_timestamp", 54, CPyStatic__wallet___globals);
+    CPy_INCREF(cpy_r_r13);
+CPyL9: ;
+    cpy_r_r14 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_start_timestamp;
+    if (unlikely(cpy_r_r14 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "start_timestamp", 46, CPyStatic__wallet___globals);
         goto CPyL88;
     }
-    CPy_INCREF(cpy_r_r54);
-CPyL35: ;
-    cpy_r_r55 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r56 = cpy_r_r53 != cpy_r_r55;
-    if (!cpy_r_r56) goto CPyL89;
-    cpy_r_r57 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r58 = cpy_r_r54 != cpy_r_r57;
-    if (cpy_r_r58) {
+    CPy_INCREF(cpy_r_r14);
+CPyL10: ;
+    cpy_r_r15 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r16 = cpy_r_r13 != cpy_r_r15;
+    if (!cpy_r_r16) goto CPyL89;
+    cpy_r_r17 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r18 = cpy_r_r14 != cpy_r_r17;
+    if (cpy_r_r18) {
         goto CPyL90;
     } else
-        goto CPyL41;
-CPyL37: ;
-    cpy_r_r59 = CPyStatics[248]; /* ('You can only pass an end block or an end timestamp, '
+        goto CPyL16;
+CPyL12: ;
+    cpy_r_r19 = CPyStatics[245]; /* ('You can only pass a start block or a start timestamp, '
                                     'not both.') */
-    cpy_r_r60 = CPyModule_builtins;
-    cpy_r_r61 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r62 = CPyObject_GetAttr(cpy_r_r60, cpy_r_r61);
-    if (unlikely(cpy_r_r62 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 57, CPyStatic__wallet___globals);
-        goto CPyL80;
+    cpy_r_r20 = CPyModule_builtins;
+    cpy_r_r21 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r22 = CPyObject_GetAttr(cpy_r_r20, cpy_r_r21);
+    if (unlikely(cpy_r_r22 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 49, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    PyObject *cpy_r_r63[1] = {cpy_r_r59};
-    cpy_r_r64 = (PyObject **)&cpy_r_r63;
-    cpy_r_r65 = PyObject_Vectorcall(cpy_r_r62, cpy_r_r64, 1, 0);
-    CPy_DECREF(cpy_r_r62);
-    if (unlikely(cpy_r_r65 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 57, CPyStatic__wallet___globals);
-        goto CPyL80;
+    PyObject *cpy_r_r23[1] = {cpy_r_r19};
+    cpy_r_r24 = (PyObject **)&cpy_r_r23;
+    cpy_r_r25 = PyObject_Vectorcall(cpy_r_r22, cpy_r_r24, 1, 0);
+    CPy_DECREF(cpy_r_r22);
+    if (unlikely(cpy_r_r25 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 49, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    CPy_Raise(cpy_r_r65);
-    CPy_DECREF(cpy_r_r65);
+    CPy_Raise(cpy_r_r25);
+    CPy_DECREF(cpy_r_r25);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 57, CPyStatic__wallet___globals);
-        goto CPyL80;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 49, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     CPy_Unreachable();
-CPyL41: ;
-    if (likely(PyLong_Check(cpy_r_r53)))
-        cpy_r_r66 = CPyTagged_FromObject(cpy_r_r53);
+CPyL16: ;
+    if (likely(PyLong_Check(cpy_r_r13)))
+        cpy_r_r26 = CPyTagged_FromObject(cpy_r_r13);
     else {
-        CPy_TypeError("int", cpy_r_r53); cpy_r_r66 = CPY_INT_TAG;
+        CPy_TypeError("int", cpy_r_r13); cpy_r_r26 = CPY_INT_TAG;
     }
-    CPy_DECREF(cpy_r_r53);
-    if (unlikely(cpy_r_r66 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 60, CPyStatic__wallet___globals);
+    CPy_DECREF(cpy_r_r13);
+    if (unlikely(cpy_r_r26 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 52, CPyStatic__wallet___globals);
         goto CPyL91;
     }
-    cpy_r_r67 = cpy_r_r66 & 1;
-    cpy_r_r68 = cpy_r_r67 != 0;
-    if (cpy_r_r68) goto CPyL44;
-    cpy_r_r69 = 0 & 1;
-    cpy_r_r70 = cpy_r_r69 != 0;
-    if (!cpy_r_r70) goto CPyL45;
-CPyL44: ;
-    cpy_r_r71 = CPyTagged_IsLt_(cpy_r_r66, 0);
-    cpy_r_r72 = cpy_r_r71;
-    goto CPyL46;
-CPyL45: ;
-    cpy_r_r73 = (Py_ssize_t)cpy_r_r66 < (Py_ssize_t)0;
-    cpy_r_r72 = cpy_r_r73;
-CPyL46: ;
-    CPyTagged_DECREF(cpy_r_r66);
-    if (cpy_r_r72) {
+    cpy_r_r27 = cpy_r_r26 & 1;
+    cpy_r_r28 = cpy_r_r27 != 0;
+    if (cpy_r_r28) goto CPyL19;
+    cpy_r_r29 = 0 & 1;
+    cpy_r_r30 = cpy_r_r29 != 0;
+    if (!cpy_r_r30) goto CPyL20;
+CPyL19: ;
+    cpy_r_r31 = CPyTagged_IsLt_(cpy_r_r26, 0);
+    cpy_r_r32 = cpy_r_r31;
+    goto CPyL21;
+CPyL20: ;
+    cpy_r_r33 = (Py_ssize_t)cpy_r_r26 < (Py_ssize_t)0;
+    cpy_r_r32 = cpy_r_r33;
+CPyL21: ;
+    CPyTagged_DECREF(cpy_r_r26);
+    if (cpy_r_r32) {
         goto CPyL92;
     } else
-        goto CPyL51;
-CPyL47: ;
-    cpy_r_r74 = CPyStatics[249]; /* 'end_block can not be negative' */
-    cpy_r_r75 = CPyModule_builtins;
-    cpy_r_r76 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r77 = CPyObject_GetAttr(cpy_r_r75, cpy_r_r76);
-    if (unlikely(cpy_r_r77 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 61, CPyStatic__wallet___globals);
-        goto CPyL80;
+        goto CPyL26;
+CPyL22: ;
+    cpy_r_r34 = CPyStatics[246]; /* 'start_block can not be negative' */
+    cpy_r_r35 = CPyModule_builtins;
+    cpy_r_r36 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r37 = CPyObject_GetAttr(cpy_r_r35, cpy_r_r36);
+    if (unlikely(cpy_r_r37 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 53, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    PyObject *cpy_r_r78[1] = {cpy_r_r74};
-    cpy_r_r79 = (PyObject **)&cpy_r_r78;
-    cpy_r_r80 = PyObject_Vectorcall(cpy_r_r77, cpy_r_r79, 1, 0);
-    CPy_DECREF(cpy_r_r77);
-    if (unlikely(cpy_r_r80 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 61, CPyStatic__wallet___globals);
-        goto CPyL80;
+    PyObject *cpy_r_r38[1] = {cpy_r_r34};
+    cpy_r_r39 = (PyObject **)&cpy_r_r38;
+    cpy_r_r40 = PyObject_Vectorcall(cpy_r_r37, cpy_r_r39, 1, 0);
+    CPy_DECREF(cpy_r_r37);
+    if (unlikely(cpy_r_r40 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 53, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    CPy_Raise(cpy_r_r80);
-    CPy_DECREF(cpy_r_r80);
+    CPy_Raise(cpy_r_r40);
+    CPy_DECREF(cpy_r_r40);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 61, CPyStatic__wallet___globals);
-        goto CPyL80;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 53, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     CPy_Unreachable();
-CPyL51: ;
-    cpy_r_r81 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r82 = cpy_r_r54 != cpy_r_r81;
-    if (!cpy_r_r82) goto CPyL93;
-    if (likely(PyLong_Check(cpy_r_r54)))
-        cpy_r_r83 = CPyTagged_FromObject(cpy_r_r54);
+CPyL26: ;
+    cpy_r_r41 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r42 = cpy_r_r14 != cpy_r_r41;
+    if (!cpy_r_r42) goto CPyL93;
+    if (likely(PyLong_Check(cpy_r_r14)))
+        cpy_r_r43 = CPyTagged_FromObject(cpy_r_r14);
     else {
-        CPy_TypeError("int", cpy_r_r54); cpy_r_r83 = CPY_INT_TAG;
+        CPy_TypeError("int", cpy_r_r14); cpy_r_r43 = CPY_INT_TAG;
     }
+    CPy_DECREF(cpy_r_r14);
+    if (unlikely(cpy_r_r43 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 54, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    cpy_r_r44 = cpy_r_r43 & 1;
+    cpy_r_r45 = cpy_r_r44 != 0;
+    if (cpy_r_r45) goto CPyL30;
+    cpy_r_r46 = 0 & 1;
+    cpy_r_r47 = cpy_r_r46 != 0;
+    if (!cpy_r_r47) goto CPyL31;
+CPyL30: ;
+    cpy_r_r48 = CPyTagged_IsLt_(cpy_r_r43, 0);
+    cpy_r_r49 = cpy_r_r48;
+    goto CPyL32;
+CPyL31: ;
+    cpy_r_r50 = (Py_ssize_t)cpy_r_r43 < (Py_ssize_t)0;
+    cpy_r_r49 = cpy_r_r50;
+CPyL32: ;
+    CPyTagged_DECREF(cpy_r_r43);
+    if (!cpy_r_r49) goto CPyL37;
+    cpy_r_r51 = CPyStatics[247]; /* 'start_timestamp can not be negative' */
+    cpy_r_r52 = CPyModule_builtins;
+    cpy_r_r53 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r54 = CPyObject_GetAttr(cpy_r_r52, cpy_r_r53);
+    if (unlikely(cpy_r_r54 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 55, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    PyObject *cpy_r_r55[1] = {cpy_r_r51};
+    cpy_r_r56 = (PyObject **)&cpy_r_r55;
+    cpy_r_r57 = PyObject_Vectorcall(cpy_r_r54, cpy_r_r56, 1, 0);
     CPy_DECREF(cpy_r_r54);
-    if (unlikely(cpy_r_r83 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 62, CPyStatic__wallet___globals);
-        goto CPyL80;
+    if (unlikely(cpy_r_r57 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 55, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    cpy_r_r84 = cpy_r_r83 & 1;
-    cpy_r_r85 = cpy_r_r84 != 0;
-    if (cpy_r_r85) goto CPyL55;
-    cpy_r_r86 = 0 & 1;
-    cpy_r_r87 = cpy_r_r86 != 0;
-    if (!cpy_r_r87) goto CPyL56;
-CPyL55: ;
-    cpy_r_r88 = CPyTagged_IsLt_(cpy_r_r83, 0);
-    cpy_r_r89 = cpy_r_r88;
-    goto CPyL57;
-CPyL56: ;
-    cpy_r_r90 = (Py_ssize_t)cpy_r_r83 < (Py_ssize_t)0;
-    cpy_r_r89 = cpy_r_r90;
-CPyL57: ;
-    CPyTagged_DECREF(cpy_r_r83);
-    if (!cpy_r_r89) goto CPyL62;
-    cpy_r_r91 = CPyStatics[250]; /* 'end_timestamp can not be negative' */
-    cpy_r_r92 = CPyModule_builtins;
-    cpy_r_r93 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r94 = CPyObject_GetAttr(cpy_r_r92, cpy_r_r93);
-    if (unlikely(cpy_r_r94 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 63, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    PyObject *cpy_r_r95[1] = {cpy_r_r91};
-    cpy_r_r96 = (PyObject **)&cpy_r_r95;
-    cpy_r_r97 = PyObject_Vectorcall(cpy_r_r94, cpy_r_r96, 1, 0);
-    CPy_DECREF(cpy_r_r94);
-    if (unlikely(cpy_r_r97 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 63, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    CPy_Raise(cpy_r_r97);
-    CPy_DECREF(cpy_r_r97);
+    CPy_Raise(cpy_r_r57);
+    CPy_DECREF(cpy_r_r57);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 63, CPyStatic__wallet___globals);
-        goto CPyL80;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 55, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     CPy_Unreachable();
-CPyL62: ;
-    cpy_r_r98 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address;
-    if (unlikely(cpy_r_r98 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "address", 65, CPyStatic__wallet___globals);
-        goto CPyL80;
+CPyL37: ;
+    cpy_r_r58 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_end_block;
+    if (unlikely(cpy_r_r58 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "end_block", 57, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
-    CPy_INCREF(cpy_r_r98);
-CPyL63: ;
-    cpy_r_r99 = PyObject_Str(cpy_r_r98);
-    CPy_DECREF(cpy_r_r98);
-    if (unlikely(cpy_r_r99 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 65, CPyStatic__wallet___globals);
-        goto CPyL80;
-    }
-    cpy_r_addr = cpy_r_r99;
-    cpy_r_r100 = CPyStatic__wallet___WALLETS;
-    if (unlikely(cpy_r_r100 == NULL)) {
+    CPy_INCREF(cpy_r_r58);
+CPyL38: ;
+    cpy_r_r59 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_end_timestamp;
+    if (unlikely(cpy_r_r59 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "end_timestamp", 58, CPyStatic__wallet___globals);
         goto CPyL94;
+    }
+    CPy_INCREF(cpy_r_r59);
+CPyL39: ;
+    cpy_r_r60 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r61 = cpy_r_r58 != cpy_r_r60;
+    if (!cpy_r_r61) goto CPyL95;
+    cpy_r_r62 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r63 = cpy_r_r59 != cpy_r_r62;
+    if (cpy_r_r63) {
+        goto CPyL96;
     } else
-        goto CPyL67;
-CPyL65: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
-    cpy_r_r101 = 0;
-    if (unlikely(!cpy_r_r101)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 66, CPyStatic__wallet___globals);
-        goto CPyL80;
+        goto CPyL45;
+CPyL41: ;
+    cpy_r_r64 = CPyStatics[248]; /* ('You can only pass an end block or an end timestamp, '
+                                    'not both.') */
+    cpy_r_r65 = CPyModule_builtins;
+    cpy_r_r66 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r67 = CPyObject_GetAttr(cpy_r_r65, cpy_r_r66);
+    if (unlikely(cpy_r_r67 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 61, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    PyObject *cpy_r_r68[1] = {cpy_r_r64};
+    cpy_r_r69 = (PyObject **)&cpy_r_r68;
+    cpy_r_r70 = PyObject_Vectorcall(cpy_r_r67, cpy_r_r69, 1, 0);
+    CPy_DECREF(cpy_r_r67);
+    if (unlikely(cpy_r_r70 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 61, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    CPy_Raise(cpy_r_r70);
+    CPy_DECREF(cpy_r_r70);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 61, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     CPy_Unreachable();
-CPyL67: ;
-    cpy_r_r102 = PyDict_Contains(cpy_r_r100, cpy_r_addr);
-    cpy_r_r103 = cpy_r_r102 >= 0;
-    if (unlikely(!cpy_r_r103)) {
+CPyL45: ;
+    if (likely(PyLong_Check(cpy_r_r58)))
+        cpy_r_r71 = CPyTagged_FromObject(cpy_r_r58);
+    else {
+        CPy_TypeError("int", cpy_r_r58); cpy_r_r71 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r58);
+    if (unlikely(cpy_r_r71 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 64, CPyStatic__wallet___globals);
+        goto CPyL97;
+    }
+    cpy_r_r72 = cpy_r_r71 & 1;
+    cpy_r_r73 = cpy_r_r72 != 0;
+    if (cpy_r_r73) goto CPyL48;
+    cpy_r_r74 = 0 & 1;
+    cpy_r_r75 = cpy_r_r74 != 0;
+    if (!cpy_r_r75) goto CPyL49;
+CPyL48: ;
+    cpy_r_r76 = CPyTagged_IsLt_(cpy_r_r71, 0);
+    cpy_r_r77 = cpy_r_r76;
+    goto CPyL50;
+CPyL49: ;
+    cpy_r_r78 = (Py_ssize_t)cpy_r_r71 < (Py_ssize_t)0;
+    cpy_r_r77 = cpy_r_r78;
+CPyL50: ;
+    CPyTagged_DECREF(cpy_r_r71);
+    if (cpy_r_r77) {
+        goto CPyL98;
+    } else
+        goto CPyL55;
+CPyL51: ;
+    cpy_r_r79 = CPyStatics[249]; /* 'end_block can not be negative' */
+    cpy_r_r80 = CPyModule_builtins;
+    cpy_r_r81 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r82 = CPyObject_GetAttr(cpy_r_r80, cpy_r_r81);
+    if (unlikely(cpy_r_r82 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 65, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    PyObject *cpy_r_r83[1] = {cpy_r_r79};
+    cpy_r_r84 = (PyObject **)&cpy_r_r83;
+    cpy_r_r85 = PyObject_Vectorcall(cpy_r_r82, cpy_r_r84, 1, 0);
+    CPy_DECREF(cpy_r_r82);
+    if (unlikely(cpy_r_r85 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 65, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    CPy_Raise(cpy_r_r85);
+    CPy_DECREF(cpy_r_r85);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 65, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    CPy_Unreachable();
+CPyL55: ;
+    cpy_r_r86 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r87 = cpy_r_r59 != cpy_r_r86;
+    if (!cpy_r_r87) goto CPyL99;
+    if (likely(PyLong_Check(cpy_r_r59)))
+        cpy_r_r88 = CPyTagged_FromObject(cpy_r_r59);
+    else {
+        CPy_TypeError("int", cpy_r_r59); cpy_r_r88 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r59);
+    if (unlikely(cpy_r_r88 == CPY_INT_TAG)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 66, CPyStatic__wallet___globals);
-        goto CPyL95;
+        goto CPyL84;
     }
-    cpy_r_r104 = cpy_r_r102;
-    if (!cpy_r_r104) goto CPyL75;
-    cpy_r_r105 = CPyStatics[251]; /* 'TreasuryWallet ' */
-    cpy_r_r106 = PyObject_Str(cpy_r_addr);
-    CPy_DECREF(cpy_r_addr);
-    if (unlikely(cpy_r_r106 == NULL)) {
+    cpy_r_r89 = cpy_r_r88 & 1;
+    cpy_r_r90 = cpy_r_r89 != 0;
+    if (cpy_r_r90) goto CPyL59;
+    cpy_r_r91 = 0 & 1;
+    cpy_r_r92 = cpy_r_r91 != 0;
+    if (!cpy_r_r92) goto CPyL60;
+CPyL59: ;
+    cpy_r_r93 = CPyTagged_IsLt_(cpy_r_r88, 0);
+    cpy_r_r94 = cpy_r_r93;
+    goto CPyL61;
+CPyL60: ;
+    cpy_r_r95 = (Py_ssize_t)cpy_r_r88 < (Py_ssize_t)0;
+    cpy_r_r94 = cpy_r_r95;
+CPyL61: ;
+    CPyTagged_DECREF(cpy_r_r88);
+    if (!cpy_r_r94) goto CPyL66;
+    cpy_r_r96 = CPyStatics[250]; /* 'end_timestamp can not be negative' */
+    cpy_r_r97 = CPyModule_builtins;
+    cpy_r_r98 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r99 = CPyObject_GetAttr(cpy_r_r97, cpy_r_r98);
+    if (unlikely(cpy_r_r99 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 67, CPyStatic__wallet___globals);
-        goto CPyL80;
+        goto CPyL84;
     }
-    cpy_r_r107 = CPyStatics[252]; /* ' already exists' */
-    cpy_r_r108 = CPyStr_Build(3, cpy_r_r105, cpy_r_r106, cpy_r_r107);
-    CPy_DECREF(cpy_r_r106);
-    if (unlikely(cpy_r_r108 == NULL)) {
+    PyObject *cpy_r_r100[1] = {cpy_r_r96};
+    cpy_r_r101 = (PyObject **)&cpy_r_r100;
+    cpy_r_r102 = PyObject_Vectorcall(cpy_r_r99, cpy_r_r101, 1, 0);
+    CPy_DECREF(cpy_r_r99);
+    if (unlikely(cpy_r_r102 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 67, CPyStatic__wallet___globals);
-        goto CPyL80;
+        goto CPyL84;
     }
-    cpy_r_r109 = CPyModule_builtins;
-    cpy_r_r110 = CPyStatics[78]; /* 'ValueError' */
-    cpy_r_r111 = CPyObject_GetAttr(cpy_r_r109, cpy_r_r110);
-    if (unlikely(cpy_r_r111 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 67, CPyStatic__wallet___globals);
-        goto CPyL96;
-    }
-    PyObject *cpy_r_r112[1] = {cpy_r_r108};
-    cpy_r_r113 = (PyObject **)&cpy_r_r112;
-    cpy_r_r114 = PyObject_Vectorcall(cpy_r_r111, cpy_r_r113, 1, 0);
-    CPy_DECREF(cpy_r_r111);
-    if (unlikely(cpy_r_r114 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 67, CPyStatic__wallet___globals);
-        goto CPyL96;
-    }
-    CPy_DECREF(cpy_r_r108);
-    CPy_Raise(cpy_r_r114);
-    CPy_DECREF(cpy_r_r114);
+    CPy_Raise(cpy_r_r102);
+    CPy_DECREF(cpy_r_r102);
     if (unlikely(!0)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 67, CPyStatic__wallet___globals);
-        goto CPyL80;
+        goto CPyL84;
     }
     CPy_Unreachable();
-CPyL75: ;
-    cpy_r_r115 = CPyStatic__wallet___WALLETS;
-    if (unlikely(cpy_r_r115 == NULL)) {
-        goto CPyL97;
+CPyL66: ;
+    cpy_r_r103 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_address;
+    if (unlikely(cpy_r_r103 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "__post_init__", "TreasuryWallet", "address", 69, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    CPy_INCREF(cpy_r_r103);
+CPyL67: ;
+    cpy_r_r104 = PyObject_Str(cpy_r_r103);
+    CPy_DECREF(cpy_r_r103);
+    if (unlikely(cpy_r_r104 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 69, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    cpy_r_addr = cpy_r_r104;
+    cpy_r_r105 = CPyStatic__wallet___WALLETS;
+    if (unlikely(cpy_r_r105 == NULL)) {
+        goto CPyL100;
     } else
-        goto CPyL78;
-CPyL76: ;
+        goto CPyL71;
+CPyL69: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
-    cpy_r_r116 = 0;
-    if (unlikely(!cpy_r_r116)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 68, CPyStatic__wallet___globals);
-        goto CPyL80;
+    cpy_r_r106 = 0;
+    if (unlikely(!cpy_r_r106)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 70, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     CPy_Unreachable();
-CPyL78: ;
-    cpy_r_r117 = CPyDict_SetItem(cpy_r_r115, cpy_r_addr, cpy_r_self);
+CPyL71: ;
+    cpy_r_r107 = PyDict_Contains(cpy_r_r105, cpy_r_addr);
+    cpy_r_r108 = cpy_r_r107 >= 0;
+    if (unlikely(!cpy_r_r108)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 70, CPyStatic__wallet___globals);
+        goto CPyL101;
+    }
+    cpy_r_r109 = cpy_r_r107;
+    if (!cpy_r_r109) goto CPyL79;
+    cpy_r_r110 = CPyStatics[251]; /* 'TreasuryWallet ' */
+    cpy_r_r111 = PyObject_Str(cpy_r_addr);
     CPy_DECREF(cpy_r_addr);
-    cpy_r_r118 = cpy_r_r117 >= 0;
-    if (unlikely(!cpy_r_r118)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 68, CPyStatic__wallet___globals);
-        goto CPyL80;
+    if (unlikely(cpy_r_r111 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 71, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    cpy_r_r112 = CPyStatics[252]; /* ' already exists' */
+    cpy_r_r113 = CPyStr_Build(3, cpy_r_r110, cpy_r_r111, cpy_r_r112);
+    CPy_DECREF(cpy_r_r111);
+    if (unlikely(cpy_r_r113 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 71, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    cpy_r_r114 = CPyModule_builtins;
+    cpy_r_r115 = CPyStatics[78]; /* 'ValueError' */
+    cpy_r_r116 = CPyObject_GetAttr(cpy_r_r114, cpy_r_r115);
+    if (unlikely(cpy_r_r116 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 71, CPyStatic__wallet___globals);
+        goto CPyL102;
+    }
+    PyObject *cpy_r_r117[1] = {cpy_r_r113};
+    cpy_r_r118 = (PyObject **)&cpy_r_r117;
+    cpy_r_r119 = PyObject_Vectorcall(cpy_r_r116, cpy_r_r118, 1, 0);
+    CPy_DECREF(cpy_r_r116);
+    if (unlikely(cpy_r_r119 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 71, CPyStatic__wallet___globals);
+        goto CPyL102;
+    }
+    CPy_DECREF(cpy_r_r113);
+    CPy_Raise(cpy_r_r119);
+    CPy_DECREF(cpy_r_r119);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 71, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    CPy_Unreachable();
+CPyL79: ;
+    cpy_r_r120 = CPyStatic__wallet___WALLETS;
+    if (unlikely(cpy_r_r120 == NULL)) {
+        goto CPyL103;
+    } else
+        goto CPyL82;
+CPyL80: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
+    cpy_r_r121 = 0;
+    if (unlikely(!cpy_r_r121)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 72, CPyStatic__wallet___globals);
+        goto CPyL84;
+    }
+    CPy_Unreachable();
+CPyL82: ;
+    cpy_r_r122 = CPyDict_SetItem(cpy_r_r120, cpy_r_addr, cpy_r_self);
+    CPy_DECREF(cpy_r_addr);
+    cpy_r_r123 = cpy_r_r122 >= 0;
+    if (unlikely(!cpy_r_r123)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 72, CPyStatic__wallet___globals);
+        goto CPyL84;
     }
     return 1;
-CPyL80: ;
-    cpy_r_r119 = 2;
-    return cpy_r_r119;
-CPyL81: ;
-    CPy_DecRef(cpy_r_r0);
-    goto CPyL80;
-CPyL82: ;
-    CPy_DecRef(cpy_r_r8);
-    goto CPyL80;
-CPyL83: ;
-    CPy_DECREF(cpy_r_r8);
-    goto CPyL22;
 CPyL84: ;
-    CPy_DECREF(cpy_r_r8);
-    CPy_DECREF(cpy_r_r9);
-    goto CPyL8;
+    cpy_r_r124 = 2;
+    return cpy_r_r124;
 CPyL85: ;
-    CPy_DecRef(cpy_r_r9);
-    goto CPyL80;
+    CPy_DecRef(cpy_r_r0);
+    goto CPyL2;
 CPyL86: ;
-    CPy_DECREF(cpy_r_r9);
-    goto CPyL18;
+    CPy_DecRef(cpy_r_r0);
+    goto CPyL84;
 CPyL87: ;
-    CPy_DECREF(cpy_r_r9);
-    goto CPyL33;
+    CPy_DecRef(cpy_r_r5);
+    goto CPyL84;
 CPyL88: ;
-    CPy_DecRef(cpy_r_r53);
-    goto CPyL80;
+    CPy_DecRef(cpy_r_r13);
+    goto CPyL84;
 CPyL89: ;
-    CPy_DECREF(cpy_r_r53);
-    goto CPyL51;
+    CPy_DECREF(cpy_r_r13);
+    goto CPyL26;
 CPyL90: ;
-    CPy_DECREF(cpy_r_r53);
-    CPy_DECREF(cpy_r_r54);
-    goto CPyL37;
+    CPy_DECREF(cpy_r_r13);
+    CPy_DECREF(cpy_r_r14);
+    goto CPyL12;
 CPyL91: ;
-    CPy_DecRef(cpy_r_r54);
-    goto CPyL80;
+    CPy_DecRef(cpy_r_r14);
+    goto CPyL84;
 CPyL92: ;
-    CPy_DECREF(cpy_r_r54);
-    goto CPyL47;
+    CPy_DECREF(cpy_r_r14);
+    goto CPyL22;
 CPyL93: ;
-    CPy_DECREF(cpy_r_r54);
-    goto CPyL62;
+    CPy_DECREF(cpy_r_r14);
+    goto CPyL37;
 CPyL94: ;
-    CPy_DecRef(cpy_r_addr);
-    goto CPyL65;
+    CPy_DecRef(cpy_r_r58);
+    goto CPyL84;
 CPyL95: ;
-    CPy_DecRef(cpy_r_addr);
-    goto CPyL80;
+    CPy_DECREF(cpy_r_r58);
+    goto CPyL55;
 CPyL96: ;
-    CPy_DecRef(cpy_r_r108);
-    goto CPyL80;
+    CPy_DECREF(cpy_r_r58);
+    CPy_DECREF(cpy_r_r59);
+    goto CPyL41;
 CPyL97: ;
+    CPy_DecRef(cpy_r_r59);
+    goto CPyL84;
+CPyL98: ;
+    CPy_DECREF(cpy_r_r59);
+    goto CPyL51;
+CPyL99: ;
+    CPy_DECREF(cpy_r_r59);
+    goto CPyL66;
+CPyL100: ;
     CPy_DecRef(cpy_r_addr);
-    goto CPyL76;
+    goto CPyL69;
+CPyL101: ;
+    CPy_DecRef(cpy_r_addr);
+    goto CPyL84;
+CPyL102: ;
+    CPy_DecRef(cpy_r_r113);
+    goto CPyL84;
+CPyL103: ;
+    CPy_DecRef(cpy_r_addr);
+    goto CPyL80;
 }
 
 PyObject *CPyPy__wallet___TreasuryWallet_____post_init__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -23356,7 +23390,7 @@ PyObject *CPyPy__wallet___TreasuryWallet_____post_init__(PyObject *self, PyObjec
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 38, CPyStatic__wallet___globals);
+    CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 40, CPyStatic__wallet___globals);
     return NULL;
 }
 
@@ -23421,7 +23455,7 @@ CPyL3: ;
 CPyL4: ;
     cpy_r_r3 = CPyDef__wallet___TreasuryWallet____get_instance(cpy_r_address);
     if (unlikely(cpy_r_r3 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 76, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals);
         goto CPyL43;
     }
     cpy_r_r4 = (PyObject *)&_Py_NoneStruct;
@@ -23436,12 +23470,12 @@ CPyL7: ;
     if (likely(cpy_r_r3 != Py_None))
         cpy_r_r6 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
         goto CPyL45;
     }
     cpy_r_r7 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_r6)->_networks;
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "check_membership", "TreasuryWallet", "networks", 80, CPyStatic__wallet___globals);
+        CPy_AttributeError("dao_treasury/_wallet.py", "check_membership", "TreasuryWallet", "networks", 84, CPyStatic__wallet___globals);
         goto CPyL45;
     }
     CPy_INCREF(cpy_r_r7);
@@ -23452,7 +23486,7 @@ CPyL9: ;
     if (likely(cpy_r_r7 != Py_None))
         cpy_r_r10 = cpy_r_r7;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals, "list", cpy_r_r7);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals, "list", cpy_r_r7);
         goto CPyL45;
     }
     cpy_r_r11 = (CPyPtr)&((PyVarObject *)cpy_r_r10)->ob_size;
@@ -23465,7 +23499,7 @@ CPyL9: ;
     cpy_r_r16 = CPyStatics[159]; /* 'CHAINID' */
     cpy_r_r17 = CPyDict_GetItem(cpy_r_r15, cpy_r_r16);
     if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
         goto CPyL45;
     }
     if (likely(PyLong_Check(cpy_r_r17)))
@@ -23475,18 +23509,18 @@ CPyL9: ;
     }
     CPy_DECREF(cpy_r_r17);
     if (unlikely(cpy_r_r18 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
         goto CPyL45;
     }
     if (likely(cpy_r_r3 != Py_None))
         cpy_r_r19 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
         goto CPyL47;
     }
     cpy_r_r20 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_r19)->_networks;
     if (unlikely(cpy_r_r20 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "check_membership", "TreasuryWallet", "networks", 80, CPyStatic__wallet___globals);
+        CPy_AttributeError("dao_treasury/_wallet.py", "check_membership", "TreasuryWallet", "networks", 84, CPyStatic__wallet___globals);
         goto CPyL47;
     }
     CPy_INCREF(cpy_r_r20);
@@ -23494,7 +23528,7 @@ CPyL16: ;
     if (likely(cpy_r_r20 != Py_None))
         cpy_r_r21 = cpy_r_r20;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals, "list", cpy_r_r20);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals, "list", cpy_r_r20);
         goto CPyL47;
     }
     cpy_r_r22 = CPyTagged_StealAsObject(cpy_r_r18);
@@ -23503,7 +23537,7 @@ CPyL16: ;
     CPy_DECREF(cpy_r_r22);
     cpy_r_r24 = cpy_r_r23 >= 0;
     if (unlikely(!cpy_r_r24)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 80, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
         goto CPyL45;
     }
     cpy_r_r25 = cpy_r_r23;
@@ -23528,19 +23562,19 @@ CPyL22: ;
     if (likely(cpy_r_r3 != Py_None))
         cpy_r_r30 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 83, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 87, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
         goto CPyL45;
     }
     cpy_r_r31 = CPyDef__wallet___TreasuryWallet____start_block(cpy_r_r30);
     if (unlikely(cpy_r_r31 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 83, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 87, CPyStatic__wallet___globals);
         goto CPyL45;
     }
 CPyL24: ;
     cpy_r_r32 = PyObject_RichCompare(cpy_r_r31, cpy_r_block, 1);
     CPy_DECREF(cpy_r_r31);
     if (unlikely(cpy_r_r32 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 83, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 87, CPyStatic__wallet___globals);
         goto CPyL45;
     }
     if (unlikely(!PyBool_Check(cpy_r_r32))) {
@@ -23549,7 +23583,7 @@ CPyL24: ;
         cpy_r_r33 = cpy_r_r32 == Py_True;
     CPy_DECREF(cpy_r_r32);
     if (unlikely(cpy_r_r33 == 2)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 83, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 87, CPyStatic__wallet___globals);
         goto CPyL45;
     }
     if (cpy_r_r33) {
@@ -23563,12 +23597,12 @@ CPyL28: ;
     if (likely(cpy_r_r3 != Py_None))
         cpy_r_r35 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 88, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
         goto CPyL45;
     }
     cpy_r_r36 = CPyDef__wallet___TreasuryWallet____end_block(cpy_r_r35);
     if (unlikely(cpy_r_r36 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 88, CPyStatic__wallet___globals);
         goto CPyL45;
     }
 CPyL30: ;
@@ -23585,12 +23619,12 @@ CPyL32: ;
     if (likely(cpy_r_r3 != Py_None))
         cpy_r_r40 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 88, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r3);
         goto CPyL45;
     }
     cpy_r_r41 = CPyDef__wallet___TreasuryWallet____end_block(cpy_r_r40);
     if (unlikely(cpy_r_r41 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 88, CPyStatic__wallet___globals);
         goto CPyL45;
     }
 CPyL34: ;
@@ -23599,7 +23633,7 @@ CPyL34: ;
     CPy_DECREF(cpy_r_r41);
     CPy_DECREF(cpy_r_block);
     if (unlikely(cpy_r_r42 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 88, CPyStatic__wallet___globals);
         goto CPyL40;
     }
     if (unlikely(!PyBool_Check(cpy_r_r42))) {
@@ -23608,7 +23642,7 @@ CPyL34: ;
         cpy_r_r43 = cpy_r_r42 == Py_True;
     CPy_DECREF(cpy_r_r42);
     if (unlikely(cpy_r_r43 == 2)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 84, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 88, CPyStatic__wallet___globals);
         goto CPyL40;
     }
     cpy_r_r39 = cpy_r_r43;
@@ -23708,7 +23742,7 @@ __LL40: ;
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 71, CPyStatic__wallet___globals);
+    CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", 75, CPyStatic__wallet___globals);
     return NULL;
 }
 
@@ -23736,7 +23770,7 @@ PyObject *CPyDef__wallet___TreasuryWallet____start_block(PyObject *cpy_r_self) {
     PyObject *cpy_r_r21;
     cpy_r_r0 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_start_block;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "_start_block", "TreasuryWallet", "start_block", 89, CPyStatic__wallet___globals);
+        CPy_AttributeError("dao_treasury/_wallet.py", "_start_block", "TreasuryWallet", "start_block", 93, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     CPy_INCREF(cpy_r_r0);
@@ -23751,7 +23785,7 @@ CPyL1: ;
     }
     CPy_DECREF(cpy_r_r0);
     if (unlikely(cpy_r_r3 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 91, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 95, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     cpy_r_r4 = CPyTagged_StealAsObject(cpy_r_r3);
@@ -23759,7 +23793,7 @@ CPyL1: ;
 CPyL4: ;
     cpy_r_r5 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_start_timestamp;
     if (unlikely(cpy_r_r5 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "_start_block", "TreasuryWallet", "start_timestamp", 92, CPyStatic__wallet___globals);
+        CPy_AttributeError("dao_treasury/_wallet.py", "_start_block", "TreasuryWallet", "start_timestamp", 96, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     CPy_INCREF(cpy_r_r5);
@@ -23774,14 +23808,14 @@ CPyL5: ;
     }
     CPy_DECREF(cpy_r_r5);
     if (unlikely(cpy_r_r8 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 94, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 98, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     cpy_r_r9 = CPyStatic__wallet___globals;
     cpy_r_r10 = CPyStatics[253]; /* 'closest_block_after_timestamp' */
     cpy_r_r11 = CPyDict_GetItem(cpy_r_r9, cpy_r_r10);
     if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 94, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 98, CPyStatic__wallet___globals);
         goto CPyL16;
     }
     cpy_r_r12 = CPyTagged_StealAsObject(cpy_r_r8);
@@ -23790,7 +23824,7 @@ CPyL5: ;
     cpy_r_r15 = PyObject_Vectorcall(cpy_r_r11, cpy_r_r14, 1, 0);
     CPy_DECREF(cpy_r_r11);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 94, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 98, CPyStatic__wallet___globals);
         goto CPyL17;
     }
     CPy_DECREF(cpy_r_r12);
@@ -23798,7 +23832,7 @@ CPyL5: ;
     cpy_r_r17 = PyNumber_Subtract(cpy_r_r15, cpy_r_r16);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 94, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 98, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     if (likely(PyLong_Check(cpy_r_r17)))
@@ -23808,7 +23842,7 @@ CPyL5: ;
     }
     CPy_DECREF(cpy_r_r17);
     if (unlikely(cpy_r_r18 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 94, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 98, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     cpy_r_r19 = CPyTagged_StealAsObject(cpy_r_r18);
@@ -23850,7 +23884,7 @@ PyObject *CPyPy__wallet___TreasuryWallet____start_block(PyObject *self, PyObject
     PyObject *retval = CPyDef__wallet___TreasuryWallet____start_block(arg_self);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 88, CPyStatic__wallet___globals);
+    CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 92, CPyStatic__wallet___globals);
     return NULL;
 }
 
@@ -23878,7 +23912,7 @@ PyObject *CPyDef__wallet___TreasuryWallet____end_block(PyObject *cpy_r_self) {
     PyObject *cpy_r_r21;
     cpy_r_r0 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_end_block;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "_end_block", "TreasuryWallet", "end_block", 99, CPyStatic__wallet___globals);
+        CPy_AttributeError("dao_treasury/_wallet.py", "_end_block", "TreasuryWallet", "end_block", 103, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     CPy_INCREF(cpy_r_r0);
@@ -23893,7 +23927,7 @@ CPyL1: ;
     }
     CPy_DECREF(cpy_r_r0);
     if (unlikely(cpy_r_r3 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 101, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 105, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     cpy_r_r4 = CPyTagged_StealAsObject(cpy_r_r3);
@@ -23901,7 +23935,7 @@ CPyL1: ;
 CPyL4: ;
     cpy_r_r5 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_self)->_end_timestamp;
     if (unlikely(cpy_r_r5 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "_end_block", "TreasuryWallet", "end_timestamp", 102, CPyStatic__wallet___globals);
+        CPy_AttributeError("dao_treasury/_wallet.py", "_end_block", "TreasuryWallet", "end_timestamp", 106, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     CPy_INCREF(cpy_r_r5);
@@ -23916,14 +23950,14 @@ CPyL5: ;
     }
     CPy_DECREF(cpy_r_r5);
     if (unlikely(cpy_r_r8 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 104, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 108, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     cpy_r_r9 = CPyStatic__wallet___globals;
     cpy_r_r10 = CPyStatics[253]; /* 'closest_block_after_timestamp' */
     cpy_r_r11 = CPyDict_GetItem(cpy_r_r9, cpy_r_r10);
     if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 104, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 108, CPyStatic__wallet___globals);
         goto CPyL16;
     }
     cpy_r_r12 = CPyTagged_StealAsObject(cpy_r_r8);
@@ -23932,7 +23966,7 @@ CPyL5: ;
     cpy_r_r15 = PyObject_Vectorcall(cpy_r_r11, cpy_r_r14, 1, 0);
     CPy_DECREF(cpy_r_r11);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 104, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 108, CPyStatic__wallet___globals);
         goto CPyL17;
     }
     CPy_DECREF(cpy_r_r12);
@@ -23940,7 +23974,7 @@ CPyL5: ;
     cpy_r_r17 = PyNumber_Subtract(cpy_r_r15, cpy_r_r16);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 104, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 108, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     if (likely(PyLong_Check(cpy_r_r17)))
@@ -23950,7 +23984,7 @@ CPyL5: ;
     }
     CPy_DECREF(cpy_r_r17);
     if (unlikely(cpy_r_r18 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 104, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 108, CPyStatic__wallet___globals);
         goto CPyL13;
     }
     cpy_r_r19 = CPyTagged_StealAsObject(cpy_r_r18);
@@ -23992,7 +24026,7 @@ PyObject *CPyPy__wallet___TreasuryWallet____end_block(PyObject *self, PyObject *
     PyObject *retval = CPyDef__wallet___TreasuryWallet____end_block(arg_self);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 98, CPyStatic__wallet___globals);
+    CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 102, CPyStatic__wallet___globals);
     return NULL;
 }
 
@@ -24008,351 +24042,350 @@ PyObject *CPyDef__wallet___TreasuryWallet____get_instance(PyObject *cpy_r_addres
     PyObject *cpy_r_r7;
     char cpy_r_r8;
     PyObject *cpy_r_r9;
-    PyObject *cpy_r_r10;
-    PyObject *cpy_r_r11;
-    PyObject *cpy_r_r12;
+    char cpy_r_r10;
+    PyObject **cpy_r_r12;
     PyObject *cpy_r_r13;
-    PyObject **cpy_r_r15;
+    PyObject *cpy_r_r14;
+    char cpy_r_r15;
     PyObject *cpy_r_r16;
     PyObject *cpy_r_r17;
-    char cpy_r_r18;
-    PyObject *cpy_r_r19;
-    PyObject *cpy_r_r20;
-    PyObject *cpy_r_r21;
-    char cpy_r_r22;
-    int32_t cpy_r_r23;
-    char cpy_r_r24;
-    tuple_T3OOO cpy_r_r25;
-    PyObject *cpy_r_r26;
+    PyObject *cpy_r_r18;
+    char cpy_r_r19;
+    int32_t cpy_r_r20;
+    char cpy_r_r21;
+    tuple_T3OOO cpy_r_r22;
+    PyObject *cpy_r_r23;
+    PyObject *cpy_r_r24;
+    PyObject *cpy_r_r25;
+    char cpy_r_r26;
     PyObject *cpy_r_r27;
-    PyObject *cpy_r_r28;
+    char cpy_r_r28;
     char cpy_r_r29;
     PyObject *cpy_r_r30;
-    char cpy_r_r31;
+    PyObject *cpy_r_r31;
     char cpy_r_r32;
     PyObject *cpy_r_r33;
-    PyObject *cpy_r_r34;
-    char cpy_r_r35;
-    PyObject *cpy_r_r36;
-    CPyPtr cpy_r_r37;
-    int64_t cpy_r_r38;
-    CPyTagged cpy_r_r39;
-    char cpy_r_r40;
-    PyObject *cpy_r_r41;
+    CPyPtr cpy_r_r34;
+    int64_t cpy_r_r35;
+    CPyTagged cpy_r_r36;
+    char cpy_r_r37;
+    PyObject *cpy_r_r38;
+    PyObject *cpy_r_r39;
+    PyObject *cpy_r_r40;
+    CPyTagged cpy_r_r41;
     PyObject *cpy_r_r42;
     PyObject *cpy_r_r43;
-    CPyTagged cpy_r_r44;
-    PyObject *cpy_r_r45;
-    PyObject *cpy_r_r46;
-    PyObject *cpy_r_r47;
-    int32_t cpy_r_r48;
-    char cpy_r_r49;
-    char cpy_r_r50;
-    char cpy_r_r51;
-    PyObject *cpy_r_r52;
-    PyObject *cpy_r_r53;
+    PyObject *cpy_r_r44;
+    int32_t cpy_r_r45;
+    char cpy_r_r46;
+    char cpy_r_r47;
+    char cpy_r_r48;
+    PyObject *cpy_r_r49;
+    PyObject *cpy_r_r50;
     cpy_r_r0 = CPyStatic__wallet___WALLETS;
     if (likely(cpy_r_r0 != NULL)) goto CPyL4;
     PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
     cpy_r_r1 = 0;
     if (unlikely(!cpy_r_r1)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 111, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals);
         goto CPyL7;
     }
     CPy_Unreachable();
 CPyL4: ;
     cpy_r_r2 = CPyDict_GetItem(cpy_r_r0, cpy_r_address);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 111, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals);
         goto CPyL7;
     }
     if (likely(Py_TYPE(cpy_r_r2) == CPyType__wallet___TreasuryWallet))
         cpy_r_r3 = cpy_r_r2;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 111, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r2);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r2);
         goto CPyL7;
     }
     cpy_r_instance = cpy_r_r3;
-    goto CPyL34;
+    goto CPyL35;
 CPyL7: ;
     cpy_r_r4 = CPy_CatchError();
     cpy_r_r5 = CPyModule_builtins;
     cpy_r_r6 = CPyStatics[71]; /* 'KeyError' */
     cpy_r_r7 = CPyObject_GetAttr(cpy_r_r5, cpy_r_r6);
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 112, CPyStatic__wallet___globals);
-        goto CPyL32;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 116, CPyStatic__wallet___globals);
+        goto CPyL33;
     }
     cpy_r_r8 = CPy_ExceptionMatches(cpy_r_r7);
     CPy_DecRef(cpy_r_r7);
-    if (!cpy_r_r8) goto CPyL29;
-    cpy_r_r9 = CPyStatic__wallet___globals;
-    cpy_r_r10 = CPyStatics[90]; /* 'convert' */
-    cpy_r_r11 = CPyDict_GetItem(cpy_r_r9, cpy_r_r10);
-    if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 113, CPyStatic__wallet___globals);
-        goto CPyL32;
-    }
-    cpy_r_r12 = CPyStatics[5]; /* 'to_address' */
-    cpy_r_r13 = CPyObject_GetAttr(cpy_r_r11, cpy_r_r12);
-    CPy_DecRef(cpy_r_r11);
-    if (unlikely(cpy_r_r13 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 113, CPyStatic__wallet___globals);
-        goto CPyL32;
-    }
-    PyObject *cpy_r_r14[1] = {cpy_r_address};
-    cpy_r_r15 = (PyObject **)&cpy_r_r14;
-    cpy_r_r16 = PyObject_Vectorcall(cpy_r_r13, cpy_r_r15, 1, 0);
-    CPy_DecRef(cpy_r_r13);
-    if (unlikely(cpy_r_r16 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 113, CPyStatic__wallet___globals);
-        goto CPyL32;
-    }
-    cpy_r_r17 = CPyStatic__wallet___WALLETS;
-    if (unlikely(cpy_r_r17 == NULL)) {
-        goto CPyL47;
-    } else
-        goto CPyL16;
-CPyL14: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
-    cpy_r_r18 = 0;
-    if (unlikely(!cpy_r_r18)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals);
-        goto CPyL22;
+    if (!cpy_r_r8) goto CPyL30;
+    cpy_r_r9 = CPyStatic__wallet___to_address;
+    if (likely(cpy_r_r9 != NULL)) goto CPyL12;
+    PyErr_SetString(PyExc_NameError, "value for final name \"to_address\" was not set");
+    cpy_r_r10 = 0;
+    if (unlikely(!cpy_r_r10)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 117, CPyStatic__wallet___globals);
+        goto CPyL33;
     } else
         goto CPyL48;
-CPyL15: ;
+CPyL11: ;
     CPy_Unreachable();
-CPyL16: ;
-    cpy_r_r19 = CPyDict_GetItem(cpy_r_r17, cpy_r_r16);
-    CPy_DecRef(cpy_r_r16);
-    if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals);
-        goto CPyL22;
+CPyL12: ;
+    PyObject *cpy_r_r11[1] = {cpy_r_address};
+    cpy_r_r12 = (PyObject **)&cpy_r_r11;
+    cpy_r_r13 = PyObject_Vectorcall(cpy_r_r9, cpy_r_r12, 1, 0);
+    if (unlikely(cpy_r_r13 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 117, CPyStatic__wallet___globals);
+        goto CPyL33;
     }
-    if (likely(Py_TYPE(cpy_r_r19) == CPyType__wallet___TreasuryWallet))
-        cpy_r_r20 = cpy_r_r19;
-    else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r19);
-        goto CPyL22;
-    }
-    CPy_INCREF_NO_IMM(cpy_r_r20);
-    cpy_r_instance = cpy_r_r20;
-    cpy_r_r21 = CPyStatic__wallet___WALLETS;
-    if (unlikely(cpy_r_r21 == NULL)) {
+    cpy_r_r14 = CPyStatic__wallet___WALLETS;
+    if (unlikely(cpy_r_r14 == NULL)) {
         goto CPyL49;
     } else
-        goto CPyL21;
-CPyL19: ;
+        goto CPyL17;
+CPyL15: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
-    cpy_r_r22 = 0;
-    if (unlikely(!cpy_r_r22)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals);
-        goto CPyL22;
+    cpy_r_r15 = 0;
+    if (unlikely(!cpy_r_r15)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 119, CPyStatic__wallet___globals);
+        goto CPyL23;
     } else
         goto CPyL50;
-CPyL20: ;
+CPyL16: ;
     CPy_Unreachable();
-CPyL21: ;
-    cpy_r_r23 = CPyDict_SetItem(cpy_r_r21, cpy_r_address, cpy_r_r20);
-    CPy_DecRef(cpy_r_r20);
-    cpy_r_r24 = cpy_r_r23 >= 0;
-    if (unlikely(!cpy_r_r24)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 115, CPyStatic__wallet___globals);
+CPyL17: ;
+    cpy_r_r16 = CPyDict_GetItem(cpy_r_r14, cpy_r_r13);
+    CPy_DecRef(cpy_r_r13);
+    if (unlikely(cpy_r_r16 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 119, CPyStatic__wallet___globals);
+        goto CPyL23;
+    }
+    if (likely(Py_TYPE(cpy_r_r16) == CPyType__wallet___TreasuryWallet))
+        cpy_r_r17 = cpy_r_r16;
+    else {
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 119, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r16);
+        goto CPyL23;
+    }
+    CPy_INCREF_NO_IMM(cpy_r_r17);
+    cpy_r_instance = cpy_r_r17;
+    cpy_r_r18 = CPyStatic__wallet___WALLETS;
+    if (unlikely(cpy_r_r18 == NULL)) {
         goto CPyL51;
     } else
-        goto CPyL31;
-CPyL22: ;
-    cpy_r_r25 = CPy_CatchError();
-    cpy_r_r26 = CPyModule_builtins;
-    cpy_r_r27 = CPyStatics[71]; /* 'KeyError' */
-    cpy_r_r28 = CPyObject_GetAttr(cpy_r_r26, cpy_r_r27);
-    if (unlikely(cpy_r_r28 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 116, CPyStatic__wallet___globals);
-        goto CPyL27;
-    }
-    cpy_r_r29 = CPy_ExceptionMatches(cpy_r_r28);
-    CPy_DecRef(cpy_r_r28);
-    if (!cpy_r_r29) goto CPyL25;
-    cpy_r_r30 = Py_None;
-    CPy_RestoreExcInfo(cpy_r_r25);
-    CPy_DecRef(cpy_r_r25.f0);
-    CPy_DecRef(cpy_r_r25.f1);
-    CPy_DecRef(cpy_r_r25.f2);
-    CPy_RestoreExcInfo(cpy_r_r4);
-    CPy_DecRef(cpy_r_r4.f0);
-    CPy_DecRef(cpy_r_r4.f1);
-    CPy_DecRef(cpy_r_r4.f2);
-    return cpy_r_r30;
-CPyL25: ;
-    CPy_Reraise();
-    if (!0) {
-        goto CPyL27;
+        goto CPyL22;
+CPyL20: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"WALLETS\" was not set");
+    cpy_r_r19 = 0;
+    if (unlikely(!cpy_r_r19)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 119, CPyStatic__wallet___globals);
+        goto CPyL23;
     } else
         goto CPyL52;
-CPyL26: ;
+CPyL21: ;
     CPy_Unreachable();
-CPyL27: ;
-    CPy_RestoreExcInfo(cpy_r_r25);
-    CPy_DecRef(cpy_r_r25.f0);
-    CPy_DecRef(cpy_r_r25.f1);
-    CPy_DecRef(cpy_r_r25.f2);
-    cpy_r_r31 = CPy_KeepPropagating();
-    if (!cpy_r_r31) {
-        goto CPyL32;
-    } else
+CPyL22: ;
+    cpy_r_r20 = CPyDict_SetItem(cpy_r_r18, cpy_r_address, cpy_r_r17);
+    CPy_DecRef(cpy_r_r17);
+    cpy_r_r21 = cpy_r_r20 >= 0;
+    if (unlikely(!cpy_r_r21)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 119, CPyStatic__wallet___globals);
         goto CPyL53;
-CPyL28: ;
-    CPy_Unreachable();
-CPyL29: ;
-    CPy_Reraise();
-    if (!0) {
-        goto CPyL32;
     } else
-        goto CPyL54;
-CPyL30: ;
-    CPy_Unreachable();
-CPyL31: ;
+        goto CPyL32;
+CPyL23: ;
+    cpy_r_r22 = CPy_CatchError();
+    cpy_r_r23 = CPyModule_builtins;
+    cpy_r_r24 = CPyStatics[71]; /* 'KeyError' */
+    cpy_r_r25 = CPyObject_GetAttr(cpy_r_r23, cpy_r_r24);
+    if (unlikely(cpy_r_r25 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 120, CPyStatic__wallet___globals);
+        goto CPyL28;
+    }
+    cpy_r_r26 = CPy_ExceptionMatches(cpy_r_r25);
+    CPy_DecRef(cpy_r_r25);
+    if (!cpy_r_r26) goto CPyL26;
+    cpy_r_r27 = Py_None;
+    CPy_RestoreExcInfo(cpy_r_r22);
+    CPy_DecRef(cpy_r_r22.f0);
+    CPy_DecRef(cpy_r_r22.f1);
+    CPy_DecRef(cpy_r_r22.f2);
     CPy_RestoreExcInfo(cpy_r_r4);
     CPy_DecRef(cpy_r_r4.f0);
     CPy_DecRef(cpy_r_r4.f1);
     CPy_DecRef(cpy_r_r4.f2);
-    goto CPyL34;
+    return cpy_r_r27;
+CPyL26: ;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL28;
+    } else
+        goto CPyL54;
+CPyL27: ;
+    CPy_Unreachable();
+CPyL28: ;
+    CPy_RestoreExcInfo(cpy_r_r22);
+    CPy_DecRef(cpy_r_r22.f0);
+    CPy_DecRef(cpy_r_r22.f1);
+    CPy_DecRef(cpy_r_r22.f2);
+    cpy_r_r28 = CPy_KeepPropagating();
+    if (!cpy_r_r28) {
+        goto CPyL33;
+    } else
+        goto CPyL55;
+CPyL29: ;
+    CPy_Unreachable();
+CPyL30: ;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL33;
+    } else
+        goto CPyL56;
+CPyL31: ;
+    CPy_Unreachable();
 CPyL32: ;
     CPy_RestoreExcInfo(cpy_r_r4);
     CPy_DecRef(cpy_r_r4.f0);
     CPy_DecRef(cpy_r_r4.f1);
     CPy_DecRef(cpy_r_r4.f2);
-    cpy_r_r32 = CPy_KeepPropagating();
-    if (!cpy_r_r32) goto CPyL46;
+    goto CPyL35;
+CPyL33: ;
+    CPy_RestoreExcInfo(cpy_r_r4);
+    CPy_DecRef(cpy_r_r4.f0);
+    CPy_DecRef(cpy_r_r4.f1);
+    CPy_DecRef(cpy_r_r4.f2);
+    cpy_r_r29 = CPy_KeepPropagating();
+    if (!cpy_r_r29) goto CPyL47;
     CPy_Unreachable();
-CPyL34: ;
-    cpy_r_r33 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_instance)->_networks;
-    if (unlikely(cpy_r_r33 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "_get_instance", "TreasuryWallet", "networks", 118, CPyStatic__wallet___globals);
-        goto CPyL55;
-    }
-    CPy_INCREF(cpy_r_r33);
 CPyL35: ;
-    cpy_r_r34 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r35 = cpy_r_r33 != cpy_r_r34;
-    if (!cpy_r_r35) goto CPyL56;
-    if (likely(cpy_r_r33 != Py_None))
-        cpy_r_r36 = cpy_r_r33;
-    else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 118, CPyStatic__wallet___globals, "list", cpy_r_r33);
-        goto CPyL55;
-    }
-    cpy_r_r37 = (CPyPtr)&((PyVarObject *)cpy_r_r36)->ob_size;
-    cpy_r_r38 = *(int64_t *)cpy_r_r37;
-    CPy_DECREF_NO_IMM(cpy_r_r36);
-    cpy_r_r39 = cpy_r_r38 << 1;
-    cpy_r_r40 = cpy_r_r39 != 0;
-    if (!cpy_r_r40) goto CPyL45;
-    cpy_r_r41 = CPyStatic__wallet___globals;
-    cpy_r_r42 = CPyStatics[159]; /* 'CHAINID' */
-    cpy_r_r43 = CPyDict_GetItem(cpy_r_r41, cpy_r_r42);
-    if (unlikely(cpy_r_r43 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 118, CPyStatic__wallet___globals);
-        goto CPyL55;
-    }
-    if (likely(PyLong_Check(cpy_r_r43)))
-        cpy_r_r44 = CPyTagged_FromObject(cpy_r_r43);
-    else {
-        CPy_TypeError("int", cpy_r_r43); cpy_r_r44 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r43);
-    if (unlikely(cpy_r_r44 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 118, CPyStatic__wallet___globals);
-        goto CPyL55;
-    }
-    cpy_r_r45 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_instance)->_networks;
-    if (unlikely(cpy_r_r45 == NULL)) {
-        CPy_AttributeError("dao_treasury/_wallet.py", "_get_instance", "TreasuryWallet", "networks", 118, CPyStatic__wallet___globals);
+    cpy_r_r30 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_instance)->_networks;
+    if (unlikely(cpy_r_r30 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "_get_instance", "TreasuryWallet", "networks", 122, CPyStatic__wallet___globals);
         goto CPyL57;
     }
-    CPy_INCREF(cpy_r_r45);
-CPyL41: ;
-    if (likely(cpy_r_r45 != Py_None))
-        cpy_r_r46 = cpy_r_r45;
+    CPy_INCREF(cpy_r_r30);
+CPyL36: ;
+    cpy_r_r31 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r32 = cpy_r_r30 != cpy_r_r31;
+    if (!cpy_r_r32) goto CPyL58;
+    if (likely(cpy_r_r30 != Py_None))
+        cpy_r_r33 = cpy_r_r30;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 118, CPyStatic__wallet___globals, "list", cpy_r_r45);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 122, CPyStatic__wallet___globals, "list", cpy_r_r30);
         goto CPyL57;
     }
-    cpy_r_r47 = CPyTagged_StealAsObject(cpy_r_r44);
-    cpy_r_r48 = PySequence_Contains(cpy_r_r46, cpy_r_r47);
-    CPy_DECREF_NO_IMM(cpy_r_r46);
-    CPy_DECREF(cpy_r_r47);
-    cpy_r_r49 = cpy_r_r48 >= 0;
-    if (unlikely(!cpy_r_r49)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 118, CPyStatic__wallet___globals);
-        goto CPyL55;
+    cpy_r_r34 = (CPyPtr)&((PyVarObject *)cpy_r_r33)->ob_size;
+    cpy_r_r35 = *(int64_t *)cpy_r_r34;
+    CPy_DECREF_NO_IMM(cpy_r_r33);
+    cpy_r_r36 = cpy_r_r35 << 1;
+    cpy_r_r37 = cpy_r_r36 != 0;
+    if (!cpy_r_r37) goto CPyL46;
+    cpy_r_r38 = CPyStatic__wallet___globals;
+    cpy_r_r39 = CPyStatics[159]; /* 'CHAINID' */
+    cpy_r_r40 = CPyDict_GetItem(cpy_r_r38, cpy_r_r39);
+    if (unlikely(cpy_r_r40 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 122, CPyStatic__wallet___globals);
+        goto CPyL57;
     }
-    cpy_r_r50 = cpy_r_r48;
-    cpy_r_r51 = cpy_r_r50 ^ 1;
-    if (cpy_r_r51) {
-        goto CPyL58;
+    if (likely(PyLong_Check(cpy_r_r40)))
+        cpy_r_r41 = CPyTagged_FromObject(cpy_r_r40);
+    else {
+        CPy_TypeError("int", cpy_r_r40); cpy_r_r41 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r40);
+    if (unlikely(cpy_r_r41 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 122, CPyStatic__wallet___globals);
+        goto CPyL57;
+    }
+    cpy_r_r42 = ((dao_treasury____wallet___TreasuryWalletObject *)cpy_r_instance)->_networks;
+    if (unlikely(cpy_r_r42 == NULL)) {
+        CPy_AttributeError("dao_treasury/_wallet.py", "_get_instance", "TreasuryWallet", "networks", 122, CPyStatic__wallet___globals);
+        goto CPyL59;
+    }
+    CPy_INCREF(cpy_r_r42);
+CPyL42: ;
+    if (likely(cpy_r_r42 != Py_None))
+        cpy_r_r43 = cpy_r_r42;
+    else {
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "_get_instance", 122, CPyStatic__wallet___globals, "list", cpy_r_r42);
+        goto CPyL59;
+    }
+    cpy_r_r44 = CPyTagged_StealAsObject(cpy_r_r41);
+    cpy_r_r45 = PySequence_Contains(cpy_r_r43, cpy_r_r44);
+    CPy_DECREF_NO_IMM(cpy_r_r43);
+    CPy_DECREF(cpy_r_r44);
+    cpy_r_r46 = cpy_r_r45 >= 0;
+    if (unlikely(!cpy_r_r46)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 122, CPyStatic__wallet___globals);
+        goto CPyL57;
+    }
+    cpy_r_r47 = cpy_r_r45;
+    cpy_r_r48 = cpy_r_r47 ^ 1;
+    if (cpy_r_r48) {
+        goto CPyL60;
     } else
-        goto CPyL45;
-CPyL44: ;
-    cpy_r_r52 = Py_None;
-    return cpy_r_r52;
+        goto CPyL46;
 CPyL45: ;
-    return cpy_r_instance;
+    cpy_r_r49 = Py_None;
+    return cpy_r_r49;
 CPyL46: ;
-    cpy_r_r53 = NULL;
-    return cpy_r_r53;
+    return cpy_r_instance;
 CPyL47: ;
-    CPy_DecRef(cpy_r_r16);
-    goto CPyL14;
+    cpy_r_r50 = NULL;
+    return cpy_r_r50;
 CPyL48: ;
     CPy_DecRef(cpy_r_r4.f0);
     CPy_DecRef(cpy_r_r4.f1);
     CPy_DecRef(cpy_r_r4.f2);
-    goto CPyL15;
+    goto CPyL11;
 CPyL49: ;
-    CPy_DecRef(cpy_r_instance);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL19;
+    CPy_DecRef(cpy_r_r13);
+    goto CPyL15;
 CPyL50: ;
     CPy_DecRef(cpy_r_r4.f0);
     CPy_DecRef(cpy_r_r4.f1);
     CPy_DecRef(cpy_r_r4.f2);
-    goto CPyL20;
+    goto CPyL16;
 CPyL51: ;
     CPy_DecRef(cpy_r_instance);
-    goto CPyL22;
+    CPy_DecRef(cpy_r_r17);
+    goto CPyL20;
 CPyL52: ;
     CPy_DecRef(cpy_r_r4.f0);
     CPy_DecRef(cpy_r_r4.f1);
     CPy_DecRef(cpy_r_r4.f2);
-    CPy_DecRef(cpy_r_r25.f0);
-    CPy_DecRef(cpy_r_r25.f1);
-    CPy_DecRef(cpy_r_r25.f2);
-    goto CPyL26;
+    goto CPyL21;
 CPyL53: ;
-    CPy_DecRef(cpy_r_r4.f0);
-    CPy_DecRef(cpy_r_r4.f1);
-    CPy_DecRef(cpy_r_r4.f2);
-    goto CPyL28;
+    CPy_DecRef(cpy_r_instance);
+    goto CPyL23;
 CPyL54: ;
     CPy_DecRef(cpy_r_r4.f0);
     CPy_DecRef(cpy_r_r4.f1);
     CPy_DecRef(cpy_r_r4.f2);
-    goto CPyL30;
+    CPy_DecRef(cpy_r_r22.f0);
+    CPy_DecRef(cpy_r_r22.f1);
+    CPy_DecRef(cpy_r_r22.f2);
+    goto CPyL27;
 CPyL55: ;
-    CPy_DecRef(cpy_r_instance);
-    goto CPyL46;
+    CPy_DecRef(cpy_r_r4.f0);
+    CPy_DecRef(cpy_r_r4.f1);
+    CPy_DecRef(cpy_r_r4.f2);
+    goto CPyL29;
 CPyL56: ;
-    CPy_DECREF(cpy_r_r33);
-    goto CPyL45;
+    CPy_DecRef(cpy_r_r4.f0);
+    CPy_DecRef(cpy_r_r4.f1);
+    CPy_DecRef(cpy_r_r4.f2);
+    goto CPyL31;
 CPyL57: ;
     CPy_DecRef(cpy_r_instance);
-    CPyTagged_DecRef(cpy_r_r44);
-    goto CPyL46;
+    goto CPyL47;
 CPyL58: ;
+    CPy_DECREF(cpy_r_r30);
+    goto CPyL46;
+CPyL59: ;
+    CPy_DecRef(cpy_r_instance);
+    CPyTagged_DecRef(cpy_r_r41);
+    goto CPyL47;
+CPyL60: ;
     CPy_DECREF_NO_IMM(cpy_r_instance);
-    goto CPyL44;
+    goto CPyL45;
 }
 
 PyObject *CPyPy__wallet___TreasuryWallet____get_instance(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -24366,7 +24399,7 @@ PyObject *CPyPy__wallet___TreasuryWallet____get_instance(PyObject *self, PyObjec
     PyObject *retval = CPyDef__wallet___TreasuryWallet____get_instance(arg_address);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 108, CPyStatic__wallet___globals);
+    CPy_AddTraceback("dao_treasury/_wallet.py", "_get_instance", 112, CPyStatic__wallet___globals);
     return NULL;
 }
 
@@ -24818,20 +24851,20 @@ PyObject *CPyDef__wallet___load_wallets_from_yaml(PyObject *cpy_r_path) {
     cpy_r_r2 = (PyObject **)&cpy_r_r1;
     cpy_r_r3 = PyObject_VectorcallMethod(cpy_r_r0, cpy_r_r2, 9223372036854775809ULL, 0);
     if (unlikely(cpy_r_r3 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 131, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 135, CPyStatic__wallet___globals);
         goto CPyL6;
     }
     if (likely(PyBytes_Check(cpy_r_r3) || PyByteArray_Check(cpy_r_r3)))
         cpy_r_r4 = cpy_r_r3;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 131, CPyStatic__wallet___globals, "bytes", cpy_r_r3);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 135, CPyStatic__wallet___globals, "bytes", cpy_r_r3);
         goto CPyL6;
     }
     cpy_r_r5 = CPyModule_yaml;
     cpy_r_r6 = CPyStatics[144]; /* 'safe_load' */
     cpy_r_r7 = CPyObject_GetAttr(cpy_r_r5, cpy_r_r6);
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 131, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 135, CPyStatic__wallet___globals);
         goto CPyL258;
     }
     PyObject *cpy_r_r8[1] = {cpy_r_r4};
@@ -24839,7 +24872,7 @@ PyObject *CPyDef__wallet___load_wallets_from_yaml(PyObject *cpy_r_path) {
     cpy_r_r10 = PyObject_Vectorcall(cpy_r_r7, cpy_r_r9, 1, 0);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 131, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 135, CPyStatic__wallet___globals);
         goto CPyL258;
     }
     CPy_DECREF(cpy_r_r4);
@@ -24850,7 +24883,7 @@ CPyL6: ;
     cpy_r_r13 = CPyStatics[254]; /* 'Exception' */
     cpy_r_r14 = CPyObject_GetAttr(cpy_r_r12, cpy_r_r13);
     if (unlikely(cpy_r_r14 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 132, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 136, CPyStatic__wallet___globals);
         goto CPyL16;
     }
     cpy_r_r15 = CPy_ExceptionMatches(cpy_r_r14);
@@ -24861,20 +24894,20 @@ CPyL6: ;
     cpy_r_r18 = PyObject_Str(cpy_r_r16);
     CPy_DecRef(cpy_r_r16);
     if (unlikely(cpy_r_r18 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 133, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 137, CPyStatic__wallet___globals);
         goto CPyL16;
     }
     cpy_r_r19 = CPyStr_Build(2, cpy_r_r17, cpy_r_r18);
     CPy_DecRef(cpy_r_r18);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 133, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 137, CPyStatic__wallet___globals);
         goto CPyL16;
     }
     cpy_r_r20 = CPyModule_builtins;
     cpy_r_r21 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r22 = CPyObject_GetAttr(cpy_r_r20, cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 133, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 137, CPyStatic__wallet___globals);
         goto CPyL259;
     }
     PyObject *cpy_r_r23[1] = {cpy_r_r19};
@@ -24882,14 +24915,14 @@ CPyL6: ;
     cpy_r_r25 = PyObject_Vectorcall(cpy_r_r22, cpy_r_r24, 1, 0);
     CPy_DecRef(cpy_r_r22);
     if (unlikely(cpy_r_r25 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 133, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 137, CPyStatic__wallet___globals);
         goto CPyL259;
     }
     CPy_DecRef(cpy_r_r19);
     CPy_Raise(cpy_r_r25);
     CPy_DecRef(cpy_r_r25);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 133, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 137, CPyStatic__wallet___globals);
         goto CPyL16;
     } else
         goto CPyL260;
@@ -24916,7 +24949,7 @@ CPyL18: ;
     cpy_r_r28 = PyObject_IsInstance(cpy_r_r10, cpy_r_r27);
     cpy_r_r29 = cpy_r_r28 >= 0;
     if (unlikely(!cpy_r_r29)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 135, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 139, CPyStatic__wallet___globals);
         goto CPyL262;
     }
     cpy_r_r30 = cpy_r_r28;
@@ -24930,7 +24963,7 @@ CPyL20: ;
     cpy_r_r33 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r34 = CPyObject_GetAttr(cpy_r_r32, cpy_r_r33);
     if (unlikely(cpy_r_r34 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 136, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 140, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     PyObject *cpy_r_r35[1] = {cpy_r_r31};
@@ -24938,26 +24971,26 @@ CPyL20: ;
     cpy_r_r37 = PyObject_Vectorcall(cpy_r_r34, cpy_r_r36, 1, 0);
     CPy_DECREF(cpy_r_r34);
     if (unlikely(cpy_r_r37 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 136, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 140, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Raise(cpy_r_r37);
     CPy_DECREF(cpy_r_r37);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 136, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 140, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
 CPyL24: ;
     cpy_r_r38 = PyList_New(0);
     if (unlikely(cpy_r_r38 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 138, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 142, CPyStatic__wallet___globals);
         goto CPyL262;
     }
     if (likely(PyDict_Check(cpy_r_r10)))
         cpy_r_r39 = cpy_r_r10;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 139, CPyStatic__wallet___globals, "dict", cpy_r_r10);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 143, CPyStatic__wallet___globals, "dict", cpy_r_r10);
         goto CPyL264;
     }
     cpy_r_r40 = 0;
@@ -24965,7 +24998,7 @@ CPyL24: ;
     cpy_r_r42 = cpy_r_r41 << 1;
     cpy_r_r43 = CPyDict_GetItemsIter(cpy_r_r39);
     if (unlikely(cpy_r_r43 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 139, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 143, CPyStatic__wallet___globals);
         goto CPyL265;
     }
 CPyL27: ;
@@ -24990,7 +25023,7 @@ CPyL27: ;
 CPyL29: ;
     cpy_r_r51 = PyDict_New();
     if (unlikely(cpy_r_r51 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 142, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 146, CPyStatic__wallet___globals);
         goto CPyL268;
     }
     cpy_r_cfg = cpy_r_r51;
@@ -25000,7 +25033,7 @@ CPyL31: ;
     cpy_r_r53 = PyObject_IsInstance(cpy_r_cfg, cpy_r_r52);
     cpy_r_r54 = cpy_r_r53 >= 0;
     if (unlikely(!cpy_r_r54)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 143, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 147, CPyStatic__wallet___globals);
         goto CPyL269;
     }
     cpy_r_r55 = cpy_r_r53;
@@ -25013,21 +25046,21 @@ CPyL33: ;
     cpy_r_r57 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r57 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 144, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 148, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r58 = CPyStatics[258]; /* ', expected mapping' */
     cpy_r_r59 = CPyStr_Build(3, cpy_r_r56, cpy_r_r57, cpy_r_r58);
     CPy_DECREF(cpy_r_r57);
     if (unlikely(cpy_r_r59 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 144, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 148, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r60 = CPyModule_builtins;
     cpy_r_r61 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r62 = CPyObject_GetAttr(cpy_r_r60, cpy_r_r61);
     if (unlikely(cpy_r_r62 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 144, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 148, CPyStatic__wallet___globals);
         goto CPyL271;
     }
     PyObject *cpy_r_r63[1] = {cpy_r_r59};
@@ -25035,14 +25068,14 @@ CPyL33: ;
     cpy_r_r65 = PyObject_Vectorcall(cpy_r_r62, cpy_r_r64, 1, 0);
     CPy_DECREF(cpy_r_r62);
     if (unlikely(cpy_r_r65 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 144, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 148, CPyStatic__wallet___globals);
         goto CPyL271;
     }
     CPy_DECREF(cpy_r_r59);
     CPy_Raise(cpy_r_r65);
     CPy_DECREF(cpy_r_r65);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 144, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 148, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25051,27 +25084,27 @@ CPyL39: ;
     if (likely(PyDict_Check(cpy_r_cfg)))
         cpy_r_r66 = cpy_r_cfg;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 147, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 151, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
         goto CPyL269;
     }
     cpy_r_r67 = CPyStatics[189]; /* 'networks' */
     cpy_r_r68 = PyList_New(0);
     if (unlikely(cpy_r_r68 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 147, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 151, CPyStatic__wallet___globals);
         goto CPyL272;
     }
     cpy_r_r69 = CPyDict_Get(cpy_r_r66, cpy_r_r67, cpy_r_r68);
     CPy_DECREF(cpy_r_r66);
     CPy_DECREF_NO_IMM(cpy_r_r68);
     if (unlikely(cpy_r_r69 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 147, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 151, CPyStatic__wallet___globals);
         goto CPyL269;
     }
     cpy_r_r70 = (PyObject *)&PyList_Type;
     cpy_r_r71 = PyObject_IsInstance(cpy_r_r69, cpy_r_r70);
     cpy_r_r72 = cpy_r_r71 >= 0;
     if (unlikely(!cpy_r_r72)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 148, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 152, CPyStatic__wallet___globals);
         goto CPyL273;
     }
     cpy_r_r73 = cpy_r_r71;
@@ -25081,7 +25114,7 @@ CPyL39: ;
     if (likely(PyList_Check(cpy_r_r69)))
         cpy_r_r75 = cpy_r_r69;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 149, CPyStatic__wallet___globals, "list", cpy_r_r69);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 153, CPyStatic__wallet___globals, "list", cpy_r_r69);
         goto CPyL273;
     }
     cpy_r_r76 = 0;
@@ -25103,7 +25136,7 @@ CPyL46: ;
     CPy_DECREF(cpy_r_r86);
     cpy_r_r89 = cpy_r_r88 >= 0;
     if (unlikely(!cpy_r_r89)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 149, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 153, CPyStatic__wallet___globals);
         goto CPyL276;
     }
     cpy_r_r90 = cpy_r_r88;
@@ -25129,28 +25162,28 @@ CPyL52: ;
     cpy_r_r94 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r94 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 152, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 156, CPyStatic__wallet___globals);
         goto CPyL278;
     }
     cpy_r_r95 = CPyStatics[260]; /* ' must be a list of integers, got ' */
     cpy_r_r96 = PyObject_Str(cpy_r_r69);
     CPy_DECREF(cpy_r_r69);
     if (unlikely(cpy_r_r96 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 152, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 156, CPyStatic__wallet___globals);
         goto CPyL279;
     }
     cpy_r_r97 = CPyStr_Build(4, cpy_r_r93, cpy_r_r94, cpy_r_r95, cpy_r_r96);
     CPy_DECREF(cpy_r_r94);
     CPy_DECREF(cpy_r_r96);
     if (unlikely(cpy_r_r97 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 152, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 156, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r98 = CPyModule_builtins;
     cpy_r_r99 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r100 = CPyObject_GetAttr(cpy_r_r98, cpy_r_r99);
     if (unlikely(cpy_r_r100 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 151, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 155, CPyStatic__wallet___globals);
         goto CPyL280;
     }
     PyObject *cpy_r_r101[1] = {cpy_r_r97};
@@ -25158,14 +25191,14 @@ CPyL52: ;
     cpy_r_r103 = PyObject_Vectorcall(cpy_r_r100, cpy_r_r102, 1, 0);
     CPy_DECREF(cpy_r_r100);
     if (unlikely(cpy_r_r103 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 151, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 155, CPyStatic__wallet___globals);
         goto CPyL280;
     }
     CPy_DECREF(cpy_r_r97);
     CPy_Raise(cpy_r_r103);
     CPy_DECREF(cpy_r_r103);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 151, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 155, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25175,40 +25208,40 @@ CPyL59: ;
     if (likely(PyList_Check(cpy_r_r69)))
         cpy_r_r106 = cpy_r_r69;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 155, CPyStatic__wallet___globals, "list", cpy_r_r69);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 159, CPyStatic__wallet___globals, "list", cpy_r_r69);
         goto CPyL269;
     }
     cpy_r_r107 = CPyDict_Build(2, cpy_r_r104, cpy_r_r47, cpy_r_r105, cpy_r_r106);
     CPy_DECREF_NO_IMM(cpy_r_r106);
     if (unlikely(cpy_r_r107 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 155, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 159, CPyStatic__wallet___globals);
         goto CPyL269;
     }
     CPy_INCREF(cpy_r_cfg);
     if (likely(PyDict_Check(cpy_r_cfg)))
         cpy_r_r108 = cpy_r_cfg;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 158, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 162, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
         goto CPyL281;
     }
     cpy_r_r109 = CPyStatics[261]; /* 'start' */
     cpy_r_r110 = PyDict_New();
     if (unlikely(cpy_r_r110 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 158, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 162, CPyStatic__wallet___globals);
         goto CPyL282;
     }
     cpy_r_r111 = CPyDict_Get(cpy_r_r108, cpy_r_r109, cpy_r_r110);
     CPy_DECREF(cpy_r_r108);
     CPy_DECREF(cpy_r_r110);
     if (unlikely(cpy_r_r111 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 158, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 162, CPyStatic__wallet___globals);
         goto CPyL281;
     }
     cpy_r_r112 = (PyObject *)&PyDict_Type;
     cpy_r_r113 = PyObject_IsInstance(cpy_r_r111, cpy_r_r112);
     cpy_r_r114 = cpy_r_r113 >= 0;
     if (unlikely(!cpy_r_r114)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 159, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 163, CPyStatic__wallet___globals);
         goto CPyL283;
     }
     cpy_r_r115 = cpy_r_r113;
@@ -25221,14 +25254,14 @@ CPyL66: ;
     cpy_r_r117 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r117 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 161, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 165, CPyStatic__wallet___globals);
         goto CPyL285;
     }
     cpy_r_r118 = CPyStatics[263]; /* '. Expected mapping, got ' */
     cpy_r_r119 = PyObject_Str(cpy_r_r111);
     CPy_DECREF(cpy_r_r111);
     if (unlikely(cpy_r_r119 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 161, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 165, CPyStatic__wallet___globals);
         goto CPyL286;
     }
     cpy_r_r120 = CPyStatics[264]; /* '.' */
@@ -25236,14 +25269,14 @@ CPyL66: ;
     CPy_DECREF(cpy_r_r117);
     CPy_DECREF(cpy_r_r119);
     if (unlikely(cpy_r_r121 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 161, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 165, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r122 = CPyModule_builtins;
     cpy_r_r123 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r124 = CPyObject_GetAttr(cpy_r_r122, cpy_r_r123);
     if (unlikely(cpy_r_r124 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 160, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 164, CPyStatic__wallet___globals);
         goto CPyL287;
     }
     PyObject *cpy_r_r125[1] = {cpy_r_r121};
@@ -25251,14 +25284,14 @@ CPyL66: ;
     cpy_r_r127 = PyObject_Vectorcall(cpy_r_r124, cpy_r_r126, 1, 0);
     CPy_DECREF(cpy_r_r124);
     if (unlikely(cpy_r_r127 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 160, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 164, CPyStatic__wallet___globals);
         goto CPyL287;
     }
     CPy_DECREF(cpy_r_r121);
     CPy_Raise(cpy_r_r127);
     CPy_DECREF(cpy_r_r127);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 160, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 164, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25267,7 +25300,7 @@ CPyL73: ;
     if (likely(PyDict_Check(cpy_r_r111)))
         cpy_r_r128 = cpy_r_r111;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 163, CPyStatic__wallet___globals, "dict", cpy_r_r111);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 167, CPyStatic__wallet___globals, "dict", cpy_r_r111);
         goto CPyL283;
     }
     cpy_r_r129 = 0;
@@ -25275,7 +25308,7 @@ CPyL73: ;
     cpy_r_r131 = cpy_r_r130 << 1;
     cpy_r_r132 = CPyDict_GetItemsIter(cpy_r_r128);
     if (unlikely(cpy_r_r132 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 163, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 167, CPyStatic__wallet___globals);
         goto CPyL288;
     }
 CPyL75: ;
@@ -25295,14 +25328,14 @@ CPyL75: ;
     cpy_r_r138 = CPyStatics[265]; /* 'timestamp' */
     cpy_r_r139 = PyObject_RichCompare(cpy_r_key, cpy_r_r138, 2);
     if (unlikely(cpy_r_r139 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 164, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 168, CPyStatic__wallet___globals);
         goto CPyL290;
     }
     cpy_r_r140 = PyObject_IsTrue(cpy_r_r139);
     CPy_DECREF(cpy_r_r139);
     cpy_r_r141 = cpy_r_r140 >= 0;
     if (unlikely(!cpy_r_r141)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 164, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 168, CPyStatic__wallet___globals);
         goto CPyL290;
     }
     cpy_r_r142 = cpy_r_r140;
@@ -25315,7 +25348,7 @@ CPyL79: ;
     cpy_r_r144 = PyDict_Contains(cpy_r_r107, cpy_r_r143);
     cpy_r_r145 = cpy_r_r144 >= 0;
     if (unlikely(!cpy_r_r145)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 165, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 169, CPyStatic__wallet___globals);
         goto CPyL292;
     }
     cpy_r_r146 = cpy_r_r144;
@@ -25330,7 +25363,7 @@ CPyL81: ;
     cpy_r_r149 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r150 = CPyObject_GetAttr(cpy_r_r148, cpy_r_r149);
     if (unlikely(cpy_r_r150 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 166, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 170, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     PyObject *cpy_r_r151[1] = {cpy_r_r147};
@@ -25338,13 +25371,13 @@ CPyL81: ;
     cpy_r_r153 = PyObject_Vectorcall(cpy_r_r150, cpy_r_r152, 1, 0);
     CPy_DECREF(cpy_r_r150);
     if (unlikely(cpy_r_r153 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 166, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 170, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Raise(cpy_r_r153);
     CPy_DECREF(cpy_r_r153);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 166, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 170, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25354,7 +25387,7 @@ CPyL85: ;
     CPy_DECREF(cpy_r_value);
     cpy_r_r156 = cpy_r_r155 >= 0;
     if (unlikely(!cpy_r_r156)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 169, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 173, CPyStatic__wallet___globals);
         goto CPyL294;
     } else
         goto CPyL142;
@@ -25362,14 +25395,14 @@ CPyL86: ;
     cpy_r_r157 = CPyStatics[17]; /* 'block' */
     cpy_r_r158 = PyObject_RichCompare(cpy_r_key, cpy_r_r157, 2);
     if (unlikely(cpy_r_r158 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 170, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 174, CPyStatic__wallet___globals);
         goto CPyL290;
     }
     cpy_r_r159 = PyObject_IsTrue(cpy_r_r158);
     CPy_DECREF(cpy_r_r158);
     cpy_r_r160 = cpy_r_r159 >= 0;
     if (unlikely(!cpy_r_r160)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 170, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 174, CPyStatic__wallet___globals);
         goto CPyL290;
     }
     cpy_r_r161 = cpy_r_r159;
@@ -25382,7 +25415,7 @@ CPyL89: ;
     cpy_r_r163 = PyObject_IsInstance(cpy_r_value, cpy_r_r162);
     cpy_r_r164 = cpy_r_r163 >= 0;
     if (unlikely(!cpy_r_r164)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 171, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 175, CPyStatic__wallet___globals);
         goto CPyL292;
     }
     cpy_r_r165 = cpy_r_r163;
@@ -25395,14 +25428,14 @@ CPyL91: ;
     cpy_r_r167 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r167 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 173, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 177, CPyStatic__wallet___globals);
         goto CPyL298;
     }
     cpy_r_r168 = CPyStatics[263]; /* '. Expected mapping, got ' */
     cpy_r_r169 = PyObject_Str(cpy_r_value);
     CPy_DECREF(cpy_r_value);
     if (unlikely(cpy_r_r169 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 173, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 177, CPyStatic__wallet___globals);
         goto CPyL299;
     }
     cpy_r_r170 = CPyStatics[264]; /* '.' */
@@ -25410,14 +25443,14 @@ CPyL91: ;
     CPy_DECREF(cpy_r_r167);
     CPy_DECREF(cpy_r_r169);
     if (unlikely(cpy_r_r171 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 173, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 177, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r172 = CPyModule_builtins;
     cpy_r_r173 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r174 = CPyObject_GetAttr(cpy_r_r172, cpy_r_r173);
     if (unlikely(cpy_r_r174 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 172, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 176, CPyStatic__wallet___globals);
         goto CPyL300;
     }
     PyObject *cpy_r_r175[1] = {cpy_r_r171};
@@ -25425,14 +25458,14 @@ CPyL91: ;
     cpy_r_r177 = PyObject_Vectorcall(cpy_r_r174, cpy_r_r176, 1, 0);
     CPy_DECREF(cpy_r_r174);
     if (unlikely(cpy_r_r177 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 172, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 176, CPyStatic__wallet___globals);
         goto CPyL300;
     }
     CPy_DECREF(cpy_r_r171);
     CPy_Raise(cpy_r_r177);
     CPy_DECREF(cpy_r_r177);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 172, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 176, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25440,7 +25473,7 @@ CPyL98: ;
     if (likely(PyDict_Check(cpy_r_value)))
         cpy_r_r178 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 175, CPyStatic__wallet___globals, "dict", cpy_r_value);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 179, CPyStatic__wallet___globals, "dict", cpy_r_value);
         goto CPyL294;
     }
     cpy_r_r179 = 0;
@@ -25448,7 +25481,7 @@ CPyL98: ;
     cpy_r_r181 = cpy_r_r180 << 1;
     cpy_r_r182 = CPyDict_GetItemsIter(cpy_r_r178);
     if (unlikely(cpy_r_r182 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 175, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 179, CPyStatic__wallet___globals);
         goto CPyL301;
     }
 CPyL100: ;
@@ -25468,7 +25501,7 @@ CPyL100: ;
     cpy_r_r189 = PyObject_IsInstance(cpy_r_chainid, cpy_r_r188);
     cpy_r_r190 = cpy_r_r189 >= 0;
     if (unlikely(!cpy_r_r190)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 176, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 180, CPyStatic__wallet___globals);
         goto CPyL303;
     }
     cpy_r_r191 = cpy_r_r189;
@@ -25481,14 +25514,14 @@ CPyL103: ;
     cpy_r_r193 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r193 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 178, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 182, CPyStatic__wallet___globals);
         goto CPyL305;
     }
     cpy_r_r194 = CPyStatics[271]; /* ' start block. Expected integer, got ' */
     cpy_r_r195 = PyObject_Str(cpy_r_chainid);
     CPy_DECREF(cpy_r_chainid);
     if (unlikely(cpy_r_r195 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 178, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 182, CPyStatic__wallet___globals);
         goto CPyL306;
     }
     cpy_r_r196 = CPyStatics[264]; /* '.' */
@@ -25496,14 +25529,14 @@ CPyL103: ;
     CPy_DECREF(cpy_r_r193);
     CPy_DECREF(cpy_r_r195);
     if (unlikely(cpy_r_r197 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 178, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 182, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r198 = CPyModule_builtins;
     cpy_r_r199 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r200 = CPyObject_GetAttr(cpy_r_r198, cpy_r_r199);
     if (unlikely(cpy_r_r200 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 177, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
         goto CPyL307;
     }
     PyObject *cpy_r_r201[1] = {cpy_r_r197};
@@ -25511,14 +25544,14 @@ CPyL103: ;
     cpy_r_r203 = PyObject_Vectorcall(cpy_r_r200, cpy_r_r202, 1, 0);
     CPy_DECREF(cpy_r_r200);
     if (unlikely(cpy_r_r203 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 177, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
         goto CPyL307;
     }
     CPy_DECREF(cpy_r_r197);
     CPy_Raise(cpy_r_r203);
     CPy_DECREF(cpy_r_r203);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 177, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25527,7 +25560,7 @@ CPyL110: ;
     cpy_r_r205 = PyObject_IsInstance(cpy_r_r187, cpy_r_r204);
     cpy_r_r206 = cpy_r_r205 >= 0;
     if (unlikely(!cpy_r_r206)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 180, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 184, CPyStatic__wallet___globals);
         goto CPyL303;
     }
     cpy_r_r207 = cpy_r_r205;
@@ -25540,14 +25573,14 @@ CPyL112: ;
     cpy_r_r209 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r209 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 182, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
         goto CPyL309;
     }
     cpy_r_r210 = CPyStatics[272]; /* '. Expected integer, got ' */
     cpy_r_r211 = PyObject_Str(cpy_r_r187);
     CPy_DECREF(cpy_r_r187);
     if (unlikely(cpy_r_r211 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 182, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
         goto CPyL310;
     }
     cpy_r_r212 = CPyStatics[264]; /* '.' */
@@ -25555,14 +25588,14 @@ CPyL112: ;
     CPy_DECREF(cpy_r_r209);
     CPy_DECREF(cpy_r_r211);
     if (unlikely(cpy_r_r213 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 182, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r214 = CPyModule_builtins;
     cpy_r_r215 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r216 = CPyObject_GetAttr(cpy_r_r214, cpy_r_r215);
     if (unlikely(cpy_r_r216 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 185, CPyStatic__wallet___globals);
         goto CPyL311;
     }
     PyObject *cpy_r_r217[1] = {cpy_r_r213};
@@ -25570,14 +25603,14 @@ CPyL112: ;
     cpy_r_r219 = PyObject_Vectorcall(cpy_r_r216, cpy_r_r218, 1, 0);
     CPy_DECREF(cpy_r_r216);
     if (unlikely(cpy_r_r219 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 185, CPyStatic__wallet___globals);
         goto CPyL311;
     }
     CPy_DECREF(cpy_r_r213);
     CPy_Raise(cpy_r_r219);
     CPy_DECREF(cpy_r_r219);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 185, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25589,14 +25622,14 @@ CPyL119: ;
     }
     CPy_DECREF(cpy_r_chainid);
     if (unlikely(cpy_r_r220 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 184, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 188, CPyStatic__wallet___globals);
         goto CPyL312;
     }
     cpy_r_r221 = CPyStatic__wallet___globals;
     cpy_r_r222 = CPyStatics[159]; /* 'CHAINID' */
     cpy_r_r223 = CPyDict_GetItem(cpy_r_r221, cpy_r_r222);
     if (unlikely(cpy_r_r223 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 184, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 188, CPyStatic__wallet___globals);
         goto CPyL313;
     }
     if (likely(PyLong_Check(cpy_r_r223)))
@@ -25606,7 +25639,7 @@ CPyL119: ;
     }
     CPy_DECREF(cpy_r_r223);
     if (unlikely(cpy_r_r224 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 184, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 188, CPyStatic__wallet___globals);
         goto CPyL313;
     }
     cpy_r_r225 = cpy_r_r220 & 1;
@@ -25626,7 +25659,7 @@ CPyL125: ;
     cpy_r_r231 = PyDict_Contains(cpy_r_r107, cpy_r_r230);
     cpy_r_r232 = cpy_r_r231 >= 0;
     if (unlikely(!cpy_r_r232)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 185, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 189, CPyStatic__wallet___globals);
         goto CPyL312;
     }
     cpy_r_r233 = cpy_r_r231;
@@ -25641,7 +25674,7 @@ CPyL128: ;
     cpy_r_r236 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r237 = CPyObject_GetAttr(cpy_r_r235, cpy_r_r236);
     if (unlikely(cpy_r_r237 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 190, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     PyObject *cpy_r_r238[1] = {cpy_r_r234};
@@ -25649,13 +25682,13 @@ CPyL128: ;
     cpy_r_r240 = PyObject_Vectorcall(cpy_r_r237, cpy_r_r239, 1, 0);
     CPy_DECREF(cpy_r_r237);
     if (unlikely(cpy_r_r240 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 190, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Raise(cpy_r_r240);
     CPy_DECREF(cpy_r_r240);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 190, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25667,7 +25700,7 @@ CPyL132: ;
     }
     CPy_DECREF(cpy_r_r187);
     if (unlikely(cpy_r_r241 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 189, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 193, CPyStatic__wallet___globals);
         goto CPyL316;
     }
     cpy_r_r242 = CPyStatics[266]; /* 'start_block' */
@@ -25676,20 +25709,20 @@ CPyL132: ;
     CPy_DECREF(cpy_r_r243);
     cpy_r_r245 = cpy_r_r244 >= 0;
     if (unlikely(!cpy_r_r245)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 189, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 193, CPyStatic__wallet___globals);
         goto CPyL316;
     }
 CPyL134: ;
     cpy_r_r246 = CPyDict_CheckSize(cpy_r_r178, cpy_r_r181);
     if (unlikely(!cpy_r_r246)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 175, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 179, CPyStatic__wallet___globals);
         goto CPyL316;
     } else
         goto CPyL100;
 CPyL135: ;
     cpy_r_r247 = CPy_NoErrOccurred();
     if (unlikely(!cpy_r_r247)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 175, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 179, CPyStatic__wallet___globals);
         goto CPyL294;
     } else
         goto CPyL142;
@@ -25698,21 +25731,21 @@ CPyL136: ;
     cpy_r_r249 = PyObject_Str(cpy_r_key);
     CPy_DECREF(cpy_r_key);
     if (unlikely(cpy_r_r249 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 192, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 196, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r250 = CPyStatics[274]; /* ". Valid options are 'block' or 'timestamp'." */
     cpy_r_r251 = CPyStr_Build(3, cpy_r_r248, cpy_r_r249, cpy_r_r250);
     CPy_DECREF(cpy_r_r249);
     if (unlikely(cpy_r_r251 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 192, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 196, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r252 = CPyModule_builtins;
     cpy_r_r253 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r254 = CPyObject_GetAttr(cpy_r_r252, cpy_r_r253);
     if (unlikely(cpy_r_r254 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 191, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
         goto CPyL317;
     }
     PyObject *cpy_r_r255[1] = {cpy_r_r251};
@@ -25720,42 +25753,42 @@ CPyL136: ;
     cpy_r_r257 = PyObject_Vectorcall(cpy_r_r254, cpy_r_r256, 1, 0);
     CPy_DECREF(cpy_r_r254);
     if (unlikely(cpy_r_r257 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 191, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
         goto CPyL317;
     }
     CPy_DECREF(cpy_r_r251);
     CPy_Raise(cpy_r_r257);
     CPy_DECREF(cpy_r_r257);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 191, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
 CPyL142: ;
     cpy_r_r258 = CPyDict_CheckSize(cpy_r_r128, cpy_r_r131);
     if (unlikely(!cpy_r_r258)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 163, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 167, CPyStatic__wallet___globals);
         goto CPyL294;
     } else
         goto CPyL75;
 CPyL143: ;
     cpy_r_r259 = CPy_NoErrOccurred();
     if (unlikely(!cpy_r_r259)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 163, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 167, CPyStatic__wallet___globals);
         goto CPyL283;
     }
     CPy_INCREF(cpy_r_r111);
     if (likely(PyDict_Check(cpy_r_r111)))
         cpy_r_r260 = cpy_r_r111;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals, "dict", cpy_r_r111);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals, "dict", cpy_r_r111);
         goto CPyL283;
     }
     cpy_r_r261 = CPyStatic__wallet___globals;
     cpy_r_r262 = CPyStatics[159]; /* 'CHAINID' */
     cpy_r_r263 = CPyDict_GetItem(cpy_r_r261, cpy_r_r262);
     if (unlikely(cpy_r_r263 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL318;
     }
     if (likely(PyLong_Check(cpy_r_r263)))
@@ -25765,26 +25798,26 @@ CPyL143: ;
     }
     CPy_DECREF(cpy_r_r263);
     if (unlikely(cpy_r_r264 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL318;
     }
     cpy_r_r265 = CPyTagged_Str(cpy_r_r264);
     CPyTagged_DECREF(cpy_r_r264);
     if (unlikely(cpy_r_r265 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL318;
     }
     cpy_r_r266 = CPyDict_GetWithNone(cpy_r_r260, cpy_r_r265);
     CPy_DECREF(cpy_r_r260);
     CPy_DECREF(cpy_r_r265);
     if (unlikely(cpy_r_r266 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL283;
     }
     cpy_r_r267 = PyObject_IsTrue(cpy_r_r266);
     cpy_r_r268 = cpy_r_r267 >= 0;
     if (unlikely(!cpy_r_r268)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL319;
     }
     cpy_r_r269 = cpy_r_r267;
@@ -25799,14 +25832,14 @@ CPyL152: ;
     if (likely(PyDict_Check(cpy_r_r111)))
         cpy_r_r271 = cpy_r_r111;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals, "dict", cpy_r_r111);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals, "dict", cpy_r_r111);
         goto CPyL281;
     }
     cpy_r_r272 = CPyStatic__wallet___globals;
     cpy_r_r273 = CPyStatics[159]; /* 'CHAINID' */
     cpy_r_r274 = CPyDict_GetItem(cpy_r_r272, cpy_r_r273);
     if (unlikely(cpy_r_r274 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL322;
     }
     if (likely(PyLong_Check(cpy_r_r274)))
@@ -25816,7 +25849,7 @@ CPyL152: ;
     }
     CPy_DECREF(cpy_r_r274);
     if (unlikely(cpy_r_r275 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL322;
     }
     cpy_r_r276 = CPyTagged_StealAsObject(cpy_r_r275);
@@ -25824,7 +25857,7 @@ CPyL152: ;
     CPy_DECREF(cpy_r_r271);
     CPy_DECREF(cpy_r_r276);
     if (unlikely(cpy_r_r277 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 195, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
         goto CPyL281;
     }
     cpy_r_r270 = cpy_r_r277;
@@ -25837,7 +25870,7 @@ CPyL157: ;
     cpy_r_r281 = PyObject_IsInstance(cpy_r_chain_block, cpy_r_r280);
     cpy_r_r282 = cpy_r_r281 >= 0;
     if (unlikely(!cpy_r_r282)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 197, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 201, CPyStatic__wallet___globals);
         goto CPyL324;
     }
     cpy_r_r283 = cpy_r_r281;
@@ -25851,7 +25884,7 @@ CPyL160: ;
     cpy_r_r286 = CPyStatics[159]; /* 'CHAINID' */
     cpy_r_r287 = CPyDict_GetItem(cpy_r_r285, cpy_r_r286);
     if (unlikely(cpy_r_r287 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 203, CPyStatic__wallet___globals);
         goto CPyL326;
     }
     if (likely(PyLong_Check(cpy_r_r287)))
@@ -25861,34 +25894,34 @@ CPyL160: ;
     }
     CPy_DECREF(cpy_r_r287);
     if (unlikely(cpy_r_r288 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 203, CPyStatic__wallet___globals);
         goto CPyL326;
     }
     cpy_r_r289 = CPyTagged_Str(cpy_r_r288);
     CPyTagged_DECREF(cpy_r_r288);
     if (unlikely(cpy_r_r289 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 203, CPyStatic__wallet___globals);
         goto CPyL326;
     }
     cpy_r_r290 = CPyStatics[276]; /* ' on ' */
     cpy_r_r291 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r291 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 203, CPyStatic__wallet___globals);
         goto CPyL327;
     }
     cpy_r_r292 = CPyStr_Build(4, cpy_r_r284, cpy_r_r289, cpy_r_r290, cpy_r_r291);
     CPy_DECREF(cpy_r_r289);
     CPy_DECREF(cpy_r_r291);
     if (unlikely(cpy_r_r292 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 199, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 203, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r293 = CPyModule_builtins;
     cpy_r_r294 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r295 = CPyObject_GetAttr(cpy_r_r293, cpy_r_r294);
     if (unlikely(cpy_r_r295 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 198, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 202, CPyStatic__wallet___globals);
         goto CPyL328;
     }
     PyObject *cpy_r_r296[1] = {cpy_r_r292};
@@ -25896,14 +25929,14 @@ CPyL160: ;
     cpy_r_r298 = PyObject_Vectorcall(cpy_r_r295, cpy_r_r297, 1, 0);
     CPy_DECREF(cpy_r_r295);
     if (unlikely(cpy_r_r298 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 198, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 202, CPyStatic__wallet___globals);
         goto CPyL328;
     }
     CPy_DECREF(cpy_r_r292);
     CPy_Raise(cpy_r_r298);
     CPy_DECREF(cpy_r_r298);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 198, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 202, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -25915,7 +25948,7 @@ CPyL169: ;
     }
     CPy_DECREF(cpy_r_chain_block);
     if (unlikely(cpy_r_r299 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 201, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 205, CPyStatic__wallet___globals);
         goto CPyL281;
     }
     cpy_r_r300 = CPyStatics[266]; /* 'start_block' */
@@ -25924,34 +25957,34 @@ CPyL169: ;
     CPy_DECREF(cpy_r_r301);
     cpy_r_r303 = cpy_r_r302 >= 0;
     if (unlikely(!cpy_r_r303)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 201, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 205, CPyStatic__wallet___globals);
         goto CPyL281;
     }
 CPyL171: ;
     if (likely(PyDict_Check(cpy_r_cfg)))
         cpy_r_r304 = cpy_r_cfg;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 204, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 208, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
         goto CPyL329;
     }
     cpy_r_r305 = CPyStatics[277]; /* 'end' */
     cpy_r_r306 = PyDict_New();
     if (unlikely(cpy_r_r306 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 204, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 208, CPyStatic__wallet___globals);
         goto CPyL330;
     }
     cpy_r_r307 = CPyDict_Get(cpy_r_r304, cpy_r_r305, cpy_r_r306);
     CPy_DECREF(cpy_r_r304);
     CPy_DECREF(cpy_r_r306);
     if (unlikely(cpy_r_r307 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 204, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 208, CPyStatic__wallet___globals);
         goto CPyL329;
     }
     cpy_r_r308 = (PyObject *)&PyDict_Type;
     cpy_r_r309 = PyObject_IsInstance(cpy_r_r307, cpy_r_r308);
     cpy_r_r310 = cpy_r_r309 >= 0;
     if (unlikely(!cpy_r_r310)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 205, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 209, CPyStatic__wallet___globals);
         goto CPyL331;
     }
     cpy_r_r311 = cpy_r_r309;
@@ -25964,14 +25997,14 @@ CPyL176: ;
     cpy_r_r313 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r313 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 207, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 211, CPyStatic__wallet___globals);
         goto CPyL333;
     }
     cpy_r_r314 = CPyStatics[263]; /* '. Expected mapping, got ' */
     cpy_r_r315 = PyObject_Str(cpy_r_r307);
     CPy_DECREF(cpy_r_r307);
     if (unlikely(cpy_r_r315 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 207, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 211, CPyStatic__wallet___globals);
         goto CPyL334;
     }
     cpy_r_r316 = CPyStatics[264]; /* '.' */
@@ -25979,14 +26012,14 @@ CPyL176: ;
     CPy_DECREF(cpy_r_r313);
     CPy_DECREF(cpy_r_r315);
     if (unlikely(cpy_r_r317 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 207, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 211, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r318 = CPyModule_builtins;
     cpy_r_r319 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r320 = CPyObject_GetAttr(cpy_r_r318, cpy_r_r319);
     if (unlikely(cpy_r_r320 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 206, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals);
         goto CPyL335;
     }
     PyObject *cpy_r_r321[1] = {cpy_r_r317};
@@ -25994,14 +26027,14 @@ CPyL176: ;
     cpy_r_r323 = PyObject_Vectorcall(cpy_r_r320, cpy_r_r322, 1, 0);
     CPy_DECREF(cpy_r_r320);
     if (unlikely(cpy_r_r323 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 206, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals);
         goto CPyL335;
     }
     CPy_DECREF(cpy_r_r317);
     CPy_Raise(cpy_r_r323);
     CPy_DECREF(cpy_r_r323);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 206, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -26009,7 +26042,7 @@ CPyL183: ;
     if (likely(PyDict_Check(cpy_r_r307)))
         cpy_r_r324 = cpy_r_r307;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals, "dict", cpy_r_r307);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 214, CPyStatic__wallet___globals, "dict", cpy_r_r307);
         goto CPyL329;
     }
     cpy_r_r325 = 0;
@@ -26017,7 +26050,7 @@ CPyL183: ;
     cpy_r_r327 = cpy_r_r326 << 1;
     cpy_r_r328 = CPyDict_GetItemsIter(cpy_r_r324);
     if (unlikely(cpy_r_r328 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 214, CPyStatic__wallet___globals);
         goto CPyL336;
     }
 CPyL185: ;
@@ -26037,14 +26070,14 @@ CPyL185: ;
     cpy_r_r334 = CPyStatics[265]; /* 'timestamp' */
     cpy_r_r335 = PyObject_RichCompare(cpy_r_key, cpy_r_r334, 2);
     if (unlikely(cpy_r_r335 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 211, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 215, CPyStatic__wallet___globals);
         goto CPyL338;
     }
     cpy_r_r336 = PyObject_IsTrue(cpy_r_r335);
     CPy_DECREF(cpy_r_r335);
     cpy_r_r337 = cpy_r_r336 >= 0;
     if (unlikely(!cpy_r_r337)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 211, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 215, CPyStatic__wallet___globals);
         goto CPyL338;
     }
     cpy_r_r338 = cpy_r_r336;
@@ -26057,7 +26090,7 @@ CPyL189: ;
     cpy_r_r340 = PyDict_Contains(cpy_r_r107, cpy_r_r339);
     cpy_r_r341 = cpy_r_r340 >= 0;
     if (unlikely(!cpy_r_r341)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 212, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 216, CPyStatic__wallet___globals);
         goto CPyL340;
     }
     cpy_r_r342 = cpy_r_r340;
@@ -26072,7 +26105,7 @@ CPyL191: ;
     cpy_r_r345 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r346 = CPyObject_GetAttr(cpy_r_r344, cpy_r_r345);
     if (unlikely(cpy_r_r346 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 213, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 217, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     PyObject *cpy_r_r347[1] = {cpy_r_r343};
@@ -26080,13 +26113,13 @@ CPyL191: ;
     cpy_r_r349 = PyObject_Vectorcall(cpy_r_r346, cpy_r_r348, 1, 0);
     CPy_DECREF(cpy_r_r346);
     if (unlikely(cpy_r_r349 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 213, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 217, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Raise(cpy_r_r349);
     CPy_DECREF(cpy_r_r349);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 213, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 217, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -26096,7 +26129,7 @@ CPyL195: ;
     CPy_DECREF(cpy_r_value);
     cpy_r_r352 = cpy_r_r351 >= 0;
     if (unlikely(!cpy_r_r352)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 216, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 220, CPyStatic__wallet___globals);
         goto CPyL342;
     } else
         goto CPyL246;
@@ -26104,14 +26137,14 @@ CPyL196: ;
     cpy_r_r353 = CPyStatics[17]; /* 'block' */
     cpy_r_r354 = PyObject_RichCompare(cpy_r_key, cpy_r_r353, 2);
     if (unlikely(cpy_r_r354 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 217, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 221, CPyStatic__wallet___globals);
         goto CPyL338;
     }
     cpy_r_r355 = PyObject_IsTrue(cpy_r_r354);
     CPy_DECREF(cpy_r_r354);
     cpy_r_r356 = cpy_r_r355 >= 0;
     if (unlikely(!cpy_r_r356)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 217, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 221, CPyStatic__wallet___globals);
         goto CPyL338;
     }
     cpy_r_r357 = cpy_r_r355;
@@ -26124,7 +26157,7 @@ CPyL199: ;
     cpy_r_r359 = PyObject_IsInstance(cpy_r_value, cpy_r_r358);
     cpy_r_r360 = cpy_r_r359 >= 0;
     if (unlikely(!cpy_r_r360)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 218, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 222, CPyStatic__wallet___globals);
         goto CPyL340;
     }
     cpy_r_r361 = cpy_r_r359;
@@ -26137,14 +26170,14 @@ CPyL201: ;
     cpy_r_r363 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r363 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 220, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 224, CPyStatic__wallet___globals);
         goto CPyL298;
     }
     cpy_r_r364 = CPyStatics[263]; /* '. Expected mapping, got ' */
     cpy_r_r365 = PyObject_Str(cpy_r_value);
     CPy_DECREF(cpy_r_value);
     if (unlikely(cpy_r_r365 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 220, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 224, CPyStatic__wallet___globals);
         goto CPyL346;
     }
     cpy_r_r366 = CPyStatics[264]; /* '.' */
@@ -26152,14 +26185,14 @@ CPyL201: ;
     CPy_DECREF(cpy_r_r363);
     CPy_DECREF(cpy_r_r365);
     if (unlikely(cpy_r_r367 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 220, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 224, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r368 = CPyModule_builtins;
     cpy_r_r369 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r370 = CPyObject_GetAttr(cpy_r_r368, cpy_r_r369);
     if (unlikely(cpy_r_r370 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 219, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 223, CPyStatic__wallet___globals);
         goto CPyL347;
     }
     PyObject *cpy_r_r371[1] = {cpy_r_r367};
@@ -26167,14 +26200,14 @@ CPyL201: ;
     cpy_r_r373 = PyObject_Vectorcall(cpy_r_r370, cpy_r_r372, 1, 0);
     CPy_DECREF(cpy_r_r370);
     if (unlikely(cpy_r_r373 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 219, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 223, CPyStatic__wallet___globals);
         goto CPyL347;
     }
     CPy_DECREF(cpy_r_r367);
     CPy_Raise(cpy_r_r373);
     CPy_DECREF(cpy_r_r373);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 219, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 223, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -26182,7 +26215,7 @@ CPyL208: ;
     if (likely(PyDict_Check(cpy_r_value)))
         cpy_r_r374 = cpy_r_value;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 222, CPyStatic__wallet___globals, "dict", cpy_r_value);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 226, CPyStatic__wallet___globals, "dict", cpy_r_value);
         goto CPyL342;
     }
     cpy_r_r375 = 0;
@@ -26190,7 +26223,7 @@ CPyL208: ;
     cpy_r_r377 = cpy_r_r376 << 1;
     cpy_r_r378 = CPyDict_GetItemsIter(cpy_r_r374);
     if (unlikely(cpy_r_r378 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 222, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 226, CPyStatic__wallet___globals);
         goto CPyL348;
     }
 CPyL210: ;
@@ -26210,7 +26243,7 @@ CPyL210: ;
     cpy_r_r385 = PyObject_IsInstance(cpy_r_chainid, cpy_r_r384);
     cpy_r_r386 = cpy_r_r385 >= 0;
     if (unlikely(!cpy_r_r386)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 223, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 227, CPyStatic__wallet___globals);
         goto CPyL350;
     }
     cpy_r_r387 = cpy_r_r385;
@@ -26223,14 +26256,14 @@ CPyL213: ;
     cpy_r_r389 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r389 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 225, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 229, CPyStatic__wallet___globals);
         goto CPyL305;
     }
     cpy_r_r390 = CPyStatics[283]; /* ' end block. Expected integer, got ' */
     cpy_r_r391 = PyObject_Str(cpy_r_chainid);
     CPy_DECREF(cpy_r_chainid);
     if (unlikely(cpy_r_r391 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 225, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 229, CPyStatic__wallet___globals);
         goto CPyL352;
     }
     cpy_r_r392 = CPyStatics[264]; /* '.' */
@@ -26238,14 +26271,14 @@ CPyL213: ;
     CPy_DECREF(cpy_r_r389);
     CPy_DECREF(cpy_r_r391);
     if (unlikely(cpy_r_r393 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 225, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 229, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r394 = CPyModule_builtins;
     cpy_r_r395 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r396 = CPyObject_GetAttr(cpy_r_r394, cpy_r_r395);
     if (unlikely(cpy_r_r396 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 224, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
         goto CPyL353;
     }
     PyObject *cpy_r_r397[1] = {cpy_r_r393};
@@ -26253,14 +26286,14 @@ CPyL213: ;
     cpy_r_r399 = PyObject_Vectorcall(cpy_r_r396, cpy_r_r398, 1, 0);
     CPy_DECREF(cpy_r_r396);
     if (unlikely(cpy_r_r399 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 224, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
         goto CPyL353;
     }
     CPy_DECREF(cpy_r_r393);
     CPy_Raise(cpy_r_r399);
     CPy_DECREF(cpy_r_r399);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 224, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -26269,7 +26302,7 @@ CPyL220: ;
     cpy_r_r401 = PyObject_IsInstance(cpy_r_r383, cpy_r_r400);
     cpy_r_r402 = cpy_r_r401 >= 0;
     if (unlikely(!cpy_r_r402)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 227, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 231, CPyStatic__wallet___globals);
         goto CPyL350;
     }
     cpy_r_r403 = cpy_r_r401;
@@ -26282,14 +26315,14 @@ CPyL222: ;
     cpy_r_r405 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r405 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 229, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 233, CPyStatic__wallet___globals);
         goto CPyL355;
     }
     cpy_r_r406 = CPyStatics[272]; /* '. Expected integer, got ' */
     cpy_r_r407 = PyObject_Str(cpy_r_r383);
     CPy_DECREF(cpy_r_r383);
     if (unlikely(cpy_r_r407 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 229, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 233, CPyStatic__wallet___globals);
         goto CPyL356;
     }
     cpy_r_r408 = CPyStatics[264]; /* '.' */
@@ -26297,14 +26330,14 @@ CPyL222: ;
     CPy_DECREF(cpy_r_r405);
     CPy_DECREF(cpy_r_r407);
     if (unlikely(cpy_r_r409 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 229, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 233, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r410 = CPyModule_builtins;
     cpy_r_r411 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r412 = CPyObject_GetAttr(cpy_r_r410, cpy_r_r411);
     if (unlikely(cpy_r_r412 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 232, CPyStatic__wallet___globals);
         goto CPyL357;
     }
     PyObject *cpy_r_r413[1] = {cpy_r_r409};
@@ -26312,14 +26345,14 @@ CPyL222: ;
     cpy_r_r415 = PyObject_Vectorcall(cpy_r_r412, cpy_r_r414, 1, 0);
     CPy_DECREF(cpy_r_r412);
     if (unlikely(cpy_r_r415 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 232, CPyStatic__wallet___globals);
         goto CPyL357;
     }
     CPy_DECREF(cpy_r_r409);
     CPy_Raise(cpy_r_r415);
     CPy_DECREF(cpy_r_r415);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 232, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
@@ -26331,14 +26364,14 @@ CPyL229: ;
     }
     CPy_DECREF(cpy_r_chainid);
     if (unlikely(cpy_r_r416 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 231, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 235, CPyStatic__wallet___globals);
         goto CPyL358;
     }
     cpy_r_r417 = CPyStatic__wallet___globals;
     cpy_r_r418 = CPyStatics[159]; /* 'CHAINID' */
     cpy_r_r419 = CPyDict_GetItem(cpy_r_r417, cpy_r_r418);
     if (unlikely(cpy_r_r419 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 231, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 235, CPyStatic__wallet___globals);
         goto CPyL359;
     }
     if (likely(PyLong_Check(cpy_r_r419)))
@@ -26348,7 +26381,7 @@ CPyL229: ;
     }
     CPy_DECREF(cpy_r_r419);
     if (unlikely(cpy_r_r420 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 231, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 235, CPyStatic__wallet___globals);
         goto CPyL359;
     }
     cpy_r_r421 = cpy_r_r416 & 1;
@@ -26371,7 +26404,7 @@ CPyL235: ;
     }
     CPy_DECREF(cpy_r_r383);
     if (unlikely(cpy_r_r426 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 232, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 236, CPyStatic__wallet___globals);
         goto CPyL361;
     }
     cpy_r_r427 = CPyStatics[279]; /* 'end_block' */
@@ -26380,20 +26413,20 @@ CPyL235: ;
     CPy_DECREF(cpy_r_r428);
     cpy_r_r430 = cpy_r_r429 >= 0;
     if (unlikely(!cpy_r_r430)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 232, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 236, CPyStatic__wallet___globals);
         goto CPyL361;
     }
 CPyL238: ;
     cpy_r_r431 = CPyDict_CheckSize(cpy_r_r374, cpy_r_r377);
     if (unlikely(!cpy_r_r431)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 222, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 226, CPyStatic__wallet___globals);
         goto CPyL361;
     } else
         goto CPyL210;
 CPyL239: ;
     cpy_r_r432 = CPy_NoErrOccurred();
     if (unlikely(!cpy_r_r432)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 222, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 226, CPyStatic__wallet___globals);
         goto CPyL342;
     } else
         goto CPyL246;
@@ -26402,21 +26435,21 @@ CPyL240: ;
     cpy_r_r434 = PyObject_Str(cpy_r_key);
     CPy_DECREF(cpy_r_key);
     if (unlikely(cpy_r_r434 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 235, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 239, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r435 = CPyStatics[274]; /* ". Valid options are 'block' or 'timestamp'." */
     cpy_r_r436 = CPyStr_Build(3, cpy_r_r433, cpy_r_r434, cpy_r_r435);
     CPy_DECREF(cpy_r_r434);
     if (unlikely(cpy_r_r436 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 235, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 239, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     cpy_r_r437 = CPyModule_builtins;
     cpy_r_r438 = CPyStatics[78]; /* 'ValueError' */
     cpy_r_r439 = CPyObject_GetAttr(cpy_r_r437, cpy_r_r438);
     if (unlikely(cpy_r_r439 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 234, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
         goto CPyL362;
     }
     PyObject *cpy_r_r440[1] = {cpy_r_r436};
@@ -26424,78 +26457,78 @@ CPyL240: ;
     cpy_r_r442 = PyObject_Vectorcall(cpy_r_r439, cpy_r_r441, 1, 0);
     CPy_DECREF(cpy_r_r439);
     if (unlikely(cpy_r_r442 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 234, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
         goto CPyL362;
     }
     CPy_DECREF(cpy_r_r436);
     CPy_Raise(cpy_r_r442);
     CPy_DECREF(cpy_r_r442);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 234, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
         goto CPyL257;
     }
     CPy_Unreachable();
 CPyL246: ;
     cpy_r_r443 = CPyDict_CheckSize(cpy_r_r324, cpy_r_r327);
     if (unlikely(!cpy_r_r443)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 214, CPyStatic__wallet___globals);
         goto CPyL342;
     } else
         goto CPyL185;
 CPyL247: ;
     cpy_r_r444 = CPy_NoErrOccurred();
     if (unlikely(!cpy_r_r444)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 210, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 214, CPyStatic__wallet___globals);
         goto CPyL363;
     }
     cpy_r_r445 = (PyObject *)CPyType__wallet___TreasuryWallet;
     cpy_r_r446 = PyDict_New();
     if (unlikely(cpy_r_r446 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 242, CPyStatic__wallet___globals);
         goto CPyL363;
     }
     cpy_r_r447 = CPyDict_UpdateInDisplay(cpy_r_r446, cpy_r_r107);
     CPy_DECREF(cpy_r_r107);
     cpy_r_r448 = cpy_r_r447 >= 0;
     if (unlikely(!cpy_r_r448)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 242, CPyStatic__wallet___globals);
         goto CPyL364;
     }
     cpy_r_r449 = PyTuple_Pack(0);
     if (unlikely(cpy_r_r449 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 242, CPyStatic__wallet___globals);
         goto CPyL364;
     }
     cpy_r_r450 = PyObject_Call(cpy_r_r445, cpy_r_r449, cpy_r_r446);
     CPy_DECREF(cpy_r_r449);
     CPy_DECREF(cpy_r_r446);
     if (unlikely(cpy_r_r450 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 242, CPyStatic__wallet___globals);
         goto CPyL365;
     }
     if (likely(Py_TYPE(cpy_r_r450) == CPyType__wallet___TreasuryWallet))
         cpy_r_r451 = cpy_r_r450;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r450);
+        CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 242, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r450);
         goto CPyL365;
     }
     cpy_r_r452 = PyList_Append(cpy_r_r38, cpy_r_r451);
     CPy_DECREF_NO_IMM(cpy_r_r451);
     cpy_r_r453 = cpy_r_r452 >= 0;
     if (unlikely(!cpy_r_r453)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 238, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 242, CPyStatic__wallet___globals);
         goto CPyL365;
     }
     cpy_r_r454 = CPyDict_CheckSize(cpy_r_r39, cpy_r_r42);
     if (unlikely(!cpy_r_r454)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 139, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 143, CPyStatic__wallet___globals);
         goto CPyL365;
     } else
         goto CPyL27;
 CPyL255: ;
     cpy_r_r455 = CPy_NoErrOccurred();
     if (unlikely(!cpy_r_r455)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 139, CPyStatic__wallet___globals);
+        CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 143, CPyStatic__wallet___globals);
         goto CPyL264;
     }
     return cpy_r_r38;
@@ -27215,7 +27248,7 @@ PyObject *CPyPy__wallet___load_wallets_from_yaml(PyObject *self, PyObject *const
     PyObject *retval = CPyDef__wallet___load_wallets_from_yaml(arg_path);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 123, CPyStatic__wallet___globals);
+    CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 127, CPyStatic__wallet___globals);
     return NULL;
 }
 
@@ -27274,88 +27307,97 @@ char CPyDef__wallet_____top_level__(void) {
     PyObject *cpy_r_r53;
     PyObject *cpy_r_r54;
     PyObject *cpy_r_r55;
-    char cpy_r_r56;
+    PyObject *cpy_r_r56;
     PyObject *cpy_r_r57;
     PyObject *cpy_r_r58;
-    PyObject *cpy_r_r59;
-    PyObject *cpy_r_r60;
+    int32_t cpy_r_r59;
+    char cpy_r_r60;
     PyObject *cpy_r_r61;
     PyObject *cpy_r_r62;
     PyObject *cpy_r_r63;
     PyObject *cpy_r_r64;
-    int32_t cpy_r_r65;
-    char cpy_r_r66;
+    char cpy_r_r65;
+    PyObject *cpy_r_r66;
     PyObject *cpy_r_r67;
     PyObject *cpy_r_r68;
-    int32_t cpy_r_r69;
-    char cpy_r_r70;
+    PyObject *cpy_r_r69;
+    PyObject *cpy_r_r70;
     PyObject *cpy_r_r71;
-    tuple_T0 cpy_r_r72;
+    PyObject *cpy_r_r72;
     PyObject *cpy_r_r73;
-    PyObject *cpy_r_r74;
-    PyObject *cpy_r_r75;
+    int32_t cpy_r_r74;
+    char cpy_r_r75;
     PyObject *cpy_r_r76;
     PyObject *cpy_r_r77;
-    PyObject *cpy_r_r78;
-    int32_t cpy_r_r79;
-    char cpy_r_r80;
-    PyObject *cpy_r_r81;
+    int32_t cpy_r_r78;
+    char cpy_r_r79;
+    PyObject *cpy_r_r80;
+    tuple_T0 cpy_r_r81;
     PyObject *cpy_r_r82;
-    int32_t cpy_r_r83;
-    char cpy_r_r84;
+    PyObject *cpy_r_r83;
+    PyObject *cpy_r_r84;
     PyObject *cpy_r_r85;
     PyObject *cpy_r_r86;
-    int32_t cpy_r_r87;
-    char cpy_r_r88;
-    PyObject *cpy_r_r89;
+    PyObject *cpy_r_r87;
+    int32_t cpy_r_r88;
+    char cpy_r_r89;
     PyObject *cpy_r_r90;
-    int32_t cpy_r_r91;
-    char cpy_r_r92;
-    PyObject *cpy_r_r93;
+    PyObject *cpy_r_r91;
+    int32_t cpy_r_r92;
+    char cpy_r_r93;
     PyObject *cpy_r_r94;
-    int32_t cpy_r_r95;
-    char cpy_r_r96;
-    PyObject *cpy_r_r97;
+    PyObject *cpy_r_r95;
+    int32_t cpy_r_r96;
+    char cpy_r_r97;
     PyObject *cpy_r_r98;
-    int32_t cpy_r_r99;
-    char cpy_r_r100;
-    PyObject *cpy_r_r101;
+    PyObject *cpy_r_r99;
+    int32_t cpy_r_r100;
+    char cpy_r_r101;
     PyObject *cpy_r_r102;
-    int32_t cpy_r_r103;
-    char cpy_r_r104;
-    PyObject *cpy_r_r105;
+    PyObject *cpy_r_r103;
+    int32_t cpy_r_r104;
+    char cpy_r_r105;
     PyObject *cpy_r_r106;
-    int32_t cpy_r_r107;
-    char cpy_r_r108;
-    PyObject *cpy_r_r109;
+    PyObject *cpy_r_r107;
+    int32_t cpy_r_r108;
+    char cpy_r_r109;
     PyObject *cpy_r_r110;
-    int32_t cpy_r_r111;
-    char cpy_r_r112;
-    PyObject *cpy_r_r113;
+    PyObject *cpy_r_r111;
+    int32_t cpy_r_r112;
+    char cpy_r_r113;
     PyObject *cpy_r_r114;
-    int32_t cpy_r_r115;
-    char cpy_r_r116;
-    PyObject *cpy_r_r117;
+    PyObject *cpy_r_r115;
+    int32_t cpy_r_r116;
+    char cpy_r_r117;
     PyObject *cpy_r_r118;
-    int32_t cpy_r_r119;
-    char cpy_r_r120;
-    PyObject *cpy_r_r121;
-    int32_t cpy_r_r122;
-    char cpy_r_r123;
-    PyObject *cpy_r_r124;
-    PyObject *cpy_r_r125;
-    int32_t cpy_r_r126;
-    char cpy_r_r127;
-    PyObject *cpy_r_r128;
-    PyObject *cpy_r_r129;
-    int32_t cpy_r_r130;
-    char cpy_r_r131;
-    PyObject *cpy_r_r132;
+    PyObject *cpy_r_r119;
+    int32_t cpy_r_r120;
+    char cpy_r_r121;
+    PyObject *cpy_r_r122;
+    PyObject *cpy_r_r123;
+    int32_t cpy_r_r124;
+    char cpy_r_r125;
+    PyObject *cpy_r_r126;
+    PyObject *cpy_r_r127;
+    int32_t cpy_r_r128;
+    char cpy_r_r129;
+    PyObject *cpy_r_r130;
+    int32_t cpy_r_r131;
+    char cpy_r_r132;
     PyObject *cpy_r_r133;
     PyObject *cpy_r_r134;
-    PyObject *cpy_r_r135;
+    int32_t cpy_r_r135;
     char cpy_r_r136;
-    char cpy_r_r137;
+    PyObject *cpy_r_r137;
+    PyObject *cpy_r_r138;
+    int32_t cpy_r_r139;
+    char cpy_r_r140;
+    PyObject *cpy_r_r141;
+    PyObject *cpy_r_r142;
+    PyObject *cpy_r_r143;
+    PyObject *cpy_r_r144;
+    char cpy_r_r145;
+    char cpy_r_r146;
     cpy_r_r0 = CPyModule_builtins;
     cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r2 = cpy_r_r0 != cpy_r_r1;
@@ -27364,7 +27406,7 @@ char CPyDef__wallet_____top_level__(void) {
     cpy_r_r4 = PyImport_Import(cpy_r_r3);
     if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", -1, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_builtins = cpy_r_r4;
     CPy_INCREF(CPyModule_builtins);
@@ -27376,7 +27418,7 @@ CPyL3: ;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 1, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_dataclasses = cpy_r_r8;
     CPy_INCREF(CPyModule_dataclasses);
@@ -27387,7 +27429,7 @@ CPyL3: ;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
     if (unlikely(cpy_r_r12 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 2, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_pathlib = cpy_r_r12;
     CPy_INCREF(CPyModule_pathlib);
@@ -27398,7 +27440,7 @@ CPyL3: ;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
     if (unlikely(cpy_r_r16 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 3, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_typing = cpy_r_r16;
     CPy_INCREF(CPyModule_typing);
@@ -27413,14 +27455,14 @@ CPyL3: ;
     cpy_r_r24 = CPyStatics[284]; /* 'dao_treasury/_wallet.py' */
     cpy_r_r25 = CPyStatics[156]; /* '<module>' */
     cpy_r_r26 = CPyImport_ImportMany(cpy_r_r22, cpy_r_r19, cpy_r_r23, cpy_r_r24, cpy_r_r25, cpy_r_r21);
-    if (!cpy_r_r26) goto CPyL39;
+    if (!cpy_r_r26) goto CPyL42;
     cpy_r_r27 = CPyStatics[336]; /* ('EthAddress',) */
     cpy_r_r28 = CPyStatics[215]; /* 'brownie.convert.datatypes' */
     cpy_r_r29 = CPyStatic__wallet___globals;
     cpy_r_r30 = CPyImport_ImportFromMany(cpy_r_r28, cpy_r_r27, cpy_r_r27, cpy_r_r29);
     if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 6, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_brownie___convert___datatypes = cpy_r_r30;
     CPy_INCREF(CPyModule_brownie___convert___datatypes);
@@ -27431,7 +27473,7 @@ CPyL3: ;
     cpy_r_r34 = CPyImport_ImportFromMany(cpy_r_r32, cpy_r_r31, cpy_r_r31, cpy_r_r33);
     if (unlikely(cpy_r_r34 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 7, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_eth_typing = cpy_r_r34;
     CPy_INCREF(CPyModule_eth_typing);
@@ -27442,7 +27484,7 @@ CPyL3: ;
     cpy_r_r38 = CPyImport_ImportFromMany(cpy_r_r36, cpy_r_r35, cpy_r_r35, cpy_r_r37);
     if (unlikely(cpy_r_r38 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 8, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_y = cpy_r_r38;
     CPy_INCREF(CPyModule_y);
@@ -27453,7 +27495,7 @@ CPyL3: ;
     cpy_r_r42 = CPyImport_ImportFromMany(cpy_r_r40, cpy_r_r39, cpy_r_r39, cpy_r_r41);
     if (unlikely(cpy_r_r42 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 9, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_y___time = cpy_r_r42;
     CPy_INCREF(CPyModule_y___time);
@@ -27464,7 +27506,7 @@ CPyL3: ;
     cpy_r_r46 = CPyImport_ImportFromMany(cpy_r_r44, cpy_r_r43, cpy_r_r43, cpy_r_r45);
     if (unlikely(cpy_r_r46 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 10, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyModule_y___constants = cpy_r_r46;
     CPy_INCREF(CPyModule_y___constants);
@@ -27472,7 +27514,7 @@ CPyL3: ;
     cpy_r_r47 = PyDict_New();
     if (unlikely(cpy_r_r47 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 12, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
     CPyStatic__wallet___WALLETS = cpy_r_r47;
     CPy_INCREF(CPyStatic__wallet___WALLETS);
@@ -27483,213 +27525,238 @@ CPyL3: ;
     cpy_r_r51 = cpy_r_r50 >= 0;
     if (unlikely(!cpy_r_r51)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 12, CPyStatic__wallet___globals);
-        goto CPyL39;
+        goto CPyL42;
     }
-    cpy_r_r52 = NULL;
-    cpy_r_r53 = CPyStatics[41]; /* 'dao_treasury._wallet' */
-    cpy_r_r54 = (PyObject *)CPyType__wallet___TreasuryWallet_template;
-    cpy_r_r55 = CPyType_FromTemplate(cpy_r_r54, cpy_r_r52, cpy_r_r53);
-    if (unlikely(cpy_r_r55 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL39;
+    cpy_r_r52 = CPyStatic__wallet___globals;
+    cpy_r_r53 = CPyStatics[90]; /* 'convert' */
+    cpy_r_r54 = CPyDict_GetItem(cpy_r_r52, cpy_r_r53);
+    if (unlikely(cpy_r_r54 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 14, CPyStatic__wallet___globals);
+        goto CPyL42;
     }
-    cpy_r_r56 = CPyDef__wallet___TreasuryWallet_trait_vtable_setup();
-    if (unlikely(cpy_r_r56 == 2)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", -1, CPyStatic__wallet___globals);
-        goto CPyL40;
+    cpy_r_r55 = CPyStatics[5]; /* 'to_address' */
+    cpy_r_r56 = CPyObject_GetAttr(cpy_r_r54, cpy_r_r55);
+    CPy_DECREF(cpy_r_r54);
+    if (unlikely(cpy_r_r56 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 14, CPyStatic__wallet___globals);
+        goto CPyL42;
     }
-    cpy_r_r57 = CPyStatics[122]; /* '__mypyc_attrs__' */
-    cpy_r_r58 = CPyStatics[16]; /* 'address' */
-    cpy_r_r59 = CPyStatics[266]; /* 'start_block' */
-    cpy_r_r60 = CPyStatics[279]; /* 'end_block' */
-    cpy_r_r61 = CPyStatics[268]; /* 'start_timestamp' */
-    cpy_r_r62 = CPyStatics[281]; /* 'end_timestamp' */
-    cpy_r_r63 = CPyStatics[189]; /* 'networks' */
-    cpy_r_r64 = PyTuple_Pack(6, cpy_r_r58, cpy_r_r59, cpy_r_r60, cpy_r_r61, cpy_r_r62, cpy_r_r63);
+    CPyStatic__wallet___to_address = cpy_r_r56;
+    CPy_INCREF(CPyStatic__wallet___to_address);
+    cpy_r_r57 = CPyStatic__wallet___globals;
+    cpy_r_r58 = CPyStatics[5]; /* 'to_address' */
+    cpy_r_r59 = CPyDict_SetItem(cpy_r_r57, cpy_r_r58, cpy_r_r56);
+    CPy_DECREF(cpy_r_r56);
+    cpy_r_r60 = cpy_r_r59 >= 0;
+    if (unlikely(!cpy_r_r60)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 14, CPyStatic__wallet___globals);
+        goto CPyL42;
+    }
+    cpy_r_r61 = NULL;
+    cpy_r_r62 = CPyStatics[41]; /* 'dao_treasury._wallet' */
+    cpy_r_r63 = (PyObject *)CPyType__wallet___TreasuryWallet_template;
+    cpy_r_r64 = CPyType_FromTemplate(cpy_r_r63, cpy_r_r61, cpy_r_r62);
     if (unlikely(cpy_r_r64 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL40;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL42;
     }
-    cpy_r_r65 = PyObject_SetAttr(cpy_r_r55, cpy_r_r57, cpy_r_r64);
-    CPy_DECREF(cpy_r_r64);
-    cpy_r_r66 = cpy_r_r65 >= 0;
-    if (unlikely(!cpy_r_r66)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL40;
+    cpy_r_r65 = CPyDef__wallet___TreasuryWallet_trait_vtable_setup();
+    if (unlikely(cpy_r_r65 == 2)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", -1, CPyStatic__wallet___globals);
+        goto CPyL43;
     }
-    CPyType__wallet___TreasuryWallet = (PyTypeObject *)cpy_r_r55;
-    CPy_INCREF(CPyType__wallet___TreasuryWallet);
-    cpy_r_r67 = CPyStatic__wallet___globals;
-    cpy_r_r68 = CPyStatics[40]; /* 'TreasuryWallet' */
-    cpy_r_r69 = CPyDict_SetItem(cpy_r_r67, cpy_r_r68, cpy_r_r55);
-    cpy_r_r70 = cpy_r_r69 >= 0;
-    if (unlikely(!cpy_r_r70)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL40;
-    }
-    cpy_r_r71 = PyDict_New();
-    if (unlikely(cpy_r_r71 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL40;
-    }
-    cpy_r_r72.empty_struct_error_flag = 0;
-    cpy_r_r73 = PyDict_New();
+    cpy_r_r66 = CPyStatics[122]; /* '__mypyc_attrs__' */
+    cpy_r_r67 = CPyStatics[16]; /* 'address' */
+    cpy_r_r68 = CPyStatics[266]; /* 'start_block' */
+    cpy_r_r69 = CPyStatics[279]; /* 'end_block' */
+    cpy_r_r70 = CPyStatics[268]; /* 'start_timestamp' */
+    cpy_r_r71 = CPyStatics[281]; /* 'end_timestamp' */
+    cpy_r_r72 = CPyStatics[189]; /* 'networks' */
+    cpy_r_r73 = PyTuple_Pack(6, cpy_r_r67, cpy_r_r68, cpy_r_r69, cpy_r_r70, cpy_r_r71, cpy_r_r72);
     if (unlikely(cpy_r_r73 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL41;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL43;
     }
-    cpy_r_r74 = (PyObject *)&PyType_Type;
-    cpy_r_r75 = CPyStatic__wallet___globals;
-    cpy_r_r76 = CPyStatics[195]; /* 'EthAddress' */
-    cpy_r_r77 = CPyDict_GetItem(cpy_r_r75, cpy_r_r76);
-    if (unlikely(cpy_r_r77 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 20, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r78 = CPyStatics[16]; /* 'address' */
-    cpy_r_r79 = CPyDict_SetItem(cpy_r_r73, cpy_r_r78, cpy_r_r77);
-    CPy_DECREF(cpy_r_r77);
-    cpy_r_r80 = cpy_r_r79 >= 0;
-    if (unlikely(!cpy_r_r80)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 20, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r81 = (PyObject *)&PyType_Type;
-    cpy_r_r82 = CPyStatics[266]; /* 'start_block' */
-    cpy_r_r83 = CPyDict_SetItem(cpy_r_r73, cpy_r_r82, cpy_r_r81);
-    cpy_r_r84 = cpy_r_r83 >= 0;
-    if (unlikely(!cpy_r_r84)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 23, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r85 = CPyStatics[266]; /* 'start_block' */
-    cpy_r_r86 = Py_None;
-    cpy_r_r87 = CPyDict_SetItem(cpy_r_r71, cpy_r_r85, cpy_r_r86);
-    cpy_r_r88 = cpy_r_r87 >= 0;
-    if (unlikely(!cpy_r_r88)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 23, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r89 = (PyObject *)&PyType_Type;
-    cpy_r_r90 = CPyStatics[279]; /* 'end_block' */
-    cpy_r_r91 = CPyDict_SetItem(cpy_r_r73, cpy_r_r90, cpy_r_r89);
-    cpy_r_r92 = cpy_r_r91 >= 0;
-    if (unlikely(!cpy_r_r92)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 26, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r93 = CPyStatics[279]; /* 'end_block' */
-    cpy_r_r94 = Py_None;
-    cpy_r_r95 = CPyDict_SetItem(cpy_r_r71, cpy_r_r93, cpy_r_r94);
-    cpy_r_r96 = cpy_r_r95 >= 0;
-    if (unlikely(!cpy_r_r96)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 26, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r97 = (PyObject *)&PyType_Type;
-    cpy_r_r98 = CPyStatics[268]; /* 'start_timestamp' */
-    cpy_r_r99 = CPyDict_SetItem(cpy_r_r73, cpy_r_r98, cpy_r_r97);
-    cpy_r_r100 = cpy_r_r99 >= 0;
-    if (unlikely(!cpy_r_r100)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 29, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r101 = CPyStatics[268]; /* 'start_timestamp' */
-    cpy_r_r102 = Py_None;
-    cpy_r_r103 = CPyDict_SetItem(cpy_r_r71, cpy_r_r101, cpy_r_r102);
-    cpy_r_r104 = cpy_r_r103 >= 0;
-    if (unlikely(!cpy_r_r104)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 29, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r105 = (PyObject *)&PyType_Type;
-    cpy_r_r106 = CPyStatics[281]; /* 'end_timestamp' */
-    cpy_r_r107 = CPyDict_SetItem(cpy_r_r73, cpy_r_r106, cpy_r_r105);
-    cpy_r_r108 = cpy_r_r107 >= 0;
-    if (unlikely(!cpy_r_r108)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 32, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r109 = CPyStatics[281]; /* 'end_timestamp' */
-    cpy_r_r110 = Py_None;
-    cpy_r_r111 = CPyDict_SetItem(cpy_r_r71, cpy_r_r109, cpy_r_r110);
-    cpy_r_r112 = cpy_r_r111 >= 0;
-    if (unlikely(!cpy_r_r112)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 32, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r113 = (PyObject *)&PyType_Type;
-    cpy_r_r114 = CPyStatics[189]; /* 'networks' */
-    cpy_r_r115 = CPyDict_SetItem(cpy_r_r73, cpy_r_r114, cpy_r_r113);
-    cpy_r_r116 = cpy_r_r115 >= 0;
-    if (unlikely(!cpy_r_r116)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 35, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r117 = CPyStatics[189]; /* 'networks' */
-    cpy_r_r118 = Py_None;
-    cpy_r_r119 = CPyDict_SetItem(cpy_r_r71, cpy_r_r117, cpy_r_r118);
-    cpy_r_r120 = cpy_r_r119 >= 0;
-    if (unlikely(!cpy_r_r120)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 35, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r121 = CPyStatics[228]; /* '__annotations__' */
-    cpy_r_r122 = CPyDict_SetItem(cpy_r_r71, cpy_r_r121, cpy_r_r73);
-    cpy_r_r123 = cpy_r_r122 >= 0;
-    if (unlikely(!cpy_r_r123)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r124 = CPyStatics[229]; /* 'mypyc filler docstring' */
-    cpy_r_r125 = CPyStatics[230]; /* '__doc__' */
-    cpy_r_r126 = CPyDict_SetItem(cpy_r_r71, cpy_r_r125, cpy_r_r124);
-    cpy_r_r127 = cpy_r_r126 >= 0;
-    if (unlikely(!cpy_r_r127)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r128 = CPyStatics[41]; /* 'dao_treasury._wallet' */
-    cpy_r_r129 = CPyStatics[231]; /* '__module__' */
-    cpy_r_r130 = CPyDict_SetItem(cpy_r_r71, cpy_r_r129, cpy_r_r128);
-    cpy_r_r131 = cpy_r_r130 >= 0;
-    if (unlikely(!cpy_r_r131)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r132 = CPyStatic__wallet___globals;
-    cpy_r_r133 = CPyStatics[211]; /* 'dataclass' */
-    cpy_r_r134 = CPyDict_GetItem(cpy_r_r132, cpy_r_r133);
-    if (unlikely(cpy_r_r134 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 16, CPyStatic__wallet___globals);
-        goto CPyL42;
-    }
-    cpy_r_r135 = CPyStatics[212]; /* 'dataclasses' */
-    cpy_r_r136 = CPyDataclass_SleightOfHand(cpy_r_r134, cpy_r_r55, cpy_r_r71, cpy_r_r73, cpy_r_r135);
-    CPy_DECREF(cpy_r_r134);
-    CPy_DECREF(cpy_r_r55);
-    CPy_DECREF(cpy_r_r71);
+    cpy_r_r74 = PyObject_SetAttr(cpy_r_r64, cpy_r_r66, cpy_r_r73);
     CPy_DECREF(cpy_r_r73);
+    cpy_r_r75 = cpy_r_r74 >= 0;
+    if (unlikely(!cpy_r_r75)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL43;
+    }
+    CPyType__wallet___TreasuryWallet = (PyTypeObject *)cpy_r_r64;
+    CPy_INCREF(CPyType__wallet___TreasuryWallet);
+    cpy_r_r76 = CPyStatic__wallet___globals;
+    cpy_r_r77 = CPyStatics[40]; /* 'TreasuryWallet' */
+    cpy_r_r78 = CPyDict_SetItem(cpy_r_r76, cpy_r_r77, cpy_r_r64);
+    cpy_r_r79 = cpy_r_r78 >= 0;
+    if (unlikely(!cpy_r_r79)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL43;
+    }
+    cpy_r_r80 = PyDict_New();
+    if (unlikely(cpy_r_r80 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL43;
+    }
+    cpy_r_r81.empty_struct_error_flag = 0;
+    cpy_r_r82 = PyDict_New();
+    if (unlikely(cpy_r_r82 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL44;
+    }
+    cpy_r_r83 = (PyObject *)&PyType_Type;
+    cpy_r_r84 = CPyStatic__wallet___globals;
+    cpy_r_r85 = CPyStatics[195]; /* 'EthAddress' */
+    cpy_r_r86 = CPyDict_GetItem(cpy_r_r84, cpy_r_r85);
+    if (unlikely(cpy_r_r86 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 22, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r87 = CPyStatics[16]; /* 'address' */
+    cpy_r_r88 = CPyDict_SetItem(cpy_r_r82, cpy_r_r87, cpy_r_r86);
+    CPy_DECREF(cpy_r_r86);
+    cpy_r_r89 = cpy_r_r88 >= 0;
+    if (unlikely(!cpy_r_r89)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 22, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r90 = (PyObject *)&PyType_Type;
+    cpy_r_r91 = CPyStatics[266]; /* 'start_block' */
+    cpy_r_r92 = CPyDict_SetItem(cpy_r_r82, cpy_r_r91, cpy_r_r90);
+    cpy_r_r93 = cpy_r_r92 >= 0;
+    if (unlikely(!cpy_r_r93)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 25, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r94 = CPyStatics[266]; /* 'start_block' */
+    cpy_r_r95 = Py_None;
+    cpy_r_r96 = CPyDict_SetItem(cpy_r_r80, cpy_r_r94, cpy_r_r95);
+    cpy_r_r97 = cpy_r_r96 >= 0;
+    if (unlikely(!cpy_r_r97)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 25, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r98 = (PyObject *)&PyType_Type;
+    cpy_r_r99 = CPyStatics[279]; /* 'end_block' */
+    cpy_r_r100 = CPyDict_SetItem(cpy_r_r82, cpy_r_r99, cpy_r_r98);
+    cpy_r_r101 = cpy_r_r100 >= 0;
+    if (unlikely(!cpy_r_r101)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 28, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r102 = CPyStatics[279]; /* 'end_block' */
+    cpy_r_r103 = Py_None;
+    cpy_r_r104 = CPyDict_SetItem(cpy_r_r80, cpy_r_r102, cpy_r_r103);
+    cpy_r_r105 = cpy_r_r104 >= 0;
+    if (unlikely(!cpy_r_r105)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 28, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r106 = (PyObject *)&PyType_Type;
+    cpy_r_r107 = CPyStatics[268]; /* 'start_timestamp' */
+    cpy_r_r108 = CPyDict_SetItem(cpy_r_r82, cpy_r_r107, cpy_r_r106);
+    cpy_r_r109 = cpy_r_r108 >= 0;
+    if (unlikely(!cpy_r_r109)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 31, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r110 = CPyStatics[268]; /* 'start_timestamp' */
+    cpy_r_r111 = Py_None;
+    cpy_r_r112 = CPyDict_SetItem(cpy_r_r80, cpy_r_r110, cpy_r_r111);
+    cpy_r_r113 = cpy_r_r112 >= 0;
+    if (unlikely(!cpy_r_r113)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 31, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r114 = (PyObject *)&PyType_Type;
+    cpy_r_r115 = CPyStatics[281]; /* 'end_timestamp' */
+    cpy_r_r116 = CPyDict_SetItem(cpy_r_r82, cpy_r_r115, cpy_r_r114);
+    cpy_r_r117 = cpy_r_r116 >= 0;
+    if (unlikely(!cpy_r_r117)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 34, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r118 = CPyStatics[281]; /* 'end_timestamp' */
+    cpy_r_r119 = Py_None;
+    cpy_r_r120 = CPyDict_SetItem(cpy_r_r80, cpy_r_r118, cpy_r_r119);
+    cpy_r_r121 = cpy_r_r120 >= 0;
+    if (unlikely(!cpy_r_r121)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 34, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r122 = (PyObject *)&PyType_Type;
+    cpy_r_r123 = CPyStatics[189]; /* 'networks' */
+    cpy_r_r124 = CPyDict_SetItem(cpy_r_r82, cpy_r_r123, cpy_r_r122);
+    cpy_r_r125 = cpy_r_r124 >= 0;
+    if (unlikely(!cpy_r_r125)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 37, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r126 = CPyStatics[189]; /* 'networks' */
+    cpy_r_r127 = Py_None;
+    cpy_r_r128 = CPyDict_SetItem(cpy_r_r80, cpy_r_r126, cpy_r_r127);
+    cpy_r_r129 = cpy_r_r128 >= 0;
+    if (unlikely(!cpy_r_r129)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 37, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r130 = CPyStatics[228]; /* '__annotations__' */
+    cpy_r_r131 = CPyDict_SetItem(cpy_r_r80, cpy_r_r130, cpy_r_r82);
+    cpy_r_r132 = cpy_r_r131 >= 0;
+    if (unlikely(!cpy_r_r132)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r133 = CPyStatics[229]; /* 'mypyc filler docstring' */
+    cpy_r_r134 = CPyStatics[230]; /* '__doc__' */
+    cpy_r_r135 = CPyDict_SetItem(cpy_r_r80, cpy_r_r134, cpy_r_r133);
+    cpy_r_r136 = cpy_r_r135 >= 0;
     if (unlikely(!cpy_r_r136)) {
-        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 17, CPyStatic__wallet___globals);
-        goto CPyL39;
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r137 = CPyStatics[41]; /* 'dao_treasury._wallet' */
+    cpy_r_r138 = CPyStatics[231]; /* '__module__' */
+    cpy_r_r139 = CPyDict_SetItem(cpy_r_r80, cpy_r_r138, cpy_r_r137);
+    cpy_r_r140 = cpy_r_r139 >= 0;
+    if (unlikely(!cpy_r_r140)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r141 = CPyStatic__wallet___globals;
+    cpy_r_r142 = CPyStatics[211]; /* 'dataclass' */
+    cpy_r_r143 = CPyDict_GetItem(cpy_r_r141, cpy_r_r142);
+    if (unlikely(cpy_r_r143 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 18, CPyStatic__wallet___globals);
+        goto CPyL45;
+    }
+    cpy_r_r144 = CPyStatics[212]; /* 'dataclasses' */
+    cpy_r_r145 = CPyDataclass_SleightOfHand(cpy_r_r143, cpy_r_r64, cpy_r_r80, cpy_r_r82, cpy_r_r144);
+    CPy_DECREF(cpy_r_r143);
+    CPy_DECREF(cpy_r_r64);
+    CPy_DECREF(cpy_r_r80);
+    CPy_DECREF(cpy_r_r82);
+    if (unlikely(!cpy_r_r145)) {
+        CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 19, CPyStatic__wallet___globals);
+        goto CPyL42;
     }
     return 1;
-CPyL39: ;
-    cpy_r_r137 = 2;
-    return cpy_r_r137;
-CPyL40: ;
-    CPy_DecRef(cpy_r_r55);
-    goto CPyL39;
-CPyL41: ;
-    CPy_DecRef(cpy_r_r55);
-    CPy_DecRef(cpy_r_r71);
-    goto CPyL39;
 CPyL42: ;
-    CPy_DecRef(cpy_r_r55);
-    CPy_DecRef(cpy_r_r71);
-    CPy_DecRef(cpy_r_r73);
-    goto CPyL39;
+    cpy_r_r146 = 2;
+    return cpy_r_r146;
+CPyL43: ;
+    CPy_DecRef(cpy_r_r64);
+    goto CPyL42;
+CPyL44: ;
+    CPy_DecRef(cpy_r_r64);
+    CPy_DecRef(cpy_r_r80);
+    goto CPyL42;
+CPyL45: ;
+    CPy_DecRef(cpy_r_r64);
+    CPy_DecRef(cpy_r_r80);
+    CPy_DecRef(cpy_r_r82);
+    goto CPyL42;
 }
 static PyMethodDef constantsmodule_methods[] = {
     {NULL, NULL, 0, NULL}
@@ -28861,6 +28928,7 @@ char CPyDef__nicknames___setup_address_nicknames_in_db(void);
 PyObject *CPyPy__nicknames___setup_address_nicknames_in_db(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef__nicknames_____top_level__(void);
 PyObject *CPyStatic__wallet___WALLETS = NULL;
+PyObject *CPyStatic__wallet___to_address = NULL;
 PyTypeObject *CPyType__wallet___TreasuryWallet;
 PyObject *CPyDef__wallet___TreasuryWallet(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 char CPyDef__wallet___TreasuryWallet_____post_init__(PyObject *cpy_r_self);
@@ -29041,6 +29109,7 @@ static struct export_table_8d7637a0eb7617042369 exports = {
     &CPyDef__nicknames___setup_address_nicknames_in_db,
     &CPyDef__nicknames_____top_level__,
     &CPyStatic__wallet___WALLETS,
+    &CPyStatic__wallet___to_address,
     &CPyType__wallet___TreasuryWallet,
     &CPyDef__wallet___TreasuryWallet,
     &CPyDef__wallet___TreasuryWallet_____post_init__,

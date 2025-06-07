@@ -17,6 +17,7 @@ def test_bare_address(tmp_path):
     """
     content = """
 0xAAAABBBBCCCCDDDDEEEEFFFF0000111122223333:
+"0xAAAABBBBCCCCDDDDEEEEFFFF0000111122223334":
     """
     file = write_yaml_file(tmp_path, content)
     wallets = load_wallets_from_yaml(file)
@@ -43,7 +44,7 @@ def test_full_config(tmp_path):
   end:
     timestamp: 1700000000
 
-0x1234567890ABCDEF1234567890ABCDEF12345678:
+"0x1234567890ABCDEF1234567890ABCDEF12345678":
   start:
     timestamp: 1610000000
   end:
