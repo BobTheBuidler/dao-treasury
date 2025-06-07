@@ -17,6 +17,9 @@ The DAO Treasury CLI supports two modes for specifying wallets:
    ::
 
        address:
+         networks:                # optional list of chain IDs where this wallet is active
+           - <chain-id>
+           - <chain-id>
          start:
            timestamp: <unix-timestamp>        # universal for all chains
            <chain-id>:
@@ -34,6 +37,9 @@ Example YAML File
 .. code-block:: yaml
 
     0xABCDEF0123456789ABCDEF0123456789ABCDEF01:
+      networks:
+        - 1
+        - 420
       start:
         timestamp: 1600000000
         1:
@@ -57,6 +63,7 @@ Notes
 -----
 
 - The top-level keys are wallet addresses.
+- Use the optional ``networks`` key (a list of integer chain IDs) to restrict a wallet to specific chains.
 - Under ``start`` or ``end``, use ``timestamp`` for a universal timestamp setting.
 - For chain-specific block numbers, use the integer chain ID as a key mapping to a ``block`` value.
 - You may specify a bare address key with no nested config to include it with default settings.

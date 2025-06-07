@@ -32,6 +32,9 @@ class TreasuryWallet:
     end_timestamp: Optional[int] = None
     """The last timestamp at which this wallet was considered owned by the DAO, if it wasn't always included in the treasury. If `end_timestamp` is provided, you cannot provide an `end_block`."""
 
+    networks: Optional[List[int]] = None
+    """The networks where the DAO owns this wallet. If not provided, the wallet will be active on all networks."""
+
     def __post_init__(self) -> None:
         self.address = EthAddress(self.address)
 
@@ -73,6 +76,9 @@ class TreasuryWallet:
         wallet = TreasuryWallet._get_instance(address)
         if wallet is None:
             return False
+        # If networks filter is set, only include if current chain is listed
+        if wallet.networks and CHAINID not in wallet.networks:
+            return False
         return block is None or (
             wallet._start_block <= block
             and (wallet._end_block is None or wallet._end_block >= block)
@@ -102,23 +108,24 @@ class TreasuryWallet:
     def _get_instance(address: HexAddress) -> Optional["TreasuryWallet"]:
         # sourcery skip: use-contextlib-suppress
         try:
-            return WALLETS[address]
+            instance = WALLETS[address]
         except KeyError:
-            pass
-        checksummed = convert.to_address(address)
-        try:
-            instance = WALLETS[address] = WALLETS[checksummed]
-        except KeyError:
+            checksummed = convert.to_address(address)
+            try:
+                instance = WALLETS[address] = WALLETS[checksummed]
+            except KeyError:
+                return None
+        if instance.networks and CHAINID not in instance.networks:
             return None
-        else:
-            return instance
+        return instance
 
 
 def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
     """
     Load a YAML mapping of wallet addresses to configuration and return a list of TreasuryWallets.
-    'timestamp' in top-level start is universal.
-    'block' in top-level start must be provided under the chain ID key.
+    'timestamp' in top-level start/end is universal.
+    'block' in top-level start/end must be provided under the chain ID key.
+    Optional 'networks' key lists chain IDs where this wallet is active.
     """
     try:
         data = yaml.safe_load(path.read_bytes())
@@ -136,7 +143,14 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         elif not isinstance(cfg, dict):
             raise ValueError(f"Invalid config for wallet {address}, expected mapping")
 
-        kwargs = {"address": address}
+        # Extract optional networks list
+        networks: Optional[List[int]] = None
+        if "networks" in cfg:
+            if not isinstance(cfg["networks"], list) or not all(isinstance(n, int) for n in cfg["networks"]):
+                raise ValueError(f"'networks' for wallet {address} must be a list of integers")
+            networks = cfg["networks"]
+
+        kwargs = {"address": address, "networks": networks}
 
         # Parse start: timestamp universal, block under chain key
         start_cfg = cfg.get("start", {})
@@ -147,9 +161,7 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         chain_block = start_cfg.get(str(CHAINID)) or start_cfg.get(CHAINID)
         if chain_block is not None:
             if not isinstance(chain_block, int):
-                raise ValueError(
-                    f"Invalid start.block for chain {CHAINID} on {address}"
-                )
+                raise ValueError(f"Invalid start.block for chain {CHAINID} on {address}")
             kwargs["start_block"] = chain_block
 
         # Parse end: timestamp universal, block under chain key
