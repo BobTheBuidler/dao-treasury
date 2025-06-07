@@ -4,10 +4,12 @@ from pathlib import Path
 
 from dao_treasury._wallet import load_wallets_from_yaml, TreasuryWallet, CHAINID
 
+
 def write_yaml_file(tmp_path, content: str) -> Path:
     file = tmp_path / "wallets.yaml"
     file.write_text(content)
     return file
+
 
 def test_bare_address(tmp_path):
     """
@@ -22,6 +24,7 @@ def test_bare_address(tmp_path):
     wallet = wallets[0]
     # The wallet address should match exactly as provided.
     assert wallet.address == "0xAAAABBBBCCCCDDDDEEEEFFFF0000111122223333"
+
 
 def test_full_config(tmp_path):
     """
@@ -55,6 +58,7 @@ def test_full_config(tmp_path):
     # Expecting two wallets to be loaded.
     assert len(wallets) == 2
 
+
 def test_invalid_yaml(tmp_path):
     """
     Test that loading a YAML with a non-mapping top-level structure fails.
@@ -67,6 +71,7 @@ def test_invalid_yaml(tmp_path):
     with pytest.raises(ValueError, match="Wallets YAML file must be a mapping"):
         load_wallets_from_yaml(file)
 
+
 def test_invalid_wallet_config_type(tmp_path):
     """
     Test that a wallet entry with a non-dict config (other than None) raises an error.
@@ -77,6 +82,7 @@ def test_invalid_wallet_config_type(tmp_path):
     file = write_yaml_file(tmp_path, content)
     with pytest.raises(ValueError, match="Invalid config for wallet"):
         load_wallets_from_yaml(file)
+
 
 def test_invalid_networks_type(tmp_path):
     """
@@ -94,6 +100,7 @@ def test_invalid_networks_type(tmp_path):
     with pytest.raises(ValueError, match="'networks' for wallet"):
         load_wallets_from_yaml(file)
 
+
 def test_invalid_key_in_start(tmp_path):
     """
     Test that an invalid key under 'start' raises an error.
@@ -108,6 +115,7 @@ def test_invalid_key_in_start(tmp_path):
     file = write_yaml_file(tmp_path, content)
     with pytest.raises(ValueError, match="Invalid key: invalid_key"):
         load_wallets_from_yaml(file)
+
 
 def test_invalid_key_in_end(tmp_path):
     """
