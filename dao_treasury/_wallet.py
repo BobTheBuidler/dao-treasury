@@ -146,8 +146,12 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         # Extract optional networks list
         networks: Optional[List[int]] = None
         if "networks" in cfg:
-            if not isinstance(cfg["networks"], list) or not all(isinstance(n, int) for n in cfg["networks"]):
-                raise ValueError(f"'networks' for wallet {address} must be a list of integers")
+            if not isinstance(cfg["networks"], list) or not all(
+                isinstance(n, int) for n in cfg["networks"]
+            ):
+                raise ValueError(
+                    f"'networks' for wallet {address} must be a list of integers"
+                )
             networks = cfg["networks"]
 
         kwargs = {"address": address, "networks": networks}
@@ -161,7 +165,9 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         chain_block = start_cfg.get(str(CHAINID)) or start_cfg.get(CHAINID)
         if chain_block is not None:
             if not isinstance(chain_block, int):
-                raise ValueError(f"Invalid start.block for chain {CHAINID} on {address}")
+                raise ValueError(
+                    f"Invalid start.block for chain {CHAINID} on {address}"
+                )
             kwargs["start_block"] = chain_block
 
         # Parse end: timestamp universal, block under chain key
