@@ -486,6 +486,7 @@ struct export_table_8d7637a0eb7617042369 {
     char (*CPyDef__nicknames___setup_address_nicknames_in_db)(void);
     char (*CPyDef__nicknames_____top_level__)(void);
     PyObject **CPyStatic__wallet___WALLETS;
+    PyObject **CPyStatic__wallet___to_address;
     PyTypeObject **CPyType__wallet___TreasuryWallet;
     PyObject *(*CPyDef__wallet___TreasuryWallet)(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
     char (*CPyDef__wallet___TreasuryWallet_____post_init__)(PyObject *cpy_r_self);

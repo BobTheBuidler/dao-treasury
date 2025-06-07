@@ -301,6 +301,7 @@ extern char CPyDef__nicknames___setup_address_nicknames_in_db(void);
 extern PyObject *CPyPy__nicknames___setup_address_nicknames_in_db(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__nicknames_____top_level__(void);
 extern PyObject *CPyStatic__wallet___WALLETS;
+extern PyObject *CPyStatic__wallet___to_address;
 extern PyTypeObject *CPyType__wallet___TreasuryWallet;
 extern PyObject *CPyDef__wallet___TreasuryWallet(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 extern char CPyDef__wallet___TreasuryWallet_____post_init__(PyObject *cpy_r_self);
