@@ -13,6 +13,7 @@ WALLETS: Final[Dict[ChecksumAddress, "TreasuryWallet"]] = {}
 
 to_address: Final = convert.to_address
 
+
 @final
 @dataclass
 class TreasuryWallet:
