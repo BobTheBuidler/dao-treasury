@@ -112,6 +112,7 @@
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pony.orm</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Database</span><span class="p">,</span>
+    <span class="n">InterfaceError</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">,</span>
     <span class="n">PrimaryKey</span><span class="p">,</span>
     <span class="n">Required</span><span class="p">,</span>
@@ -944,8 +945,45 @@
                     <span class="n">txgroup</span><span class="o">=</span><span class="n">txgroup_dbid</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="n">dbid</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">treasury_tx_id</span>
+        <span class="k">except</span> <span class="n">InterfaceError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s2">&quot;chain&quot;</span><span class="p">:</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">CHAINID</span><span class="p">),</span>
+                <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">hash</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span>
+                <span class="s2">&quot;log_index&quot;</span><span class="p">:</span> <span class="n">log_index</span><span class="p">,</span>
+                <span class="s2">&quot;from_address&quot;</span><span class="p">:</span> <span class="n">from_address</span><span class="p">,</span>
+                <span class="s2">&quot;to_address&quot;</span><span class="p">:</span> <span class="n">to_address</span><span class="p">,</span>
+                <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+                <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">price</span><span class="p">,</span>
+                <span class="s2">&quot;value_usd&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value_usd</span><span class="p">,</span>
+                <span class="c1"># TODO: nuke db and add this column</span>
+                <span class="c1"># gas = gas,</span>
+                <span class="s2">&quot;gas_used&quot;</span><span class="p">:</span> <span class="n">gas_used</span><span class="p">,</span>
+                <span class="s2">&quot;gas_price&quot;</span><span class="p">:</span> <span class="n">gas_price</span><span class="p">,</span>
+                <span class="s2">&quot;txgroup&quot;</span><span class="p">:</span> <span class="n">txgroup_dbid</span><span class="p">,</span>
+            <span class="p">})</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="k">except</span> <span class="n">InvalidOperation</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">({</span>
+                <span class="s2">&quot;chain&quot;</span><span class="p">:</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">CHAINID</span><span class="p">),</span>
+                <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">hash</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span>
+                <span class="s2">&quot;log_index&quot;</span><span class="p">:</span> <span class="n">log_index</span><span class="p">,</span>
+                <span class="s2">&quot;from_address&quot;</span><span class="p">:</span> <span class="n">from_address</span><span class="p">,</span>
+                <span class="s2">&quot;to_address&quot;</span><span class="p">:</span> <span class="n">to_address</span><span class="p">,</span>
+                <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+                <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">price</span><span class="p">,</span>
+                <span class="s2">&quot;value_usd&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value_usd</span><span class="p">,</span>
+                <span class="c1"># TODO: nuke db and add this column</span>
+                <span class="c1"># gas = gas,</span>
+                <span class="s2">&quot;gas_used&quot;</span><span class="p">:</span> <span class="n">gas_used</span><span class="p">,</span>
+                <span class="s2">&quot;gas_price&quot;</span><span class="p">:</span> <span class="n">gas_price</span><span class="p">,</span>
+                <span class="s2">&quot;txgroup&quot;</span><span class="p">:</span> <span class="n">txgroup_dbid</span><span class="p">,</span>
+            <span class="p">})</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">except</span> <span class="n">TransactionIntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_validate_integrity_error</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">log_index</span><span class="p">)</span>
