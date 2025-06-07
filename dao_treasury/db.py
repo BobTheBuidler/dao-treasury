@@ -754,8 +754,7 @@ class TreasuryTx(DbEntity):
             async with _SORT_SEMAPHORE:
                 from dao_treasury.sorting import sort_advanced
 
-                with db_session:
-                    await sort_advanced(TreasuryTx[txid])
+                await sort_advanced(TreasuryTx[txid])
 
     @staticmethod
     def __insert(entry: LedgerEntry, ts: int) -> typing.Optional[int]:
