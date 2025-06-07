@@ -1,14 +1,14 @@
 #include <Python.h>
 
 PyMODINIT_FUNC
-PyInit__rules(void)
+PyInit__nicknames(void)
 {
     PyObject *tmp;
     if (!(tmp = PyImport_ImportModule("8d7637a0eb7617042369__mypyc"))) return NULL;
-    PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury___sorting____rules");
+    PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury____nicknames");
     Py_DECREF(tmp);
     if (capsule == NULL) return NULL;
-    void *init_func = PyCapsule_GetPointer(capsule, "8d7637a0eb7617042369__mypyc.init_dao_treasury___sorting____rules");
+    void *init_func = PyCapsule_GetPointer(capsule, "8d7637a0eb7617042369__mypyc.init_dao_treasury____nicknames");
     Py_DECREF(capsule);
     if (!init_func) {
         return NULL;
@@ -18,4 +18,4 @@ PyInit__rules(void)
 
 // distutils sometimes spuriously tells cl to export CPyInit___init__,
 // so provide that so it chills out
-PyMODINIT_FUNC PyInit___init__(void) { return PyInit__rules(); }
+PyMODINIT_FUNC PyInit___init__(void) { return PyInit__nicknames(); }

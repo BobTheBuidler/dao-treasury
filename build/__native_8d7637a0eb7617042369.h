@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_52b51d40e96d4333695d_H
-#define MYPYC_NATIVE_52b51d40e96d4333695d_H
+#ifndef MYPYC_NATIVE_8d7637a0eb7617042369_H
+#define MYPYC_NATIVE_8d7637a0eb7617042369_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T3CIO
@@ -324,7 +324,7 @@ typedef struct {
 } dao_treasury____wallet___TreasuryWalletObject;
 
 
-struct export_table_52b51d40e96d4333695d {
+struct export_table_8d7637a0eb7617042369 {
     PyObject **CPyStatic_sorting___logger;
     PyObject **CPyStatic_sorting___TxGroup;
     PyObject **CPyStatic_sorting___must_sort_inbound_txgroup_dbid;
@@ -481,6 +481,9 @@ struct export_table_52b51d40e96d4333695d {
     PyObject *(*CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
     char (*CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self);
     char (*CPyDef_rule_____top_level__)(void);
+    PyObject **CPyStatic__nicknames___set_nickname;
+    char (*CPyDef__nicknames___setup_address_nicknames_in_db)(void);
+    char (*CPyDef__nicknames_____top_level__)(void);
     PyObject **CPyStatic__wallet___WALLETS;
     PyTypeObject **CPyType__wallet___TreasuryWallet;
     PyObject *(*CPyDef__wallet___TreasuryWallet)(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
@@ -490,6 +493,8 @@ struct export_table_52b51d40e96d4333695d {
     PyObject *(*CPyDef__wallet___TreasuryWallet____end_block)(PyObject *cpy_r_self);
     PyObject *(*CPyDef__wallet___TreasuryWallet____get_instance)(PyObject *cpy_r_address);
     char (*CPyDef__wallet_____top_level__)(void);
+    tuple_T2OO *CPyStatic_constants___DISPERSE_APP;
+    char (*CPyDef_constants_____top_level__)(void);
     char (*CPyDef_types_____top_level__)(void);
 };
 #endif

@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_52b51d40e96d4333695d_H
-#define MYPYC_NATIVE_INTERNAL_52b51d40e96d4333695d_H
+#ifndef MYPYC_NATIVE_INTERNAL_8d7637a0eb7617042369_H
+#define MYPYC_NATIVE_INTERNAL_8d7637a0eb7617042369_H
 #include <Python.h>
 #include <CPy.h>
-#include "__native_52b51d40e96d4333695d.h"
+#include "__native_8d7637a0eb7617042369.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[307];
+extern PyObject *CPyStatics[321];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -52,8 +52,14 @@ extern CPyModule *CPyModule_collections;
 extern CPyModule *CPyModule_dataclasses;
 extern CPyModule *CPyModule_brownie___convert___datatypes;
 extern CPyModule *CPyModule_mypy_extensions;
+extern CPyModule *CPyModule_dao_treasury____nicknames_internal;
+extern CPyModule *CPyModule_dao_treasury____nicknames;
+extern PyObject *CPyStatic__nicknames___globals;
 extern PyObject *CPyStatic__wallet___globals;
 extern CPyModule *CPyModule_y___time;
+extern CPyModule *CPyModule_dao_treasury___constants_internal;
+extern CPyModule *CPyModule_dao_treasury___constants;
+extern PyObject *CPyStatic_constants___globals;
 extern PyObject *CPyStatic_types___globals;
 extern PyObject *CPyStatic_sorting___logger;
 extern PyObject *CPyStatic_sorting___TxGroup;
@@ -289,6 +295,10 @@ extern PyObject *CPyPy_rule_____post_init___3_IgnoreSortRule_obj_____get__(PyObj
 extern char CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self);
 extern PyObject *CPyPy_rule_____post_init___3_IgnoreSortRule_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_rule_____top_level__(void);
+extern PyObject *CPyStatic__nicknames___set_nickname;
+extern char CPyDef__nicknames___setup_address_nicknames_in_db(void);
+extern PyObject *CPyPy__nicknames___setup_address_nicknames_in_db(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern char CPyDef__nicknames_____top_level__(void);
 extern PyObject *CPyStatic__wallet___WALLETS;
 extern PyTypeObject *CPyType__wallet___TreasuryWallet;
 extern PyObject *CPyDef__wallet___TreasuryWallet(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
@@ -303,5 +313,7 @@ extern PyObject *CPyPy__wallet___TreasuryWallet____end_block(PyObject *self, PyO
 extern PyObject *CPyDef__wallet___TreasuryWallet____get_instance(PyObject *cpy_r_address);
 extern PyObject *CPyPy__wallet___TreasuryWallet____get_instance(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__wallet_____top_level__(void);
+extern tuple_T2OO CPyStatic_constants___DISPERSE_APP;
+extern char CPyDef_constants_____top_level__(void);
 extern char CPyDef_types_____top_level__(void);
 #endif
