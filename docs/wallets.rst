@@ -3,36 +3,40 @@ Specifying Treasury Wallets
 
 The DAO Treasury CLI supports two modes for specifying wallets:
 
-1. Simple Mode (default)  
-   Use the ``--wallet`` flag to list one or more wallet addresses.  
-   Example:
+Simple Mode (default)
+---------------------
 
-   .. code-block:: bash
+Use the ``--wallet`` flag to list one or more wallet addresses.  
+Example:
 
-       dao-treasury --wallet 0xABC... 0xDEF...
+.. code-block:: bash
 
-2. Advanced Mode  
-   Use the ``--wallets`` flag with a path to a YAML file, which will be parsed by :func:`~load_wallets_from_yaml`. This YAML must map each wallet address to a configuration object using the pattern:
+    dao-treasury --wallet 0xABC... 0xDEF...
 
-   ::
+Advanced Mode
+-------------
 
-       address:
-         networks:                # optional list of chain IDs where this wallet is active
-           - <chain-id>
-           - <chain-id>
-         start:
-           timestamp: <unix-timestamp>        # universal for all chains
-           <chain-id>:
-             block: <block-number>           # chain-specific start block
-         end:
-           timestamp: <unix-timestamp>        # universal for all chains
-           <chain-id>:
-             block: <block-number>           # chain-specific end block
+Use the ``--wallets`` flag with a path to a YAML file, which will be parsed by :func:`~load_wallets_from_yaml`. This YAML must map each wallet address to a configuration object using the pattern:
 
-   Only one of ``timestamp`` or a chain-specific ``block`` may be provided under ``start`` or under ``end``.
+::
+
+    address:
+      networks:                # optional list of chain IDs where this wallet is active
+        - <chain-id>
+        - <chain-id>
+      start:
+        timestamp: <unix-timestamp>        # universal for all chains
+        <chain-id>:
+          block: <block-number>           # chain-specific start block
+      end:
+        timestamp: <unix-timestamp>        # universal for all chains
+        <chain-id>:
+          block: <block-number>           # chain-specific end block
+
+Only one of ``timestamp`` or a chain-specific ``block`` may be provided under ``start`` or under ``end``.
 
 Example YAML File
------------------
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: yaml
 
