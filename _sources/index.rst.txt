@@ -10,7 +10,7 @@ DAO Treasury Documentation
    :caption: Contents:
 
    sort_rules
-   DAO Treasury API <source/modules.rst>
+   API Documentation <source/modules.rst>
    transactions
    contributing
 
