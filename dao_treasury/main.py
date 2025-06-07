@@ -201,8 +201,7 @@ async def export(args) -> None:
     args.wallet = [
         wallet.address
         for wallet in wallets
-        if wallet.networks is None
-        or CHAINID in wallet.networks
+        if wallet.networks is None or CHAINID in wallet.networks
     ]
 
     # TODO: make this user configurable? would require some dynamic grafana dashboard files
