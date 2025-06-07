@@ -7,13 +7,13 @@ DAO Treasury’s sorting system provides a flexible and extensible way to classi
 Sort rules can be defined either by specifying a set of transaction attributes to match or by
 supplying a custom matching function. The system is built around three main components:
 
-1. Sort Rule Classes and Factories – Predefined sort rule classes (such as RevenueSortRule,
-   ExpenseSortRule, etc.) are specialized tools that associate a provided transaction group
+1. Sort Rule Classes and Factories – Predefined sort rule classes (such as :class:`~RevenueSortRule`,
+   :class:`~ExpenseSortRule`, etc.) are specialized tools that associate a provided transaction group
    identifier (txgroup) with a fixed category (e.g. “Revenue”, “Expenses”, “Other Income”).
    Internally, these classes register rules under their composite key fullname (e.g., "Revenue:Sales:Ice Cream")
    for matching purposes.
-2. Custom Matching via SortRuleFactory – Factories (provided by functions like `revenue`,
-   `expense`, etc. in :mod:`dao_treasury.sorting.factory`) allow registration of custom
+2. Custom Matching via SortRuleFactory – Factories (provided by functions like :func:`~revenue`,
+   :func:`~expense`, etc. in :mod:`dao_treasury.sorting.factory`) allow registration of custom
    synchronous or asynchronous matching functions.
 3. External YAML-Based Sort Rules – Declarative rules defined in YAML files can be loaded at
    runtime by passing the directory path to the CLI via the `--sort-rules` flag.
@@ -25,17 +25,17 @@ This document details how to define and register your own sort rules, with real-
 DAO Treasury provides specialized rule classes in :mod:`dao_treasury.sorting.rule`
 to cover common transaction types:
 
-- **:class:`~RevenueSortRule`**: Intended for inbound transactions representing revenue.
+- **RevenueSortRule**: Intended for inbound transactions representing revenue.
   - When instantiated with a txgroup like "Sales", it registers the rule internally using a composite key such as "Revenue:Sales", signaling that the rule is for revenue transactions.
-- **:class:`~CostOfRevenueSortRule`**: Designed for outbound transactions representing cost of revenue.
+- **CostOfRevenueSortRule**: Designed for outbound transactions representing cost of revenue.
   - The rule is registered with a composite key like "Cost of Revenue:<txgroup>".
-- **:class:`~ExpenseSortRule`**: For outbound transactions representing expenses.
+- **ExpenseSortRule**: For outbound transactions representing expenses.
   - A rule created with txgroup "Office" is registered under "Expenses:Office".
-- **:class:`~OtherIncomeSortRule`**: For inbound transactions representing other income.
+- **OtherIncomeSortRule**: For inbound transactions representing other income.
   - The composite key is formed by associating "Other Income" with the provided txgroup.
-- **:class:`~OtherExpenseSortRule`**: For outbound transactions representing other expenses.
+- **OtherExpenseSortRule**: For outbound transactions representing other expenses.
   - The rule is similarly registered with an "Other Expenses" prefix.
-- **:class:`~IgnoreSortRule`**: For transactions that should be omitted from certain reports.
+- **IgnoreSortRule**: For transactions that should be omitted from certain reports.
   - The rule is registered using a composite key prefixed with "Ignore:".
 
 Example (static attribute matching):
@@ -147,5 +147,6 @@ Defining custom sort rules involves:
 This modular design enables DAO Treasury users to flexibly adapt its sorting strategy to the evolving requirements of their DAO.
 
 For details, see:
+
 - :mod:`dao_treasury.sorting.rule`  
 - :mod:`dao_treasury.sorting.factory`
