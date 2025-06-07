@@ -38,6 +38,7 @@ from eth_portfolio.structs import (
 )
 from pony.orm import (
     Database,
+    InterfaceError,
     Optional,
     PrimaryKey,
     Required,
@@ -811,8 +812,45 @@ class TreasuryTx(DbEntity):
                     txgroup=txgroup_dbid,
                 )
                 dbid = entity.treasury_tx_id
+        except InterfaceError as e:
+            raise ValueError(e, {
+                "chain": Chain.get_dbid(CHAINID),
+                "block": entry.block_number,
+                "timestamp": ts,
+                "hash": entry.hash.hex(),
+                "log_index": log_index,
+                "from_address": from_address,
+                "to_address": to_address,
+                "token": token,
+                "amount": entry.value,
+                "price": entry.price,
+                "value_usd": entry.value_usd,
+                # TODO: nuke db and add this column
+                # gas = gas,
+                "gas_used": gas_used,
+                "gas_price": gas_price,
+                "txgroup": txgroup_dbid,
+            }) from e
         except InvalidOperation as e:
             logger.error(e)
+            logger.error({
+                "chain": Chain.get_dbid(CHAINID),
+                "block": entry.block_number,
+                "timestamp": ts,
+                "hash": entry.hash.hex(),
+                "log_index": log_index,
+                "from_address": from_address,
+                "to_address": to_address,
+                "token": token,
+                "amount": entry.value,
+                "price": entry.price,
+                "value_usd": entry.value_usd,
+                # TODO: nuke db and add this column
+                # gas = gas,
+                "gas_used": gas_used,
+                "gas_price": gas_price,
+                "txgroup": txgroup_dbid,
+            })
             return None
         except TransactionIntegrityError as e:
             return _validate_integrity_error(entry, log_index)
