@@ -9,6 +9,7 @@ from eth_typing import BlockNumber
 from eth_portfolio.structs import LedgerEntry
 from eth_portfolio.typing import PortfolioBalances
 from eth_portfolio_scripts._portfolio import ExportablePortfolio
+from pony.orm import db_session
 from tqdm.asyncio import tqdm_asyncio
 
 from dao_treasury._wallet import TreasuryWallet
@@ -132,13 +133,14 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             >>> # Insert transactions from block 0 to 10000
             >>> await treasury.populate_db(0, 10000)
         """
-        futs = []
-        async for entry in self.portfolio.ledger[start_block:end_block]:
-            if not entry.value:
-                # TODO: add an arg in eth-port to skip 0 value
-                logger.debug("zero value transfer, skipping %s", entry)
-                continue
-            futs.append(create_task(TreasuryTx.insert(entry)))
+        with db_session:
+            futs = []
+            async for entry in self.portfolio.ledger[start_block:end_block]:
+                if not entry.value:
+                    # TODO: add an arg in eth-port to skip 0 value
+                    logger.debug("zero value transfer, skipping %s", entry)
+                    continue
+                futs.append(create_task(TreasuryTx.insert(entry)))
 
-        if futs:
-            await tqdm_asyncio.gather(*futs, desc="Insert Txs to Postgres")
+            if futs:
+                await tqdm_asyncio.gather(*futs, desc="Insert Txs to Postgres")
