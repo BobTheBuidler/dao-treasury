@@ -11,6 +11,7 @@ from y.constants import CHAINID
 
 WALLETS: Final[Dict[ChecksumAddress, "TreasuryWallet"]] = {}
 
+to_address: Final = convert.to_address
 
 @final
 @dataclass
@@ -36,7 +37,9 @@ class TreasuryWallet:
     """The networks where the DAO owns this wallet. If not provided, the wallet will be active on all networks."""
 
     def __post_init__(self) -> None:
-        self.address = EthAddress(self.address)
+        # If a user provides a wallets yaml file but forgets to wrap the address
+        # keys with quotes, it will be an integer we must convert to an address.
+        self.address = EthAddress(to_address(self.address))
 
         start_block = self.start_block
         start_timestamp = self.start_timestamp
@@ -110,7 +113,7 @@ class TreasuryWallet:
         try:
             instance = WALLETS[address]
         except KeyError:
-            checksummed = convert.to_address(address)
+            checksummed = to_address(address)
             try:
                 instance = WALLETS[address] = WALLETS[checksummed]
             except KeyError:
