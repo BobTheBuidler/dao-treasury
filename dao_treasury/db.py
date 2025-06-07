@@ -21,7 +21,7 @@ from functools import lru_cache
 from logging import getLogger
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Final, Union, final
+from typing import TYPE_CHECKING, Dict, Final, Union, final
 
 from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
@@ -307,6 +307,12 @@ class Address(DbEntity):
                 entity.nickname = nickname
                 commit()
                 logger.info("%s nickname set to %s", entity.address, nickname)
+    
+    @staticmethod
+    def set_nicknames(nicknames: Dict[HexAddress, str]) -> None:
+        with db_session:
+            for address, nickname in nicknames.items():
+                Address.set_nickname(address, nickname)
 
 
 UNI_V3_POS: Final = {
