@@ -1,5 +1,5 @@
-Defining Treasury Wallets
-=========================
+Specifying Treasury Wallets
+===========================
 
 The DAO Treasury CLI supports two modes for specifying wallets:
 
@@ -69,3 +69,5 @@ Notes
 - You may specify a bare address key with no nested config to include it with default settings.
 - Use either ``--wallet`` or ``--wallets``, but not both.
 - Conflicting settings (e.g., both ``timestamp`` and a chain-specific ``block`` under the same section) will result in an error.
+
+Once you've finished congifuring your DAO's treasury wallets, the next step is [defining sort rules](https://bobthebuidler.github.io/dao-treasury/sort_rules.html)
