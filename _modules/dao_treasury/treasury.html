@@ -84,6 +84,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio.structs</span><span class="w"> </span><span class="kn">import</span> <span class="n">LedgerEntry</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PortfolioBalances</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio_scripts._portfolio</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExportablePortfolio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pony.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">db_session</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm_asyncio</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury._wallet</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreasuryWallet</span>
@@ -217,16 +218,17 @@
 <span class="sd">            &gt;&gt;&gt; # Insert transactions from block 0 to 10000</span>
 <span class="sd">            &gt;&gt;&gt; await treasury.populate_db(0, 10000)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">futs</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">async</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">ledger</span><span class="p">[</span><span class="n">start_block</span><span class="p">:</span><span class="n">end_block</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-                <span class="c1"># TODO: add an arg in eth-port to skip 0 value</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;zero value transfer, skipping </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
-                <span class="k">continue</span>
-            <span class="n">futs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_task</span><span class="p">(</span><span class="n">TreasuryTx</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">entry</span><span class="p">)))</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="n">futs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">portfolio</span><span class="o">.</span><span class="n">ledger</span><span class="p">[</span><span class="n">start_block</span><span class="p">:</span><span class="n">end_block</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="c1"># TODO: add an arg in eth-port to skip 0 value</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;zero value transfer, skipping </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                <span class="n">futs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_task</span><span class="p">(</span><span class="n">TreasuryTx</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">entry</span><span class="p">)))</span>
 
-        <span class="k">if</span> <span class="n">futs</span><span class="p">:</span>
-            <span class="k">await</span> <span class="n">tqdm_asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">futs</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Insert Txs to Postgres&quot;</span><span class="p">)</span></div>
+            <span class="k">if</span> <span class="n">futs</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">tqdm_asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">futs</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Insert Txs to Postgres&quot;</span><span class="p">)</span></div>
 </div>
 
 </pre></div>
