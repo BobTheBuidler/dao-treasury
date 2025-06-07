@@ -1,17 +1,20 @@
+"""This module contains utilities for managing dao-treasury's docker containers"""
+
 import logging
 import os
 import subprocess
 from functools import wraps
-from typing import Callable, Iterable, Tuple, TypeVar
+from typing import Any, Callable, Coroutine, Final, Iterable, Tuple, TypeVar
 
 import eth_portfolio_scripts.docker
 from typing_extensions import ParamSpec
 
-logger = logging.getLogger(__name__)
+logger: Final = logging.getLogger(__name__)
 
-compose_file = os.path.join(
+compose_file: Final = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "docker-compose.yaml"
 )
+"""The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
 def up() -> None:
@@ -31,13 +34,14 @@ def up() -> None:
         :func:`down`
         :func:`_exec_command`
     """
+    # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
     eth_portfolio_scripts.docker.up()
     build()
     print("starting the grafana containers")
     _exec_command(["up", "-d"])
 
 
-def down(*_) -> None:
+def down() -> None:
     """Stop and remove Grafana containers.
 
     This function brings down the Docker Compose services defined
@@ -76,7 +80,9 @@ _P = ParamSpec("_P")
 _T = TypeVar("_T")
 
 
-def ensure_containers(fn: Callable[_P, _T]) -> Callable[_P, _T]:
+def ensure_containers(
+    fn: Callable[_P, Coroutine[Any, Any, _T]],
+) -> Callable[_P, Coroutine[Any, Any, _T]]:
     """Decorator to ensure Grafana containers are running before execution.
 
     This async decorator starts the Docker Compose services via
@@ -105,7 +111,7 @@ def ensure_containers(fn: Callable[_P, _T]) -> Callable[_P, _T]:
     """
 
     @wraps(fn)
-    async def compose_wrap(*args: _P.args, **kwargs: _P.kwargs):
+    async def compose_wrap(*args: _P.args, **kwargs: _P.kwargs) -> _T:
         # register shutdown sequence
         # TODO: argument to leave them up
         # NOTE: do we need both this and the finally?
@@ -120,7 +126,7 @@ def ensure_containers(fn: Callable[_P, _T]) -> Callable[_P, _T]:
         finally:
             # stop and remove containers
             # down()
-            ...
+            return
 
     return compose_wrap
 
