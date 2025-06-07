@@ -12,6 +12,14 @@ Subpackages
 Submodules
 ----------
 
+dao\_treasury.constants module
+------------------------------
+
+.. automodule:: dao_treasury.constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dao\_treasury.db module
 -----------------------
 
