@@ -157,26 +157,40 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         # Parse start: timestamp universal, block under chain key
         start_cfg = cfg.get("start", {})
         if not isinstance(start_cfg, dict):
-            raise ValueError(f"Invalid 'start' for wallet {address}. Expected mapping, got {start_cfg}.")
+            raise ValueError(
+                f"Invalid 'start' for wallet {address}. Expected mapping, got {start_cfg}."
+            )
         for key, value in start_cfg.items():
             if key == "timestamp":
                 if "start_block" in kwargs:
-                    raise ValueError("You cannot provide both a start block and a start timestamp")
+                    raise ValueError(
+                        "You cannot provide both a start block and a start timestamp"
+                    )
                 kwargs["start_timestamp"] = value
             elif key == "block":
                 if not isinstance(value, dict):
-                    raise ValueError(f"Invalid start block for wallet {address}. Expected mapping, got {value}.")
+                    raise ValueError(
+                        f"Invalid start block for wallet {address}. Expected mapping, got {value}."
+                    )
                 for chainid, start_block in value.items():
                     if not isinstance(chainid, int):
-                        raise ValueError(f"Invalid chainid for wallet {address} start block. Expected integer, got {chainid}.")
+                        raise ValueError(
+                            f"Invalid chainid for wallet {address} start block. Expected integer, got {chainid}."
+                        )
                     if not isinstance(start_block, int):
-                        raise ValueError(f"Invalid start block for wallet {address}. Expected integer, got {start_block}.")
+                        raise ValueError(
+                            f"Invalid start block for wallet {address}. Expected integer, got {start_block}."
+                        )
                     if chainid == CHAINID:
                         if "start_timestamp" in kwargs:
-                            raise ValueError("You cannot provide both a start block and a start timestamp")
+                            raise ValueError(
+                                "You cannot provide both a start block and a start timestamp"
+                            )
                         kwargs["start_block"] = start_block
             else:
-                raise ValueError(f"Invalid key: {key}. Valid options are 'block' or 'timestamp'.")
+                raise ValueError(
+                    f"Invalid key: {key}. Valid options are 'block' or 'timestamp'."
+                )
 
         chain_block = start_cfg.get(str(CHAINID)) or start_cfg.get(CHAINID)
         if chain_block is not None:
@@ -189,25 +203,37 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         # Parse end: timestamp universal, block under chain key
         end_cfg = cfg.get("end", {})
         if not isinstance(end_cfg, dict):
-            raise ValueError(f"Invalid 'end' for wallet {address}. Expected mapping, got {end_cfg}.")
-    
+            raise ValueError(
+                f"Invalid 'end' for wallet {address}. Expected mapping, got {end_cfg}."
+            )
+
         for key, value in end_cfg.items():
             if key == "timestamp":
                 if "end_block" in kwargs:
-                    raise ValueError("You cannot provide both an end block and an end timestamp")
+                    raise ValueError(
+                        "You cannot provide both an end block and an end timestamp"
+                    )
                 kwargs["end_timestamp"] = value
             elif key == "block":
                 if not isinstance(value, dict):
-                    raise ValueError(f"Invalid end block for wallet {address}. Expected mapping, got {value}.")
+                    raise ValueError(
+                        f"Invalid end block for wallet {address}. Expected mapping, got {value}."
+                    )
                 for chainid, end_block in value.items():
                     if not isinstance(chainid, int):
-                        raise ValueError(f"Invalid chainid for wallet {address} end block. Expected integer, got {chainid}.")
+                        raise ValueError(
+                            f"Invalid chainid for wallet {address} end block. Expected integer, got {chainid}."
+                        )
                     if not isinstance(end_block, int):
-                        raise ValueError(f"Invalid end block for wallet {address}. Expected integer, got {end_block}.")
+                        raise ValueError(
+                            f"Invalid end block for wallet {address}. Expected integer, got {end_block}."
+                        )
                     if chainid == CHAINID:
                         kwargs["end_block"] = end_block
             else:
-                raise ValueError(f"Invalid key: {key}. Valid options are 'block' or 'timestamp'.")
+                raise ValueError(
+                    f"Invalid key: {key}. Valid options are 'block' or 'timestamp'."
+                )
 
         wallets.append(TreasuryWallet(**kwargs))
 
