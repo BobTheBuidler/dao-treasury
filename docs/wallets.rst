@@ -1,5 +1,5 @@
-Defining DAO Treasury Wallets
-=============================
+Defining Treasury Wallets
+=========================
 
 The DAO Treasury CLI supports two modes for specifying wallets:
 
