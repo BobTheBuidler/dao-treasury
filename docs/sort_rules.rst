@@ -26,8 +26,7 @@ DAO Treasury provides specialized rule classes in :mod:`dao_treasury.sorting.rul
 to cover common transaction types:
 
 - **:class:`~RevenueSortRule`**: Intended for inbound transactions representing revenue.
-  - When instantiated with a txgroup like "Sales", it registers the rule internally using a composite key
-    such as "Revenue:Sales", signaling that the rule is for revenue transactions.
+  - When instantiated with a txgroup like "Sales", it registers the rule internally using a composite key such as "Revenue:Sales", signaling that the rule is for revenue transactions.
 - **:class:`~CostOfRevenueSortRule`**: Designed for outbound transactions representing cost of revenue.
   - The rule is registered with a composite key like "Cost of Revenue:<txgroup>".
 - **:class:`~ExpenseSortRule`**: For outbound transactions representing expenses.
