@@ -4,7 +4,7 @@ import subprocess
 from functools import wraps
 from typing import Callable, Iterable, Tuple, TypeVar
 
-from eth_portfolio_scripts.docker import check_system
+import eth_portfolio_scripts.docker
 from typing_extensions import ParamSpec
 
 logger = logging.getLogger(__name__)
@@ -31,6 +31,7 @@ def up() -> None:
         :func:`down`
         :func:`_exec_command`
     """
+    eth_portfolio_scripts.docker.up()
     build()
     print("starting the grafana containers")
     _exec_command(["up", "-d"])
@@ -149,7 +150,7 @@ def _exec_command(command: Iterable[str], *, compose_options: Tuple[str] = ()) -
     See Also:
         :func:`check_system`
     """
-    check_system()
+    eth_portfolio_scripts.docker.check_system()
     try:
         subprocess.check_output(
             ["docker", "compose", *compose_options, "-f", compose_file, *command]
