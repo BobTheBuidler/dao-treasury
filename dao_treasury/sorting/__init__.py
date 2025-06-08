@@ -176,6 +176,5 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
     ):
         logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
         await entry._set_txgroup(txgroup_dbid)
-        entry.txgroup = txgroup_dbid
 
     return txgroup_dbid  # type: ignore [no-any-return]
