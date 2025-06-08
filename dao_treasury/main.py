@@ -29,13 +29,16 @@ from pathlib import Path
 import brownie
 import yaml
 from dao_treasury._wallet import load_wallets_from_yaml
+from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
 
-from eth_portfolio_scripts.balances import export_balances
+from dao_treasury.constants import CHAINID
 
 
 logger = logging.getLogger(__name__)
+
 logging.basicConfig(level=logging.INFO)
+
 
 parser = argparse.ArgumentParser(
     description="Run a single DAO Treasury export and populate the database.",
