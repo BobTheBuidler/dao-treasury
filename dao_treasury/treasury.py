@@ -13,6 +13,7 @@ from pony.orm import db_session
 from tqdm.asyncio import tqdm_asyncio
 
 from dao_treasury._wallet import TreasuryWallet
+from dao_treasury.constants import CHAINID
 from dao_treasury.db import TreasuryTx
 from dao_treasury.sorting._rules import Rules
 
@@ -95,7 +96,12 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         self.sort_rules: Final = Rules(sort_rules) if sort_rules else None
 
         self.portfolio: Final = ExportablePortfolio(
-            addresses=(wallet.address for wallet in self.wallets),
+            addresses=(
+                wallet.address
+                for wallet in self.wallets
+                if wallet.networks is None
+                or CHAINID in wallet.networks
+            ),
             start_block=start_block,
             label=label,
             load_prices=True,
