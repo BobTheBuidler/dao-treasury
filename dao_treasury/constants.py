@@ -1,5 +1,9 @@
 from typing import Final
 
+import y.constants
+
+
+CHAINID: Final = y.constants.CHAINID
 
 ZERO_ADDRESS: Final = "0x0000000000000000000000000000000000000000"
 

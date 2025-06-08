@@ -4,8 +4,8 @@ from typing import Final, Type, Union, final
 
 import yaml
 from pony.orm import db_session
-from y import constants
 
+from dao_treasury.constants import CHAINID
 from dao_treasury.sorting import (
     _Matcher,
     FromAddressMatcher,
@@ -14,8 +14,6 @@ from dao_treasury.sorting import (
 )
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
 
-
-CHAINID: Final = constants.CHAINID
 
 logger: Final = getLogger("dao_treasury.rules")
 

@@ -162,9 +162,7 @@ async def export(args) -> None:
         :func:`dao_treasury._docker.down`,
         :class:`dao_treasury.Treasury.populate_db`
     """
-    from y.constants import CHAINID
-
-    from dao_treasury import _docker, db, Treasury
+    from dao_treasury import _docker, constants, db, Treasury
 
     wallets = getattr(args, "wallet", None)
     wallets_advanced = getattr(args, "wallets", None)
@@ -187,9 +185,9 @@ async def export(args) -> None:
     # TODO but make the dashboard files more specific to dao treasury-ing
 
     if args.nicknames:
-        for nickname, addresses in (
-            yaml.safe_load(args.nicknames.read_bytes()).get(CHAINID, {}).items()
-        ):
+        parsed: dict = yaml.safe_load(args.nicknames.read_bytes())
+        active_network_config: dict = parsed.get(constants.CHAINID, {})
+        for nickname, addresses in active_network_config.items():
             for address in addresses:
                 db.Address.set_nickname(address, nickname)
 
