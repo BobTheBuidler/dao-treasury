@@ -369,7 +369,6 @@ struct export_table_8d7637a0eb7617042369 {
     char (*CPyDef__matchers___HashMatcher_____init__)(PyObject *cpy_r_self, PyObject *cpy_r_txgroup, PyObject *cpy_r_hashes);
     PyObject *(*CPyDef__matchers___HashMatcher_____repr__)(PyObject *cpy_r_self);
     char (*CPyDef__matchers_____top_level__)(void);
-    CPyTagged *CPyStatic__rules___CHAINID;
     PyObject **CPyStatic__rules___logger;
     PyTypeObject **CPyType__rules___Rules;
     PyObject *(*CPyDef__rules___Rules)(PyObject *cpy_r_path);
@@ -379,7 +378,6 @@ struct export_table_8d7637a0eb7617042369 {
     char (*CPyDef__rules___Rules_____build_matchers_for_group)(PyObject *cpy_r_self, PyObject *cpy_r_top_level_name, PyObject *cpy_r_rules, PyObject *cpy_r_filename, PyObject *cpy_r_matcher_cls);
     PyObject *(*CPyDef__rules___Rules_____get_rule_file)(PyObject *cpy_r_self, PyObject *cpy_r_path, PyObject *cpy_r_filename);
     char (*CPyDef__rules_____top_level__)(void);
-    CPyTagged *CPyStatic_factory___CHAINID;
     PyTypeObject **CPyType_factory___SortRuleFactory;
     PyObject *(*CPyDef_factory___SortRuleFactory)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
     PyObject *(*CPyDef_factory___revenue)(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
@@ -497,6 +495,7 @@ struct export_table_8d7637a0eb7617042369 {
     PyObject *(*CPyDef__wallet___TreasuryWallet____get_instance)(PyObject *cpy_r_address);
     PyObject *(*CPyDef__wallet___load_wallets_from_yaml)(PyObject *cpy_r_path);
     char (*CPyDef__wallet_____top_level__)(void);
+    CPyTagged *CPyStatic_constants___CHAINID;
     tuple_T2OO *CPyStatic_constants___DISPERSE_APP;
     char (*CPyDef_constants_____top_level__)(void);
     char (*CPyDef_types_____top_level__)(void);

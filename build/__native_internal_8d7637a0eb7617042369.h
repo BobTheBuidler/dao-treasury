@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[355];
+extern PyObject *CPyStatics[359];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -46,6 +46,8 @@ extern CPyModule *CPyModule_dao_treasury___sorting____rules;
 extern PyObject *CPyStatic__rules___globals;
 extern CPyModule *CPyModule_pathlib;
 extern CPyModule *CPyModule_yaml;
+extern CPyModule *CPyModule_dao_treasury___constants_internal;
+extern CPyModule *CPyModule_dao_treasury___constants;
 extern PyObject *CPyStatic_factory___globals;
 extern PyObject *CPyStatic_rule___globals;
 extern CPyModule *CPyModule_collections;
@@ -57,10 +59,8 @@ extern CPyModule *CPyModule_dao_treasury____nicknames;
 extern PyObject *CPyStatic__nicknames___globals;
 extern PyObject *CPyStatic__wallet___globals;
 extern CPyModule *CPyModule_y___time;
-extern CPyModule *CPyModule_y___constants;
-extern CPyModule *CPyModule_dao_treasury___constants_internal;
-extern CPyModule *CPyModule_dao_treasury___constants;
 extern PyObject *CPyStatic_constants___globals;
+extern CPyModule *CPyModule_y___constants;
 extern PyObject *CPyStatic_types___globals;
 extern PyObject *CPyStatic_sorting___logger;
 extern PyObject *CPyStatic_sorting___TxGroup;
@@ -124,7 +124,6 @@ extern PyObject *CPyPy__matchers___HashMatcher_____init__(PyObject *self, PyObje
 extern PyObject *CPyDef__matchers___HashMatcher_____repr__(PyObject *cpy_r_self);
 extern PyObject *CPyPy__matchers___HashMatcher_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__matchers_____top_level__(void);
-extern CPyTagged CPyStatic__rules___CHAINID;
 extern PyObject *CPyStatic__rules___logger;
 extern PyTypeObject *CPyType__rules___Rules;
 extern PyObject *CPyDef__rules___Rules(PyObject *cpy_r_path);
@@ -139,7 +138,6 @@ extern PyObject *CPyPy__rules___Rules_____build_matchers_for_group(PyObject *sel
 extern PyObject *CPyDef__rules___Rules_____get_rule_file(PyObject *cpy_r_self, PyObject *cpy_r_path, PyObject *cpy_r_filename);
 extern PyObject *CPyPy__rules___Rules_____get_rule_file(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__rules_____top_level__(void);
-extern CPyTagged CPyStatic_factory___CHAINID;
 extern PyTypeObject *CPyType_factory___SortRuleFactory;
 extern PyObject *CPyDef_factory___SortRuleFactory(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
 extern PyObject *CPyDef_factory___revenue(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks);
@@ -318,6 +316,7 @@ extern PyObject *CPyPy__wallet___TreasuryWallet____get_instance(PyObject *self, 
 extern PyObject *CPyDef__wallet___load_wallets_from_yaml(PyObject *cpy_r_path);
 extern PyObject *CPyPy__wallet___load_wallets_from_yaml(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__wallet_____top_level__(void);
+extern CPyTagged CPyStatic_constants___CHAINID;
 extern tuple_T2OO CPyStatic_constants___DISPERSE_APP;
 extern char CPyDef_constants_____top_level__(void);
 extern char CPyDef_types_____top_level__(void);
