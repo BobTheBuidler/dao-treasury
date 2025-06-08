@@ -89,9 +89,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
     if TreasuryWallet.check_membership(from_address, block):
         if TreasuryWallet.check_membership(to_address, block):
             txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
-    elif (
-        not TreasuryWallet.check_membership(to_address, block)
-    ):
+    elif not TreasuryWallet.check_membership(to_address, block):
         txgroup_dbid = OUT_OF_RANGE_TXGROUP_DBID
 
     if txgroup_dbid is None:
