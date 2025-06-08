@@ -88,6 +88,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm_asyncio</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury._wallet</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreasuryWallet</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CHAINID</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">TreasuryTx</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting._rules</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rules</span>
 
@@ -174,7 +175,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sort_rules</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">Rules</span><span class="p">(</span><span class="n">sort_rules</span><span class="p">)</span> <span class="k">if</span> <span class="n">sort_rules</span> <span class="k">else</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">portfolio</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">ExportablePortfolio</span><span class="p">(</span>
-            <span class="n">addresses</span><span class="o">=</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span> <span class="k">for</span> <span class="n">wallet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wallets</span><span class="p">),</span>
+            <span class="n">addresses</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">wallet</span><span class="o">.</span><span class="n">address</span>
+                <span class="k">for</span> <span class="n">wallet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wallets</span>
+                <span class="k">if</span> <span class="n">wallet</span><span class="o">.</span><span class="n">networks</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">CHAINID</span> <span class="ow">in</span> <span class="n">wallet</span><span class="o">.</span><span class="n">networks</span>
+            <span class="p">),</span>
             <span class="n">start_block</span><span class="o">=</span><span class="n">start_block</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">load_prices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
