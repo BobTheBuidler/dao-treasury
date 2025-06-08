@@ -74,8 +74,7 @@ INTERNAL_TRANSFER_TXGROUP_DBID: Final = TxGroup.get_dbid(
 # TODO: write a docstring
 
 OUT_OF_RANGE_TXGROUP_DBID = TxGroup.get_dbid(
-    name="Out of Range",
-    parent=TxGroup.get_dbid("Ignore")
+    name="Out of Range", parent=TxGroup.get_dbid("Ignore")
 )
 # TODO: write a docstring
 
