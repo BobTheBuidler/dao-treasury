@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[350];
+extern PyObject *CPyStatics[355];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -64,8 +64,9 @@ extern PyObject *CPyStatic_constants___globals;
 extern PyObject *CPyStatic_types___globals;
 extern PyObject *CPyStatic_sorting___logger;
 extern PyObject *CPyStatic_sorting___TxGroup;
-extern PyObject *CPyStatic_sorting___must_sort_inbound_txgroup_dbid;
-extern PyObject *CPyStatic_sorting___must_sort_outbound_txgroup_dbid;
+extern PyObject *CPyStatic_sorting___MUST_SORT_INBOUND_TXGROUP_DBID;
+extern PyObject *CPyStatic_sorting___MUST_SORT_OUTBOUND_TXGROUP_DBID;
+extern PyObject *CPyStatic_sorting___INTERNAL_TRANSFER_TXGROUP_DBID;
 extern PyTypeObject *CPyType_sorting___sort_advanced_env;
 extern PyObject *CPyDef_sorting___sort_advanced_env(void);
 extern PyTypeObject *CPyType_sorting___sort_advanced_gen;

@@ -328,8 +328,9 @@ typedef struct {
 struct export_table_8d7637a0eb7617042369 {
     PyObject **CPyStatic_sorting___logger;
     PyObject **CPyStatic_sorting___TxGroup;
-    PyObject **CPyStatic_sorting___must_sort_inbound_txgroup_dbid;
-    PyObject **CPyStatic_sorting___must_sort_outbound_txgroup_dbid;
+    PyObject **CPyStatic_sorting___MUST_SORT_INBOUND_TXGROUP_DBID;
+    PyObject **CPyStatic_sorting___MUST_SORT_OUTBOUND_TXGROUP_DBID;
+    PyObject **CPyStatic_sorting___INTERNAL_TRANSFER_TXGROUP_DBID;
     PyTypeObject **CPyType_sorting___sort_advanced_env;
     PyObject *(*CPyDef_sorting___sort_advanced_env)(void);
     PyTypeObject **CPyType_sorting___sort_advanced_gen;
