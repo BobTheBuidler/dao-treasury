@@ -51,10 +51,10 @@ from pony.orm import (
     select,
 )
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
-from y.constants import CHAINID
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
+from dao_treasury.constants import CHAINID
 from dao_treasury.types import TxGroupDbid, TxGroupName
 
 

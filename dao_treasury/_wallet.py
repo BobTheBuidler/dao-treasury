@@ -7,7 +7,9 @@ from brownie.convert.datatypes import EthAddress
 from eth_typing import BlockNumber, ChecksumAddress, HexAddress
 from y import convert
 from y.time import closest_block_after_timestamp
-from y.constants import CHAINID
+
+from dao_treasury.constants import CHAINID
+
 
 WALLETS: Final[Dict[ChecksumAddress, "TreasuryWallet"]] = {}
 
