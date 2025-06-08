@@ -25,8 +25,9 @@ setup_address_nicknames_in_db()
 
 if ENVS.SQL_DEBUG:
     import pony.orm
+
     pony.orm.sql_debug(True)
-    
+
 __all__ = [
     "Treasury",
     "TreasuryWallet",
