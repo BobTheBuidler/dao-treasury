@@ -86,16 +86,28 @@
 <li><p><strong>Ease of Contribution:</strong> Non-technical users can easily update or create dashboard visuals using Grafana’s intuitive UI. The <a class="reference external" href="https://github.com/BobTheBuidler/dao-treasury/blob/master/CONTRIBUTING.md">Contributing Guidelines</a> document provides a step-by-step guide to defining new visuals and dashboards and integrating those changes into the repository, ensuring that anyone can contribute to the visual reporting aspect of the project.</p></li>
 </ul>
 </section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python 3.10 or higher.</p></li>
+<li><p>At least 16GB of RAM.</p></li>
+<li><p>All dependencies installed as specified in the project’s pyproject.toml file.</p></li>
+<li><p>Proper configuration settings (e.g., API keys, network endpoints) must be set up as required by the portfolio and balance loaders. More info below.</p></li>
+</ul>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>First, you will need to bring your own archive node. This can be one you run yourself, or one from one of the common providers (Tenderly, Alchemy, QuickNode, etc.)</p></li>
+<li><p>You must configure a <a class="reference external" href="https://eth-brownie.readthedocs.io/en/stable/network-management.html">brownie network</a> to use your RPC.</p></li>
+<li><p>You’ll also need <a class="reference external" href="https://www.docker.com/get-started/">Docker</a> installed on your system. If on MacOS, you will need to leave Docker Desktop open while Yearn Treasury is running.</p></li>
+</ul>
+</section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dao-treasury
 </pre></div>
 </div>
-</section>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
-<p>You must have a <a class="reference external" href="https://eth-brownie.readthedocs.io/en/stable/network-management.html">brownie network</a> configured to use your RPC.
-You will also need <a class="reference external" href="https://www.docker.com/get-started/">Docker</a> installed on your system.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
