@@ -12,6 +12,14 @@ Subpackages
 Submodules
 ----------
 
+dao\_treasury.ENVIRONMENT\_VARIABLES module
+-------------------------------------------
+
+.. automodule:: dao_treasury.ENVIRONMENT_VARIABLES
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dao\_treasury.constants module
 ------------------------------
 
