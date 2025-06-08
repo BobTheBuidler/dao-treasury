@@ -885,7 +885,7 @@ class TreasuryTx(DbEntity):
                 )
                 return None
             return dbid  # type: ignore [no-any-return]
-    
+
     @staticmethod
     @a_sync(executor=_SORT_THREAD)
     def __set_txgroup(treasury_tx_dbid: int, txgroup_dbid: TxGroupDbid) -> None:
