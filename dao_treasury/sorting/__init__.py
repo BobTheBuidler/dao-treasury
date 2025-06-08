@@ -64,19 +64,29 @@ __all__ = [
 
 # C constants
 TxGroup: Final = db.TxGroup
-must_sort_inbound_txgroup_dbid: Final = db.must_sort_inbound_txgroup_dbid
-must_sort_outbound_txgroup_dbid: Final = db.must_sort_outbound_txgroup_dbid
+MUST_SORT_INBOUND_TXGROUP_DBID: Final = db.must_sort_inbound_txgroup_dbid
+MUST_SORT_OUTBOUND_TXGROUP_DBID: Final = db.must_sort_outbound_txgroup_dbid
+
+INTERNAL_TRANSFER_TXGROUP_DBID: Final = TxGroup.get_dbid(
+    name="Internal Transfer",
+    parent=TxGroup.get_dbid("Ignore"),
+)
+# TODO: write a docstring
+
+OUT_OF_RANGE_TXGROUP_DBID = TxGroup.get_dbid(
+    name="Out of Range", parent=TxGroup.get_dbid("Ignore")
+)
+# TODO: write a docstring
 
 
 def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
+    # TODO: write docstring
     txgroup_dbid: Optional[TxGroupDbid] = None
+    block = entry.block_number
     if TreasuryWallet.check_membership(
-        entry.from_address, entry.block_number
-    ) and TreasuryWallet.check_membership(entry.to_address, entry.block_number):
-        txgroup_dbid = TxGroup.get_dbid(
-            name="Internal Transfer",
-            parent=TxGroup.get_dbid("Ignore"),
-        )
+        entry.from_address, block
+    ) and TreasuryWallet.check_membership(entry.to_address, block):
+        txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
 
     if txgroup_dbid is None:
         if isinstance(txhash := entry.hash, TransactionHash):
@@ -90,28 +100,27 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
         txgroup_dbid = ToAddressMatcher.match(entry.to_address)
 
     if txgroup_dbid is None:
-        if TreasuryWallet.check_membership(entry.from_address, entry.block_number):
-            txgroup_dbid = must_sort_outbound_txgroup_dbid
+        if TreasuryWallet.check_membership(entry.from_address, block):
+            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
 
-        elif TreasuryWallet.check_membership(entry.to_address, entry.block_number):
-            txgroup_dbid = must_sort_inbound_txgroup_dbid
+        elif TreasuryWallet.check_membership(entry.to_address, block):
+            txgroup_dbid = MUST_SORT_INBOUND_TXGROUP_DBID
 
         else:
-            raise NotImplementedError("this isnt supposed to happen")
+            txgroup_dbid = OUT_OF_RANGE_TXGROUP_DBID
     return txgroup_dbid  # type: ignore [no-any-return]
 
 
 def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
+    # TODO: write docstring
     txgroup_dbid: Optional[TxGroupDbid] = None
+    block = entry.block
     if (
         entry.from_address
-        and TreasuryWallet.check_membership(entry.from_address.address, entry.block)
-        and TreasuryWallet.check_membership(entry.to_address.address, entry.block)
+        and TreasuryWallet.check_membership(entry.from_address.address, block)
+        and TreasuryWallet.check_membership(entry.to_address.address, block)
     ):
-        txgroup_dbid = TxGroup.get_dbid(
-            name="Internal Transfer",
-            parent=TxGroup.get_dbid("Ignore"),
-        )
+        txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
 
     if txgroup_dbid is None:
         txgroup_dbid = HashMatcher.match(entry.hash)
@@ -124,17 +133,17 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
 
     if txgroup_dbid is None:
         if TreasuryWallet.check_membership(entry.from_address.address, entry.block):
-            txgroup_dbid = must_sort_outbound_txgroup_dbid
+            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
 
         elif TreasuryWallet.check_membership(entry.to_address.address, entry.block):
-            txgroup_dbid = must_sort_inbound_txgroup_dbid
+            txgroup_dbid = MUST_SORT_INBOUND_TXGROUP_DBID
 
         else:
             raise NotImplementedError("this isnt supposed to happen")
 
     if txgroup_dbid not in (
-        must_sort_inbound_txgroup_dbid,
-        must_sort_outbound_txgroup_dbid,
+        MUST_SORT_INBOUND_TXGROUP_DBID,
+        MUST_SORT_OUTBOUND_TXGROUP_DBID,
     ):
         logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
 
@@ -142,11 +151,12 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
 
 
 async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
+    # TODO: write docstring
     txgroup_dbid = sort_basic_entity(entry)
 
     if txgroup_dbid in (
-        must_sort_inbound_txgroup_dbid,
-        must_sort_outbound_txgroup_dbid,
+        MUST_SORT_INBOUND_TXGROUP_DBID,
+        MUST_SORT_OUTBOUND_TXGROUP_DBID,
     ):
         for rules in SORT_RULES.values():
             for rule in rules:
@@ -157,8 +167,8 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
                 except ContractNotVerified:
                     continue
     if txgroup_dbid not in (
-        must_sort_inbound_txgroup_dbid,
-        must_sort_outbound_txgroup_dbid,
+        MUST_SORT_INBOUND_TXGROUP_DBID,
+        MUST_SORT_OUTBOUND_TXGROUP_DBID,
     ):
         logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
         entry.txgroup = txgroup_dbid
