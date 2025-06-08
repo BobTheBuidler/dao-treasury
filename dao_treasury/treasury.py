@@ -99,8 +99,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             addresses=(
                 wallet.address
                 for wallet in self.wallets
-                if wallet.networks is None
-                or CHAINID in wallet.networks
+                if wallet.networks is None or CHAINID in wallet.networks
             ),
             start_block=start_block,
             label=label,
