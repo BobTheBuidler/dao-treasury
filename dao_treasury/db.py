@@ -762,7 +762,7 @@ class TreasuryTx(DbEntity):
                     raise
 
     async def _set_txgroup(self, txgroup_dbid: TxGroupDbid) -> None:
-        await TreasuryTx.__set_txgroup(self.treasury_tx_id, txgroup_dbid)
+        await _SORT_THREAD.run(TreasuryTx.__set_txgroup, self.treasury_tx_id, txgroup_dbid)
 
     @staticmethod
     def __insert(entry: LedgerEntry, ts: int) -> typing.Optional[int]:
@@ -887,7 +887,6 @@ class TreasuryTx(DbEntity):
             return dbid  # type: ignore [no-any-return]
 
     @staticmethod
-    @a_sync(executor=_SORT_THREAD)
     def __set_txgroup(treasury_tx_dbid: int, txgroup_dbid: TxGroupDbid) -> None:
         with db_session:
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
