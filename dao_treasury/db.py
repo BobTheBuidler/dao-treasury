@@ -23,7 +23,7 @@ from os import path
 from pathlib import Path
 from typing import TYPE_CHECKING, Dict, Final, Union, final
 
-from a_sync import AsyncThreadPoolExecutor
+from a_sync import AsyncThreadPoolExecutor, a_sync
 from brownie import chain
 from brownie.convert.datatypes import HexString
 from brownie.exceptions import EventLookupError
@@ -65,6 +65,7 @@ SQLITE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
+_SORT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_SEMAPHORE = Semaphore(50)
 
 
@@ -760,6 +761,11 @@ class TreasuryTx(DbEntity):
                     e.args = *e.args, entry
                     raise
 
+    async def _set_txgroup(self, txgroup_dbid: TxGroupDbid) -> None:
+        await _SORT_THREAD.run(
+            TreasuryTx.__set_txgroup, self.treasury_tx_id, txgroup_dbid
+        )
+
     @staticmethod
     def __insert(entry: LedgerEntry, ts: int) -> typing.Optional[int]:
         """Synchronously insert a ledger entry record into the database.
@@ -881,6 +887,11 @@ class TreasuryTx(DbEntity):
                 )
                 return None
             return dbid  # type: ignore [no-any-return]
+
+    @staticmethod
+    def __set_txgroup(treasury_tx_dbid: int, txgroup_dbid: TxGroupDbid) -> None:
+        with db_session:
+            TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
 
 
 db.bind(
