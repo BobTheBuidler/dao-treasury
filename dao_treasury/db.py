@@ -890,7 +890,7 @@ class TreasuryTx(DbEntity):
     @a_sync(executor=_SORT_THREAD)
     def __set_txgroup(treasury_tx_dbid: int, txgroup_dbid: TxGroupDbid) -> None:
         with db_session:
-            TreasuryTx[treasury_tx_dbid] = txgroup_dbid
+            TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
 
 
 db.bind(
