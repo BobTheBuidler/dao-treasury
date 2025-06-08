@@ -82,7 +82,9 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlockNumber</span><span class="p">,</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">HexAddress</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">closest_block_after_timestamp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">y.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CHAINID</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CHAINID</span>
+
 
 <span class="n">WALLETS</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="s2">&quot;TreasuryWallet&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 
