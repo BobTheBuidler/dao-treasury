@@ -11,7 +11,6 @@ DAO Treasury is a comprehensive financial reporting and treasury management solu
 - Python 3.10 or higher.
 - At least 16GB of RAM.
 - All dependencies installed as specified in the project’s pyproject.toml file.
-- Proper configuration settings (e.g., API keys, network endpoints) must be set up as required by the portfolio and balance loaders. More info below.
 
 ## Prerequisites
 
