@@ -199,11 +199,12 @@ async def export(args) -> None:
 
     # eth-portfolio needs this present
     # TODO: we need to update eth-portfolio to honor wallet join and exit times
-    args.wallet = [
-        wallet.address
-        for wallet in wallets
-        if wallet.networks is None or CHAINID in wallet.networks
-    ]
+    if not getattr(args, "wallet", None):
+        args.wallet = [
+            wallet.address
+            for wallet in wallets
+            if wallet.networks is None or CHAINID in wallet.networks
+        ]
 
     # TODO: make this user configurable? would require some dynamic grafana dashboard files
     args.label = "Treasury"
