@@ -2,6 +2,14 @@
 #define MYPYC_NATIVE_8d7637a0eb7617042369_H
 #include <Python.h>
 #include <CPy.h>
+#ifndef MYPYC_DECLARED_tuple_T2OO
+#define MYPYC_DECLARED_tuple_T2OO
+typedef struct tuple_T2OO {
+    PyObject *f0;
+    PyObject *f1;
+} tuple_T2OO;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T3CIO
 #define MYPYC_DECLARED_tuple_T3CIO
 typedef struct tuple_T3CIO {
@@ -18,14 +26,6 @@ typedef struct tuple_T3OOO {
     PyObject *f1;
     PyObject *f2;
 } tuple_T3OOO;
-#endif
-
-#ifndef MYPYC_DECLARED_tuple_T2OO
-#define MYPYC_DECLARED_tuple_T2OO
-typedef struct tuple_T2OO {
-    PyObject *f0;
-    PyObject *f1;
-} tuple_T2OO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T4CIOO
@@ -338,7 +338,7 @@ struct export_table_8d7637a0eb7617042369 {
     PyTypeObject **CPyType_sorting___sort_advanced_gen;
     PyObject *(*CPyDef_sorting___sort_advanced_gen)(void);
     PyObject *(*CPyDef_sorting___sort_basic)(PyObject *cpy_r_entry);
-    PyObject *(*CPyDef_sorting___sort_basic_entity)(PyObject *cpy_r_entry);
+    PyObject *(*CPyDef_sorting___sort_basic_entity)(PyObject *cpy_r_tx);
     PyObject *(*CPyDef_sorting___sort_advanced_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
     PyObject *(*CPyDef_sorting___sort_advanced_gen_____next__)(PyObject *cpy_r___mypyc_self__);
     PyObject *(*CPyDef_sorting___sort_advanced_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);

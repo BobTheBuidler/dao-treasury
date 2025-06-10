@@ -73,7 +73,7 @@ extern PyTypeObject *CPyType_sorting___sort_advanced_gen;
 extern PyObject *CPyDef_sorting___sort_advanced_gen(void);
 extern PyObject *CPyDef_sorting___sort_basic(PyObject *cpy_r_entry);
 extern PyObject *CPyPy_sorting___sort_basic(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef_sorting___sort_basic_entity(PyObject *cpy_r_entry);
+extern PyObject *CPyDef_sorting___sort_basic_entity(PyObject *cpy_r_tx);
 extern PyObject *CPyPy_sorting___sort_basic_entity(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef_sorting___sort_advanced_gen_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
 extern PyObject *CPyPy_sorting___sort_advanced_gen_____mypyc_generator_helper__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
