@@ -149,7 +149,7 @@ def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
 
         elif from_address in constants.DISPERSE_APP:
             txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
-        
+
         elif from_address in constants.DISPERSE_APP:
             txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
 
