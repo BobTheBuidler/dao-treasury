@@ -9,7 +9,7 @@ from eth_portfolio.structs import LedgerEntry
 from evmspec.data import TransactionHash
 from y.exceptions import ContractNotVerified
 
-from dao_treasury import db
+from dao_treasury import constants, db
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.sorting._matchers import (
     _Matcher,
@@ -115,32 +115,43 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
     return txgroup_dbid  # type: ignore [no-any-return]
 
 
-def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
+def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
     # TODO: write docstring
+    from_address = tx.from_address.address
+    to_address = tx.to_address
+    block = tx.block
+
     txgroup_dbid: Optional[TxGroupDbid] = None
-    block = entry.block
-    if (
-        entry.from_address
-        and TreasuryWallet.check_membership(entry.from_address.address, block)
-        and TreasuryWallet.check_membership(entry.to_address.address, block)
+    if TreasuryWallet.check_membership(from_address, block):
+        if TreasuryWallet.check_membership(tx.to_address.address, block):
+            txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
+    elif not (
+        TreasuryWallet.check_membership(tx.to_address.address, tx.block)
+        or from_address in constants.DISPERSE_APP
     ):
-        txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
+        txgroup_dbid = OUT_OF_RANGE_TXGROUP_DBID
 
     if txgroup_dbid is None:
-        txgroup_dbid = HashMatcher.match(entry.hash)
+        txgroup_dbid = HashMatcher.match(tx.hash)
 
     if txgroup_dbid is None:
-        txgroup_dbid = FromAddressMatcher.match(entry.from_address.address)
+        txgroup_dbid = FromAddressMatcher.match(from_address)
 
-    if txgroup_dbid is None and entry.to_address:
-        txgroup_dbid = ToAddressMatcher.match(entry.to_address.address)
+    if txgroup_dbid is None and to_address:
+        txgroup_dbid = ToAddressMatcher.match(to_address.address)
 
     if txgroup_dbid is None:
-        if TreasuryWallet.check_membership(entry.from_address.address, entry.block):
+        if TreasuryWallet.check_membership(from_address, block):
             txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
 
-        elif TreasuryWallet.check_membership(entry.to_address.address, entry.block):
+        elif TreasuryWallet.check_membership(to_address.address, block):
             txgroup_dbid = MUST_SORT_INBOUND_TXGROUP_DBID
+
+        elif from_address in constants.DISPERSE_APP:
+            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
+
+        elif from_address in constants.DISPERSE_APP:
+            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
 
         else:
             raise NotImplementedError("this isnt supposed to happen")
@@ -149,7 +160,7 @@ def sort_basic_entity(entry: db.TreasuryTx) -> TxGroupDbid:
         MUST_SORT_INBOUND_TXGROUP_DBID,
         MUST_SORT_OUTBOUND_TXGROUP_DBID,
     ):
-        logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
+        logger.info("Sorted %s to %s", tx, TxGroup.get_fullname(txgroup_dbid))
 
     return txgroup_dbid  # type: ignore [no-any-return]
 
