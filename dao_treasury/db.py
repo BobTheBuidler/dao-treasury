@@ -826,6 +826,8 @@ class TreasuryTx(DbEntity):
                     gas_price=gas_price,
                     txgroup=txgroup_dbid,
                 )
+                # we must commit here or else dbid below will be `None`.
+                commit()
                 dbid = entity.treasury_tx_id
         except InterfaceError as e:
             raise ValueError(
