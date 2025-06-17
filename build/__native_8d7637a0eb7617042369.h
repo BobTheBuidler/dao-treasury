@@ -394,6 +394,8 @@ struct export_table_8d7637a0eb7617042369 {
     char (*CPyDef_factory___SortRuleFactory___match)(PyObject *cpy_r_self, char cpy_r_func, PyObject *cpy_r_match_values);
     char (*CPyDef_factory___SortRuleFactory_____check_locked)(PyObject *cpy_r_self);
     char (*CPyDef_factory_____top_level__)(void);
+    PyObject **CPyStatic_rule___logger;
+    PyObject **CPyStatic_rule____log_debug;
     PyObject **CPyStatic_rule____match_all;
     tuple_T8OOOOOOOO *CPyStatic_rule____MATCHING_ATTRS;
     PyTypeObject **CPyType_rule____SortRule;

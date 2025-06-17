@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[360];
+extern PyObject *CPyStatics[362];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -163,6 +163,8 @@ extern PyObject *CPyPy_factory___SortRuleFactory___match(PyObject *self, PyObjec
 extern char CPyDef_factory___SortRuleFactory_____check_locked(PyObject *cpy_r_self);
 extern PyObject *CPyPy_factory___SortRuleFactory_____check_locked(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_factory_____top_level__(void);
+extern PyObject *CPyStatic_rule___logger;
+extern PyObject *CPyStatic_rule____log_debug;
 extern PyObject *CPyStatic_rule____match_all;
 extern tuple_T8OOOOOOOO CPyStatic_rule____MATCHING_ATTRS;
 extern PyTypeObject *CPyType_rule____SortRule;
