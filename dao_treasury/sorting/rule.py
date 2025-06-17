@@ -55,7 +55,7 @@ if TYPE_CHECKING:
 
 
 logger: Final = getLogger(__name__)
-_log_debug: Final = _log_debug
+_log_debug: Final = logger.debug
 
 SORT_RULES: DefaultDict[Type[SortRule], List[SortRule]] = defaultdict(list)
 """Mapping from sort rule classes to lists of instantiated rules, in creation order per class.
