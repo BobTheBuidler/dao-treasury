@@ -217,7 +217,7 @@ class _SortRule:
                 getattr(tx, matcher) == getattr(self, matcher) for matcher in matchers
             )
 
-        logger.debug('checking %s for %s', tx, self.func)
+        logger.debug("checking %s for %s", tx, self.func)
         match = self.func(tx)  # type: ignore [misc]
         return match if isinstance(match, bool) else await match
 
