@@ -31,6 +31,7 @@ See Also:
 
 from collections import defaultdict
 from dataclasses import dataclass
+from logging import getLogger
 from typing import (
     TYPE_CHECKING,
     DefaultDict,
@@ -52,6 +53,9 @@ from dao_treasury.types import SortFunction, SortRule, TxGroupDbid, TxGroupName
 if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
 
+
+logger: Final = getLogger(__name__)
+_log_debug: Final = _log_debug
 
 SORT_RULES: DefaultDict[Type[SortRule], List[SortRule]] = defaultdict(list)
 """Mapping from sort rule classes to lists of instantiated rules, in creation order per class.
@@ -214,6 +218,7 @@ class _SortRule:
                 getattr(tx, matcher) == getattr(self, matcher) for matcher in matchers
             )
 
+        _log_debug("checking %s for %s", tx, self.func)
         match = self.func(tx)  # type: ignore [misc]
         return match if isinstance(match, bool) else await match
 
