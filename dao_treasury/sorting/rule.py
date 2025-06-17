@@ -54,7 +54,8 @@ if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
 
 
-logger = getLogger(__name__)
+logger: Final = getLogger(__name__)
+_log_debug: Final = _log_debug
 
 SORT_RULES: DefaultDict[Type[SortRule], List[SortRule]] = defaultdict(list)
 """Mapping from sort rule classes to lists of instantiated rules, in creation order per class.
@@ -217,7 +218,7 @@ class _SortRule:
                 getattr(tx, matcher) == getattr(self, matcher) for matcher in matchers
             )
 
-        logger.debug("checking %s for %s", tx, self.func)
+        _log_debug("checking %s for %s", tx, self.func)
         match = self.func(tx)  # type: ignore [misc]
         return match if isinstance(match, bool) else await match
 
