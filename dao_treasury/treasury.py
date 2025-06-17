@@ -150,5 +150,5 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             if futs:
                 await tqdm_asyncio.gather(*futs, desc="Insert Txs to Postgres")
                 logger.info(f"{len(futs)} transfers exported")
-        
+
         logger.info("db connection closed")
