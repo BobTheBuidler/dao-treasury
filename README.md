@@ -51,7 +51,7 @@ After running the command, the export script will run continuously until you clo
 To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
 
 ## Docker
-When you run DAO Treasury, [ETH Portfolio](https://github.com/BobTheBuidler/eth-portfolio) will build and start 4 [required Docker containers](https://bobthebuidler.github.io/eth-portfolio/exporter.html#docker-containers) on your system. Additionally, DAO Treasury will build and start 2 more required containers:
+When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-portfolio) will build and start 4 [required Docker containers](https://bobthebuidler.github.io/eth-portfolio/exporter.html#docker-containers) on your system. Additionally, DAO Treasury will build and start 2 more required containers:
 - `grafana`: This container […]
 - `renderer`: This container […]
 
