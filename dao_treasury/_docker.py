@@ -1,7 +1,7 @@
 """This module contains utilities for managing dao-treasury's docker containers"""
 
 import logging
-import os
+from importlib import resources
 import subprocess
 from functools import wraps
 from typing import Any, Callable, Coroutine, Final, Iterable, Tuple, TypeVar, List
@@ -11,9 +11,7 @@ from typing_extensions import ParamSpec
 
 logger: Final = logging.getLogger(__name__)
 
-compose_file: Final = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "docker-compose.yaml"
-)
+compose_file: Final = str(resources.files("dao_treasury").joinpath("docker-compose.yaml"))
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
@@ -136,7 +134,7 @@ def ensure_containers(
     return compose_wrap
 
 
-def _exec_command(command: Iterable[str], *, compose_options: Tuple[str] = ()) -> None:
+def _exec_command(command: List[str], *, compose_options: Tuple[str, ...] = ()) -> None:
     """Execute a Docker Compose command with system checks and fallback.
 
     This internal function ensures that Docker and Docker Compose
