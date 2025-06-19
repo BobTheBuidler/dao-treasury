@@ -40,7 +40,7 @@ def up(*services: str) -> None:
         :func:`_exec_command`
     """
     # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
-    eth_portfolio_scripts.docker.up()
+    eth_portfolio_scripts.docker.up("victoria-metrics")
     build(*services)
     print(f"starting the {', '.join(services) if services else 'grafana'} container(s)")
     _exec_command(["up", "-d", *services])
