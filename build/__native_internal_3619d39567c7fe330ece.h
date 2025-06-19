@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[412];
+extern PyObject *CPyStatics[411];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -57,7 +57,7 @@ extern CPyModule *CPyModule_mypy_extensions;
 extern CPyModule *CPyModule_dao_treasury____docker_internal;
 extern CPyModule *CPyModule_dao_treasury____docker;
 extern PyObject *CPyStatic__docker___globals;
-extern CPyModule *CPyModule_os;
+extern CPyModule *CPyModule_importlib;
 extern CPyModule *CPyModule_subprocess;
 extern CPyModule *CPyModule_functools;
 extern CPyModule *CPyModule_eth_portfolio_scripts___docker;
@@ -340,7 +340,7 @@ extern PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj_____call__(
 extern PyObject *CPyPy__docker___compose_wrap_ensure_containers_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__docker___ensure_containers(PyObject *cpy_r_fn);
 extern PyObject *CPyPy__docker___ensure_containers(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern char CPyDef__docker____exec_command(PyObject *cpy_r_command, tuple_T1O cpy_r_compose_options);
+extern char CPyDef__docker____exec_command(PyObject *cpy_r_command, PyObject *cpy_r_compose_options);
 extern PyObject *CPyPy__docker____exec_command(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__docker_____top_level__(void);
 extern PyObject *CPyStatic__nicknames___set_nickname;

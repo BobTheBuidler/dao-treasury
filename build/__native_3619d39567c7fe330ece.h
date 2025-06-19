@@ -52,13 +52,6 @@ typedef struct tuple_T8OOOOOOOO {
 } tuple_T8OOOOOOOO;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T1O
-#define MYPYC_DECLARED_tuple_T1O
-typedef struct tuple_T1O {
-    PyObject *f0;
-} tuple_T1O;
-#endif
-
 #ifndef MYPYC_DECLARED_tuple_T0
 #define MYPYC_DECLARED_tuple_T0
 typedef struct tuple_T0 {
@@ -553,7 +546,7 @@ struct export_table_3619d39567c7fe330ece {
     PyObject *(*CPyDef__docker___compose_wrap_ensure_containers_gen_____await__)(PyObject *cpy_r___mypyc_self__);
     PyObject *(*CPyDef__docker___compose_wrap_ensure_containers_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
     PyObject *(*CPyDef__docker___ensure_containers)(PyObject *cpy_r_fn);
-    char (*CPyDef__docker____exec_command)(PyObject *cpy_r_command, tuple_T1O cpy_r_compose_options);
+    char (*CPyDef__docker____exec_command)(PyObject *cpy_r_command, PyObject *cpy_r_compose_options);
     char (*CPyDef__docker_____top_level__)(void);
     PyObject **CPyStatic__nicknames___set_nickname;
     char (*CPyDef__nicknames___setup_address_nicknames_in_db)(void);
