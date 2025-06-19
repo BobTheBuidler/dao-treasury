@@ -44,13 +44,15 @@ poetry run dao-treasury run --wallet 0x123 --network mainnet --interval 12h
 - `--interval`: The time interval between each data snapshot (default: 12h)
 - `--daemon`: Run the export process in the background (default: False) (NOTE: currently unsupported)
 - `--grafana-port`: Set the port for the Grafana dashboard where you can view data (default: 3004)
-- `--renderer-port`: Set the port for the report rendering service (default: 8080)
+- `--renderer-port`: Set the port for the report rendering service (default: 8091)
 - `--victoria-port`: Set the port for the Victoria metrics reporting endpoint (default: 8430)
+- `--start-renderer`: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.
 
 After running the command, the export script will run continuously until you close your terminal.
 To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
 
 ## Docker
+
 When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-portfolio) will build and start 4 [required Docker containers](https://bobthebuidler.github.io/eth-portfolio/exporter.html#docker-containers) on your system. Additionally, DAO Treasury will build and start 2 more required containers:
 
 - **grafana**
@@ -65,19 +67,20 @@ When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-
 - **renderer**
   - Runs the official Grafana image renderer service.
   - Enables Grafana to export dashboards as images for reporting or sharing.
-  - Operates on port `8092` by default (configurable via `--renderer-port`).
+  - Operates on port `8091` by default (configurable via `--renderer-port`).
   - Tightly integrated with the Grafana container for seamless image rendering.
+  - **Note:** The renderer container is only started if you pass the `--start-renderer` CLI flag.
 
 **How it works:**
 1. DAO Treasury collects and exports treasury data.
 2. Grafana displays this data in pre-built dashboards for analysis and reporting.
-3. The renderer container allows dashboards to be exported as images directly from Grafana.
+3. The renderer container allows dashboards to be exported as images directly from Grafana (if enabled).
 
 **Additional Information:**
 - All containers are orchestrated via Docker Compose and started automatically as needed.
 - Grafana provisioning ensures dashboards and data sources are set up out-of-the-box.
 - All dashboard data and settings are persisted for durability.
-- Dashboard images can be generated for reporting via the renderer.
+- Dashboard images can be generated for reporting via the renderer (if enabled).
 
 ## Screenshots
 
