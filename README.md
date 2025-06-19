@@ -52,8 +52,32 @@ To view the dashboards, just open your browser and navigate to [http://localhost
 
 ## Docker
 When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-portfolio) will build and start 4 [required Docker containers](https://bobthebuidler.github.io/eth-portfolio/exporter.html#docker-containers) on your system. Additionally, DAO Treasury will build and start 2 more required containers:
-- `grafana`: This container […]
-- `renderer`: This container […]
+
+- **grafana**
+  - Provides a web-based dashboard for visualizing your treasury data.
+  - Pre-configured with dashboards and plugins for real-time monitoring.
+  - Uses persistent storage to retain dashboard settings and data.
+  - Accessible locally (default port `3004`, configurable via `--grafana-port`).
+  - Supports anonymous access for convenience.
+  - Integrates with the renderer container for dashboard image export.
+  - Loads dashboards and data sources automatically via provisioning files.
+
+- **renderer**
+  - Runs the official Grafana image renderer service.
+  - Enables Grafana to export dashboards as images for reporting or sharing.
+  - Operates on port `8092` by default (configurable via `--renderer-port`).
+  - Tightly integrated with the Grafana container for seamless image rendering.
+
+**How it works:**
+1. DAO Treasury collects and exports treasury data.
+2. Grafana displays this data in pre-built dashboards for analysis and reporting.
+3. The renderer container allows dashboards to be exported as images directly from Grafana.
+
+**Additional Information:**
+- All containers are orchestrated via Docker Compose and started automatically as needed.
+- Grafana provisioning ensures dashboards and data sources are set up out-of-the-box.
+- All dashboard data and settings are persisted for durability.
+- Dashboard images can be generated for reporting via the renderer.
 
 ## Screenshots
 
