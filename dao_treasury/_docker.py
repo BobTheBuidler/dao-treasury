@@ -123,7 +123,7 @@ def ensure_containers(
         # signal.signal(signal.SIGINT, down)
 
         # start Grafana containers
-        up('grafana')
+        up("grafana")
 
         try:
             # attempt to run `fn`
