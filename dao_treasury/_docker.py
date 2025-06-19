@@ -127,11 +127,11 @@ def ensure_containers(
 
         try:
             # attempt to run `fn`
-            await fn(*args, **kwargs)
+            return await fn(*args, **kwargs)
         finally:
             # stop and remove containers
             # down()
-            return
+            pass
 
     return compose_wrap
 
