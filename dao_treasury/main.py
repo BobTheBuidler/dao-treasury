@@ -28,6 +28,7 @@ from pathlib import Path
 
 import brownie
 import yaml
+from a_sync import create_task
 from dao_treasury._wallet import load_wallets_from_yaml
 from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
@@ -171,6 +172,8 @@ async def export(args) -> None:
         :func:`dao_treasury._docker.down`,
         :class:`dao_treasury.Treasury.populate_db`
     """
+    import eth_portfolio_scripts.docker
+
     from dao_treasury import _docker, constants, db, Treasury
 
     wallets = getattr(args, "wallet", None)
@@ -220,11 +223,20 @@ async def export(args) -> None:
     # TODO: make this user configurable? would require some dynamic grafana dashboard files
     args.label = "Treasury"
 
-    try:
-        await asyncio.gather(
+    export_task = create_task(
+        asyncio.gather(
             export_balances(args),
             treasury.populate_db(BlockNumber(0), brownie.chain.height),
         )
+    )
+
+    await asyncio.sleep(1)
+    
+    # we don't need these containers since dao-treasury uses its own.
+    eth_portfolio_scripts.docker.stop("grafana", "renderer")
+
+    try:
+        await export_task
     finally:
         _docker.down()
 
