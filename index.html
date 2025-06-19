@@ -126,8 +126,9 @@ dao-treasury<span class="w"> </span>run<span class="w"> </span>--wallet<span cla
 <li><p><code class="docutils literal notranslate"><span class="pre">--interval</span></code>: The time interval between each data snapshot (default: 12h)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--daemon</span></code>: Run the export process in the background (default: False) (NOTE: currently unsupported)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--grafana-port</span></code>: Set the port for the Grafana dashboard where you can view data (default: 3004)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--renderer-port</span></code>: Set the port for the report rendering service (default: 8080)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--renderer-port</span></code>: Set the port for the report rendering service (default: 8091)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--victoria-port</span></code>: Set the port for the Victoria metrics reporting endpoint (default: 8430)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--start-renderer</span></code>: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.</p></li>
 </ul>
 <p>After running the command, the export script will run continuously until you close your terminal.
 To view the dashboards, just open your browser and navigate to <a class="reference external" href="http://localhost:3004">http://localhost:3004</a>!</p>
@@ -151,8 +152,9 @@ To view the dashboards, just open your browser and navigate to <a class="referen
 <ul>
 <li><p>Runs the official Grafana image renderer service.</p></li>
 <li><p>Enables Grafana to export dashboards as images for reporting or sharing.</p></li>
-<li><p>Operates on port <code class="docutils literal notranslate"><span class="pre">8092</span></code> by default (configurable via <code class="docutils literal notranslate"><span class="pre">--renderer-port</span></code>).</p></li>
+<li><p>Operates on port <code class="docutils literal notranslate"><span class="pre">8091</span></code> by default (configurable via <code class="docutils literal notranslate"><span class="pre">--renderer-port</span></code>).</p></li>
 <li><p>Tightly integrated with the Grafana container for seamless image rendering.</p></li>
+<li><p><strong>Note:</strong> The renderer container is only started if you pass the <code class="docutils literal notranslate"><span class="pre">--start-renderer</span></code> CLI flag.</p></li>
 </ul>
 </li>
 </ul>
@@ -160,14 +162,14 @@ To view the dashboards, just open your browser and navigate to <a class="referen
 <ol class="arabic simple">
 <li><p>DAO Treasury collects and exports treasury data.</p></li>
 <li><p>Grafana displays this data in pre-built dashboards for analysis and reporting.</p></li>
-<li><p>The renderer container allows dashboards to be exported as images directly from Grafana.</p></li>
+<li><p>The renderer container allows dashboards to be exported as images directly from Grafana (if enabled).</p></li>
 </ol>
 <p><strong>Additional Information:</strong></p>
 <ul class="simple">
 <li><p>All containers are orchestrated via Docker Compose and started automatically as needed.</p></li>
 <li><p>Grafana provisioning ensures dashboards and data sources are set up out-of-the-box.</p></li>
 <li><p>All dashboard data and settings are persisted for durability.</p></li>
-<li><p>Dashboard images can be generated for reporting via the renderer.</p></li>
+<li><p>Dashboard images can be generated for reporting via the renderer (if enabled).</p></li>
 </ul>
 </section>
 <section id="screenshots">
