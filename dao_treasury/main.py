@@ -231,7 +231,7 @@ async def export(args) -> None:
     )
 
     await asyncio.sleep(1)
-    
+
     # we don't need these containers since dao-treasury uses its own.
     eth_portfolio_scripts.docker.stop("grafana", "renderer")
 
