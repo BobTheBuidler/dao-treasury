@@ -46,7 +46,7 @@ poetry run dao-treasury run --wallet 0x123 --network mainnet --interval 12h
 - `--grafana-port`: Set the port for the Grafana dashboard where you can view data (default: 3004)
 - `--renderer-port`: Set the port for the report rendering service (default: 8091)
 - `--victoria-port`: Set the port for the Victoria metrics reporting endpoint (default: 8430)
-- `--with-renderer`: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.
+- `--start-renderer`: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.
 
 After running the command, the export script will run continuously until you close your terminal.
 To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
@@ -69,7 +69,7 @@ When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-
   - Enables Grafana to export dashboards as images for reporting or sharing.
   - Operates on port `8091` by default (configurable via `--renderer-port`).
   - Tightly integrated with the Grafana container for seamless image rendering.
-  - **Note:** The renderer container is only started if you pass the `--with-renderer` CLI flag.
+  - **Note:** The renderer container is only started if you pass the `--start-renderer` CLI flag.
 
 **How it works:**
 1. DAO Treasury collects and exports treasury data.

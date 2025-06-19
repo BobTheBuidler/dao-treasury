@@ -108,7 +108,7 @@ parser.add_argument(
     default=3000,
 )
 parser.add_argument(
-    "--with-renderer",
+    "--start-renderer",
     action="store_true",
     help="If set, the Grafana renderer container will be started for dashboard image export. By default, only the grafana container is started.",
 )
@@ -159,7 +159,7 @@ async def export(args) -> None:
             daemon: Ignored flag.
             grafana_port: Port for Grafana (sets DAO_TREASURY_GRAFANA_PORT).
             renderer_port: Port for renderer (sets DAO_TREASURY_RENDERER_PORT).
-            with_renderer: If True, start renderer; otherwise, only start grafana.
+            start_renderer: If True, start renderer; otherwise, only start grafana.
 
     Example:
         In code::
@@ -203,7 +203,7 @@ async def export(args) -> None:
     treasury = Treasury(wallets, args.sort_rules, asynchronous=True)
 
     # Start only the requested containers
-    if args.with_renderer is True:
+    if args.start_renderer is True:
         _docker.up()
     else:
         _docker.up("grafana")
