@@ -11,7 +11,9 @@ from typing_extensions import ParamSpec
 
 logger: Final = logging.getLogger(__name__)
 
-compose_file: Final = str(resources.files("dao_treasury").joinpath("docker-compose.yaml"))
+compose_file: Final = str(
+    resources.files("dao_treasury").joinpath("docker-compose.yaml")
+)
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
