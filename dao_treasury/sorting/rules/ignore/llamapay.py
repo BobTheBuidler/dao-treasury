@@ -5,7 +5,7 @@ from dao_treasury.streams import llamapay
 
 @ignore("LlamaPay")
 def is_llamapay_stream_replenishment(tx: TreasuryTx) -> bool:
-    if tx.to_address.address in llamapay.factories:
+    if tx.to_address.address in llamapay.factories:  # type: ignore [operator]
         # We amortize these streams daily in the `llamapay` module, you'll sort each stream appropriately.
         return True
 
