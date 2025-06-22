@@ -74,8 +74,8 @@
              
   <h1>Source code for dao_treasury.streams.llamapay</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">decimal</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Awaitable</span><span class="p">,</span>
@@ -96,7 +96,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlockNumber</span><span class="p">,</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">HexAddress</span><span class="p">,</span> <span class="n">HexStr</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm_asyncio</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">y</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contract</span><span class="p">,</span> <span class="n">Network</span><span class="p">,</span> <span class="n">get_block_at_timestamp</span><span class="p">,</span> <span class="n">get_price</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">y</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnixTimestamp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode_logs</span><span class="p">,</span> <span class="n">get_logs_asap</span>
 
@@ -113,17 +113,30 @@
 
 <span class="n">logger</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="n">_UTC</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
+<span class="n">_UTC</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
 
 <span class="n">_ONE_DAY</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span>
 
 <span class="n">_STREAMS_THREAD</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">create_task</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span>
+<span class="n">sleep</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span>
+
+<span class="n">datetime</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span>
+<span class="n">timedelta</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span>
+<span class="n">fromtimestamp</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span>
+<span class="n">now</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span>
+
+<span class="n">Decimal</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span>
 
 <span class="n">ObjectNotFound</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">pony</span><span class="o">.</span><span class="n">orm</span><span class="o">.</span><span class="n">ObjectNotFound</span>
 <span class="n">commit</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">pony</span><span class="o">.</span><span class="n">orm</span><span class="o">.</span><span class="n">commit</span>
 <span class="n">db_session</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">pony</span><span class="o">.</span><span class="n">orm</span><span class="o">.</span><span class="n">db_session</span>
+
+<span class="n">Contract</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">Contract</span>
+<span class="n">Network</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">Network</span>
+<span class="n">get_block_at_timestamp</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">get_block_at_timestamp</span>
+<span class="n">get_price</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">get_price</span>
 
 
 <span class="n">networks</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="p">[</span><span class="n">Network</span><span class="o">.</span><span class="n">Mainnet</span><span class="p">]</span>
@@ -142,13 +155,13 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_generate_dates</span><span class="p">(</span>
-    <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">stop_at_today</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">datetime</span><span class="p">]:</span>
+    <span class="n">start</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">stop_at_today</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">]:</span>
     <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
     <span class="k">while</span> <span class="n">current</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
         <span class="k">yield</span> <span class="n">current</span>
         <span class="n">current</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">stop_at_today</span> <span class="ow">and</span> <span class="n">current</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">_UTC</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">stop_at_today</span> <span class="ow">and</span> <span class="n">current</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">now</span><span class="p">(</span><span class="n">_UTC</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">():</span>
             <span class="k">break</span>
 
 
@@ -161,7 +174,7 @@
     <span class="k">if</span> <span class="n">streamToStart</span> <span class="o">:=</span> <span class="n">_streamToStart_cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stream_id</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">streamToStart</span>
     <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
-        <span class="n">contract</span><span class="p">:</span> <span class="n">Contract</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span><span class="o">.</span><span class="n">contract</span><span class="o">.</span><span class="n">contract</span>  <span class="c1"># type: ignore [misc]</span>
+        <span class="n">contract</span><span class="p">:</span> <span class="n">y</span><span class="o">.</span><span class="n">Contract</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span><span class="o">.</span><span class="n">contract</span><span class="o">.</span><span class="n">contract</span>  <span class="c1"># type: ignore [misc]</span>
     <span class="n">streamToStart</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">streamToStart</span><span class="o">.</span><span class="n">coroutine</span>
     <span class="n">_streamToStart_cache</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">streamToStart</span>
     <span class="k">return</span> <span class="n">streamToStart</span>
@@ -243,7 +256,7 @@
             <span class="k">for</span> <span class="n">stream_contract</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream_contracts</span>
         <span class="p">)</span>
 
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_load_contract_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream_contract</span><span class="p">:</span> <span class="n">Contract</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_load_contract_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream_contract</span><span class="p">:</span> <span class="n">y</span><span class="o">.</span><span class="n">Contract</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">events</span> <span class="o">=</span> <span class="n">decode_logs</span><span class="p">(</span>
             <span class="k">await</span> <span class="n">get_logs_asap</span><span class="p">(</span><span class="n">stream_contract</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="p">)</span>
@@ -405,7 +418,7 @@
 <div class="viewcode-block" id="LlamaPayProcessor.process_stream_for_date">
 <a class="viewcode-back" href="../../../source/dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream_for_date">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_stream_for_date</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">stream_id</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">,</span> <span class="n">date_obj</span><span class="p">:</span> <span class="n">datetime</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">stream_id</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">,</span> <span class="n">date_obj</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">StreamedFunds</span><span class="p">]:</span>
         <span class="n">entity</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_STREAMS_THREAD</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
             <span class="n">StreamedFunds</span><span class="o">.</span><span class="n">get_entity</span><span class="p">,</span> <span class="n">stream_id</span><span class="p">,</span> <span class="n">date_obj</span>
@@ -417,10 +430,10 @@
             <span class="n">Stream</span><span class="o">.</span><span class="n">_get_token_and_start_date</span><span class="p">,</span> <span class="n">stream_id</span>
         <span class="p">)</span>
         <span class="n">check_at</span> <span class="o">=</span> <span class="n">date_obj</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">check_at</span> <span class="o">&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">):</span>
-            <span class="k">await</span> <span class="n">sleep</span><span class="p">((</span><span class="n">check_at</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">check_at</span> <span class="o">&gt;</span> <span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">):</span>
+            <span class="k">await</span> <span class="n">sleep</span><span class="p">((</span><span class="n">check_at</span> <span class="o">-</span> <span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
         <span class="n">block</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_block_at_timestamp</span><span class="p">(</span><span class="n">check_at</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">price_fut</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">get_price</span><span class="p">(</span><span class="n">stream_token</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        <span class="n">price_fut</span> <span class="o">=</span> <span class="n">create_task</span><span class="p">(</span><span class="n">get_price</span><span class="p">(</span><span class="n">stream_token</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
         <span class="n">start_timestamp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_get_start_timestamp</span><span class="p">(</span><span class="n">stream_id</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start_timestamp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="k">await</span> <span class="n">_STREAMS_THREAD</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Stream</span><span class="o">.</span><span class="n">check_closed</span><span class="p">,</span> <span class="n">stream_id</span><span class="p">):</span>
@@ -431,9 +444,7 @@
                 <span class="n">block</span> <span class="o">-=</span> <span class="mi">1</span>
                 <span class="n">start_timestamp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_get_start_timestamp</span><span class="p">(</span><span class="n">stream_id</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
 
-            <span class="n">block_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span>
-                <span class="k">await</span> <span class="n">_get_block_timestamp</span><span class="p">(</span><span class="n">block</span><span class="p">),</span> <span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span>
-            <span class="p">)</span>
+            <span class="n">block_datetime</span> <span class="o">=</span> <span class="n">fromtimestamp</span><span class="p">(</span><span class="k">await</span> <span class="n">_get_block_timestamp</span><span class="p">(</span><span class="n">block</span><span class="p">),</span> <span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">)</span>
             <span class="k">assert</span> <span class="n">block_datetime</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="o">==</span> <span class="n">date_obj</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
             <span class="n">seconds_active</span> <span class="o">=</span> <span class="p">(</span><span class="n">check_at</span> <span class="o">-</span> <span class="n">block_datetime</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span>
             <span class="n">is_last_day</span> <span class="o">=</span> <span class="kc">True</span>
