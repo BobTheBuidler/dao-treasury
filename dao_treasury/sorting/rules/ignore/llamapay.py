@@ -8,7 +8,7 @@ def is_llamapay_stream_replenishment(tx: TreasuryTx) -> bool:
     if tx.to_address.address in llamapay.factories:
         # We amortize these streams daily in the `llamapay` module, you'll sort each stream appropriately.
         return True
-    
+
     # NOTE: not sure if we want this yet
     # Puling unused funds back from vesting escrow / llamapay
     # elif tx.from_address == "Contract: LlamaPay" and "StreamCancelled" in tx.events:

@@ -110,11 +110,9 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         """An eth_portfolio.Portfolio object used for exporting tx and balance history"""
 
         self._llamapay: Final = (
-            llamapay.LlamaPayProcessor()
-            if CHAINID in llamapay.networks
-            else None
+            llamapay.LlamaPayProcessor() if CHAINID in llamapay.networks else None
         )
-        
+
         self.asynchronous: Final = asynchronous
         """A boolean flag indicating whether the API for this `Treasury` object is sync or async by default"""
 
@@ -127,7 +125,9 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
     def txs(self) -> a_sync.ASyncIterator[LedgerEntry]:
         return self.portfolio.ledger.all_entries
 
-    async def _insert_txs(self, start_block: BlockNumber, end_block: BlockNumber) -> None:
+    async def _insert_txs(
+        self, start_block: BlockNumber, end_block: BlockNumber
+    ) -> None:
         """Populate the database with treasury transactions in a block range.
 
         Streams ledger entries from `start_block` up to (but not including)

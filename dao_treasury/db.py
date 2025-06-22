@@ -233,7 +233,7 @@ class Address(DbEntity):
     @property
     def contract(self) -> Contract:
         return Contract(self.address)
-    
+
     @staticmethod
     @lru_cache(maxsize=None)
     def get_dbid(address: HexAddress) -> int:
@@ -389,7 +389,7 @@ class Token(DbEntity):
     address = Required(Address, column="address_id")
     """Foreign key to the address record for this token contract."""
 
-    streams = Set('Stream', reverse="token")
+    streams = Set("Stream", reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
     def __eq__(self, other: Union["Token", Address, ChecksumAddress]) -> bool:  # type: ignore [override]
@@ -543,7 +543,7 @@ class TxGroup(DbEntity):
 
     child_txgroups = Set("TxGroup", reverse="parent_txgroup")
     """Set of nested child groups."""
-    
+
     streams = Set("Stream", reverse="txgroup")
 
     # TODO: implement this
@@ -909,20 +909,21 @@ class TreasuryTx(DbEntity):
 
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
 
+
 class Stream(DbEntity):
-    _table_ = 'streams'
+    _table_ = "streams"
     stream_id = PrimaryKey(str)
 
-    contract = Required('Address', reverse="streams")
+    contract = Required("Address", reverse="streams")
     start_block = Required(int)
     end_block = Optional(int)
-    token = Required('Token', reverse='streams', index=True)
-    from_address = Required('Address', reverse='streams_from')
-    to_address = Required('Address', reverse='streams_to')
+    token = Required("Token", reverse="streams", index=True)
+    from_address = Required("Address", reverse="streams_from")
+    to_address = Required("Address", reverse="streams_to")
     reason = Optional(str)
     amount_per_second = Required(Decimal, 38, 1)
     status = Required(str, default="Active")
-    txgroup = Optional('TxGroup', reverse="streams")
+    txgroup = Optional("TxGroup", reverse="streams")
 
     streamed_funds = Set("StreamedFunds")
 
@@ -947,12 +948,12 @@ class Stream(DbEntity):
     @property
     def amount_per_day(self) -> int:
         return self.amount_per_hour * 24
-    
+
     @staticmethod
     def check_closed(stream_id: HexStr) -> bool:
         with db_session:
             return any(sf.is_last_day for sf in Stream[stream_id].streamed_funds)
-    
+
     @staticmethod
     def _get_start_and_end(stream_dbid: HexStr) -> Tuple[datetime, datetime]:
         with db_session:
@@ -1001,12 +1002,13 @@ class Stream(DbEntity):
 
     def print(self) -> None:
         symbol = self.token.symbol
-        print(f'{symbol} per second: {self.amount_per_second / self.scale}')
-        print(f'{symbol} per day: {self.amount_per_day / self.scale}')
+        print(f"{symbol} per second: {self.amount_per_second / self.scale}")
+        print(f"{symbol} per day: {self.amount_per_day / self.scale}")
 
 
 class StreamedFunds(DbEntity):
-    """ Each object represents one calendar day of tokens streamed for a particular stream. """
+    """Each object represents one calendar day of tokens streamed for a particular stream."""
+
     _table_ = "streamed_funds"
 
     date = Required(date)
@@ -1026,17 +1028,26 @@ class StreamedFunds(DbEntity):
 
     @classmethod
     @db_session
-    def create_entity(cls, stream_id: str, date: datetime, price: Decimal, seconds_active: int, is_last_day: bool) -> "StreamedFunds":
+    def create_entity(
+        cls,
+        stream_id: str,
+        date: datetime,
+        price: Decimal,
+        seconds_active: int,
+        is_last_day: bool,
+    ) -> "StreamedFunds":
         stream = Stream[stream_id]
-        amount_streamed_today = round(stream.amount_per_second * seconds_active / stream.scale, 18)
+        amount_streamed_today = round(
+            stream.amount_per_second * seconds_active / stream.scale, 18
+        )
         entity = StreamedFunds(
-            date = date,
-            stream = stream,
-            amount = amount_streamed_today,
-            price = round(price, 18),
-            value_usd = round(amount_streamed_today * price, 18),
-            seconds_active = seconds_active,
-            is_last_day = is_last_day,
+            date=date,
+            stream=stream,
+            amount=amount_streamed_today,
+            price=round(price, 18),
+            value_usd=round(amount_streamed_today * price, 18),
+            seconds_active=seconds_active,
+            is_last_day=is_last_day,
         )
         return entity
 
