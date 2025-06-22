@@ -350,9 +350,7 @@ class LlamaPayProcessor:
                 block -= 1
                 start_timestamp = await _get_start_timestamp(stream_id, block)
 
-            block_datetime = fromtimestamp(
-                await _get_block_timestamp(block), tz=_UTC
-            )
+            block_datetime = fromtimestamp(await _get_block_timestamp(block), tz=_UTC)
             assert block_datetime.date() == date_obj.date()
             seconds_active = (check_at - block_datetime).seconds
             is_last_day = True
