@@ -9,11 +9,11 @@ else:
     ext_modules = mypycify(
         [
             "dao_treasury/sorting",
+            "dao_treasury/streams",
             "dao_treasury/_docker.py",
             "dao_treasury/_nicknames.py",
             "dao_treasury/_wallet.py",
             "dao_treasury/constants.py",
-            "dao_treasury/streams",
             "dao_treasury/types.py",
             "--pretty",
             "--strict",
