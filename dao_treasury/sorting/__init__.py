@@ -35,6 +35,7 @@ from dao_treasury.sorting.rule import (
     OtherIncomeSortRule,
     RevenueSortRule,
 )
+from dao_treasury.sorting.rules import *
 from dao_treasury.types import TxGroupDbid
 
 

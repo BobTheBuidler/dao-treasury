@@ -13,6 +13,7 @@ else:
             "dao_treasury/_nicknames.py",
             "dao_treasury/_wallet.py",
             "dao_treasury/constants.py",
+            "dao_treasury/streams",
             "dao_treasury/types.py",
             "--pretty",
             "--strict",

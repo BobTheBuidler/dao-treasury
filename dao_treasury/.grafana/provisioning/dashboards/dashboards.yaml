@@ -24,3 +24,11 @@ providers:
   editable: false
   options:
     path: /etc/grafana/provisioning/dashboards/transactions
+
+- name: 'LlamaPay Streams'
+  folder: 'streams'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/streams

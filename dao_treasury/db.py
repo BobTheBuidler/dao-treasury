@@ -8,6 +8,7 @@ This module defines Pony ORM entities for:
 - ERC-20 tokens and native coin placeholder (:class:`Token`)
 - Hierarchical transaction grouping (:class:`TxGroup`)
 - Treasury transaction records (:class:`TreasuryTx`)
+- Streams and StreamedFunds for streaming payments
 
 It also provides helper functions for inserting ledger entries,
 resolving integrity conflicts, caching transaction receipts,
@@ -21,15 +22,16 @@ from functools import lru_cache
 from logging import getLogger
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Dict, Final, Union, final
+from typing import TYPE_CHECKING, Dict, Final, Tuple, Union, final
+from datetime import date, datetime, time, timezone
 
-from a_sync import AsyncThreadPoolExecutor, a_sync
+from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
 from brownie.convert.datatypes import HexString
 from brownie.exceptions import EventLookupError
 from brownie.network.event import EventDict, _EventItem
 from brownie.network.transaction import TransactionReceipt
-from eth_typing import ChecksumAddress, HexAddress
+from eth_typing import ChecksumAddress, HexAddress, HexStr
 from eth_portfolio.structs import (
     InternalTransfer,
     LedgerEntry,
@@ -68,6 +70,7 @@ _INSERT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_SEMAPHORE = Semaphore(50)
 
+_UTC = timezone.utc
 
 db = Database()
 
@@ -210,9 +213,10 @@ class Address(DbEntity):
 
     treasury_tx_to = Set("TreasuryTx", reverse="to_address")
     """Inverse relation for transactions sent to this address."""
-    # streams_from = Set("Stream", reverse="from_address")
-    # streams_to = Set("Stream", reverse="to_address")
-    # streams = Set("Stream", reverse="contract")
+
+    streams_from = Set("Stream", reverse="from_address")
+    streams_to = Set("Stream", reverse="to_address")
+    streams = Set("Stream", reverse="contract")
     # vesting_escrows = Set("VestingEscrow", reverse="address")
     # vests_received = Set("VestingEscrow", reverse="recipient")
     # vests_funded = Set("VestingEscrow", reverse="funder")
@@ -226,6 +230,10 @@ class Address(DbEntity):
 
     __hash__ = DbEntity.__hash__
 
+    @property
+    def contract(self) -> Contract:
+        return Contract(self.address)
+    
     @staticmethod
     @lru_cache(maxsize=None)
     def get_dbid(address: HexAddress) -> int:
@@ -380,7 +388,8 @@ class Token(DbEntity):
 
     address = Required(Address, column="address_id")
     """Foreign key to the address record for this token contract."""
-    # streams = Set('Stream', reverse="token")
+
+    streams = Set('Stream', reverse="token")
     # vesting_escrows = Set("VestingEscrow", reverse="token")
 
     def __eq__(self, other: Union["Token", Address, ChecksumAddress]) -> bool:  # type: ignore [override]
@@ -534,8 +543,10 @@ class TxGroup(DbEntity):
 
     child_txgroups = Set("TxGroup", reverse="parent_txgroup")
     """Set of nested child groups."""
-    # TODO: implement these
-    # streams = Set("Stream", reverse="txgroup")
+    
+    streams = Set("Stream", reverse="txgroup")
+
+    # TODO: implement this
     # vesting_escrows = Set("VestingEscrow", reverse="txgroup")
 
     @property
@@ -896,6 +907,140 @@ class TreasuryTx(DbEntity):
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
 
 
+_stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
+
+class Stream(DbEntity):
+    _table_ = 'streams'
+    stream_id = PrimaryKey(str)
+
+    contract = Required('Address', reverse="streams")
+    start_block = Required(int)
+    end_block = Optional(int)
+    token = Required('Token', reverse='streams', index=True)
+    from_address = Required('Address', reverse='streams_from')
+    to_address = Required('Address', reverse='streams_to')
+    reason = Optional(str)
+    amount_per_second = Required(Decimal, 38, 1)
+    status = Required(str, default="Active")
+    txgroup = Optional('TxGroup', reverse="streams")
+
+    streamed_funds = Set("StreamedFunds")
+
+    scale = int(1e20)
+
+    @property
+    def is_alive(self) -> bool:
+        if self.end_block is None:
+            assert self.status in ["Active", "Paused"]
+            return self.status == "Active"
+        assert self.status == "Stopped"
+        return False
+
+    @property
+    def amount_per_minute(self) -> int:
+        return self.amount_per_second * 60
+
+    @property
+    def amount_per_hour(self) -> int:
+        return self.amount_per_minute * 60
+
+    @property
+    def amount_per_day(self) -> int:
+        return self.amount_per_hour * 24
+    
+    @staticmethod
+    def check_closed(stream_id: HexStr) -> bool:
+        with db_session:
+            return any(sf.is_last_day for sf in Stream[stream_id].streamed_funds)
+    
+    @staticmethod
+    def _get_start_and_end(stream_dbid: HexStr) -> Tuple[datetime, datetime]:
+        with db_session:
+            stream = Stream[stream_dbid]
+            start_date, end = stream.start_date, datetime.now(_UTC)
+            # convert start to datetime
+            start = datetime.combine(start_date, time(tzinfo=_UTC), tzinfo=_UTC)
+            if stream.end_block:
+                end = datetime.fromtimestamp(chain[stream.end_block].timestamp, tz=_UTC)
+            return start, end
+
+    def stop_stream(self, block: int) -> None:
+        self.end_block = block
+        self.status = "Stopped"
+
+    def pause(self) -> None:
+        self.status = "Paused"
+
+    @staticmethod
+    def _get_token_and_start_date(stream_id: HexStr) -> Tuple[ChecksumAddress, date]:
+        try:
+            return _stream_metadata_cache[stream_id]
+        except KeyError:
+            with db_session:
+                stream = Stream[stream_id]
+                token = stream.token.address.address
+                start_date = stream.start_date
+            _stream_metadata_cache[stream_id] = token, start_date
+            return token, start_date
+
+    @property
+    def stream_contract(self) -> Contract:
+        return Contract(self.contract.address)
+
+    @property
+    def start_date(self) -> date:
+        return datetime.fromtimestamp(chain[self.start_block].timestamp).date()
+
+    async def amount_withdrawable(self, block: int) -> int:
+        return await self.stream_contract.withdrawable.coroutine(
+            self.from_address.address,
+            self.to_address.address,
+            int(self.amount_per_second),
+            block_identifier=block,
+        )
+
+    def print(self) -> None:
+        symbol = self.token.symbol
+        print(f'{symbol} per second: {self.amount_per_second / self.scale}')
+        print(f'{symbol} per day: {self.amount_per_day / self.scale}')
+
+
+class StreamedFunds(DbEntity):
+    """ Each object represents one calendar day of tokens streamed for a particular stream. """
+    _table_ = "streamed_funds"
+
+    date = Required(date)
+    stream = Required(Stream, reverse="streamed_funds")
+    PrimaryKey(stream, date)
+
+    amount = Required(Decimal, 38, 18)
+    price = Required(Decimal, 38, 18)
+    value_usd = Required(Decimal, 38, 18)
+    seconds_active = Required(int)
+    is_last_day = Required(bool)
+
+    @db_session
+    def get_entity(stream_id: str, date: datetime) -> "StreamedFunds":
+        stream = Stream[stream_id]
+        return StreamedFunds.get(date=date, stream=stream)
+
+    @classmethod
+    @db_session
+    def create_entity(cls, stream_id: str, date: datetime, price: Decimal, seconds_active: int, is_last_day: bool) -> "StreamedFunds":
+        stream = Stream[stream_id]
+        amount_streamed_today = round(stream.amount_per_second * seconds_active / stream.scale, 18)
+        entity = StreamedFunds(
+            date = date,
+            stream = stream,
+            amount = amount_streamed_today,
+            price = round(price, 18),
+            value_usd = round(amount_streamed_today * price, 18),
+            seconds_active = seconds_active,
+            is_last_day = is_last_day,
+        )
+        return entity
+
+
 db.bind(
     provider="sqlite",  # TODO: let user choose postgres with server connection params
     filename=str(SQLITE_DIR / "dao-treasury.sqlite"),
@@ -921,12 +1066,12 @@ def create_stream_ledger_view() -> None:
     Examples:
         >>> create_stream_ledger_view()
     """
+    db.execute("""DROP VIEW IF EXISTS stream_ledger;""")
     db.execute(
         """
-        DROP VIEW IF EXISTS stream_ledger;
         create view stream_ledger as
         SELECT  'Mainnet' as chain_name,
-                cast(DATE AS timestamp) as timestamp,
+                cast(strftime('%s', date || ' 00:00:00') as INTEGER) as timestamp,
                 NULL as block, 
                 NULL as hash, 
                 NULL as log_index, 
@@ -1007,7 +1152,7 @@ def create_general_ledger_view() -> None:
         create VIEW general_ledger as
         select *
         from (
-            SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS "from", d.nickname as from_nickname, e.address AS "to", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id
+            SELECT treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS "from", d.nickname as from_nickname, e.address AS "to", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id
             FROM treasury_txs a
                 LEFT JOIN chains b ON a.chain = b.chain_dbid
                 LEFT JOIN tokens c ON a.token_id = c.token_id
@@ -1015,9 +1160,9 @@ def create_general_ledger_view() -> None:
                 LEFT JOIN addresses e ON a."to" = e.address_id
                 LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id
                 LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id
-            --UNION
-            --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, "from", from_nickname, "to", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id
-            --FROM stream_ledger
+            UNION
+            SELECT -1, chain_name, timestamp, block, hash, log_index, token, "from", from_nickname, "to", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id
+            FROM stream_ledger
             --UNION
             --SELECT -1, *
             --FROM vesting_ledger
@@ -1093,7 +1238,7 @@ def create_monthly_pnl_view() -> None:
 
 
 with db_session:
-    # create_stream_ledger_view()
+    create_stream_ledger_view()
     # create_vesting_ledger_view()
     create_general_ledger_view()
     create_unsorted_txs_view()
