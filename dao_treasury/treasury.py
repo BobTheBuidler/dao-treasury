@@ -147,6 +147,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             futs = []
             async for entry in self.portfolio.ledger[start_block:end_block]:
                 if not entry.value:
+                    # TODO: add an arg in eth-port to skip 0 value
                     logger.debug("zero value transfer, skipping %s", entry)
                     continue
                 futs.append(create_task(TreasuryTx.insert(entry)))
