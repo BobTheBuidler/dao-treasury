@@ -323,6 +323,8 @@ class LlamaPayProcessor:
             Stream._get_token_and_start_date, stream_id
         )
         check_at = date_obj + timedelta(days=1) - timedelta(seconds=1)
+        if check_at > datetime.now(tz=_UTC):
+            await sleep((check_at - datetime.now(tz=_UTC)).total_seconds())
         block = await get_block_at_timestamp(check_at, sync=False)
         price_fut = asyncio.create_task(get_price(stream_token, block, sync=False))
         start_timestamp = await _get_start_timestamp(stream_id, block)
