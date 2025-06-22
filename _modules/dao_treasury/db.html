@@ -83,6 +83,7 @@
 <span class="sd">- ERC-20 tokens and native coin placeholder (:class:`Token`)</span>
 <span class="sd">- Hierarchical transaction grouping (:class:`TxGroup`)</span>
 <span class="sd">- Treasury transaction records (:class:`TreasuryTx`)</span>
+<span class="sd">- Streams and StreamedFunds for streaming payments</span>
 
 <span class="sd">It also provides helper functions for inserting ledger entries,</span>
 <span class="sd">resolving integrity conflicts, caching transaction receipts,</span>
@@ -96,15 +97,16 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timezone</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">,</span> <span class="n">a_sync</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie.convert.datatypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">HexString</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventLookupError</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie.network.event</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventDict</span><span class="p">,</span> <span class="n">_EventItem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie.network.transaction</span><span class="w"> </span><span class="kn">import</span> <span class="n">TransactionReceipt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">HexAddress</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">HexAddress</span><span class="p">,</span> <span class="n">HexStr</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio.structs</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">InternalTransfer</span><span class="p">,</span>
     <span class="n">LedgerEntry</span><span class="p">,</span>
@@ -143,6 +145,7 @@
 <span class="n">_SORT_THREAD</span> <span class="o">=</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">_SORT_SEMAPHORE</span> <span class="o">=</span> <span class="n">Semaphore</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
+<span class="n">_UTC</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>
 
@@ -299,9 +302,10 @@
 
     <span class="n">treasury_tx_to</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;to_address&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for transactions sent to this address.&quot;&quot;&quot;</span>
-    <span class="c1"># streams_from = Set(&quot;Stream&quot;, reverse=&quot;from_address&quot;)</span>
-    <span class="c1"># streams_to = Set(&quot;Stream&quot;, reverse=&quot;to_address&quot;)</span>
-    <span class="c1"># streams = Set(&quot;Stream&quot;, reverse=&quot;contract&quot;)</span>
+
+    <span class="n">streams_from</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;from_address&quot;</span><span class="p">)</span>
+    <span class="n">streams_to</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;to_address&quot;</span><span class="p">)</span>
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;contract&quot;</span><span class="p">)</span>
     <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;address&quot;)</span>
     <span class="c1"># vests_received = Set(&quot;VestingEscrow&quot;, reverse=&quot;recipient&quot;)</span>
     <span class="c1"># vests_funded = Set(&quot;VestingEscrow&quot;, reverse=&quot;funder&quot;)</span>
@@ -314,6 +318,10 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="fm">__hash__</span> <span class="o">=</span> <span class="n">DbEntity</span><span class="o">.</span><span class="fm">__hash__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contract</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contract</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Contract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Address.get_dbid">
 <a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address.get_dbid">[docs]</a>
@@ -484,7 +492,8 @@
 
     <span class="n">address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;address_id&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the address record for this token contract.&quot;&quot;&quot;</span>
-    <span class="c1"># streams = Set(&#39;Stream&#39;, reverse=&quot;token&quot;)</span>
+
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
     <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;token&quot;)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">Address</span><span class="p">,</span> <span class="n">ChecksumAddress</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># type: ignore [override]</span>
@@ -650,8 +659,10 @@
 
     <span class="n">child_txgroups</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;parent_txgroup&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set of nested child groups.&quot;&quot;&quot;</span>
-    <span class="c1"># TODO: implement these</span>
-    <span class="c1"># streams = Set(&quot;Stream&quot;, reverse=&quot;txgroup&quot;)</span>
+
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;txgroup&quot;</span><span class="p">)</span>
+
+    <span class="c1"># TODO: implement this</span>
     <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;txgroup&quot;)</span>
 
     <span class="nd">@property</span>
@@ -1034,6 +1045,178 @@
 
 
 
+<span class="n">_stream_metadata_cache</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">HexStr</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">date</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="Stream">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Stream</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;streams&quot;</span>
+    <span class="n">stream_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
+    <span class="n">start_block</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">end_block</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">from_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_from&quot;</span><span class="p">)</span>
+    <span class="n">to_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_to&quot;</span><span class="p">)</span>
+    <span class="n">reason</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">amount_per_second</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Active&quot;</span><span class="p">)</span>
+    <span class="n">txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
+
+    <span class="n">streamed_funds</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;StreamedFunds&quot;</span><span class="p">)</span>
+
+    <span class="n">scale</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e20</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_block</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Active&quot;</span><span class="p">,</span> <span class="s2">&quot;Paused&quot;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;Active&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;Stopped&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">amount_per_minute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_per_second</span> <span class="o">*</span> <span class="mi">60</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">amount_per_hour</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_per_minute</span> <span class="o">*</span> <span class="mi">60</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">amount_per_day</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_per_hour</span> <span class="o">*</span> <span class="mi">24</span>
+
+<div class="viewcode-block" id="Stream.check_closed">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.check_closed">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_closed</span><span class="p">(</span><span class="n">stream_id</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">is_last_day</span> <span class="k">for</span> <span class="n">sf</span> <span class="ow">in</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span><span class="o">.</span><span class="n">streamed_funds</span><span class="p">)</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_start_and_end</span><span class="p">(</span><span class="n">stream_dbid</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_dbid</span><span class="p">]</span>
+            <span class="n">start_date</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">_UTC</span><span class="p">)</span>
+            <span class="c1"># convert start to datetime</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">time</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">_UTC</span><span class="p">),</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">_UTC</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">end_block</span><span class="p">:</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="n">stream</span><span class="o">.</span><span class="n">end_block</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span>
+
+<div class="viewcode-block" id="Stream.stop_stream">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.stop_stream">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_block</span> <span class="o">=</span> <span class="n">block</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Stopped&quot;</span></div>
+
+
+<div class="viewcode-block" id="Stream.pause">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.pause">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Paused&quot;</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_token_and_start_date</span><span class="p">(</span><span class="n">stream_id</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">date</span><span class="p">]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_stream_metadata_cache</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+                <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+                <span class="n">token</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address</span>
+                <span class="n">start_date</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">start_date</span>
+            <span class="n">_stream_metadata_cache</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span><span class="p">,</span> <span class="n">start_date</span>
+            <span class="k">return</span> <span class="n">token</span><span class="p">,</span> <span class="n">start_date</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stream_contract</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contract</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Contract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contract</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_date</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">date</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_block</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Stream.amount_withdrawable">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.amount_withdrawable">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">amount_withdrawable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream_contract</span><span class="o">.</span><span class="n">withdrawable</span><span class="o">.</span><span class="n">coroutine</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">to_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amount_per_second</span><span class="p">),</span>
+            <span class="n">block_identifier</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Stream.print">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.print">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">symbol</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> per second: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount_per_second</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> per day: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount_per_day</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="StreamedFunds">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StreamedFunds</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object represents one calendar day of tokens streamed for a particular stream.&quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;streamed_funds&quot;</span>
+
+    <span class="n">date</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Stream</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streamed_funds&quot;</span><span class="p">)</span>
+    <span class="n">PrimaryKey</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">value_usd</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">seconds_active</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">is_last_day</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+
+<div class="viewcode-block" id="StreamedFunds.get_entity">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds.get_entity">[docs]</a>
+    <span class="nd">@db_session</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_entity</span><span class="p">(</span><span class="n">stream_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;StreamedFunds&quot;</span><span class="p">:</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">StreamedFunds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StreamedFunds.create_entity">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds.create_entity">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="nd">@db_session</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_entity</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">stream_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">price</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">,</span>
+        <span class="n">seconds_active</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">is_last_day</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;StreamedFunds&quot;</span><span class="p">:</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+        <span class="n">amount_streamed_today</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+            <span class="n">stream</span><span class="o">.</span><span class="n">amount_per_second</span> <span class="o">*</span> <span class="n">seconds_active</span> <span class="o">/</span> <span class="n">stream</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="mi">18</span>
+        <span class="p">)</span>
+        <span class="n">entity</span> <span class="o">=</span> <span class="n">StreamedFunds</span><span class="p">(</span>
+            <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+            <span class="n">amount</span><span class="o">=</span><span class="n">amount_streamed_today</span><span class="p">,</span>
+            <span class="n">price</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+            <span class="n">value_usd</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">amount_streamed_today</span> <span class="o">*</span> <span class="n">price</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+            <span class="n">seconds_active</span><span class="o">=</span><span class="n">seconds_active</span><span class="p">,</span>
+            <span class="n">is_last_day</span><span class="o">=</span><span class="n">is_last_day</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">entity</span></div>
+</div>
+
+
+
 <span class="n">db</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
     <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>  <span class="c1"># TODO: let user choose postgres with server connection params</span>
     <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">SQLITE_DIR</span> <span class="o">/</span> <span class="s2">&quot;dao-treasury.sqlite&quot;</span><span class="p">),</span>
@@ -1061,12 +1244,12 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; create_stream_ledger_view()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DROP VIEW IF EXISTS stream_ledger;&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DROP VIEW IF EXISTS stream_ledger;</span>
 <span class="sd">        create view stream_ledger as</span>
 <span class="sd">        SELECT  &#39;Mainnet&#39; as chain_name,</span>
-<span class="sd">                cast(DATE AS timestamp) as timestamp,</span>
+<span class="sd">                cast(strftime(&#39;%s&#39;, date || &#39; 00:00:00&#39;) as INTEGER) as timestamp,</span>
 <span class="sd">                NULL as block, </span>
 <span class="sd">                NULL as hash, </span>
 <span class="sd">                NULL as log_index, </span>
@@ -1153,7 +1336,7 @@
 <span class="sd">        create VIEW general_ledger as</span>
 <span class="sd">        select *</span>
 <span class="sd">        from (</span>
-<span class="sd">            SELECT treasury_tx_id, b.chain_name, datetime(a.timestamp, &#39;unixepoch&#39;) AS timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS &quot;from&quot;, d.nickname as from_nickname, e.address AS &quot;to&quot;, e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id</span>
+<span class="sd">            SELECT treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS &quot;from&quot;, d.nickname as from_nickname, e.address AS &quot;to&quot;, e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id</span>
 <span class="sd">            FROM treasury_txs a</span>
 <span class="sd">                LEFT JOIN chains b ON a.chain = b.chain_dbid</span>
 <span class="sd">                LEFT JOIN tokens c ON a.token_id = c.token_id</span>
@@ -1161,9 +1344,9 @@
 <span class="sd">                LEFT JOIN addresses e ON a.&quot;to&quot; = e.address_id</span>
 <span class="sd">                LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id</span>
 <span class="sd">                LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id</span>
-<span class="sd">            --UNION</span>
-<span class="sd">            --SELECT -1, chain_name, TIMESTAMP, cast(block AS integer) block, hash, CAST(log_index AS integer) as log_index, token, &quot;from&quot;, from_nickname, &quot;to&quot;, to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id</span>
-<span class="sd">            --FROM stream_ledger</span>
+<span class="sd">            UNION</span>
+<span class="sd">            SELECT -1, chain_name, timestamp, block, hash, log_index, token, &quot;from&quot;, from_nickname, &quot;to&quot;, to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id</span>
+<span class="sd">            FROM stream_ledger</span>
 <span class="sd">            --UNION</span>
 <span class="sd">            --SELECT -1, *</span>
 <span class="sd">            --FROM vesting_ledger</span>
@@ -1246,7 +1429,7 @@
 
 
 <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
-    <span class="c1"># create_stream_ledger_view()</span>
+    <span class="n">create_stream_ledger_view</span><span class="p">()</span>
     <span class="c1"># create_vesting_ledger_view()</span>
     <span class="n">create_general_ledger_view</span><span class="p">()</span>
     <span class="n">create_unsorted_txs_view</span><span class="p">()</span>

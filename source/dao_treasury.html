@@ -50,6 +50,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">dao_treasury package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dao_treasury.sorting.html">dao_treasury.sorting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html">dao_treasury.streams package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
@@ -62,6 +63,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.BadToken"><code class="docutils literal notranslate"><span class="pre">BadToken</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.Address"><code class="docutils literal notranslate"><span class="pre">Address</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.Chain"><code class="docutils literal notranslate"><span class="pre">Chain</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.Stream"><code class="docutils literal notranslate"><span class="pre">Stream</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.StreamedFunds"><code class="docutils literal notranslate"><span class="pre">StreamedFunds</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.Token"><code class="docutils literal notranslate"><span class="pre">Token</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.TreasuryTx"><code class="docutils literal notranslate"><span class="pre">TreasuryTx</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.TxGroup"><code class="docutils literal notranslate"><span class="pre">TxGroup</span></code></a></li>
@@ -147,6 +150,14 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dao_treasury.sorting.html">dao_treasury.sorting package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dao_treasury.sorting.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.sorting.rules.html">dao_treasury.sorting.rules package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.sorting.rules.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.sorting.rules.html#module-dao_treasury.sorting.rules">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="dao_treasury.sorting.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dao_treasury.sorting.html#module-dao_treasury.sorting.factory">dao_treasury.sorting.factory module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dao_treasury.sorting.html#dao_treasury.sorting.factory.SortRuleFactory"><code class="docutils literal notranslate"><span class="pre">SortRuleFactory</span></code></a><ul>
@@ -397,6 +408,25 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="dao_treasury.streams.html">dao_treasury.streams package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dao_treasury.streams.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dao_treasury.streams.html#module-dao_treasury.streams.llamapay">dao_treasury.streams.llamapay module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.__init__"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.process_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream_for_date"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.process_stream_for_date()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.process_streams"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.process_streams()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.streams_for_recipient"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.streams_for_recipient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.streams_for_token"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.streams_for_token()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.handled_events"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.handled_events</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dao_treasury.streams.html#dao_treasury.streams.llamapay.LlamaPayProcessor.skipped_events"><code class="docutils literal notranslate"><span class="pre">LlamaPayProcessor.skipped_events</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dao_treasury.streams.html#module-dao_treasury.streams">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -423,7 +453,8 @@
 - On-chain addresses (<a class="reference internal" href="#dao_treasury.db.Address" title="dao_treasury.db.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>)
 - ERC-20 tokens and native coin placeholder (<a class="reference internal" href="#dao_treasury.db.Token" title="dao_treasury.db.Token"><code class="xref py py-class docutils literal notranslate"><span class="pre">Token</span></code></a>)
 - Hierarchical transaction grouping (<a class="reference internal" href="#dao_treasury.db.TxGroup" title="dao_treasury.db.TxGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">TxGroup</span></code></a>)
-- Treasury transaction records (<a class="reference internal" href="#dao_treasury.db.TreasuryTx" title="dao_treasury.db.TreasuryTx"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreasuryTx</span></code></a>)</p>
+- Treasury transaction records (<a class="reference internal" href="#dao_treasury.db.TreasuryTx" title="dao_treasury.db.TreasuryTx"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreasuryTx</span></code></a>)
+- Streams and StreamedFunds for streaming payments</p>
 <p>It also provides helper functions for inserting ledger entries,
 resolving integrity conflicts, caching transaction receipts,
 and creating SQL views for reporting.</p>
@@ -640,6 +671,11 @@ the verified contract name or fallback label.</p>
 <dd><p>Reference to the chain on which this address resides.</p>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Address.contract">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contract</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Contract</span></em><a class="headerlink" href="#dao_treasury.db.Address.contract" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dao_treasury.db.Address.is_contract">
 <span class="sig-name descname"><span class="pre">is_contract</span></span><a class="headerlink" href="#dao_treasury.db.Address.is_contract" title="Link to this definition"></a></dt>
@@ -651,6 +687,21 @@ the verified contract name or fallback label.</p>
 <span class="sig-name descname"><span class="pre">nickname</span></span><a class="headerlink" href="#dao_treasury.db.Address.nickname" title="Link to this definition"></a></dt>
 <dd><p>Optional human-readable label (e.g., contract name or token name).</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Address.streams">
+<span class="sig-name descname"><span class="pre">streams</span></span><a class="headerlink" href="#dao_treasury.db.Address.streams" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Address.streams_from">
+<span class="sig-name descname"><span class="pre">streams_from</span></span><a class="headerlink" href="#dao_treasury.db.Address.streams_from" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Address.streams_to">
+<span class="sig-name descname"><span class="pre">streams_to</span></span><a class="headerlink" href="#dao_treasury.db.Address.streams_to" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dao_treasury.db.Address.token">
@@ -836,6 +887,393 @@ the verified contract name or fallback label.</p>
 <span class="sig-name descname"><span class="pre">treasury_txs</span></span><a class="headerlink" href="#dao_treasury.db.Chain.treasury_txs" title="Link to this definition"></a></dt>
 <dd><p>Relationship to treasury transactions on this chain.</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dao_treasury.db.</span></span><span class="sig-name descname"><span class="pre">Stream</span></span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.after_delete">
+<span class="sig-name descname"><span class="pre">after_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.after_delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.after_insert">
+<span class="sig-name descname"><span class="pre">after_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.after_insert" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.after_update">
+<span class="sig-name descname"><span class="pre">after_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.after_update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.amount_withdrawable">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">amount_withdrawable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.amount_withdrawable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.amount_withdrawable" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.before_delete">
+<span class="sig-name descname"><span class="pre">before_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.before_delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.before_insert">
+<span class="sig-name descname"><span class="pre">before_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.before_insert" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.before_update">
+<span class="sig-name descname"><span class="pre">before_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.before_update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.check_closed">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_closed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.check_closed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.check_closed" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stream_id</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.encoding.HexStr" title="(in eth-typing v5.2)"><em>HexStr</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.find_updated_attributes">
+<span class="sig-name descname"><span class="pre">find_updated_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.find_updated_attributes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.flush" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.get_pk">
+<span class="sig-name descname"><span class="pre">get_pk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.get_pk" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.load" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.pause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.pause" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.print" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.stop_stream">
+<span class="sig-name descname"><span class="pre">stop_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.stop_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.stop_stream" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_collections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_lazy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">related_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.to_dict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.Stream.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.amount_per_day">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">amount_per_day</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#dao_treasury.db.Stream.amount_per_day" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.amount_per_hour">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">amount_per_hour</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#dao_treasury.db.Stream.amount_per_hour" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.amount_per_minute">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">amount_per_minute</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#dao_treasury.db.Stream.amount_per_minute" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.amount_per_second">
+<span class="sig-name descname"><span class="pre">amount_per_second</span></span><a class="headerlink" href="#dao_treasury.db.Stream.amount_per_second" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.contract">
+<span class="sig-name descname"><span class="pre">contract</span></span><a class="headerlink" href="#dao_treasury.db.Stream.contract" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.end_block">
+<span class="sig-name descname"><span class="pre">end_block</span></span><a class="headerlink" href="#dao_treasury.db.Stream.end_block" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.from_address">
+<span class="sig-name descname"><span class="pre">from_address</span></span><a class="headerlink" href="#dao_treasury.db.Stream.from_address" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.is_alive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_alive</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#dao_treasury.db.Stream.is_alive" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.reason">
+<span class="sig-name descname"><span class="pre">reason</span></span><a class="headerlink" href="#dao_treasury.db.Stream.reason" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100000000000000000000</span></em><a class="headerlink" href="#dao_treasury.db.Stream.scale" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.start_block">
+<span class="sig-name descname"><span class="pre">start_block</span></span><a class="headerlink" href="#dao_treasury.db.Stream.start_block" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.start_date">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.13)"><span class="pre">date</span></a></em><a class="headerlink" href="#dao_treasury.db.Stream.start_date" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#dao_treasury.db.Stream.status" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.stream_contract">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_contract</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Contract</span></em><a class="headerlink" href="#dao_treasury.db.Stream.stream_contract" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.stream_id">
+<span class="sig-name descname"><span class="pre">stream_id</span></span><a class="headerlink" href="#dao_treasury.db.Stream.stream_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.streamed_funds">
+<span class="sig-name descname"><span class="pre">streamed_funds</span></span><a class="headerlink" href="#dao_treasury.db.Stream.streamed_funds" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.to_address">
+<span class="sig-name descname"><span class="pre">to_address</span></span><a class="headerlink" href="#dao_treasury.db.Stream.to_address" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.token">
+<span class="sig-name descname"><span class="pre">token</span></span><a class="headerlink" href="#dao_treasury.db.Stream.token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Stream.txgroup">
+<span class="sig-name descname"><span class="pre">txgroup</span></span><a class="headerlink" href="#dao_treasury.db.Stream.txgroup" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dao_treasury.db.</span></span><span class="sig-name descname"><span class="pre">StreamedFunds</span></span><a class="reference internal" href="../_modules/dao_treasury/db.html#StreamedFunds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.StreamedFunds" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></p>
+<p>Each object represents one calendar day of tokens streamed for a particular stream.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.after_delete">
+<span class="sig-name descname"><span class="pre">after_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.after_delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.after_insert">
+<span class="sig-name descname"><span class="pre">after_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.after_insert" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.after_update">
+<span class="sig-name descname"><span class="pre">after_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.after_update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.before_delete">
+<span class="sig-name descname"><span class="pre">before_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.before_delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.before_insert">
+<span class="sig-name descname"><span class="pre">before_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.before_insert" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.before_update">
+<span class="sig-name descname"><span class="pre">before_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.before_update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.create_entity">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds_active</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last_day</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#StreamedFunds.create_entity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.StreamedFunds.create_entity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><em>datetime</em></a>)</p></li>
+<li><p><strong>price</strong> (<a class="reference external" href="https://docs.python.org/3/library/decimal.html#decimal.Decimal" title="(in Python v3.13)"><em>Decimal</em></a>)</p></li>
+<li><p><strong>seconds_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
+<li><p><strong>is_last_day</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#dao_treasury.db.StreamedFunds" title="dao_treasury.db.StreamedFunds"><em>StreamedFunds</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.find_updated_attributes">
+<span class="sig-name descname"><span class="pre">find_updated_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.find_updated_attributes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.flush" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.get_entity">
+<span class="sig-name descname"><span class="pre">get_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#StreamedFunds.get_entity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.StreamedFunds.get_entity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.13)"><em>datetime</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#dao_treasury.db.StreamedFunds" title="dao_treasury.db.StreamedFunds"><em>StreamedFunds</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.get_pk">
+<span class="sig-name descname"><span class="pre">get_pk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.get_pk" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.load" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_collections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_lazy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">related_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.to_dict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.to_json" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.amount" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.date">
+<span class="sig-name descname"><span class="pre">date</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.date" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.is_last_day">
+<span class="sig-name descname"><span class="pre">is_last_day</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.is_last_day" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.price">
+<span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.price" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.seconds_active">
+<span class="sig-name descname"><span class="pre">seconds_active</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.seconds_active" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.stream">
+<span class="sig-name descname"><span class="pre">stream</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.stream" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.value_usd">
+<span class="sig-name descname"><span class="pre">value_usd</span></span><a class="headerlink" href="#dao_treasury.db.StreamedFunds.value_usd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1030,6 +1468,11 @@ the verified contract name or fallback label.</p>
 </pre></div>
 </div>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.Token.streams">
+<span class="sig-name descname"><span class="pre">streams</span></span><a class="headerlink" href="#dao_treasury.db.Token.streams" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dao_treasury.db.Token.symbol">
@@ -1470,6 +1913,11 @@ the verified contract name or fallback label.</p>
 <dd><p>Optional reference to a parent group for nesting.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dao_treasury.db.TxGroup.streams">
+<span class="sig-name descname"><span class="pre">streams</span></span><a class="headerlink" href="#dao_treasury.db.TxGroup.streams" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="dao_treasury.db.TxGroup.top_txgroup">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">top_txgroup</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dao_treasury.db.TxGroup" title="dao_treasury.db.TxGroup"><span class="pre">TxGroup</span></a></em><a class="headerlink" href="#dao_treasury.db.TxGroup.top_txgroup" title="Link to this definition"></a></dt>
@@ -1677,27 +2125,18 @@ history.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dao_treasury.treasury.Treasury.populate_db">
 <span class="sig-name descname"><span class="pre">populate_db</span></span><a class="reference internal" href="../_modules/dao_treasury/treasury.html#Treasury.populate_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.treasury.Treasury.populate_db" title="Link to this definition"></a></dt>
-<dd><p>Populate the database with treasury transactions in a block range.</p>
-<p>Streams ledger entries from <cite>start_block</cite> up to (but not including)
-<cite>end_block</cite>, skips zero-value transfers, and inserts each remaining entry
-into the DB via <a class="reference internal" href="#dao_treasury.db.TreasuryTx.insert" title="dao_treasury.db.TreasuryTx.insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dao_treasury.db.TreasuryTx.insert()</span></code></a>. Uses
-<code class="xref py py-class docutils literal notranslate"><span class="pre">tqdm.asyncio.tqdm_asyncio</span></code> to display progress.</p>
+<dd><p>Populate the database with treasury transactions and streams in parallel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>start_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>) – First block number to include (inclusive).</p></li>
-<li><p><strong>end_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>) – Last block number to include (exclusive).</p></li>
+<li><p><strong>start_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>)</p></li>
+<li><p><strong>end_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Insert transactions from block 0 to 10000</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">await</span> <span class="n">treasury</span><span class="o">.</span><span class="n">populate_db</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2810,27 +3249,18 @@ history.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dao_treasury.Treasury.populate_db">
 <span class="sig-name descname"><span class="pre">populate_db</span></span><a class="reference internal" href="../_modules/dao_treasury/treasury.html#Treasury.populate_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.Treasury.populate_db" title="Link to this definition"></a></dt>
-<dd><p>Populate the database with treasury transactions in a block range.</p>
-<p>Streams ledger entries from <cite>start_block</cite> up to (but not including)
-<cite>end_block</cite>, skips zero-value transfers, and inserts each remaining entry
-into the DB via <a class="reference internal" href="#dao_treasury.db.TreasuryTx.insert" title="dao_treasury.db.TreasuryTx.insert"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dao_treasury.db.TreasuryTx.insert()</span></code></a>. Uses
-<code class="xref py py-class docutils literal notranslate"><span class="pre">tqdm.asyncio.tqdm_asyncio</span></code> to display progress.</p>
+<dd><p>Populate the database with treasury transactions and streams in parallel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>start_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>) – First block number to include (inclusive).</p></li>
-<li><p><strong>end_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>) – Last block number to include (exclusive).</p></li>
+<li><p><strong>start_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>)</p></li>
+<li><p><strong>end_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Insert transactions from block 0 to 10000</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">await</span> <span class="n">treasury</span><span class="o">.</span><span class="n">populate_db</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="py attribute">

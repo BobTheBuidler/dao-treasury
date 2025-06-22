@@ -1,6 +1,14 @@
 dao\_treasury.sorting package
 =============================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   dao_treasury.sorting.rules
+
 Submodules
 ----------
 

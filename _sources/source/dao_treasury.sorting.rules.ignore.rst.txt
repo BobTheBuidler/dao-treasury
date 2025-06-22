@@ -1,0 +1,21 @@
+dao\_treasury.sorting.rules.ignore package
+==========================================
+
+Submodules
+----------
+
+dao\_treasury.sorting.rules.ignore.llamapay module
+--------------------------------------------------
+
+.. automodule:: dao_treasury.sorting.rules.ignore.llamapay
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: dao_treasury.sorting.rules.ignore
+   :members:
+   :undoc-members:
+   :show-inheritance:
