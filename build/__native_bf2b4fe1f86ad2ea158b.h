@@ -622,7 +622,6 @@ typedef struct {
     tuple_T3OOO ___mypyc_temp__78;
     PyObject *___mypyc_temp__79;
     tuple_T3OOO ___mypyc_temp__80;
-    PyObject *___mypyc_temp__2_0;
 } dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject;
 
 typedef struct {
@@ -848,9 +847,19 @@ struct export_table_bf2b4fe1f86ad2ea158b {
     PyObject **CPyStatic_streams___llamapay____UTC;
     PyObject **CPyStatic_streams___llamapay____STREAMS_THREAD;
     PyObject **CPyStatic_streams___llamapay___create_task;
+    PyObject **CPyStatic_streams___llamapay___sleep;
+    PyObject **CPyStatic_streams___llamapay___datetime;
+    PyObject **CPyStatic_streams___llamapay___timedelta;
+    PyObject **CPyStatic_streams___llamapay___fromtimestamp;
+    PyObject **CPyStatic_streams___llamapay___now;
+    PyObject **CPyStatic_streams___llamapay___Decimal;
     PyObject **CPyStatic_streams___llamapay___ObjectNotFound;
     PyObject **CPyStatic_streams___llamapay___commit;
     PyObject **CPyStatic_streams___llamapay___db_session;
+    PyObject **CPyStatic_streams___llamapay___Contract;
+    PyObject **CPyStatic_streams___llamapay___Network;
+    PyObject **CPyStatic_streams___llamapay___get_block_at_timestamp;
+    PyObject **CPyStatic_streams___llamapay___get_price;
     PyObject **CPyStatic_streams___llamapay___networks;
     PyObject **CPyStatic_streams___llamapay____streamToStart_cache;
     PyObject **CPyStatic_streams___llamapay____block_timestamps;
