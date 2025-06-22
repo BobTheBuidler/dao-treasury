@@ -1,6 +1,6 @@
 import asyncio
-from datetime import datetime, timedelta, timezone
-from decimal import Decimal
+import datetime as dt
+import decimal
 from logging import getLogger
 from typing import (
     Awaitable,
@@ -21,7 +21,7 @@ from brownie.network.event import _EventItem
 from eth_typing import BlockNumber, ChecksumAddress, HexAddress, HexStr
 from tqdm.asyncio import tqdm_asyncio
 
-from y import Contract, Network, get_block_at_timestamp, get_price
+import y
 from y.time import UnixTimestamp
 from y.utils.events import decode_logs, get_logs_asap
 
@@ -38,17 +38,30 @@ from dao_treasury._wallet import TreasuryWallet
 
 logger: Final = getLogger(__name__)
 
-_UTC: Final = timezone.utc
+_UTC: Final = dt.timezone.utc
 
 _ONE_DAY: Final = 60 * 60 * 24
 
 _STREAMS_THREAD: Final = AsyncThreadPoolExecutor(1)
 
 create_task: Final = asyncio.create_task
+sleep: Final = asyncio.sleep
+
+datetime: Final = dt.datetime
+timedelta: Final = dt.timedelta
+fromtimestamp: Final = datetime.fromtimestamp
+now: Final = datetime.now
+
+Decimal: Final = decimal.Decimal
 
 ObjectNotFound: Final = pony.orm.ObjectNotFound
 commit: Final = pony.orm.commit
 db_session: Final = pony.orm.db_session
+
+Contract: Final = y.Contract
+Network: Final = y.Network
+get_block_at_timestamp: Final = y.get_block_at_timestamp
+get_price: Final = y.get_price
 
 
 networks: Final = [Network.Mainnet]
@@ -67,13 +80,13 @@ if yfi_stream_factory := {
 
 
 def _generate_dates(
-    start: datetime, end: datetime, stop_at_today: bool = True
-) -> Iterator[datetime]:
+    start: dt.datetime, end: dt.datetime, stop_at_today: bool = True
+) -> Iterator[dt.datetime]:
     current = start
     while current < end:
         yield current
         current += timedelta(days=1)
-        if stop_at_today and current.date() > datetime.now(_UTC).date():
+        if stop_at_today and current.date() > now(_UTC).date():
             break
 
 
@@ -86,7 +99,7 @@ def _get_streamToStart(stream_id: HexStr) -> _StreamToStart:
     if streamToStart := _streamToStart_cache.get(stream_id):
         return streamToStart
     with db_session:
-        contract: Contract = Stream[stream_id].contract.contract  # type: ignore [misc]
+        contract: y.Contract = Stream[stream_id].contract.contract  # type: ignore [misc]
     streamToStart = contract.streamToStart.coroutine
     _streamToStart_cache[stream_id] = streamToStart
     return streamToStart
@@ -163,7 +176,7 @@ class LlamaPayProcessor:
             for stream_contract in self.stream_contracts
         )
 
-    async def _load_contract_events(self, stream_contract: Contract) -> None:
+    async def _load_contract_events(self, stream_contract: y.Contract) -> None:
         events = decode_logs(
             await get_logs_asap(stream_contract.address, None, sync=False)
         )
@@ -311,7 +324,7 @@ class LlamaPayProcessor:
                 return
 
     async def process_stream_for_date(
-        self, stream_id: HexStr, date_obj: datetime
+        self, stream_id: HexStr, date_obj: dt.datetime
     ) -> Optional[StreamedFunds]:
         entity = await _STREAMS_THREAD.run(
             StreamedFunds.get_entity, stream_id, date_obj
@@ -323,10 +336,10 @@ class LlamaPayProcessor:
             Stream._get_token_and_start_date, stream_id
         )
         check_at = date_obj + timedelta(days=1) - timedelta(seconds=1)
-        if check_at > datetime.now(tz=_UTC):
-            await sleep((check_at - datetime.now(tz=_UTC)).total_seconds())
+        if check_at > now(tz=_UTC):
+            await sleep((check_at - now(tz=_UTC)).total_seconds())
         block = await get_block_at_timestamp(check_at, sync=False)
-        price_fut = asyncio.create_task(get_price(stream_token, block, sync=False))
+        price_fut = create_task(get_price(stream_token, block, sync=False))
         start_timestamp = await _get_start_timestamp(stream_id, block)
         if start_timestamp == 0:
             if await _STREAMS_THREAD.run(Stream.check_closed, stream_id):
@@ -337,9 +350,7 @@ class LlamaPayProcessor:
                 block -= 1
                 start_timestamp = await _get_start_timestamp(stream_id, block)
 
-            block_datetime = datetime.fromtimestamp(
-                await _get_block_timestamp(block), tz=_UTC
-            )
+            block_datetime = fromtimestamp(await _get_block_timestamp(block), tz=_UTC)
             assert block_datetime.date() == date_obj.date()
             seconds_active = (check_at - block_datetime).seconds
             is_last_day = True

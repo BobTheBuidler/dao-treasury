@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[541];
+extern PyObject *CPyStatics[544];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -337,9 +337,19 @@ extern PyObject *CPyStatic_streams___llamapay___logger;
 extern PyObject *CPyStatic_streams___llamapay____UTC;
 extern PyObject *CPyStatic_streams___llamapay____STREAMS_THREAD;
 extern PyObject *CPyStatic_streams___llamapay___create_task;
+extern PyObject *CPyStatic_streams___llamapay___sleep;
+extern PyObject *CPyStatic_streams___llamapay___datetime;
+extern PyObject *CPyStatic_streams___llamapay___timedelta;
+extern PyObject *CPyStatic_streams___llamapay___fromtimestamp;
+extern PyObject *CPyStatic_streams___llamapay___now;
+extern PyObject *CPyStatic_streams___llamapay___Decimal;
 extern PyObject *CPyStatic_streams___llamapay___ObjectNotFound;
 extern PyObject *CPyStatic_streams___llamapay___commit;
 extern PyObject *CPyStatic_streams___llamapay___db_session;
+extern PyObject *CPyStatic_streams___llamapay___Contract;
+extern PyObject *CPyStatic_streams___llamapay___Network;
+extern PyObject *CPyStatic_streams___llamapay___get_block_at_timestamp;
+extern PyObject *CPyStatic_streams___llamapay___get_price;
 extern PyObject *CPyStatic_streams___llamapay___networks;
 extern PyObject *CPyStatic_streams___llamapay____streamToStart_cache;
 extern PyObject *CPyStatic_streams___llamapay____block_timestamps;
