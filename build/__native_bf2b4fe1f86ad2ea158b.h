@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_3619d39567c7fe330ece_H
-#define MYPYC_NATIVE_3619d39567c7fe330ece_H
+#ifndef MYPYC_NATIVE_bf2b4fe1f86ad2ea158b_H
+#define MYPYC_NATIVE_bf2b4fe1f86ad2ea158b_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T2OO
@@ -50,6 +50,17 @@ typedef struct tuple_T8OOOOOOOO {
     PyObject *f6;
     PyObject *f7;
 } tuple_T8OOOOOOOO;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T5OOOOO
+#define MYPYC_DECLARED_tuple_T5OOOOO
+typedef struct tuple_T5OOOOO {
+    PyObject *f0;
+    PyObject *f1;
+    PyObject *f2;
+    PyObject *f3;
+    PyObject *f4;
+} tuple_T5OOOOO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T0
@@ -318,6 +329,309 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    tuple_T5OOOOO _handled_events;
+    tuple_T3OOO _skipped_events;
+    PyObject *_stream_contracts;
+} dao_treasury___streams___llamapay___LlamaPayProcessorObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_start;
+    PyObject *_end;
+    char _stop_at_today;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *_current;
+} dao_treasury___streams___llamapay____generate_dates_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay____generate_dates_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_stream_id;
+    PyObject *_block;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *_streamToStart;
+    PyObject *___mypyc_temp__0;
+    tuple_T3OOO ___mypyc_temp__1;
+    PyObject *___mypyc_temp__2;
+    tuple_T3OOO ___mypyc_temp__3;
+} dao_treasury___streams___llamapay____get_start_timestamp_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay____get_start_timestamp_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_block;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *_timestamp;
+    PyObject *___mypyc_temp__4;
+    tuple_T3OOO ___mypyc_temp__5;
+} dao_treasury___streams___llamapay____get_block_timestamp_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay____get_block_timestamp_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_self;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *___mypyc_temp__6;
+    PyObject *___mypyc_temp__7;
+    PyObject *___mypyc_temp__8;
+    PyObject *_stream_contract;
+    PyObject *___mypyc_temp__9;
+    tuple_T3OOO ___mypyc_temp__10;
+} dao_treasury___streams___llamapay____get_streams_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay____get_streams_LlamaPayProcessor_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_self;
+    PyObject *_stream_contract;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *___mypyc_temp__11;
+    tuple_T3OOO ___mypyc_temp__12;
+    PyObject *_events;
+    PyObject *_keys;
+    PyObject *___mypyc_temp__13;
+    PyObject *___mypyc_temp__14;
+    PyObject *_k;
+    PyObject *___mypyc_temp__15;
+    PyObject *___mypyc_temp__16;
+    PyObject *_event;
+    PyObject *_from_address;
+    PyObject *__;
+    PyObject *___mypyc_temp__17;
+    tuple_T3OOO ___mypyc_temp__18;
+    PyObject *___mypyc_temp__19;
+    PyObject *___mypyc_temp__20;
+    PyObject *___mypyc_temp__21;
+    tuple_T3OOO ___mypyc_temp__22;
+    PyObject *___mypyc_temp__23;
+    PyObject *___mypyc_temp__24;
+    PyObject *_old_stream_id;
+    PyObject *___mypyc_temp__25;
+    tuple_T3OOO ___mypyc_temp__26;
+    PyObject *___mypyc_temp__27;
+    tuple_T3OOO ___mypyc_temp__28;
+    PyObject *___mypyc_temp__29;
+    PyObject *___mypyc_temp__30;
+    PyObject *_stream_id;
+    PyObject *___mypyc_temp__31;
+    tuple_T3OOO ___mypyc_temp__32;
+    PyObject *___mypyc_temp__33;
+    PyObject *___mypyc_temp__34;
+    PyObject *___mypyc_temp__35;
+    tuple_T3OOO ___mypyc_temp__36;
+} dao_treasury___streams___llamapay____load_contract_events_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay____load_contract_events_LlamaPayProcessor_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_recipient;
+    PyObject *_self;
+    PyObject *_at_block;
+} dao_treasury___streams___llamapay___streams_for_recipient_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay_____mypyc_lambda__0_streams_for_recipient_LlamaPayProcessor_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_token;
+    PyObject *_self;
+    char _include_inactive;
+} dao_treasury___streams___llamapay___streams_for_token_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_self;
+    char _run_forever;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *___mypyc_temp__37;
+    tuple_T3OOO ___mypyc_temp__38;
+    PyObject *___mypyc_temp__39;
+    PyObject *___mypyc_temp__40;
+    char ___mypyc_temp__41;
+    PyObject *___mypyc_temp__42;
+    PyObject *___mypyc_temp__43;
+    PyObject *___mypyc_temp__44;
+    PyObject *_s;
+    PyObject *_streams;
+    tuple_T3OOO ___mypyc_temp__45;
+    PyObject *___mypyc_temp__46;
+    CPyTagged ___mypyc_temp__47;
+    PyObject *_stream_id;
+    PyObject *___mypyc_temp__48;
+    tuple_T3OOO ___mypyc_temp__49;
+} dao_treasury___streams___llamapay___process_streams_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay___process_streams_LlamaPayProcessor_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_self;
+    PyObject *_stream_id;
+    char _run_forever;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *___mypyc_temp__50;
+    tuple_T3OOO ___mypyc_temp__51;
+    PyObject *_start;
+    PyObject *_end;
+    PyObject *___mypyc_temp__52;
+    PyObject *___mypyc_temp__53;
+    PyObject *_date_obj;
+    PyObject *___mypyc_temp__54;
+    tuple_T3OOO ___mypyc_temp__55;
+} dao_treasury___streams___llamapay___process_stream_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay___process_stream_LlamaPayProcessor_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_self;
+    PyObject *_stream_id;
+    PyObject *_date_obj;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    CPyTagged ___mypyc_next_label__;
+    PyObject *___mypyc_temp__56;
+    tuple_T3OOO ___mypyc_temp__57;
+    PyObject *_entity;
+    PyObject *___mypyc_temp__58;
+    tuple_T3OOO ___mypyc_temp__59;
+    PyObject *_stream_token;
+    PyObject *_start_date;
+    PyObject *_check_at;
+    PyObject *___mypyc_temp__60;
+    tuple_T3OOO ___mypyc_temp__61;
+    PyObject *_block;
+    PyObject *_price_fut;
+    PyObject *___mypyc_temp__62;
+    tuple_T3OOO ___mypyc_temp__63;
+    CPyTagged _start_timestamp;
+    PyObject *___mypyc_temp__64;
+    tuple_T3OOO ___mypyc_temp__65;
+    PyObject *___mypyc_temp__66;
+    tuple_T3OOO ___mypyc_temp__67;
+    PyObject *___mypyc_temp__68;
+    tuple_T3OOO ___mypyc_temp__69;
+    PyObject *_block_datetime;
+    CPyTagged _seconds_active;
+    char _is_last_day;
+    CPyTagged _seconds_active_today;
+    PyObject *___mypyc_temp__70;
+    PyObject *___mypyc_temp__71;
+    char ___mypyc_temp__72;
+    PyObject *___mypyc_temp__73;
+    tuple_T3OOO ___mypyc_temp__74;
+    PyObject *_price;
+    PyObject *___mypyc_temp__75;
+    tuple_T3OOO ___mypyc_temp__76;
+    PyObject *___mypyc_temp__77;
+    tuple_T3OOO ___mypyc_temp__78;
+    PyObject *___mypyc_temp__2_0;
+} dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_genObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
     PyObject *_fn;
     PyObject *_compose_wrap;
@@ -365,7 +679,7 @@ typedef struct {
 } dao_treasury____wallet___TreasuryWalletObject;
 
 
-struct export_table_3619d39567c7fe330ece {
+struct export_table_bf2b4fe1f86ad2ea158b {
     PyObject **CPyStatic_sorting___logger;
     PyObject **CPyStatic_sorting___TxGroup;
     PyObject **CPyStatic_sorting___MUST_SORT_INBOUND_TXGROUP_DBID;
@@ -386,6 +700,10 @@ struct export_table_3619d39567c7fe330ece {
     PyObject *(*CPyDef_sorting___sort_advanced_gen_____await__)(PyObject *cpy_r___mypyc_self__);
     PyObject *(*CPyDef_sorting___sort_advanced)(PyObject *cpy_r_entry);
     char (*CPyDef_sorting_____top_level__)(void);
+    char (*CPyDef_rules_____top_level__)(void);
+    char (*CPyDef_ignore_____top_level__)(void);
+    char (*CPyDef_ignore___llamapay___is_llamapay_stream_replenishment)(PyObject *cpy_r_tx);
+    char (*CPyDef_ignore___llamapay_____top_level__)(void);
     PyObject **CPyStatic__matchers___logger;
     PyTypeObject **CPyType__matchers____Matcher;
     PyObject *(*CPyDef__matchers____Matcher)(PyObject *cpy_r_txgroup, PyObject *cpy_r_validated_values);
@@ -523,6 +841,137 @@ struct export_table_3619d39567c7fe330ece {
     PyObject *(*CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
     char (*CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_self);
     char (*CPyDef_rule_____top_level__)(void);
+    char (*CPyDef_streams_____top_level__)(void);
+    PyObject **CPyStatic_streams___llamapay___logger;
+    PyObject **CPyStatic_streams___llamapay____UTC;
+    PyObject **CPyStatic_streams___llamapay____STREAMS_THREAD;
+    PyObject **CPyStatic_streams___llamapay___create_task;
+    PyObject **CPyStatic_streams___llamapay___ObjectNotFound;
+    PyObject **CPyStatic_streams___llamapay___commit;
+    PyObject **CPyStatic_streams___llamapay___db_session;
+    PyObject **CPyStatic_streams___llamapay___networks;
+    PyObject **CPyStatic_streams___llamapay____streamToStart_cache;
+    PyObject **CPyStatic_streams___llamapay____block_timestamps;
+    tuple_T5OOOOO *CPyStatic_streams___llamapay___LlamaPayProcessor___handled_events;
+    tuple_T3OOO *CPyStatic_streams___llamapay___LlamaPayProcessor___skipped_events;
+    PyTypeObject **CPyType_streams___llamapay___LlamaPayProcessor;
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor)(void);
+    PyTypeObject **CPyType_streams___llamapay____generate_dates_env;
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_env)(void);
+    PyTypeObject **CPyType_streams___llamapay____generate_dates_gen;
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay____get_start_timestamp_env;
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_env)(void);
+    PyTypeObject **CPyType_streams___llamapay____get_start_timestamp_gen;
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay____get_block_timestamp_env;
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_env)(void);
+    PyTypeObject **CPyType_streams___llamapay____get_block_timestamp_gen;
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay____get_streams_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay____get_streams_LlamaPayProcessor_gen;
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay____load_contract_events_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay____load_contract_events_LlamaPayProcessor_gen;
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay___streams_for_recipient_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay___streams_for_recipient_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay_____mypyc_lambda__0_streams_for_recipient_LlamaPayProcessor_obj;
+    PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__0_streams_for_recipient_LlamaPayProcessor_obj)(void);
+    PyTypeObject **CPyType_streams___llamapay___streams_for_token_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay___streams_for_token_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_obj;
+    PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_obj)(void);
+    PyTypeObject **CPyType_streams___llamapay___process_streams_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay___process_streams_LlamaPayProcessor_gen;
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay___process_stream_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay___process_stream_LlamaPayProcessor_gen;
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen)(void);
+    PyTypeObject **CPyType_streams___llamapay___process_stream_for_date_LlamaPayProcessor_env;
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_env)(void);
+    PyTypeObject **CPyType_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen;
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen)(void);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____generate_dates)(PyObject *cpy_r_start, PyObject *cpy_r_end, char cpy_r_stop_at_today);
+    PyObject *(*CPyDef_streams___llamapay____get_streamToStart)(PyObject *cpy_r_stream_id);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp)(PyObject *cpy_r_stream_id, PyObject *cpy_r_block);
+    char (*CPyDef_streams___llamapay____pause_stream)(PyObject *cpy_r_stream_id);
+    char (*CPyDef_streams___llamapay____stop_stream)(PyObject *cpy_r_stream_id, PyObject *cpy_r_block);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp)(PyObject *cpy_r_block);
+    char (*CPyDef_streams___llamapay___LlamaPayProcessor_____init__)(PyObject *cpy_r_self);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor____get_streams)(PyObject *cpy_r_self);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor____load_contract_events)(PyObject *cpy_r_self, PyObject *cpy_r_stream_contract);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor____get_stream)(PyObject *cpy_r_self, PyObject *cpy_r_log);
+    PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__0_streams_for_recipient_LlamaPayProcessor_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+    PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__0_streams_for_recipient_LlamaPayProcessor_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_s);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor___streams_for_recipient)(PyObject *cpy_r_self, PyObject *cpy_r_recipient, PyObject *cpy_r_at_block);
+    PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_obj_____get__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
+    PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_obj_____call__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_s);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor___streams_for_token)(PyObject *cpy_r_self, PyObject *cpy_r_token, char cpy_r_include_inactive);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor___process_streams)(PyObject *cpy_r_self, char cpy_r_run_forever);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor___process_stream)(PyObject *cpy_r_self, PyObject *cpy_r_stream_id, char cpy_r_run_forever);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen_____next__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen___send)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen_____iter__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen___throw)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen___close)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen_____await__)(PyObject *cpy_r___mypyc_self__);
+    PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor___process_stream_for_date)(PyObject *cpy_r_self, PyObject *cpy_r_stream_id, PyObject *cpy_r_date_obj);
+    char (*CPyDef_streams___llamapay___LlamaPayProcessor_____mypyc_defaults_setup)(PyObject *cpy_r___mypyc_self__);
+    char (*CPyDef_streams___llamapay_____top_level__)(void);
     PyObject **CPyStatic__docker___logger;
     PyObject **CPyStatic__docker___compose_file;
     PyTypeObject **CPyType__docker___ensure_containers_env;

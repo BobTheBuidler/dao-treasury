@@ -1,4 +1,4 @@
-from asyncio import create_task
+from asyncio import create_task, gather
 from logging import getLogger
 from pathlib import Path
 from typing import Final, Iterable, List, Optional, Union
@@ -16,6 +16,7 @@ from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.constants import CHAINID
 from dao_treasury.db import TreasuryTx
 from dao_treasury.sorting._rules import Rules
+from dao_treasury.streams import llamapay
 
 
 Wallet = Union[TreasuryWallet, str]
@@ -108,6 +109,10 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         )
         """An eth_portfolio.Portfolio object used for exporting tx and balance history"""
 
+        self._llamapay: Final = (
+            llamapay.LlamaPayProcessor() if CHAINID in llamapay.networks else None
+        )
+
         self.asynchronous: Final = asynchronous
         """A boolean flag indicating whether the API for this `Treasury` object is sync or async by default"""
 
@@ -120,7 +125,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
     def txs(self) -> a_sync.ASyncIterator[LedgerEntry]:
         return self.portfolio.ledger.all_entries
 
-    async def populate_db(
+    async def _insert_txs(
         self, start_block: BlockNumber, end_block: BlockNumber
     ) -> None:
         """Populate the database with treasury transactions in a block range.
@@ -136,7 +141,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
 
         Examples:
             >>> # Insert transactions from block 0 to 10000
-            >>> await treasury.populate_db(0, 10000)
+            >>> await treasury._insert_txs(0, 10000)
         """
         with db_session:
             futs = []
@@ -146,9 +151,22 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
                     logger.debug("zero value transfer, skipping %s", entry)
                     continue
                 futs.append(create_task(TreasuryTx.insert(entry)))
-
             if futs:
                 await tqdm_asyncio.gather(*futs, desc="Insert Txs to Postgres")
                 logger.info(f"{len(futs)} transfers exported")
 
+    async def _process_streams(self) -> None:
+        if self._llamapay is not None:
+            await self._llamapay.process_streams(run_forever=True)
+
+    async def populate_db(
+        self, start_block: BlockNumber, end_block: BlockNumber
+    ) -> None:
+        """
+        Populate the database with treasury transactions and streams in parallel.
+        """
+        tasks = [self._insert_txs(start_block, end_block)]
+        if self._llamapay:
+            tasks.append(self._process_streams())
+        await gather(*tasks)
         logger.info("db connection closed")

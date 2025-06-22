@@ -1,0 +1,116 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 7,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "frser-sqlite-datasource",
+        "uid": "P2D2EEF3E092AF52B"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "P2D2EEF3E092AF52B"
+          },
+          "queryText": "select stream_id as \"Stream ID\", b.address as \"Factory\", start_block as \"Start Block\", end_block as \"End Block\", c.symbol as \"Token\", d.address as \"From\", e.address as \"To\", reason as \"Reason\", amount_per_second as \"Amount Per Second\", status as \"Status\", txgroup as \"TxGroup\"\nfrom streams a\nleft join addresses b on a.contract = b.address_id\nleft join tokens c on a.token = c.token_id\nleft join addresses d on a.from_address = d.address_id\nleft join addresses e on a.to_address = e.address_id",
+          "queryType": "table",
+          "rawQueryText": "select stream_id as \"Stream ID\", b.address as \"Factory\", start_block as \"Start Block\", end_block as \"End Block\", c.symbol as \"Token\", d.address as \"From\", e.address as \"To\", reason as \"Reason\", amount_per_second as \"Amount Per Second\", status as \"Status\", txgroup as \"TxGroup\"\nfrom streams a\nleft join addresses b on a.contract = b.address_id\nleft join tokens c on a.token = c.token_id\nleft join addresses d on a.from_address = d.address_id\nleft join addresses e on a.to_address = e.address_id",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "LlamaPay Streams",
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "LlamaPay",
+  "uid": "aa4d62a2-9e52-4acc-8f38-a96c77810aca",
+  "version": 1,
+  "weekStart": ""
+}
