@@ -623,7 +623,7 @@ class TxGroup(DbEntity):
         return txgroup  # type: ignore [no-any-return]
 
 
-@lru_cache(1000)
+@lru_cache(500)
 def get_transaction(txhash: str) -> TransactionReceipt:
     """Fetch and cache a transaction receipt from the connected chain.
 
