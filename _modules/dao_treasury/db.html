@@ -1,0 +1,1574 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dao_treasury.db &mdash; dao-treasury  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            dao-treasury
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../wallets.html">Specifying Treasury Wallets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sort_rules.html">Defining Sort Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../source/modules.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transactions.html">Transactions Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to DAO Treasury</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">dao-treasury</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dao_treasury.db</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dao_treasury.db</h1><div class="highlight"><pre>
+<span></span><span class="c1"># mypy: disable-error-code=&quot;operator,valid-type,misc&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Database models and utilities for DAO treasury reporting.</span>
+
+<span class="sd">This module defines Pony ORM entities for:</span>
+<span class="sd">- Blockchain networks (:class:`Chain`)</span>
+<span class="sd">- On-chain addresses (:class:`Address`)</span>
+<span class="sd">- ERC-20 tokens and native coin placeholder (:class:`Token`)</span>
+<span class="sd">- Hierarchical transaction grouping (:class:`TxGroup`)</span>
+<span class="sd">- Treasury transaction records (:class:`TreasuryTx`)</span>
+<span class="sd">- Streams and StreamedFunds for streaming payments</span>
+
+<span class="sd">It also provides helper functions for inserting ledger entries,</span>
+<span class="sd">resolving integrity conflicts, caching transaction receipts,</span>
+<span class="sd">and creating SQL views for reporting.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Semaphore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span><span class="p">,</span> <span class="n">InvalidOperation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">brownie</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">brownie.convert.datatypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">HexString</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">brownie.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventLookupError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">brownie.network.event</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventDict</span><span class="p">,</span> <span class="n">_EventItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">brownie.network.transaction</span><span class="w"> </span><span class="kn">import</span> <span class="n">TransactionReceipt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">HexAddress</span><span class="p">,</span> <span class="n">HexStr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio.structs</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">InternalTransfer</span><span class="p">,</span>
+    <span class="n">LedgerEntry</span><span class="p">,</span>
+    <span class="n">TokenTransfer</span><span class="p">,</span>
+    <span class="n">Transaction</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pony.orm</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Database</span><span class="p">,</span>
+    <span class="n">InterfaceError</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">PrimaryKey</span><span class="p">,</span>
+    <span class="n">Required</span><span class="p">,</span>
+    <span class="n">Set</span><span class="p">,</span>
+    <span class="n">TransactionIntegrityError</span><span class="p">,</span>
+    <span class="n">commit</span><span class="p">,</span>
+    <span class="n">composite_key</span><span class="p">,</span>
+    <span class="n">composite_index</span><span class="p">,</span>
+    <span class="n">db_session</span><span class="p">,</span>
+    <span class="n">select</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">y</span><span class="w"> </span><span class="kn">import</span> <span class="n">EEE_ADDRESS</span><span class="p">,</span> <span class="n">Contract</span><span class="p">,</span> <span class="n">Network</span><span class="p">,</span> <span class="n">convert</span><span class="p">,</span> <span class="n">get_block_timestamp_async</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">y.contracts</span><span class="w"> </span><span class="kn">import</span> <span class="n">_get_code</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">y.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContractNotVerified</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CHAINID</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">TxGroupDbid</span><span class="p">,</span> <span class="n">TxGroupName</span>
+
+
+<span class="n">SQLITE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">))</span> <span class="o">/</span> <span class="s2">&quot;.dao-treasury&quot;</span>
+<span class="sd">&quot;&quot;&quot;Path to the directory in the user&#39;s home where the DAO treasury SQLite database is stored.&quot;&quot;&quot;</span>
+
+<span class="n">SQLITE_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">_INSERT_THREAD</span> <span class="o">=</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">_SORT_THREAD</span> <span class="o">=</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">_SORT_SEMAPHORE</span> <span class="o">=</span> <span class="n">Semaphore</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">_UTC</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;dao_treasury.db&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="BadToken">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.BadToken">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BadToken</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when a token contract returns invalid metadata.</span>
+
+<span class="sd">    This exception is thrown if the token name or symbol is empty</span>
+<span class="sd">    or cannot be decoded.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; raise BadToken(&quot;symbol for 0x0 is &#39;&#39;&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<span class="c1"># makes type checking work, see below for info:</span>
+<span class="c1"># https://pypi.org/project/pony-stubs/</span>
+<span class="n">DbEntity</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Entity</span>
+
+
+<div class="viewcode-block" id="Chain">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Chain">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Chain</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pony ORM entity representing a blockchain network.</span>
+
+<span class="sd">    Stores human-readable network names and numeric chain IDs for reporting.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; Chain.get_dbid(1)  # Ethereum Mainnet</span>
+<span class="sd">        1</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`get_or_insert`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;chains&quot;</span>
+
+    <span class="n">chain_dbid</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-incremented primary key for the chains table.&quot;&quot;&quot;</span>
+
+    <span class="n">chain_name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of the blockchain network, e.g., &#39;Mainnet&#39;, &#39;Polygon&#39;.&quot;&quot;&quot;</span>
+
+    <span class="n">chainid</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Numeric chain ID matching the connected RPC via :data:`~y.constants.CHAINID`.&quot;&quot;&quot;</span>
+
+    <span class="n">addresses</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;chain&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Relationship to address records on this chain.&quot;&quot;&quot;</span>
+
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;chain&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Relationship to token records on this chain.&quot;&quot;&quot;</span>
+
+    <span class="n">treasury_txs</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Relationship to treasury transactions on this chain.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Chain.get_dbid">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Chain.get_dbid">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_dbid</span><span class="p">(</span><span class="n">chainid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">CHAINID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get or create the record for `chainid` and return its database ID.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            chainid: Numeric chain identifier (default uses active RPC via :data:`~y.constants.CHAINID`).</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Chain.get_dbid(1)</span>
+<span class="sd">            1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_or_insert</span><span class="p">(</span><span class="n">chainid</span><span class="p">)</span><span class="o">.</span><span class="n">chain_dbid</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
+
+
+<div class="viewcode-block" id="Chain.get_or_insert">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Chain.get_or_insert">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_or_insert</span><span class="p">(</span><span class="n">chainid</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Chain&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert a new chain record if it does not exist.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            chainid: Numeric chain identifier.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; chain = Chain.get_or_insert(1)</span>
+<span class="sd">            &gt;&gt;&gt; chain.chain_name</span>
+<span class="sd">            &#39;Mainnet&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">entity</span> <span class="o">=</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">chainid</span><span class="o">=</span><span class="n">chainid</span><span class="p">)</span> <span class="ow">or</span> <span class="n">Chain</span><span class="p">(</span>
+            <span class="n">chain_name</span><span class="o">=</span><span class="n">Network</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">chainid</span><span class="p">),</span>
+            <span class="n">chainid</span><span class="o">=</span><span class="n">chainid</span><span class="p">,</span>
+            <span class="c1"># TODO: either remove this or implement it when the dash pieces are together</span>
+            <span class="c1"># victoria_metrics_label=Network.label(chainid),</span>
+        <span class="p">)</span>
+        <span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">entity</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Address">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Address</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pony ORM entity representing an on-chain address.</span>
+
+<span class="sd">    Records both contract and externally owned addresses for tracing funds.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; Address.get_dbid(&quot;0x0000000000000000000000000000000000000000&quot;)</span>
+<span class="sd">        1</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`get_or_insert`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;addresses&quot;</span>
+
+    <span class="n">address_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-incremented primary key for the addresses table.&quot;&quot;&quot;</span>
+
+    <span class="n">chain</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Chain</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;addresses&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reference to the chain on which this address resides.&quot;&quot;&quot;</span>
+
+    <span class="n">address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checksum string of the on-chain address.&quot;&quot;&quot;</span>
+
+    <span class="n">nickname</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional human-readable label (e.g., contract name or token name).&quot;&quot;&quot;</span>
+
+    <span class="n">is_contract</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Flag indicating whether the address is a smart contract.&quot;&quot;&quot;</span>
+
+    <span class="n">composite_key</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">chain</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">is_contract</span><span class="p">,</span> <span class="n">chain</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+        <span class="n">token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Token&quot;</span><span class="p">]</span>
+        <span class="n">treasury_tx_from</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">]</span>
+        <span class="n">treasury_tx_to</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">]</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional back-reference to a Token if this address is one.&quot;&quot;&quot;</span>
+    <span class="c1"># partners_tx = Set(&#39;PartnerHarvestEvent&#39;, reverse=&#39;wrapper&#39;, lazy=True)</span>
+
+    <span class="n">treasury_tx_from</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;from_address&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for transactions sent from this address.&quot;&quot;&quot;</span>
+
+    <span class="n">treasury_tx_to</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;to_address&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for transactions sent to this address.&quot;&quot;&quot;</span>
+
+    <span class="n">streams_from</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;from_address&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">streams_to</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;to_address&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;contract&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;address&quot;, lazy=True)</span>
+    <span class="c1"># vests_received = Set(&quot;VestingEscrow&quot;, reverse=&quot;recipient&quot;, lazy=True)</span>
+    <span class="c1"># vests_funded = Set(&quot;VestingEscrow&quot;, reverse=&quot;funder&quot;, lazy=True)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="s2">&quot;Token&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># type: ignore [override]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">CHAINID</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">chainid</span> <span class="ow">and</span> <span class="n">other</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Token</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">address_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address_id</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="fm">__hash__</span> <span class="o">=</span> <span class="n">DbEntity</span><span class="o">.</span><span class="fm">__hash__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contract</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contract</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Contract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Address.get_dbid">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address.get_dbid">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_dbid</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">HexAddress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the DB ID for an address, inserting if necessary.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            address: Hex string of the address (any case, any prefix).</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Address.get_dbid(&quot;0x0000000000000000000000000000000000000000&quot;)</span>
+<span class="sd">            1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Address</span><span class="o">.</span><span class="n">get_or_insert</span><span class="p">(</span><span class="n">address</span><span class="p">)</span><span class="o">.</span><span class="n">address_id</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
+
+
+<div class="viewcode-block" id="Address.get_or_insert">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address.get_or_insert">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_or_insert</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">HexAddress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Address&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert or fetch an :class:`~dao_treasury.db.Address` for `address`.</span>
+
+<span class="sd">        If the address has on-chain code, attempts to label it using</span>
+<span class="sd">        the verified contract name or fallback label.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            address: Hex address string.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; addr = Address.get_or_insert(&quot;0x0000000000000000000000000000000000000000&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; addr.is_contract</span>
+<span class="sd">            False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">checksum_address</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">to_address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+        <span class="n">chain_dbid</span> <span class="o">=</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">entity</span> <span class="o">:=</span> <span class="n">Address</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">chain</span><span class="o">=</span><span class="n">chain_dbid</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">checksum_address</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">entity</span>  <span class="c1"># type: ignore [no-any-return]</span>
+
+        <span class="k">if</span> <span class="n">_get_code</span><span class="p">(</span><span class="n">checksum_address</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">&quot;0x&quot;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nickname</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Contract: </span><span class="si">{</span><span class="n">Contract</span><span class="p">(</span><span class="n">checksum_address</span><span class="p">)</span><span class="o">.</span><span class="n">_build</span><span class="p">[</span><span class="s1">&#39;contractName&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="n">ContractNotVerified</span><span class="p">:</span>
+                <span class="n">nickname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Non-Verified Contract: </span><span class="si">{</span><span class="n">checksum_address</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">Address</span><span class="p">(</span>
+                <span class="n">chain</span><span class="o">=</span><span class="n">chain_dbid</span><span class="p">,</span>
+                <span class="n">address</span><span class="o">=</span><span class="n">checksum_address</span><span class="p">,</span>
+                <span class="n">nickname</span><span class="o">=</span><span class="n">nickname</span><span class="p">,</span>
+                <span class="n">is_contract</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">Address</span><span class="p">(</span>
+                <span class="n">chain</span><span class="o">=</span><span class="n">chain_dbid</span><span class="p">,</span>
+                <span class="n">address</span><span class="o">=</span><span class="n">checksum_address</span><span class="p">,</span>
+                <span class="n">is_contract</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">commit</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">entity</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
+
+
+<div class="viewcode-block" id="Address.set_nickname">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address.set_nickname">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_nickname</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">HexAddress</span><span class="p">,</span> <span class="n">nickname</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nickname</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide an actual string&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="n">entity</span> <span class="o">=</span> <span class="n">Address</span><span class="o">.</span><span class="n">get_or_insert</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">entity</span><span class="o">.</span><span class="n">nickname</span> <span class="o">==</span> <span class="n">nickname</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">if</span> <span class="n">entity</span><span class="o">.</span><span class="n">nickname</span><span class="p">:</span>
+                <span class="n">old</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">nickname</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="n">nickname</span>
+                <span class="n">commit</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> nickname changed from </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">nickname</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="n">nickname</span>
+                <span class="n">commit</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> nickname set to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">nickname</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Address.set_nicknames">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Address.set_nicknames">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_nicknames</span><span class="p">(</span><span class="n">nicknames</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">HexAddress</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">address</span><span class="p">,</span> <span class="n">nickname</span> <span class="ow">in</span> <span class="n">nicknames</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">Address</span><span class="o">.</span><span class="n">set_nickname</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">nickname</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="n">UNI_V3_POS</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">Network</span><span class="o">.</span><span class="n">Mainnet</span><span class="p">:</span> <span class="s2">&quot;0xC36442b4a4522E871399CD717aBDD847Ab11FE88&quot;</span><span class="p">,</span>
+<span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CHAINID</span><span class="p">,</span> <span class="s2">&quot;not on this chain&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_hex_to_string</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="n">HexString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decode a padded HexString to UTF-8, trimming trailing zero bytes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        h: The HexString instance from an ERC-20 contract.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; _hex_to_string(HexString(b&#39;0x5465737400&#39;, &#39;bytes32&#39;))</span>
+<span class="sd">        &#39;Test&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">+=</span> <span class="s2">&quot;0&quot;</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Token">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Token">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Token</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pony ORM entity representing an ERC-20 token or native coin placeholder.</span>
+
+<span class="sd">    Stores symbol, name, and decimals for value scaling.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; Token.get_dbid(&quot;0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&quot;)</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; tok = Token.get_or_insert(&quot;0x6B175474E89094C44Da98b954EedeAC495271d0F&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; tok.symbol</span>
+<span class="sd">        &#39;DAI&#39;</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`scale_value`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;tokens&quot;</span>
+
+    <span class="n">token_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-incremented primary key for the tokens table.&quot;&quot;&quot;</span>
+
+    <span class="n">chain</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Chain</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key linking to :class:`~dao_treasury.db.Chain`.&quot;&quot;&quot;</span>
+
+    <span class="n">symbol</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Short ticker symbol for the token.&quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Full human-readable name of the token.&quot;&quot;&quot;</span>
+
+    <span class="n">decimals</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of decimals used for value scaling.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+        <span class="n">treasury_tx</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">]</span>
+
+    <span class="n">treasury_tx</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for treasury transactions involving this token.&quot;&quot;&quot;</span>
+    <span class="c1"># partner_harvest_event = Set(&#39;PartnerHarvestEvent&#39;, reverse=&quot;vault&quot;, lazy=True)</span>
+
+    <span class="n">address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;address_id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the address record for this token contract.&quot;&quot;&quot;</span>
+
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;token&quot;, lazy=True)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">Address</span><span class="p">,</span> <span class="n">ChecksumAddress</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># type: ignore [override]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">==</span> <span class="n">other</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Address</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">address_id</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="fm">__hash__</span> <span class="o">=</span> <span class="n">DbEntity</span><span class="o">.</span><span class="fm">__hash__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contract</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contract</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Contract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Base for division according to `decimals`, e.g., `10**decimals`.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; t = Token.get_or_insert(&quot;0x...&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; t.scale</span>
+<span class="sd">            1000000000000000000</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">10</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">decimals</span>  <span class="c1"># type: ignore [no-any-return]</span>
+
+<div class="viewcode-block" id="Token.scale_value">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Token.scale_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert an integer token amount into a Decimal accounting for `decimals`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value: Raw integer on-chain amount.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; t = Token.get_or_insert(&quot;0x...&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; t.scale_value(1500000000000000000)</span>
+<span class="sd">            Decimal(&#39;1.5&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
+
+
+<div class="viewcode-block" id="Token.get_dbid">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Token.get_dbid">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_dbid</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">HexAddress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get or insert a `Token` record and return its database ID.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            address: Token contract address or native coin placeholder.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Token.get_dbid(&quot;0x6B175474E89094C44Da98b954EedeAC495271d0F&quot;)</span>
+<span class="sd">            2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Token</span><span class="o">.</span><span class="n">get_or_insert</span><span class="p">(</span><span class="n">address</span><span class="p">)</span><span class="o">.</span><span class="n">token_id</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
+
+
+<div class="viewcode-block" id="Token.get_or_insert">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Token.get_or_insert">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_or_insert</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n">HexAddress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Token&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert or fetch a token record from the chain, resolving metadata on-chain.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            address: ERC-20 contract address or native coin placeholder.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; Token.get_or_insert(&quot;0x6B175474E89094C44Da98b954EedeAC495271d0F&quot;)</span>
+<span class="sd">            &lt;Token ...&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">address_entity</span> <span class="o">=</span> <span class="n">Address</span><span class="o">.</span><span class="n">get_or_insert</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="o">:=</span> <span class="n">Token</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">address_entity</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">token</span>  <span class="c1"># type: ignore [no-any-return]</span>
+
+        <span class="n">address</span> <span class="o">=</span> <span class="n">address_entity</span><span class="o">.</span><span class="n">address</span>
+        <span class="k">if</span> <span class="n">address</span> <span class="o">==</span> <span class="n">EEE_ADDRESS</span><span class="p">:</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span> <span class="o">=</span> <span class="p">{</span><span class="n">Network</span><span class="o">.</span><span class="n">Mainnet</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;Ethereum&quot;</span><span class="p">,</span> <span class="s2">&quot;ETH&quot;</span><span class="p">)}[</span><span class="n">chain</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+            <span class="n">decimals</span> <span class="o">=</span> <span class="mi">18</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO: use erc20 class from async context before entering this func</span>
+            <span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;(Unknown)&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">symbol</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">symbol</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;(Unknown)&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">decimals</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">decimals</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">decimals</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># MKR contract returns name and symbol as bytes32 which is converted to a brownie HexString</span>
+        <span class="c1"># try to decode it</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">HexString</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">_hex_to_string</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">HexString</span><span class="p">):</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">_hex_to_string</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">BadToken</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;name for </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">symbol</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">BadToken</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;symbol for </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">address</span> <span class="o">==</span> <span class="n">UNI_V3_POS</span> <span class="ow">or</span> <span class="n">decimals</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">decimals</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># update address nickname for token</span>
+        <span class="k">if</span> <span class="n">address_entity</span><span class="o">.</span><span class="n">nickname</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">address_entity</span><span class="o">.</span><span class="n">nickname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
+            <span class="s2">&quot;Contract: &quot;</span>
+        <span class="p">):</span>
+            <span class="c1"># Don&#39;t overwrite any intentionally set nicknames, if applicable</span>
+            <span class="n">address_entity</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Token: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">token</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span>
+            <span class="n">chain</span><span class="o">=</span><span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(),</span>
+            <span class="n">address</span><span class="o">=</span><span class="n">address_entity</span><span class="o">.</span><span class="n">address_id</span><span class="p">,</span>
+            <span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">decimals</span><span class="o">=</span><span class="n">decimals</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">token</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="TxGroup">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TxGroup">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TxGroup</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pony ORM entity for hierarchical transaction groups.</span>
+
+<span class="sd">    Used to categorize treasury transactions into nested buckets.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; gid = TxGroup.get_dbid(&quot;Revenue&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; group = TxGroup.get_or_insert(&quot;Revenue&quot;, None)</span>
+<span class="sd">        &gt;&gt;&gt; group.full_string</span>
+<span class="sd">        &#39;Revenue&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;txgroups&quot;</span>
+
+    <span class="n">txgroup_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-incremented primary key for transaction groups.&quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of the grouping category, e.g., &#39;Revenue&#39;, &#39;Expenses&#39;.&quot;&quot;&quot;</span>
+
+    <span class="n">treasury_tx</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for treasury transactions assigned to this group.&quot;&quot;&quot;</span>
+
+    <span class="n">parent_txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;child_txgroups&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional reference to a parent group for nesting.&quot;&quot;&quot;</span>
+
+    <span class="n">composite_key</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_txgroup</span><span class="p">)</span>
+
+    <span class="n">child_txgroups</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;parent_txgroup&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set of nested child groups.&quot;&quot;&quot;</span>
+
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># TODO: implement this</span>
+    <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;txgroup&quot;, lazy=True)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fullname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the colon-delimited path from root to this group.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; root = TxGroup.get_or_insert(&quot;Revenue&quot;, None)</span>
+<span class="sd">            &gt;&gt;&gt; child = TxGroup.get_or_insert(&quot;Interest&quot;, root)</span>
+<span class="sd">            &gt;&gt;&gt; child.full_string</span>
+<span class="sd">            &#39;Revenue:Interest&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">retval</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">while</span> <span class="n">t</span><span class="o">.</span><span class="n">parent_txgroup</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">parent_txgroup</span>
+            <span class="n">retval</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">retval</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">retval</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">top_txgroup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;TxGroup&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the top-level ancestor in this group’s hierarchy.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent_txgroup</span><span class="o">.</span><span class="n">top_txgroup</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent_txgroup</span> <span class="k">else</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="TxGroup.get_dbid">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TxGroup.get_dbid">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_dbid</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TxGroupDbid</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get or insert a transaction group and return its database ID.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Category name.</span>
+<span class="sd">            parent: Optional parent :class:`~dao_treasury.db.TxGroup`.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; TxGroup.get_dbid(&quot;Expenses&quot;, None)</span>
+<span class="sd">            3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">TxGroupDbid</span><span class="p">(</span><span class="n">TxGroup</span><span class="o">.</span><span class="n">get_or_insert</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span><span class="o">.</span><span class="n">txgroup_id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TxGroup.get_fullname">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TxGroup.get_fullname">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_fullname</span><span class="p">(</span><span class="n">dbid</span><span class="p">:</span> <span class="n">TxGroupDbid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TxGroupName</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">txgroup</span> <span class="o">:=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">txgroup_id</span><span class="o">=</span><span class="n">dbid</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">txgroup</span><span class="o">.</span><span class="n">fullname</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TxGroup[</span><span class="si">{</span><span class="n">dbid</span><span class="si">}</span><span class="s2">] not found&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TxGroup.get_or_insert">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TxGroup.get_or_insert">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_or_insert</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;TxGroup&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert or fetch a transaction group.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Category name.</span>
+<span class="sd">            parent: Optional parent group.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; TxGroup.get_or_insert(&quot;Expenses&quot;, None).name</span>
+<span class="sd">            &#39;Expenses&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">txgroup</span> <span class="o">:=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_txgroup</span><span class="o">=</span><span class="n">parent</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">txgroup</span>  <span class="c1"># type: ignore [no-any-return]</span>
+        <span class="n">txgroup</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_txgroup</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">commit</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">TransactionIntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">txgroup</span> <span class="o">:=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_txgroup</span><span class="o">=</span><span class="n">parent</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">txgroup</span>  <span class="c1"># type: ignore [no-any-return]</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">return</span> <span class="n">txgroup</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="get_transaction">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.get_transaction">[docs]</a>
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_transaction</span><span class="p">(</span><span class="n">txhash</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TransactionReceipt</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetch and cache a transaction receipt from the connected chain.</span>
+
+<span class="sd">    Wraps :meth:`brownie.network.chain.Chain.get_transaction`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txhash: Hex string of the transaction hash.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; get_transaction(&quot;0xabcde...&quot;)</span>
+<span class="sd">        &lt;Transaction &#39;0xabcde...&#39;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">get_transaction</span><span class="p">(</span><span class="n">txhash</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="TreasuryTx">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TreasuryTx">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TreasuryTx</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pony ORM entity for on-chain treasury transactions.</span>
+
+<span class="sd">    Represents individual token or native transfers with pricing, grouping, and gas data.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; # After inserting, fetch sorted records</span>
+<span class="sd">        &gt;&gt;&gt; with db_session:</span>
+<span class="sd">        ...     txs = TreasuryTx.select(lambda tx: tx.txgroup == TxGroup.get_dbid(&quot;Revenue&quot;))</span>
+<span class="sd">        ...     for tx in txs:</span>
+<span class="sd">        ...         print(tx.hash, tx.value_usd)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;treasury_txs&quot;</span>
+
+    <span class="n">treasury_tx_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-incremented primary key for treasury transactions.&quot;&quot;&quot;</span>
+
+    <span class="n">chain</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Chain</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the network where the transaction occurred.&quot;&quot;&quot;</span>
+
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Block timestamp as Unix epoch seconds.&quot;&quot;&quot;</span>
+
+    <span class="n">block</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Block number of the transaction.&quot;&quot;&quot;</span>
+
+    <span class="nb">hash</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hex string of the transaction hash.&quot;&quot;&quot;</span>
+
+    <span class="n">log_index</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Log index within the block (None for native transfers).&quot;&quot;&quot;</span>
+
+    <span class="n">composite_key</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">log_index</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Token</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;treasury_tx&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;token_id&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the token record used in the transfer.&quot;&quot;&quot;</span>
+
+    <span class="n">from_address</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span>
+        <span class="n">Address</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;treasury_tx_from&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;from&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to sender address record.&quot;&quot;&quot;</span>
+
+    <span class="n">to_address</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;treasury_tx_to&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to recipient address record.&quot;&quot;&quot;</span>
+
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;On-chain transfer amount as a Decimal with fixed precision.&quot;&quot;&quot;</span>
+
+    <span class="n">price</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Token price at the time of transfer (if available).&quot;&quot;&quot;</span>
+
+    <span class="n">value_usd</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;USD value of the transfer, computed as `amount * price`.&quot;&quot;&quot;</span>
+
+    <span class="n">gas_used</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gas units consumed by this transaction (native transfers only).&quot;&quot;&quot;</span>
+
+    <span class="n">gas_price</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gas price paid, in native token units (native transfers only).&quot;&quot;&quot;</span>
+
+    <span class="n">txgroup</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span>
+        <span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;treasury_tx&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;txgroup_id&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the categorization group.&quot;&quot;&quot;</span>
+
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_nickname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Human-readable label for the recipient address, if any.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">to_address</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_address</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">to_address</span><span class="o">.</span><span class="n">nickname</span> <span class="ow">or</span> <span class="n">to_address</span><span class="o">.</span><span class="n">address</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_nickname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Human-readable label for the sender address.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">nickname</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">address</span>  <span class="c1"># type: ignore [union-attr]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ticker symbol for the transferred token.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">symbol</span>  <span class="c1"># type: ignore [no-any-return]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Decoded event logs for this transaction.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="n">events</span>
+
+<div class="viewcode-block" id="TreasuryTx.get_events">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TreasuryTx.get_events">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_EventItem</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="n">event_name</span><span class="p">]</span>
+        <span class="k">except</span> <span class="n">EventLookupError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># This happens sometimes due to a busted abi and hopefully shouldnt impact you</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;&#39;components&#39;&quot;</span><span class="p">:</span>
+                <span class="k">raise</span>
+        <span class="k">return</span> <span class="n">_EventItem</span><span class="p">(</span><span class="n">event_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[],</span> <span class="p">())</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_transaction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TransactionReceipt</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cached transaction receipt object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">get_transaction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hash</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TreasuryTx.insert">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TreasuryTx.insert">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">entry</span><span class="p">:</span> <span class="n">LedgerEntry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asynchronously insert and sort a ledger entry.</span>
+
+<span class="sd">        Converts a :class:`~eth_portfolio.structs.LedgerEntry` into a</span>
+<span class="sd">        :class:`~dao_treasury.db.TreasuryTx` record, then applies advanced sorting.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entry: A ledger entry representing a token or internal transfer.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; import asyncio, eth_portfolio.structs as s</span>
+<span class="sd">            &gt;&gt;&gt; asyncio.run(TreasuryTx.insert(s.TokenTransfer(...)))</span>
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`__insert`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="k">await</span> <span class="n">get_block_timestamp_async</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">txid</span> <span class="o">:=</span> <span class="k">await</span> <span class="n">_INSERT_THREAD</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">TreasuryTx</span><span class="o">.</span><span class="n">__insert</span><span class="p">,</span> <span class="n">entry</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">_SORT_SEMAPHORE</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting</span><span class="w"> </span><span class="kn">import</span> <span class="n">sort_advanced</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="n">sort_advanced</span><span class="p">(</span><span class="n">TreasuryTx</span><span class="p">[</span><span class="n">txid</span><span class="p">])</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="o">*</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="n">entry</span>
+                    <span class="k">raise</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_set_txgroup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txgroup_dbid</span><span class="p">:</span> <span class="n">TxGroupDbid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">_SORT_THREAD</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">TreasuryTx</span><span class="o">.</span><span class="n">__set_txgroup</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">treasury_tx_id</span><span class="p">,</span> <span class="n">txgroup_dbid</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__insert</span><span class="p">(</span><span class="n">entry</span><span class="p">:</span> <span class="n">LedgerEntry</span><span class="p">,</span> <span class="n">ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Synchronously insert a ledger entry record into the database.</span>
+
+<span class="sd">        Handles both :class:`TokenTransfer` and other ledger entry types,</span>
+<span class="sd">        populates pricing fields, and resolves grouping via basic sorting.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            entry: Ledger entry to insert.</span>
+<span class="sd">            ts: Unix timestamp of the block.</span>
+
+<span class="sd">        If a uniqueness conflict arises, delegates to</span>
+<span class="sd">        :func:`_validate_integrity_error`.  Returns the new record ID</span>
+<span class="sd">        if further advanced sorting is required.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">TokenTransfer</span><span class="p">):</span>
+                    <span class="n">token</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">token_address</span><span class="p">)</span>
+                    <span class="n">log_index</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">log_index</span>
+                    <span class="n">gas</span><span class="p">,</span> <span class="n">gas_price</span><span class="p">,</span> <span class="n">gas_used</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">token</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">EEE_ADDRESS</span><span class="p">)</span>
+                    <span class="n">log_index</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="n">gas</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">gas</span>
+                    <span class="n">gas_used</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">entry</span><span class="o">.</span><span class="n">gas_used</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">InternalTransfer</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="p">)</span>
+                    <span class="n">gas_price</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">entry</span><span class="o">.</span><span class="n">gas_price</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">Transaction</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">to_address</span> <span class="o">:=</span> <span class="n">entry</span><span class="o">.</span><span class="n">to_address</span><span class="p">:</span>
+                    <span class="n">to_address</span> <span class="o">=</span> <span class="n">Address</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">to_address</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">from_address</span> <span class="o">:=</span> <span class="n">entry</span><span class="o">.</span><span class="n">from_address</span><span class="p">:</span>
+                    <span class="n">from_address</span> <span class="o">=</span> <span class="n">Address</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">from_address</span><span class="p">)</span>
+
+                <span class="c1"># TODO: resolve this circ import</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting</span><span class="w"> </span><span class="kn">import</span> <span class="n">sort_basic</span>
+
+                <span class="n">txgroup_dbid</span> <span class="o">=</span> <span class="n">sort_basic</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+
+                <span class="n">entity</span> <span class="o">=</span> <span class="n">TreasuryTx</span><span class="p">(</span>
+                    <span class="n">chain</span><span class="o">=</span><span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">CHAINID</span><span class="p">),</span>
+                    <span class="n">block</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+                    <span class="n">timestamp</span><span class="o">=</span><span class="n">ts</span><span class="p">,</span>
+                    <span class="nb">hash</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">hash</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span>
+                    <span class="n">log_index</span><span class="o">=</span><span class="n">log_index</span><span class="p">,</span>
+                    <span class="n">from_address</span><span class="o">=</span><span class="n">from_address</span><span class="p">,</span>
+                    <span class="n">to_address</span><span class="o">=</span><span class="n">to_address</span><span class="p">,</span>
+                    <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+                    <span class="n">amount</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="n">price</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">price</span><span class="p">,</span>
+                    <span class="n">value_usd</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">value_usd</span><span class="p">,</span>
+                    <span class="c1"># TODO: nuke db and add this column</span>
+                    <span class="c1"># gas = gas,</span>
+                    <span class="n">gas_used</span><span class="o">=</span><span class="n">gas_used</span><span class="p">,</span>
+                    <span class="n">gas_price</span><span class="o">=</span><span class="n">gas_price</span><span class="p">,</span>
+                    <span class="n">txgroup</span><span class="o">=</span><span class="n">txgroup_dbid</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="c1"># we must commit here or else dbid below will be `None`.</span>
+                <span class="n">commit</span><span class="p">()</span>
+                <span class="n">dbid</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">treasury_tx_id</span>
+        <span class="k">except</span> <span class="n">InterfaceError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="n">e</span><span class="p">,</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;chain&quot;</span><span class="p">:</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">CHAINID</span><span class="p">),</span>
+                    <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+                    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+                    <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">hash</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span>
+                    <span class="s2">&quot;log_index&quot;</span><span class="p">:</span> <span class="n">log_index</span><span class="p">,</span>
+                    <span class="s2">&quot;from_address&quot;</span><span class="p">:</span> <span class="n">from_address</span><span class="p">,</span>
+                    <span class="s2">&quot;to_address&quot;</span><span class="p">:</span> <span class="n">to_address</span><span class="p">,</span>
+                    <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+                    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">price</span><span class="p">,</span>
+                    <span class="s2">&quot;value_usd&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value_usd</span><span class="p">,</span>
+                    <span class="c1"># TODO: nuke db and add this column</span>
+                    <span class="c1"># gas = gas,</span>
+                    <span class="s2">&quot;gas_used&quot;</span><span class="p">:</span> <span class="n">gas_used</span><span class="p">,</span>
+                    <span class="s2">&quot;gas_price&quot;</span><span class="p">:</span> <span class="n">gas_price</span><span class="p">,</span>
+                    <span class="s2">&quot;txgroup&quot;</span><span class="p">:</span> <span class="n">txgroup_dbid</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">except</span> <span class="n">InvalidOperation</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;chain&quot;</span><span class="p">:</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">CHAINID</span><span class="p">),</span>
+                    <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+                    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">ts</span><span class="p">,</span>
+                    <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">hash</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span>
+                    <span class="s2">&quot;log_index&quot;</span><span class="p">:</span> <span class="n">log_index</span><span class="p">,</span>
+                    <span class="s2">&quot;from_address&quot;</span><span class="p">:</span> <span class="n">from_address</span><span class="p">,</span>
+                    <span class="s2">&quot;to_address&quot;</span><span class="p">:</span> <span class="n">to_address</span><span class="p">,</span>
+                    <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+                    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">price</span><span class="p">,</span>
+                    <span class="s2">&quot;value_usd&quot;</span><span class="p">:</span> <span class="n">entry</span><span class="o">.</span><span class="n">value_usd</span><span class="p">,</span>
+                    <span class="c1"># TODO: nuke db and add this column</span>
+                    <span class="c1"># gas = gas,</span>
+                    <span class="s2">&quot;gas_used&quot;</span><span class="p">:</span> <span class="n">gas_used</span><span class="p">,</span>
+                    <span class="s2">&quot;gas_price&quot;</span><span class="p">:</span> <span class="n">gas_price</span><span class="p">,</span>
+                    <span class="s2">&quot;txgroup&quot;</span><span class="p">:</span> <span class="n">txgroup_dbid</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">except</span> <span class="n">TransactionIntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_validate_integrity_error</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">log_index</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="o">*</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="n">entry</span>
+            <span class="k">raise</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">txgroup_dbid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span>
+                <span class="n">must_sort_inbound_txgroup_dbid</span><span class="p">,</span>
+                <span class="n">must_sort_outbound_txgroup_dbid</span><span class="p">,</span>
+            <span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="s2">&quot;Sorted </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="p">,</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_fullname</span><span class="p">(</span><span class="n">txgroup_dbid</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">dbid</span>  <span class="c1"># type: ignore [no-any-return]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__set_txgroup</span><span class="p">(</span><span class="n">treasury_tx_dbid</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">txgroup_dbid</span><span class="p">:</span> <span class="n">TxGroupDbid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="n">TreasuryTx</span><span class="p">[</span><span class="n">treasury_tx_dbid</span><span class="p">]</span><span class="o">.</span><span class="n">txgroup</span> <span class="o">=</span> <span class="n">txgroup_dbid</span>
+            <span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<span class="n">_stream_metadata_cache</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">HexStr</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">date</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="Stream">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Stream</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;streams&quot;</span>
+    <span class="n">stream_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
+    <span class="n">start_block</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">end_block</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">from_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_from&quot;</span><span class="p">)</span>
+    <span class="n">to_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_to&quot;</span><span class="p">)</span>
+    <span class="n">reason</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">amount_per_second</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Active&quot;</span><span class="p">)</span>
+    <span class="n">txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
+
+    <span class="n">streamed_funds</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;StreamedFunds&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">scale</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">20</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_block</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Active&quot;</span><span class="p">,</span> <span class="s2">&quot;Paused&quot;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;Active&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;Stopped&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">amount_per_minute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_per_second</span> <span class="o">*</span> <span class="mi">60</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">amount_per_hour</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_per_minute</span> <span class="o">*</span> <span class="mi">60</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">amount_per_day</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_per_hour</span> <span class="o">*</span> <span class="mi">24</span>
+
+<div class="viewcode-block" id="Stream.check_closed">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.check_closed">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_closed</span><span class="p">(</span><span class="n">stream_id</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">is_last_day</span> <span class="k">for</span> <span class="n">sf</span> <span class="ow">in</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span><span class="o">.</span><span class="n">streamed_funds</span><span class="p">)</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_start_and_end</span><span class="p">(</span><span class="n">stream_dbid</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
+        <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_dbid</span><span class="p">]</span>
+            <span class="n">start_date</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">_UTC</span><span class="p">)</span>
+            <span class="c1"># convert start to datetime</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">time</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">_UTC</span><span class="p">),</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">_UTC</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">end_block</span><span class="p">:</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="n">stream</span><span class="o">.</span><span class="n">end_block</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span>
+
+<div class="viewcode-block" id="Stream.stop_stream">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.stop_stream">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_block</span> <span class="o">=</span> <span class="n">block</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Stopped&quot;</span></div>
+
+
+<div class="viewcode-block" id="Stream.pause">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.pause">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Paused&quot;</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_token_and_start_date</span><span class="p">(</span><span class="n">stream_id</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">date</span><span class="p">]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_stream_metadata_cache</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+                <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+                <span class="n">token</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address</span>
+                <span class="n">start_date</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">start_date</span>
+            <span class="n">_stream_metadata_cache</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span><span class="p">,</span> <span class="n">start_date</span>
+            <span class="k">return</span> <span class="n">token</span><span class="p">,</span> <span class="n">start_date</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stream_contract</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contract</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Contract</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contract</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_date</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">date</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_block</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Stream.amount_withdrawable">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.amount_withdrawable">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">amount_withdrawable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream_contract</span><span class="o">.</span><span class="n">withdrawable</span><span class="o">.</span><span class="n">coroutine</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">to_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amount_per_second</span><span class="p">),</span>
+            <span class="n">block_identifier</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Stream.print">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.print">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">symbol</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> per second: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount_per_second</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> per day: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">amount_per_day</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="StreamedFunds">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StreamedFunds</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object represents one calendar day of tokens streamed for a particular stream.&quot;&quot;&quot;</span>
+
+    <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;streamed_funds&quot;</span>
+
+    <span class="n">date</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Stream</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streamed_funds&quot;</span><span class="p">)</span>
+    <span class="n">PrimaryKey</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">value_usd</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">seconds_active</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">is_last_day</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+
+<div class="viewcode-block" id="StreamedFunds.get_entity">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds.get_entity">[docs]</a>
+    <span class="nd">@db_session</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_entity</span><span class="p">(</span><span class="n">stream_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;StreamedFunds&quot;</span><span class="p">:</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">StreamedFunds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StreamedFunds.create_entity">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds.create_entity">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="nd">@db_session</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_entity</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">stream_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">price</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">,</span>
+        <span class="n">seconds_active</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">is_last_day</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;StreamedFunds&quot;</span><span class="p">:</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">[</span><span class="n">stream_id</span><span class="p">]</span>
+        <span class="n">amount_streamed_today</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+            <span class="n">stream</span><span class="o">.</span><span class="n">amount_per_second</span> <span class="o">*</span> <span class="n">seconds_active</span> <span class="o">/</span> <span class="n">stream</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="mi">18</span>
+        <span class="p">)</span>
+        <span class="n">entity</span> <span class="o">=</span> <span class="n">StreamedFunds</span><span class="p">(</span>
+            <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+            <span class="n">amount</span><span class="o">=</span><span class="n">amount_streamed_today</span><span class="p">,</span>
+            <span class="n">price</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+            <span class="n">value_usd</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">amount_streamed_today</span> <span class="o">*</span> <span class="n">price</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+            <span class="n">seconds_active</span><span class="o">=</span><span class="n">seconds_active</span><span class="p">,</span>
+            <span class="n">is_last_day</span><span class="o">=</span><span class="n">is_last_day</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">entity</span></div>
+</div>
+
+
+
+<span class="n">db</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+    <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>  <span class="c1"># TODO: let user choose postgres with server connection params</span>
+    <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">SQLITE_DIR</span> <span class="o">/</span> <span class="s2">&quot;dao-treasury.sqlite&quot;</span><span class="p">),</span>
+    <span class="n">create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">db</span><span class="o">.</span><span class="n">generate_mapping</span><span class="p">(</span><span class="n">create_tables</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_set_address_nicknames_for_tokens</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set address.nickname for addresses belonging to tokens.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">select</span><span class="p">(</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">Address</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">token</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">a</span><span class="o">.</span><span class="n">nickname</span><span class="p">):</span>
+        <span class="n">address</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Token: </span><span class="si">{</span><span class="n">address</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="create_stream_ledger_view">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_stream_ledger_view">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_stream_ledger_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or replace the SQL view `stream_ledger` for streamed funds reporting.</span>
+
+<span class="sd">    This view joins streamed funds, streams, tokens, addresses, and txgroups</span>
+<span class="sd">    into a unified ledger of stream transactions.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; create_stream_ledger_view()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DROP VIEW IF EXISTS stream_ledger;&quot;&quot;&quot;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        create view stream_ledger as</span>
+<span class="sd">        SELECT  &#39;Mainnet&#39; as chain_name,</span>
+<span class="sd">                cast(strftime(&#39;%s&#39;, date || &#39; 00:00:00&#39;) as INTEGER) as timestamp,</span>
+<span class="sd">                NULL as block, </span>
+<span class="sd">                NULL as hash, </span>
+<span class="sd">                NULL as log_index, </span>
+<span class="sd">                symbol as token, </span>
+<span class="sd">                d.address AS &quot;from&quot;, </span>
+<span class="sd">                d.nickname as from_nickname, </span>
+<span class="sd">                e.address AS &quot;to&quot;, </span>
+<span class="sd">                e.nickname as to_nickname, </span>
+<span class="sd">                amount, </span>
+<span class="sd">                price, </span>
+<span class="sd">                value_usd, </span>
+<span class="sd">                txgroup.name as txgroup, </span>
+<span class="sd">                parent.name as parent_txgroup, </span>
+<span class="sd">                txgroup.txgroup_id</span>
+<span class="sd">        FROM streamed_funds a</span>
+<span class="sd">            LEFT JOIN streams b ON a.stream = b.stream_id</span>
+<span class="sd">            LEFT JOIN tokens c ON b.token = c.token_id</span>
+<span class="sd">            LEFT JOIN addresses d ON b.from_address = d.address_id</span>
+<span class="sd">            LEFT JOIN addresses e ON b.to_address = e.address_id</span>
+<span class="sd">            LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id</span>
+<span class="sd">            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_txgroup_hierarchy_view">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_txgroup_hierarchy_view">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_txgroup_hierarchy_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or replace the SQL view `txgroup_hierarchy` for recursive txgroup hierarchy.</span>
+
+<span class="sd">    This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,</span>
+<span class="sd">    matching the recursive CTE logic used in dashboards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS txgroup_hierarchy;&quot;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CREATE VIEW txgroup_hierarchy AS</span>
+<span class="sd">        WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (</span>
+<span class="sd">            SELECT txgroup_id, name AS top_category, parent_txgroup</span>
+<span class="sd">            FROM txgroups</span>
+<span class="sd">            WHERE parent_txgroup IS NULL</span>
+<span class="sd">            UNION ALL</span>
+<span class="sd">            SELECT child.txgroup_id, parent.top_category, child.parent_txgroup</span>
+<span class="sd">            FROM txgroups AS child</span>
+<span class="sd">            JOIN group_hierarchy AS parent</span>
+<span class="sd">                ON child.parent_txgroup = parent.txgroup_id</span>
+<span class="sd">        )</span>
+<span class="sd">        SELECT * FROM group_hierarchy;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_vesting_ledger_view">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_vesting_ledger_view">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_vesting_ledger_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or replace the SQL view `vesting_ledger` for vesting escrow reporting.</span>
+
+<span class="sd">    This view joins vested funds, vesting escrows, tokens, chains, addresses,</span>
+<span class="sd">    and txgroups to produce a vesting ledger.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; create_vesting_ledger_view()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DROP VIEW IF EXISTS vesting_ledger;</span>
+<span class="sd">        CREATE VIEW vesting_ledger AS</span>
+<span class="sd">        SELECT  d.chain_name, </span>
+<span class="sd">            CAST(date AS timestamp) AS &quot;timestamp&quot;,</span>
+<span class="sd">            cast(NULL as int) AS block,</span>
+<span class="sd">            NULL AS &quot;hash&quot;,</span>
+<span class="sd">            cast(NULL as int) AS &quot;log_index&quot;,</span>
+<span class="sd">            c.symbol AS &quot;token&quot;,</span>
+<span class="sd">            e.address AS &quot;from&quot;,</span>
+<span class="sd">            e.nickname as from_nickname,</span>
+<span class="sd">            f.address AS &quot;to&quot;,</span>
+<span class="sd">            f.nickname as to_nickname,</span>
+<span class="sd">            a.amount,</span>
+<span class="sd">            a.price,</span>
+<span class="sd">            a.value_usd,</span>
+<span class="sd">            g.name as txgroup,</span>
+<span class="sd">            h.name AS parent_txgroup,</span>
+<span class="sd">            g.txgroup_id</span>
+<span class="sd">        FROM vested_funds a </span>
+<span class="sd">        LEFT JOIN vesting_escrows b ON a.escrow = b.escrow_id</span>
+<span class="sd">        LEFT JOIN tokens c ON b.token = c.token_id</span>
+<span class="sd">        LEFT JOIN chains d ON c.chain = d.chain_dbid</span>
+<span class="sd">        LEFT JOIN addresses e ON b.address = e.address_id</span>
+<span class="sd">        LEFT JOIN addresses f ON b.recipient = f.address_id</span>
+<span class="sd">        LEFT JOIN txgroups g ON b.txgroup = g.txgroup_id</span>
+<span class="sd">        left JOIN txgroups h ON g.parent_txgroup = h.txgroup_id</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_general_ledger_view">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_general_ledger_view">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_general_ledger_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or replace the SQL view `general_ledger` aggregating all treasury transactions.</span>
+
+<span class="sd">    Joins chains, tokens, addresses, and txgroups into a single chronological ledger.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; create_general_ledger_view()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;drop VIEW IF EXISTS general_ledger&quot;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        create VIEW general_ledger as</span>
+<span class="sd">        select *</span>
+<span class="sd">        from (</span>
+<span class="sd">            SELECT treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS &quot;from&quot;, d.nickname as from_nickname, e.address AS &quot;to&quot;, e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id</span>
+<span class="sd">            FROM treasury_txs a</span>
+<span class="sd">                LEFT JOIN chains b ON a.chain = b.chain_dbid</span>
+<span class="sd">                LEFT JOIN tokens c ON a.token_id = c.token_id</span>
+<span class="sd">                LEFT JOIN addresses d ON a.&quot;from&quot; = d.address_id</span>
+<span class="sd">                LEFT JOIN addresses e ON a.&quot;to&quot; = e.address_id</span>
+<span class="sd">                LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id</span>
+<span class="sd">                LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id</span>
+<span class="sd">            UNION</span>
+<span class="sd">            SELECT -1, chain_name, timestamp, block, hash, log_index, token, &quot;from&quot;, from_nickname, &quot;to&quot;, to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id</span>
+<span class="sd">            FROM stream_ledger</span>
+<span class="sd">            --UNION</span>
+<span class="sd">            --SELECT -1, *</span>
+<span class="sd">            --FROM vesting_ledger</span>
+<span class="sd">        ) a</span>
+<span class="sd">        ORDER BY timestamp</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_unsorted_txs_view">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_unsorted_txs_view">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_unsorted_txs_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or replace the SQL view `unsorted_txs` for pending categorization.</span>
+
+<span class="sd">    Filters `general_ledger` for transactions still in &#39;Categorization Pending&#39;.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; create_unsorted_txs_view()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS unsorted_txs;&quot;</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CREATE VIEW unsorted_txs as</span>
+<span class="sd">        SELECT *</span>
+<span class="sd">        FROM general_ledger</span>
+<span class="sd">        WHERE txgroup = &#39;Categorization Pending&#39;</span>
+<span class="sd">        ORDER BY TIMESTAMP desc</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_monthly_pnl_view">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_monthly_pnl_view">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_monthly_pnl_view</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create or replace the SQL view `monthly_pnl` summarizing monthly profit and loss.</span>
+
+<span class="sd">    Aggregates categorized transactions by month and top-level category.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; create_monthly_pnl_view()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS monthly_pnl;&quot;</span><span class="p">)</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE VIEW monthly_pnl AS</span>
+<span class="s2">    WITH categorized AS (</span>
+<span class="s2">      SELECT</span>
+<span class="s2">        strftime(&#39;%Y-%m&#39;, datetime(t.timestamp, &#39;unixepoch&#39;)) AS month,</span>
+<span class="s2">        CASE</span>
+<span class="s2">          WHEN p.name IS NOT NULL THEN p.name</span>
+<span class="s2">          ELSE tg.name</span>
+<span class="s2">        END AS top_category,</span>
+<span class="s2">        --COALESCE(t.value_usd, 0) AS value_usd,</span>
+<span class="s2">        --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost</span>
+<span class="s2">      FROM treasury_txs t</span>
+<span class="s2">      JOIN txgroups tg ON t.txgroup = tg.txgroup_id</span>
+<span class="s2">      LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id</span>
+<span class="s2">      WHERE tg.name &lt;&gt; &#39;Ignore&#39;</span>
+<span class="s2">    )</span>
+<span class="s2">    SELECT</span>
+<span class="s2">      month,</span>
+<span class="s2">      SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) AS revenue,</span>
+<span class="s2">      SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) AS cost_of_revenue,</span>
+<span class="s2">      SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) AS expenses,</span>
+<span class="s2">      SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) AS other_income,</span>
+<span class="s2">      SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END) AS other_expense,</span>
+<span class="s2">      (</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) -</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) -</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) +</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) -</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">      ) AS net_profit</span>
+<span class="s2">    FROM categorized</span>
+<span class="s2">    GROUP BY month;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span></div>
+
+
+
+<span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+    <span class="n">create_stream_ledger_view</span><span class="p">()</span>
+    <span class="n">create_txgroup_hierarchy_view</span><span class="p">()</span>
+    <span class="c1"># create_vesting_ledger_view()</span>
+    <span class="n">create_general_ledger_view</span><span class="p">()</span>
+    <span class="n">create_unsorted_txs_view</span><span class="p">()</span>
+    <span class="c1"># create_monthly_pnl_view()</span>
+
+    <span class="n">must_sort_inbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Inbound)&quot;</span><span class="p">)</span>
+    <span class="n">must_sort_outbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Outbound)&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@db_session</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_validate_integrity_error</span><span class="p">(</span>
+    <span class="n">entry</span><span class="p">:</span> <span class="n">LedgerEntry</span><span class="p">,</span> <span class="n">log_index</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate that an existing TreasuryTx matches an attempted insert on conflict.</span>
+
+<span class="sd">    Raises AssertionError if any field deviates from the existing record.  Used</span>
+<span class="sd">    to resolve :exc:`pony.orm.TransactionIntegrityError`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        entry: The ledger entry that triggered the conflict.</span>
+<span class="sd">        log_index: The log index within the transaction.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; _validate_integrity_error(entry, 0)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">txhash</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">hash</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+    <span class="n">chain_dbid</span> <span class="o">=</span> <span class="n">Chain</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">()</span>
+    <span class="n">existing_object</span> <span class="o">=</span> <span class="n">TreasuryTx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">hash</span><span class="o">=</span><span class="n">txhash</span><span class="p">,</span> <span class="n">log_index</span><span class="o">=</span><span class="n">log_index</span><span class="p">,</span> <span class="n">chain</span><span class="o">=</span><span class="n">chain_dbid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">existing_object</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">existing_objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="n">TreasuryTx</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">tx</span><span class="p">:</span> <span class="n">tx</span><span class="o">.</span><span class="n">hash</span> <span class="o">==</span> <span class="n">txhash</span>
+                <span class="ow">and</span> <span class="n">tx</span><span class="o">.</span><span class="n">log_index</span> <span class="o">==</span> <span class="n">log_index</span>
+                <span class="ow">and</span> <span class="n">tx</span><span class="o">.</span><span class="n">chain</span> <span class="o">==</span> <span class="n">chain_dbid</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;unable to `.get` due to multiple entries: </span><span class="si">{</span><span class="n">existing_objects</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">entry</span><span class="o">.</span><span class="n">to_address</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">entry</span><span class="o">.</span><span class="n">to_address</span> <span class="o">==</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">to_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="p">(</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">to_address</span><span class="p">,</span>
+            <span class="n">existing_object</span><span class="o">.</span><span class="n">to_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">to_address</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">to_address</span><span class="p">,</span>
+            <span class="n">existing_object</span><span class="o">.</span><span class="n">to_address</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">entry</span><span class="o">.</span><span class="n">from_address</span> <span class="o">==</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="p">(</span>
+        <span class="n">entry</span><span class="o">.</span><span class="n">from_address</span><span class="p">,</span>
+        <span class="n">existing_object</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">entry</span><span class="o">.</span><span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="n">existing_object</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">amount</span><span class="p">],</span> <span class="p">(</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">existing_object</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;slight rounding error in value for TreasuryTx[</span><span class="si">%s</span><span class="s2">] due to sqlite decimal handling&quot;</span><span class="p">,</span>
+            <span class="n">existing_object</span><span class="o">.</span><span class="n">treasury_tx_id</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">entry</span><span class="o">.</span><span class="n">block_number</span> <span class="o">==</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">block</span><span class="p">,</span> <span class="p">(</span>
+        <span class="n">entry</span><span class="o">.</span><span class="n">block_number</span><span class="p">,</span>
+        <span class="n">existing_object</span><span class="o">.</span><span class="n">block</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">TokenTransfer</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">entry</span><span class="o">.</span><span class="n">token_address</span> <span class="o">==</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="p">(</span>
+            <span class="n">entry</span><span class="o">.</span><span class="n">token_address</span><span class="p">,</span>
+            <span class="n">existing_object</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">token</span> <span class="o">==</span> <span class="n">EEE_ADDRESS</span>
+    <span class="c1"># NOTE All good!</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">existing_object</span><span class="o">.</span><span class="n">treasury_tx_id</span>
+        <span class="k">if</span> <span class="n">existing_object</span><span class="o">.</span><span class="n">txgroup</span><span class="o">.</span><span class="n">txgroup_id</span>
+        <span class="ow">in</span> <span class="p">(</span>
+            <span class="n">must_sort_inbound_txgroup_dbid</span><span class="p">,</span>
+            <span class="n">must_sort_outbound_txgroup_dbid</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BobTheBuidler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
