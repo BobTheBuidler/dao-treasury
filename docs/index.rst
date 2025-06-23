@@ -12,7 +12,7 @@ DAO Treasury Documentation
    wallets
    sort_rules
    API Documentation <source/modules.rst>
-   transactions
+   dashboards
    contributing
 
 Indices and Tables
