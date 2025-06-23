@@ -119,13 +119,13 @@ class Chain(DbEntity):
     chainid = Required(int, unique=True)
     """Numeric chain ID matching the connected RPC via :data:`~y.constants.CHAINID`."""
 
-    addresses = Set("Address", reverse="chain")
+    addresses = Set("Address", reverse="chain", lazy=True)
     """Relationship to address records on this chain."""
 
-    tokens = Set("Token", reverse="chain")
+    tokens = Set("Token", reverse="chain", lazy=True)
     """Relationship to token records on this chain."""
 
-    treasury_txs = Set("TreasuryTx")
+    treasury_txs = Set("TreasuryTx", lazy=True)
     """Relationship to treasury transactions on this chain."""
 
     @staticmethod
@@ -181,10 +181,10 @@ class Address(DbEntity):
 
     _table_ = "addresses"
 
-    address_id = PrimaryKey(int, auto=True)
+    address_id = PrimaryKey(int, auto=True, lazy=True)
     """Auto-incremented primary key for the addresses table."""
 
-    chain = Required(Chain, reverse="addresses")
+    chain = Required(Chain, reverse="addresses", lazy=True)
     """Reference to the chain on which this address resides."""
 
     address = Required(str, index=True)
@@ -193,7 +193,7 @@ class Address(DbEntity):
     nickname = Optional(str)
     """Optional human-readable label (e.g., contract name or token name)."""
 
-    is_contract = Required(bool, index=True)
+    is_contract = Required(bool, index=True, lazy=True)
     """Flag indicating whether the address is a smart contract."""
 
     composite_key(address, chain)
@@ -204,22 +204,22 @@ class Address(DbEntity):
         treasury_tx_from: Set["TreasuryTx"]
         treasury_tx_to: Set["TreasuryTx"]
 
-    token = Optional("Token", index=True)
+    token = Optional("Token", index=True, lazy=True)
     """Optional back-reference to a Token if this address is one."""
-    # partners_tx = Set('PartnerHarvestEvent', reverse='wrapper')
+    # partners_tx = Set('PartnerHarvestEvent', reverse='wrapper', lazy=True)
 
-    treasury_tx_from = Set("TreasuryTx", reverse="from_address")
+    treasury_tx_from = Set("TreasuryTx", reverse="from_address", lazy=True)
     """Inverse relation for transactions sent from this address."""
 
-    treasury_tx_to = Set("TreasuryTx", reverse="to_address")
+    treasury_tx_to = Set("TreasuryTx", reverse="to_address", lazy=True)
     """Inverse relation for transactions sent to this address."""
 
-    streams_from = Set("Stream", reverse="from_address")
-    streams_to = Set("Stream", reverse="to_address")
-    streams = Set("Stream", reverse="contract")
-    # vesting_escrows = Set("VestingEscrow", reverse="address")
-    # vests_received = Set("VestingEscrow", reverse="recipient")
-    # vests_funded = Set("VestingEscrow", reverse="funder")
+    streams_from = Set("Stream", reverse="from_address", lazy=True)
+    streams_to = Set("Stream", reverse="to_address", lazy=True)
+    streams = Set("Stream", reverse="contract", lazy=True)
+    # vesting_escrows = Set("VestingEscrow", reverse="address", lazy=True)
+    # vests_received = Set("VestingEscrow", reverse="recipient", lazy=True)
+    # vests_funded = Set("VestingEscrow", reverse="funder", lazy=True)
 
     def __eq__(self, other: Union["Address", ChecksumAddress, "Token"]) -> bool:  # type: ignore [override]
         if isinstance(other, str):
@@ -364,33 +364,33 @@ class Token(DbEntity):
 
     _table_ = "tokens"
 
-    token_id = PrimaryKey(int, auto=True)
+    token_id = PrimaryKey(int, auto=True, lazy=True)
     """Auto-incremented primary key for the tokens table."""
 
-    chain = Required(Chain, index=True)
+    chain = Required(Chain, index=True, lazy=True)
     """Foreign key linking to :class:`~dao_treasury.db.Chain`."""
 
-    symbol = Required(str, index=True)
+    symbol = Required(str, index=True, lazy=True)
     """Short ticker symbol for the token."""
 
-    name = Required(str)
+    name = Required(str, lazy=True)
     """Full human-readable name of the token."""
 
-    decimals = Required(int)
+    decimals = Required(int, lazy=True)
     """Number of decimals used for value scaling."""
 
     if TYPE_CHECKING:
         treasury_tx: Set["TreasuryTx"]
 
-    treasury_tx = Set("TreasuryTx", reverse="token")
+    treasury_tx = Set("TreasuryTx", reverse="token", lazy=True)
     """Inverse relation for treasury transactions involving this token."""
-    # partner_harvest_event = Set('PartnerHarvestEvent', reverse="vault")
+    # partner_harvest_event = Set('PartnerHarvestEvent', reverse="vault", lazy=True)
 
     address = Required(Address, column="address_id")
     """Foreign key to the address record for this token contract."""
 
-    streams = Set("Stream", reverse="token")
-    # vesting_escrows = Set("VestingEscrow", reverse="token")
+    streams = Set("Stream", reverse="token", lazy=True)
+    # vesting_escrows = Set("VestingEscrow", reverse="token", lazy=True)
 
     def __eq__(self, other: Union["Token", Address, ChecksumAddress]) -> bool:  # type: ignore [override]
         if isinstance(other, str):
@@ -533,7 +533,7 @@ class TxGroup(DbEntity):
     name = Required(str)
     """Name of the grouping category, e.g., 'Revenue', 'Expenses'."""
 
-    treasury_tx = Set("TreasuryTx", reverse="txgroup")
+    treasury_tx = Set("TreasuryTx", reverse="txgroup", lazy=True)
     """Inverse relation for treasury transactions assigned to this group."""
 
     parent_txgroup = Optional("TxGroup", reverse="child_txgroups")
@@ -541,13 +541,13 @@ class TxGroup(DbEntity):
 
     composite_key(name, parent_txgroup)
 
-    child_txgroups = Set("TxGroup", reverse="parent_txgroup")
+    child_txgroups = Set("TxGroup", reverse="parent_txgroup", lazy=True)
     """Set of nested child groups."""
 
-    streams = Set("Stream", reverse="txgroup")
+    streams = Set("Stream", reverse="txgroup", lazy=True)
 
     # TODO: implement this
-    # vesting_escrows = Set("VestingEscrow", reverse="txgroup")
+    # vesting_escrows = Set("VestingEscrow", reverse="txgroup", lazy=True)
 
     @property
     def fullname(self) -> str:
@@ -623,7 +623,7 @@ class TxGroup(DbEntity):
         return txgroup  # type: ignore [no-any-return]
 
 
-@lru_cache(100)
+@lru_cache(500)
 def get_transaction(txhash: str) -> TransactionReceipt:
     """Fetch and cache a transaction receipt from the connected chain.
 
@@ -925,7 +925,7 @@ class Stream(DbEntity):
     status = Required(str, default="Active")
     txgroup = Optional("TxGroup", reverse="streams")
 
-    streamed_funds = Set("StreamedFunds")
+    streamed_funds = Set("StreamedFunds", lazy=True)
 
     scale = int(1e20)
 
