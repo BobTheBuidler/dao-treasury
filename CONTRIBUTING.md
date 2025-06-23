@@ -7,16 +7,30 @@ DAO Treasury was designed to make it easy for less technical users to contribute
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Creating a New Dashboard](#creating-a-new-dashboard)
-3. [Editing an Existing Dashboard](#editing-an-existing-dashboard)
-4. [Submitting Your Changes](#submitting-your-changes)
-5. [Additional Notes](#additional-notes)
+2. [System Patterns and Best Practices](#system-patterns-and-best-practices)
+3. [Creating a New Dashboard](#creating-a-new-dashboard)
+4. [Editing an Existing Dashboard](#editing-an-existing-dashboard)
+5. [Submitting Your Changes](#submitting-your-changes)
+6. [Additional Notes](#additional-notes)
 
 ---
 
 ## Overview
 
 This project provisions dashboards using JSON files loaded by Grafana. The dashboards are defined using the JSON configuration located in the [.grafana/provisioning/dashboards/](https://github.com/BobTheBuidler/dao-treasury/tree/master/dao_treasury/.grafana/provisioning) folder. Community contributions can update existing dashboard visuals or create new ones by using Grafana's intuitive UI.
+
+---
+
+## System Patterns and Best Practices
+
+DAO Treasury follows a set of repo-wide system patterns to ensure maintainability, extensibility, and professional quality across all code and workflows:
+
+- **Code Organization:** Follow the modular package structure, extensible sorting rules, and async stream processing patterns.
+- **Testing & Quality:** Use pytest and mypy for all new code
+- **Documentation:** Update Sphinx docs and onboarding instructions as needed.
+- **Naming & Formatting:** Use Title Case for user-facing strings, and follow consistent naming for files, classes, and functions.
+- **Extensibility:** Add new features (entities, rules, dashboards, streams) by following established patterns.
+- **Security & Logging:** Use logging throughout, explicit error handling, and environment-based secrets.
 
 ---
 
