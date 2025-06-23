@@ -181,7 +181,7 @@ class Address(DbEntity):
 
     _table_ = "addresses"
 
-    address_id = PrimaryKey(int, auto=True, lazy=True)
+    address_id = PrimaryKey(int, auto=True)
     """Auto-incremented primary key for the addresses table."""
 
     chain = Required(Chain, reverse="addresses", lazy=True)
@@ -364,7 +364,7 @@ class Token(DbEntity):
 
     _table_ = "tokens"
 
-    token_id = PrimaryKey(int, auto=True, lazy=True)
+    token_id = PrimaryKey(int, auto=True)
     """Auto-incremented primary key for the tokens table."""
 
     chain = Required(Chain, index=True, lazy=True)
