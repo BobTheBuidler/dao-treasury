@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -478,7 +477,7 @@
       },
       "gridPos": {
         "h": 12,
-        "w": 20,
+        "w": 24,
         "x": 0,
         "y": 4
       },
@@ -513,7 +512,7 @@
           "id": "formatTime",
           "options": {
             "outputFormat": "YYYY-WW",
-            "timeField": "Timestamp",
+            "timeField": "timestamp",
             "timezone": "browser",
             "useTimezone": true
           }
@@ -523,9 +522,8 @@
           "options": {
             "conversions": [
               {
-                "dateFormat": "YYYY-WW",
                 "destinationType": "time",
-                "targetField": "Timestamp"
+                "targetField": "timestamp"
               }
             ],
             "fields": {}
@@ -535,24 +533,6 @@
           "id": "groupBy",
           "options": {
             "fields": {
-              "Net": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Total Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Total Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
               "Cost of Revenue": {
                 "aggregations": [
                   "sum"
@@ -560,6 +540,12 @@
                 "operation": "aggregate"
               },
               "Expenses": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Net": {
                 "aggregations": [
                   "sum"
                 ],
@@ -586,361 +572,8 @@
               "Timestamp": {
                 "aggregations": [],
                 "operation": "groupby"
-              }
-            }
-          }
-        }
-      ],
-      "type": "timeseries"
-    },
-    {
-      "datasource": "SQLite",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 4
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.2.0",
-      "targets": [
-        {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Inbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Inbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
-        }
-      ],
-      "title": "Unsorted (Inbound)",
-      "type": "stat"
-    },
-    {
-      "datasource": "SQLite",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 8
-      },
-      "id": 9,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.2.0",
-      "targets": [
-        {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Outbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Outbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
-        }
-      ],
-      "title": "Unsorted (Outbound)",
-      "type": "stat"
-    },
-    {
-      "datasource": "SQLite",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 20,
-        "y": 12
-      },
-      "id": 6,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.2.0",
-      "targets": [
-        {
-          "datasource": "SQLite",
-          "queryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
-        }
-      ],
-      "title": "Total",
-      "type": "stat"
-    },
-    {
-      "datasource": "SQLite",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 70,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Net (sum)"
-            },
-            "properties": [
-              {
-                "id": "custom.drawStyle",
-                "value": "line"
-              },
-              {
-                "id": "custom.stacking",
-                "value": {
-                  "group": "A",
-                  "mode": "none"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 19
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 16
-      },
-      "id": 12,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": "SQLite",
-          "queryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Revenue (Including Unsorted)\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses (Including Unsorted)\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net (Including Unsorted)\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
-          "queryType": "table",
-          "rawQueryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Revenue (Including Unsorted)\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses (Including Unsorted)\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net (Including Unsorted)\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
-          "refId": "A",
-          "timeColumns": [
-            "timestamp"
-          ]
-        }
-      ],
-      "title": "Weekly Cashflow (Including Unsorted)",
-      "transformations": [
-        {
-          "id": "formatTime",
-          "options": {
-            "outputFormat": "YYYY-WW",
-            "timeField": "Timestamp",
-            "timezone": "browser",
-            "useTimezone": true
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "dateFormat": "YYYY-WW",
-                "destinationType": "time",
-                "targetField": "Timestamp"
-              }
-            ],
-            "fields": {}
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "Net": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Net (Including Unsorted)": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
               },
               "Total Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Total Expenses (Including Unsorted)": {
                 "aggregations": [
                   "sum"
                 ],
@@ -952,43 +585,7 @@
                 ],
                 "operation": "aggregate"
               },
-              "Total Revenue (Including Unsorted)": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Cost of Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Other Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Other Income": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Timestamp": {
+              "timestamp": {
                 "aggregations": [],
                 "operation": "groupby"
               }
