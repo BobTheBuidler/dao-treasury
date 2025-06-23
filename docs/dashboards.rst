@@ -7,6 +7,45 @@ This section documents the main Grafana dashboards used to monitor and analyze t
    :local:
    :depth: 2
 
+Monthly Profit & Loss Dashboard
+-------------------------------
+
+This dashboard summarizes the DAO's monthly profit and loss, providing a clear breakdown of sorted and unsorted financial activity for each month.
+
+### Key Features
+
+- **Monthly P&L Table**
+  - Displays a table with one row per month, showing all key financial metrics:
+    - **Month**: Year and month (YYYY-MM).
+    - **Revenue**: Total revenue for the month.
+    - **Cost of Revenue**: Direct costs associated with generating revenue.
+    - **Expenses**: Total expenses for the month.
+    - **Other Income**: Additional income not classified as revenue.
+    - **Other Expense**: Additional expenses not classified as core expenses.
+    - **Sorted Net**: Net profit/loss for the month, including only sorted transactions.
+    - **Unsorted Income**: Total value of inbound transactions pending categorization.
+    - **Unsorted Expense**: Total value of outbound transactions pending categorization.
+    - **Net**: Net profit/loss for the month, including both sorted and unsorted transactions.
+
+- **Data Source**
+  - Powered by the SQLite database, querying from `treasury_txs`, `txgroups`, and `txgroup_hierarchy` to aggregate monthly results.
+
+- **No Filters/Variables**
+  - The dashboard does not include Grafana variables; all data is shown for the available date range.
+
+- **Time Range**
+  - The table covers all data from January 2025 onward, as defined in the SQL query.
+
+### Usage Tips
+
+- Use this dashboard for monthly financial reporting and to track the DAO's progress in sorting/categorizing all transactions.
+- "Unsorted Income" and "Unsorted Expense" columns highlight transactions that still need review, helping ensure accurate financial statements.
+- Compare "Sorted Net" and "Net" to assess the impact of unsorted transactions on monthly results.
+
+### Conclusion
+
+The Monthly Profit & Loss dashboard provides a clear, at-a-glance summary of the DAO's financial performance over time, supporting both operational oversight and formal reporting.
+
 Cashflow Summary Dashboard
 --------------------------
 
