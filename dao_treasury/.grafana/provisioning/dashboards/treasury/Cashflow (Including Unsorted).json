@@ -497,9 +497,9 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
+          "queryText": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
           "queryType": "table",
-          "rawQueryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
+          "rawQueryText": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
           "refId": "A",
           "timeColumns": [
             "timestamp"
@@ -522,6 +522,7 @@
           "options": {
             "conversions": [
               {
+                "dateFormat": "YYYY-WW",
                 "destinationType": "time",
                 "targetField": "timestamp"
               }
@@ -815,7 +816,7 @@
       "type": "stat"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 38,
   "tags": [],
   "templating": {
