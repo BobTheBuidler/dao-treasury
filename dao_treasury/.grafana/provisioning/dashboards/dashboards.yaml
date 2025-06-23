@@ -3,15 +3,16 @@ apiVersion: 1
 providers:
 # Home
 - name: 'Summary'
-  folder: 'summary'
+  folder: 'Summary'
   type: file
   disableDeletion: true
   editable: false
   options:
     path: /etc/grafana/provisioning/dashboards/summary
 
+# Dashboards
 - name: 'Treasury'
-  folder: 'treasury'
+  folder: 'Treasury'
   type: file
   disableDeletion: true
   editable: false
@@ -19,7 +20,7 @@ providers:
     path: /etc/grafana/provisioning/dashboards/treasury
 
 - name: 'Cashflow Overview'
-  folder: 'treasury'
+  folder: 'Treasury'
   type: file
   disableDeletion: true
   editable: false
@@ -27,7 +28,7 @@ providers:
     path: /etc/grafana/provisioning/dashboards/treasury
 
 - name: 'Treasury Transactions'
-  folder: 'transactions'
+  folder: 'Transactions'
   type: file
   disableDeletion: true
   editable: false
@@ -35,9 +36,9 @@ providers:
     path: /etc/grafana/provisioning/dashboards/transactions
 
 - name: 'LlamaPay Streams'
-  folder: 'streams'
+  folder: 'Streams'
   type: file
   disableDeletion: true
   editable: false
   options:
-    path: /etc/grafana/provisioning/dashboards/Streams
+    path: /etc/grafana/provisioning/dashboards/streams
