@@ -1,5 +1,28 @@
 """
-This module contains logic for sorting transactions into various categories.
+This module provides the core logic for sorting DAO Treasury transactions into transaction groups (categories).
+
+Sorting enables comprehensive financial reporting and categorization tailored for on-chain organizations.
+Transactions are matched against either statically defined rules or more advanced dynamic rules based on user-defined matching functions.
+
+Sorting works by attempting matches in this order:
+  1. Check if the transaction is an internal transfer (within treasury wallets).
+  2. Check if the transaction is "Out of Range" (neither sender nor receiver was a treasury wallet at the time of the tx).
+  3. Match by transaction hash using registered HashMatchers.
+  4. Match by sender address using registered FromAddressMatchers.
+  5. Match by recipient address using registered ToAddressMatchers.
+  6. Assign "Must Sort Inbound" or "Must Sort Outbound" groups if part of treasury.
+  7. Raise an error if no match is found (unexpected case).
+
+See the complete [sort rules documentation](https://bobthebuidler.github.io/dao-treasury/sort_rules.html) for detailed explanations
+and examples on defining and registering sort rules.
+
+See Also:
+    :func:`dao_treasury.sorting.sort_basic`
+    :func:`dao_treasury.sorting.sort_basic_entity`
+    :func:`dao_treasury.sorting.sort_advanced`
+    :class:`dao_treasury.sorting.HashMatcher`
+    :class:`dao_treasury.sorting.FromAddressMatcher`
+    :class:`dao_treasury.sorting.ToAddressMatcher`
 """
 
 from logging import getLogger
@@ -72,16 +95,54 @@ INTERNAL_TRANSFER_TXGROUP_DBID: Final = TxGroup.get_dbid(
     name="Internal Transfer",
     parent=TxGroup.get_dbid("Ignore"),
 )
-# TODO: write a docstring
+"""Database ID for the 'Internal Transfer' transaction group.
+
+This group represents transactions that occur internally between treasury-owned wallets.
+Such internal movements of funds within the DAO's treasury do not require separate handling or reporting.
+
+See Also:
+    :class:`dao_treasury.db.TxGroup`
+"""
 
 OUT_OF_RANGE_TXGROUP_DBID = TxGroup.get_dbid(
     name="Out of Range", parent=TxGroup.get_dbid("Ignore")
 )
-# TODO: write a docstring
+"""Database ID for the 'Out of Range' transaction group.
+
+This category is assigned to transactions where neither the sender nor the recipient
+wallet are members of the treasury at the time of the transaction.
+
+See Also:
+    :class:`dao_treasury.db.TxGroup`
+"""
 
 
 def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
-    # TODO: write docstring
+    """Determine the transaction group ID for a basic ledger entry using static matching.
+
+    The function attempts to categorize the transaction by testing:
+      - If both 'from' and 'to' addresses are treasury wallets (internal transfer).
+      - If neither ‘to’ address is a treasury wallet at the time of the transaction (out of range).
+      - If the transaction hash matches a known HashMatcher.
+      - If the 'from' address matches a FromAddressMatcher.
+      - If the 'to' address matches a ToAddressMatcher.
+      - Assignment to 'Must Sort Outbound' or 'Must Sort Inbound' groups if applicable.
+      - Raises `NotImplementedError` if none of the above conditions are met (should not happen).
+
+    Args:
+        entry: A ledger entry representing a blockchain transaction.
+
+    Examples:
+        >>> from eth_portfolio.structs import Transaction
+        >>> entry = Transaction(from_address="0xabc...", to_address="0xdef...", block_number=1234567)
+        >>> group_id = sort_basic(entry)
+        >>> print(group_id)
+
+    See Also:
+        :func:`sort_basic_entity`
+        :func:`sort_advanced`
+        :class:`dao_treasury.sorting.HashMatcher`
+    """
     from_address = entry.from_address
     to_address = entry.to_address
     block = entry.block_number
@@ -117,7 +178,25 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
 
 
 def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
-    # TODO: write docstring
+    """Determine the transaction group ID for a TreasuryTx database entity using static matching.
+
+    Similar to :func:`sort_basic` but operates on a TreasuryTx entity from the database.
+    It considers additional constants such as `DISPERSE_APP` when determining whether
+    a transaction is out of range.
+
+    Args:
+        tx: A TreasuryTx database entity representing a treasury transaction.
+
+    Examples:
+        >>> from dao_treasury.db import TreasuryTx
+        >>> tx = TreasuryTx[123]
+        >>> group_id = sort_basic_entity(tx)
+        >>> print(group_id)
+
+    See Also:
+        :func:`sort_basic`
+        :func:`sort_advanced`
+    """
     from_address = tx.from_address.address
     to_address = tx.to_address
     block = tx.block
@@ -167,7 +246,31 @@ def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
 
 
 async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
-    # TODO: write docstring
+    """Determine the transaction group ID for a TreasuryTx entity using advanced dynamic rules.
+
+    Starts with the result of static matching via :func:`sort_basic_entity`, then
+    applies advanced asynchronous matching rules registered under :data:`SORT_RULES`.
+    Applies rules sequentially until a match is found or all rules are exhausted.
+
+    If a rule's match attempt raises a `ContractNotVerified` exception, the rule is skipped.
+
+    Updates the TreasuryTx entity's transaction group in the database when a match
+    other than 'Must Sort Inbound/Outbound' is found.
+
+    Args:
+        entry: A TreasuryTx database entity representing a treasury transaction.
+
+    Examples:
+        >>> from dao_treasury.db import TreasuryTx
+        >>> import asyncio
+        >>> tx = TreasuryTx[123]
+        >>> group_id = asyncio.run(sort_advanced(tx))
+        >>> print(group_id)
+
+    See Also:
+        :func:`sort_basic_entity`
+        :data:`SORT_RULES`
+    """
     txgroup_dbid = sort_basic_entity(entry)
 
     if txgroup_dbid in (
