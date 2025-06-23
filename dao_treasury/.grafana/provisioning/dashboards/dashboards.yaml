@@ -1,6 +1,15 @@
 apiVersion: 1
 
 providers:
+# Home
+- name: 'Summary'
+  folder: 'summary'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/summary
+
 - name: 'Treasury'
   folder: 'treasury'
   type: file
@@ -31,4 +40,4 @@ providers:
   disableDeletion: true
   editable: false
   options:
-    path: /etc/grafana/provisioning/dashboards/streams
+    path: /etc/grafana/provisioning/dashboards/Streams
