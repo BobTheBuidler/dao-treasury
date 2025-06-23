@@ -12,7 +12,8 @@ Monthly Profit & Loss Dashboard
 
 This dashboard summarizes the DAO's monthly profit and loss, providing a clear breakdown of sorted and unsorted financial activity for each month.
 
-### Key Features
+Key Features
+~~~~~~~~~~~~
 
 - **Monthly P&L Table**
   - Displays a table with one row per month, showing all key financial metrics:
@@ -36,22 +37,73 @@ This dashboard summarizes the DAO's monthly profit and loss, providing a clear b
 - **Time Range**
   - The table covers all data from January 2025 onward, as defined in the SQL query.
 
-### Usage Tips
+Usage Tips
+~~~~~~~~~~
 
 - Use this dashboard for monthly financial reporting and to track the DAO's progress in sorting/categorizing all transactions.
 - "Unsorted Income" and "Unsorted Expense" columns highlight transactions that still need review, helping ensure accurate financial statements.
 - Compare "Sorted Net" and "Net" to assess the impact of unsorted transactions on monthly results.
 
-### Conclusion
+Conclusion
+~~~~~~~~~~
 
 The Monthly Profit & Loss dashboard provides a clear, at-a-glance summary of the DAO's financial performance over time, supporting both operational oversight and formal reporting.
 
-Cashflow Summary Dashboard
---------------------------
+Cashflow Summary Dashboards
+---------------------------
 
-This dashboard provides a high-level summary of the DAO's cashflows, including sorted and unsorted transactions, with both stat and timeseries panels for comprehensive financial monitoring.
+There are three main cashflow dashboards in the "Treasury" folder, each with a distinct focus:
 
-### Key Features
+Operating Cashflow Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Includes:
+  - Sorted transactions in the following categories:
+    - Revenue
+    - Cost of Revenue
+    - Expenses
+
+Excludes:
+  - Unsorted transactions (inbound and outbound)
+  - Other Income txgroups
+  - Other Expense txgroups
+  - Ignore txgroups
+
+Purpose:
+  Provides a focused view of core operational cashflows, filtering out non-operational and uncategorized activity.
+
+Total Cashflow Summary
+~~~~~~~~~~~~~~~~~~~~~~
+
+Includes:
+  - All sorted transactions in the following categories:
+    - Revenue
+    - Cost of Revenue
+    - Expenses
+    - Other Income
+    - Other Expense
+
+Excludes:
+  - Unsorted transactions (inbound and outbound)
+  - Ignore txgroups
+
+Purpose:
+  Shows all sorted cashflows, including "Other Income" and "Other Expense", but omits transactions pending categorization.
+
+Total Cashflow Summary (Including Unsorted)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Includes:
+  - All sorted and unsorted transactions (all categories, including inbound and outbound transactions pending categorization)
+
+Excludes:
+  - Ignore txgroups
+
+Purpose:
+  Offers a complete picture of all DAO cashflows, including those still pending categorization.
+
+Key Features
+~~~~~~~~~~~~
 
 - **Stat Panels**
   - Quick-glance metrics for key financial categories:
@@ -77,22 +129,26 @@ This dashboard provides a high-level summary of the DAO's cashflows, including s
 - **No Filters/Variables**
   - The dashboard does not include Grafana variables; all data is shown for the selected time range.
 
-### Usage Tips
+Usage Tips
+~~~~~~~~~~
 
 - Use the stat panels for a quick snapshot of the DAO's financial health.
 - Analyze trends in revenue, expenses, and net cashflow over time with the timeseries panels.
 - Monitor "Unsorted" panels to track transactions that still need categorization and ensure accurate reporting.
+- Choose the dashboard variation that best matches your reporting or operational needs.
 
-### Conclusion
+Conclusion
+~~~~~~~~~~
 
-The Cashflow Summary dashboard offers a concise and dynamic overview of the DAO's financial flows, supporting both high-level monitoring and detailed trend analysis.
+The Cashflow Summary dashboards offer a concise and dynamic overview of the DAO's financial flows, supporting both high-level monitoring and detailed trend analysis.
 
 Transactions Dashboard 
 ----------------------
 
 This dashboard provides a real-time view of the transactions in dao-treasury's database, displaying columns such as timestamp, block, hash, token, addresses, and associated metadata (address nicknames, amount, price, and value in USD).
 
-### Key Features
+Key Features
+~~~~~~~~~~~~
 
 1. Time Range Controls
 - The dashboard honors Grafana’s built-in time range filter.  
@@ -132,13 +188,15 @@ This dashboard provides a real-time view of the transactions in dao-treasury's d
 - The table is sorted by **timestamp** in descending order by default, showing the newest transactions on top.
 - You can adjust sorting or ordering by clicking on the column headers if needed.
 
-### Usage Tips
+Usage Tips
+~~~~~~~~~~
 
 - **Filter Combinations**: You can combine chain, token, and address filters to isolate specific events or activity.  
 - **“All” Selections**: Selecting “All” in each filter bypasses that dimension, ensuring a broad dataset.  
 - **Time Shifting**: Grafana’s time range picker allows you to analyze historical data (e.g., last month, last quarter) to spot trends in token activity.
 
-### Conclusion
+Conclusion
+~~~~~~~~~~
 
 This dashboard offers a comprehensive overview of your DAO's value transfers. By leveraging Grafana’s powerful variable filters and a direct SQLite data source, users can drill down into specific transactions over any chosen time range, chain, token, or addresses. The result is a dynamic, flexible workflow for analyzing and monitoring token movement in near-real-time.
 
@@ -147,7 +205,8 @@ LlamaPay Streams Dashboard
 
 This dashboard provides a comprehensive view of all LlamaPay payment streams managed by the DAO, including their status, participants, and configuration details.
 
-### Key Features
+Key Features
+~~~~~~~~~~~~
 
 - **Streams Table**
   - Displays all LlamaPay streams in a tabular format.
@@ -173,12 +232,14 @@ This dashboard provides a comprehensive view of all LlamaPay payment streams man
 - **Time Range**
   - The default time range is the last 6 hours, but the table is not time-filtered in the SQL query.
 
-### Usage Tips
+Usage Tips
+~~~~~~~~~~
 
 - Use this dashboard to audit all LlamaPay streams, check their status, and review stream configuration.
 - Identify active, paused, or stopped streams and their associated parties.
 - Useful for financial operations, compliance, and monitoring ongoing payment flows.
 
-### Conclusion
+Conclusion
+~~~~~~~~~~
 
 The LlamaPay Streams dashboard offers a clear, real-time overview of all payment streams, enabling effective monitoring and management of DAO streaming payments.
