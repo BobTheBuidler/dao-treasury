@@ -1,7 +1,7 @@
 """
 This module provides the core logic for sorting DAO Treasury transactions into transaction groups (categories).
 
-Sorting enables comprehensive financial reporting and categorization tailored for on-chain organizations. 
+Sorting enables comprehensive financial reporting and categorization tailored for on-chain organizations.
 Transactions are matched against either statically defined rules or more advanced dynamic rules based on user-defined matching functions.
 
 Sorting works by attempting matches in this order:

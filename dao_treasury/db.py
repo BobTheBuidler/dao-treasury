@@ -1108,6 +1108,7 @@ def create_stream_ledger_view() -> None:
         """
     )
 
+
 def create_txgroup_hierarchy_view() -> None:
     """Create or replace the SQL view `txgroup_hierarchy` for recursive txgroup hierarchy.
 
@@ -1131,6 +1132,7 @@ def create_txgroup_hierarchy_view() -> None:
         SELECT * FROM group_hierarchy;
         """
     )
+
 
 def create_vesting_ledger_view() -> None:
     """Create or replace the SQL view `vesting_ledger` for vesting escrow reporting.
