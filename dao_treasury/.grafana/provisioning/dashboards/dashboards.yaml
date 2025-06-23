@@ -35,6 +35,14 @@ providers:
   options:
     path: /etc/grafana/provisioning/dashboards/treasury
 
+- name: 'Total Cashflow Summary (Including Unsorted)'
+  folder: 'Treasury'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/treasury
+
 - name: 'Treasury Transactions'
   folder: 'Transactions'
   type: file
