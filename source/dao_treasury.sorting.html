@@ -1212,7 +1212,32 @@ value is the list of rule instances of that class.</p>
 </section>
 <section id="module-dao_treasury.sorting">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dao_treasury.sorting" title="Link to this heading"></a></h2>
-<p>This module contains logic for sorting transactions into various categories.</p>
+<p>This module provides the core logic for sorting DAO Treasury transactions into transaction groups (categories).</p>
+<p>Sorting enables comprehensive financial reporting and categorization tailored for on-chain organizations.
+Transactions are matched against either statically defined rules or more advanced dynamic rules based on user-defined matching functions.</p>
+<dl class="simple">
+<dt>Sorting works by attempting matches in this order:</dt><dd><ol class="arabic simple">
+<li><p>Check if the transaction is an internal transfer (within treasury wallets).</p></li>
+<li><p>Check if the transaction is “Out of Range” (neither sender nor receiver was a treasury wallet at the time of the tx).</p></li>
+<li><p>Match by transaction hash using registered HashMatchers.</p></li>
+<li><p>Match by sender address using registered FromAddressMatchers.</p></li>
+<li><p>Match by recipient address using registered ToAddressMatchers.</p></li>
+<li><p>Assign “Must Sort Inbound” or “Must Sort Outbound” groups if part of treasury.</p></li>
+<li><p>Raise an error if no match is found (unexpected case).</p></li>
+</ol>
+</dd>
+</dl>
+<p>See the complete [sort rules documentation](<a class="reference external" href="https://bobthebuidler.github.io/dao-treasury/sort_rules.html">https://bobthebuidler.github.io/dao-treasury/sort_rules.html</a>) for detailed explanations
+and examples on defining and registering sort rules.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">dao_treasury.sorting.sort_basic()</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">dao_treasury.sorting.sort_basic_entity()</span></code>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">dao_treasury.sorting.sort_advanced()</span></code>
+<a class="reference internal" href="#dao_treasury.sorting.HashMatcher" title="dao_treasury.sorting.HashMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">dao_treasury.sorting.HashMatcher</span></code></a>
+<a class="reference internal" href="#dao_treasury.sorting.FromAddressMatcher" title="dao_treasury.sorting.FromAddressMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">dao_treasury.sorting.FromAddressMatcher</span></code></a>
+<a class="reference internal" href="#dao_treasury.sorting.ToAddressMatcher" title="dao_treasury.sorting.ToAddressMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">dao_treasury.sorting.ToAddressMatcher</span></code></a></p>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="dao_treasury.sorting.CostOfRevenueSortRule">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dao_treasury.sorting.</span></span><span class="sig-name descname"><span class="pre">CostOfRevenueSortRule</span></span><a class="reference internal" href="../_modules/dao_treasury/sorting/rule.html#CostOfRevenueSortRule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.sorting.CostOfRevenueSortRule" title="Link to this definition"></a></dt>
