@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAO Treasury Dashboards &mdash; dao-treasury  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing to DAO Treasury" href="contributing.html" />
+    <link rel="prev" title="dao_treasury.streams package" href="source/dao_treasury.streams.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dao-treasury
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="wallets.html">Specifying Treasury Wallets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sort_rules.html">Defining Sort Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/modules.html">API Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DAO Treasury Dashboards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#monthly-profit-loss-dashboard">Monthly Profit &amp; Loss Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cashflow-summary-dashboard">Cashflow Summary Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transactions-dashboard">Transactions Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#llamapay-streams-dashboard">LlamaPay Streams Dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to DAO Treasury</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dao-treasury</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DAO Treasury Dashboards</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dashboards.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dao-treasury-dashboards">
+<h1>DAO Treasury Dashboards<a class="headerlink" href="#dao-treasury-dashboards" title="Link to this heading"></a></h1>
+<p>This section documents the main Grafana dashboards used to monitor and analyze the DAO’s treasury activity. Each dashboard provides a unique perspective on the DAO’s financial flows, streaming payments, and profit &amp; loss.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#monthly-profit-loss-dashboard" id="id1">Monthly Profit &amp; Loss Dashboard</a></p></li>
+<li><p><a class="reference internal" href="#cashflow-summary-dashboard" id="id2">Cashflow Summary Dashboard</a></p></li>
+<li><p><a class="reference internal" href="#transactions-dashboard" id="id3">Transactions Dashboard</a></p></li>
+<li><p><a class="reference internal" href="#llamapay-streams-dashboard" id="id4">LlamaPay Streams Dashboard</a></p></li>
+</ul>
+</nav>
+<section id="monthly-profit-loss-dashboard">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Monthly Profit &amp; Loss Dashboard</a><a class="headerlink" href="#monthly-profit-loss-dashboard" title="Link to this heading"></a></h2>
+<p>This dashboard summarizes the DAO’s monthly profit and loss, providing a clear breakdown of sorted and unsorted financial activity for each month.</p>
+<p>### Key Features</p>
+<ul>
+<li><p><strong>Monthly P&amp;L Table</strong>
+- Displays a table with one row per month, showing all key financial metrics:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Month</strong>: Year and month (YYYY-MM).</p></li>
+<li><p><strong>Revenue</strong>: Total revenue for the month.</p></li>
+<li><p><strong>Cost of Revenue</strong>: Direct costs associated with generating revenue.</p></li>
+<li><p><strong>Expenses</strong>: Total expenses for the month.</p></li>
+<li><p><strong>Other Income</strong>: Additional income not classified as revenue.</p></li>
+<li><p><strong>Other Expense</strong>: Additional expenses not classified as core expenses.</p></li>
+<li><p><strong>Sorted Net</strong>: Net profit/loss for the month, including only sorted transactions.</p></li>
+<li><p><strong>Unsorted Income</strong>: Total value of inbound transactions pending categorization.</p></li>
+<li><p><strong>Unsorted Expense</strong>: Total value of outbound transactions pending categorization.</p></li>
+<li><p><strong>Net</strong>: Net profit/loss for the month, including both sorted and unsorted transactions.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Data Source</strong>
+- Powered by the SQLite database, querying from <cite>treasury_txs</cite>, <cite>txgroups</cite>, and <cite>txgroup_hierarchy</cite> to aggregate monthly results.</p></li>
+<li><p><strong>No Filters/Variables</strong>
+- The dashboard does not include Grafana variables; all data is shown for the available date range.</p></li>
+<li><p><strong>Time Range</strong>
+- The table covers all data from January 2025 onward, as defined in the SQL query.</p></li>
+</ul>
+<p>### Usage Tips</p>
+<ul class="simple">
+<li><p>Use this dashboard for monthly financial reporting and to track the DAO’s progress in sorting/categorizing all transactions.</p></li>
+<li><p>“Unsorted Income” and “Unsorted Expense” columns highlight transactions that still need review, helping ensure accurate financial statements.</p></li>
+<li><p>Compare “Sorted Net” and “Net” to assess the impact of unsorted transactions on monthly results.</p></li>
+</ul>
+<p>### Conclusion</p>
+<p>The Monthly Profit &amp; Loss dashboard provides a clear, at-a-glance summary of the DAO’s financial performance over time, supporting both operational oversight and formal reporting.</p>
+</section>
+<section id="cashflow-summary-dashboard">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Cashflow Summary Dashboard</a><a class="headerlink" href="#cashflow-summary-dashboard" title="Link to this heading"></a></h2>
+<p>This dashboard provides a high-level summary of the DAO’s cashflows, including sorted and unsorted transactions, with both stat and timeseries panels for comprehensive financial monitoring.</p>
+<p>### Key Features</p>
+<ul>
+<li><p><strong>Stat Panels</strong>
+- Quick-glance metrics for key financial categories:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Revenue</strong>: Total revenue over the selected time range.</p></li>
+<li><p><strong>Expenses</strong>: Total expenses.</p></li>
+<li><p><strong>Cost of Revenue</strong>: Direct costs associated with generating revenue.</p></li>
+<li><p><strong>Other Income</strong>: Additional income not classified as revenue.</p></li>
+<li><p><strong>Other Expenses</strong>: Additional expenses not classified as core expenses.</p></li>
+<li><p><strong>Sorted Total</strong>: Net total of all sorted transactions.</p></li>
+<li><p><strong>Unsorted (Inbound/Outbound)</strong>: Totals for transactions pending categorization.</p></li>
+<li><p><strong>Total</strong>: Net total including both sorted and unsorted transactions.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Timeseries Panels</strong>
+- <strong>Weekly Cashflow</strong>: Plots Total Revenue, Total Expenses, and Net over time (by week).
+- <strong>Weekly Cashflow (Including Unsorted)</strong>: Same as above, but includes unsorted transactions for a complete picture.</p></li>
+<li><p><strong>Data Source</strong>
+- All panels use the SQLite database, querying the <cite>general_ledger</cite> and <cite>txgroup_hierarchy</cite> tables for up-to-date financial data.</p></li>
+<li><p><strong>Time Range</strong>
+- Default time range is the last 6 months, but all panels respect the Grafana time picker for custom analysis periods.</p></li>
+<li><p><strong>No Filters/Variables</strong>
+- The dashboard does not include Grafana variables; all data is shown for the selected time range.</p></li>
+</ul>
+<p>### Usage Tips</p>
+<ul class="simple">
+<li><p>Use the stat panels for a quick snapshot of the DAO’s financial health.</p></li>
+<li><p>Analyze trends in revenue, expenses, and net cashflow over time with the timeseries panels.</p></li>
+<li><p>Monitor “Unsorted” panels to track transactions that still need categorization and ensure accurate reporting.</p></li>
+</ul>
+<p>### Conclusion</p>
+<p>The Cashflow Summary dashboard offers a concise and dynamic overview of the DAO’s financial flows, supporting both high-level monitoring and detailed trend analysis.</p>
+</section>
+<section id="transactions-dashboard">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Transactions Dashboard</a><a class="headerlink" href="#transactions-dashboard" title="Link to this heading"></a></h2>
+<p>This dashboard provides a real-time view of the transactions in dao-treasury’s database, displaying columns such as timestamp, block, hash, token, addresses, and associated metadata (address nicknames, amount, price, and value in USD).</p>
+<p>### Key Features</p>
+<p>1. Time Range Controls
+- The dashboard honors Grafana’s built-in time range filter.
+- You can set a custom time window or pick from Grafana’s presets, such as “Last 24 hours.”
+- The query automatically adjusts to include transactions in the specified time range.</p>
+<p>2. Chain Filter
+- A variable-driven filter is provided for selecting one or more blockchain networks.
+- “All” option is available, which fetches transactions from any chain.</p>
+<p>3. Token Filter
+- A multi-value token filter allows you to restrict transactions to specific token(s).
+- Selecting “All” includes every token in that time window.
+- If multiple tokens are selected, the underlying SQL uses an <cite>IN (…)</cite> clause to retrieve transactions for those tokens only.</p>
+<p>4. From Address Filter
+- Filters transactions by “from” address or address nickname.
+- Selecting “All” includes transactions from all addresses.</p>
+<p>5. To Address Filter
+- Similar to the “From Address” filter, this variable narrows down transactions by the “to” address or nickname.
+- “All” option pulls all outgoing transactions regardless of destination.</p>
+<p>6. Transactions Table
+- Displays each transaction in rows with key data columns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>timestamp</strong>: The date/time (in UTC) when the transaction was recorded.</p></li>
+<li><p><strong>block</strong>: The block height at which the transaction occurred.</p></li>
+<li><p><strong>hash</strong>: A clickable transaction hash (if the panel is configured with a link) or raw hash data.</p></li>
+<li><p><strong>token</strong>: Symbol of the token transferred.</p></li>
+<li><p><strong>from</strong> / <strong>from nickname</strong>: The originating address and its nickname (if any).</p></li>
+<li><p><strong>to</strong> / <strong>to nickname</strong>: The destination address and nickname (if any).</p></li>
+<li><p><strong>amount</strong>: Quantity of tokens transferred in the transaction.</p></li>
+<li><p><strong>price</strong>: Price per token (in USD) at the time of transfer.</p></li>
+<li><p><strong>value usd</strong>: The total value of the transfer in USD (amount × price).</p></li>
+</ul>
+</div></blockquote>
+<p>7. Sorting &amp; Ordering
+- The table is sorted by <strong>timestamp</strong> in descending order by default, showing the newest transactions on top.
+- You can adjust sorting or ordering by clicking on the column headers if needed.</p>
+<p>### Usage Tips</p>
+<ul class="simple">
+<li><p><strong>Filter Combinations</strong>: You can combine chain, token, and address filters to isolate specific events or activity.</p></li>
+<li><p><strong>“All” Selections</strong>: Selecting “All” in each filter bypasses that dimension, ensuring a broad dataset.</p></li>
+<li><p><strong>Time Shifting</strong>: Grafana’s time range picker allows you to analyze historical data (e.g., last month, last quarter) to spot trends in token activity.</p></li>
+</ul>
+<p>### Conclusion</p>
+<p>This dashboard offers a comprehensive overview of your DAO’s value transfers. By leveraging Grafana’s powerful variable filters and a direct SQLite data source, users can drill down into specific transactions over any chosen time range, chain, token, or addresses. The result is a dynamic, flexible workflow for analyzing and monitoring token movement in near-real-time.</p>
+</section>
+<section id="llamapay-streams-dashboard">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">LlamaPay Streams Dashboard</a><a class="headerlink" href="#llamapay-streams-dashboard" title="Link to this heading"></a></h2>
+<p>This dashboard provides a comprehensive view of all LlamaPay payment streams managed by the DAO, including their status, participants, and configuration details.</p>
+<p>### Key Features</p>
+<ul>
+<li><p><strong>Streams Table</strong>
+- Displays all LlamaPay streams in a tabular format.
+- Columns include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Stream ID</strong>: Unique identifier for the stream.</p></li>
+<li><p><strong>Factory</strong>: Contract address of the stream factory.</p></li>
+<li><p><strong>Start Block</strong>: Block number when the stream started.</p></li>
+<li><p><strong>End Block</strong>: Block number when the stream ended (if applicable).</p></li>
+<li><p><strong>Token</strong>: Symbol of the token being streamed.</p></li>
+<li><p><strong>From</strong>: Sender address.</p></li>
+<li><p><strong>To</strong>: Recipient address.</p></li>
+<li><p><strong>Reason</strong>: Optional description or reason for the stream.</p></li>
+<li><p><strong>Amount Per Second</strong>: Rate of tokens streamed per second.</p></li>
+<li><p><strong>Status</strong>: Current status (Active, Paused, Stopped).</p></li>
+<li><p><strong>TxGroup</strong>: Transaction group/category for the stream.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Data Source</strong>
+- Powered by the SQLite database, querying the <cite>streams</cite> table and joining with <cite>addresses</cite> and <cite>tokens</cite> for metadata.</p></li>
+<li><p><strong>No Filters/Variables</strong>
+- The dashboard does not include Grafana variables or filters; all streams are shown.</p></li>
+<li><p><strong>Time Range</strong>
+- The default time range is the last 6 hours, but the table is not time-filtered in the SQL query.</p></li>
+</ul>
+<p>### Usage Tips</p>
+<ul class="simple">
+<li><p>Use this dashboard to audit all LlamaPay streams, check their status, and review stream configuration.</p></li>
+<li><p>Identify active, paused, or stopped streams and their associated parties.</p></li>
+<li><p>Useful for financial operations, compliance, and monitoring ongoing payment flows.</p></li>
+</ul>
+<p>### Conclusion</p>
+<p>The LlamaPay Streams dashboard offers a clear, real-time overview of all payment streams, enabling effective monitoring and management of DAO streaming payments.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="source/dao_treasury.streams.html" class="btn btn-neutral float-left" title="dao_treasury.streams package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing to DAO Treasury" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BobTheBuidler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
