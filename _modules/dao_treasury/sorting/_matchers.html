@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dao_treasury.sorting._matchers &mdash; dao-treasury  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dao-treasury
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../wallets.html">Specifying Treasury Wallets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sort_rules.html">Defining Sort Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/modules.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../transactions.html">Transactions Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing to DAO Treasury</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dao-treasury</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dao_treasury.sorting._matchers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dao_treasury.sorting._matchers</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">final</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">HexAddress</span><span class="p">,</span> <span class="n">HexStr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">eth_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_hexstr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pony.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">db_session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">y</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">TxGroupDbid</span>
+
+
+<span class="n">logger</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;dao_treasury&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_Matcher</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for matching strings to a transaction group identifier.</span>
+
+<span class="sd">    Each subclass maintains a registry of instances and a cache for fast lookups.</span>
+<span class="sd">    Matching is performed by testing membership via `__contains__`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting._matchers import FromAddressMatcher</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">        &gt;&gt;&gt; address = &quot;0xAbC1230000000000000000000000000000000000&quot;</span>
+<span class="sd">        &gt;&gt;&gt; fam = FromAddressMatcher(TxGroupDbid(1), [address])</span>
+<span class="sd">        &gt;&gt;&gt; FromAddressMatcher.match(address)</span>
+<span class="sd">        TxGroupDbid(1)</span>
+<span class="sd">        &gt;&gt;&gt; FromAddressMatcher.match(&quot;missing&quot;)</span>
+<span class="sd">        None</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :class:`dao_treasury.sorting._matchers._HexStringMatcher`,</span>
+<span class="sd">        :class:`dao_treasury.sorting._matchers._AddressMatcher`,</span>
+<span class="sd">        :meth:`match`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__instances__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Self</span><span class="p">]]</span>
+    <span class="n">__cache__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TxGroupDbid</span><span class="p">]]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">match</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TxGroupDbid</span><span class="p">]:</span>
+        <span class="c1"># sourcery skip: use-next</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the TxGroupDbid for a matching instance or None if no match.</span>
+
+<span class="sd">        The lookup first checks the internal cache, then iterates through</span>
+<span class="sd">        all instances and tests membership with `__contains__`. On first hit,</span>
+<span class="sd">        the result is cached for future calls.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            string: Input string to match (e.g., address or hash).</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.sorting._matchers import HashMatcher</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">            &gt;&gt;&gt; hash_str = &quot;0xdeadbeef&quot; + &quot;00&quot;*28</span>
+<span class="sd">            &gt;&gt;&gt; hmatch = HashMatcher(TxGroupDbid(2), [hash_str])</span>
+<span class="sd">            &gt;&gt;&gt; HashMatcher.match(hash_str)</span>
+<span class="sd">            TxGroupDbid(2)</span>
+<span class="sd">            &gt;&gt;&gt; HashMatcher.match(&quot;0xother&quot;)</span>
+<span class="sd">            None</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :attr:`__cache__`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__cache__</span><span class="p">[</span><span class="n">string</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">matcher</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__instances__</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">matcher</span><span class="p">:</span>
+                    <span class="n">txgroup_id</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">txgroup_id</span>
+                    <span class="bp">cls</span><span class="o">.</span><span class="n">__cache__</span><span class="p">[</span><span class="n">string</span><span class="p">]</span> <span class="o">=</span> <span class="n">txgroup_id</span>
+                    <span class="k">return</span> <span class="n">txgroup_id</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupDbid</span><span class="p">,</span> <span class="n">validated_values</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize matcher with a txgroup and a set of validated strings.</span>
+
+<span class="sd">        Ensures that the txgroup identifier is unique among instances.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            txgroup: Identifier of the transaction group.</span>
+<span class="sd">            validated_values: Set of unique, pre-validated strings for matching.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If txgroup is not an integer.</span>
+<span class="sd">            ValueError: If an instance for the same txgroup already exists.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :attr:`txgroup_id`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">txgroup</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">matcher</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__instances__</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">matcher</span><span class="o">.</span><span class="n">txgroup_id</span> <span class="o">==</span> <span class="n">txgroup</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;TxGroup[</span><span class="si">{</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">] already has a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">matcher</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txgroup_id</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">TxGroupDbid</span><span class="p">]</span> <span class="o">=</span> <span class="n">txgroup</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__one_value</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">validated_values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__value</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">validated_values</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__one_value</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__values</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">validated_values</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if the given string matches one of the validated values.</span>
+
+<span class="sd">        For a single-value matcher, performs equality; otherwise membership.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            string: Input to test for membership.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`match`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">string</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">__value</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__one_value</span> <span class="k">else</span> <span class="n">string</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="n">HexStr</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set of all validated strings used for matching.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The original set of strings passed at initialization.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.sorting._matchers import HashMatcher</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">            &gt;&gt;&gt; hex_str = &quot;0x&quot; + &quot;f&quot;*64</span>
+<span class="sd">            &gt;&gt;&gt; matcher = HashMatcher(TxGroupDbid(4), [hex_str])</span>
+<span class="sd">            &gt;&gt;&gt; matcher.values</span>
+<span class="sd">            {&#39;0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff&#39;}</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`match`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__values</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_HexStringMatcher</span><span class="p">(</span><span class="n">_Matcher</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Matcher for fixed-length hexadecimal strings.</span>
+
+<span class="sd">    Validates and normalizes hex strings (must start with “0x”, lowercase)</span>
+<span class="sd">    to the length specified by :attr:`expected_length`.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :attr:`expected_length`,</span>
+<span class="sd">        :meth:`_validate_hexstr`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">expected_length</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_hexstr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">hexstr</span><span class="p">:</span> <span class="n">HexStr</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HexStr</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that input is a hex string of length `expected_length`.</span>
+
+<span class="sd">        Normalizes to lowercase and prepends &#39;0x&#39; if necessary.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            hexstr: Candidate hex string.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If not a valid hex string or wrong length.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :attr:`expected_length`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_hexstr</span><span class="p">(</span><span class="n">hexstr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;value must be a hex string, not </span><span class="si">{</span><span class="n">hexstr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">hexstr</span> <span class="o">=</span> <span class="n">hexstr</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">hexstr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;0x&quot;</span><span class="p">):</span>
+            <span class="n">hexstr</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;0x</span><span class="si">{</span><span class="n">hexstr</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexstr</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">expected_length</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hexstr</span><span class="si">}</span><span class="s2"> has incorrect length (expected </span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">expected_length</span><span class="si">}</span><span class="s2">, actual </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hexstr</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">hexstr</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_AddressMatcher</span><span class="p">(</span><span class="n">_HexStringMatcher</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Matcher for Ethereum addresses, mapping them to a TxGroupDbid.</span>
+
+<span class="sd">    Ensures each address is unique across all matchers.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting._matchers import _AddressMatcher</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">        &gt;&gt;&gt; addr = &quot;0xAbC1230000000000000000000000000000000000&quot;</span>
+<span class="sd">        &gt;&gt;&gt; am = _AddressMatcher(TxGroupDbid(5), [addr])</span>
+<span class="sd">        &gt;&gt;&gt; addr in am</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; &quot;0x0000000000000000000000000000000000000000&quot; in am</span>
+<span class="sd">        False</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :class:`FromAddressMatcher`,</span>
+<span class="sd">        :class:`ToAddressMatcher`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">expected_length</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupDbid</span><span class="p">,</span> <span class="n">addresses</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">HexAddress</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an address matcher with checksum validation.</span>
+
+<span class="sd">        Converts inputs to checksummed addresses and ensures that each address is only</span>
+<span class="sd">        registered once. Duplicate addresses in the input iterable will log a warning,</span>
+<span class="sd">        but only the first occurrence is used.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            txgroup: Identifier of the transaction group.</span>
+<span class="sd">            addresses: Iterable of hex address strings.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If `addresses` is empty, or if any address already has an</span>
+<span class="sd">                existing matcher.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.sorting._matchers import _AddressMatcher</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">            &gt;&gt;&gt; addr = &quot;0xAbC1230000000000000000000000000000000000&quot;</span>
+<span class="sd">            &gt;&gt;&gt; # duplicate in list triggers warning but does not raise</span>
+<span class="sd">            &gt;&gt;&gt; am = _AddressMatcher(TxGroupDbid(5), [addr, addr])</span>
+<span class="sd">            &gt;&gt;&gt; addr in am</span>
+<span class="sd">            True</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`_validate_hexstr`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">addresses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">addresses</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">addresses</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide at least one address&quot;</span><span class="p">)</span>
+
+        <span class="n">validated</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">addresses</span><span class="p">:</span>
+            <span class="n">address</span> <span class="o">=</span> <span class="n">convert</span><span class="o">.</span><span class="n">to_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_hexstr</span><span class="p">(</span><span class="n">address</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">matcher</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__instances__</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">matcher</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;address </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2"> already has a matcher: </span><span class="si">{</span><span class="n">matcher</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+            <span class="k">if</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">validated</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;duplicate address </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+            <span class="n">validated</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">validated</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> created&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__instances__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># type: ignore [arg-type]</span>
+
+    <span class="nd">@db_session</span>  <span class="c1"># type: ignore [misc]</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation including the full txgroup path and addresses.</span>
+
+<span class="sd">        Queries the database for the TxGroup entity to show its full path.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.sorting._matchers import FromAddressMatcher</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">            &gt;&gt;&gt; fam = FromAddressMatcher(TxGroupDbid(6), [&quot;0xAbC1230000000000000000000000000000000000&quot;])</span>
+<span class="sd">            &gt;&gt;&gt; repr(fam)</span>
+<span class="sd">            &quot;FromAddressMatcher(txgroup=&#39;Parent:Child&#39;, addresses=[&#39;0xAbC1230000000000000000000000000000000000&#39;])&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">TxGroup</span>
+
+        <span class="n">txgroup</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">txgroup_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(txgroup=&#39;</span><span class="si">{</span><span class="n">txgroup</span><span class="o">.</span><span class="n">fullname</span><span class="si">}</span><span class="s2">&#39;, addresses=</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<div class="viewcode-block" id="FromAddressMatcher">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.sorting.FromAddressMatcher">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FromAddressMatcher</span><span class="p">(</span><span class="n">_AddressMatcher</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Final matcher that categorizes by transaction `from_address`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting._matchers import FromAddressMatcher</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">        &gt;&gt;&gt; address = &quot;0xAbC1230000000000000000000000000000000000&quot;</span>
+<span class="sd">        &gt;&gt;&gt; fam = FromAddressMatcher(TxGroupDbid(7), [address])</span>
+<span class="sd">        &gt;&gt;&gt; FromAddressMatcher.match(address)</span>
+<span class="sd">        TxGroupDbid(7)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__instances__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;FromAddressMatcher&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">__cache__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">TxGroupDbid</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+
+<div class="viewcode-block" id="ToAddressMatcher">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.sorting.ToAddressMatcher">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ToAddressMatcher</span><span class="p">(</span><span class="n">_AddressMatcher</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Final matcher that categorizes by transaction `to_address`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting._matchers import ToAddressMatcher</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">        &gt;&gt;&gt; address = &quot;0xDef4560000000000000000000000000000000000&quot;</span>
+<span class="sd">        &gt;&gt;&gt; tam = ToAddressMatcher(TxGroupDbid(8), [address])</span>
+<span class="sd">        &gt;&gt;&gt; ToAddressMatcher.match(address)</span>
+<span class="sd">        TxGroupDbid(8)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__instances__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;ToAddressMatcher&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">__cache__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">TxGroupDbid</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+
+<div class="viewcode-block" id="HashMatcher">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.sorting.HashMatcher">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HashMatcher</span><span class="p">(</span><span class="n">_HexStringMatcher</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Final matcher that categorizes by transaction hash.</span>
+
+<span class="sd">    Matches full 66-character hex transaction hashes.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting._matchers import HashMatcher</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">        &gt;&gt;&gt; hash_str = &#39;0x&#39; + &#39;f&#39; * 64</span>
+<span class="sd">        &gt;&gt;&gt; hm = HashMatcher(TxGroupDbid(9), [hash_str])</span>
+<span class="sd">        &gt;&gt;&gt; HashMatcher.match(hash_str)</span>
+<span class="sd">        TxGroupDbid(9)</span>
+<span class="sd">        &gt;&gt;&gt; repr(hm)</span>
+<span class="sd">        &quot;HashMatcher(txgroup=&#39;Root:Group&#39;, hashes=[&#39;0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff&#39;])&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">expected_length</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">66</span>
+    <span class="n">__instances__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;HashMatcher&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">__cache__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">HexStr</span><span class="p">,</span> <span class="n">TxGroupDbid</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="HashMatcher.__init__">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.sorting.HashMatcher.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupDbid</span><span class="p">,</span> <span class="n">hashes</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">HexStr</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize hash matcher ensuring unique transaction hashes.</span>
+
+<span class="sd">        Validates and normalizes hashes to fixed length, and ensures that each hash is</span>
+<span class="sd">        only registered once. Duplicate hashes in the input iterable will log a warning,</span>
+<span class="sd">        but only the first occurrence is used.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            txgroup: Identifier of the transaction group.</span>
+<span class="sd">            hashes: Iterable of hex string hashes.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If `hashes` is empty, or if any hash already has an existing</span>
+<span class="sd">                matcher.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.sorting._matchers import HashMatcher</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">            &gt;&gt;&gt; hash_str = &#39;0x&#39; + &#39;f&#39; * 64</span>
+<span class="sd">            &gt;&gt;&gt; # duplicate in list logs warning but does not raise</span>
+<span class="sd">            &gt;&gt;&gt; hm = HashMatcher(TxGroupDbid(9), [hash_str, hash_str])</span>
+<span class="sd">            &gt;&gt;&gt; HashMatcher.match(hash_str)</span>
+<span class="sd">            TxGroupDbid(9)</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`_validate_hexstr`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hashes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hashes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">hashes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide at least one transaction hash&quot;</span><span class="p">)</span>
+
+        <span class="n">validated</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">HexStr</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">txhash</span> <span class="ow">in</span> <span class="n">hashes</span><span class="p">:</span>
+            <span class="n">txhash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_hexstr</span><span class="p">(</span><span class="n">txhash</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">matcher</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__instances__</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">txhash</span> <span class="ow">in</span> <span class="n">matcher</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hash </span><span class="si">{</span><span class="n">txhash</span><span class="si">}</span><span class="s2"> already has a matcher: </span><span class="si">{</span><span class="n">matcher</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">txhash</span> <span class="ow">in</span> <span class="n">validated</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;duplicate hash </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">txhash</span><span class="p">)</span>
+            <span class="n">validated</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">txhash</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">validated</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> created&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="n">HashMatcher</span><span class="o">.</span><span class="n">__instances__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+    <span class="nd">@db_session</span>  <span class="c1"># type: ignore [misc]</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation including the full txgroup path and hashes.</span>
+
+<span class="sd">        Queries the database for the TxGroup entity to show its full path.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.sorting._matchers import HashMatcher</span>
+<span class="sd">            &gt;&gt;&gt; from dao_treasury.types import TxGroupDbid</span>
+<span class="sd">            &gt;&gt;&gt; hash_str = &#39;0x&#39; + &#39;f&#39; * 64</span>
+<span class="sd">            &gt;&gt;&gt; hm = HashMatcher(TxGroupDbid(10), [hash_str])</span>
+<span class="sd">            &gt;&gt;&gt; repr(hm)</span>
+<span class="sd">            &quot;HashMatcher(txgroup=&#39;Root:Group&#39;, hashes=[&#39;0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff&#39;])&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">TxGroup</span>
+
+        <span class="n">txgroup</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">txgroup_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(txgroup=&#39;</span><span class="si">{</span><span class="n">txgroup</span><span class="o">.</span><span class="n">fullname</span><span class="si">}</span><span class="s2">&#39;, hashes=</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BobTheBuidler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
