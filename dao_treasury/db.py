@@ -905,6 +905,7 @@ class TreasuryTx(DbEntity):
     def __set_txgroup(treasury_tx_dbid: int, txgroup_dbid: TxGroupDbid) -> None:
         with db_session:
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
+            commit()
 
 
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
