@@ -927,7 +927,7 @@ class Stream(DbEntity):
 
     streamed_funds = Set("StreamedFunds", lazy=True)
 
-    scale = int(1e20)
+    scale = 10**20
 
     @property
     def is_alive(self) -> bool:
