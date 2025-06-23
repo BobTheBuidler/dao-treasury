@@ -19,7 +19,15 @@ providers:
   options:
     path: /etc/grafana/provisioning/dashboards/treasury
 
-- name: 'Cashflow Overview'
+- name: 'Operating Cashflow Summary'
+  folder: 'Treasury'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/treasury
+
+- name: 'Total Cashflow Summary'
   folder: 'Treasury'
   type: file
   disableDeletion: true
