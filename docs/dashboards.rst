@@ -7,6 +7,47 @@ This section documents the main Grafana dashboards used to monitor and analyze t
    :local:
    :depth: 2
 
+Cashflow Summary Dashboard
+--------------------------
+
+This dashboard provides a high-level summary of the DAO's cashflows, including sorted and unsorted transactions, with both stat and timeseries panels for comprehensive financial monitoring.
+
+### Key Features
+
+- **Stat Panels**
+  - Quick-glance metrics for key financial categories:
+    - **Revenue**: Total revenue over the selected time range.
+    - **Expenses**: Total expenses.
+    - **Cost of Revenue**: Direct costs associated with generating revenue.
+    - **Other Income**: Additional income not classified as revenue.
+    - **Other Expenses**: Additional expenses not classified as core expenses.
+    - **Sorted Total**: Net total of all sorted transactions.
+    - **Unsorted (Inbound/Outbound)**: Totals for transactions pending categorization.
+    - **Total**: Net total including both sorted and unsorted transactions.
+
+- **Timeseries Panels**
+  - **Weekly Cashflow**: Plots Total Revenue, Total Expenses, and Net over time (by week).
+  - **Weekly Cashflow (Including Unsorted)**: Same as above, but includes unsorted transactions for a complete picture.
+
+- **Data Source**
+  - All panels use the SQLite database, querying the `general_ledger` and `txgroup_hierarchy` tables for up-to-date financial data.
+
+- **Time Range**
+  - Default time range is the last 6 months, but all panels respect the Grafana time picker for custom analysis periods.
+
+- **No Filters/Variables**
+  - The dashboard does not include Grafana variables; all data is shown for the selected time range.
+
+### Usage Tips
+
+- Use the stat panels for a quick snapshot of the DAO's financial health.
+- Analyze trends in revenue, expenses, and net cashflow over time with the timeseries panels.
+- Monitor "Unsorted" panels to track transactions that still need categorization and ensure accurate reporting.
+
+### Conclusion
+
+The Cashflow Summary dashboard offers a concise and dynamic overview of the DAO's financial flows, supporting both high-level monitoring and detailed trend analysis.
+
 Transactions Dashboard 
 ----------------------
 
