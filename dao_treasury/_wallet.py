@@ -154,7 +154,9 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         # Extract optional networks list
         networks = cfg.get("networks")
         if networks:
-            if not isinstance(networks, list) or not all(isinstance(n, int) for n in networks):
+            if not isinstance(networks, list) or not all(
+                isinstance(n, int) for n in networks
+            ):
                 raise ValueError(
                     f"'networks' for wallet {address} must be a list of integers, got {networks}"
                 )
@@ -240,7 +242,7 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
                 raise ValueError(
                     f"Invalid key: {key}. Valid options are 'block' or 'timestamp'."
                 )
-        
+
         wallet = TreasuryWallet(**kwargs)
         print(f"initialized {wallet}")
         wallets.append(wallet)
