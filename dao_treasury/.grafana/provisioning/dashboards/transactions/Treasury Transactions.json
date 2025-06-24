@@ -130,7 +130,7 @@
                   {
                     "targetBlank": true,
                     "title": "View on Etherscan",
-                    "url": "https://etherscan.io/address/${__data.fields.from}"
+                    "url": "https://etherscan.io/address/${__data.fields.From}"
                   }
                 ]
               }
@@ -148,7 +148,7 @@
                   {
                     "targetBlank": true,
                     "title": "View on Etherscan",
-                    "url": "https://etherscan.io/address/${__data.fields.to}"
+                    "url": "https://etherscan.io/address/${__data.fields.To}"
                   }
                 ]
               }
