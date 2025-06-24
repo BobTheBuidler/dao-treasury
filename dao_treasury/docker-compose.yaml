@@ -3,9 +3,6 @@ networks:
   docker_eth_portfolio:
     external: true
 
-volumes:
-  grafana_data: {}
-
 services:
   grafana:
     image: grafana/grafana:10.2.0
@@ -24,7 +21,6 @@ services:
       - GF_INSTALL_PLUGINS=volkovlabs-variable-panel,frser-sqlite-datasource
     volumes:
       - ~/.dao-treasury/:/app/dao-treasury-data
-      - grafana_data:/var/lib/grafana
       - ./.grafana/provisioning/:/etc/grafana/provisioning/
     networks:
       - dao_treasury
