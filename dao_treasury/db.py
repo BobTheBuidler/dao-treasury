@@ -863,27 +863,48 @@ class TreasuryTx(DbEntity):
                 },
             ) from e
         except InvalidOperation as e:
-            logger.error(e)
-            logger.error(
-                {
-                    "chain": Chain.get_dbid(CHAINID),
-                    "block": entry.block_number,
-                    "timestamp": ts,
-                    "hash": entry.hash.hex(),
-                    "log_index": log_index,
-                    "from_address": from_address,
-                    "to_address": to_address,
-                    "token": token,
-                    "amount": entry.value,
-                    "price": entry.price,
-                    "value_usd": entry.value_usd,
-                    # TODO: nuke db and add this column
-                    # gas = gas,
-                    "gas_used": gas_used,
-                    "gas_price": gas_price,
-                    "txgroup": txgroup_dbid,
-                }
-            )
+            with db_session:
+                from_address_entity = Address[from_address]
+                to_address_entity = Address[to_address]
+                token_entity = Token[token]
+                logger.error(e)
+                logger.error(
+                    {
+                        "chain": Chain.get_dbid(CHAINID),
+                        "block": entry.block_number,
+                        "timestamp": ts,
+                        "hash": entry.hash.hex(),
+                        "log_index": log_index,
+                        "from_address": {
+                            "dbid": from_address,
+                            "address": from_address_entity.address,
+                            "nickname": from_address_entity.nickname,
+                        },
+                        "to_address": {
+                            "dbid": to_address,
+                            "address": to_address_entity.address,
+                            "nickname": to_address_entity.nickname,
+                        },
+                        "token": {
+                            "dbid": token,
+                            "address": token_entity.address.address,
+                            "name": token_entity.name,
+                            "symbol": token_entity.symbol,
+                            "decimals": token_entity.decimals,
+                        },
+                        "amount": entry.value,
+                        "price": entry.price,
+                        "value_usd": entry.value_usd,
+                        # TODO: nuke db and add this column
+                        # gas = gas,
+                        "gas_used": gas_used,
+                        "gas_price": gas_price,
+                        "txgroup": {
+                            "dbid": txgroup_dbid,
+                            "fullname": TxGroup[txgroup_dbid].fullname,
+                        },
+                    }
+                )
             return None
         except TransactionIntegrityError as e:
             return _validate_integrity_error(entry, log_index)
