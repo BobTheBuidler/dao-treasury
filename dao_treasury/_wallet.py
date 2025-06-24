@@ -149,16 +149,18 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
         elif not isinstance(cfg, dict):
             raise ValueError(f"Invalid config for wallet {address}, expected mapping")
 
-        # Extract optional networks list
-        networks = cfg.get("networks", [])
-        if not isinstance(networks, list) or not all(
-            isinstance(n, int) for n in networks
-        ):
-            raise ValueError(
-                f"'networks' for wallet {address} must be a list of integers, got {networks}"
-            )
+        kwargs = {"address": address}
 
-        kwargs = {"address": address, "networks": networks}
+        # Extract optional networks list
+        networks = cfg.get("networks")
+        if networks:
+            if not isinstance(networks, list) or not all(
+                isinstance(n, int) for n in networks
+            ):
+                raise ValueError(
+                    f"'networks' for wallet {address} must be a list of integers, got {networks}"
+                )
+            kwargs["networks"] = networks
 
         # Parse start: timestamp universal, block under chain key
         start_cfg = cfg.get("start", {})
@@ -241,6 +243,8 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
                     f"Invalid key: {key}. Valid options are 'block' or 'timestamp'."
                 )
 
-        wallets.append(TreasuryWallet(**kwargs))
+        wallet = TreasuryWallet(**kwargs)
+        print(f"initialized {wallet}")
+        wallets.append(wallet)
 
     return wallets
