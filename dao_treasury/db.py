@@ -53,6 +53,7 @@ from pony.orm import (
     select,
 )
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
+from y._db.decorators import retry_locked
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
@@ -294,7 +295,6 @@ class Address(DbEntity):
             )
 
         commit()
-
         return entity  # type: ignore [no-any-return]
 
     @staticmethod
@@ -923,6 +923,7 @@ class TreasuryTx(DbEntity):
             return dbid  # type: ignore [no-any-return]
 
     @staticmethod
+    @retry_locked
     def __set_txgroup(treasury_tx_dbid: int, txgroup_dbid: TxGroupDbid) -> None:
         with db_session:
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
