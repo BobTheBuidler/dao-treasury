@@ -1,4 +1,5 @@
 """This module is used to ignore any transactions that involve shitcoins in the :obj:`~eth_portfolio.SHITCOINS` mapping."""
+
 from typing import Final
 
 import eth_portfolio
@@ -9,6 +10,7 @@ from dao_treasury.sorting.factory import ignore
 
 
 SHITCOINS: Final = eth_portfolio.SHITCOINS[CHAINID]
+
 
 @ignore("Shitcoin")
 def is_shitcoin(tx: TreasuryTx) -> bool:
