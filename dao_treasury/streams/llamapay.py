@@ -344,7 +344,9 @@ class LlamaPayProcessor:
                 block = await get_block_at_timestamp(check_at, sync=False)
             except NoBlockFound:
                 sleep_time = (check_at - now(tz=_UTC)).total_seconds()
-                logger.debug("no block found for %s, sleeping %ss", check_at, sleep_time)
+                logger.debug(
+                    "no block found for %s, sleeping %ss", check_at, sleep_time
+                )
                 await sleep(sleep_time)
             else:
                 break
