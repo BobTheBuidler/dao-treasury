@@ -576,6 +576,7 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
+    uint32_t bitmap;
     PyObject *___mypyc_self__;
     PyObject *_self;
     PyObject *_stream_id;
@@ -598,30 +599,34 @@ typedef struct {
     PyObject *___mypyc_temp__62;
     tuple_T3OOO ___mypyc_temp__63;
     PyObject *_block;
+    tuple_T3OOO ___mypyc_temp__64;
+    double _sleep_time;
+    PyObject *___mypyc_temp__65;
+    tuple_T3OOO ___mypyc_temp__66;
     PyObject *_price_fut;
-    PyObject *___mypyc_temp__64;
-    tuple_T3OOO ___mypyc_temp__65;
+    PyObject *___mypyc_temp__67;
+    tuple_T3OOO ___mypyc_temp__68;
     CPyTagged _start_timestamp;
-    PyObject *___mypyc_temp__66;
-    tuple_T3OOO ___mypyc_temp__67;
-    PyObject *___mypyc_temp__68;
-    tuple_T3OOO ___mypyc_temp__69;
-    PyObject *___mypyc_temp__70;
-    tuple_T3OOO ___mypyc_temp__71;
+    PyObject *___mypyc_temp__69;
+    tuple_T3OOO ___mypyc_temp__70;
+    PyObject *___mypyc_temp__71;
+    tuple_T3OOO ___mypyc_temp__72;
+    PyObject *___mypyc_temp__73;
+    tuple_T3OOO ___mypyc_temp__74;
     PyObject *_block_datetime;
     CPyTagged _seconds_active;
     char _is_last_day;
     CPyTagged _seconds_active_today;
-    PyObject *___mypyc_temp__72;
-    PyObject *___mypyc_temp__73;
-    char ___mypyc_temp__74;
     PyObject *___mypyc_temp__75;
-    tuple_T3OOO ___mypyc_temp__76;
+    PyObject *___mypyc_temp__76;
+    char ___mypyc_temp__77;
+    PyObject *___mypyc_temp__78;
+    tuple_T3OOO ___mypyc_temp__79;
     PyObject *_price;
-    PyObject *___mypyc_temp__77;
-    tuple_T3OOO ___mypyc_temp__78;
-    PyObject *___mypyc_temp__79;
-    tuple_T3OOO ___mypyc_temp__80;
+    PyObject *___mypyc_temp__80;
+    tuple_T3OOO ___mypyc_temp__81;
+    PyObject *___mypyc_temp__82;
+    tuple_T3OOO ___mypyc_temp__83;
 } dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject;
 
 typedef struct {

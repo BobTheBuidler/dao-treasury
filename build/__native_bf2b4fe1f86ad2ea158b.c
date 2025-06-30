@@ -3970,7 +3970,7 @@ char CPyDef_sorting_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[460]; /* ('getLogger',) */
+    cpy_r_r5 = CPyStatics[462]; /* ('getLogger',) */
     cpy_r_r6 = CPyStatics[26]; /* 'logging' */
     cpy_r_r7 = CPyStatic_sorting___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -3981,7 +3981,7 @@ CPyL3: ;
     CPyModule_logging = cpy_r_r8;
     CPy_INCREF(CPyModule_logging);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[461]; /* ('Final', 'Optional') */
+    cpy_r_r9 = CPyStatics[463]; /* ('Final', 'Optional') */
     cpy_r_r10 = CPyStatics[29]; /* 'typing' */
     cpy_r_r11 = CPyStatic_sorting___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -3992,7 +3992,7 @@ CPyL3: ;
     CPyModule_typing = cpy_r_r12;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[462]; /* ('LedgerEntry',) */
+    cpy_r_r13 = CPyStatics[464]; /* ('LedgerEntry',) */
     cpy_r_r14 = CPyStatics[31]; /* 'eth_portfolio.structs' */
     cpy_r_r15 = CPyStatic_sorting___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -4003,7 +4003,7 @@ CPyL3: ;
     CPyModule_eth_portfolio___structs = cpy_r_r16;
     CPy_INCREF(CPyModule_eth_portfolio___structs);
     CPy_DECREF(cpy_r_r16);
-    cpy_r_r17 = CPyStatics[463]; /* ('TransactionHash',) */
+    cpy_r_r17 = CPyStatics[465]; /* ('TransactionHash',) */
     cpy_r_r18 = CPyStatics[32]; /* 'evmspec.data' */
     cpy_r_r19 = CPyStatic_sorting___globals;
     cpy_r_r20 = CPyImport_ImportFromMany(cpy_r_r18, cpy_r_r17, cpy_r_r17, cpy_r_r19);
@@ -4014,7 +4014,7 @@ CPyL3: ;
     CPyModule_evmspec___data = cpy_r_r20;
     CPy_INCREF(CPyModule_evmspec___data);
     CPy_DECREF(cpy_r_r20);
-    cpy_r_r21 = CPyStatics[464]; /* ('ContractNotVerified',) */
+    cpy_r_r21 = CPyStatics[466]; /* ('ContractNotVerified',) */
     cpy_r_r22 = CPyStatics[33]; /* 'y.exceptions' */
     cpy_r_r23 = CPyStatic_sorting___globals;
     cpy_r_r24 = CPyImport_ImportFromMany(cpy_r_r22, cpy_r_r21, cpy_r_r21, cpy_r_r23);
@@ -4025,7 +4025,7 @@ CPyL3: ;
     CPyModule_y___exceptions = cpy_r_r24;
     CPy_INCREF(CPyModule_y___exceptions);
     CPy_DECREF(cpy_r_r24);
-    cpy_r_r25 = CPyStatics[465]; /* ('constants', 'db') */
+    cpy_r_r25 = CPyStatics[467]; /* ('constants', 'db') */
     cpy_r_r26 = CPyStatics[36]; /* 'dao_treasury' */
     cpy_r_r27 = CPyStatic_sorting___globals;
     cpy_r_r28 = CPyImport_ImportFromMany(cpy_r_r26, cpy_r_r25, cpy_r_r25, cpy_r_r27);
@@ -4036,7 +4036,7 @@ CPyL3: ;
     CPyModule_dao_treasury = cpy_r_r28;
     CPy_INCREF(CPyModule_dao_treasury);
     CPy_DECREF(cpy_r_r28);
-    cpy_r_r29 = CPyStatics[466]; /* ('TreasuryWallet',) */
+    cpy_r_r29 = CPyStatics[468]; /* ('TreasuryWallet',) */
     cpy_r_r30 = CPyStatics[38]; /* 'dao_treasury._wallet' */
     cpy_r_r31 = CPyStatic_sorting___globals;
     cpy_r_r32 = CPyImport_ImportFromMany(cpy_r_r30, cpy_r_r29, cpy_r_r29, cpy_r_r31);
@@ -4047,7 +4047,7 @@ CPyL3: ;
     CPyModule_dao_treasury____wallet = cpy_r_r32;
     CPy_INCREF(CPyModule_dao_treasury____wallet);
     CPy_DECREF(cpy_r_r32);
-    cpy_r_r33 = CPyStatics[467]; /* ('_Matcher', 'FromAddressMatcher', 'HashMatcher',
+    cpy_r_r33 = CPyStatics[469]; /* ('_Matcher', 'FromAddressMatcher', 'HashMatcher',
                                     'ToAddressMatcher') */
     cpy_r_r34 = CPyStatics[43]; /* 'dao_treasury.sorting._matchers' */
     cpy_r_r35 = CPyStatic_sorting___globals;
@@ -4059,7 +4059,7 @@ CPyL3: ;
     CPyModule_dao_treasury___sorting____matchers = cpy_r_r36;
     CPy_INCREF(CPyModule_dao_treasury___sorting____matchers);
     CPy_DECREF(cpy_r_r36);
-    cpy_r_r37 = CPyStatics[468]; /* ('SortRuleFactory', 'cost_of_revenue', 'expense',
+    cpy_r_r37 = CPyStatics[470]; /* ('SortRuleFactory', 'cost_of_revenue', 'expense',
                                     'ignore', 'other_expense', 'other_income', 'revenue') */
     cpy_r_r38 = CPyStatics[51]; /* 'dao_treasury.sorting.factory' */
     cpy_r_r39 = CPyStatic_sorting___globals;
@@ -4071,7 +4071,7 @@ CPyL3: ;
     CPyModule_dao_treasury___sorting___factory = cpy_r_r40;
     CPy_INCREF(CPyModule_dao_treasury___sorting___factory);
     CPy_DECREF(cpy_r_r40);
-    cpy_r_r41 = CPyStatics[469]; /* ('SORT_RULES', 'CostOfRevenueSortRule', 'ExpenseSortRule',
+    cpy_r_r41 = CPyStatics[471]; /* ('SORT_RULES', 'CostOfRevenueSortRule', 'ExpenseSortRule',
                                     'IgnoreSortRule', 'OtherExpenseSortRule',
                                     'OtherIncomeSortRule', 'RevenueSortRule') */
     cpy_r_r42 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -4098,7 +4098,7 @@ CPyL3: ;
     CPy_INCREF(CPyModule_dao_treasury___sorting___rules);
     CPy_DECREF(cpy_r_r49);
 CPyL16: ;
-    cpy_r_r50 = CPyStatics[470]; /* ('TxGroupDbid',) */
+    cpy_r_r50 = CPyStatics[472]; /* ('TxGroupDbid',) */
     cpy_r_r51 = CPyStatics[61]; /* 'dao_treasury.types' */
     cpy_r_r52 = CPyStatic_sorting___globals;
     cpy_r_r53 = CPyImport_ImportFromMany(cpy_r_r51, cpy_r_r50, cpy_r_r50, cpy_r_r52);
@@ -4294,7 +4294,7 @@ CPyL37: ;
     cpy_r_r125 = CPyStatics[72]; /* 'get_dbid' */
     PyObject *cpy_r_r126[3] = {cpy_r_r115, cpy_r_r117, cpy_r_r124};
     cpy_r_r127 = (PyObject **)&cpy_r_r126;
-    cpy_r_r128 = CPyStatics[471]; /* ('name', 'parent') */
+    cpy_r_r128 = CPyStatics[473]; /* ('name', 'parent') */
     cpy_r_r129 = PyObject_VectorcallMethod(cpy_r_r125, cpy_r_r127, 9223372036854775809ULL, cpy_r_r128);
     if (unlikely(cpy_r_r129 == NULL)) {
         CPy_AddTraceback("dao_treasury/sorting/__init__.py", "<module>", 94, CPyStatic_sorting___globals);
@@ -4345,7 +4345,7 @@ CPyL46: ;
     cpy_r_r144 = CPyStatics[72]; /* 'get_dbid' */
     PyObject *cpy_r_r145[3] = {cpy_r_r134, cpy_r_r136, cpy_r_r143};
     cpy_r_r146 = (PyObject **)&cpy_r_r145;
-    cpy_r_r147 = CPyStatics[471]; /* ('name', 'parent') */
+    cpy_r_r147 = CPyStatics[473]; /* ('name', 'parent') */
     cpy_r_r148 = PyObject_VectorcallMethod(cpy_r_r144, cpy_r_r146, 9223372036854775809ULL, cpy_r_r147);
     if (unlikely(cpy_r_r148 == NULL)) {
         CPy_AddTraceback("dao_treasury/sorting/__init__.py", "<module>", 107, CPyStatic_sorting___globals);
@@ -4717,7 +4717,7 @@ char CPyDef_ignore___llamapay_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[472]; /* ('TreasuryTx',) */
+    cpy_r_r5 = CPyStatics[474]; /* ('TreasuryTx',) */
     cpy_r_r6 = CPyStatics[36]; /* 'dao_treasury' */
     cpy_r_r7 = CPyStatic_ignore___llamapay___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -4728,7 +4728,7 @@ CPyL3: ;
     CPyModule_dao_treasury = cpy_r_r8;
     CPy_INCREF(CPyModule_dao_treasury);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[473]; /* ('ignore',) */
+    cpy_r_r9 = CPyStatics[475]; /* ('ignore',) */
     cpy_r_r10 = CPyStatics[51]; /* 'dao_treasury.sorting.factory' */
     cpy_r_r11 = CPyStatic_ignore___llamapay___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -4739,7 +4739,7 @@ CPyL3: ;
     CPyModule_dao_treasury___sorting___factory = cpy_r_r12;
     CPy_INCREF(CPyModule_dao_treasury___sorting___factory);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[474]; /* ('llamapay',) */
+    cpy_r_r13 = CPyStatics[476]; /* ('llamapay',) */
     cpy_r_r14 = CPyStatics[82]; /* 'dao_treasury.streams' */
     cpy_r_r15 = CPyStatic_ignore___llamapay___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -7309,7 +7309,7 @@ PyObject *CPyDef__matchers____AddressMatcher_____repr__(PyObject *cpy_r_self) {
     PyObject *cpy_r_r25;
     PyObject *cpy_r_r26;
     PyObject *cpy_r_r27;
-    cpy_r_r0 = CPyStatics[475]; /* ('TxGroup',) */
+    cpy_r_r0 = CPyStatics[477]; /* ('TxGroup',) */
     cpy_r_r1 = CPyStatics[111]; /* 'dao_treasury.db' */
     cpy_r_r2 = CPyStatic__matchers___globals;
     cpy_r_r3 = CPyImport_ImportFromMany(cpy_r_r1, cpy_r_r0, cpy_r_r0, cpy_r_r2);
@@ -7337,7 +7337,7 @@ CPyL3: ;
     cpy_r_r8 = CPyStatics[112]; /* 'get' */
     PyObject *cpy_r_r9[2] = {cpy_r_r6, cpy_r_r7};
     cpy_r_r10 = (PyObject **)&cpy_r_r9;
-    cpy_r_r11 = CPyStatics[476]; /* ('txgroup_id',) */
+    cpy_r_r11 = CPyStatics[478]; /* ('txgroup_id',) */
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r8, cpy_r_r10, 9223372036854775809ULL, cpy_r_r11);
     if (unlikely(cpy_r_r12 == NULL)) {
         CPy_AddTraceback("dao_treasury/sorting/_matchers.py", "__repr__", 265, CPyStatic__matchers___globals);
@@ -7925,7 +7925,7 @@ PyObject *CPyDef__matchers___HashMatcher_____repr__(PyObject *cpy_r_self) {
     PyObject *cpy_r_r25;
     PyObject *cpy_r_r26;
     PyObject *cpy_r_r27;
-    cpy_r_r0 = CPyStatics[475]; /* ('TxGroup',) */
+    cpy_r_r0 = CPyStatics[477]; /* ('TxGroup',) */
     cpy_r_r1 = CPyStatics[111]; /* 'dao_treasury.db' */
     cpy_r_r2 = CPyStatic__matchers___globals;
     cpy_r_r3 = CPyImport_ImportFromMany(cpy_r_r1, cpy_r_r0, cpy_r_r0, cpy_r_r2);
@@ -7953,7 +7953,7 @@ CPyL3: ;
     cpy_r_r8 = CPyStatics[112]; /* 'get' */
     PyObject *cpy_r_r9[2] = {cpy_r_r6, cpy_r_r7};
     cpy_r_r10 = (PyObject **)&cpy_r_r9;
-    cpy_r_r11 = CPyStatics[476]; /* ('txgroup_id',) */
+    cpy_r_r11 = CPyStatics[478]; /* ('txgroup_id',) */
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r8, cpy_r_r10, 9223372036854775809ULL, cpy_r_r11);
     if (unlikely(cpy_r_r12 == NULL)) {
         CPy_AddTraceback("dao_treasury/sorting/_matchers.py", "__repr__", 386, CPyStatic__matchers___globals);
@@ -8293,7 +8293,7 @@ char CPyDef__matchers_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[460]; /* ('getLogger',) */
+    cpy_r_r5 = CPyStatics[462]; /* ('getLogger',) */
     cpy_r_r6 = CPyStatics[26]; /* 'logging' */
     cpy_r_r7 = CPyStatic__matchers___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -8304,7 +8304,7 @@ CPyL3: ;
     CPyModule_logging = cpy_r_r8;
     CPy_INCREF(CPyModule_logging);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[477]; /* ('ClassVar', 'Dict', 'Final', 'Iterable', 'List',
+    cpy_r_r9 = CPyStatics[479]; /* ('ClassVar', 'Dict', 'Final', 'Iterable', 'List',
                                    'Optional', 'Set', 'final') */
     cpy_r_r10 = CPyStatics[29]; /* 'typing' */
     cpy_r_r11 = CPyStatic__matchers___globals;
@@ -8316,7 +8316,7 @@ CPyL3: ;
     CPyModule_typing = cpy_r_r12;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[478]; /* ('ChecksumAddress', 'HexAddress', 'HexStr') */
+    cpy_r_r13 = CPyStatics[480]; /* ('ChecksumAddress', 'HexAddress', 'HexStr') */
     cpy_r_r14 = CPyStatics[130]; /* 'eth_typing' */
     cpy_r_r15 = CPyStatic__matchers___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -8327,7 +8327,7 @@ CPyL3: ;
     CPyModule_eth_typing = cpy_r_r16;
     CPy_INCREF(CPyModule_eth_typing);
     CPy_DECREF(cpy_r_r16);
-    cpy_r_r17 = CPyStatics[479]; /* ('is_hexstr',) */
+    cpy_r_r17 = CPyStatics[481]; /* ('is_hexstr',) */
     cpy_r_r18 = CPyStatics[131]; /* 'eth_utils' */
     cpy_r_r19 = CPyStatic__matchers___globals;
     cpy_r_r20 = CPyImport_ImportFromMany(cpy_r_r18, cpy_r_r17, cpy_r_r17, cpy_r_r19);
@@ -8338,7 +8338,7 @@ CPyL3: ;
     CPyModule_eth_utils = cpy_r_r20;
     CPy_INCREF(CPyModule_eth_utils);
     CPy_DECREF(cpy_r_r20);
-    cpy_r_r21 = CPyStatics[480]; /* ('db_session',) */
+    cpy_r_r21 = CPyStatics[482]; /* ('db_session',) */
     cpy_r_r22 = CPyStatics[133]; /* 'pony.orm' */
     cpy_r_r23 = CPyStatic__matchers___globals;
     cpy_r_r24 = CPyImport_ImportFromMany(cpy_r_r22, cpy_r_r21, cpy_r_r21, cpy_r_r23);
@@ -8349,7 +8349,7 @@ CPyL3: ;
     CPyModule_pony___orm = cpy_r_r24;
     CPy_INCREF(CPyModule_pony___orm);
     CPy_DECREF(cpy_r_r24);
-    cpy_r_r25 = CPyStatics[481]; /* ('Self',) */
+    cpy_r_r25 = CPyStatics[483]; /* ('Self',) */
     cpy_r_r26 = CPyStatics[135]; /* 'typing_extensions' */
     cpy_r_r27 = CPyStatic__matchers___globals;
     cpy_r_r28 = CPyImport_ImportFromMany(cpy_r_r26, cpy_r_r25, cpy_r_r25, cpy_r_r27);
@@ -8360,7 +8360,7 @@ CPyL3: ;
     CPyModule_typing_extensions = cpy_r_r28;
     CPy_INCREF(CPyModule_typing_extensions);
     CPy_DECREF(cpy_r_r28);
-    cpy_r_r29 = CPyStatics[482]; /* ('convert',) */
+    cpy_r_r29 = CPyStatics[484]; /* ('convert',) */
     cpy_r_r30 = CPyStatics[136]; /* 'y' */
     cpy_r_r31 = CPyStatic__matchers___globals;
     cpy_r_r32 = CPyImport_ImportFromMany(cpy_r_r30, cpy_r_r29, cpy_r_r29, cpy_r_r31);
@@ -8371,7 +8371,7 @@ CPyL3: ;
     CPyModule_y = cpy_r_r32;
     CPy_INCREF(CPyModule_y);
     CPy_DECREF(cpy_r_r32);
-    cpy_r_r33 = CPyStatics[470]; /* ('TxGroupDbid',) */
+    cpy_r_r33 = CPyStatics[472]; /* ('TxGroupDbid',) */
     cpy_r_r34 = CPyStatics[61]; /* 'dao_treasury.types' */
     cpy_r_r35 = CPyStatic__matchers___globals;
     cpy_r_r36 = CPyImport_ImportFromMany(cpy_r_r34, cpy_r_r33, cpy_r_r33, cpy_r_r35);
@@ -8546,7 +8546,7 @@ CPyL3: ;
     }
     cpy_r_r101 = (PyObject *)CPyType__matchers____AddressMatcher;
     cpy_r_r102 = CPyStatics[100]; /* 'expected_length' */
-    cpy_r_r103 = CPyStatics[455]; /* 42 */
+    cpy_r_r103 = CPyStatics[457]; /* 42 */
     cpy_r_r104 = PyObject_SetAttr(cpy_r_r101, cpy_r_r102, cpy_r_r103);
     cpy_r_r105 = cpy_r_r104 >= 0;
     if (unlikely(!cpy_r_r105)) {
@@ -8783,7 +8783,7 @@ CPyL3: ;
     }
     cpy_r_r192 = (PyObject *)CPyType__matchers___HashMatcher;
     cpy_r_r193 = CPyStatics[100]; /* 'expected_length' */
-    cpy_r_r194 = CPyStatics[456]; /* 66 */
+    cpy_r_r194 = CPyStatics[458]; /* 66 */
     cpy_r_r195 = PyObject_SetAttr(cpy_r_r192, cpy_r_r193, cpy_r_r194);
     cpy_r_r196 = cpy_r_r195 >= 0;
     if (unlikely(!cpy_r_r196)) {
@@ -9822,7 +9822,7 @@ CPyL8: ;
     if (!cpy_r_r6) goto CPyL59;
     CPy_Unreachable();
 CPyL10: ;
-    cpy_r_r7 = CPyStatics[475]; /* ('TxGroup',) */
+    cpy_r_r7 = CPyStatics[477]; /* ('TxGroup',) */
     cpy_r_r8 = CPyStatics[111]; /* 'dao_treasury.db' */
     cpy_r_r9 = CPyStatic__rules___globals;
     cpy_r_r10 = CPyImport_ImportFromMany(cpy_r_r8, cpy_r_r7, cpy_r_r7, cpy_r_r9);
@@ -10739,7 +10739,7 @@ char CPyDef__rules_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[460]; /* ('getLogger',) */
+    cpy_r_r5 = CPyStatics[462]; /* ('getLogger',) */
     cpy_r_r6 = CPyStatics[26]; /* 'logging' */
     cpy_r_r7 = CPyStatic__rules___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -10750,7 +10750,7 @@ CPyL3: ;
     CPyModule_logging = cpy_r_r8;
     CPy_INCREF(CPyModule_logging);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[483]; /* ('Path',) */
+    cpy_r_r9 = CPyStatics[485]; /* ('Path',) */
     cpy_r_r10 = CPyStatics[166]; /* 'pathlib' */
     cpy_r_r11 = CPyStatic__rules___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -10761,7 +10761,7 @@ CPyL3: ;
     CPyModule_pathlib = cpy_r_r12;
     CPy_INCREF(CPyModule_pathlib);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[484]; /* ('Final', 'Type', 'Union', 'final') */
+    cpy_r_r13 = CPyStatics[486]; /* ('Final', 'Type', 'Union', 'final') */
     cpy_r_r14 = CPyStatics[29]; /* 'typing' */
     cpy_r_r15 = CPyStatic__rules___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -10777,13 +10777,13 @@ CPyL3: ;
     cpy_r_r19 = (void *)&cpy_r_r18;
     int64_t cpy_r_r20[1] = {5};
     cpy_r_r21 = (void *)&cpy_r_r20;
-    cpy_r_r22 = CPyStatics[486]; /* (('yaml', 'yaml', 'yaml'),) */
+    cpy_r_r22 = CPyStatics[488]; /* (('yaml', 'yaml', 'yaml'),) */
     cpy_r_r23 = CPyStatic__rules___globals;
     cpy_r_r24 = CPyStatics[170]; /* 'dao_treasury/sorting/_rules.py' */
     cpy_r_r25 = CPyStatics[171]; /* '<module>' */
     cpy_r_r26 = CPyImport_ImportMany(cpy_r_r22, cpy_r_r19, cpy_r_r23, cpy_r_r24, cpy_r_r25, cpy_r_r21);
     if (!cpy_r_r26) goto CPyL24;
-    cpy_r_r27 = CPyStatics[480]; /* ('db_session',) */
+    cpy_r_r27 = CPyStatics[482]; /* ('db_session',) */
     cpy_r_r28 = CPyStatics[133]; /* 'pony.orm' */
     cpy_r_r29 = CPyStatic__rules___globals;
     cpy_r_r30 = CPyImport_ImportFromMany(cpy_r_r28, cpy_r_r27, cpy_r_r27, cpy_r_r29);
@@ -10794,7 +10794,7 @@ CPyL3: ;
     CPyModule_pony___orm = cpy_r_r30;
     CPy_INCREF(CPyModule_pony___orm);
     CPy_DECREF(cpy_r_r30);
-    cpy_r_r31 = CPyStatics[487]; /* ('CHAINID',) */
+    cpy_r_r31 = CPyStatics[489]; /* ('CHAINID',) */
     cpy_r_r32 = CPyStatics[173]; /* 'dao_treasury.constants' */
     cpy_r_r33 = CPyStatic__rules___globals;
     cpy_r_r34 = CPyImport_ImportFromMany(cpy_r_r32, cpy_r_r31, cpy_r_r31, cpy_r_r33);
@@ -10805,7 +10805,7 @@ CPyL3: ;
     CPyModule_dao_treasury___constants = cpy_r_r34;
     CPy_INCREF(CPyModule_dao_treasury___constants);
     CPy_DECREF(cpy_r_r34);
-    cpy_r_r35 = CPyStatics[467]; /* ('_Matcher', 'FromAddressMatcher', 'HashMatcher',
+    cpy_r_r35 = CPyStatics[469]; /* ('_Matcher', 'FromAddressMatcher', 'HashMatcher',
                                     'ToAddressMatcher') */
     cpy_r_r36 = CPyStatics[62]; /* 'dao_treasury.sorting' */
     cpy_r_r37 = CPyStatic__rules___globals;
@@ -10817,7 +10817,7 @@ CPyL3: ;
     CPyModule_dao_treasury___sorting = cpy_r_r38;
     CPy_INCREF(CPyModule_dao_treasury___sorting);
     CPy_DECREF(cpy_r_r38);
-    cpy_r_r39 = CPyStatics[488]; /* ('TopLevelCategory', 'TxGroupDbid') */
+    cpy_r_r39 = CPyStatics[490]; /* ('TopLevelCategory', 'TxGroupDbid') */
     cpy_r_r40 = CPyStatics[61]; /* 'dao_treasury.types' */
     cpy_r_r41 = CPyStatic__rules___globals;
     cpy_r_r42 = CPyImport_ImportFromMany(cpy_r_r40, cpy_r_r39, cpy_r_r39, cpy_r_r41);
@@ -12122,7 +12122,7 @@ CPyL37: ;
 CPyL38: ;
     PyObject *cpy_r_r49[2] = {cpy_r_r47, cpy_r_func};
     cpy_r_r50 = (PyObject **)&cpy_r_r49;
-    cpy_r_r51 = CPyStatics[489]; /* ('txgroup', 'func') */
+    cpy_r_r51 = CPyStatics[491]; /* ('txgroup', 'func') */
     cpy_r_r52 = PyObject_Vectorcall(cpy_r_r48, cpy_r_r50, 0, cpy_r_r51);
     CPy_DECREF(cpy_r_r48);
     if (unlikely(cpy_r_r52 == NULL)) {
@@ -12703,7 +12703,7 @@ char CPyDef_factory_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[490]; /* ('Any', 'Final', 'Generic', 'Optional', 'Union', 'final',
+    cpy_r_r5 = CPyStatics[492]; /* ('Any', 'Final', 'Generic', 'Optional', 'Union', 'final',
                                    'overload') */
     cpy_r_r6 = CPyStatics[29]; /* 'typing' */
     cpy_r_r7 = CPyStatic_factory___globals;
@@ -12715,7 +12715,7 @@ CPyL3: ;
     CPyModule_typing = cpy_r_r8;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[487]; /* ('CHAINID',) */
+    cpy_r_r9 = CPyStatics[489]; /* ('CHAINID',) */
     cpy_r_r10 = CPyStatics[173]; /* 'dao_treasury.constants' */
     cpy_r_r11 = CPyStatic_factory___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -12726,7 +12726,7 @@ CPyL3: ;
     CPyModule_dao_treasury___constants = cpy_r_r12;
     CPy_INCREF(CPyModule_dao_treasury___constants);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[491]; /* ('CostOfRevenueSortRule', 'ExpenseSortRule',
+    cpy_r_r13 = CPyStatics[493]; /* ('CostOfRevenueSortRule', 'ExpenseSortRule',
                                     'IgnoreSortRule', 'OtherExpenseSortRule',
                                     'OtherIncomeSortRule', 'RevenueSortRule', 'TRule') */
     cpy_r_r14 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -12739,7 +12739,7 @@ CPyL3: ;
     CPyModule_dao_treasury___sorting___rule = cpy_r_r16;
     CPy_INCREF(CPyModule_dao_treasury___sorting___rule);
     CPy_DECREF(cpy_r_r16);
-    cpy_r_r17 = CPyStatics[492]; /* ('Networks', 'SortFunction', 'TxGroupName') */
+    cpy_r_r17 = CPyStatics[494]; /* ('Networks', 'SortFunction', 'TxGroupName') */
     cpy_r_r18 = CPyStatics[61]; /* 'dao_treasury.types' */
     cpy_r_r19 = CPyStatic_factory___globals;
     cpy_r_r20 = CPyImport_ImportFromMany(cpy_r_r18, cpy_r_r17, cpy_r_r17, cpy_r_r19);
@@ -15667,7 +15667,7 @@ PyObject *CPyDef_rule___txgroup_dbid__SortRule_obj_____call__(PyObject *cpy_r___
     PyObject *cpy_r_r28;
     CPyTagged cpy_r_r29;
     PyObject *cpy_r_r30;
-    cpy_r_r0 = CPyStatics[475]; /* ('TxGroup',) */
+    cpy_r_r0 = CPyStatics[477]; /* ('TxGroup',) */
     cpy_r_r1 = CPyStatics[111]; /* 'dao_treasury.db' */
     cpy_r_r2 = CPyStatic_rule___globals;
     cpy_r_r3 = CPyImport_ImportFromMany(cpy_r_r1, cpy_r_r0, cpy_r_r0, cpy_r_r2);
@@ -20731,7 +20731,7 @@ char CPyDef_rule_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[493]; /* ('defaultdict',) */
+    cpy_r_r5 = CPyStatics[495]; /* ('defaultdict',) */
     cpy_r_r6 = CPyStatics[226]; /* 'collections' */
     cpy_r_r7 = CPyStatic_rule___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -20742,7 +20742,7 @@ CPyL3: ;
     CPyModule_collections = cpy_r_r8;
     CPy_INCREF(CPyModule_collections);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[494]; /* ('dataclass',) */
+    cpy_r_r9 = CPyStatics[496]; /* ('dataclass',) */
     cpy_r_r10 = CPyStatics[228]; /* 'dataclasses' */
     cpy_r_r11 = CPyStatic_rule___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -20753,7 +20753,7 @@ CPyL3: ;
     CPyModule_dataclasses = cpy_r_r12;
     CPy_INCREF(CPyModule_dataclasses);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[460]; /* ('getLogger',) */
+    cpy_r_r13 = CPyStatics[462]; /* ('getLogger',) */
     cpy_r_r14 = CPyStatics[26]; /* 'logging' */
     cpy_r_r15 = CPyStatic_rule___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -20764,7 +20764,7 @@ CPyL3: ;
     CPyModule_logging = cpy_r_r16;
     CPy_INCREF(CPyModule_logging);
     CPy_DECREF(cpy_r_r16);
-    cpy_r_r17 = CPyStatics[495]; /* ('TYPE_CHECKING', 'DefaultDict', 'Dict', 'Final', 'List',
+    cpy_r_r17 = CPyStatics[497]; /* ('TYPE_CHECKING', 'DefaultDict', 'Dict', 'Final', 'List',
                                     'Optional', 'Type', 'TypeVar') */
     cpy_r_r18 = CPyStatics[29]; /* 'typing' */
     cpy_r_r19 = CPyStatic_rule___globals;
@@ -20776,7 +20776,7 @@ CPyL3: ;
     CPyModule_typing = cpy_r_r20;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r20);
-    cpy_r_r21 = CPyStatics[496]; /* ('EthAddress',) */
+    cpy_r_r21 = CPyStatics[498]; /* ('EthAddress',) */
     cpy_r_r22 = CPyStatics[232]; /* 'brownie.convert.datatypes' */
     cpy_r_r23 = CPyStatic_rule___globals;
     cpy_r_r24 = CPyImport_ImportFromMany(cpy_r_r22, cpy_r_r21, cpy_r_r21, cpy_r_r23);
@@ -20787,7 +20787,7 @@ CPyL3: ;
     CPyModule_brownie___convert___datatypes = cpy_r_r24;
     CPy_INCREF(CPyModule_brownie___convert___datatypes);
     CPy_DECREF(cpy_r_r24);
-    cpy_r_r25 = CPyStatics[497]; /* ('HexStr',) */
+    cpy_r_r25 = CPyStatics[499]; /* ('HexStr',) */
     cpy_r_r26 = CPyStatics[130]; /* 'eth_typing' */
     cpy_r_r27 = CPyStatic_rule___globals;
     cpy_r_r28 = CPyImport_ImportFromMany(cpy_r_r26, cpy_r_r25, cpy_r_r25, cpy_r_r27);
@@ -20798,7 +20798,7 @@ CPyL3: ;
     CPyModule_eth_typing = cpy_r_r28;
     CPy_INCREF(CPyModule_eth_typing);
     CPy_DECREF(cpy_r_r28);
-    cpy_r_r29 = CPyStatics[498]; /* ('mypyc_attr',) */
+    cpy_r_r29 = CPyStatics[500]; /* ('mypyc_attr',) */
     cpy_r_r30 = CPyStatics[234]; /* 'mypy_extensions' */
     cpy_r_r31 = CPyStatic_rule___globals;
     cpy_r_r32 = CPyImport_ImportFromMany(cpy_r_r30, cpy_r_r29, cpy_r_r29, cpy_r_r31);
@@ -20809,7 +20809,7 @@ CPyL3: ;
     CPyModule_mypy_extensions = cpy_r_r32;
     CPy_INCREF(CPyModule_mypy_extensions);
     CPy_DECREF(cpy_r_r32);
-    cpy_r_r33 = CPyStatics[466]; /* ('TreasuryWallet',) */
+    cpy_r_r33 = CPyStatics[468]; /* ('TreasuryWallet',) */
     cpy_r_r34 = CPyStatics[38]; /* 'dao_treasury._wallet' */
     cpy_r_r35 = CPyStatic_rule___globals;
     cpy_r_r36 = CPyImport_ImportFromMany(cpy_r_r34, cpy_r_r33, cpy_r_r33, cpy_r_r35);
@@ -20820,7 +20820,7 @@ CPyL3: ;
     CPyModule_dao_treasury____wallet = cpy_r_r36;
     CPy_INCREF(CPyModule_dao_treasury____wallet);
     CPy_DECREF(cpy_r_r36);
-    cpy_r_r37 = CPyStatics[499]; /* ('SortFunction', 'SortRule', 'TxGroupDbid', 'TxGroupName') */
+    cpy_r_r37 = CPyStatics[501]; /* ('SortFunction', 'SortRule', 'TxGroupDbid', 'TxGroupName') */
     cpy_r_r38 = CPyStatics[61]; /* 'dao_treasury.types' */
     cpy_r_r39 = CPyStatic_rule___globals;
     cpy_r_r40 = CPyImport_ImportFromMany(cpy_r_r38, cpy_r_r37, cpy_r_r37, cpy_r_r39);
@@ -21308,7 +21308,7 @@ CPyL39: ;
     cpy_r_r222 = 1 ? Py_True : Py_False;
     PyObject *cpy_r_r223[2] = {cpy_r_r221, cpy_r_r222};
     cpy_r_r224 = (PyObject **)&cpy_r_r223;
-    cpy_r_r225 = CPyStatics[500]; /* ('kw_only', 'frozen') */
+    cpy_r_r225 = CPyStatics[502]; /* ('kw_only', 'frozen') */
     cpy_r_r226 = PyObject_Vectorcall(cpy_r_r220, cpy_r_r224, 0, cpy_r_r225);
     CPy_DECREF(cpy_r_r220);
     if (unlikely(cpy_r_r226 == NULL)) {
@@ -21334,7 +21334,7 @@ CPyL39: ;
     cpy_r_r233 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r234[1] = {cpy_r_r233};
     cpy_r_r235 = (PyObject **)&cpy_r_r234;
-    cpy_r_r236 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r236 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r237 = PyObject_Vectorcall(cpy_r_r232, cpy_r_r235, 0, cpy_r_r236);
     CPy_DECREF(cpy_r_r232);
     if (unlikely(cpy_r_r237 == NULL)) {
@@ -21477,7 +21477,7 @@ CPyL88: ;
     cpy_r_r286 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r287[1] = {cpy_r_r286};
     cpy_r_r288 = (PyObject **)&cpy_r_r287;
-    cpy_r_r289 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r289 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r290 = PyObject_Vectorcall(cpy_r_r285, cpy_r_r288, 0, cpy_r_r289);
     CPy_DECREF(cpy_r_r285);
     if (unlikely(cpy_r_r290 == NULL)) {
@@ -21620,7 +21620,7 @@ CPyL109: ;
     cpy_r_r339 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r340[1] = {cpy_r_r339};
     cpy_r_r341 = (PyObject **)&cpy_r_r340;
-    cpy_r_r342 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r342 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r343 = PyObject_Vectorcall(cpy_r_r338, cpy_r_r341, 0, cpy_r_r342);
     CPy_DECREF(cpy_r_r338);
     if (unlikely(cpy_r_r343 == NULL)) {
@@ -21763,7 +21763,7 @@ CPyL130: ;
     cpy_r_r392 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r393[1] = {cpy_r_r392};
     cpy_r_r394 = (PyObject **)&cpy_r_r393;
-    cpy_r_r395 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r395 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r396 = PyObject_Vectorcall(cpy_r_r391, cpy_r_r394, 0, cpy_r_r395);
     CPy_DECREF(cpy_r_r391);
     if (unlikely(cpy_r_r396 == NULL)) {
@@ -21906,7 +21906,7 @@ CPyL151: ;
     cpy_r_r445 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r446[1] = {cpy_r_r445};
     cpy_r_r447 = (PyObject **)&cpy_r_r446;
-    cpy_r_r448 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r448 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r449 = PyObject_Vectorcall(cpy_r_r444, cpy_r_r447, 0, cpy_r_r448);
     CPy_DECREF(cpy_r_r444);
     if (unlikely(cpy_r_r449 == NULL)) {
@@ -22049,7 +22049,7 @@ CPyL172: ;
     cpy_r_r498 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r499[1] = {cpy_r_r498};
     cpy_r_r500 = (PyObject **)&cpy_r_r499;
-    cpy_r_r501 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r501 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r502 = PyObject_Vectorcall(cpy_r_r497, cpy_r_r500, 0, cpy_r_r501);
     CPy_DECREF(cpy_r_r497);
     if (unlikely(cpy_r_r502 == NULL)) {
@@ -22192,7 +22192,7 @@ CPyL193: ;
     cpy_r_r551 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r552[1] = {cpy_r_r551};
     cpy_r_r553 = (PyObject **)&cpy_r_r552;
-    cpy_r_r554 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r554 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r555 = PyObject_Vectorcall(cpy_r_r550, cpy_r_r553, 0, cpy_r_r554);
     CPy_DECREF(cpy_r_r550);
     if (unlikely(cpy_r_r555 == NULL)) {
@@ -22335,7 +22335,7 @@ CPyL214: ;
     cpy_r_r604 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r605[1] = {cpy_r_r604};
     cpy_r_r606 = (PyObject **)&cpy_r_r605;
-    cpy_r_r607 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r607 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r608 = PyObject_Vectorcall(cpy_r_r603, cpy_r_r606, 0, cpy_r_r607);
     CPy_DECREF(cpy_r_r603);
     if (unlikely(cpy_r_r608 == NULL)) {
@@ -22478,7 +22478,7 @@ CPyL235: ;
     cpy_r_r657 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r658[1] = {cpy_r_r657};
     cpy_r_r659 = (PyObject **)&cpy_r_r658;
-    cpy_r_r660 = CPyStatics[501]; /* ('native_class',) */
+    cpy_r_r660 = CPyStatics[503]; /* ('native_class',) */
     cpy_r_r661 = PyObject_Vectorcall(cpy_r_r656, cpy_r_r659, 0, cpy_r_r660);
     CPy_DECREF(cpy_r_r656);
     if (unlikely(cpy_r_r661 == NULL)) {
@@ -25590,26 +25590,33 @@ streams___llamapay___process_stream_for_date_LlamaPayProcessor_env_traverse(dao_
     Py_VISIT(self->___mypyc_temp__63.f1);
     Py_VISIT(self->___mypyc_temp__63.f2);
     Py_VISIT(self->_block);
+    Py_VISIT(self->___mypyc_temp__64.f0);
+    Py_VISIT(self->___mypyc_temp__64.f1);
+    Py_VISIT(self->___mypyc_temp__64.f2);
+    Py_VISIT(self->___mypyc_temp__65);
+    Py_VISIT(self->___mypyc_temp__66.f0);
+    Py_VISIT(self->___mypyc_temp__66.f1);
+    Py_VISIT(self->___mypyc_temp__66.f2);
     Py_VISIT(self->_price_fut);
-    Py_VISIT(self->___mypyc_temp__64);
-    Py_VISIT(self->___mypyc_temp__65.f0);
-    Py_VISIT(self->___mypyc_temp__65.f1);
-    Py_VISIT(self->___mypyc_temp__65.f2);
+    Py_VISIT(self->___mypyc_temp__67);
+    Py_VISIT(self->___mypyc_temp__68.f0);
+    Py_VISIT(self->___mypyc_temp__68.f1);
+    Py_VISIT(self->___mypyc_temp__68.f2);
     if (CPyTagged_CheckLong(self->_start_timestamp)) {
         Py_VISIT(CPyTagged_LongAsObject(self->_start_timestamp));
     }
-    Py_VISIT(self->___mypyc_temp__66);
-    Py_VISIT(self->___mypyc_temp__67.f0);
-    Py_VISIT(self->___mypyc_temp__67.f1);
-    Py_VISIT(self->___mypyc_temp__67.f2);
-    Py_VISIT(self->___mypyc_temp__68);
-    Py_VISIT(self->___mypyc_temp__69.f0);
-    Py_VISIT(self->___mypyc_temp__69.f1);
-    Py_VISIT(self->___mypyc_temp__69.f2);
-    Py_VISIT(self->___mypyc_temp__70);
-    Py_VISIT(self->___mypyc_temp__71.f0);
-    Py_VISIT(self->___mypyc_temp__71.f1);
-    Py_VISIT(self->___mypyc_temp__71.f2);
+    Py_VISIT(self->___mypyc_temp__69);
+    Py_VISIT(self->___mypyc_temp__70.f0);
+    Py_VISIT(self->___mypyc_temp__70.f1);
+    Py_VISIT(self->___mypyc_temp__70.f2);
+    Py_VISIT(self->___mypyc_temp__71);
+    Py_VISIT(self->___mypyc_temp__72.f0);
+    Py_VISIT(self->___mypyc_temp__72.f1);
+    Py_VISIT(self->___mypyc_temp__72.f2);
+    Py_VISIT(self->___mypyc_temp__73);
+    Py_VISIT(self->___mypyc_temp__74.f0);
+    Py_VISIT(self->___mypyc_temp__74.f1);
+    Py_VISIT(self->___mypyc_temp__74.f2);
     Py_VISIT(self->_block_datetime);
     if (CPyTagged_CheckLong(self->_seconds_active)) {
         Py_VISIT(CPyTagged_LongAsObject(self->_seconds_active));
@@ -25617,21 +25624,21 @@ streams___llamapay___process_stream_for_date_LlamaPayProcessor_env_traverse(dao_
     if (CPyTagged_CheckLong(self->_seconds_active_today)) {
         Py_VISIT(CPyTagged_LongAsObject(self->_seconds_active_today));
     }
-    Py_VISIT(self->___mypyc_temp__72);
-    Py_VISIT(self->___mypyc_temp__73);
     Py_VISIT(self->___mypyc_temp__75);
-    Py_VISIT(self->___mypyc_temp__76.f0);
-    Py_VISIT(self->___mypyc_temp__76.f1);
-    Py_VISIT(self->___mypyc_temp__76.f2);
+    Py_VISIT(self->___mypyc_temp__76);
+    Py_VISIT(self->___mypyc_temp__78);
+    Py_VISIT(self->___mypyc_temp__79.f0);
+    Py_VISIT(self->___mypyc_temp__79.f1);
+    Py_VISIT(self->___mypyc_temp__79.f2);
     Py_VISIT(self->_price);
-    Py_VISIT(self->___mypyc_temp__77);
-    Py_VISIT(self->___mypyc_temp__78.f0);
-    Py_VISIT(self->___mypyc_temp__78.f1);
-    Py_VISIT(self->___mypyc_temp__78.f2);
-    Py_VISIT(self->___mypyc_temp__79);
-    Py_VISIT(self->___mypyc_temp__80.f0);
-    Py_VISIT(self->___mypyc_temp__80.f1);
-    Py_VISIT(self->___mypyc_temp__80.f2);
+    Py_VISIT(self->___mypyc_temp__80);
+    Py_VISIT(self->___mypyc_temp__81.f0);
+    Py_VISIT(self->___mypyc_temp__81.f1);
+    Py_VISIT(self->___mypyc_temp__81.f2);
+    Py_VISIT(self->___mypyc_temp__82);
+    Py_VISIT(self->___mypyc_temp__83.f0);
+    Py_VISIT(self->___mypyc_temp__83.f1);
+    Py_VISIT(self->___mypyc_temp__83.f2);
     return 0;
 }
 
@@ -25672,28 +25679,35 @@ streams___llamapay___process_stream_for_date_LlamaPayProcessor_env_clear(dao_tre
     Py_CLEAR(self->___mypyc_temp__63.f1);
     Py_CLEAR(self->___mypyc_temp__63.f2);
     Py_CLEAR(self->_block);
+    Py_CLEAR(self->___mypyc_temp__64.f0);
+    Py_CLEAR(self->___mypyc_temp__64.f1);
+    Py_CLEAR(self->___mypyc_temp__64.f2);
+    Py_CLEAR(self->___mypyc_temp__65);
+    Py_CLEAR(self->___mypyc_temp__66.f0);
+    Py_CLEAR(self->___mypyc_temp__66.f1);
+    Py_CLEAR(self->___mypyc_temp__66.f2);
     Py_CLEAR(self->_price_fut);
-    Py_CLEAR(self->___mypyc_temp__64);
-    Py_CLEAR(self->___mypyc_temp__65.f0);
-    Py_CLEAR(self->___mypyc_temp__65.f1);
-    Py_CLEAR(self->___mypyc_temp__65.f2);
+    Py_CLEAR(self->___mypyc_temp__67);
+    Py_CLEAR(self->___mypyc_temp__68.f0);
+    Py_CLEAR(self->___mypyc_temp__68.f1);
+    Py_CLEAR(self->___mypyc_temp__68.f2);
     if (CPyTagged_CheckLong(self->_start_timestamp)) {
         CPyTagged __tmp = self->_start_timestamp;
         self->_start_timestamp = CPY_INT_TAG;
         Py_XDECREF(CPyTagged_LongAsObject(__tmp));
     }
-    Py_CLEAR(self->___mypyc_temp__66);
-    Py_CLEAR(self->___mypyc_temp__67.f0);
-    Py_CLEAR(self->___mypyc_temp__67.f1);
-    Py_CLEAR(self->___mypyc_temp__67.f2);
-    Py_CLEAR(self->___mypyc_temp__68);
-    Py_CLEAR(self->___mypyc_temp__69.f0);
-    Py_CLEAR(self->___mypyc_temp__69.f1);
-    Py_CLEAR(self->___mypyc_temp__69.f2);
-    Py_CLEAR(self->___mypyc_temp__70);
-    Py_CLEAR(self->___mypyc_temp__71.f0);
-    Py_CLEAR(self->___mypyc_temp__71.f1);
-    Py_CLEAR(self->___mypyc_temp__71.f2);
+    Py_CLEAR(self->___mypyc_temp__69);
+    Py_CLEAR(self->___mypyc_temp__70.f0);
+    Py_CLEAR(self->___mypyc_temp__70.f1);
+    Py_CLEAR(self->___mypyc_temp__70.f2);
+    Py_CLEAR(self->___mypyc_temp__71);
+    Py_CLEAR(self->___mypyc_temp__72.f0);
+    Py_CLEAR(self->___mypyc_temp__72.f1);
+    Py_CLEAR(self->___mypyc_temp__72.f2);
+    Py_CLEAR(self->___mypyc_temp__73);
+    Py_CLEAR(self->___mypyc_temp__74.f0);
+    Py_CLEAR(self->___mypyc_temp__74.f1);
+    Py_CLEAR(self->___mypyc_temp__74.f2);
     Py_CLEAR(self->_block_datetime);
     if (CPyTagged_CheckLong(self->_seconds_active)) {
         CPyTagged __tmp = self->_seconds_active;
@@ -25705,21 +25719,21 @@ streams___llamapay___process_stream_for_date_LlamaPayProcessor_env_clear(dao_tre
         self->_seconds_active_today = CPY_INT_TAG;
         Py_XDECREF(CPyTagged_LongAsObject(__tmp));
     }
-    Py_CLEAR(self->___mypyc_temp__72);
-    Py_CLEAR(self->___mypyc_temp__73);
     Py_CLEAR(self->___mypyc_temp__75);
-    Py_CLEAR(self->___mypyc_temp__76.f0);
-    Py_CLEAR(self->___mypyc_temp__76.f1);
-    Py_CLEAR(self->___mypyc_temp__76.f2);
+    Py_CLEAR(self->___mypyc_temp__76);
+    Py_CLEAR(self->___mypyc_temp__78);
+    Py_CLEAR(self->___mypyc_temp__79.f0);
+    Py_CLEAR(self->___mypyc_temp__79.f1);
+    Py_CLEAR(self->___mypyc_temp__79.f2);
     Py_CLEAR(self->_price);
-    Py_CLEAR(self->___mypyc_temp__77);
-    Py_CLEAR(self->___mypyc_temp__78.f0);
-    Py_CLEAR(self->___mypyc_temp__78.f1);
-    Py_CLEAR(self->___mypyc_temp__78.f2);
-    Py_CLEAR(self->___mypyc_temp__79);
-    Py_CLEAR(self->___mypyc_temp__80.f0);
-    Py_CLEAR(self->___mypyc_temp__80.f1);
-    Py_CLEAR(self->___mypyc_temp__80.f2);
+    Py_CLEAR(self->___mypyc_temp__80);
+    Py_CLEAR(self->___mypyc_temp__81.f0);
+    Py_CLEAR(self->___mypyc_temp__81.f1);
+    Py_CLEAR(self->___mypyc_temp__81.f2);
+    Py_CLEAR(self->___mypyc_temp__82);
+    Py_CLEAR(self->___mypyc_temp__83.f0);
+    Py_CLEAR(self->___mypyc_temp__83.f1);
+    Py_CLEAR(self->___mypyc_temp__83.f2);
     return 0;
 }
 
@@ -25771,23 +25785,27 @@ streams___llamapay___process_stream_for_date_LlamaPayProcessor_env_setup(PyTypeO
     if (self == NULL)
         return NULL;
     self->vtable = streams___llamapay___process_stream_for_date_LlamaPayProcessor_env_vtable;
+    self->bitmap = 0;
     self->___mypyc_next_label__ = CPY_INT_TAG;
     self->___mypyc_temp__57 = (tuple_T3OOO) { NULL, NULL, NULL };
     self->___mypyc_temp__59 = (tuple_T3OOO) { NULL, NULL, NULL };
     self->___mypyc_temp__61 = (tuple_T3OOO) { NULL, NULL, NULL };
     self->___mypyc_temp__63 = (tuple_T3OOO) { NULL, NULL, NULL };
-    self->___mypyc_temp__65 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__64 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->_sleep_time = -113.0;
+    self->___mypyc_temp__66 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__68 = (tuple_T3OOO) { NULL, NULL, NULL };
     self->_start_timestamp = CPY_INT_TAG;
-    self->___mypyc_temp__67 = (tuple_T3OOO) { NULL, NULL, NULL };
-    self->___mypyc_temp__69 = (tuple_T3OOO) { NULL, NULL, NULL };
-    self->___mypyc_temp__71 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__70 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__72 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__74 = (tuple_T3OOO) { NULL, NULL, NULL };
     self->_seconds_active = CPY_INT_TAG;
     self->_is_last_day = 2;
     self->_seconds_active_today = CPY_INT_TAG;
-    self->___mypyc_temp__74 = 2;
-    self->___mypyc_temp__76 = (tuple_T3OOO) { NULL, NULL, NULL };
-    self->___mypyc_temp__78 = (tuple_T3OOO) { NULL, NULL, NULL };
-    self->___mypyc_temp__80 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__77 = 2;
+    self->___mypyc_temp__79 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__81 = (tuple_T3OOO) { NULL, NULL, NULL };
+    self->___mypyc_temp__83 = (tuple_T3OOO) { NULL, NULL, NULL };
     return (PyObject *)self;
 }
 
@@ -26273,10 +26291,10 @@ CPyL20: ;
     }
     CPy_Unreachable();
 CPyL22: ;
-    cpy_r_r17 = CPyStatics[457]; /* 1 */
+    cpy_r_r17 = CPyStatics[459]; /* 1 */
     PyObject *cpy_r_r18[1] = {cpy_r_r17};
     cpy_r_r19 = (PyObject **)&cpy_r_r18;
-    cpy_r_r20 = CPyStatics[502]; /* ('days',) */
+    cpy_r_r20 = CPyStatics[504]; /* ('days',) */
     cpy_r_r21 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r19, 0, cpy_r_r20);
     if (unlikely(cpy_r_r21 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "_generate_dates", 88, CPyStatic_streams___llamapay___globals);
@@ -27692,7 +27710,7 @@ CPyL53: ;
 CPyL54: ;
     PyObject *cpy_r_r55[2] = {cpy_r_r52, cpy_r_r53};
     cpy_r_r56 = (PyObject **)&cpy_r_r55;
-    cpy_r_r57 = CPyStatics[503]; /* ('block_identifier',) */
+    cpy_r_r57 = CPyStatics[505]; /* ('block_identifier',) */
     cpy_r_r58 = PyObject_Vectorcall(cpy_r_r54, cpy_r_r56, 1, cpy_r_r57);
     CPy_DECREF(cpy_r_r54);
     if (unlikely(cpy_r_r58 == NULL)) {
@@ -31604,7 +31622,7 @@ CPyL6: ;
     cpy_r_r25 = 0 ? Py_True : Py_False;
     PyObject *cpy_r_r26[3] = {cpy_r_r20, cpy_r_r24, cpy_r_r25};
     cpy_r_r27 = (PyObject **)&cpy_r_r26;
-    cpy_r_r28 = CPyStatics[504]; /* ('sync',) */
+    cpy_r_r28 = CPyStatics[506]; /* ('sync',) */
     cpy_r_r29 = PyObject_Vectorcall(cpy_r_r23, cpy_r_r27, 2, cpy_r_r28);
     CPy_DECREF(cpy_r_r23);
     if (unlikely(cpy_r_r29 == NULL)) {
@@ -37016,7 +37034,7 @@ CPyL119: ;
         cpy_r_r183, cpy_r_amount_per_second, cpy_r_r176
     };
     cpy_r_r185 = (PyObject **)&cpy_r_r184;
-    cpy_r_r186 = CPyStatics[505]; /* ('stream_id', 'contract', 'start_block', 'token',
+    cpy_r_r186 = CPyStatics[507]; /* ('stream_id', 'contract', 'start_block', 'token',
                                      'from_address', 'to_address', 'amount_per_second',
                                      'txgroup') */
     cpy_r_r187 = PyObject_Vectorcall(cpy_r_r179, cpy_r_r185, 0, cpy_r_r186);
@@ -42091,529 +42109,598 @@ PyObject *CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_
     PyObject *cpy_r_r18;
     PyObject *cpy_r_r19;
     PyObject *cpy_r_r20;
-    CPyTagged cpy_r_r21;
+    PyObject *cpy_r_r21;
     PyObject *cpy_r_r22;
-    char cpy_r_r23;
+    CPyTagged cpy_r_r23;
     PyObject *cpy_r_r24;
     char cpy_r_r25;
     PyObject *cpy_r_r26;
-    PyObject *cpy_r_r27;
+    char cpy_r_r27;
     PyObject *cpy_r_r28;
     PyObject *cpy_r_r29;
     PyObject *cpy_r_r30;
     PyObject *cpy_r_r31;
     PyObject *cpy_r_r32;
     PyObject *cpy_r_r33;
-    PyObject **cpy_r_r35;
-    PyObject *cpy_r_r36;
-    PyObject *cpy_r_r37;
-    char cpy_r_r38;
+    PyObject *cpy_r_r34;
+    PyObject *cpy_r_r35;
+    PyObject **cpy_r_r37;
+    PyObject *cpy_r_r38;
     PyObject *cpy_r_r39;
-    PyObject *cpy_r_r40;
+    char cpy_r_r40;
     PyObject *cpy_r_r41;
     PyObject *cpy_r_r42;
     PyObject *cpy_r_r43;
-    char cpy_r_r44;
+    PyObject *cpy_r_r44;
     PyObject *cpy_r_r45;
     char cpy_r_r46;
-    tuple_T3OOO cpy_r_r47;
+    PyObject *cpy_r_r47;
     char cpy_r_r48;
-    PyObject **cpy_r_r49;
-    PyObject *cpy_r_r50;
-    char cpy_r_r51;
-    tuple_T3OOO cpy_r_r52;
-    tuple_T3OOO cpy_r_r53;
+    tuple_T3OOO cpy_r_r49;
+    char cpy_r_r50;
+    PyObject **cpy_r_r51;
+    PyObject *cpy_r_r52;
+    char cpy_r_r53;
     tuple_T3OOO cpy_r_r54;
-    char cpy_r_r55;
-    PyObject *cpy_r_r56;
-    PyObject *cpy_r_r57;
+    tuple_T3OOO cpy_r_r55;
+    tuple_T3OOO cpy_r_r56;
+    char cpy_r_r57;
     PyObject *cpy_r_r58;
-    char cpy_r_r59;
+    PyObject *cpy_r_r59;
     PyObject *cpy_r_r60;
-    int32_t cpy_r_r61;
-    char cpy_r_r62;
-    char cpy_r_r63;
-    PyObject *cpy_r_r64;
+    char cpy_r_r61;
+    PyObject *cpy_r_r62;
+    int32_t cpy_r_r63;
+    char cpy_r_r64;
     char cpy_r_r65;
     PyObject *cpy_r_r66;
     char cpy_r_r67;
     PyObject *cpy_r_r68;
-    PyObject *cpy_r_r69;
+    char cpy_r_r69;
     PyObject *cpy_r_r70;
     PyObject *cpy_r_r71;
     PyObject *cpy_r_r72;
     PyObject *cpy_r_r73;
     PyObject *cpy_r_r74;
-    PyObject **cpy_r_r76;
-    PyObject *cpy_r_r77;
-    PyObject *cpy_r_r78;
-    char cpy_r_r79;
+    PyObject *cpy_r_r75;
+    PyObject *cpy_r_r76;
+    PyObject **cpy_r_r78;
+    PyObject *cpy_r_r79;
     PyObject *cpy_r_r80;
-    PyObject *cpy_r_r81;
+    char cpy_r_r81;
     PyObject *cpy_r_r82;
     PyObject *cpy_r_r83;
     PyObject *cpy_r_r84;
-    char cpy_r_r85;
+    PyObject *cpy_r_r85;
     PyObject *cpy_r_r86;
     char cpy_r_r87;
-    tuple_T3OOO cpy_r_r88;
+    PyObject *cpy_r_r88;
     char cpy_r_r89;
-    PyObject **cpy_r_r90;
-    PyObject *cpy_r_r91;
-    char cpy_r_r92;
-    tuple_T3OOO cpy_r_r93;
-    tuple_T3OOO cpy_r_r94;
+    tuple_T3OOO cpy_r_r90;
+    char cpy_r_r91;
+    PyObject **cpy_r_r92;
+    PyObject *cpy_r_r93;
+    char cpy_r_r94;
     tuple_T3OOO cpy_r_r95;
-    char cpy_r_r96;
-    PyObject *cpy_r_r97;
-    PyObject *cpy_r_r98;
+    tuple_T3OOO cpy_r_r96;
+    tuple_T3OOO cpy_r_r97;
+    char cpy_r_r98;
     PyObject *cpy_r_r99;
     PyObject *cpy_r_r100;
     PyObject *cpy_r_r101;
-    char cpy_r_r102;
-    char cpy_r_r103;
-    PyObject *cpy_r_r104;
+    PyObject *cpy_r_r102;
+    PyObject *cpy_r_r103;
+    char cpy_r_r104;
     char cpy_r_r105;
-    char cpy_r_r106;
-    PyObject *cpy_r_r107;
+    PyObject *cpy_r_r106;
+    char cpy_r_r107;
     char cpy_r_r108;
     PyObject *cpy_r_r109;
-    PyObject *cpy_r_r110;
-    char cpy_r_r111;
+    char cpy_r_r110;
+    PyObject *cpy_r_r111;
     PyObject *cpy_r_r112;
-    PyObject **cpy_r_r114;
-    PyObject *cpy_r_r115;
-    PyObject *cpy_r_r116;
+    char cpy_r_r113;
+    PyObject *cpy_r_r114;
+    PyObject **cpy_r_r116;
     PyObject *cpy_r_r117;
     PyObject *cpy_r_r118;
-    char cpy_r_r119;
+    PyObject *cpy_r_r119;
     PyObject *cpy_r_r120;
-    PyObject **cpy_r_r122;
-    PyObject *cpy_r_r123;
-    PyObject *cpy_r_r124;
+    char cpy_r_r121;
+    PyObject *cpy_r_r122;
+    PyObject **cpy_r_r124;
     PyObject *cpy_r_r125;
-    char cpy_r_r126;
+    PyObject *cpy_r_r126;
     PyObject *cpy_r_r127;
-    PyObject *cpy_r_r128;
-    char cpy_r_r129;
+    char cpy_r_r128;
+    PyObject *cpy_r_r129;
     PyObject *cpy_r_r130;
     char cpy_r_r131;
-    PyObject **cpy_r_r133;
-    PyObject *cpy_r_r134;
-    PyObject *cpy_r_r135;
+    PyObject *cpy_r_r132;
+    char cpy_r_r133;
+    PyObject **cpy_r_r135;
     PyObject *cpy_r_r136;
-    char cpy_r_r137;
+    PyObject *cpy_r_r137;
     PyObject *cpy_r_r138;
-    PyObject *cpy_r_r139;
-    char cpy_r_r140;
+    char cpy_r_r139;
+    PyObject *cpy_r_r140;
     PyObject *cpy_r_r141;
     char cpy_r_r142;
-    PyObject **cpy_r_r144;
-    PyObject *cpy_r_r145;
-    PyObject *cpy_r_r146;
+    PyObject *cpy_r_r143;
+    char cpy_r_r144;
+    PyObject **cpy_r_r146;
     PyObject *cpy_r_r147;
     PyObject *cpy_r_r148;
-    PyObject **cpy_r_r150;
-    PyObject *cpy_r_r151;
-    double cpy_r_r152;
-    char cpy_r_r153;
-    PyObject *cpy_r_r154;
-    PyObject *cpy_r_r155;
-    char cpy_r_r156;
+    PyObject *cpy_r_r149;
+    PyObject *cpy_r_r150;
+    PyObject **cpy_r_r152;
+    PyObject *cpy_r_r153;
+    double cpy_r_r154;
+    char cpy_r_r155;
+    PyObject *cpy_r_r156;
     PyObject *cpy_r_r157;
-    PyObject **cpy_r_r159;
-    PyObject *cpy_r_r160;
-    PyObject *cpy_r_r161;
-    char cpy_r_r162;
+    char cpy_r_r158;
+    PyObject *cpy_r_r159;
+    PyObject **cpy_r_r161;
+    PyObject *cpy_r_r162;
     PyObject *cpy_r_r163;
-    PyObject *cpy_r_r164;
+    char cpy_r_r164;
     PyObject *cpy_r_r165;
     PyObject *cpy_r_r166;
     PyObject *cpy_r_r167;
-    char cpy_r_r168;
+    PyObject *cpy_r_r168;
     PyObject *cpy_r_r169;
     char cpy_r_r170;
-    tuple_T3OOO cpy_r_r171;
+    PyObject *cpy_r_r171;
     char cpy_r_r172;
-    PyObject **cpy_r_r173;
-    PyObject *cpy_r_r174;
-    char cpy_r_r175;
-    tuple_T3OOO cpy_r_r176;
-    tuple_T3OOO cpy_r_r177;
+    tuple_T3OOO cpy_r_r173;
+    char cpy_r_r174;
+    PyObject **cpy_r_r175;
+    PyObject *cpy_r_r176;
+    char cpy_r_r177;
     tuple_T3OOO cpy_r_r178;
-    char cpy_r_r179;
-    PyObject *cpy_r_r180;
-    PyObject *cpy_r_r181;
+    tuple_T3OOO cpy_r_r179;
+    tuple_T3OOO cpy_r_r180;
+    char cpy_r_r181;
     PyObject *cpy_r_r182;
     PyObject *cpy_r_r183;
     PyObject *cpy_r_r184;
-    char cpy_r_r185;
+    PyObject *cpy_r_r185;
     PyObject *cpy_r_r186;
-    PyObject **cpy_r_r188;
-    PyObject *cpy_r_r189;
-    PyObject *cpy_r_r190;
+    char cpy_r_r187;
+    PyObject *cpy_r_r188;
+    PyObject **cpy_r_r190;
     PyObject *cpy_r_r191;
-    char cpy_r_r192;
+    PyObject *cpy_r_r192;
     PyObject *cpy_r_r193;
-    PyObject *cpy_r_r194;
+    char cpy_r_r194;
     PyObject *cpy_r_r195;
     PyObject *cpy_r_r196;
     PyObject *cpy_r_r197;
-    char cpy_r_r198;
+    PyObject *cpy_r_r198;
     PyObject *cpy_r_r199;
     char cpy_r_r200;
-    tuple_T3OOO cpy_r_r201;
+    PyObject *cpy_r_r201;
     char cpy_r_r202;
-    PyObject **cpy_r_r203;
-    PyObject *cpy_r_r204;
-    char cpy_r_r205;
-    tuple_T3OOO cpy_r_r206;
-    tuple_T3OOO cpy_r_r207;
+    tuple_T3OOO cpy_r_r203;
+    char cpy_r_r204;
+    PyObject **cpy_r_r205;
+    PyObject *cpy_r_r206;
+    char cpy_r_r207;
     tuple_T3OOO cpy_r_r208;
-    char cpy_r_r209;
-    PyObject *cpy_r_r210;
-    PyObject *cpy_r_r211;
+    tuple_T3OOO cpy_r_r209;
+    tuple_T3OOO cpy_r_r210;
+    char cpy_r_r211;
     PyObject *cpy_r_r212;
-    char cpy_r_r213;
+    PyObject *cpy_r_r213;
     PyObject *cpy_r_r214;
-    PyObject *cpy_r_r215;
-    PyObject *cpy_r_r216;
+    char cpy_r_r215;
+    tuple_T3OOO cpy_r_r216;
     char cpy_r_r217;
     PyObject *cpy_r_r218;
-    PyObject **cpy_r_r220;
-    PyObject *cpy_r_r221;
+    PyObject *cpy_r_r219;
+    PyObject *cpy_r_r220;
+    char cpy_r_r221;
     PyObject *cpy_r_r222;
     PyObject *cpy_r_r223;
     char cpy_r_r224;
-    PyObject **cpy_r_r226;
-    PyObject *cpy_r_r227;
-    char cpy_r_r228;
+    PyObject *cpy_r_r225;
+    char cpy_r_r226;
+    PyObject **cpy_r_r228;
     PyObject *cpy_r_r229;
     PyObject *cpy_r_r230;
     PyObject *cpy_r_r231;
     PyObject *cpy_r_r232;
-    char cpy_r_r233;
-    PyObject *cpy_r_r234;
+    PyObject **cpy_r_r234;
     PyObject *cpy_r_r235;
-    PyObject *cpy_r_r236;
-    PyObject *cpy_r_r237;
-    PyObject *cpy_r_r238;
-    char cpy_r_r239;
+    double cpy_r_r236;
+    char cpy_r_r237;
+    char cpy_r_r238;
+    PyObject *cpy_r_r239;
     PyObject *cpy_r_r240;
     char cpy_r_r241;
-    tuple_T3OOO cpy_r_r242;
-    char cpy_r_r243;
-    PyObject **cpy_r_r244;
-    PyObject *cpy_r_r245;
-    char cpy_r_r246;
-    tuple_T3OOO cpy_r_r247;
-    tuple_T3OOO cpy_r_r248;
-    tuple_T3OOO cpy_r_r249;
-    char cpy_r_r250;
+    PyObject *cpy_r_r242;
+    PyObject *cpy_r_r243;
+    double cpy_r_r244;
+    char cpy_r_r245;
+    PyObject *cpy_r_r246;
+    PyObject *cpy_r_r247;
+    PyObject **cpy_r_r249;
+    PyObject *cpy_r_r250;
     PyObject *cpy_r_r251;
-    PyObject *cpy_r_r252;
-    PyObject *cpy_r_r253;
-    CPyTagged cpy_r_r254;
-    char cpy_r_r255;
-    CPyTagged cpy_r_r256;
-    char cpy_r_r257;
-    PyObject *cpy_r_r258;
-    char cpy_r_r259;
+    double cpy_r_r252;
+    char cpy_r_r253;
+    PyObject *cpy_r_r254;
+    PyObject *cpy_r_r255;
+    char cpy_r_r256;
+    PyObject *cpy_r_r257;
+    PyObject **cpy_r_r259;
     PyObject *cpy_r_r260;
     PyObject *cpy_r_r261;
-    PyObject *cpy_r_r262;
+    char cpy_r_r262;
     PyObject *cpy_r_r263;
     PyObject *cpy_r_r264;
     PyObject *cpy_r_r265;
     PyObject *cpy_r_r266;
-    PyObject **cpy_r_r268;
+    PyObject *cpy_r_r267;
+    char cpy_r_r268;
     PyObject *cpy_r_r269;
-    PyObject *cpy_r_r270;
-    char cpy_r_r271;
-    PyObject *cpy_r_r272;
-    PyObject *cpy_r_r273;
+    char cpy_r_r270;
+    tuple_T3OOO cpy_r_r271;
+    char cpy_r_r272;
+    PyObject **cpy_r_r273;
     PyObject *cpy_r_r274;
-    PyObject *cpy_r_r275;
-    PyObject *cpy_r_r276;
-    char cpy_r_r277;
-    PyObject *cpy_r_r278;
+    char cpy_r_r275;
+    tuple_T3OOO cpy_r_r276;
+    tuple_T3OOO cpy_r_r277;
+    tuple_T3OOO cpy_r_r278;
     char cpy_r_r279;
-    tuple_T3OOO cpy_r_r280;
-    char cpy_r_r281;
-    PyObject **cpy_r_r282;
-    PyObject *cpy_r_r283;
-    char cpy_r_r284;
-    tuple_T3OOO cpy_r_r285;
-    tuple_T3OOO cpy_r_r286;
-    tuple_T3OOO cpy_r_r287;
-    char cpy_r_r288;
-    PyObject *cpy_r_r289;
+    PyObject *cpy_r_r280;
+    PyObject *cpy_r_r281;
+    PyObject *cpy_r_r282;
+    tuple_T3OOO cpy_r_r283;
+    tuple_T3OOO cpy_r_r284;
+    char cpy_r_r285;
+    PyObject *cpy_r_r286;
+    PyObject *cpy_r_r287;
+    PyObject *cpy_r_r288;
+    char cpy_r_r289;
     PyObject *cpy_r_r290;
-    PyObject *cpy_r_r291;
-    int32_t cpy_r_r292;
-    char cpy_r_r293;
-    char cpy_r_r294;
+    PyObject **cpy_r_r292;
+    PyObject *cpy_r_r293;
+    PyObject *cpy_r_r294;
     PyObject *cpy_r_r295;
-    PyObject *cpy_r_r296;
+    char cpy_r_r296;
     PyObject **cpy_r_r298;
     PyObject *cpy_r_r299;
-    PyObject *cpy_r_r300;
-    char cpy_r_r301;
-    CPyTagged cpy_r_r302;
-    char cpy_r_r303;
+    char cpy_r_r300;
+    PyObject *cpy_r_r301;
+    PyObject *cpy_r_r302;
+    PyObject *cpy_r_r303;
     PyObject *cpy_r_r304;
-    PyObject *cpy_r_r305;
+    char cpy_r_r305;
     PyObject *cpy_r_r306;
-    char cpy_r_r307;
+    PyObject *cpy_r_r307;
     PyObject *cpy_r_r308;
     PyObject *cpy_r_r309;
     PyObject *cpy_r_r310;
-    PyObject *cpy_r_r311;
-    char cpy_r_r312;
-    PyObject *cpy_r_r313;
-    PyObject *cpy_r_r314;
-    PyObject *cpy_r_r315;
-    PyObject *cpy_r_r316;
+    char cpy_r_r311;
+    PyObject *cpy_r_r312;
+    char cpy_r_r313;
+    tuple_T3OOO cpy_r_r314;
+    char cpy_r_r315;
+    PyObject **cpy_r_r316;
     PyObject *cpy_r_r317;
     char cpy_r_r318;
-    PyObject *cpy_r_r319;
-    char cpy_r_r320;
+    tuple_T3OOO cpy_r_r319;
+    tuple_T3OOO cpy_r_r320;
     tuple_T3OOO cpy_r_r321;
     char cpy_r_r322;
-    PyObject **cpy_r_r323;
+    PyObject *cpy_r_r323;
     PyObject *cpy_r_r324;
-    char cpy_r_r325;
-    tuple_T3OOO cpy_r_r326;
-    tuple_T3OOO cpy_r_r327;
-    tuple_T3OOO cpy_r_r328;
+    PyObject *cpy_r_r325;
+    CPyTagged cpy_r_r326;
+    char cpy_r_r327;
+    CPyTagged cpy_r_r328;
     char cpy_r_r329;
     PyObject *cpy_r_r330;
-    PyObject *cpy_r_r331;
+    char cpy_r_r331;
     PyObject *cpy_r_r332;
-    CPyTagged cpy_r_r333;
-    char cpy_r_r334;
+    PyObject *cpy_r_r333;
+    PyObject *cpy_r_r334;
     PyObject *cpy_r_r335;
     PyObject *cpy_r_r336;
     PyObject *cpy_r_r337;
-    char cpy_r_r338;
-    PyObject *cpy_r_r339;
-    PyObject *cpy_r_r340;
+    PyObject *cpy_r_r338;
+    PyObject **cpy_r_r340;
     PyObject *cpy_r_r341;
     PyObject *cpy_r_r342;
-    PyObject *cpy_r_r343;
-    char cpy_r_r344;
+    char cpy_r_r343;
+    PyObject *cpy_r_r344;
     PyObject *cpy_r_r345;
-    char cpy_r_r346;
-    tuple_T3OOO cpy_r_r347;
-    char cpy_r_r348;
-    PyObject **cpy_r_r349;
+    PyObject *cpy_r_r346;
+    PyObject *cpy_r_r347;
+    PyObject *cpy_r_r348;
+    char cpy_r_r349;
     PyObject *cpy_r_r350;
     char cpy_r_r351;
     tuple_T3OOO cpy_r_r352;
-    tuple_T3OOO cpy_r_r353;
-    tuple_T3OOO cpy_r_r354;
-    char cpy_r_r355;
-    PyObject *cpy_r_r356;
-    PyObject *cpy_r_r357;
-    PyObject *cpy_r_r358;
-    PyObject *cpy_r_r359;
+    char cpy_r_r353;
+    PyObject **cpy_r_r354;
+    PyObject *cpy_r_r355;
+    char cpy_r_r356;
+    tuple_T3OOO cpy_r_r357;
+    tuple_T3OOO cpy_r_r358;
+    tuple_T3OOO cpy_r_r359;
     char cpy_r_r360;
     PyObject *cpy_r_r361;
-    char cpy_r_r362;
-    PyObject **cpy_r_r364;
-    PyObject *cpy_r_r365;
-    PyObject *cpy_r_r366;
-    char cpy_r_r367;
+    PyObject *cpy_r_r362;
+    PyObject *cpy_r_r363;
+    int32_t cpy_r_r364;
+    char cpy_r_r365;
+    char cpy_r_r366;
+    PyObject *cpy_r_r367;
     PyObject *cpy_r_r368;
-    PyObject *cpy_r_r369;
-    PyObject **cpy_r_r371;
+    PyObject **cpy_r_r370;
+    PyObject *cpy_r_r371;
     PyObject *cpy_r_r372;
-    PyObject *cpy_r_r373;
-    PyObject *cpy_r_r374;
-    PyObject **cpy_r_r376;
+    char cpy_r_r373;
+    CPyTagged cpy_r_r374;
+    char cpy_r_r375;
+    PyObject *cpy_r_r376;
     PyObject *cpy_r_r377;
     PyObject *cpy_r_r378;
     char cpy_r_r379;
-    char cpy_r_r380;
+    PyObject *cpy_r_r380;
     PyObject *cpy_r_r381;
     PyObject *cpy_r_r382;
     PyObject *cpy_r_r383;
-    PyObject *cpy_r_r384;
+    char cpy_r_r384;
     PyObject *cpy_r_r385;
-    CPyTagged cpy_r_r386;
-    char cpy_r_r387;
-    char cpy_r_r388;
+    PyObject *cpy_r_r386;
+    PyObject *cpy_r_r387;
+    PyObject *cpy_r_r388;
     PyObject *cpy_r_r389;
-    PyObject *cpy_r_r390;
-    PyObject **cpy_r_r392;
-    PyObject *cpy_r_r393;
-    double cpy_r_r394;
-    char cpy_r_r395;
-    CPyTagged cpy_r_r396;
-    PyObject *cpy_r_r397;
-    CPyTagged cpy_r_r398;
-    CPyTagged cpy_r_r399;
-    char cpy_r_r400;
+    char cpy_r_r390;
+    PyObject *cpy_r_r391;
+    char cpy_r_r392;
+    tuple_T3OOO cpy_r_r393;
+    char cpy_r_r394;
+    PyObject **cpy_r_r395;
+    PyObject *cpy_r_r396;
+    char cpy_r_r397;
+    tuple_T3OOO cpy_r_r398;
+    tuple_T3OOO cpy_r_r399;
+    tuple_T3OOO cpy_r_r400;
     char cpy_r_r401;
-    CPyTagged cpy_r_r402;
-    int64_t cpy_r_r403;
-    char cpy_r_r404;
-    int64_t cpy_r_r405;
+    PyObject *cpy_r_r402;
+    PyObject *cpy_r_r403;
+    PyObject *cpy_r_r404;
+    CPyTagged cpy_r_r405;
     char cpy_r_r406;
-    char cpy_r_r407;
-    char cpy_r_r408;
-    CPyTagged cpy_r_r409;
+    PyObject *cpy_r_r407;
+    PyObject *cpy_r_r408;
+    PyObject *cpy_r_r409;
     char cpy_r_r410;
-    CPyTagged cpy_r_r411;
-    int64_t cpy_r_r412;
-    char cpy_r_r413;
-    int64_t cpy_r_r414;
-    char cpy_r_r415;
+    PyObject *cpy_r_r411;
+    PyObject *cpy_r_r412;
+    PyObject *cpy_r_r413;
+    PyObject *cpy_r_r414;
+    PyObject *cpy_r_r415;
     char cpy_r_r416;
-    char cpy_r_r417;
+    PyObject *cpy_r_r417;
     char cpy_r_r418;
-    char cpy_r_r419;
-    PyObject *cpy_r_r420;
-    PyObject *cpy_r_r421;
-    PyObject **cpy_r_r423;
-    PyObject *cpy_r_r424;
-    PyObject *cpy_r_r425;
-    PyObject *cpy_r_r426;
-    int32_t cpy_r_r427;
-    char cpy_r_r428;
-    char cpy_r_r429;
-    char cpy_r_r430;
+    tuple_T3OOO cpy_r_r419;
+    char cpy_r_r420;
+    PyObject **cpy_r_r421;
+    PyObject *cpy_r_r422;
+    char cpy_r_r423;
+    tuple_T3OOO cpy_r_r424;
+    tuple_T3OOO cpy_r_r425;
+    tuple_T3OOO cpy_r_r426;
+    char cpy_r_r427;
+    PyObject *cpy_r_r428;
+    PyObject *cpy_r_r429;
+    PyObject *cpy_r_r430;
     PyObject *cpy_r_r431;
     char cpy_r_r432;
     PyObject *cpy_r_r433;
-    PyObject *cpy_r_r434;
-    PyObject *cpy_r_r435;
-    char cpy_r_r436;
+    char cpy_r_r434;
+    PyObject **cpy_r_r436;
     PyObject *cpy_r_r437;
     PyObject *cpy_r_r438;
-    PyObject **cpy_r_r440;
+    char cpy_r_r439;
+    PyObject *cpy_r_r440;
     PyObject *cpy_r_r441;
-    char cpy_r_r442;
-    char cpy_r_r443;
+    PyObject **cpy_r_r443;
     PyObject *cpy_r_r444;
     PyObject *cpy_r_r445;
-    char cpy_r_r446;
-    PyObject *cpy_r_r447;
-    PyObject *cpy_r_r448;
+    PyObject *cpy_r_r446;
+    PyObject **cpy_r_r448;
     PyObject *cpy_r_r449;
     PyObject *cpy_r_r450;
-    PyObject *cpy_r_r451;
+    char cpy_r_r451;
     char cpy_r_r452;
     PyObject *cpy_r_r453;
-    char cpy_r_r454;
-    tuple_T3OOO cpy_r_r455;
-    char cpy_r_r456;
-    PyObject **cpy_r_r457;
-    PyObject *cpy_r_r458;
+    PyObject *cpy_r_r454;
+    PyObject *cpy_r_r455;
+    PyObject *cpy_r_r456;
+    PyObject *cpy_r_r457;
+    CPyTagged cpy_r_r458;
     char cpy_r_r459;
-    tuple_T3OOO cpy_r_r460;
-    tuple_T3OOO cpy_r_r461;
-    tuple_T3OOO cpy_r_r462;
-    char cpy_r_r463;
-    PyObject *cpy_r_r464;
+    char cpy_r_r460;
+    PyObject *cpy_r_r461;
+    PyObject *cpy_r_r462;
+    PyObject **cpy_r_r464;
     PyObject *cpy_r_r465;
-    PyObject *cpy_r_r466;
-    PyObject *cpy_r_r467;
-    char cpy_r_r468;
-    PyObject **cpy_r_r470;
-    PyObject *cpy_r_r471;
+    double cpy_r_r466;
+    char cpy_r_r467;
+    CPyTagged cpy_r_r468;
+    PyObject *cpy_r_r469;
+    CPyTagged cpy_r_r470;
+    CPyTagged cpy_r_r471;
     char cpy_r_r472;
-    PyObject *cpy_r_r473;
-    char cpy_r_r474;
-    PyObject *cpy_r_r475;
-    PyObject *cpy_r_r476;
-    PyObject *cpy_r_r477;
-    PyObject *cpy_r_r478;
-    PyObject *cpy_r_r479;
-    PyObject *cpy_r_r480;
-    PyObject *cpy_r_r481;
-    PyObject *cpy_r_r482;
+    char cpy_r_r473;
+    CPyTagged cpy_r_r474;
+    int64_t cpy_r_r475;
+    char cpy_r_r476;
+    int64_t cpy_r_r477;
+    char cpy_r_r478;
+    char cpy_r_r479;
+    char cpy_r_r480;
+    CPyTagged cpy_r_r481;
+    char cpy_r_r482;
     CPyTagged cpy_r_r483;
-    char cpy_r_r484;
-    PyObject *cpy_r_r485;
-    PyObject *cpy_r_r486;
-    PyObject *cpy_r_r487;
-    PyObject **cpy_r_r489;
-    PyObject *cpy_r_r490;
-    PyObject *cpy_r_r491;
-    char cpy_r_r492;
+    int64_t cpy_r_r484;
+    char cpy_r_r485;
+    int64_t cpy_r_r486;
+    char cpy_r_r487;
+    char cpy_r_r488;
+    char cpy_r_r489;
+    char cpy_r_r490;
+    char cpy_r_r491;
+    PyObject *cpy_r_r492;
     PyObject *cpy_r_r493;
-    PyObject *cpy_r_r494;
-    PyObject *cpy_r_r495;
+    PyObject **cpy_r_r495;
     PyObject *cpy_r_r496;
     PyObject *cpy_r_r497;
-    char cpy_r_r498;
-    PyObject *cpy_r_r499;
+    PyObject *cpy_r_r498;
+    int32_t cpy_r_r499;
     char cpy_r_r500;
-    tuple_T3OOO cpy_r_r501;
+    char cpy_r_r501;
     char cpy_r_r502;
-    PyObject **cpy_r_r503;
-    PyObject *cpy_r_r504;
-    char cpy_r_r505;
-    tuple_T3OOO cpy_r_r506;
-    tuple_T3OOO cpy_r_r507;
-    tuple_T3OOO cpy_r_r508;
-    char cpy_r_r509;
+    PyObject *cpy_r_r503;
+    char cpy_r_r504;
+    PyObject *cpy_r_r505;
+    PyObject *cpy_r_r506;
+    PyObject *cpy_r_r507;
+    char cpy_r_r508;
+    PyObject *cpy_r_r509;
     PyObject *cpy_r_r510;
-    PyObject *cpy_r_r511;
-    PyObject *cpy_r_r512;
-    char cpy_r_r513;
-    PyObject *cpy_r_r514;
+    PyObject **cpy_r_r512;
+    PyObject *cpy_r_r513;
+    char cpy_r_r514;
     char cpy_r_r515;
-    tuple_T3OOO cpy_r_r516;
-    char cpy_r_r517;
+    PyObject *cpy_r_r516;
+    PyObject *cpy_r_r517;
     char cpy_r_r518;
-    tuple_T3OOO cpy_r_r519;
+    PyObject *cpy_r_r519;
     PyObject *cpy_r_r520;
     PyObject *cpy_r_r521;
     PyObject *cpy_r_r522;
     PyObject *cpy_r_r523;
-    PyObject *cpy_r_r524;
-    PyObject **cpy_r_r526;
-    PyObject *cpy_r_r527;
-    int32_t cpy_r_r528;
-    char cpy_r_r529;
-    char cpy_r_r530;
-    tuple_T3OOO cpy_r_r531;
+    char cpy_r_r524;
+    PyObject *cpy_r_r525;
+    char cpy_r_r526;
+    tuple_T3OOO cpy_r_r527;
+    char cpy_r_r528;
+    PyObject **cpy_r_r529;
+    PyObject *cpy_r_r530;
+    char cpy_r_r531;
     tuple_T3OOO cpy_r_r532;
-    char cpy_r_r533;
-    PyObject *cpy_r_r534;
+    tuple_T3OOO cpy_r_r533;
+    tuple_T3OOO cpy_r_r534;
     char cpy_r_r535;
-    tuple_T3OOO cpy_r_r536;
-    tuple_T3OOO cpy_r_r537;
+    PyObject *cpy_r_r536;
+    PyObject *cpy_r_r537;
     PyObject *cpy_r_r538;
-    char cpy_r_r539;
-    tuple_T3OOO cpy_r_r540;
-    char cpy_r_r541;
-    PyObject *cpy_r_r542;
+    PyObject *cpy_r_r539;
+    char cpy_r_r540;
+    PyObject **cpy_r_r542;
     PyObject *cpy_r_r543;
-    PyObject *cpy_r_r544;
-    PyObject **cpy_r_r546;
+    char cpy_r_r544;
+    PyObject *cpy_r_r545;
+    char cpy_r_r546;
     PyObject *cpy_r_r547;
     PyObject *cpy_r_r548;
     PyObject *cpy_r_r549;
-    char cpy_r_r550;
-    char cpy_r_r551;
+    PyObject *cpy_r_r550;
+    PyObject *cpy_r_r551;
     PyObject *cpy_r_r552;
-    char cpy_r_r553;
-    char cpy_r_r554;
-    char cpy_r_r555;
+    PyObject *cpy_r_r553;
+    PyObject *cpy_r_r554;
+    CPyTagged cpy_r_r555;
     char cpy_r_r556;
-    char cpy_r_r557;
-    char cpy_r_r558;
-    char cpy_r_r559;
-    char cpy_r_r560;
-    char cpy_r_r561;
-    char cpy_r_r562;
-    char cpy_r_r563;
+    PyObject *cpy_r_r557;
+    PyObject *cpy_r_r558;
+    PyObject *cpy_r_r559;
+    PyObject **cpy_r_r561;
+    PyObject *cpy_r_r562;
+    PyObject *cpy_r_r563;
     char cpy_r_r564;
-    char cpy_r_r565;
+    PyObject *cpy_r_r565;
     PyObject *cpy_r_r566;
+    PyObject *cpy_r_r567;
+    PyObject *cpy_r_r568;
+    PyObject *cpy_r_r569;
+    char cpy_r_r570;
+    PyObject *cpy_r_r571;
+    char cpy_r_r572;
+    tuple_T3OOO cpy_r_r573;
+    char cpy_r_r574;
+    PyObject **cpy_r_r575;
+    PyObject *cpy_r_r576;
+    char cpy_r_r577;
+    tuple_T3OOO cpy_r_r578;
+    tuple_T3OOO cpy_r_r579;
+    tuple_T3OOO cpy_r_r580;
+    char cpy_r_r581;
+    PyObject *cpy_r_r582;
+    PyObject *cpy_r_r583;
+    PyObject *cpy_r_r584;
+    char cpy_r_r585;
+    PyObject *cpy_r_r586;
+    char cpy_r_r587;
+    tuple_T3OOO cpy_r_r588;
+    char cpy_r_r589;
+    char cpy_r_r590;
+    tuple_T3OOO cpy_r_r591;
+    PyObject *cpy_r_r592;
+    PyObject *cpy_r_r593;
+    PyObject *cpy_r_r594;
+    PyObject *cpy_r_r595;
+    PyObject *cpy_r_r596;
+    PyObject **cpy_r_r598;
+    PyObject *cpy_r_r599;
+    int32_t cpy_r_r600;
+    char cpy_r_r601;
+    char cpy_r_r602;
+    tuple_T3OOO cpy_r_r603;
+    tuple_T3OOO cpy_r_r604;
+    char cpy_r_r605;
+    PyObject *cpy_r_r606;
+    char cpy_r_r607;
+    tuple_T3OOO cpy_r_r608;
+    tuple_T3OOO cpy_r_r609;
+    PyObject *cpy_r_r610;
+    char cpy_r_r611;
+    tuple_T3OOO cpy_r_r612;
+    char cpy_r_r613;
+    PyObject *cpy_r_r614;
+    PyObject *cpy_r_r615;
+    PyObject *cpy_r_r616;
+    PyObject **cpy_r_r618;
+    PyObject *cpy_r_r619;
+    PyObject *cpy_r_r620;
+    PyObject *cpy_r_r621;
+    char cpy_r_r622;
+    char cpy_r_r623;
+    PyObject *cpy_r_r624;
+    char cpy_r_r625;
+    char cpy_r_r626;
+    char cpy_r_r627;
+    char cpy_r_r628;
+    char cpy_r_r629;
+    char cpy_r_r630;
+    char cpy_r_r631;
+    char cpy_r_r632;
+    char cpy_r_r633;
+    char cpy_r_r634;
+    char cpy_r_r635;
+    char cpy_r_r636;
+    char cpy_r_r637;
+    char cpy_r_r638;
+    PyObject *cpy_r_r639;
     cpy_r_r0 = NULL;
     cpy_r_r1 = cpy_r_r0;
     cpy_r_r2 = NULL;
@@ -42634,3395 +42721,3815 @@ PyObject *CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_
     cpy_r_r17 = cpy_r_r16;
     cpy_r_r18 = NULL;
     cpy_r_r19 = cpy_r_r18;
-    cpy_r_r20 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_genObject *)cpy_r___mypyc_self__)->___mypyc_env__;
-    if (unlikely(cpy_r_r20 == NULL)) {
+    cpy_r_r20 = NULL;
+    cpy_r_r21 = cpy_r_r20;
+    cpy_r_r22 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_genObject *)cpy_r___mypyc_self__)->___mypyc_env__;
+    if (unlikely(cpy_r_r22 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_gen", "__mypyc_env__", 326, CPyStatic_streams___llamapay___globals);
-        goto CPyL557;
+        goto CPyL624;
     }
-    CPy_INCREF_NO_IMM(cpy_r_r20);
+    CPy_INCREF_NO_IMM(cpy_r_r22);
 CPyL1: ;
-    cpy_r_r21 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__;
-    if (unlikely(cpy_r_r21 == CPY_INT_TAG)) {
+    cpy_r_r23 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__;
+    if (unlikely(cpy_r_r23 == CPY_INT_TAG)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_next_label__", 326, CPyStatic_streams___llamapay___globals);
-        goto CPyL558;
+        goto CPyL625;
     }
-    CPyTagged_INCREF(cpy_r_r21);
-    goto CPyL543;
+    CPyTagged_INCREF(cpy_r_r23);
+    goto CPyL609;
 CPyL2: ;
-    cpy_r_r22 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r23 = cpy_r_type != cpy_r_r22;
-    if (cpy_r_r23) {
-        goto CPyL559;
+    cpy_r_r24 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r25 = cpy_r_type != cpy_r_r24;
+    if (cpy_r_r25) {
+        goto CPyL626;
     } else
         goto CPyL5;
 CPyL3: ;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 326, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL5: ;
-    cpy_r_r24 = CPyStatic_streams___llamapay____STREAMS_THREAD;
-    if (unlikely(cpy_r_r24 == NULL)) {
-        goto CPyL560;
+    cpy_r_r26 = CPyStatic_streams___llamapay____STREAMS_THREAD;
+    if (unlikely(cpy_r_r26 == NULL)) {
+        goto CPyL627;
     } else
         goto CPyL8;
 CPyL6: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_STREAMS_THREAD\" was not set");
-    cpy_r_r25 = 0;
-    if (unlikely(!cpy_r_r25)) {
+    cpy_r_r27 = 0;
+    if (unlikely(!cpy_r_r27)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL8: ;
-    cpy_r_r26 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r27 = CPyStatics[303]; /* 'StreamedFunds' */
-    cpy_r_r28 = CPyDict_GetItem(cpy_r_r26, cpy_r_r27);
-    if (unlikely(cpy_r_r28 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 330, CPyStatic_streams___llamapay___globals);
-        goto CPyL558;
-    }
-    cpy_r_r29 = CPyStatics[304]; /* 'get_entity' */
-    cpy_r_r30 = CPyObject_GetAttr(cpy_r_r28, cpy_r_r29);
-    CPy_DECREF(cpy_r_r28);
+    cpy_r_r28 = CPyStatic_streams___llamapay___globals;
+    cpy_r_r29 = CPyStatics[303]; /* 'StreamedFunds' */
+    cpy_r_r30 = CPyDict_GetItem(cpy_r_r28, cpy_r_r29);
     if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 330, CPyStatic_streams___llamapay___globals);
-        goto CPyL558;
+        goto CPyL625;
     }
-    cpy_r_r31 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_id;
-    if (unlikely(cpy_r_r31 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 330, CPyStatic_streams___llamapay___globals);
-        goto CPyL561;
-    }
-    CPy_INCREF(cpy_r_r31);
-CPyL11: ;
-    cpy_r_r32 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_date_obj;
-    if (unlikely(cpy_r_r32 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 330, CPyStatic_streams___llamapay___globals);
-        goto CPyL562;
-    }
-    CPy_INCREF(cpy_r_r32);
-CPyL12: ;
-    cpy_r_r33 = CPyStatics[265]; /* 'run' */
-    PyObject *cpy_r_r34[4] = {cpy_r_r24, cpy_r_r30, cpy_r_r31, cpy_r_r32};
-    cpy_r_r35 = (PyObject **)&cpy_r_r34;
-    cpy_r_r36 = PyObject_VectorcallMethod(cpy_r_r33, cpy_r_r35, 9223372036854775812ULL, 0);
-    if (unlikely(cpy_r_r36 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL563;
-    }
+    cpy_r_r31 = CPyStatics[304]; /* 'get_entity' */
+    cpy_r_r32 = CPyObject_GetAttr(cpy_r_r30, cpy_r_r31);
     CPy_DECREF(cpy_r_r30);
-    CPy_DECREF(cpy_r_r31);
-    CPy_DECREF(cpy_r_r32);
-    cpy_r_r37 = CPy_GetCoro(cpy_r_r36);
-    CPy_DECREF(cpy_r_r36);
-    if (unlikely(cpy_r_r37 == NULL)) {
+    if (unlikely(cpy_r_r32 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 330, CPyStatic_streams___llamapay___globals);
+        goto CPyL625;
+    }
+    cpy_r_r33 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_id;
+    if (unlikely(cpy_r_r33 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 330, CPyStatic_streams___llamapay___globals);
+        goto CPyL628;
+    }
+    CPy_INCREF(cpy_r_r33);
+CPyL11: ;
+    cpy_r_r34 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_date_obj;
+    if (unlikely(cpy_r_r34 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 330, CPyStatic_streams___llamapay___globals);
+        goto CPyL629;
+    }
+    CPy_INCREF(cpy_r_r34);
+CPyL12: ;
+    cpy_r_r35 = CPyStatics[265]; /* 'run' */
+    PyObject *cpy_r_r36[4] = {cpy_r_r26, cpy_r_r32, cpy_r_r33, cpy_r_r34};
+    cpy_r_r37 = (PyObject **)&cpy_r_r36;
+    cpy_r_r38 = PyObject_VectorcallMethod(cpy_r_r35, cpy_r_r37, 9223372036854775812ULL, 0);
+    if (unlikely(cpy_r_r38 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL558;
+        goto CPyL630;
     }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__56 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__56);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__56 = cpy_r_r37;
-    cpy_r_r38 = 1;
-    if (unlikely(!cpy_r_r38)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL558;
-    }
-    cpy_r_r39 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__56;
+    CPy_DECREF(cpy_r_r32);
+    CPy_DECREF(cpy_r_r33);
+    CPy_DECREF(cpy_r_r34);
+    cpy_r_r39 = CPy_GetCoro(cpy_r_r38);
+    CPy_DECREF(cpy_r_r38);
     if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__56", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL558;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
+        goto CPyL625;
     }
-    CPy_INCREF(cpy_r_r39);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__56 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__56);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__56 = cpy_r_r39;
+    cpy_r_r40 = 1;
+    if (unlikely(!cpy_r_r40)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL625;
+    }
+    cpy_r_r41 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__56;
+    if (unlikely(cpy_r_r41 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__56", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL625;
+    }
+    CPy_INCREF(cpy_r_r41);
 CPyL16: ;
-    cpy_r_r40 = CPyIter_Next(cpy_r_r39);
-    CPy_DECREF(cpy_r_r39);
-    if (cpy_r_r40 == NULL) {
-        goto CPyL564;
+    cpy_r_r42 = CPyIter_Next(cpy_r_r41);
+    CPy_DECREF(cpy_r_r41);
+    if (cpy_r_r42 == NULL) {
+        goto CPyL631;
     } else
         goto CPyL19;
 CPyL17: ;
-    cpy_r_r41 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r41 == NULL)) {
+    cpy_r_r43 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r43 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
+        goto CPyL632;
     }
-    cpy_r_r42 = cpy_r_r41;
+    cpy_r_r44 = cpy_r_r43;
     goto CPyL42;
 CPyL19: ;
-    cpy_r_r43 = cpy_r_r40;
+    cpy_r_r45 = cpy_r_r42;
 CPyL20: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 2;
-    cpy_r_r44 = 1;
-    if (unlikely(!cpy_r_r44)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 2;
+    cpy_r_r46 = 1;
+    if (unlikely(!cpy_r_r46)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL566;
+        goto CPyL633;
     } else
-        goto CPyL567;
+        goto CPyL634;
 CPyL21: ;
-    return cpy_r_r43;
+    return cpy_r_r45;
 CPyL22: ;
-    cpy_r_r45 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r46 = cpy_r_type != cpy_r_r45;
-    if (!cpy_r_r46) goto CPyL25;
+    cpy_r_r47 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r48 = cpy_r_type != cpy_r_r47;
+    if (!cpy_r_r48) goto CPyL25;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
         goto CPyL26;
     } else
-        goto CPyL568;
+        goto CPyL635;
 CPyL24: ;
     CPy_Unreachable();
 CPyL25: ;
     CPy_INCREF(cpy_r_arg);
     goto CPyL37;
 CPyL26: ;
-    cpy_r_r47 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57.f2);
+    cpy_r_r49 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57.f2);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57 = cpy_r_r47;
-    cpy_r_r48 = 1;
-    if (unlikely(!cpy_r_r48)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57 = cpy_r_r49;
+    cpy_r_r50 = 1;
+    if (unlikely(!cpy_r_r50)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL569;
+        goto CPyL636;
     }
-    cpy_r_r49 = (PyObject **)&cpy_r_r1;
-    cpy_r_r50 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__56;
-    if (unlikely(cpy_r_r50 == NULL)) {
+    cpy_r_r51 = (PyObject **)&cpy_r_r1;
+    cpy_r_r52 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__56;
+    if (unlikely(cpy_r_r52 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__56", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL569;
+        goto CPyL636;
     }
-    CPy_INCREF(cpy_r_r50);
+    CPy_INCREF(cpy_r_r52);
 CPyL28: ;
-    cpy_r_r51 = CPy_YieldFromErrorHandle(cpy_r_r50, cpy_r_r49);
-    CPy_DecRef(cpy_r_r50);
-    if (unlikely(cpy_r_r51 == 2)) {
+    cpy_r_r53 = CPy_YieldFromErrorHandle(cpy_r_r52, cpy_r_r51);
+    CPy_DecRef(cpy_r_r52);
+    if (unlikely(cpy_r_r53 == 2)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL569;
+        goto CPyL636;
     }
-    if (cpy_r_r51) goto CPyL32;
+    if (cpy_r_r53) goto CPyL32;
     CPy_INCREF(cpy_r_r1);
-    cpy_r_r43 = cpy_r_r1;
-    cpy_r_r52 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57;
-    if (unlikely(cpy_r_r52.f0 == NULL)) {
+    cpy_r_r45 = cpy_r_r1;
+    cpy_r_r54 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57;
+    if (unlikely(cpy_r_r54.f0 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__57", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL570;
+        goto CPyL637;
     }
-    CPy_INCREF(cpy_r_r52.f0);
-    CPy_INCREF(cpy_r_r52.f1);
-    CPy_INCREF(cpy_r_r52.f2);
+    CPy_INCREF(cpy_r_r54.f0);
+    CPy_INCREF(cpy_r_r54.f1);
+    CPy_INCREF(cpy_r_r54.f2);
 CPyL31: ;
-    CPy_RestoreExcInfo(cpy_r_r52);
-    CPy_DecRef(cpy_r_r52.f0);
-    CPy_DecRef(cpy_r_r52.f1);
-    CPy_DecRef(cpy_r_r52.f2);
-    goto CPyL20;
-CPyL32: ;
-    cpy_r_r42 = cpy_r_r1;
-    cpy_r_r53 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57;
-    if (unlikely(cpy_r_r53.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__57", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL571;
-    }
-    CPy_INCREF(cpy_r_r53.f0);
-    CPy_INCREF(cpy_r_r53.f1);
-    CPy_INCREF(cpy_r_r53.f2);
-CPyL33: ;
-    CPy_RestoreExcInfo(cpy_r_r53);
-    CPy_DecRef(cpy_r_r53.f0);
-    CPy_DecRef(cpy_r_r53.f1);
-    CPy_DecRef(cpy_r_r53.f2);
-    goto CPyL42;
-CPyL34: ;
-    cpy_r_r54 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__57;
-    if (unlikely(cpy_r_r54.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__57' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r54.f0);
-        CPy_INCREF(cpy_r_r54.f1);
-        CPy_INCREF(cpy_r_r54.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r54.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL35: ;
     CPy_RestoreExcInfo(cpy_r_r54);
     CPy_DecRef(cpy_r_r54.f0);
     CPy_DecRef(cpy_r_r54.f1);
     CPy_DecRef(cpy_r_r54.f2);
-    cpy_r_r55 = CPy_KeepPropagating();
-    if (!cpy_r_r55) goto CPyL556;
+    goto CPyL20;
+CPyL32: ;
+    cpy_r_r44 = cpy_r_r1;
+    cpy_r_r55 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57;
+    if (unlikely(cpy_r_r55.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__57", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL638;
+    }
+    CPy_INCREF(cpy_r_r55.f0);
+    CPy_INCREF(cpy_r_r55.f1);
+    CPy_INCREF(cpy_r_r55.f2);
+CPyL33: ;
+    CPy_RestoreExcInfo(cpy_r_r55);
+    CPy_DecRef(cpy_r_r55.f0);
+    CPy_DecRef(cpy_r_r55.f1);
+    CPy_DecRef(cpy_r_r55.f2);
+    goto CPyL42;
+CPyL34: ;
+    cpy_r_r56 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__57;
+    if (unlikely(cpy_r_r56.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__57' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r56.f0);
+        CPy_INCREF(cpy_r_r56.f1);
+        CPy_INCREF(cpy_r_r56.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r56.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL35: ;
+    CPy_RestoreExcInfo(cpy_r_r56);
+    CPy_DecRef(cpy_r_r56.f0);
+    CPy_DecRef(cpy_r_r56.f1);
+    CPy_DecRef(cpy_r_r56.f2);
+    cpy_r_r57 = CPy_KeepPropagating();
+    if (!cpy_r_r57) goto CPyL623;
     CPy_Unreachable();
 CPyL37: ;
-    cpy_r_r56 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__56;
-    if (unlikely(cpy_r_r56 == NULL)) {
+    cpy_r_r58 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__56;
+    if (unlikely(cpy_r_r58 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__56", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL572;
+        goto CPyL639;
     }
-    CPy_INCREF(cpy_r_r56);
+    CPy_INCREF(cpy_r_r58);
 CPyL38: ;
-    cpy_r_r57 = CPyIter_Send(cpy_r_r56, cpy_r_arg);
-    CPy_DECREF(cpy_r_r56);
+    cpy_r_r59 = CPyIter_Send(cpy_r_r58, cpy_r_arg);
+    CPy_DECREF(cpy_r_r58);
     CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r57 == NULL) goto CPyL573;
-    cpy_r_r43 = cpy_r_r57;
+    if (cpy_r_r59 == NULL) goto CPyL640;
+    cpy_r_r45 = cpy_r_r59;
     goto CPyL20;
 CPyL40: ;
-    cpy_r_r58 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r58 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
-    }
-    cpy_r_r42 = cpy_r_r58;
-CPyL42: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity = cpy_r_r42;
-    cpy_r_r59 = 1;
-    if (unlikely(!cpy_r_r59)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
-    }
-    cpy_r_r60 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity;
+    cpy_r_r60 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r60 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
+        goto CPyL632;
+    }
+    cpy_r_r44 = cpy_r_r60;
+CPyL42: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity = cpy_r_r44;
+    cpy_r_r61 = 1;
+    if (unlikely(!cpy_r_r61)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 329, CPyStatic_streams___llamapay___globals);
+        goto CPyL632;
+    }
+    cpy_r_r62 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity;
+    if (unlikely(cpy_r_r62 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "entity", 332, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
+        goto CPyL632;
     }
-    CPy_INCREF(cpy_r_r60);
+    CPy_INCREF(cpy_r_r62);
 CPyL44: ;
-    cpy_r_r61 = PyObject_IsTrue(cpy_r_r60);
-    CPy_DECREF(cpy_r_r60);
-    cpy_r_r62 = cpy_r_r61 >= 0;
-    if (unlikely(!cpy_r_r62)) {
+    cpy_r_r63 = PyObject_IsTrue(cpy_r_r62);
+    CPy_DECREF(cpy_r_r62);
+    cpy_r_r64 = cpy_r_r63 >= 0;
+    if (unlikely(!cpy_r_r64)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 332, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
+        goto CPyL632;
     }
-    cpy_r_r63 = cpy_r_r61;
-    if (cpy_r_r63) {
-        goto CPyL574;
+    cpy_r_r65 = cpy_r_r63;
+    if (cpy_r_r65) {
+        goto CPyL641;
     } else
         goto CPyL50;
 CPyL46: ;
-    cpy_r_r64 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity;
-    if (unlikely(cpy_r_r64 == NULL)) {
+    cpy_r_r66 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity;
+    if (unlikely(cpy_r_r66 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "entity", 333, CPyStatic_streams___llamapay___globals);
-        goto CPyL575;
+        goto CPyL642;
     }
-    CPy_INCREF(cpy_r_r64);
+    CPy_INCREF(cpy_r_r66);
 CPyL47: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = -2;
-    cpy_r_r65 = 1;
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    if (unlikely(!cpy_r_r65)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = -2;
+    cpy_r_r67 = 1;
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    if (unlikely(!cpy_r_r67)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 333, CPyStatic_streams___llamapay___globals);
-        goto CPyL576;
+        goto CPyL643;
     }
-    CPyGen_SetStopIterationValue(cpy_r_r64);
-    CPy_DECREF(cpy_r_r64);
-    if (!0) goto CPyL556;
+    CPyGen_SetStopIterationValue(cpy_r_r66);
+    CPy_DECREF(cpy_r_r66);
+    if (!0) goto CPyL623;
     CPy_Unreachable();
 CPyL50: ;
-    cpy_r_r66 = CPyStatic_streams___llamapay____STREAMS_THREAD;
-    if (unlikely(cpy_r_r66 == NULL)) {
-        goto CPyL577;
+    cpy_r_r68 = CPyStatic_streams___llamapay____STREAMS_THREAD;
+    if (unlikely(cpy_r_r68 == NULL)) {
+        goto CPyL644;
     } else
         goto CPyL53;
 CPyL51: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_STREAMS_THREAD\" was not set");
-    cpy_r_r67 = 0;
-    if (unlikely(!cpy_r_r67)) {
+    cpy_r_r69 = 0;
+    if (unlikely(!cpy_r_r69)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL53: ;
-    cpy_r_r68 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r69 = CPyStatics[260]; /* 'Stream' */
-    cpy_r_r70 = CPyDict_GetItem(cpy_r_r68, cpy_r_r69);
-    if (unlikely(cpy_r_r70 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 336, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
-    }
-    cpy_r_r71 = CPyStatics[305]; /* '_get_token_and_start_date' */
-    cpy_r_r72 = CPyObject_GetAttr(cpy_r_r70, cpy_r_r71);
-    CPy_DECREF(cpy_r_r70);
+    cpy_r_r70 = CPyStatic_streams___llamapay___globals;
+    cpy_r_r71 = CPyStatics[260]; /* 'Stream' */
+    cpy_r_r72 = CPyDict_GetItem(cpy_r_r70, cpy_r_r71);
     if (unlikely(cpy_r_r72 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 336, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
+        goto CPyL632;
     }
-    cpy_r_r73 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_id;
-    if (unlikely(cpy_r_r73 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 336, CPyStatic_streams___llamapay___globals);
-        goto CPyL578;
-    }
-    CPy_INCREF(cpy_r_r73);
-CPyL56: ;
-    cpy_r_r74 = CPyStatics[265]; /* 'run' */
-    PyObject *cpy_r_r75[3] = {cpy_r_r66, cpy_r_r72, cpy_r_r73};
-    cpy_r_r76 = (PyObject **)&cpy_r_r75;
-    cpy_r_r77 = PyObject_VectorcallMethod(cpy_r_r74, cpy_r_r76, 9223372036854775811ULL, 0);
-    if (unlikely(cpy_r_r77 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL579;
-    }
+    cpy_r_r73 = CPyStatics[305]; /* '_get_token_and_start_date' */
+    cpy_r_r74 = CPyObject_GetAttr(cpy_r_r72, cpy_r_r73);
     CPy_DECREF(cpy_r_r72);
-    CPy_DECREF(cpy_r_r73);
-    cpy_r_r78 = CPy_GetCoro(cpy_r_r77);
-    CPy_DECREF(cpy_r_r77);
-    if (unlikely(cpy_r_r78 == NULL)) {
+    if (unlikely(cpy_r_r74 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 336, CPyStatic_streams___llamapay___globals);
+        goto CPyL632;
+    }
+    cpy_r_r75 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_id;
+    if (unlikely(cpy_r_r75 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 336, CPyStatic_streams___llamapay___globals);
+        goto CPyL645;
+    }
+    CPy_INCREF(cpy_r_r75);
+CPyL56: ;
+    cpy_r_r76 = CPyStatics[265]; /* 'run' */
+    PyObject *cpy_r_r77[3] = {cpy_r_r68, cpy_r_r74, cpy_r_r75};
+    cpy_r_r78 = (PyObject **)&cpy_r_r77;
+    cpy_r_r79 = PyObject_VectorcallMethod(cpy_r_r76, cpy_r_r78, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r79 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
+        goto CPyL646;
     }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__58 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__58);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__58 = cpy_r_r78;
-    cpy_r_r79 = 1;
-    if (unlikely(!cpy_r_r79)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
-    }
-    cpy_r_r80 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__58;
+    CPy_DECREF(cpy_r_r74);
+    CPy_DECREF(cpy_r_r75);
+    cpy_r_r80 = CPy_GetCoro(cpy_r_r79);
+    CPy_DECREF(cpy_r_r79);
     if (unlikely(cpy_r_r80 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__58", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL565;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
+        goto CPyL632;
     }
-    CPy_INCREF(cpy_r_r80);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__58 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__58);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__58 = cpy_r_r80;
+    cpy_r_r81 = 1;
+    if (unlikely(!cpy_r_r81)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL632;
+    }
+    cpy_r_r82 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__58;
+    if (unlikely(cpy_r_r82 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__58", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL632;
+    }
+    CPy_INCREF(cpy_r_r82);
 CPyL60: ;
-    cpy_r_r81 = CPyIter_Next(cpy_r_r80);
-    CPy_DECREF(cpy_r_r80);
-    if (cpy_r_r81 == NULL) {
-        goto CPyL580;
+    cpy_r_r83 = CPyIter_Next(cpy_r_r82);
+    CPy_DECREF(cpy_r_r82);
+    if (cpy_r_r83 == NULL) {
+        goto CPyL647;
     } else
         goto CPyL63;
 CPyL61: ;
-    cpy_r_r82 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r82 == NULL)) {
+    cpy_r_r84 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r84 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        goto CPyL648;
     }
-    cpy_r_r83 = cpy_r_r82;
+    cpy_r_r85 = cpy_r_r84;
     goto CPyL86;
 CPyL63: ;
-    cpy_r_r84 = cpy_r_r81;
+    cpy_r_r86 = cpy_r_r83;
 CPyL64: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 4;
-    cpy_r_r85 = 1;
-    if (unlikely(!cpy_r_r85)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 4;
+    cpy_r_r87 = 1;
+    if (unlikely(!cpy_r_r87)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL582;
+        goto CPyL649;
     } else
-        goto CPyL583;
+        goto CPyL650;
 CPyL65: ;
-    return cpy_r_r84;
+    return cpy_r_r86;
 CPyL66: ;
-    cpy_r_r86 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r87 = cpy_r_type != cpy_r_r86;
-    if (!cpy_r_r87) goto CPyL69;
+    cpy_r_r88 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r89 = cpy_r_type != cpy_r_r88;
+    if (!cpy_r_r89) goto CPyL69;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
         goto CPyL70;
     } else
-        goto CPyL584;
+        goto CPyL651;
 CPyL68: ;
     CPy_Unreachable();
 CPyL69: ;
     CPy_INCREF(cpy_r_arg);
     goto CPyL81;
 CPyL70: ;
-    cpy_r_r88 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59.f2);
+    cpy_r_r90 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59.f2);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59 = cpy_r_r88;
-    cpy_r_r89 = 1;
-    if (unlikely(!cpy_r_r89)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59 = cpy_r_r90;
+    cpy_r_r91 = 1;
+    if (unlikely(!cpy_r_r91)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL585;
+        goto CPyL652;
     }
-    cpy_r_r90 = (PyObject **)&cpy_r_r3;
-    cpy_r_r91 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__58;
-    if (unlikely(cpy_r_r91 == NULL)) {
+    cpy_r_r92 = (PyObject **)&cpy_r_r3;
+    cpy_r_r93 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__58;
+    if (unlikely(cpy_r_r93 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__58", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL585;
+        goto CPyL652;
     }
-    CPy_INCREF(cpy_r_r91);
+    CPy_INCREF(cpy_r_r93);
 CPyL72: ;
-    cpy_r_r92 = CPy_YieldFromErrorHandle(cpy_r_r91, cpy_r_r90);
-    CPy_DecRef(cpy_r_r91);
-    if (unlikely(cpy_r_r92 == 2)) {
+    cpy_r_r94 = CPy_YieldFromErrorHandle(cpy_r_r93, cpy_r_r92);
+    CPy_DecRef(cpy_r_r93);
+    if (unlikely(cpy_r_r94 == 2)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL585;
+        goto CPyL652;
     }
-    if (cpy_r_r92) goto CPyL76;
+    if (cpy_r_r94) goto CPyL76;
     CPy_INCREF(cpy_r_r3);
-    cpy_r_r84 = cpy_r_r3;
-    cpy_r_r93 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59;
-    if (unlikely(cpy_r_r93.f0 == NULL)) {
+    cpy_r_r86 = cpy_r_r3;
+    cpy_r_r95 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59;
+    if (unlikely(cpy_r_r95.f0 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__59", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL586;
+        goto CPyL653;
     }
-    CPy_INCREF(cpy_r_r93.f0);
-    CPy_INCREF(cpy_r_r93.f1);
-    CPy_INCREF(cpy_r_r93.f2);
+    CPy_INCREF(cpy_r_r95.f0);
+    CPy_INCREF(cpy_r_r95.f1);
+    CPy_INCREF(cpy_r_r95.f2);
 CPyL75: ;
-    CPy_RestoreExcInfo(cpy_r_r93);
-    CPy_DecRef(cpy_r_r93.f0);
-    CPy_DecRef(cpy_r_r93.f1);
-    CPy_DecRef(cpy_r_r93.f2);
-    goto CPyL64;
-CPyL76: ;
-    cpy_r_r83 = cpy_r_r3;
-    cpy_r_r94 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59;
-    if (unlikely(cpy_r_r94.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__59", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL587;
-    }
-    CPy_INCREF(cpy_r_r94.f0);
-    CPy_INCREF(cpy_r_r94.f1);
-    CPy_INCREF(cpy_r_r94.f2);
-CPyL77: ;
-    CPy_RestoreExcInfo(cpy_r_r94);
-    CPy_DecRef(cpy_r_r94.f0);
-    CPy_DecRef(cpy_r_r94.f1);
-    CPy_DecRef(cpy_r_r94.f2);
-    goto CPyL86;
-CPyL78: ;
-    cpy_r_r95 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__59;
-    if (unlikely(cpy_r_r95.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__59' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r95.f0);
-        CPy_INCREF(cpy_r_r95.f1);
-        CPy_INCREF(cpy_r_r95.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r95.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL79: ;
     CPy_RestoreExcInfo(cpy_r_r95);
     CPy_DecRef(cpy_r_r95.f0);
     CPy_DecRef(cpy_r_r95.f1);
     CPy_DecRef(cpy_r_r95.f2);
-    cpy_r_r96 = CPy_KeepPropagating();
-    if (!cpy_r_r96) goto CPyL556;
+    goto CPyL64;
+CPyL76: ;
+    cpy_r_r85 = cpy_r_r3;
+    cpy_r_r96 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59;
+    if (unlikely(cpy_r_r96.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__59", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL654;
+    }
+    CPy_INCREF(cpy_r_r96.f0);
+    CPy_INCREF(cpy_r_r96.f1);
+    CPy_INCREF(cpy_r_r96.f2);
+CPyL77: ;
+    CPy_RestoreExcInfo(cpy_r_r96);
+    CPy_DecRef(cpy_r_r96.f0);
+    CPy_DecRef(cpy_r_r96.f1);
+    CPy_DecRef(cpy_r_r96.f2);
+    goto CPyL86;
+CPyL78: ;
+    cpy_r_r97 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__59;
+    if (unlikely(cpy_r_r97.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__59' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r97.f0);
+        CPy_INCREF(cpy_r_r97.f1);
+        CPy_INCREF(cpy_r_r97.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r97.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL79: ;
+    CPy_RestoreExcInfo(cpy_r_r97);
+    CPy_DecRef(cpy_r_r97.f0);
+    CPy_DecRef(cpy_r_r97.f1);
+    CPy_DecRef(cpy_r_r97.f2);
+    cpy_r_r98 = CPy_KeepPropagating();
+    if (!cpy_r_r98) goto CPyL623;
     CPy_Unreachable();
 CPyL81: ;
-    cpy_r_r97 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__58;
-    if (unlikely(cpy_r_r97 == NULL)) {
+    cpy_r_r99 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__58;
+    if (unlikely(cpy_r_r99 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__58", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL588;
+        goto CPyL655;
     }
-    CPy_INCREF(cpy_r_r97);
+    CPy_INCREF(cpy_r_r99);
 CPyL82: ;
-    cpy_r_r98 = CPyIter_Send(cpy_r_r97, cpy_r_arg);
-    CPy_DECREF(cpy_r_r97);
+    cpy_r_r100 = CPyIter_Send(cpy_r_r99, cpy_r_arg);
+    CPy_DECREF(cpy_r_r99);
     CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r98 == NULL) goto CPyL589;
-    cpy_r_r84 = cpy_r_r98;
+    if (cpy_r_r100 == NULL) goto CPyL656;
+    cpy_r_r86 = cpy_r_r100;
     goto CPyL64;
 CPyL84: ;
-    cpy_r_r99 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r99 == NULL)) {
+    cpy_r_r101 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r101 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        goto CPyL648;
     }
-    cpy_r_r83 = cpy_r_r99;
+    cpy_r_r85 = cpy_r_r101;
 CPyL86: ;
-    cpy_r_r100 = PyObject_GetIter(cpy_r_r83);
-    CPy_DECREF(cpy_r_r83);
-    if (unlikely(cpy_r_r100 == NULL)) {
+    cpy_r_r102 = PyObject_GetIter(cpy_r_r85);
+    CPy_DECREF(cpy_r_r85);
+    if (unlikely(cpy_r_r102 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        goto CPyL648;
     }
-    cpy_r_r101 = PyIter_Next(cpy_r_r100);
-    if (cpy_r_r101 == NULL) {
-        goto CPyL590;
+    cpy_r_r103 = PyIter_Next(cpy_r_r102);
+    if (cpy_r_r103 == NULL) {
+        goto CPyL657;
     } else
         goto CPyL90;
 CPyL88: ;
     PyErr_SetString(PyExc_ValueError, "not enough values to unpack");
-    cpy_r_r102 = 0;
-    if (unlikely(!cpy_r_r102)) {
+    cpy_r_r104 = 0;
+    if (unlikely(!cpy_r_r104)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL90: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_token != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_token);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_token != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_token);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_token = cpy_r_r101;
-    cpy_r_r103 = 1;
-    if (unlikely(!cpy_r_r103)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_token = cpy_r_r103;
+    cpy_r_r105 = 1;
+    if (unlikely(!cpy_r_r105)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL591;
+        goto CPyL658;
     }
-    cpy_r_r104 = PyIter_Next(cpy_r_r100);
-    if (cpy_r_r104 == NULL) {
-        goto CPyL592;
+    cpy_r_r106 = PyIter_Next(cpy_r_r102);
+    if (cpy_r_r106 == NULL) {
+        goto CPyL659;
     } else
         goto CPyL94;
 CPyL92: ;
     PyErr_SetString(PyExc_ValueError, "not enough values to unpack");
-    cpy_r_r105 = 0;
-    if (unlikely(!cpy_r_r105)) {
+    cpy_r_r107 = 0;
+    if (unlikely(!cpy_r_r107)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL94: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_date != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_date);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_date != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_date);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_date = cpy_r_r104;
-    cpy_r_r106 = 1;
-    if (unlikely(!cpy_r_r106)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL591;
-    }
-    cpy_r_r107 = PyIter_Next(cpy_r_r100);
-    CPy_DECREF(cpy_r_r100);
-    if (cpy_r_r107 == NULL) {
-        goto CPyL98;
-    } else
-        goto CPyL593;
-CPyL96: ;
-    PyErr_SetString(PyExc_ValueError, "too many values to unpack");
-    cpy_r_r108 = 0;
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_date = cpy_r_r106;
+    cpy_r_r108 = 1;
     if (unlikely(!cpy_r_r108)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL658;
+    }
+    cpy_r_r109 = PyIter_Next(cpy_r_r102);
+    CPy_DECREF(cpy_r_r102);
+    if (cpy_r_r109 == NULL) {
+        goto CPyL98;
+    } else
+        goto CPyL660;
+CPyL96: ;
+    PyErr_SetString(PyExc_ValueError, "too many values to unpack");
+    cpy_r_r110 = 0;
+    if (unlikely(!cpy_r_r110)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 335, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL98: ;
-    cpy_r_r109 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_date_obj;
-    if (unlikely(cpy_r_r109 == NULL)) {
+    cpy_r_r111 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_date_obj;
+    if (unlikely(cpy_r_r111 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        goto CPyL648;
     }
-    CPy_INCREF(cpy_r_r109);
+    CPy_INCREF(cpy_r_r111);
 CPyL99: ;
-    cpy_r_r110 = CPyStatic_streams___llamapay___timedelta;
-    if (unlikely(cpy_r_r110 == NULL)) {
-        goto CPyL594;
+    cpy_r_r112 = CPyStatic_streams___llamapay___timedelta;
+    if (unlikely(cpy_r_r112 == NULL)) {
+        goto CPyL661;
     } else
         goto CPyL102;
 CPyL100: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"timedelta\" was not set");
-    cpy_r_r111 = 0;
-    if (unlikely(!cpy_r_r111)) {
+    cpy_r_r113 = 0;
+    if (unlikely(!cpy_r_r113)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL102: ;
-    cpy_r_r112 = CPyStatics[457]; /* 1 */
-    PyObject *cpy_r_r113[1] = {cpy_r_r112};
-    cpy_r_r114 = (PyObject **)&cpy_r_r113;
-    cpy_r_r115 = CPyStatics[502]; /* ('days',) */
-    cpy_r_r116 = PyObject_Vectorcall(cpy_r_r110, cpy_r_r114, 0, cpy_r_r115);
-    if (unlikely(cpy_r_r116 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL595;
-    }
-    cpy_r_r117 = PyNumber_Add(cpy_r_r109, cpy_r_r116);
-    CPy_DECREF(cpy_r_r109);
-    CPy_DECREF(cpy_r_r116);
-    if (unlikely(cpy_r_r117 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    cpy_r_r118 = CPyStatic_streams___llamapay___timedelta;
+    cpy_r_r114 = CPyStatics[459]; /* 1 */
+    PyObject *cpy_r_r115[1] = {cpy_r_r114};
+    cpy_r_r116 = (PyObject **)&cpy_r_r115;
+    cpy_r_r117 = CPyStatics[504]; /* ('days',) */
+    cpy_r_r118 = PyObject_Vectorcall(cpy_r_r112, cpy_r_r116, 0, cpy_r_r117);
     if (unlikely(cpy_r_r118 == NULL)) {
-        goto CPyL596;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
+        goto CPyL662;
+    }
+    cpy_r_r119 = PyNumber_Add(cpy_r_r111, cpy_r_r118);
+    CPy_DECREF(cpy_r_r111);
+    CPy_DECREF(cpy_r_r118);
+    if (unlikely(cpy_r_r119 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    cpy_r_r120 = CPyStatic_streams___llamapay___timedelta;
+    if (unlikely(cpy_r_r120 == NULL)) {
+        goto CPyL663;
     } else
         goto CPyL107;
 CPyL105: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"timedelta\" was not set");
-    cpy_r_r119 = 0;
-    if (unlikely(!cpy_r_r119)) {
+    cpy_r_r121 = 0;
+    if (unlikely(!cpy_r_r121)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL107: ;
-    cpy_r_r120 = CPyStatics[457]; /* 1 */
-    PyObject *cpy_r_r121[1] = {cpy_r_r120};
-    cpy_r_r122 = (PyObject **)&cpy_r_r121;
-    cpy_r_r123 = CPyStatics[506]; /* ('seconds',) */
-    cpy_r_r124 = PyObject_Vectorcall(cpy_r_r118, cpy_r_r122, 0, cpy_r_r123);
-    if (unlikely(cpy_r_r124 == NULL)) {
+    cpy_r_r122 = CPyStatics[459]; /* 1 */
+    PyObject *cpy_r_r123[1] = {cpy_r_r122};
+    cpy_r_r124 = (PyObject **)&cpy_r_r123;
+    cpy_r_r125 = CPyStatics[508]; /* ('seconds',) */
+    cpy_r_r126 = PyObject_Vectorcall(cpy_r_r120, cpy_r_r124, 0, cpy_r_r125);
+    if (unlikely(cpy_r_r126 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL597;
+        goto CPyL664;
     }
-    cpy_r_r125 = PyNumber_Subtract(cpy_r_r117, cpy_r_r124);
-    CPy_DECREF(cpy_r_r117);
-    CPy_DECREF(cpy_r_r124);
-    if (unlikely(cpy_r_r125 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at = cpy_r_r125;
-    cpy_r_r126 = 1;
-    if (unlikely(!cpy_r_r126)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    cpy_r_r127 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at;
+    cpy_r_r127 = PyNumber_Subtract(cpy_r_r119, cpy_r_r126);
+    CPy_DECREF(cpy_r_r119);
+    CPy_DECREF(cpy_r_r126);
     if (unlikely(cpy_r_r127 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 339, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
     }
-    CPy_INCREF(cpy_r_r127);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at = cpy_r_r127;
+    cpy_r_r128 = 1;
+    if (unlikely(!cpy_r_r128)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 338, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    cpy_r_r129 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r129 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 339, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    CPy_INCREF(cpy_r_r129);
 CPyL111: ;
-    cpy_r_r128 = CPyStatic_streams___llamapay____UTC;
-    if (unlikely(cpy_r_r128 == NULL)) {
-        goto CPyL598;
+    cpy_r_r130 = CPyStatic_streams___llamapay____UTC;
+    if (unlikely(cpy_r_r130 == NULL)) {
+        goto CPyL665;
     } else
         goto CPyL114;
 CPyL112: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_UTC\" was not set");
-    cpy_r_r129 = 0;
-    if (unlikely(!cpy_r_r129)) {
+    cpy_r_r131 = 0;
+    if (unlikely(!cpy_r_r131)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL114: ;
-    cpy_r_r130 = CPyStatic_streams___llamapay___now;
-    if (unlikely(cpy_r_r130 == NULL)) {
-        goto CPyL599;
+    cpy_r_r132 = CPyStatic_streams___llamapay___now;
+    if (unlikely(cpy_r_r132 == NULL)) {
+        goto CPyL666;
     } else
         goto CPyL117;
 CPyL115: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"now\" was not set");
-    cpy_r_r131 = 0;
-    if (unlikely(!cpy_r_r131)) {
+    cpy_r_r133 = 0;
+    if (unlikely(!cpy_r_r133)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL117: ;
-    PyObject *cpy_r_r132[1] = {cpy_r_r128};
-    cpy_r_r133 = (PyObject **)&cpy_r_r132;
-    cpy_r_r134 = CPyStatics[507]; /* ('tz',) */
-    cpy_r_r135 = PyObject_Vectorcall(cpy_r_r130, cpy_r_r133, 0, cpy_r_r134);
-    if (unlikely(cpy_r_r135 == NULL)) {
+    PyObject *cpy_r_r134[1] = {cpy_r_r130};
+    cpy_r_r135 = (PyObject **)&cpy_r_r134;
+    cpy_r_r136 = CPyStatics[509]; /* ('tz',) */
+    cpy_r_r137 = PyObject_Vectorcall(cpy_r_r132, cpy_r_r135, 0, cpy_r_r136);
+    if (unlikely(cpy_r_r137 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
-        goto CPyL600;
+        goto CPyL667;
     }
-    cpy_r_r136 = PyObject_RichCompare(cpy_r_r127, cpy_r_r135, 4);
-    CPy_DECREF(cpy_r_r127);
-    CPy_DECREF(cpy_r_r135);
-    if (unlikely(cpy_r_r136 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    if (unlikely(!PyBool_Check(cpy_r_r136))) {
-        CPy_TypeError("bool", cpy_r_r136); cpy_r_r137 = 2;
-    } else
-        cpy_r_r137 = cpy_r_r136 == Py_True;
-    CPy_DECREF(cpy_r_r136);
-    if (unlikely(cpy_r_r137 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    if (!cpy_r_r137) goto CPyL601;
-    cpy_r_r138 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at;
+    cpy_r_r138 = PyObject_RichCompare(cpy_r_r129, cpy_r_r137, 4);
+    CPy_DECREF(cpy_r_r129);
+    CPy_DECREF(cpy_r_r137);
     if (unlikely(cpy_r_r138 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
     }
-    CPy_INCREF(cpy_r_r138);
+    if (unlikely(!PyBool_Check(cpy_r_r138))) {
+        CPy_TypeError("bool", cpy_r_r138); cpy_r_r139 = 2;
+    } else
+        cpy_r_r139 = cpy_r_r138 == Py_True;
+    CPy_DECREF(cpy_r_r138);
+    if (unlikely(cpy_r_r139 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 339, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    if (!cpy_r_r139) goto CPyL668;
+    cpy_r_r140 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r140 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 340, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    CPy_INCREF(cpy_r_r140);
 CPyL122: ;
-    cpy_r_r139 = CPyStatic_streams___llamapay____UTC;
-    if (unlikely(cpy_r_r139 == NULL)) {
-        goto CPyL602;
+    cpy_r_r141 = CPyStatic_streams___llamapay____UTC;
+    if (unlikely(cpy_r_r141 == NULL)) {
+        goto CPyL669;
     } else
         goto CPyL125;
 CPyL123: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_UTC\" was not set");
-    cpy_r_r140 = 0;
-    if (unlikely(!cpy_r_r140)) {
+    cpy_r_r142 = 0;
+    if (unlikely(!cpy_r_r142)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL125: ;
-    cpy_r_r141 = CPyStatic_streams___llamapay___now;
-    if (unlikely(cpy_r_r141 == NULL)) {
-        goto CPyL603;
+    cpy_r_r143 = CPyStatic_streams___llamapay___now;
+    if (unlikely(cpy_r_r143 == NULL)) {
+        goto CPyL670;
     } else
         goto CPyL128;
 CPyL126: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"now\" was not set");
-    cpy_r_r142 = 0;
-    if (unlikely(!cpy_r_r142)) {
+    cpy_r_r144 = 0;
+    if (unlikely(!cpy_r_r144)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL128: ;
-    PyObject *cpy_r_r143[1] = {cpy_r_r139};
-    cpy_r_r144 = (PyObject **)&cpy_r_r143;
-    cpy_r_r145 = CPyStatics[507]; /* ('tz',) */
-    cpy_r_r146 = PyObject_Vectorcall(cpy_r_r141, cpy_r_r144, 0, cpy_r_r145);
-    if (unlikely(cpy_r_r146 == NULL)) {
+    PyObject *cpy_r_r145[1] = {cpy_r_r141};
+    cpy_r_r146 = (PyObject **)&cpy_r_r145;
+    cpy_r_r147 = CPyStatics[509]; /* ('tz',) */
+    cpy_r_r148 = PyObject_Vectorcall(cpy_r_r143, cpy_r_r146, 0, cpy_r_r147);
+    if (unlikely(cpy_r_r148 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL604;
+        goto CPyL671;
     }
-    cpy_r_r147 = PyNumber_Subtract(cpy_r_r138, cpy_r_r146);
-    CPy_DECREF(cpy_r_r138);
-    CPy_DECREF(cpy_r_r146);
-    if (unlikely(cpy_r_r147 == NULL)) {
+    cpy_r_r149 = PyNumber_Subtract(cpy_r_r140, cpy_r_r148);
+    CPy_DECREF(cpy_r_r140);
+    CPy_DECREF(cpy_r_r148);
+    if (unlikely(cpy_r_r149 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        goto CPyL648;
     }
-    cpy_r_r148 = CPyStatics[308]; /* 'total_seconds' */
-    PyObject *cpy_r_r149[1] = {cpy_r_r147};
-    cpy_r_r150 = (PyObject **)&cpy_r_r149;
-    cpy_r_r151 = PyObject_VectorcallMethod(cpy_r_r148, cpy_r_r150, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r151 == NULL)) {
+    cpy_r_r150 = CPyStatics[308]; /* 'total_seconds' */
+    PyObject *cpy_r_r151[1] = {cpy_r_r149};
+    cpy_r_r152 = (PyObject **)&cpy_r_r151;
+    cpy_r_r153 = PyObject_VectorcallMethod(cpy_r_r150, cpy_r_r152, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r153 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL605;
+        goto CPyL672;
     }
-    CPy_DECREF(cpy_r_r147);
-    cpy_r_r152 = PyFloat_AsDouble(cpy_r_r151);
-    if (cpy_r_r152 == -1.0 && PyErr_Occurred()) {
-        CPy_TypeError("float", cpy_r_r151); cpy_r_r152 = -113.0;
+    CPy_DECREF(cpy_r_r149);
+    cpy_r_r154 = PyFloat_AsDouble(cpy_r_r153);
+    if (cpy_r_r154 == -1.0 && PyErr_Occurred()) {
+        CPy_TypeError("float", cpy_r_r153); cpy_r_r154 = -113.0;
     }
-    CPy_DECREF(cpy_r_r151);
-    cpy_r_r153 = cpy_r_r152 == -113.0;
-    if (unlikely(cpy_r_r153)) goto CPyL133;
+    CPy_DECREF(cpy_r_r153);
+    cpy_r_r155 = cpy_r_r154 == -113.0;
+    if (unlikely(cpy_r_r155)) goto CPyL133;
 CPyL132: ;
-    cpy_r_r154 = CPyStatic_streams___llamapay___sleep;
-    if (unlikely(cpy_r_r154 == NULL)) {
-        goto CPyL606;
+    cpy_r_r156 = CPyStatic_streams___llamapay___sleep;
+    if (unlikely(cpy_r_r156 == NULL)) {
+        goto CPyL673;
     } else
         goto CPyL136;
 CPyL133: ;
-    cpy_r_r155 = PyErr_Occurred();
-    if (unlikely(cpy_r_r155 != NULL)) {
+    cpy_r_r157 = PyErr_Occurred();
+    if (unlikely(cpy_r_r157 != NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        goto CPyL648;
     } else
         goto CPyL132;
 CPyL134: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"sleep\" was not set");
-    cpy_r_r156 = 0;
-    if (unlikely(!cpy_r_r156)) {
+    cpy_r_r158 = 0;
+    if (unlikely(!cpy_r_r158)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
 CPyL136: ;
-    cpy_r_r157 = PyFloat_FromDouble(cpy_r_r152);
-    PyObject *cpy_r_r158[1] = {cpy_r_r157};
-    cpy_r_r159 = (PyObject **)&cpy_r_r158;
-    cpy_r_r160 = PyObject_Vectorcall(cpy_r_r154, cpy_r_r159, 1, 0);
-    if (unlikely(cpy_r_r160 == NULL)) {
+    cpy_r_r159 = PyFloat_FromDouble(cpy_r_r154);
+    PyObject *cpy_r_r160[1] = {cpy_r_r159};
+    cpy_r_r161 = (PyObject **)&cpy_r_r160;
+    cpy_r_r162 = PyObject_Vectorcall(cpy_r_r156, cpy_r_r161, 1, 0);
+    if (unlikely(cpy_r_r162 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL607;
+        goto CPyL674;
     }
-    CPy_DECREF(cpy_r_r157);
-    cpy_r_r161 = CPy_GetCoro(cpy_r_r160);
-    CPy_DECREF(cpy_r_r160);
-    if (unlikely(cpy_r_r161 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__60 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__60);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__60 = cpy_r_r161;
-    cpy_r_r162 = 1;
-    if (unlikely(!cpy_r_r162)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
-    }
-    cpy_r_r163 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__60;
+    CPy_DECREF(cpy_r_r159);
+    cpy_r_r163 = CPy_GetCoro(cpy_r_r162);
+    CPy_DECREF(cpy_r_r162);
     if (unlikely(cpy_r_r163 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__60", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL581;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
     }
-    CPy_INCREF(cpy_r_r163);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__60 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__60);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__60 = cpy_r_r163;
+    cpy_r_r164 = 1;
+    if (unlikely(!cpy_r_r164)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    cpy_r_r165 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__60;
+    if (unlikely(cpy_r_r165 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__60", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL648;
+    }
+    CPy_INCREF(cpy_r_r165);
 CPyL140: ;
-    cpy_r_r164 = CPyIter_Next(cpy_r_r163);
-    CPy_DECREF(cpy_r_r163);
-    if (cpy_r_r164 == NULL) {
-        goto CPyL608;
+    cpy_r_r166 = CPyIter_Next(cpy_r_r165);
+    CPy_DECREF(cpy_r_r165);
+    if (cpy_r_r166 == NULL) {
+        goto CPyL675;
     } else
         goto CPyL143;
 CPyL141: ;
-    cpy_r_r165 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r165 == NULL)) {
+    cpy_r_r167 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r167 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL609;
+        goto CPyL676;
     }
-    cpy_r_r166 = cpy_r_r165;
-    CPy_DECREF(cpy_r_r166);
+    cpy_r_r168 = cpy_r_r167;
+    CPy_DECREF(cpy_r_r168);
     goto CPyL166;
 CPyL143: ;
-    cpy_r_r167 = cpy_r_r164;
+    cpy_r_r169 = cpy_r_r166;
 CPyL144: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 6;
-    cpy_r_r168 = 1;
-    if (unlikely(!cpy_r_r168)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 6;
+    cpy_r_r170 = 1;
+    if (unlikely(!cpy_r_r170)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL610;
+        goto CPyL677;
     } else
-        goto CPyL611;
+        goto CPyL678;
 CPyL145: ;
-    return cpy_r_r167;
+    return cpy_r_r169;
 CPyL146: ;
-    cpy_r_r169 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r170 = cpy_r_type != cpy_r_r169;
-    if (!cpy_r_r170) goto CPyL149;
+    cpy_r_r171 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r172 = cpy_r_type != cpy_r_r171;
+    if (!cpy_r_r172) goto CPyL149;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
         goto CPyL150;
     } else
-        goto CPyL612;
+        goto CPyL679;
 CPyL148: ;
     CPy_Unreachable();
 CPyL149: ;
     CPy_INCREF(cpy_r_arg);
     goto CPyL161;
 CPyL150: ;
-    cpy_r_r171 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61.f2);
+    cpy_r_r173 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61.f2);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61 = cpy_r_r171;
-    cpy_r_r172 = 1;
-    if (unlikely(!cpy_r_r172)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61 = cpy_r_r173;
+    cpy_r_r174 = 1;
+    if (unlikely(!cpy_r_r174)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL613;
+        goto CPyL680;
     }
-    cpy_r_r173 = (PyObject **)&cpy_r_r5;
-    cpy_r_r174 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__60;
-    if (unlikely(cpy_r_r174 == NULL)) {
+    cpy_r_r175 = (PyObject **)&cpy_r_r5;
+    cpy_r_r176 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__60;
+    if (unlikely(cpy_r_r176 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__60", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL613;
+        goto CPyL680;
     }
-    CPy_INCREF(cpy_r_r174);
+    CPy_INCREF(cpy_r_r176);
 CPyL152: ;
-    cpy_r_r175 = CPy_YieldFromErrorHandle(cpy_r_r174, cpy_r_r173);
-    CPy_DecRef(cpy_r_r174);
-    if (unlikely(cpy_r_r175 == 2)) {
+    cpy_r_r177 = CPy_YieldFromErrorHandle(cpy_r_r176, cpy_r_r175);
+    CPy_DecRef(cpy_r_r176);
+    if (unlikely(cpy_r_r177 == 2)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL613;
+        goto CPyL680;
     }
-    if (cpy_r_r175) goto CPyL156;
+    if (cpy_r_r177) goto CPyL156;
     CPy_INCREF(cpy_r_r5);
-    cpy_r_r167 = cpy_r_r5;
-    cpy_r_r176 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61;
-    if (unlikely(cpy_r_r176.f0 == NULL)) {
+    cpy_r_r169 = cpy_r_r5;
+    cpy_r_r178 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61;
+    if (unlikely(cpy_r_r178.f0 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__61", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL614;
+        goto CPyL681;
     }
-    CPy_INCREF(cpy_r_r176.f0);
-    CPy_INCREF(cpy_r_r176.f1);
-    CPy_INCREF(cpy_r_r176.f2);
+    CPy_INCREF(cpy_r_r178.f0);
+    CPy_INCREF(cpy_r_r178.f1);
+    CPy_INCREF(cpy_r_r178.f2);
 CPyL155: ;
-    CPy_RestoreExcInfo(cpy_r_r176);
-    CPy_DecRef(cpy_r_r176.f0);
-    CPy_DecRef(cpy_r_r176.f1);
-    CPy_DecRef(cpy_r_r176.f2);
-    goto CPyL144;
-CPyL156: ;
-    cpy_r_r166 = cpy_r_r5;
-    CPy_DecRef(cpy_r_r166);
-    cpy_r_r177 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61;
-    if (unlikely(cpy_r_r177.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__61", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL615;
-    }
-    CPy_INCREF(cpy_r_r177.f0);
-    CPy_INCREF(cpy_r_r177.f1);
-    CPy_INCREF(cpy_r_r177.f2);
-CPyL157: ;
-    CPy_RestoreExcInfo(cpy_r_r177);
-    CPy_DecRef(cpy_r_r177.f0);
-    CPy_DecRef(cpy_r_r177.f1);
-    CPy_DecRef(cpy_r_r177.f2);
-    goto CPyL166;
-CPyL158: ;
-    cpy_r_r178 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__61;
-    if (unlikely(cpy_r_r178.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__61' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r178.f0);
-        CPy_INCREF(cpy_r_r178.f1);
-        CPy_INCREF(cpy_r_r178.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r178.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL159: ;
     CPy_RestoreExcInfo(cpy_r_r178);
     CPy_DecRef(cpy_r_r178.f0);
     CPy_DecRef(cpy_r_r178.f1);
     CPy_DecRef(cpy_r_r178.f2);
-    cpy_r_r179 = CPy_KeepPropagating();
-    if (!cpy_r_r179) goto CPyL556;
+    goto CPyL144;
+CPyL156: ;
+    cpy_r_r168 = cpy_r_r5;
+    CPy_DecRef(cpy_r_r168);
+    cpy_r_r179 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61;
+    if (unlikely(cpy_r_r179.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__61", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL682;
+    }
+    CPy_INCREF(cpy_r_r179.f0);
+    CPy_INCREF(cpy_r_r179.f1);
+    CPy_INCREF(cpy_r_r179.f2);
+CPyL157: ;
+    CPy_RestoreExcInfo(cpy_r_r179);
+    CPy_DecRef(cpy_r_r179.f0);
+    CPy_DecRef(cpy_r_r179.f1);
+    CPy_DecRef(cpy_r_r179.f2);
+    goto CPyL166;
+CPyL158: ;
+    cpy_r_r180 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__61;
+    if (unlikely(cpy_r_r180.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__61' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r180.f0);
+        CPy_INCREF(cpy_r_r180.f1);
+        CPy_INCREF(cpy_r_r180.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r180.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL159: ;
+    CPy_RestoreExcInfo(cpy_r_r180);
+    CPy_DecRef(cpy_r_r180.f0);
+    CPy_DecRef(cpy_r_r180.f1);
+    CPy_DecRef(cpy_r_r180.f2);
+    cpy_r_r181 = CPy_KeepPropagating();
+    if (!cpy_r_r181) goto CPyL623;
     CPy_Unreachable();
 CPyL161: ;
-    cpy_r_r180 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__60;
-    if (unlikely(cpy_r_r180 == NULL)) {
+    cpy_r_r182 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__60;
+    if (unlikely(cpy_r_r182 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__60", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL616;
+        goto CPyL683;
     }
-    CPy_INCREF(cpy_r_r180);
+    CPy_INCREF(cpy_r_r182);
 CPyL162: ;
-    cpy_r_r181 = CPyIter_Send(cpy_r_r180, cpy_r_arg);
-    CPy_DECREF(cpy_r_r180);
+    cpy_r_r183 = CPyIter_Send(cpy_r_r182, cpy_r_arg);
+    CPy_DECREF(cpy_r_r182);
     CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r181 == NULL) goto CPyL617;
-    cpy_r_r167 = cpy_r_r181;
+    if (cpy_r_r183 == NULL) goto CPyL684;
+    cpy_r_r169 = cpy_r_r183;
     goto CPyL144;
 CPyL164: ;
-    cpy_r_r182 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r182 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
-        goto CPyL609;
-    }
-    cpy_r_r166 = cpy_r_r182;
-    CPy_DECREF(cpy_r_r166);
-CPyL166: ;
-    cpy_r_r183 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at;
-    if (unlikely(cpy_r_r183 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL609;
-    }
-    CPy_INCREF(cpy_r_r183);
-CPyL167: ;
-    cpy_r_r184 = CPyStatic_streams___llamapay___get_block_at_timestamp;
+    cpy_r_r184 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r184 == NULL)) {
-        goto CPyL618;
-    } else
-        goto CPyL170;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 340, CPyStatic_streams___llamapay___globals);
+        goto CPyL676;
+    }
+    cpy_r_r168 = cpy_r_r184;
+    CPy_DECREF(cpy_r_r168);
+CPyL166: ;
+    if (!1) goto CPyL685;
+    cpy_r_r185 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r185 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
+    }
+    CPy_INCREF(cpy_r_r185);
 CPyL168: ;
+    cpy_r_r186 = CPyStatic_streams___llamapay___get_block_at_timestamp;
+    if (unlikely(cpy_r_r186 == NULL)) {
+        goto CPyL686;
+    } else
+        goto CPyL171;
+CPyL169: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"get_block_at_timestamp\" was not set");
-    cpy_r_r185 = 0;
-    if (unlikely(!cpy_r_r185)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPy_Unreachable();
+    cpy_r_r187 = 0;
+    if (unlikely(!cpy_r_r187)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
+    } else
+        goto CPyL687;
 CPyL170: ;
-    cpy_r_r186 = 0 ? Py_True : Py_False;
-    PyObject *cpy_r_r187[2] = {cpy_r_r183, cpy_r_r186};
-    cpy_r_r188 = (PyObject **)&cpy_r_r187;
-    cpy_r_r189 = CPyStatics[504]; /* ('sync',) */
-    cpy_r_r190 = PyObject_Vectorcall(cpy_r_r184, cpy_r_r188, 1, cpy_r_r189);
-    if (unlikely(cpy_r_r190 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL619;
+    CPy_Unreachable();
+CPyL171: ;
+    cpy_r_r188 = 0 ? Py_True : Py_False;
+    PyObject *cpy_r_r189[2] = {cpy_r_r185, cpy_r_r188};
+    cpy_r_r190 = (PyObject **)&cpy_r_r189;
+    cpy_r_r191 = CPyStatics[506]; /* ('sync',) */
+    cpy_r_r192 = PyObject_Vectorcall(cpy_r_r186, cpy_r_r190, 1, cpy_r_r191);
+    if (unlikely(cpy_r_r192 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL688;
     }
-    CPy_DECREF(cpy_r_r183);
-    cpy_r_r191 = CPy_GetCoro(cpy_r_r190);
-    CPy_DECREF(cpy_r_r190);
-    if (unlikely(cpy_r_r191 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL609;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__62 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__62);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__62 = cpy_r_r191;
-    cpy_r_r192 = 1;
-    if (unlikely(!cpy_r_r192)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL609;
-    }
-    cpy_r_r193 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__62;
+    CPy_DECREF(cpy_r_r185);
+    cpy_r_r193 = CPy_GetCoro(cpy_r_r192);
+    CPy_DECREF(cpy_r_r192);
     if (unlikely(cpy_r_r193 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__62", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL609;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
     }
-    CPy_INCREF(cpy_r_r193);
-CPyL174: ;
-    cpy_r_r194 = CPyIter_Next(cpy_r_r193);
-    CPy_DECREF(cpy_r_r193);
-    if (cpy_r_r194 == NULL) {
-        goto CPyL620;
-    } else
-        goto CPyL177;
-CPyL175: ;
-    cpy_r_r195 = CPy_FetchStopIterationValue();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__62 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__62);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__62 = cpy_r_r193;
+    cpy_r_r194 = 1;
+    if (unlikely(!cpy_r_r194)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
+    }
+    cpy_r_r195 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__62;
     if (unlikely(cpy_r_r195 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__62", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
     }
-    cpy_r_r196 = cpy_r_r195;
-    goto CPyL200;
-CPyL177: ;
-    cpy_r_r197 = cpy_r_r194;
+    CPy_INCREF(cpy_r_r195);
+CPyL175: ;
+    cpy_r_r196 = CPyIter_Next(cpy_r_r195);
+    CPy_DECREF(cpy_r_r195);
+    if (cpy_r_r196 != NULL) goto CPyL178;
+    cpy_r_r197 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r197 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
+    }
+    cpy_r_r198 = cpy_r_r197;
+    goto CPyL201;
 CPyL178: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 8;
-    cpy_r_r198 = 1;
-    if (unlikely(!cpy_r_r198)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL622;
-    } else
-        goto CPyL623;
+    cpy_r_r199 = cpy_r_r196;
 CPyL179: ;
-    return cpy_r_r197;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 8;
+    cpy_r_r200 = 1;
+    if (unlikely(!cpy_r_r200)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL689;
+    } else
+        goto CPyL690;
 CPyL180: ;
-    cpy_r_r199 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r200 = cpy_r_type != cpy_r_r199;
-    if (!cpy_r_r200) goto CPyL183;
+    return cpy_r_r199;
+CPyL181: ;
+    cpy_r_r201 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r202 = cpy_r_type != cpy_r_r201;
+    if (!cpy_r_r202) goto CPyL184;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL184;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL185;
     } else
-        goto CPyL624;
-CPyL182: ;
-    CPy_Unreachable();
+        goto CPyL691;
 CPyL183: ;
-    CPy_INCREF(cpy_r_arg);
-    goto CPyL195;
+    CPy_Unreachable();
 CPyL184: ;
-    cpy_r_r201 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63.f2);
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL196;
+CPyL185: ;
+    cpy_r_r203 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63.f2);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63 = cpy_r_r201;
-    cpy_r_r202 = 1;
-    if (unlikely(!cpy_r_r202)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63 = cpy_r_r203;
+    cpy_r_r204 = 1;
+    if (unlikely(!cpy_r_r204)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL625;
+        goto CPyL193;
     }
-    cpy_r_r203 = (PyObject **)&cpy_r_r7;
-    cpy_r_r204 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__62;
-    if (unlikely(cpy_r_r204 == NULL)) {
+    cpy_r_r205 = (PyObject **)&cpy_r_r7;
+    cpy_r_r206 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__62;
+    if (unlikely(cpy_r_r206 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__62", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL625;
+        goto CPyL193;
     }
-    CPy_INCREF(cpy_r_r204);
-CPyL186: ;
-    cpy_r_r205 = CPy_YieldFromErrorHandle(cpy_r_r204, cpy_r_r203);
-    CPy_DecRef(cpy_r_r204);
-    if (unlikely(cpy_r_r205 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL625;
+    CPy_INCREF(cpy_r_r206);
+CPyL187: ;
+    cpy_r_r207 = CPy_YieldFromErrorHandle(cpy_r_r206, cpy_r_r205);
+    CPy_DecRef(cpy_r_r206);
+    if (unlikely(cpy_r_r207 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL193;
     }
-    if (cpy_r_r205) goto CPyL190;
+    if (cpy_r_r207) goto CPyL191;
     CPy_INCREF(cpy_r_r7);
-    cpy_r_r197 = cpy_r_r7;
-    cpy_r_r206 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63;
-    if (unlikely(cpy_r_r206.f0 == NULL)) {
+    cpy_r_r199 = cpy_r_r7;
+    cpy_r_r208 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63;
+    if (unlikely(cpy_r_r208.f0 == NULL)) {
         CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__63", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL626;
+        goto CPyL692;
     }
-    CPy_INCREF(cpy_r_r206.f0);
-    CPy_INCREF(cpy_r_r206.f1);
-    CPy_INCREF(cpy_r_r206.f2);
-CPyL189: ;
-    CPy_RestoreExcInfo(cpy_r_r206);
-    CPy_DecRef(cpy_r_r206.f0);
-    CPy_DecRef(cpy_r_r206.f1);
-    CPy_DecRef(cpy_r_r206.f2);
-    goto CPyL178;
+    CPy_INCREF(cpy_r_r208.f0);
+    CPy_INCREF(cpy_r_r208.f1);
+    CPy_INCREF(cpy_r_r208.f2);
 CPyL190: ;
-    cpy_r_r196 = cpy_r_r7;
-    cpy_r_r207 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63;
-    if (unlikely(cpy_r_r207.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__63", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL627;
-    }
-    CPy_INCREF(cpy_r_r207.f0);
-    CPy_INCREF(cpy_r_r207.f1);
-    CPy_INCREF(cpy_r_r207.f2);
-CPyL191: ;
-    CPy_RestoreExcInfo(cpy_r_r207);
-    CPy_DecRef(cpy_r_r207.f0);
-    CPy_DecRef(cpy_r_r207.f1);
-    CPy_DecRef(cpy_r_r207.f2);
-    goto CPyL200;
-CPyL192: ;
-    cpy_r_r208 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__63;
-    if (unlikely(cpy_r_r208.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__63' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r208.f0);
-        CPy_INCREF(cpy_r_r208.f1);
-        CPy_INCREF(cpy_r_r208.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r208.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL193: ;
     CPy_RestoreExcInfo(cpy_r_r208);
     CPy_DecRef(cpy_r_r208.f0);
     CPy_DecRef(cpy_r_r208.f1);
     CPy_DecRef(cpy_r_r208.f2);
-    cpy_r_r209 = CPy_KeepPropagating();
-    if (!cpy_r_r209) goto CPyL556;
-    CPy_Unreachable();
+    goto CPyL179;
+CPyL191: ;
+    CPy_INCREF(cpy_r_r7);
+    cpy_r_r198 = cpy_r_r7;
+    cpy_r_r209 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63;
+    if (unlikely(cpy_r_r209.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__63", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL693;
+    }
+    CPy_INCREF(cpy_r_r209.f0);
+    CPy_INCREF(cpy_r_r209.f1);
+    CPy_INCREF(cpy_r_r209.f2);
+CPyL192: ;
+    CPy_RestoreExcInfo(cpy_r_r209);
+    CPy_DecRef(cpy_r_r209.f0);
+    CPy_DecRef(cpy_r_r209.f1);
+    CPy_DecRef(cpy_r_r209.f2);
+    goto CPyL201;
+CPyL193: ;
+    cpy_r_r210 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__63;
+    if (unlikely(cpy_r_r210.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__63", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
+    }
+    CPy_INCREF(cpy_r_r210.f0);
+    CPy_INCREF(cpy_r_r210.f1);
+    CPy_INCREF(cpy_r_r210.f2);
+CPyL194: ;
+    CPy_RestoreExcInfo(cpy_r_r210);
+    CPy_DecRef(cpy_r_r210.f0);
+    CPy_DecRef(cpy_r_r210.f1);
+    CPy_DecRef(cpy_r_r210.f2);
+    cpy_r_r211 = CPy_KeepPropagating();
+    if (!cpy_r_r211) {
+        goto CPyL202;
+    } else
+        goto CPyL694;
 CPyL195: ;
-    cpy_r_r210 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__62;
-    if (unlikely(cpy_r_r210 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__62", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL628;
-    }
-    CPy_INCREF(cpy_r_r210);
-CPyL196: ;
-    cpy_r_r211 = CPyIter_Send(cpy_r_r210, cpy_r_arg);
-    CPy_DECREF(cpy_r_r210);
-    CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r211 == NULL) goto CPyL629;
-    cpy_r_r197 = cpy_r_r211;
-    goto CPyL178;
-CPyL198: ;
-    cpy_r_r212 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r212 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
-    }
-    cpy_r_r196 = cpy_r_r212;
-CPyL200: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block = cpy_r_r196;
-    cpy_r_r213 = 1;
-    if (unlikely(!cpy_r_r213)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 341, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
-    }
-    cpy_r_r214 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_token;
-    if (unlikely(cpy_r_r214 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_token", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
-    }
-    CPy_INCREF(cpy_r_r214);
-CPyL202: ;
-    cpy_r_r215 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block;
-    if (unlikely(cpy_r_r215 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL630;
-    }
-    CPy_INCREF(cpy_r_r215);
-CPyL203: ;
-    cpy_r_r216 = CPyStatic_streams___llamapay___get_price;
-    if (unlikely(cpy_r_r216 == NULL)) {
-        goto CPyL631;
-    } else
-        goto CPyL206;
-CPyL204: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"get_price\" was not set");
-    cpy_r_r217 = 0;
-    if (unlikely(!cpy_r_r217)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
     CPy_Unreachable();
-CPyL206: ;
-    cpy_r_r218 = 0 ? Py_True : Py_False;
-    PyObject *cpy_r_r219[3] = {cpy_r_r214, cpy_r_r215, cpy_r_r218};
-    cpy_r_r220 = (PyObject **)&cpy_r_r219;
-    cpy_r_r221 = CPyStatics[504]; /* ('sync',) */
-    cpy_r_r222 = PyObject_Vectorcall(cpy_r_r216, cpy_r_r220, 2, cpy_r_r221);
-    if (unlikely(cpy_r_r222 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL632;
+CPyL196: ;
+    cpy_r_r212 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__62;
+    if (unlikely(cpy_r_r212 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__62", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL695;
     }
-    CPy_DECREF(cpy_r_r214);
-    CPy_DECREF(cpy_r_r215);
-    cpy_r_r223 = CPyStatic_streams___llamapay___create_task;
-    if (unlikely(cpy_r_r223 == NULL)) {
-        goto CPyL633;
+    CPy_INCREF(cpy_r_r212);
+CPyL197: ;
+    cpy_r_r213 = CPyIter_Send(cpy_r_r212, cpy_r_arg);
+    CPy_DECREF(cpy_r_r212);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r213 == NULL) goto CPyL199;
+    cpy_r_r199 = cpy_r_r213;
+    goto CPyL179;
+CPyL199: ;
+    cpy_r_r214 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r214 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
+        goto CPyL202;
+    }
+    cpy_r_r198 = cpy_r_r214;
+CPyL201: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block = cpy_r_r198;
+    cpy_r_r215 = 1;
+    if (unlikely(!cpy_r_r215)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 344, CPyStatic_streams___llamapay___globals);
     } else
-        goto CPyL210;
-CPyL208: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"create_task\" was not set");
+        goto CPyL696;
+CPyL202: ;
+    cpy_r_r216 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64 = cpy_r_r216;
+    cpy_r_r217 = 1;
+    if (unlikely(!cpy_r_r217)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    }
+    cpy_r_r218 = CPyStatic_streams___llamapay___globals;
+    cpy_r_r219 = CPyStatics[309]; /* 'NoBlockFound' */
+    cpy_r_r220 = CPyDict_GetItem(cpy_r_r218, cpy_r_r219);
+    if (unlikely(cpy_r_r220 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    }
+    cpy_r_r221 = CPy_ExceptionMatches(cpy_r_r220);
+    CPy_DecRef(cpy_r_r220);
+    if (!cpy_r_r221) goto CPyL698;
+    cpy_r_r222 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r222 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    }
+    CPy_INCREF(cpy_r_r222);
+CPyL206: ;
+    cpy_r_r223 = CPyStatic_streams___llamapay____UTC;
+    if (unlikely(cpy_r_r223 == NULL)) {
+        goto CPyL699;
+    } else
+        goto CPyL209;
+CPyL207: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"_UTC\" was not set");
     cpy_r_r224 = 0;
     if (unlikely(!cpy_r_r224)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL264;
+    } else
+        goto CPyL700;
+CPyL208: ;
     CPy_Unreachable();
+CPyL209: ;
+    cpy_r_r225 = CPyStatic_streams___llamapay___now;
+    if (unlikely(cpy_r_r225 == NULL)) {
+        goto CPyL701;
+    } else
+        goto CPyL212;
 CPyL210: ;
-    PyObject *cpy_r_r225[1] = {cpy_r_r222};
-    cpy_r_r226 = (PyObject **)&cpy_r_r225;
-    cpy_r_r227 = PyObject_Vectorcall(cpy_r_r223, cpy_r_r226, 1, 0);
-    if (unlikely(cpy_r_r227 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL634;
-    }
-    CPy_DECREF(cpy_r_r222);
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price_fut != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price_fut);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price_fut = cpy_r_r227;
-    cpy_r_r228 = 1;
-    if (unlikely(!cpy_r_r228)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 342, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
-    }
-    cpy_r_r229 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_id;
-    if (unlikely(cpy_r_r229 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
-    }
-    CPy_INCREF(cpy_r_r229);
-CPyL213: ;
-    cpy_r_r230 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block;
+    PyErr_SetString(PyExc_NameError, "value for final name \"now\" was not set");
+    cpy_r_r226 = 0;
+    if (unlikely(!cpy_r_r226)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL264;
+    } else
+        goto CPyL702;
+CPyL211: ;
+    CPy_Unreachable();
+CPyL212: ;
+    PyObject *cpy_r_r227[1] = {cpy_r_r223};
+    cpy_r_r228 = (PyObject **)&cpy_r_r227;
+    cpy_r_r229 = CPyStatics[509]; /* ('tz',) */
+    cpy_r_r230 = PyObject_Vectorcall(cpy_r_r225, cpy_r_r228, 0, cpy_r_r229);
     if (unlikely(cpy_r_r230 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL635;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL703;
     }
-    CPy_INCREF(cpy_r_r230);
-CPyL214: ;
-    cpy_r_r231 = CPyDef_streams___llamapay____get_start_timestamp(cpy_r_r229, cpy_r_r230);
-    CPy_DECREF(cpy_r_r229);
-    CPy_DECREF(cpy_r_r230);
+    cpy_r_r231 = PyNumber_Subtract(cpy_r_r222, cpy_r_r230);
+    CPy_DecRef(cpy_r_r222);
+    CPy_DecRef(cpy_r_r230);
     if (unlikely(cpy_r_r231 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
     }
-    cpy_r_r232 = CPy_GetCoro(cpy_r_r231);
-    CPy_DECREF(cpy_r_r231);
-    if (unlikely(cpy_r_r232 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
+    cpy_r_r232 = CPyStatics[308]; /* 'total_seconds' */
+    PyObject *cpy_r_r233[1] = {cpy_r_r231};
+    cpy_r_r234 = (PyObject **)&cpy_r_r233;
+    cpy_r_r235 = PyObject_VectorcallMethod(cpy_r_r232, cpy_r_r234, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r235 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL704;
     }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__64 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__64);
+    CPy_DecRef(cpy_r_r231);
+    cpy_r_r236 = PyFloat_AsDouble(cpy_r_r235);
+    if (cpy_r_r236 == -1.0 && PyErr_Occurred()) {
+        CPy_TypeError("float", cpy_r_r235); cpy_r_r236 = -113.0;
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__64 = cpy_r_r232;
-    cpy_r_r233 = 1;
-    if (unlikely(!cpy_r_r233)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
+    CPy_DecRef(cpy_r_r235);
+    cpy_r_r237 = cpy_r_r236 == -113.0;
+    if (unlikely(cpy_r_r237)) goto CPyL217;
+CPyL216: ;
+    if (unlikely(cpy_r_r236 == -113.0)) {
+        ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->bitmap |= 1;
     }
-    cpy_r_r234 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__64;
-    if (unlikely(cpy_r_r234 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__64", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL621;
-    }
-    CPy_INCREF(cpy_r_r234);
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_sleep_time = cpy_r_r236;
+    cpy_r_r238 = 1;
+    if (unlikely(!cpy_r_r238)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    } else
+        goto CPyL218;
+CPyL217: ;
+    cpy_r_r239 = PyErr_Occurred();
+    if (unlikely(cpy_r_r239 != NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    } else
+        goto CPyL216;
 CPyL218: ;
-    cpy_r_r235 = CPyIter_Next(cpy_r_r234);
-    CPy_DECREF(cpy_r_r234);
-    if (cpy_r_r235 == NULL) {
-        goto CPyL636;
+    cpy_r_r240 = CPyStatic_streams___llamapay___logger;
+    if (unlikely(cpy_r_r240 == NULL)) {
+        goto CPyL705;
     } else
         goto CPyL221;
 CPyL219: ;
-    cpy_r_r236 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r236 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    cpy_r_r237 = cpy_r_r236;
-    goto CPyL244;
-CPyL221: ;
-    cpy_r_r238 = cpy_r_r235;
-CPyL222: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 10;
-    cpy_r_r239 = 1;
-    if (unlikely(!cpy_r_r239)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL638;
-    } else
-        goto CPyL639;
-CPyL223: ;
-    return cpy_r_r238;
-CPyL224: ;
-    cpy_r_r240 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r241 = cpy_r_type != cpy_r_r240;
-    if (!cpy_r_r241) goto CPyL227;
-    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL228;
-    } else
-        goto CPyL640;
-CPyL226: ;
-    CPy_Unreachable();
-CPyL227: ;
-    CPy_INCREF(cpy_r_arg);
-    goto CPyL239;
-CPyL228: ;
-    cpy_r_r242 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65.f2);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65 = cpy_r_r242;
-    cpy_r_r243 = 1;
-    if (unlikely(!cpy_r_r243)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL641;
-    }
-    cpy_r_r244 = (PyObject **)&cpy_r_r9;
-    cpy_r_r245 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__64;
-    if (unlikely(cpy_r_r245 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__64", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL641;
-    }
-    CPy_INCREF(cpy_r_r245);
-CPyL230: ;
-    cpy_r_r246 = CPy_YieldFromErrorHandle(cpy_r_r245, cpy_r_r244);
-    CPy_DecRef(cpy_r_r245);
-    if (unlikely(cpy_r_r246 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL641;
-    }
-    if (cpy_r_r246) goto CPyL234;
-    CPy_INCREF(cpy_r_r9);
-    cpy_r_r238 = cpy_r_r9;
-    cpy_r_r247 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65;
-    if (unlikely(cpy_r_r247.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__65", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL642;
-    }
-    CPy_INCREF(cpy_r_r247.f0);
-    CPy_INCREF(cpy_r_r247.f1);
-    CPy_INCREF(cpy_r_r247.f2);
-CPyL233: ;
-    CPy_RestoreExcInfo(cpy_r_r247);
-    CPy_DecRef(cpy_r_r247.f0);
-    CPy_DecRef(cpy_r_r247.f1);
-    CPy_DecRef(cpy_r_r247.f2);
-    goto CPyL222;
-CPyL234: ;
-    cpy_r_r237 = cpy_r_r9;
-    cpy_r_r248 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65;
-    if (unlikely(cpy_r_r248.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__65", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL643;
-    }
-    CPy_INCREF(cpy_r_r248.f0);
-    CPy_INCREF(cpy_r_r248.f1);
-    CPy_INCREF(cpy_r_r248.f2);
-CPyL235: ;
-    CPy_RestoreExcInfo(cpy_r_r248);
-    CPy_DecRef(cpy_r_r248.f0);
-    CPy_DecRef(cpy_r_r248.f1);
-    CPy_DecRef(cpy_r_r248.f2);
-    goto CPyL244;
-CPyL236: ;
-    cpy_r_r249 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__65;
-    if (unlikely(cpy_r_r249.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__65' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r249.f0);
-        CPy_INCREF(cpy_r_r249.f1);
-        CPy_INCREF(cpy_r_r249.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r249.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL237: ;
-    CPy_RestoreExcInfo(cpy_r_r249);
-    CPy_DecRef(cpy_r_r249.f0);
-    CPy_DecRef(cpy_r_r249.f1);
-    CPy_DecRef(cpy_r_r249.f2);
-    cpy_r_r250 = CPy_KeepPropagating();
-    if (!cpy_r_r250) goto CPyL556;
-    CPy_Unreachable();
-CPyL239: ;
-    cpy_r_r251 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__64;
-    if (unlikely(cpy_r_r251 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__64", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL644;
-    }
-    CPy_INCREF(cpy_r_r251);
-CPyL240: ;
-    cpy_r_r252 = CPyIter_Send(cpy_r_r251, cpy_r_arg);
-    CPy_DECREF(cpy_r_r251);
-    CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r252 == NULL) goto CPyL645;
-    cpy_r_r238 = cpy_r_r252;
-    goto CPyL222;
-CPyL242: ;
-    cpy_r_r253 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r253 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    cpy_r_r237 = cpy_r_r253;
-CPyL244: ;
-    if (likely(PyLong_Check(cpy_r_r237)))
-        cpy_r_r254 = CPyTagged_FromObject(cpy_r_r237);
-    else {
-        CPy_TypeError("int", cpy_r_r237); cpy_r_r254 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r237);
-    if (unlikely(cpy_r_r254 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp = cpy_r_r254;
-    cpy_r_r255 = 1;
-    if (unlikely(!cpy_r_r255)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 343, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    cpy_r_r256 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp;
-    if (unlikely(cpy_r_r256 == CPY_INT_TAG)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_timestamp", 344, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    CPyTagged_INCREF(cpy_r_r256);
-CPyL247: ;
-    cpy_r_r257 = cpy_r_r256 == 0;
-    CPyTagged_DECREF(cpy_r_r256);
-    if (!cpy_r_r257) goto CPyL646;
-    cpy_r_r258 = CPyStatic_streams___llamapay____STREAMS_THREAD;
-    if (unlikely(cpy_r_r258 == NULL)) {
-        goto CPyL647;
-    } else
-        goto CPyL251;
-CPyL249: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"_STREAMS_THREAD\" was not set");
-    cpy_r_r259 = 0;
-    if (unlikely(!cpy_r_r259)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPy_Unreachable();
-CPyL251: ;
-    cpy_r_r260 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r261 = CPyStatics[260]; /* 'Stream' */
-    cpy_r_r262 = CPyDict_GetItem(cpy_r_r260, cpy_r_r261);
-    if (unlikely(cpy_r_r262 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    cpy_r_r263 = CPyStatics[309]; /* 'check_closed' */
-    cpy_r_r264 = CPyObject_GetAttr(cpy_r_r262, cpy_r_r263);
-    CPy_DECREF(cpy_r_r262);
-    if (unlikely(cpy_r_r264 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    cpy_r_r265 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_id;
-    if (unlikely(cpy_r_r265 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL648;
-    }
-    CPy_INCREF(cpy_r_r265);
-CPyL254: ;
-    cpy_r_r266 = CPyStatics[265]; /* 'run' */
-    PyObject *cpy_r_r267[3] = {cpy_r_r258, cpy_r_r264, cpy_r_r265};
-    cpy_r_r268 = (PyObject **)&cpy_r_r267;
-    cpy_r_r269 = PyObject_VectorcallMethod(cpy_r_r266, cpy_r_r268, 9223372036854775811ULL, 0);
-    if (unlikely(cpy_r_r269 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL649;
-    }
-    CPy_DECREF(cpy_r_r264);
-    CPy_DECREF(cpy_r_r265);
-    cpy_r_r270 = CPy_GetCoro(cpy_r_r269);
-    CPy_DECREF(cpy_r_r269);
-    if (unlikely(cpy_r_r270 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__66 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__66);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__66 = cpy_r_r270;
-    cpy_r_r271 = 1;
-    if (unlikely(!cpy_r_r271)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    cpy_r_r272 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__66;
-    if (unlikely(cpy_r_r272 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__66", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL637;
-    }
-    CPy_INCREF(cpy_r_r272);
-CPyL258: ;
-    cpy_r_r273 = CPyIter_Next(cpy_r_r272);
-    CPy_DECREF(cpy_r_r272);
-    if (cpy_r_r273 == NULL) {
-        goto CPyL650;
-    } else
-        goto CPyL261;
-CPyL259: ;
-    cpy_r_r274 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r274 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r275 = cpy_r_r274;
-    goto CPyL284;
-CPyL261: ;
-    cpy_r_r276 = cpy_r_r273;
-CPyL262: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 12;
-    cpy_r_r277 = 1;
-    if (unlikely(!cpy_r_r277)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL652;
-    } else
-        goto CPyL653;
-CPyL263: ;
-    return cpy_r_r276;
-CPyL264: ;
-    cpy_r_r278 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r279 = cpy_r_type != cpy_r_r278;
-    if (!cpy_r_r279) goto CPyL267;
-    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL268;
-    } else
-        goto CPyL654;
-CPyL266: ;
-    CPy_Unreachable();
-CPyL267: ;
-    CPy_INCREF(cpy_r_arg);
-    goto CPyL279;
-CPyL268: ;
-    cpy_r_r280 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67.f2);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67 = cpy_r_r280;
-    cpy_r_r281 = 1;
-    if (unlikely(!cpy_r_r281)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL655;
-    }
-    cpy_r_r282 = (PyObject **)&cpy_r_r11;
-    cpy_r_r283 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__66;
-    if (unlikely(cpy_r_r283 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__66", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL655;
-    }
-    CPy_INCREF(cpy_r_r283);
-CPyL270: ;
-    cpy_r_r284 = CPy_YieldFromErrorHandle(cpy_r_r283, cpy_r_r282);
-    CPy_DecRef(cpy_r_r283);
-    if (unlikely(cpy_r_r284 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL655;
-    }
-    if (cpy_r_r284) goto CPyL274;
-    CPy_INCREF(cpy_r_r11);
-    cpy_r_r276 = cpy_r_r11;
-    cpy_r_r285 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67;
-    if (unlikely(cpy_r_r285.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__67", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL656;
-    }
-    CPy_INCREF(cpy_r_r285.f0);
-    CPy_INCREF(cpy_r_r285.f1);
-    CPy_INCREF(cpy_r_r285.f2);
-CPyL273: ;
-    CPy_RestoreExcInfo(cpy_r_r285);
-    CPy_DecRef(cpy_r_r285.f0);
-    CPy_DecRef(cpy_r_r285.f1);
-    CPy_DecRef(cpy_r_r285.f2);
-    goto CPyL262;
-CPyL274: ;
-    cpy_r_r275 = cpy_r_r11;
-    cpy_r_r286 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67;
-    if (unlikely(cpy_r_r286.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__67", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL657;
-    }
-    CPy_INCREF(cpy_r_r286.f0);
-    CPy_INCREF(cpy_r_r286.f1);
-    CPy_INCREF(cpy_r_r286.f2);
-CPyL275: ;
-    CPy_RestoreExcInfo(cpy_r_r286);
-    CPy_DecRef(cpy_r_r286.f0);
-    CPy_DecRef(cpy_r_r286.f1);
-    CPy_DecRef(cpy_r_r286.f2);
-    goto CPyL284;
-CPyL276: ;
-    cpy_r_r287 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__67;
-    if (unlikely(cpy_r_r287.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__67' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r287.f0);
-        CPy_INCREF(cpy_r_r287.f1);
-        CPy_INCREF(cpy_r_r287.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r287.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL277: ;
-    CPy_RestoreExcInfo(cpy_r_r287);
-    CPy_DecRef(cpy_r_r287.f0);
-    CPy_DecRef(cpy_r_r287.f1);
-    CPy_DecRef(cpy_r_r287.f2);
-    cpy_r_r288 = CPy_KeepPropagating();
-    if (!cpy_r_r288) goto CPyL556;
-    CPy_Unreachable();
-CPyL279: ;
-    cpy_r_r289 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__66;
-    if (unlikely(cpy_r_r289 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__66", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL658;
-    }
-    CPy_INCREF(cpy_r_r289);
-CPyL280: ;
-    cpy_r_r290 = CPyIter_Send(cpy_r_r289, cpy_r_arg);
-    CPy_DECREF(cpy_r_r289);
-    CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r290 == NULL) goto CPyL659;
-    cpy_r_r276 = cpy_r_r290;
-    goto CPyL262;
-CPyL282: ;
-    cpy_r_r291 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r291 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 345, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r275 = cpy_r_r291;
-CPyL284: ;
-    cpy_r_r292 = PyObject_IsTrue(cpy_r_r275);
-    CPy_DECREF(cpy_r_r275);
-    cpy_r_r293 = cpy_r_r292 >= 0;
-    if (unlikely(!cpy_r_r293)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r294 = cpy_r_r292;
-    if (cpy_r_r294) {
-        goto CPyL660;
-    } else
-        goto CPyL291;
-CPyL286: ;
-    cpy_r_r295 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price_fut;
-    if (unlikely(cpy_r_r295 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "price_fut", 346, CPyStatic_streams___llamapay___globals);
-        goto CPyL575;
-    }
-    CPy_INCREF(cpy_r_r295);
-CPyL287: ;
-    cpy_r_r296 = CPyStatics[310]; /* 'cancel' */
-    PyObject *cpy_r_r297[1] = {cpy_r_r295};
-    cpy_r_r298 = (PyObject **)&cpy_r_r297;
-    cpy_r_r299 = PyObject_VectorcallMethod(cpy_r_r296, cpy_r_r298, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r299 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 346, CPyStatic_streams___llamapay___globals);
-        goto CPyL661;
-    } else
-        goto CPyL662;
-CPyL288: ;
-    CPy_DECREF(cpy_r_r295);
-    cpy_r_r300 = Py_None;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = -2;
-    cpy_r_r301 = 1;
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    if (unlikely(!cpy_r_r301)) {
+    PyErr_SetString(PyExc_NameError, "value for final name \"logger\" was not set");
+    cpy_r_r241 = 0;
+    if (unlikely(!cpy_r_r241)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 347, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPyGen_SetStopIterationValue(cpy_r_r300);
-    if (!0) goto CPyL556;
-    CPy_Unreachable();
-CPyL291: ;
-    cpy_r_r302 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp;
-    if (unlikely(cpy_r_r302 == CPY_INT_TAG)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_timestamp", 349, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    CPyTagged_INCREF(cpy_r_r302);
-CPyL292: ;
-    cpy_r_r303 = cpy_r_r302 == 0;
-    CPyTagged_DECREF(cpy_r_r302);
-    if (!cpy_r_r303) goto CPyL663;
-    cpy_r_r304 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block;
-    if (unlikely(cpy_r_r304 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 350, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    CPy_INCREF(cpy_r_r304);
-CPyL294: ;
-    cpy_r_r305 = CPyStatics[457]; /* 1 */
-    cpy_r_r306 = PyNumber_InPlaceSubtract(cpy_r_r304, cpy_r_r305);
-    CPy_DECREF(cpy_r_r304);
-    if (unlikely(cpy_r_r306 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block = cpy_r_r306;
-    cpy_r_r307 = 1;
-    if (unlikely(!cpy_r_r307)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r308 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_id;
-    if (unlikely(cpy_r_r308 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    CPy_INCREF(cpy_r_r308);
-CPyL297: ;
-    cpy_r_r309 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block;
-    if (unlikely(cpy_r_r309 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL664;
-    }
-    CPy_INCREF(cpy_r_r309);
-CPyL298: ;
-    cpy_r_r310 = CPyDef_streams___llamapay____get_start_timestamp(cpy_r_r308, cpy_r_r309);
-    CPy_DECREF(cpy_r_r308);
-    CPy_DECREF(cpy_r_r309);
-    if (unlikely(cpy_r_r310 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r311 = CPy_GetCoro(cpy_r_r310);
-    CPy_DECREF(cpy_r_r310);
-    if (unlikely(cpy_r_r311 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__68 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__68);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__68 = cpy_r_r311;
-    cpy_r_r312 = 1;
-    if (unlikely(!cpy_r_r312)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r313 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__68;
-    if (unlikely(cpy_r_r313 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__68", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    CPy_INCREF(cpy_r_r313);
-CPyL302: ;
-    cpy_r_r314 = CPyIter_Next(cpy_r_r313);
-    CPy_DECREF(cpy_r_r313);
-    if (cpy_r_r314 != NULL) goto CPyL305;
-    cpy_r_r315 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r315 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r316 = cpy_r_r315;
-    goto CPyL328;
-CPyL305: ;
-    cpy_r_r317 = cpy_r_r314;
-CPyL306: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 14;
-    cpy_r_r318 = 1;
-    if (unlikely(!cpy_r_r318)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL665;
+        goto CPyL264;
     } else
-        goto CPyL666;
-CPyL307: ;
-    return cpy_r_r317;
-CPyL308: ;
-    cpy_r_r319 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r320 = cpy_r_type != cpy_r_r319;
-    if (!cpy_r_r320) goto CPyL311;
-    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL312;
-    } else
-        goto CPyL667;
-CPyL310: ;
-    CPy_Unreachable();
-CPyL311: ;
-    CPy_INCREF(cpy_r_arg);
-    goto CPyL323;
-CPyL312: ;
-    cpy_r_r321 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69.f2);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69 = cpy_r_r321;
-    cpy_r_r322 = 1;
-    if (unlikely(!cpy_r_r322)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL668;
-    }
-    cpy_r_r323 = (PyObject **)&cpy_r_r13;
-    cpy_r_r324 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__68;
-    if (unlikely(cpy_r_r324 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__68", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL668;
-    }
-    CPy_INCREF(cpy_r_r324);
-CPyL314: ;
-    cpy_r_r325 = CPy_YieldFromErrorHandle(cpy_r_r324, cpy_r_r323);
-    CPy_DecRef(cpy_r_r324);
-    if (unlikely(cpy_r_r325 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL668;
-    }
-    if (cpy_r_r325) goto CPyL318;
-    CPy_INCREF(cpy_r_r13);
-    cpy_r_r317 = cpy_r_r13;
-    cpy_r_r326 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69;
-    if (unlikely(cpy_r_r326.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__69", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL669;
-    }
-    CPy_INCREF(cpy_r_r326.f0);
-    CPy_INCREF(cpy_r_r326.f1);
-    CPy_INCREF(cpy_r_r326.f2);
-CPyL317: ;
-    CPy_RestoreExcInfo(cpy_r_r326);
-    CPy_DecRef(cpy_r_r326.f0);
-    CPy_DecRef(cpy_r_r326.f1);
-    CPy_DecRef(cpy_r_r326.f2);
-    goto CPyL306;
-CPyL318: ;
-    CPy_INCREF(cpy_r_r13);
-    cpy_r_r316 = cpy_r_r13;
-    cpy_r_r327 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69;
-    if (unlikely(cpy_r_r327.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__69", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL670;
-    }
-    CPy_INCREF(cpy_r_r327.f0);
-    CPy_INCREF(cpy_r_r327.f1);
-    CPy_INCREF(cpy_r_r327.f2);
-CPyL319: ;
-    CPy_RestoreExcInfo(cpy_r_r327);
-    CPy_DecRef(cpy_r_r327.f0);
-    CPy_DecRef(cpy_r_r327.f1);
-    CPy_DecRef(cpy_r_r327.f2);
-    goto CPyL328;
-CPyL320: ;
-    cpy_r_r328 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__69;
-    if (unlikely(cpy_r_r328.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__69' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r328.f0);
-        CPy_INCREF(cpy_r_r328.f1);
-        CPy_INCREF(cpy_r_r328.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r328.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL321: ;
-    CPy_RestoreExcInfo(cpy_r_r328);
-    CPy_DecRef(cpy_r_r328.f0);
-    CPy_DecRef(cpy_r_r328.f1);
-    CPy_DecRef(cpy_r_r328.f2);
-    cpy_r_r329 = CPy_KeepPropagating();
-    if (!cpy_r_r329) goto CPyL556;
-    CPy_Unreachable();
-CPyL323: ;
-    cpy_r_r330 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__68;
-    if (unlikely(cpy_r_r330 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__68", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL671;
-    }
-    CPy_INCREF(cpy_r_r330);
-CPyL324: ;
-    cpy_r_r331 = CPyIter_Send(cpy_r_r330, cpy_r_arg);
-    CPy_DECREF(cpy_r_r330);
-    CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r331 == NULL) goto CPyL326;
-    cpy_r_r317 = cpy_r_r331;
-    goto CPyL306;
-CPyL326: ;
-    cpy_r_r332 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r332 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    cpy_r_r316 = cpy_r_r332;
-CPyL328: ;
-    if (likely(PyLong_Check(cpy_r_r316)))
-        cpy_r_r333 = CPyTagged_FromObject(cpy_r_r316);
-    else {
-        CPy_TypeError("int", cpy_r_r316); cpy_r_r333 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r316);
-    if (unlikely(cpy_r_r333 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp = cpy_r_r333;
-    cpy_r_r334 = 1;
-    if (unlikely(!cpy_r_r334)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 351, CPyStatic_streams___llamapay___globals);
-        goto CPyL651;
-    } else
-        goto CPyL291;
-CPyL330: ;
-    cpy_r_r335 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block;
-    if (unlikely(cpy_r_r335 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL672;
-    }
-    CPy_INCREF(cpy_r_r335);
-CPyL331: ;
-    cpy_r_r336 = CPyDef_streams___llamapay____get_block_timestamp(cpy_r_r335);
-    CPy_DECREF(cpy_r_r335);
-    if (unlikely(cpy_r_r336 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL672;
-    }
-    cpy_r_r337 = CPy_GetCoro(cpy_r_r336);
-    CPy_DECREF(cpy_r_r336);
-    if (unlikely(cpy_r_r337 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL672;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__70 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__70);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__70 = cpy_r_r337;
-    cpy_r_r338 = 1;
-    if (unlikely(!cpy_r_r338)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL672;
-    }
-    cpy_r_r339 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__70;
-    if (unlikely(cpy_r_r339 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__70", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL672;
-    }
-    CPy_INCREF(cpy_r_r339);
-CPyL335: ;
-    cpy_r_r340 = CPyIter_Next(cpy_r_r339);
-    CPy_DECREF(cpy_r_r339);
-    if (cpy_r_r340 == NULL) {
-        goto CPyL673;
-    } else
-        goto CPyL338;
-CPyL336: ;
-    cpy_r_r341 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r341 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r342 = cpy_r_r341;
-    goto CPyL361;
-CPyL338: ;
-    cpy_r_r343 = cpy_r_r340;
-CPyL339: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 16;
-    cpy_r_r344 = 1;
-    if (unlikely(!cpy_r_r344)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL675;
-    } else
-        goto CPyL676;
-CPyL340: ;
-    return cpy_r_r343;
-CPyL341: ;
-    cpy_r_r345 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r346 = cpy_r_type != cpy_r_r345;
-    if (!cpy_r_r346) goto CPyL344;
-    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL345;
-    } else
-        goto CPyL677;
-CPyL343: ;
-    CPy_Unreachable();
-CPyL344: ;
-    CPy_INCREF(cpy_r_arg);
-    goto CPyL356;
-CPyL345: ;
-    cpy_r_r347 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71.f2);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71 = cpy_r_r347;
-    cpy_r_r348 = 1;
-    if (unlikely(!cpy_r_r348)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL678;
-    }
-    cpy_r_r349 = (PyObject **)&cpy_r_r15;
-    cpy_r_r350 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__70;
-    if (unlikely(cpy_r_r350 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__70", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL678;
-    }
-    CPy_INCREF(cpy_r_r350);
-CPyL347: ;
-    cpy_r_r351 = CPy_YieldFromErrorHandle(cpy_r_r350, cpy_r_r349);
-    CPy_DecRef(cpy_r_r350);
-    if (unlikely(cpy_r_r351 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL678;
-    }
-    if (cpy_r_r351) goto CPyL351;
-    CPy_INCREF(cpy_r_r15);
-    cpy_r_r343 = cpy_r_r15;
-    cpy_r_r352 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71;
-    if (unlikely(cpy_r_r352.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__71", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL679;
-    }
-    CPy_INCREF(cpy_r_r352.f0);
-    CPy_INCREF(cpy_r_r352.f1);
-    CPy_INCREF(cpy_r_r352.f2);
-CPyL350: ;
-    CPy_RestoreExcInfo(cpy_r_r352);
-    CPy_DecRef(cpy_r_r352.f0);
-    CPy_DecRef(cpy_r_r352.f1);
-    CPy_DecRef(cpy_r_r352.f2);
-    goto CPyL339;
-CPyL351: ;
-    cpy_r_r342 = cpy_r_r15;
-    cpy_r_r353 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71;
-    if (unlikely(cpy_r_r353.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__71", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL680;
-    }
-    CPy_INCREF(cpy_r_r353.f0);
-    CPy_INCREF(cpy_r_r353.f1);
-    CPy_INCREF(cpy_r_r353.f2);
-CPyL352: ;
-    CPy_RestoreExcInfo(cpy_r_r353);
-    CPy_DecRef(cpy_r_r353.f0);
-    CPy_DecRef(cpy_r_r353.f1);
-    CPy_DecRef(cpy_r_r353.f2);
-    goto CPyL361;
-CPyL353: ;
-    cpy_r_r354 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__71;
-    if (unlikely(cpy_r_r354.f0 == NULL)) {
-        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__71' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
-    } else {
-        CPy_INCREF(cpy_r_r354.f0);
-        CPy_INCREF(cpy_r_r354.f1);
-        CPy_INCREF(cpy_r_r354.f2);
-    }
-    CPy_DecRef(cpy_r_r20);
-    if (unlikely(cpy_r_r354.f0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-CPyL354: ;
-    CPy_RestoreExcInfo(cpy_r_r354);
-    CPy_DecRef(cpy_r_r354.f0);
-    CPy_DecRef(cpy_r_r354.f1);
-    CPy_DecRef(cpy_r_r354.f2);
-    cpy_r_r355 = CPy_KeepPropagating();
-    if (!cpy_r_r355) goto CPyL556;
-    CPy_Unreachable();
-CPyL356: ;
-    cpy_r_r356 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__70;
-    if (unlikely(cpy_r_r356 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__70", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL681;
-    }
-    CPy_INCREF(cpy_r_r356);
-CPyL357: ;
-    cpy_r_r357 = CPyIter_Send(cpy_r_r356, cpy_r_arg);
-    CPy_DECREF(cpy_r_r356);
-    CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r357 == NULL) goto CPyL682;
-    cpy_r_r343 = cpy_r_r357;
-    goto CPyL339;
-CPyL359: ;
-    cpy_r_r358 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r358 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r342 = cpy_r_r358;
-CPyL361: ;
-    cpy_r_r359 = CPyStatic_streams___llamapay____UTC;
-    if (unlikely(cpy_r_r359 == NULL)) {
-        goto CPyL683;
-    } else
-        goto CPyL364;
-CPyL362: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"_UTC\" was not set");
-    cpy_r_r360 = 0;
-    if (unlikely(!cpy_r_r360)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPy_Unreachable();
-CPyL364: ;
-    cpy_r_r361 = CPyStatic_streams___llamapay___fromtimestamp;
-    if (unlikely(cpy_r_r361 == NULL)) {
-        goto CPyL684;
-    } else
-        goto CPyL367;
-CPyL365: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"fromtimestamp\" was not set");
-    cpy_r_r362 = 0;
-    if (unlikely(!cpy_r_r362)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPy_Unreachable();
-CPyL367: ;
-    PyObject *cpy_r_r363[2] = {cpy_r_r342, cpy_r_r359};
-    cpy_r_r364 = (PyObject **)&cpy_r_r363;
-    cpy_r_r365 = CPyStatics[507]; /* ('tz',) */
-    cpy_r_r366 = PyObject_Vectorcall(cpy_r_r361, cpy_r_r364, 1, cpy_r_r365);
-    if (unlikely(cpy_r_r366 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL685;
-    }
-    CPy_DECREF(cpy_r_r342);
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block_datetime != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block_datetime);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block_datetime = cpy_r_r366;
-    cpy_r_r367 = 1;
-    if (unlikely(!cpy_r_r367)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 353, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r368 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block_datetime;
-    if (unlikely(cpy_r_r368 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block_datetime", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    CPy_INCREF(cpy_r_r368);
-CPyL370: ;
-    cpy_r_r369 = CPyStatics[257]; /* 'date' */
-    PyObject *cpy_r_r370[1] = {cpy_r_r368};
-    cpy_r_r371 = (PyObject **)&cpy_r_r370;
-    cpy_r_r372 = PyObject_VectorcallMethod(cpy_r_r369, cpy_r_r371, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r372 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL686;
-    }
-    CPy_DECREF(cpy_r_r368);
-    cpy_r_r373 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_date_obj;
-    if (unlikely(cpy_r_r373 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL687;
-    }
-    CPy_INCREF(cpy_r_r373);
-CPyL372: ;
-    cpy_r_r374 = CPyStatics[257]; /* 'date' */
-    PyObject *cpy_r_r375[1] = {cpy_r_r373};
-    cpy_r_r376 = (PyObject **)&cpy_r_r375;
-    cpy_r_r377 = PyObject_VectorcallMethod(cpy_r_r374, cpy_r_r376, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r377 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL688;
-    }
-    CPy_DECREF(cpy_r_r373);
-    cpy_r_r378 = PyObject_RichCompare(cpy_r_r372, cpy_r_r377, 2);
-    CPy_DECREF(cpy_r_r372);
-    CPy_DECREF(cpy_r_r377);
-    if (unlikely(cpy_r_r378 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    if (unlikely(!PyBool_Check(cpy_r_r378))) {
-        CPy_TypeError("bool", cpy_r_r378); cpy_r_r379 = 2;
-    } else
-        cpy_r_r379 = cpy_r_r378 == Py_True;
-    CPy_DECREF(cpy_r_r378);
-    if (unlikely(cpy_r_r379 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    if (cpy_r_r379) {
-        goto CPyL378;
-    } else
-        goto CPyL689;
-CPyL376: ;
-    PyErr_SetNone(PyExc_AssertionError);
-    cpy_r_r380 = 0;
-    if (unlikely(!cpy_r_r380)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPy_Unreachable();
-CPyL378: ;
-    cpy_r_r381 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at;
-    if (unlikely(cpy_r_r381 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 355, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    CPy_INCREF(cpy_r_r381);
-CPyL379: ;
-    cpy_r_r382 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_block_datetime;
-    if (unlikely(cpy_r_r382 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block_datetime", 355, CPyStatic_streams___llamapay___globals);
-        goto CPyL690;
-    }
-    CPy_INCREF(cpy_r_r382);
-CPyL380: ;
-    cpy_r_r383 = PyNumber_Subtract(cpy_r_r381, cpy_r_r382);
-    CPy_DECREF(cpy_r_r381);
-    CPy_DECREF(cpy_r_r382);
-    if (unlikely(cpy_r_r383 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r384 = CPyStatics[306]; /* 'seconds' */
-    cpy_r_r385 = CPyObject_GetAttr(cpy_r_r383, cpy_r_r384);
-    CPy_DECREF(cpy_r_r383);
-    if (unlikely(cpy_r_r385 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    if (likely(PyLong_Check(cpy_r_r385)))
-        cpy_r_r386 = CPyTagged_FromObject(cpy_r_r385);
-    else {
-        CPy_TypeError("int", cpy_r_r385); cpy_r_r386 = CPY_INT_TAG;
-    }
-    CPy_DECREF(cpy_r_r385);
-    if (unlikely(cpy_r_r386 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active = cpy_r_r386;
-    cpy_r_r387 = 1;
-    if (unlikely(!cpy_r_r387)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_is_last_day = 1;
-    cpy_r_r388 = 1;
-    if (unlikely(!cpy_r_r388)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 356, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    } else
-        goto CPyL393;
-CPyL385: ;
-    cpy_r_r389 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_check_at;
-    if (unlikely(cpy_r_r389 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 358, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    CPy_INCREF(cpy_r_r389);
-CPyL386: ;
-    cpy_r_r390 = CPyStatics[311]; /* 'timestamp' */
-    PyObject *cpy_r_r391[1] = {cpy_r_r389};
-    cpy_r_r392 = (PyObject **)&cpy_r_r391;
-    cpy_r_r393 = PyObject_VectorcallMethod(cpy_r_r390, cpy_r_r392, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r393 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 358, CPyStatic_streams___llamapay___globals);
-        goto CPyL691;
-    }
-    CPy_DECREF(cpy_r_r389);
-    cpy_r_r394 = PyFloat_AsDouble(cpy_r_r393);
-    if (cpy_r_r394 == -1.0 && PyErr_Occurred()) {
-        CPy_TypeError("float", cpy_r_r393); cpy_r_r394 = -113.0;
-    }
-    CPy_DECREF(cpy_r_r393);
-    cpy_r_r395 = cpy_r_r394 == -113.0;
-    if (unlikely(cpy_r_r395)) goto CPyL389;
-CPyL388: ;
-    cpy_r_r396 = CPyTagged_FromFloat(cpy_r_r394);
-    if (unlikely(cpy_r_r396 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 358, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    } else
-        goto CPyL390;
-CPyL389: ;
-    cpy_r_r397 = PyErr_Occurred();
-    if (unlikely(cpy_r_r397 != NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 358, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    } else
-        goto CPyL388;
-CPyL390: ;
-    cpy_r_r398 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_timestamp;
-    if (unlikely(cpy_r_r398 == CPY_INT_TAG)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_timestamp", 358, CPyStatic_streams___llamapay___globals);
-        goto CPyL692;
-    }
-    CPyTagged_INCREF(cpy_r_r398);
-CPyL391: ;
-    cpy_r_r399 = CPyTagged_Subtract(cpy_r_r396, cpy_r_r398);
-    CPyTagged_DECREF(cpy_r_r396);
-    CPyTagged_DECREF(cpy_r_r398);
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active = cpy_r_r399;
-    cpy_r_r400 = 1;
-    if (unlikely(!cpy_r_r400)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 358, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_is_last_day = 0;
-    cpy_r_r401 = 1;
-    if (unlikely(!cpy_r_r401)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 359, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-CPyL393: ;
-    cpy_r_r402 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active;
-    if (unlikely(cpy_r_r402 == CPY_INT_TAG)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "seconds_active", 361, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    CPyTagged_INCREF(cpy_r_r402);
-CPyL394: ;
-    cpy_r_r403 = 172800 & 1;
-    cpy_r_r404 = cpy_r_r403 != 0;
-    if (cpy_r_r404) goto CPyL396;
-    cpy_r_r405 = cpy_r_r402 & 1;
-    cpy_r_r406 = cpy_r_r405 != 0;
-    if (!cpy_r_r406) goto CPyL397;
-CPyL396: ;
-    cpy_r_r407 = CPyTagged_IsLt_(172800, cpy_r_r402);
-    if (cpy_r_r407) {
-        goto CPyL693;
-    } else
-        goto CPyL399;
-CPyL397: ;
-    cpy_r_r408 = (Py_ssize_t)172800 < (Py_ssize_t)cpy_r_r402;
-    if (cpy_r_r408) {
-        goto CPyL693;
-    } else
-        goto CPyL399;
-CPyL398: ;
-    cpy_r_r409 = 172800;
-    goto CPyL400;
-CPyL399: ;
-    cpy_r_r409 = cpy_r_r402;
-CPyL400: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today = cpy_r_r409;
-    cpy_r_r410 = 1;
-    if (unlikely(!cpy_r_r410)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 361, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r411 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today;
-    if (unlikely(cpy_r_r411 == CPY_INT_TAG)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "seconds_active_today", 362, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    CPyTagged_INCREF(cpy_r_r411);
-CPyL402: ;
-    cpy_r_r412 = cpy_r_r411 & 1;
-    cpy_r_r413 = cpy_r_r412 != 0;
-    if (cpy_r_r413) goto CPyL404;
-    cpy_r_r414 = 172800 & 1;
-    cpy_r_r415 = cpy_r_r414 != 0;
-    if (!cpy_r_r415) goto CPyL405;
-CPyL404: ;
-    cpy_r_r416 = CPyTagged_IsLt_(cpy_r_r411, 172800);
-    cpy_r_r417 = cpy_r_r416;
-    goto CPyL406;
-CPyL405: ;
-    cpy_r_r418 = (Py_ssize_t)cpy_r_r411 < (Py_ssize_t)172800;
-    cpy_r_r417 = cpy_r_r418;
-CPyL406: ;
-    CPyTagged_DECREF(cpy_r_r411);
-    if (!cpy_r_r417) goto CPyL416;
-    cpy_r_r419 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_is_last_day;
-    if (unlikely(cpy_r_r419 == 2)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "is_last_day", 362, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-CPyL408: ;
-    if (cpy_r_r419) goto CPyL416;
-CPyL409: ;
-    cpy_r_r420 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_date_obj;
-    if (unlikely(cpy_r_r420 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 363, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    CPy_INCREF(cpy_r_r420);
-CPyL410: ;
-    cpy_r_r421 = CPyStatics[257]; /* 'date' */
-    PyObject *cpy_r_r422[1] = {cpy_r_r420};
-    cpy_r_r423 = (PyObject **)&cpy_r_r422;
-    cpy_r_r424 = PyObject_VectorcallMethod(cpy_r_r421, cpy_r_r423, 9223372036854775809ULL, 0);
-    if (unlikely(cpy_r_r424 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
-        goto CPyL694;
-    }
-    CPy_DECREF(cpy_r_r420);
-    cpy_r_r425 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_start_date;
-    if (unlikely(cpy_r_r425 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_date", 363, CPyStatic_streams___llamapay___globals);
-        goto CPyL695;
-    }
-    CPy_INCREF(cpy_r_r425);
-CPyL412: ;
-    cpy_r_r426 = PyObject_RichCompare(cpy_r_r424, cpy_r_r425, 3);
-    CPy_DECREF(cpy_r_r424);
-    CPy_DECREF(cpy_r_r425);
-    if (unlikely(cpy_r_r426 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r427 = PyObject_IsTrue(cpy_r_r426);
-    CPy_DECREF(cpy_r_r426);
-    cpy_r_r428 = cpy_r_r427 >= 0;
-    if (unlikely(!cpy_r_r428)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r429 = cpy_r_r427;
-    if (!cpy_r_r429) goto CPyL416;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today = 172800;
-    cpy_r_r430 = 1;
-    if (unlikely(!cpy_r_r430)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 364, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-CPyL416: ;
-    cpy_r_r431 = CPyStatic_streams___llamapay___db_session;
-    if (unlikely(cpy_r_r431 == NULL)) {
-        goto CPyL696;
-    } else
-        goto CPyL419;
-CPyL417: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"db_session\" was not set");
-    cpy_r_r432 = 0;
-    if (unlikely(!cpy_r_r432)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
-    }
-    CPy_Unreachable();
-CPyL419: ;
-    cpy_r_r433 = PyObject_Type(cpy_r_r431);
-    cpy_r_r434 = CPyStatics[258]; /* '__exit__' */
-    cpy_r_r435 = CPyObject_GetAttr(cpy_r_r433, cpy_r_r434);
-    if (unlikely(cpy_r_r435 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL697;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__72 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__72);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__72 = cpy_r_r435;
-    cpy_r_r436 = 1;
-    if (unlikely(!cpy_r_r436)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL697;
-    }
-    cpy_r_r437 = CPyStatics[259]; /* '__enter__' */
-    cpy_r_r438 = CPyObject_GetAttr(cpy_r_r433, cpy_r_r437);
-    CPy_DECREF(cpy_r_r433);
-    if (unlikely(cpy_r_r438 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    PyObject *cpy_r_r439[1] = {cpy_r_r431};
-    cpy_r_r440 = (PyObject **)&cpy_r_r439;
-    cpy_r_r441 = PyObject_Vectorcall(cpy_r_r438, cpy_r_r440, 1, 0);
-    CPy_DECREF(cpy_r_r438);
-    if (unlikely(cpy_r_r441 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    } else
-        goto CPyL698;
-CPyL423: ;
-    CPy_INCREF(cpy_r_r431);
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__73 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__73);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__73 = cpy_r_r431;
-    cpy_r_r442 = 1;
-    if (unlikely(!cpy_r_r442)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__74 = 1;
-    cpy_r_r443 = 1;
-    if (unlikely(!cpy_r_r443)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL674;
-    }
-    cpy_r_r444 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price_fut;
-    if (unlikely(cpy_r_r444 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "price_fut", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL699;
-    }
-    CPy_INCREF(cpy_r_r444);
-CPyL426: ;
-    cpy_r_r445 = CPy_GetCoro(cpy_r_r444);
-    CPy_DECREF(cpy_r_r444);
-    if (unlikely(cpy_r_r445 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL699;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__75 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__75);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__75 = cpy_r_r445;
-    cpy_r_r446 = 1;
-    if (unlikely(!cpy_r_r446)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL699;
-    }
-    cpy_r_r447 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__75;
-    if (unlikely(cpy_r_r447 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__75", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL699;
-    }
-    CPy_INCREF(cpy_r_r447);
-CPyL429: ;
-    cpy_r_r448 = CPyIter_Next(cpy_r_r447);
-    CPy_DECREF(cpy_r_r447);
-    if (cpy_r_r448 == NULL) {
-        goto CPyL700;
-    } else
-        goto CPyL432;
-CPyL430: ;
-    cpy_r_r449 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r449 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
-    }
-    cpy_r_r450 = cpy_r_r449;
-    goto CPyL455;
-CPyL432: ;
-    cpy_r_r451 = cpy_r_r448;
-CPyL433: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 18;
-    cpy_r_r452 = 1;
-    if (unlikely(!cpy_r_r452)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL702;
-    } else
-        goto CPyL703;
-CPyL434: ;
-    return cpy_r_r451;
-CPyL435: ;
-    cpy_r_r453 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r454 = cpy_r_type != cpy_r_r453;
-    if (!cpy_r_r454) goto CPyL438;
-    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
-    if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL439;
-    } else
-        goto CPyL704;
-CPyL437: ;
-    CPy_Unreachable();
-CPyL438: ;
-    CPy_INCREF(cpy_r_arg);
-    goto CPyL450;
-CPyL439: ;
-    cpy_r_r455 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76.f2);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76 = cpy_r_r455;
-    cpy_r_r456 = 1;
-    if (unlikely(!cpy_r_r456)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL705;
-    }
-    cpy_r_r457 = (PyObject **)&cpy_r_r17;
-    cpy_r_r458 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__75;
-    if (unlikely(cpy_r_r458 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__75", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL705;
-    }
-    CPy_INCREF(cpy_r_r458);
-CPyL441: ;
-    cpy_r_r459 = CPy_YieldFromErrorHandle(cpy_r_r458, cpy_r_r457);
-    CPy_DecRef(cpy_r_r458);
-    if (unlikely(cpy_r_r459 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL705;
-    }
-    if (cpy_r_r459) goto CPyL445;
-    CPy_INCREF(cpy_r_r17);
-    cpy_r_r451 = cpy_r_r17;
-    cpy_r_r460 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76;
-    if (unlikely(cpy_r_r460.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__76", -1, CPyStatic_streams___llamapay___globals);
         goto CPyL706;
+CPyL220: ;
+    CPy_Unreachable();
+CPyL221: ;
+    cpy_r_r242 = CPyStatics[310]; /* 'no block found for %s, sleeping %ss' */
+    cpy_r_r243 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r243 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 348, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
     }
-    CPy_INCREF(cpy_r_r460.f0);
-    CPy_INCREF(cpy_r_r460.f1);
-    CPy_INCREF(cpy_r_r460.f2);
-CPyL444: ;
-    CPy_RestoreExcInfo(cpy_r_r460);
-    CPy_DecRef(cpy_r_r460.f0);
-    CPy_DecRef(cpy_r_r460.f1);
-    CPy_DecRef(cpy_r_r460.f2);
-    goto CPyL433;
-CPyL445: ;
-    cpy_r_r450 = cpy_r_r17;
-    cpy_r_r461 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76;
-    if (unlikely(cpy_r_r461.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__76", -1, CPyStatic_streams___llamapay___globals);
+    CPy_INCREF(cpy_r_r243);
+CPyL222: ;
+    cpy_r_r244 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_sleep_time;
+    if (unlikely(cpy_r_r244 == -113.0) && !(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->bitmap & 1)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute 'sleep_time' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    }
+    cpy_r_r245 = cpy_r_r244 == -113.0;
+    if (unlikely(cpy_r_r245)) goto CPyL224;
+CPyL223: ;
+    cpy_r_r246 = CPyStatics[236]; /* 'debug' */
+    cpy_r_r247 = PyFloat_FromDouble(cpy_r_r244);
+    PyObject *cpy_r_r248[4] = {cpy_r_r240, cpy_r_r242, cpy_r_r243, cpy_r_r247};
+    cpy_r_r249 = (PyObject **)&cpy_r_r248;
+    cpy_r_r250 = PyObject_VectorcallMethod(cpy_r_r246, cpy_r_r249, 9223372036854775812ULL, 0);
+    if (unlikely(cpy_r_r250 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 347, CPyStatic_streams___llamapay___globals);
         goto CPyL707;
-    }
-    CPy_INCREF(cpy_r_r461.f0);
-    CPy_INCREF(cpy_r_r461.f1);
-    CPy_INCREF(cpy_r_r461.f2);
-CPyL446: ;
-    CPy_RestoreExcInfo(cpy_r_r461);
-    CPy_DecRef(cpy_r_r461.f0);
-    CPy_DecRef(cpy_r_r461.f1);
-    CPy_DecRef(cpy_r_r461.f2);
-    goto CPyL455;
-CPyL447: ;
-    cpy_r_r462 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__76;
-    if (unlikely(cpy_r_r462.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__76", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
-    }
-    CPy_INCREF(cpy_r_r462.f0);
-    CPy_INCREF(cpy_r_r462.f1);
-    CPy_INCREF(cpy_r_r462.f2);
-CPyL448: ;
-    CPy_RestoreExcInfo(cpy_r_r462);
-    CPy_DecRef(cpy_r_r462.f0);
-    CPy_DecRef(cpy_r_r462.f1);
-    CPy_DecRef(cpy_r_r462.f2);
-    cpy_r_r463 = CPy_KeepPropagating();
-    if (!cpy_r_r463) {
-        goto CPyL503;
     } else
         goto CPyL708;
-CPyL449: ;
-    CPy_Unreachable();
-CPyL450: ;
-    cpy_r_r464 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__75;
-    if (unlikely(cpy_r_r464 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__75", -1, CPyStatic_streams___llamapay___globals);
+CPyL224: ;
+    cpy_r_r251 = PyErr_Occurred();
+    if (unlikely(cpy_r_r251 != NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 348, CPyStatic_streams___llamapay___globals);
         goto CPyL709;
+    } else
+        goto CPyL223;
+CPyL225: ;
+    CPy_DecRef(cpy_r_r243);
+    CPy_DecRef(cpy_r_r247);
+    cpy_r_r252 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_sleep_time;
+    if (unlikely(cpy_r_r252 == -113.0) && !(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->bitmap & 1)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute 'sleep_time' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
     }
-    CPy_INCREF(cpy_r_r464);
-CPyL451: ;
-    cpy_r_r465 = CPyIter_Send(cpy_r_r464, cpy_r_arg);
-    CPy_DECREF(cpy_r_r464);
-    CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r465 == NULL) goto CPyL710;
-    cpy_r_r451 = cpy_r_r465;
-    goto CPyL433;
-CPyL453: ;
-    cpy_r_r466 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r466 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
-    }
-    cpy_r_r450 = cpy_r_r466;
-CPyL455: ;
-    cpy_r_r467 = CPyStatic_streams___llamapay___Decimal;
-    if (unlikely(cpy_r_r467 == NULL)) {
+    cpy_r_r253 = cpy_r_r252 == -113.0;
+    if (unlikely(cpy_r_r253)) goto CPyL227;
+CPyL226: ;
+    cpy_r_r254 = CPyStatic_streams___llamapay___sleep;
+    if (unlikely(cpy_r_r254 == NULL)) {
+        goto CPyL710;
+    } else
+        goto CPyL230;
+CPyL227: ;
+    cpy_r_r255 = PyErr_Occurred();
+    if (unlikely(cpy_r_r255 != NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    } else
+        goto CPyL226;
+CPyL228: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"sleep\" was not set");
+    cpy_r_r256 = 0;
+    if (unlikely(!cpy_r_r256)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL264;
+    } else
         goto CPyL711;
-    } else
-        goto CPyL458;
-CPyL456: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"Decimal\" was not set");
-    cpy_r_r468 = 0;
-    if (unlikely(!cpy_r_r468)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
-    } else
+CPyL229: ;
+    CPy_Unreachable();
+CPyL230: ;
+    cpy_r_r257 = PyFloat_FromDouble(cpy_r_r252);
+    PyObject *cpy_r_r258[1] = {cpy_r_r257};
+    cpy_r_r259 = (PyObject **)&cpy_r_r258;
+    cpy_r_r260 = PyObject_Vectorcall(cpy_r_r254, cpy_r_r259, 1, 0);
+    if (unlikely(cpy_r_r260 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
         goto CPyL712;
-CPyL457: ;
-    CPy_Unreachable();
-CPyL458: ;
-    PyObject *cpy_r_r469[1] = {cpy_r_r450};
-    cpy_r_r470 = (PyObject **)&cpy_r_r469;
-    cpy_r_r471 = PyObject_Vectorcall(cpy_r_r467, cpy_r_r470, 1, 0);
-    if (unlikely(cpy_r_r471 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL713;
     }
-    CPy_DECREF(cpy_r_r450);
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price);
+    CPy_DecRef(cpy_r_r257);
+    cpy_r_r261 = CPy_GetCoro(cpy_r_r260);
+    CPy_DecRef(cpy_r_r260);
+    if (unlikely(cpy_r_r261 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price = cpy_r_r471;
-    cpy_r_r472 = 1;
-    if (unlikely(!cpy_r_r472)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__65 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__65);
     }
-    cpy_r_r473 = CPyStatic_streams___llamapay____STREAMS_THREAD;
-    if (unlikely(cpy_r_r473 == NULL)) {
-        goto CPyL714;
-    } else
-        goto CPyL463;
-CPyL461: ;
-    PyErr_SetString(PyExc_NameError, "value for final name \"_STREAMS_THREAD\" was not set");
-    cpy_r_r474 = 0;
-    if (unlikely(!cpy_r_r474)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
-    } else
-        goto CPyL715;
-CPyL462: ;
-    CPy_Unreachable();
-CPyL463: ;
-    cpy_r_r475 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r476 = CPyStatics[303]; /* 'StreamedFunds' */
-    cpy_r_r477 = CPyDict_GetItem(cpy_r_r475, cpy_r_r476);
-    if (unlikely(cpy_r_r477 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 369, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
-    }
-    cpy_r_r478 = CPyStatics[312]; /* 'create_entity' */
-    cpy_r_r479 = CPyObject_GetAttr(cpy_r_r477, cpy_r_r478);
-    CPy_DECREF(cpy_r_r477);
-    if (unlikely(cpy_r_r479 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 369, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
-    }
-    cpy_r_r480 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_stream_id;
-    if (unlikely(cpy_r_r480 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 370, CPyStatic_streams___llamapay___globals);
-        goto CPyL716;
-    }
-    CPy_INCREF(cpy_r_r480);
-CPyL466: ;
-    cpy_r_r481 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_date_obj;
-    if (unlikely(cpy_r_r481 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 371, CPyStatic_streams___llamapay___globals);
-        goto CPyL717;
-    }
-    CPy_INCREF(cpy_r_r481);
-CPyL467: ;
-    cpy_r_r482 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_price;
-    if (unlikely(cpy_r_r482 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "price", 372, CPyStatic_streams___llamapay___globals);
-        goto CPyL718;
-    }
-    CPy_INCREF(cpy_r_r482);
-CPyL468: ;
-    cpy_r_r483 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_seconds_active_today;
-    if (unlikely(cpy_r_r483 == CPY_INT_TAG)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "seconds_active_today", 373, CPyStatic_streams___llamapay___globals);
-        goto CPyL719;
-    }
-    CPyTagged_INCREF(cpy_r_r483);
-CPyL469: ;
-    cpy_r_r484 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_is_last_day;
-    if (unlikely(cpy_r_r484 == 2)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "is_last_day", 374, CPyStatic_streams___llamapay___globals);
-        goto CPyL720;
-    }
-CPyL470: ;
-    cpy_r_r485 = CPyStatics[265]; /* 'run' */
-    cpy_r_r486 = CPyTagged_StealAsObject(cpy_r_r483);
-    cpy_r_r487 = cpy_r_r484 ? Py_True : Py_False;
-    PyObject *cpy_r_r488[7] = {
-        cpy_r_r473, cpy_r_r479, cpy_r_r480, cpy_r_r481, cpy_r_r482,
-        cpy_r_r486, cpy_r_r487
-    };
-    cpy_r_r489 = (PyObject **)&cpy_r_r488;
-    cpy_r_r490 = PyObject_VectorcallMethod(cpy_r_r485, cpy_r_r489, 9223372036854775815ULL, 0);
-    if (unlikely(cpy_r_r490 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL721;
-    }
-    CPy_DECREF(cpy_r_r479);
-    CPy_DECREF(cpy_r_r480);
-    CPy_DECREF(cpy_r_r481);
-    CPy_DECREF(cpy_r_r482);
-    CPy_DECREF(cpy_r_r486);
-    cpy_r_r491 = CPy_GetCoro(cpy_r_r490);
-    CPy_DECREF(cpy_r_r490);
-    if (unlikely(cpy_r_r491 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
-    }
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__77 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__77);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__77 = cpy_r_r491;
-    cpy_r_r492 = 1;
-    if (unlikely(!cpy_r_r492)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__65 = cpy_r_r261;
+    cpy_r_r262 = 1;
+    if (unlikely(!cpy_r_r262)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
+        goto CPyL697;
     }
-    cpy_r_r493 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__77;
-    if (unlikely(cpy_r_r493 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__77", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL701;
+    cpy_r_r263 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__65;
+    if (unlikely(cpy_r_r263 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__65", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
     }
-    CPy_INCREF(cpy_r_r493);
-CPyL474: ;
-    cpy_r_r494 = CPyIter_Next(cpy_r_r493);
-    CPy_DECREF(cpy_r_r493);
-    if (cpy_r_r494 == NULL) {
-        goto CPyL722;
+    CPy_INCREF(cpy_r_r263);
+CPyL234: ;
+    cpy_r_r264 = CPyIter_Next(cpy_r_r263);
+    CPy_DecRef(cpy_r_r263);
+    if (cpy_r_r264 != NULL) goto CPyL237;
+    cpy_r_r265 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r265 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
+    }
+    cpy_r_r266 = cpy_r_r265;
+    CPy_DecRef(cpy_r_r266);
+    goto CPyL262;
+CPyL237: ;
+    cpy_r_r267 = cpy_r_r264;
+CPyL238: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 10;
+    cpy_r_r268 = 1;
+    if (unlikely(!cpy_r_r268)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL713;
     } else
-        goto CPyL477;
-CPyL475: ;
-    cpy_r_r495 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r495 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
-    }
-    cpy_r_r496 = cpy_r_r495;
-    goto CPyL500;
-CPyL477: ;
-    cpy_r_r497 = cpy_r_r494;
-CPyL478: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = 20;
-    cpy_r_r498 = 1;
-    if (unlikely(!cpy_r_r498)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL723;
-    } else
-        goto CPyL724;
-CPyL479: ;
-    return cpy_r_r497;
-CPyL480: ;
-    cpy_r_r499 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r500 = cpy_r_type != cpy_r_r499;
-    if (!cpy_r_r500) goto CPyL483;
+        goto CPyL714;
+CPyL239: ;
+    return cpy_r_r267;
+CPyL240: ;
+    cpy_r_r269 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r270 = cpy_r_type != cpy_r_r269;
+    if (!cpy_r_r270) goto CPyL243;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL484;
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL244;
     } else
-        goto CPyL725;
-CPyL482: ;
+        goto CPyL715;
+CPyL242: ;
     CPy_Unreachable();
-CPyL483: ;
+CPyL243: ;
     CPy_INCREF(cpy_r_arg);
-    goto CPyL495;
-CPyL484: ;
-    cpy_r_r501 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78.f2);
+    goto CPyL255;
+CPyL244: ;
+    cpy_r_r271 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66.f2);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78 = cpy_r_r501;
-    cpy_r_r502 = 1;
-    if (unlikely(!cpy_r_r502)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66 = cpy_r_r271;
+    cpy_r_r272 = 1;
+    if (unlikely(!cpy_r_r272)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL726;
+        goto CPyL716;
     }
-    cpy_r_r503 = (PyObject **)&cpy_r_r19;
-    cpy_r_r504 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__77;
-    if (unlikely(cpy_r_r504 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__77", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL726;
+    cpy_r_r273 = (PyObject **)&cpy_r_r9;
+    cpy_r_r274 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__65;
+    if (unlikely(cpy_r_r274 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__65", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL716;
     }
-    CPy_INCREF(cpy_r_r504);
-CPyL486: ;
-    cpy_r_r505 = CPy_YieldFromErrorHandle(cpy_r_r504, cpy_r_r503);
-    CPy_DecRef(cpy_r_r504);
-    if (unlikely(cpy_r_r505 == 2)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL726;
+    CPy_INCREF(cpy_r_r274);
+CPyL246: ;
+    cpy_r_r275 = CPy_YieldFromErrorHandle(cpy_r_r274, cpy_r_r273);
+    CPy_DecRef(cpy_r_r274);
+    if (unlikely(cpy_r_r275 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL716;
     }
-    if (cpy_r_r505) goto CPyL490;
-    CPy_INCREF(cpy_r_r19);
-    cpy_r_r497 = cpy_r_r19;
-    cpy_r_r506 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78;
-    if (unlikely(cpy_r_r506.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__78", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL727;
+    if (cpy_r_r275) goto CPyL250;
+    CPy_INCREF(cpy_r_r9);
+    cpy_r_r267 = cpy_r_r9;
+    cpy_r_r276 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66;
+    if (unlikely(cpy_r_r276.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__66", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL717;
     }
-    CPy_INCREF(cpy_r_r506.f0);
-    CPy_INCREF(cpy_r_r506.f1);
-    CPy_INCREF(cpy_r_r506.f2);
-CPyL489: ;
-    CPy_RestoreExcInfo(cpy_r_r506);
-    CPy_DecRef(cpy_r_r506.f0);
-    CPy_DecRef(cpy_r_r506.f1);
-    CPy_DecRef(cpy_r_r506.f2);
-    goto CPyL478;
-CPyL490: ;
-    cpy_r_r496 = cpy_r_r19;
-    cpy_r_r507 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78;
-    if (unlikely(cpy_r_r507.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__78", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL728;
+    CPy_INCREF(cpy_r_r276.f0);
+    CPy_INCREF(cpy_r_r276.f1);
+    CPy_INCREF(cpy_r_r276.f2);
+CPyL249: ;
+    CPy_RestoreExcInfo(cpy_r_r276);
+    CPy_DecRef(cpy_r_r276.f0);
+    CPy_DecRef(cpy_r_r276.f1);
+    CPy_DecRef(cpy_r_r276.f2);
+    goto CPyL238;
+CPyL250: ;
+    CPy_INCREF(cpy_r_r9);
+    cpy_r_r266 = cpy_r_r9;
+    CPy_DecRef(cpy_r_r266);
+    cpy_r_r277 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66;
+    if (unlikely(cpy_r_r277.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__66", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL716;
     }
-    CPy_INCREF(cpy_r_r507.f0);
-    CPy_INCREF(cpy_r_r507.f1);
-    CPy_INCREF(cpy_r_r507.f2);
-CPyL491: ;
-    CPy_RestoreExcInfo(cpy_r_r507);
-    CPy_DecRef(cpy_r_r507.f0);
-    CPy_DecRef(cpy_r_r507.f1);
-    CPy_DecRef(cpy_r_r507.f2);
-    goto CPyL500;
-CPyL492: ;
-    cpy_r_r508 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__78;
-    if (unlikely(cpy_r_r508.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__78", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
+    CPy_INCREF(cpy_r_r277.f0);
+    CPy_INCREF(cpy_r_r277.f1);
+    CPy_INCREF(cpy_r_r277.f2);
+CPyL251: ;
+    CPy_RestoreExcInfo(cpy_r_r277);
+    CPy_DecRef(cpy_r_r277.f0);
+    CPy_DecRef(cpy_r_r277.f1);
+    CPy_DecRef(cpy_r_r277.f2);
+    goto CPyL262;
+CPyL252: ;
+    cpy_r_r278 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__66;
+    if (unlikely(cpy_r_r278.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__66", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL264;
     }
-    CPy_INCREF(cpy_r_r508.f0);
-    CPy_INCREF(cpy_r_r508.f1);
-    CPy_INCREF(cpy_r_r508.f2);
-CPyL493: ;
-    CPy_RestoreExcInfo(cpy_r_r508);
-    CPy_DecRef(cpy_r_r508.f0);
-    CPy_DecRef(cpy_r_r508.f1);
-    CPy_DecRef(cpy_r_r508.f2);
-    cpy_r_r509 = CPy_KeepPropagating();
-    if (!cpy_r_r509) {
-        goto CPyL503;
+    CPy_INCREF(cpy_r_r278.f0);
+    CPy_INCREF(cpy_r_r278.f1);
+    CPy_INCREF(cpy_r_r278.f2);
+CPyL253: ;
+    CPy_RestoreExcInfo(cpy_r_r278);
+    CPy_DecRef(cpy_r_r278.f0);
+    CPy_DecRef(cpy_r_r278.f1);
+    CPy_DecRef(cpy_r_r278.f2);
+    cpy_r_r279 = CPy_KeepPropagating();
+    if (!cpy_r_r279) {
+        goto CPyL264;
     } else
-        goto CPyL729;
-CPyL494: ;
+        goto CPyL718;
+CPyL254: ;
     CPy_Unreachable();
-CPyL495: ;
-    cpy_r_r510 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__77;
-    if (unlikely(cpy_r_r510 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__77", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL730;
+CPyL255: ;
+    cpy_r_r280 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__65;
+    if (unlikely(cpy_r_r280 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__65", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL719;
     }
-    CPy_INCREF(cpy_r_r510);
-CPyL496: ;
-    cpy_r_r511 = CPyIter_Send(cpy_r_r510, cpy_r_arg);
-    CPy_DECREF(cpy_r_r510);
+    CPy_INCREF(cpy_r_r280);
+CPyL256: ;
+    cpy_r_r281 = CPyIter_Send(cpy_r_r280, cpy_r_arg);
+    CPy_DECREF(cpy_r_r280);
     CPy_DECREF(cpy_r_arg);
-    if (cpy_r_r511 == NULL) goto CPyL731;
-    cpy_r_r497 = cpy_r_r511;
-    goto CPyL478;
-CPyL498: ;
-    cpy_r_r512 = CPy_FetchStopIterationValue();
-    if (unlikely(cpy_r_r512 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
+    if (cpy_r_r281 == NULL) goto CPyL258;
+    cpy_r_r267 = cpy_r_r281;
+    goto CPyL238;
+CPyL258: ;
+    cpy_r_r282 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r282 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 350, CPyStatic_streams___llamapay___globals);
+        goto CPyL697;
     }
-    cpy_r_r496 = cpy_r_r512;
-CPyL500: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity = cpy_r_r496;
-    cpy_r_r513 = 1;
-    if (unlikely(!cpy_r_r513)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
-    }
-    cpy_r_r514 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->_entity;
-    if (unlikely(cpy_r_r514 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "entity", 376, CPyStatic_streams___llamapay___globals);
-        goto CPyL503;
-    }
-    CPy_INCREF(cpy_r_r514);
-CPyL502: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79 = cpy_r_r514;
-    cpy_r_r515 = 1;
-    if (unlikely(!cpy_r_r515)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 376, CPyStatic_streams___llamapay___globals);
-    } else
-        goto CPyL518;
-CPyL503: ;
-    cpy_r_r516 = CPy_CatchError();
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80.f0 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80.f0);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80.f1);
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80.f2);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80 = cpy_r_r516;
-    cpy_r_r517 = 1;
-    if (unlikely(!cpy_r_r517)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL514;
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__74 = 0;
-    cpy_r_r518 = 1;
-    if (unlikely(!cpy_r_r518)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL514;
-    }
-    cpy_r_r519 = CPy_GetExcInfo();
-    cpy_r_r520 = cpy_r_r519.f0;
-    CPy_INCREF(cpy_r_r520);
-    cpy_r_r521 = cpy_r_r519.f1;
-    CPy_INCREF(cpy_r_r521);
-    cpy_r_r522 = cpy_r_r519.f2;
-    CPy_INCREF(cpy_r_r522);
-    CPy_DecRef(cpy_r_r519.f0);
-    CPy_DecRef(cpy_r_r519.f1);
-    CPy_DecRef(cpy_r_r519.f2);
-    cpy_r_r523 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__72;
-    if (unlikely(cpy_r_r523 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__72", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL732;
-    }
-    CPy_INCREF(cpy_r_r523);
-CPyL506: ;
-    cpy_r_r524 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__73;
-    if (unlikely(cpy_r_r524 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__73", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL733;
-    }
-    CPy_INCREF(cpy_r_r524);
-CPyL507: ;
-    PyObject *cpy_r_r525[4] = {cpy_r_r524, cpy_r_r520, cpy_r_r521, cpy_r_r522};
-    cpy_r_r526 = (PyObject **)&cpy_r_r525;
-    cpy_r_r527 = PyObject_Vectorcall(cpy_r_r523, cpy_r_r526, 4, 0);
-    CPy_DecRef(cpy_r_r523);
-    if (unlikely(cpy_r_r527 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL734;
-    }
-    CPy_DecRef(cpy_r_r524);
-    CPy_DecRef(cpy_r_r520);
-    CPy_DecRef(cpy_r_r521);
-    CPy_DecRef(cpy_r_r522);
-    cpy_r_r528 = PyObject_IsTrue(cpy_r_r527);
-    CPy_DecRef(cpy_r_r527);
-    cpy_r_r529 = cpy_r_r528 >= 0;
-    if (unlikely(!cpy_r_r529)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL514;
-    }
-    cpy_r_r530 = cpy_r_r528;
-    if (cpy_r_r530) goto CPyL512;
+    cpy_r_r266 = cpy_r_r282;
+    CPy_DECREF(cpy_r_r266);
+    goto CPyL262;
+CPyL260: ;
     CPy_Reraise();
     if (!0) {
-        goto CPyL514;
+        goto CPyL264;
     } else
-        goto CPyL735;
-CPyL511: ;
+        goto CPyL720;
+CPyL261: ;
     CPy_Unreachable();
-CPyL512: ;
-    cpy_r_r531 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80;
-    if (unlikely(cpy_r_r531.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__80", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL519;
+CPyL262: ;
+    cpy_r_r283 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64;
+    if (unlikely(cpy_r_r283.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__64", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL676;
     }
-    CPy_INCREF(cpy_r_r531.f0);
-    CPy_INCREF(cpy_r_r531.f1);
-    CPy_INCREF(cpy_r_r531.f2);
-CPyL513: ;
-    CPy_RestoreExcInfo(cpy_r_r531);
-    CPy_DecRef(cpy_r_r531.f0);
-    CPy_DecRef(cpy_r_r531.f1);
-    CPy_DecRef(cpy_r_r531.f2);
-    goto CPyL517;
-CPyL514: ;
-    cpy_r_r532 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__80;
+    CPy_INCREF(cpy_r_r283.f0);
+    CPy_INCREF(cpy_r_r283.f1);
+    CPy_INCREF(cpy_r_r283.f2);
+CPyL263: ;
+    CPy_RestoreExcInfo(cpy_r_r283);
+    CPy_DECREF(cpy_r_r283.f0);
+    CPy_DECREF(cpy_r_r283.f1);
+    CPy_DECREF(cpy_r_r283.f2);
+    goto CPyL166;
+CPyL264: ;
+    cpy_r_r284 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__64;
+    if (unlikely(cpy_r_r284.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__64' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r284.f0);
+        CPy_INCREF(cpy_r_r284.f1);
+        CPy_INCREF(cpy_r_r284.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r284.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL265: ;
+    CPy_RestoreExcInfo(cpy_r_r284);
+    CPy_DecRef(cpy_r_r284.f0);
+    CPy_DecRef(cpy_r_r284.f1);
+    CPy_DecRef(cpy_r_r284.f2);
+    cpy_r_r285 = CPy_KeepPropagating();
+    if (!cpy_r_r285) goto CPyL623;
+    CPy_Unreachable();
+CPyL267: ;
+    cpy_r_r286 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_token;
+    if (unlikely(cpy_r_r286 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_token", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    CPy_INCREF(cpy_r_r286);
+CPyL268: ;
+    cpy_r_r287 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block;
+    if (unlikely(cpy_r_r287 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL722;
+    }
+    CPy_INCREF(cpy_r_r287);
+CPyL269: ;
+    cpy_r_r288 = CPyStatic_streams___llamapay___get_price;
+    if (unlikely(cpy_r_r288 == NULL)) {
+        goto CPyL723;
+    } else
+        goto CPyL272;
+CPyL270: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"get_price\" was not set");
+    cpy_r_r289 = 0;
+    if (unlikely(!cpy_r_r289)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL272: ;
+    cpy_r_r290 = 0 ? Py_True : Py_False;
+    PyObject *cpy_r_r291[3] = {cpy_r_r286, cpy_r_r287, cpy_r_r290};
+    cpy_r_r292 = (PyObject **)&cpy_r_r291;
+    cpy_r_r293 = CPyStatics[506]; /* ('sync',) */
+    cpy_r_r294 = PyObject_Vectorcall(cpy_r_r288, cpy_r_r292, 2, cpy_r_r293);
+    if (unlikely(cpy_r_r294 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL724;
+    }
+    CPy_DECREF(cpy_r_r286);
+    CPy_DECREF(cpy_r_r287);
+    cpy_r_r295 = CPyStatic_streams___llamapay___create_task;
+    if (unlikely(cpy_r_r295 == NULL)) {
+        goto CPyL725;
+    } else
+        goto CPyL276;
+CPyL274: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"create_task\" was not set");
+    cpy_r_r296 = 0;
+    if (unlikely(!cpy_r_r296)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL276: ;
+    PyObject *cpy_r_r297[1] = {cpy_r_r294};
+    cpy_r_r298 = (PyObject **)&cpy_r_r297;
+    cpy_r_r299 = PyObject_Vectorcall(cpy_r_r295, cpy_r_r298, 1, 0);
+    if (unlikely(cpy_r_r299 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL726;
+    }
+    CPy_DECREF(cpy_r_r294);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price_fut != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price_fut);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price_fut = cpy_r_r299;
+    cpy_r_r300 = 1;
+    if (unlikely(!cpy_r_r300)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 354, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    cpy_r_r301 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_id;
+    if (unlikely(cpy_r_r301 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    CPy_INCREF(cpy_r_r301);
+CPyL279: ;
+    cpy_r_r302 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block;
+    if (unlikely(cpy_r_r302 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL727;
+    }
+    CPy_INCREF(cpy_r_r302);
+CPyL280: ;
+    cpy_r_r303 = CPyDef_streams___llamapay____get_start_timestamp(cpy_r_r301, cpy_r_r302);
+    CPy_DECREF(cpy_r_r301);
+    CPy_DECREF(cpy_r_r302);
+    if (unlikely(cpy_r_r303 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    cpy_r_r304 = CPy_GetCoro(cpy_r_r303);
+    CPy_DECREF(cpy_r_r303);
+    if (unlikely(cpy_r_r304 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__67 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__67);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__67 = cpy_r_r304;
+    cpy_r_r305 = 1;
+    if (unlikely(!cpy_r_r305)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    cpy_r_r306 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__67;
+    if (unlikely(cpy_r_r306 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__67", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL721;
+    }
+    CPy_INCREF(cpy_r_r306);
+CPyL284: ;
+    cpy_r_r307 = CPyIter_Next(cpy_r_r306);
+    CPy_DECREF(cpy_r_r306);
+    if (cpy_r_r307 == NULL) {
+        goto CPyL728;
+    } else
+        goto CPyL287;
+CPyL285: ;
+    cpy_r_r308 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r308 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    cpy_r_r309 = cpy_r_r308;
+    goto CPyL310;
+CPyL287: ;
+    cpy_r_r310 = cpy_r_r307;
+CPyL288: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 12;
+    cpy_r_r311 = 1;
+    if (unlikely(!cpy_r_r311)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL730;
+    } else
+        goto CPyL731;
+CPyL289: ;
+    return cpy_r_r310;
+CPyL290: ;
+    cpy_r_r312 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r313 = cpy_r_type != cpy_r_r312;
+    if (!cpy_r_r313) goto CPyL293;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL294;
+    } else
+        goto CPyL732;
+CPyL292: ;
+    CPy_Unreachable();
+CPyL293: ;
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL305;
+CPyL294: ;
+    cpy_r_r314 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68 = cpy_r_r314;
+    cpy_r_r315 = 1;
+    if (unlikely(!cpy_r_r315)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL733;
+    }
+    cpy_r_r316 = (PyObject **)&cpy_r_r11;
+    cpy_r_r317 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__67;
+    if (unlikely(cpy_r_r317 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__67", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL733;
+    }
+    CPy_INCREF(cpy_r_r317);
+CPyL296: ;
+    cpy_r_r318 = CPy_YieldFromErrorHandle(cpy_r_r317, cpy_r_r316);
+    CPy_DecRef(cpy_r_r317);
+    if (unlikely(cpy_r_r318 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL733;
+    }
+    if (cpy_r_r318) goto CPyL300;
+    CPy_INCREF(cpy_r_r11);
+    cpy_r_r310 = cpy_r_r11;
+    cpy_r_r319 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68;
+    if (unlikely(cpy_r_r319.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__68", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL734;
+    }
+    CPy_INCREF(cpy_r_r319.f0);
+    CPy_INCREF(cpy_r_r319.f1);
+    CPy_INCREF(cpy_r_r319.f2);
+CPyL299: ;
+    CPy_RestoreExcInfo(cpy_r_r319);
+    CPy_DecRef(cpy_r_r319.f0);
+    CPy_DecRef(cpy_r_r319.f1);
+    CPy_DecRef(cpy_r_r319.f2);
+    goto CPyL288;
+CPyL300: ;
+    cpy_r_r309 = cpy_r_r11;
+    cpy_r_r320 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68;
+    if (unlikely(cpy_r_r320.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__68", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL735;
+    }
+    CPy_INCREF(cpy_r_r320.f0);
+    CPy_INCREF(cpy_r_r320.f1);
+    CPy_INCREF(cpy_r_r320.f2);
+CPyL301: ;
+    CPy_RestoreExcInfo(cpy_r_r320);
+    CPy_DecRef(cpy_r_r320.f0);
+    CPy_DecRef(cpy_r_r320.f1);
+    CPy_DecRef(cpy_r_r320.f2);
+    goto CPyL310;
+CPyL302: ;
+    cpy_r_r321 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__68;
+    if (unlikely(cpy_r_r321.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__68' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r321.f0);
+        CPy_INCREF(cpy_r_r321.f1);
+        CPy_INCREF(cpy_r_r321.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r321.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL303: ;
+    CPy_RestoreExcInfo(cpy_r_r321);
+    CPy_DecRef(cpy_r_r321.f0);
+    CPy_DecRef(cpy_r_r321.f1);
+    CPy_DecRef(cpy_r_r321.f2);
+    cpy_r_r322 = CPy_KeepPropagating();
+    if (!cpy_r_r322) goto CPyL623;
+    CPy_Unreachable();
+CPyL305: ;
+    cpy_r_r323 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__67;
+    if (unlikely(cpy_r_r323 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__67", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL736;
+    }
+    CPy_INCREF(cpy_r_r323);
+CPyL306: ;
+    cpy_r_r324 = CPyIter_Send(cpy_r_r323, cpy_r_arg);
+    CPy_DECREF(cpy_r_r323);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r324 == NULL) goto CPyL737;
+    cpy_r_r310 = cpy_r_r324;
+    goto CPyL288;
+CPyL308: ;
+    cpy_r_r325 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r325 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    cpy_r_r309 = cpy_r_r325;
+CPyL310: ;
+    if (likely(PyLong_Check(cpy_r_r309)))
+        cpy_r_r326 = CPyTagged_FromObject(cpy_r_r309);
+    else {
+        CPy_TypeError("int", cpy_r_r309); cpy_r_r326 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r309);
+    if (unlikely(cpy_r_r326 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp = cpy_r_r326;
+    cpy_r_r327 = 1;
+    if (unlikely(!cpy_r_r327)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 355, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    cpy_r_r328 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp;
+    if (unlikely(cpy_r_r328 == CPY_INT_TAG)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_timestamp", 356, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    CPyTagged_INCREF(cpy_r_r328);
+CPyL313: ;
+    cpy_r_r329 = cpy_r_r328 == 0;
+    CPyTagged_DECREF(cpy_r_r328);
+    if (!cpy_r_r329) goto CPyL738;
+    cpy_r_r330 = CPyStatic_streams___llamapay____STREAMS_THREAD;
+    if (unlikely(cpy_r_r330 == NULL)) {
+        goto CPyL739;
+    } else
+        goto CPyL317;
+CPyL315: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"_STREAMS_THREAD\" was not set");
+    cpy_r_r331 = 0;
+    if (unlikely(!cpy_r_r331)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL317: ;
+    cpy_r_r332 = CPyStatic_streams___llamapay___globals;
+    cpy_r_r333 = CPyStatics[260]; /* 'Stream' */
+    cpy_r_r334 = CPyDict_GetItem(cpy_r_r332, cpy_r_r333);
+    if (unlikely(cpy_r_r334 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    cpy_r_r335 = CPyStatics[311]; /* 'check_closed' */
+    cpy_r_r336 = CPyObject_GetAttr(cpy_r_r334, cpy_r_r335);
+    CPy_DECREF(cpy_r_r334);
+    if (unlikely(cpy_r_r336 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    cpy_r_r337 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_id;
+    if (unlikely(cpy_r_r337 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL740;
+    }
+    CPy_INCREF(cpy_r_r337);
+CPyL320: ;
+    cpy_r_r338 = CPyStatics[265]; /* 'run' */
+    PyObject *cpy_r_r339[3] = {cpy_r_r330, cpy_r_r336, cpy_r_r337};
+    cpy_r_r340 = (PyObject **)&cpy_r_r339;
+    cpy_r_r341 = PyObject_VectorcallMethod(cpy_r_r338, cpy_r_r340, 9223372036854775811ULL, 0);
+    if (unlikely(cpy_r_r341 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL741;
+    }
+    CPy_DECREF(cpy_r_r336);
+    CPy_DECREF(cpy_r_r337);
+    cpy_r_r342 = CPy_GetCoro(cpy_r_r341);
+    CPy_DECREF(cpy_r_r341);
+    if (unlikely(cpy_r_r342 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__69 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__69);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__69 = cpy_r_r342;
+    cpy_r_r343 = 1;
+    if (unlikely(!cpy_r_r343)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    cpy_r_r344 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__69;
+    if (unlikely(cpy_r_r344 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__69", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL729;
+    }
+    CPy_INCREF(cpy_r_r344);
+CPyL324: ;
+    cpy_r_r345 = CPyIter_Next(cpy_r_r344);
+    CPy_DECREF(cpy_r_r344);
+    if (cpy_r_r345 == NULL) {
+        goto CPyL742;
+    } else
+        goto CPyL327;
+CPyL325: ;
+    cpy_r_r346 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r346 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r347 = cpy_r_r346;
+    goto CPyL350;
+CPyL327: ;
+    cpy_r_r348 = cpy_r_r345;
+CPyL328: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 14;
+    cpy_r_r349 = 1;
+    if (unlikely(!cpy_r_r349)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL744;
+    } else
+        goto CPyL745;
+CPyL329: ;
+    return cpy_r_r348;
+CPyL330: ;
+    cpy_r_r350 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r351 = cpy_r_type != cpy_r_r350;
+    if (!cpy_r_r351) goto CPyL333;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL334;
+    } else
+        goto CPyL746;
+CPyL332: ;
+    CPy_Unreachable();
+CPyL333: ;
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL345;
+CPyL334: ;
+    cpy_r_r352 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70 = cpy_r_r352;
+    cpy_r_r353 = 1;
+    if (unlikely(!cpy_r_r353)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL747;
+    }
+    cpy_r_r354 = (PyObject **)&cpy_r_r13;
+    cpy_r_r355 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__69;
+    if (unlikely(cpy_r_r355 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__69", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL747;
+    }
+    CPy_INCREF(cpy_r_r355);
+CPyL336: ;
+    cpy_r_r356 = CPy_YieldFromErrorHandle(cpy_r_r355, cpy_r_r354);
+    CPy_DecRef(cpy_r_r355);
+    if (unlikely(cpy_r_r356 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL747;
+    }
+    if (cpy_r_r356) goto CPyL340;
+    CPy_INCREF(cpy_r_r13);
+    cpy_r_r348 = cpy_r_r13;
+    cpy_r_r357 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70;
+    if (unlikely(cpy_r_r357.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__70", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL748;
+    }
+    CPy_INCREF(cpy_r_r357.f0);
+    CPy_INCREF(cpy_r_r357.f1);
+    CPy_INCREF(cpy_r_r357.f2);
+CPyL339: ;
+    CPy_RestoreExcInfo(cpy_r_r357);
+    CPy_DecRef(cpy_r_r357.f0);
+    CPy_DecRef(cpy_r_r357.f1);
+    CPy_DecRef(cpy_r_r357.f2);
+    goto CPyL328;
+CPyL340: ;
+    cpy_r_r347 = cpy_r_r13;
+    cpy_r_r358 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70;
+    if (unlikely(cpy_r_r358.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__70", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL749;
+    }
+    CPy_INCREF(cpy_r_r358.f0);
+    CPy_INCREF(cpy_r_r358.f1);
+    CPy_INCREF(cpy_r_r358.f2);
+CPyL341: ;
+    CPy_RestoreExcInfo(cpy_r_r358);
+    CPy_DecRef(cpy_r_r358.f0);
+    CPy_DecRef(cpy_r_r358.f1);
+    CPy_DecRef(cpy_r_r358.f2);
+    goto CPyL350;
+CPyL342: ;
+    cpy_r_r359 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__70;
+    if (unlikely(cpy_r_r359.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__70' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r359.f0);
+        CPy_INCREF(cpy_r_r359.f1);
+        CPy_INCREF(cpy_r_r359.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r359.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL343: ;
+    CPy_RestoreExcInfo(cpy_r_r359);
+    CPy_DecRef(cpy_r_r359.f0);
+    CPy_DecRef(cpy_r_r359.f1);
+    CPy_DecRef(cpy_r_r359.f2);
+    cpy_r_r360 = CPy_KeepPropagating();
+    if (!cpy_r_r360) goto CPyL623;
+    CPy_Unreachable();
+CPyL345: ;
+    cpy_r_r361 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__69;
+    if (unlikely(cpy_r_r361 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__69", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL750;
+    }
+    CPy_INCREF(cpy_r_r361);
+CPyL346: ;
+    cpy_r_r362 = CPyIter_Send(cpy_r_r361, cpy_r_arg);
+    CPy_DECREF(cpy_r_r361);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r362 == NULL) goto CPyL751;
+    cpy_r_r348 = cpy_r_r362;
+    goto CPyL328;
+CPyL348: ;
+    cpy_r_r363 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r363 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 357, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r347 = cpy_r_r363;
+CPyL350: ;
+    cpy_r_r364 = PyObject_IsTrue(cpy_r_r347);
+    CPy_DECREF(cpy_r_r347);
+    cpy_r_r365 = cpy_r_r364 >= 0;
+    if (unlikely(!cpy_r_r365)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r366 = cpy_r_r364;
+    if (cpy_r_r366) {
+        goto CPyL752;
+    } else
+        goto CPyL357;
+CPyL352: ;
+    cpy_r_r367 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price_fut;
+    if (unlikely(cpy_r_r367 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "price_fut", 358, CPyStatic_streams___llamapay___globals);
+        goto CPyL642;
+    }
+    CPy_INCREF(cpy_r_r367);
+CPyL353: ;
+    cpy_r_r368 = CPyStatics[312]; /* 'cancel' */
+    PyObject *cpy_r_r369[1] = {cpy_r_r367};
+    cpy_r_r370 = (PyObject **)&cpy_r_r369;
+    cpy_r_r371 = PyObject_VectorcallMethod(cpy_r_r368, cpy_r_r370, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r371 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 358, CPyStatic_streams___llamapay___globals);
+        goto CPyL753;
+    } else
+        goto CPyL754;
+CPyL354: ;
+    CPy_DECREF(cpy_r_r367);
+    cpy_r_r372 = Py_None;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = -2;
+    cpy_r_r373 = 1;
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    if (unlikely(!cpy_r_r373)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 359, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPyGen_SetStopIterationValue(cpy_r_r372);
+    if (!0) goto CPyL623;
+    CPy_Unreachable();
+CPyL357: ;
+    cpy_r_r374 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp;
+    if (unlikely(cpy_r_r374 == CPY_INT_TAG)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_timestamp", 361, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    CPyTagged_INCREF(cpy_r_r374);
+CPyL358: ;
+    cpy_r_r375 = cpy_r_r374 == 0;
+    CPyTagged_DECREF(cpy_r_r374);
+    if (!cpy_r_r375) goto CPyL755;
+    cpy_r_r376 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block;
+    if (unlikely(cpy_r_r376 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 362, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    CPy_INCREF(cpy_r_r376);
+CPyL360: ;
+    cpy_r_r377 = CPyStatics[459]; /* 1 */
+    cpy_r_r378 = PyNumber_InPlaceSubtract(cpy_r_r376, cpy_r_r377);
+    CPy_DECREF(cpy_r_r376);
+    if (unlikely(cpy_r_r378 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 362, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block = cpy_r_r378;
+    cpy_r_r379 = 1;
+    if (unlikely(!cpy_r_r379)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 362, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r380 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_id;
+    if (unlikely(cpy_r_r380 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    CPy_INCREF(cpy_r_r380);
+CPyL363: ;
+    cpy_r_r381 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block;
+    if (unlikely(cpy_r_r381 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL756;
+    }
+    CPy_INCREF(cpy_r_r381);
+CPyL364: ;
+    cpy_r_r382 = CPyDef_streams___llamapay____get_start_timestamp(cpy_r_r380, cpy_r_r381);
+    CPy_DECREF(cpy_r_r380);
+    CPy_DECREF(cpy_r_r381);
+    if (unlikely(cpy_r_r382 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r383 = CPy_GetCoro(cpy_r_r382);
+    CPy_DECREF(cpy_r_r382);
+    if (unlikely(cpy_r_r383 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__71 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__71);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__71 = cpy_r_r383;
+    cpy_r_r384 = 1;
+    if (unlikely(!cpy_r_r384)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r385 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__71;
+    if (unlikely(cpy_r_r385 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__71", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    CPy_INCREF(cpy_r_r385);
+CPyL368: ;
+    cpy_r_r386 = CPyIter_Next(cpy_r_r385);
+    CPy_DECREF(cpy_r_r385);
+    if (cpy_r_r386 != NULL) goto CPyL371;
+    cpy_r_r387 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r387 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r388 = cpy_r_r387;
+    goto CPyL394;
+CPyL371: ;
+    cpy_r_r389 = cpy_r_r386;
+CPyL372: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 16;
+    cpy_r_r390 = 1;
+    if (unlikely(!cpy_r_r390)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL757;
+    } else
+        goto CPyL758;
+CPyL373: ;
+    return cpy_r_r389;
+CPyL374: ;
+    cpy_r_r391 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r392 = cpy_r_type != cpy_r_r391;
+    if (!cpy_r_r392) goto CPyL377;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL378;
+    } else
+        goto CPyL759;
+CPyL376: ;
+    CPy_Unreachable();
+CPyL377: ;
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL389;
+CPyL378: ;
+    cpy_r_r393 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72 = cpy_r_r393;
+    cpy_r_r394 = 1;
+    if (unlikely(!cpy_r_r394)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL760;
+    }
+    cpy_r_r395 = (PyObject **)&cpy_r_r15;
+    cpy_r_r396 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__71;
+    if (unlikely(cpy_r_r396 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__71", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL760;
+    }
+    CPy_INCREF(cpy_r_r396);
+CPyL380: ;
+    cpy_r_r397 = CPy_YieldFromErrorHandle(cpy_r_r396, cpy_r_r395);
+    CPy_DecRef(cpy_r_r396);
+    if (unlikely(cpy_r_r397 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL760;
+    }
+    if (cpy_r_r397) goto CPyL384;
+    CPy_INCREF(cpy_r_r15);
+    cpy_r_r389 = cpy_r_r15;
+    cpy_r_r398 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72;
+    if (unlikely(cpy_r_r398.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__72", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL761;
+    }
+    CPy_INCREF(cpy_r_r398.f0);
+    CPy_INCREF(cpy_r_r398.f1);
+    CPy_INCREF(cpy_r_r398.f2);
+CPyL383: ;
+    CPy_RestoreExcInfo(cpy_r_r398);
+    CPy_DecRef(cpy_r_r398.f0);
+    CPy_DecRef(cpy_r_r398.f1);
+    CPy_DecRef(cpy_r_r398.f2);
+    goto CPyL372;
+CPyL384: ;
+    CPy_INCREF(cpy_r_r15);
+    cpy_r_r388 = cpy_r_r15;
+    cpy_r_r399 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72;
+    if (unlikely(cpy_r_r399.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__72", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL762;
+    }
+    CPy_INCREF(cpy_r_r399.f0);
+    CPy_INCREF(cpy_r_r399.f1);
+    CPy_INCREF(cpy_r_r399.f2);
+CPyL385: ;
+    CPy_RestoreExcInfo(cpy_r_r399);
+    CPy_DecRef(cpy_r_r399.f0);
+    CPy_DecRef(cpy_r_r399.f1);
+    CPy_DecRef(cpy_r_r399.f2);
+    goto CPyL394;
+CPyL386: ;
+    cpy_r_r400 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__72;
+    if (unlikely(cpy_r_r400.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__72' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r400.f0);
+        CPy_INCREF(cpy_r_r400.f1);
+        CPy_INCREF(cpy_r_r400.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r400.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL387: ;
+    CPy_RestoreExcInfo(cpy_r_r400);
+    CPy_DecRef(cpy_r_r400.f0);
+    CPy_DecRef(cpy_r_r400.f1);
+    CPy_DecRef(cpy_r_r400.f2);
+    cpy_r_r401 = CPy_KeepPropagating();
+    if (!cpy_r_r401) goto CPyL623;
+    CPy_Unreachable();
+CPyL389: ;
+    cpy_r_r402 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__71;
+    if (unlikely(cpy_r_r402 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__71", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL763;
+    }
+    CPy_INCREF(cpy_r_r402);
+CPyL390: ;
+    cpy_r_r403 = CPyIter_Send(cpy_r_r402, cpy_r_arg);
+    CPy_DECREF(cpy_r_r402);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r403 == NULL) goto CPyL392;
+    cpy_r_r389 = cpy_r_r403;
+    goto CPyL372;
+CPyL392: ;
+    cpy_r_r404 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r404 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    cpy_r_r388 = cpy_r_r404;
+CPyL394: ;
+    if (likely(PyLong_Check(cpy_r_r388)))
+        cpy_r_r405 = CPyTagged_FromObject(cpy_r_r388);
+    else {
+        CPy_TypeError("int", cpy_r_r388); cpy_r_r405 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r388);
+    if (unlikely(cpy_r_r405 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp = cpy_r_r405;
+    cpy_r_r406 = 1;
+    if (unlikely(!cpy_r_r406)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 363, CPyStatic_streams___llamapay___globals);
+        goto CPyL743;
+    } else
+        goto CPyL357;
+CPyL396: ;
+    cpy_r_r407 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block;
+    if (unlikely(cpy_r_r407 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL764;
+    }
+    CPy_INCREF(cpy_r_r407);
+CPyL397: ;
+    cpy_r_r408 = CPyDef_streams___llamapay____get_block_timestamp(cpy_r_r407);
+    CPy_DECREF(cpy_r_r407);
+    if (unlikely(cpy_r_r408 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL764;
+    }
+    cpy_r_r409 = CPy_GetCoro(cpy_r_r408);
+    CPy_DECREF(cpy_r_r408);
+    if (unlikely(cpy_r_r409 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL764;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__73 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__73);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__73 = cpy_r_r409;
+    cpy_r_r410 = 1;
+    if (unlikely(!cpy_r_r410)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL764;
+    }
+    cpy_r_r411 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__73;
+    if (unlikely(cpy_r_r411 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__73", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL764;
+    }
+    CPy_INCREF(cpy_r_r411);
+CPyL401: ;
+    cpy_r_r412 = CPyIter_Next(cpy_r_r411);
+    CPy_DECREF(cpy_r_r411);
+    if (cpy_r_r412 == NULL) {
+        goto CPyL765;
+    } else
+        goto CPyL404;
+CPyL402: ;
+    cpy_r_r413 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r413 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r414 = cpy_r_r413;
+    goto CPyL427;
+CPyL404: ;
+    cpy_r_r415 = cpy_r_r412;
+CPyL405: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 18;
+    cpy_r_r416 = 1;
+    if (unlikely(!cpy_r_r416)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL767;
+    } else
+        goto CPyL768;
+CPyL406: ;
+    return cpy_r_r415;
+CPyL407: ;
+    cpy_r_r417 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r418 = cpy_r_type != cpy_r_r417;
+    if (!cpy_r_r418) goto CPyL410;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL411;
+    } else
+        goto CPyL769;
+CPyL409: ;
+    CPy_Unreachable();
+CPyL410: ;
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL422;
+CPyL411: ;
+    cpy_r_r419 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74 = cpy_r_r419;
+    cpy_r_r420 = 1;
+    if (unlikely(!cpy_r_r420)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL770;
+    }
+    cpy_r_r421 = (PyObject **)&cpy_r_r17;
+    cpy_r_r422 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__73;
+    if (unlikely(cpy_r_r422 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__73", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL770;
+    }
+    CPy_INCREF(cpy_r_r422);
+CPyL413: ;
+    cpy_r_r423 = CPy_YieldFromErrorHandle(cpy_r_r422, cpy_r_r421);
+    CPy_DecRef(cpy_r_r422);
+    if (unlikely(cpy_r_r423 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL770;
+    }
+    if (cpy_r_r423) goto CPyL417;
+    CPy_INCREF(cpy_r_r17);
+    cpy_r_r415 = cpy_r_r17;
+    cpy_r_r424 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74;
+    if (unlikely(cpy_r_r424.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__74", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL771;
+    }
+    CPy_INCREF(cpy_r_r424.f0);
+    CPy_INCREF(cpy_r_r424.f1);
+    CPy_INCREF(cpy_r_r424.f2);
+CPyL416: ;
+    CPy_RestoreExcInfo(cpy_r_r424);
+    CPy_DecRef(cpy_r_r424.f0);
+    CPy_DecRef(cpy_r_r424.f1);
+    CPy_DecRef(cpy_r_r424.f2);
+    goto CPyL405;
+CPyL417: ;
+    cpy_r_r414 = cpy_r_r17;
+    cpy_r_r425 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74;
+    if (unlikely(cpy_r_r425.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__74", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL772;
+    }
+    CPy_INCREF(cpy_r_r425.f0);
+    CPy_INCREF(cpy_r_r425.f1);
+    CPy_INCREF(cpy_r_r425.f2);
+CPyL418: ;
+    CPy_RestoreExcInfo(cpy_r_r425);
+    CPy_DecRef(cpy_r_r425.f0);
+    CPy_DecRef(cpy_r_r425.f1);
+    CPy_DecRef(cpy_r_r425.f2);
+    goto CPyL427;
+CPyL419: ;
+    cpy_r_r426 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__74;
+    if (unlikely(cpy_r_r426.f0 == NULL)) {
+        PyErr_SetString(PyExc_AttributeError, "attribute '__mypyc_temp__74' of 'process_stream_for_date_LlamaPayProcessor_env' undefined");
+    } else {
+        CPy_INCREF(cpy_r_r426.f0);
+        CPy_INCREF(cpy_r_r426.f1);
+        CPy_INCREF(cpy_r_r426.f2);
+    }
+    CPy_DecRef(cpy_r_r22);
+    if (unlikely(cpy_r_r426.f0 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+CPyL420: ;
+    CPy_RestoreExcInfo(cpy_r_r426);
+    CPy_DecRef(cpy_r_r426.f0);
+    CPy_DecRef(cpy_r_r426.f1);
+    CPy_DecRef(cpy_r_r426.f2);
+    cpy_r_r427 = CPy_KeepPropagating();
+    if (!cpy_r_r427) goto CPyL623;
+    CPy_Unreachable();
+CPyL422: ;
+    cpy_r_r428 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__73;
+    if (unlikely(cpy_r_r428 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__73", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL773;
+    }
+    CPy_INCREF(cpy_r_r428);
+CPyL423: ;
+    cpy_r_r429 = CPyIter_Send(cpy_r_r428, cpy_r_arg);
+    CPy_DECREF(cpy_r_r428);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r429 == NULL) goto CPyL774;
+    cpy_r_r415 = cpy_r_r429;
+    goto CPyL405;
+CPyL425: ;
+    cpy_r_r430 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r430 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r414 = cpy_r_r430;
+CPyL427: ;
+    cpy_r_r431 = CPyStatic_streams___llamapay____UTC;
+    if (unlikely(cpy_r_r431 == NULL)) {
+        goto CPyL775;
+    } else
+        goto CPyL430;
+CPyL428: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"_UTC\" was not set");
+    cpy_r_r432 = 0;
+    if (unlikely(!cpy_r_r432)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL430: ;
+    cpy_r_r433 = CPyStatic_streams___llamapay___fromtimestamp;
+    if (unlikely(cpy_r_r433 == NULL)) {
+        goto CPyL776;
+    } else
+        goto CPyL433;
+CPyL431: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"fromtimestamp\" was not set");
+    cpy_r_r434 = 0;
+    if (unlikely(!cpy_r_r434)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL433: ;
+    PyObject *cpy_r_r435[2] = {cpy_r_r414, cpy_r_r431};
+    cpy_r_r436 = (PyObject **)&cpy_r_r435;
+    cpy_r_r437 = CPyStatics[509]; /* ('tz',) */
+    cpy_r_r438 = PyObject_Vectorcall(cpy_r_r433, cpy_r_r436, 1, cpy_r_r437);
+    if (unlikely(cpy_r_r438 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL777;
+    }
+    CPy_DECREF(cpy_r_r414);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block_datetime != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block_datetime);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block_datetime = cpy_r_r438;
+    cpy_r_r439 = 1;
+    if (unlikely(!cpy_r_r439)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 365, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r440 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block_datetime;
+    if (unlikely(cpy_r_r440 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block_datetime", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    CPy_INCREF(cpy_r_r440);
+CPyL436: ;
+    cpy_r_r441 = CPyStatics[257]; /* 'date' */
+    PyObject *cpy_r_r442[1] = {cpy_r_r440};
+    cpy_r_r443 = (PyObject **)&cpy_r_r442;
+    cpy_r_r444 = PyObject_VectorcallMethod(cpy_r_r441, cpy_r_r443, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r444 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL778;
+    }
+    CPy_DECREF(cpy_r_r440);
+    cpy_r_r445 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_date_obj;
+    if (unlikely(cpy_r_r445 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL779;
+    }
+    CPy_INCREF(cpy_r_r445);
+CPyL438: ;
+    cpy_r_r446 = CPyStatics[257]; /* 'date' */
+    PyObject *cpy_r_r447[1] = {cpy_r_r445};
+    cpy_r_r448 = (PyObject **)&cpy_r_r447;
+    cpy_r_r449 = PyObject_VectorcallMethod(cpy_r_r446, cpy_r_r448, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r449 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL780;
+    }
+    CPy_DECREF(cpy_r_r445);
+    cpy_r_r450 = PyObject_RichCompare(cpy_r_r444, cpy_r_r449, 2);
+    CPy_DECREF(cpy_r_r444);
+    CPy_DECREF(cpy_r_r449);
+    if (unlikely(cpy_r_r450 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    if (unlikely(!PyBool_Check(cpy_r_r450))) {
+        CPy_TypeError("bool", cpy_r_r450); cpy_r_r451 = 2;
+    } else
+        cpy_r_r451 = cpy_r_r450 == Py_True;
+    CPy_DECREF(cpy_r_r450);
+    if (unlikely(cpy_r_r451 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    if (cpy_r_r451) {
+        goto CPyL444;
+    } else
+        goto CPyL781;
+CPyL442: ;
+    PyErr_SetNone(PyExc_AssertionError);
+    cpy_r_r452 = 0;
+    if (unlikely(!cpy_r_r452)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL444: ;
+    cpy_r_r453 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r453 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 367, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    CPy_INCREF(cpy_r_r453);
+CPyL445: ;
+    cpy_r_r454 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_block_datetime;
+    if (unlikely(cpy_r_r454 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "block_datetime", 367, CPyStatic_streams___llamapay___globals);
+        goto CPyL782;
+    }
+    CPy_INCREF(cpy_r_r454);
+CPyL446: ;
+    cpy_r_r455 = PyNumber_Subtract(cpy_r_r453, cpy_r_r454);
+    CPy_DECREF(cpy_r_r453);
+    CPy_DECREF(cpy_r_r454);
+    if (unlikely(cpy_r_r455 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r456 = CPyStatics[306]; /* 'seconds' */
+    cpy_r_r457 = CPyObject_GetAttr(cpy_r_r455, cpy_r_r456);
+    CPy_DECREF(cpy_r_r455);
+    if (unlikely(cpy_r_r457 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    if (likely(PyLong_Check(cpy_r_r457)))
+        cpy_r_r458 = CPyTagged_FromObject(cpy_r_r457);
+    else {
+        CPy_TypeError("int", cpy_r_r457); cpy_r_r458 = CPY_INT_TAG;
+    }
+    CPy_DECREF(cpy_r_r457);
+    if (unlikely(cpy_r_r458 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active = cpy_r_r458;
+    cpy_r_r459 = 1;
+    if (unlikely(!cpy_r_r459)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 367, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_is_last_day = 1;
+    cpy_r_r460 = 1;
+    if (unlikely(!cpy_r_r460)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 368, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    } else
+        goto CPyL459;
+CPyL451: ;
+    cpy_r_r461 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_check_at;
+    if (unlikely(cpy_r_r461 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "check_at", 370, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    CPy_INCREF(cpy_r_r461);
+CPyL452: ;
+    cpy_r_r462 = CPyStatics[313]; /* 'timestamp' */
+    PyObject *cpy_r_r463[1] = {cpy_r_r461};
+    cpy_r_r464 = (PyObject **)&cpy_r_r463;
+    cpy_r_r465 = PyObject_VectorcallMethod(cpy_r_r462, cpy_r_r464, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r465 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 370, CPyStatic_streams___llamapay___globals);
+        goto CPyL783;
+    }
+    CPy_DECREF(cpy_r_r461);
+    cpy_r_r466 = PyFloat_AsDouble(cpy_r_r465);
+    if (cpy_r_r466 == -1.0 && PyErr_Occurred()) {
+        CPy_TypeError("float", cpy_r_r465); cpy_r_r466 = -113.0;
+    }
+    CPy_DECREF(cpy_r_r465);
+    cpy_r_r467 = cpy_r_r466 == -113.0;
+    if (unlikely(cpy_r_r467)) goto CPyL455;
+CPyL454: ;
+    cpy_r_r468 = CPyTagged_FromFloat(cpy_r_r466);
+    if (unlikely(cpy_r_r468 == CPY_INT_TAG)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 370, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    } else
+        goto CPyL456;
+CPyL455: ;
+    cpy_r_r469 = PyErr_Occurred();
+    if (unlikely(cpy_r_r469 != NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 370, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    } else
+        goto CPyL454;
+CPyL456: ;
+    cpy_r_r470 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_timestamp;
+    if (unlikely(cpy_r_r470 == CPY_INT_TAG)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_timestamp", 370, CPyStatic_streams___llamapay___globals);
+        goto CPyL784;
+    }
+    CPyTagged_INCREF(cpy_r_r470);
+CPyL457: ;
+    cpy_r_r471 = CPyTagged_Subtract(cpy_r_r468, cpy_r_r470);
+    CPyTagged_DECREF(cpy_r_r468);
+    CPyTagged_DECREF(cpy_r_r470);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active = cpy_r_r471;
+    cpy_r_r472 = 1;
+    if (unlikely(!cpy_r_r472)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 370, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_is_last_day = 0;
+    cpy_r_r473 = 1;
+    if (unlikely(!cpy_r_r473)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 371, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+CPyL459: ;
+    cpy_r_r474 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active;
+    if (unlikely(cpy_r_r474 == CPY_INT_TAG)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "seconds_active", 373, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    CPyTagged_INCREF(cpy_r_r474);
+CPyL460: ;
+    cpy_r_r475 = 172800 & 1;
+    cpy_r_r476 = cpy_r_r475 != 0;
+    if (cpy_r_r476) goto CPyL462;
+    cpy_r_r477 = cpy_r_r474 & 1;
+    cpy_r_r478 = cpy_r_r477 != 0;
+    if (!cpy_r_r478) goto CPyL463;
+CPyL462: ;
+    cpy_r_r479 = CPyTagged_IsLt_(172800, cpy_r_r474);
+    if (cpy_r_r479) {
+        goto CPyL785;
+    } else
+        goto CPyL465;
+CPyL463: ;
+    cpy_r_r480 = (Py_ssize_t)172800 < (Py_ssize_t)cpy_r_r474;
+    if (cpy_r_r480) {
+        goto CPyL785;
+    } else
+        goto CPyL465;
+CPyL464: ;
+    cpy_r_r481 = 172800;
+    goto CPyL466;
+CPyL465: ;
+    cpy_r_r481 = cpy_r_r474;
+CPyL466: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today = cpy_r_r481;
+    cpy_r_r482 = 1;
+    if (unlikely(!cpy_r_r482)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 373, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r483 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today;
+    if (unlikely(cpy_r_r483 == CPY_INT_TAG)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "seconds_active_today", 374, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    CPyTagged_INCREF(cpy_r_r483);
+CPyL468: ;
+    cpy_r_r484 = cpy_r_r483 & 1;
+    cpy_r_r485 = cpy_r_r484 != 0;
+    if (cpy_r_r485) goto CPyL470;
+    cpy_r_r486 = 172800 & 1;
+    cpy_r_r487 = cpy_r_r486 != 0;
+    if (!cpy_r_r487) goto CPyL471;
+CPyL470: ;
+    cpy_r_r488 = CPyTagged_IsLt_(cpy_r_r483, 172800);
+    cpy_r_r489 = cpy_r_r488;
+    goto CPyL472;
+CPyL471: ;
+    cpy_r_r490 = (Py_ssize_t)cpy_r_r483 < (Py_ssize_t)172800;
+    cpy_r_r489 = cpy_r_r490;
+CPyL472: ;
+    CPyTagged_DECREF(cpy_r_r483);
+    if (!cpy_r_r489) goto CPyL482;
+    cpy_r_r491 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_is_last_day;
+    if (unlikely(cpy_r_r491 == 2)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "is_last_day", 374, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+CPyL474: ;
+    if (cpy_r_r491) goto CPyL482;
+CPyL475: ;
+    cpy_r_r492 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_date_obj;
+    if (unlikely(cpy_r_r492 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 375, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    CPy_INCREF(cpy_r_r492);
+CPyL476: ;
+    cpy_r_r493 = CPyStatics[257]; /* 'date' */
+    PyObject *cpy_r_r494[1] = {cpy_r_r492};
+    cpy_r_r495 = (PyObject **)&cpy_r_r494;
+    cpy_r_r496 = PyObject_VectorcallMethod(cpy_r_r493, cpy_r_r495, 9223372036854775809ULL, 0);
+    if (unlikely(cpy_r_r496 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 375, CPyStatic_streams___llamapay___globals);
+        goto CPyL786;
+    }
+    CPy_DECREF(cpy_r_r492);
+    cpy_r_r497 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_start_date;
+    if (unlikely(cpy_r_r497 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "start_date", 375, CPyStatic_streams___llamapay___globals);
+        goto CPyL787;
+    }
+    CPy_INCREF(cpy_r_r497);
+CPyL478: ;
+    cpy_r_r498 = PyObject_RichCompare(cpy_r_r496, cpy_r_r497, 3);
+    CPy_DECREF(cpy_r_r496);
+    CPy_DECREF(cpy_r_r497);
+    if (unlikely(cpy_r_r498 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 375, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r499 = PyObject_IsTrue(cpy_r_r498);
+    CPy_DECREF(cpy_r_r498);
+    cpy_r_r500 = cpy_r_r499 >= 0;
+    if (unlikely(!cpy_r_r500)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 375, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r501 = cpy_r_r499;
+    if (!cpy_r_r501) goto CPyL482;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today = 172800;
+    cpy_r_r502 = 1;
+    if (unlikely(!cpy_r_r502)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 376, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+CPyL482: ;
+    cpy_r_r503 = CPyStatic_streams___llamapay___db_session;
+    if (unlikely(cpy_r_r503 == NULL)) {
+        goto CPyL788;
+    } else
+        goto CPyL485;
+CPyL483: ;
+    PyErr_SetString(PyExc_NameError, "value for final name \"db_session\" was not set");
+    cpy_r_r504 = 0;
+    if (unlikely(!cpy_r_r504)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL623;
+    }
+    CPy_Unreachable();
+CPyL485: ;
+    cpy_r_r505 = PyObject_Type(cpy_r_r503);
+    cpy_r_r506 = CPyStatics[258]; /* '__exit__' */
+    cpy_r_r507 = CPyObject_GetAttr(cpy_r_r505, cpy_r_r506);
+    if (unlikely(cpy_r_r507 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL789;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__75 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__75);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__75 = cpy_r_r507;
+    cpy_r_r508 = 1;
+    if (unlikely(!cpy_r_r508)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL789;
+    }
+    cpy_r_r509 = CPyStatics[259]; /* '__enter__' */
+    cpy_r_r510 = CPyObject_GetAttr(cpy_r_r505, cpy_r_r509);
+    CPy_DECREF(cpy_r_r505);
+    if (unlikely(cpy_r_r510 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    PyObject *cpy_r_r511[1] = {cpy_r_r503};
+    cpy_r_r512 = (PyObject **)&cpy_r_r511;
+    cpy_r_r513 = PyObject_Vectorcall(cpy_r_r510, cpy_r_r512, 1, 0);
+    CPy_DECREF(cpy_r_r510);
+    if (unlikely(cpy_r_r513 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    } else
+        goto CPyL790;
+CPyL489: ;
+    CPy_INCREF(cpy_r_r503);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__76 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__76);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__76 = cpy_r_r503;
+    cpy_r_r514 = 1;
+    if (unlikely(!cpy_r_r514)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__77 = 1;
+    cpy_r_r515 = 1;
+    if (unlikely(!cpy_r_r515)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL766;
+    }
+    cpy_r_r516 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price_fut;
+    if (unlikely(cpy_r_r516 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "price_fut", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL791;
+    }
+    CPy_INCREF(cpy_r_r516);
+CPyL492: ;
+    cpy_r_r517 = CPy_GetCoro(cpy_r_r516);
+    CPy_DECREF(cpy_r_r516);
+    if (unlikely(cpy_r_r517 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL791;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__78 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__78);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__78 = cpy_r_r517;
+    cpy_r_r518 = 1;
+    if (unlikely(!cpy_r_r518)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL791;
+    }
+    cpy_r_r519 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__78;
+    if (unlikely(cpy_r_r519 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__78", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL791;
+    }
+    CPy_INCREF(cpy_r_r519);
+CPyL495: ;
+    cpy_r_r520 = CPyIter_Next(cpy_r_r519);
+    CPy_DECREF(cpy_r_r519);
+    if (cpy_r_r520 == NULL) {
+        goto CPyL792;
+    } else
+        goto CPyL498;
+CPyL496: ;
+    cpy_r_r521 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r521 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    cpy_r_r522 = cpy_r_r521;
+    goto CPyL521;
+CPyL498: ;
+    cpy_r_r523 = cpy_r_r520;
+CPyL499: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 20;
+    cpy_r_r524 = 1;
+    if (unlikely(!cpy_r_r524)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL794;
+    } else
+        goto CPyL795;
+CPyL500: ;
+    return cpy_r_r523;
+CPyL501: ;
+    cpy_r_r525 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r526 = cpy_r_type != cpy_r_r525;
+    if (!cpy_r_r526) goto CPyL504;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL505;
+    } else
+        goto CPyL796;
+CPyL503: ;
+    CPy_Unreachable();
+CPyL504: ;
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL516;
+CPyL505: ;
+    cpy_r_r527 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79 = cpy_r_r527;
+    cpy_r_r528 = 1;
+    if (unlikely(!cpy_r_r528)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL797;
+    }
+    cpy_r_r529 = (PyObject **)&cpy_r_r19;
+    cpy_r_r530 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__78;
+    if (unlikely(cpy_r_r530 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__78", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL797;
+    }
+    CPy_INCREF(cpy_r_r530);
+CPyL507: ;
+    cpy_r_r531 = CPy_YieldFromErrorHandle(cpy_r_r530, cpy_r_r529);
+    CPy_DecRef(cpy_r_r530);
+    if (unlikely(cpy_r_r531 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL797;
+    }
+    if (cpy_r_r531) goto CPyL511;
+    CPy_INCREF(cpy_r_r19);
+    cpy_r_r523 = cpy_r_r19;
+    cpy_r_r532 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79;
     if (unlikely(cpy_r_r532.f0 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__80", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL519;
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__79", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL798;
     }
     CPy_INCREF(cpy_r_r532.f0);
     CPy_INCREF(cpy_r_r532.f1);
     CPy_INCREF(cpy_r_r532.f2);
-CPyL515: ;
+CPyL510: ;
     CPy_RestoreExcInfo(cpy_r_r532);
     CPy_DecRef(cpy_r_r532.f0);
     CPy_DecRef(cpy_r_r532.f1);
     CPy_DecRef(cpy_r_r532.f2);
-    cpy_r_r533 = CPy_KeepPropagating();
-    if (!cpy_r_r533) {
-        goto CPyL519;
-    } else
-        goto CPyL736;
-CPyL516: ;
-    CPy_Unreachable();
-CPyL517: ;
-    cpy_r_r534 = NULL;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79);
+    goto CPyL499;
+CPyL511: ;
+    cpy_r_r522 = cpy_r_r19;
+    cpy_r_r533 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79;
+    if (unlikely(cpy_r_r533.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__79", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL799;
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79 = cpy_r_r534;
-    cpy_r_r535 = 1;
-    if (unlikely(!cpy_r_r535)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL575;
-    }
-CPyL518: ;
-    tuple_T3OOO __tmp98 = { NULL, NULL, NULL };
-    cpy_r_r536 = __tmp98;
-    cpy_r_r537 = cpy_r_r536;
+    CPy_INCREF(cpy_r_r533.f0);
+    CPy_INCREF(cpy_r_r533.f1);
+    CPy_INCREF(cpy_r_r533.f2);
+CPyL512: ;
+    CPy_RestoreExcInfo(cpy_r_r533);
+    CPy_DecRef(cpy_r_r533.f0);
+    CPy_DecRef(cpy_r_r533.f1);
+    CPy_DecRef(cpy_r_r533.f2);
     goto CPyL521;
+CPyL513: ;
+    cpy_r_r534 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__79;
+    if (unlikely(cpy_r_r534.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__79", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    }
+    CPy_INCREF(cpy_r_r534.f0);
+    CPy_INCREF(cpy_r_r534.f1);
+    CPy_INCREF(cpy_r_r534.f2);
+CPyL514: ;
+    CPy_RestoreExcInfo(cpy_r_r534);
+    CPy_DecRef(cpy_r_r534.f0);
+    CPy_DecRef(cpy_r_r534.f1);
+    CPy_DecRef(cpy_r_r534.f2);
+    cpy_r_r535 = CPy_KeepPropagating();
+    if (!cpy_r_r535) {
+        goto CPyL569;
+    } else
+        goto CPyL800;
+CPyL515: ;
+    CPy_Unreachable();
+CPyL516: ;
+    cpy_r_r536 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__78;
+    if (unlikely(cpy_r_r536 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__78", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL801;
+    }
+    CPy_INCREF(cpy_r_r536);
+CPyL517: ;
+    cpy_r_r537 = CPyIter_Send(cpy_r_r536, cpy_r_arg);
+    CPy_DECREF(cpy_r_r536);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r537 == NULL) goto CPyL802;
+    cpy_r_r523 = cpy_r_r537;
+    goto CPyL499;
 CPyL519: ;
-    cpy_r_r538 = NULL;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79 != NULL) {
-        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79);
+    cpy_r_r538 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r538 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79 = cpy_r_r538;
-    cpy_r_r539 = 1;
-    if (unlikely(!cpy_r_r539)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL575;
-    }
-    cpy_r_r540 = CPy_CatchError();
-    cpy_r_r537 = cpy_r_r540;
+    cpy_r_r522 = cpy_r_r538;
 CPyL521: ;
-    cpy_r_r541 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__74;
-    if (unlikely(cpy_r_r541 == 2)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__74", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL737;
-    }
+    cpy_r_r539 = CPyStatic_streams___llamapay___Decimal;
+    if (unlikely(cpy_r_r539 == NULL)) {
+        goto CPyL803;
+    } else
+        goto CPyL524;
 CPyL522: ;
-    if (!cpy_r_r541) goto CPyL527;
+    PyErr_SetString(PyExc_NameError, "value for final name \"Decimal\" was not set");
+    cpy_r_r540 = 0;
+    if (unlikely(!cpy_r_r540)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    } else
+        goto CPyL804;
 CPyL523: ;
-    cpy_r_r542 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r543 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__72;
-    if (unlikely(cpy_r_r543 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__72", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL737;
-    }
-    CPy_INCREF(cpy_r_r543);
+    CPy_Unreachable();
 CPyL524: ;
-    cpy_r_r544 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__73;
-    if (unlikely(cpy_r_r544 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__73", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL738;
+    PyObject *cpy_r_r541[1] = {cpy_r_r522};
+    cpy_r_r542 = (PyObject **)&cpy_r_r541;
+    cpy_r_r543 = PyObject_Vectorcall(cpy_r_r539, cpy_r_r542, 1, 0);
+    if (unlikely(cpy_r_r543 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL805;
     }
-    CPy_INCREF(cpy_r_r544);
-CPyL525: ;
-    PyObject *cpy_r_r545[4] = {cpy_r_r544, cpy_r_r542, cpy_r_r542, cpy_r_r542};
-    cpy_r_r546 = (PyObject **)&cpy_r_r545;
-    cpy_r_r547 = PyObject_Vectorcall(cpy_r_r543, cpy_r_r546, 4, 0);
-    CPy_DECREF(cpy_r_r543);
-    if (unlikely(cpy_r_r547 == NULL)) {
-        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 366, CPyStatic_streams___llamapay___globals);
-        goto CPyL739;
+    CPy_DECREF(cpy_r_r522);
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price = cpy_r_r543;
+    cpy_r_r544 = 1;
+    if (unlikely(!cpy_r_r544)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 379, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    cpy_r_r545 = CPyStatic_streams___llamapay____STREAMS_THREAD;
+    if (unlikely(cpy_r_r545 == NULL)) {
+        goto CPyL806;
     } else
-        goto CPyL740;
-CPyL526: ;
-    CPy_DECREF(cpy_r_r544);
+        goto CPyL529;
 CPyL527: ;
-    if (cpy_r_r537.f0 == NULL) {
-        goto CPyL530;
+    PyErr_SetString(PyExc_NameError, "value for final name \"_STREAMS_THREAD\" was not set");
+    cpy_r_r546 = 0;
+    if (unlikely(!cpy_r_r546)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
     } else
-        goto CPyL741;
+        goto CPyL807;
 CPyL528: ;
+    CPy_Unreachable();
+CPyL529: ;
+    cpy_r_r547 = CPyStatic_streams___llamapay___globals;
+    cpy_r_r548 = CPyStatics[303]; /* 'StreamedFunds' */
+    cpy_r_r549 = CPyDict_GetItem(cpy_r_r547, cpy_r_r548);
+    if (unlikely(cpy_r_r549 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 381, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    cpy_r_r550 = CPyStatics[314]; /* 'create_entity' */
+    cpy_r_r551 = CPyObject_GetAttr(cpy_r_r549, cpy_r_r550);
+    CPy_DECREF(cpy_r_r549);
+    if (unlikely(cpy_r_r551 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 381, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    cpy_r_r552 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_stream_id;
+    if (unlikely(cpy_r_r552 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "stream_id", 382, CPyStatic_streams___llamapay___globals);
+        goto CPyL808;
+    }
+    CPy_INCREF(cpy_r_r552);
+CPyL532: ;
+    cpy_r_r553 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_date_obj;
+    if (unlikely(cpy_r_r553 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "date_obj", 383, CPyStatic_streams___llamapay___globals);
+        goto CPyL809;
+    }
+    CPy_INCREF(cpy_r_r553);
+CPyL533: ;
+    cpy_r_r554 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_price;
+    if (unlikely(cpy_r_r554 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "price", 384, CPyStatic_streams___llamapay___globals);
+        goto CPyL810;
+    }
+    CPy_INCREF(cpy_r_r554);
+CPyL534: ;
+    cpy_r_r555 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_seconds_active_today;
+    if (unlikely(cpy_r_r555 == CPY_INT_TAG)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "seconds_active_today", 385, CPyStatic_streams___llamapay___globals);
+        goto CPyL811;
+    }
+    CPyTagged_INCREF(cpy_r_r555);
+CPyL535: ;
+    cpy_r_r556 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_is_last_day;
+    if (unlikely(cpy_r_r556 == 2)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "is_last_day", 386, CPyStatic_streams___llamapay___globals);
+        goto CPyL812;
+    }
+CPyL536: ;
+    cpy_r_r557 = CPyStatics[265]; /* 'run' */
+    cpy_r_r558 = CPyTagged_StealAsObject(cpy_r_r555);
+    cpy_r_r559 = cpy_r_r556 ? Py_True : Py_False;
+    PyObject *cpy_r_r560[7] = {
+        cpy_r_r545, cpy_r_r551, cpy_r_r552, cpy_r_r553, cpy_r_r554,
+        cpy_r_r558, cpy_r_r559
+    };
+    cpy_r_r561 = (PyObject **)&cpy_r_r560;
+    cpy_r_r562 = PyObject_VectorcallMethod(cpy_r_r557, cpy_r_r561, 9223372036854775815ULL, 0);
+    if (unlikely(cpy_r_r562 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL813;
+    }
+    CPy_DECREF(cpy_r_r551);
+    CPy_DECREF(cpy_r_r552);
+    CPy_DECREF(cpy_r_r553);
+    CPy_DECREF(cpy_r_r554);
+    CPy_DECREF(cpy_r_r558);
+    cpy_r_r563 = CPy_GetCoro(cpy_r_r562);
+    CPy_DECREF(cpy_r_r562);
+    if (unlikely(cpy_r_r563 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__80 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__80);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__80 = cpy_r_r563;
+    cpy_r_r564 = 1;
+    if (unlikely(!cpy_r_r564)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    cpy_r_r565 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__80;
+    if (unlikely(cpy_r_r565 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__80", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL793;
+    }
+    CPy_INCREF(cpy_r_r565);
+CPyL540: ;
+    cpy_r_r566 = CPyIter_Next(cpy_r_r565);
+    CPy_DECREF(cpy_r_r565);
+    if (cpy_r_r566 == NULL) {
+        goto CPyL814;
+    } else
+        goto CPyL543;
+CPyL541: ;
+    cpy_r_r567 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r567 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    }
+    cpy_r_r568 = cpy_r_r567;
+    goto CPyL566;
+CPyL543: ;
+    cpy_r_r569 = cpy_r_r566;
+CPyL544: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = 22;
+    cpy_r_r570 = 1;
+    if (unlikely(!cpy_r_r570)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL815;
+    } else
+        goto CPyL816;
+CPyL545: ;
+    return cpy_r_r569;
+CPyL546: ;
+    cpy_r_r571 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r572 = cpy_r_type != cpy_r_r571;
+    if (!cpy_r_r572) goto CPyL549;
+    CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
+    if (unlikely(!0)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL550;
+    } else
+        goto CPyL817;
+CPyL548: ;
+    CPy_Unreachable();
+CPyL549: ;
+    CPy_INCREF(cpy_r_arg);
+    goto CPyL561;
+CPyL550: ;
+    cpy_r_r573 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81 = cpy_r_r573;
+    cpy_r_r574 = 1;
+    if (unlikely(!cpy_r_r574)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL818;
+    }
+    cpy_r_r575 = (PyObject **)&cpy_r_r21;
+    cpy_r_r576 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__80;
+    if (unlikely(cpy_r_r576 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__80", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL818;
+    }
+    CPy_INCREF(cpy_r_r576);
+CPyL552: ;
+    cpy_r_r577 = CPy_YieldFromErrorHandle(cpy_r_r576, cpy_r_r575);
+    CPy_DecRef(cpy_r_r576);
+    if (unlikely(cpy_r_r577 == 2)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL818;
+    }
+    if (cpy_r_r577) goto CPyL556;
+    CPy_INCREF(cpy_r_r21);
+    cpy_r_r569 = cpy_r_r21;
+    cpy_r_r578 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81;
+    if (unlikely(cpy_r_r578.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__81", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL819;
+    }
+    CPy_INCREF(cpy_r_r578.f0);
+    CPy_INCREF(cpy_r_r578.f1);
+    CPy_INCREF(cpy_r_r578.f2);
+CPyL555: ;
+    CPy_RestoreExcInfo(cpy_r_r578);
+    CPy_DecRef(cpy_r_r578.f0);
+    CPy_DecRef(cpy_r_r578.f1);
+    CPy_DecRef(cpy_r_r578.f2);
+    goto CPyL544;
+CPyL556: ;
+    cpy_r_r568 = cpy_r_r21;
+    cpy_r_r579 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81;
+    if (unlikely(cpy_r_r579.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__81", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL820;
+    }
+    CPy_INCREF(cpy_r_r579.f0);
+    CPy_INCREF(cpy_r_r579.f1);
+    CPy_INCREF(cpy_r_r579.f2);
+CPyL557: ;
+    CPy_RestoreExcInfo(cpy_r_r579);
+    CPy_DecRef(cpy_r_r579.f0);
+    CPy_DecRef(cpy_r_r579.f1);
+    CPy_DecRef(cpy_r_r579.f2);
+    goto CPyL566;
+CPyL558: ;
+    cpy_r_r580 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__81;
+    if (unlikely(cpy_r_r580.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__81", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    }
+    CPy_INCREF(cpy_r_r580.f0);
+    CPy_INCREF(cpy_r_r580.f1);
+    CPy_INCREF(cpy_r_r580.f2);
+CPyL559: ;
+    CPy_RestoreExcInfo(cpy_r_r580);
+    CPy_DecRef(cpy_r_r580.f0);
+    CPy_DecRef(cpy_r_r580.f1);
+    CPy_DecRef(cpy_r_r580.f2);
+    cpy_r_r581 = CPy_KeepPropagating();
+    if (!cpy_r_r581) {
+        goto CPyL569;
+    } else
+        goto CPyL821;
+CPyL560: ;
+    CPy_Unreachable();
+CPyL561: ;
+    cpy_r_r582 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__80;
+    if (unlikely(cpy_r_r582 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__80", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL822;
+    }
+    CPy_INCREF(cpy_r_r582);
+CPyL562: ;
+    cpy_r_r583 = CPyIter_Send(cpy_r_r582, cpy_r_arg);
+    CPy_DECREF(cpy_r_r582);
+    CPy_DECREF(cpy_r_arg);
+    if (cpy_r_r583 == NULL) goto CPyL823;
+    cpy_r_r569 = cpy_r_r583;
+    goto CPyL544;
+CPyL564: ;
+    cpy_r_r584 = CPy_FetchStopIterationValue();
+    if (unlikely(cpy_r_r584 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    }
+    cpy_r_r568 = cpy_r_r584;
+CPyL566: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity = cpy_r_r568;
+    cpy_r_r585 = 1;
+    if (unlikely(!cpy_r_r585)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 380, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    }
+    cpy_r_r586 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->_entity;
+    if (unlikely(cpy_r_r586 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "entity", 388, CPyStatic_streams___llamapay___globals);
+        goto CPyL569;
+    }
+    CPy_INCREF(cpy_r_r586);
+CPyL568: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82 = cpy_r_r586;
+    cpy_r_r587 = 1;
+    if (unlikely(!cpy_r_r587)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 388, CPyStatic_streams___llamapay___globals);
+    } else
+        goto CPyL584;
+CPyL569: ;
+    cpy_r_r588 = CPy_CatchError();
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83.f0 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83.f0);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83.f1);
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83.f2);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83 = cpy_r_r588;
+    cpy_r_r589 = 1;
+    if (unlikely(!cpy_r_r589)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL580;
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__77 = 0;
+    cpy_r_r590 = 1;
+    if (unlikely(!cpy_r_r590)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL580;
+    }
+    cpy_r_r591 = CPy_GetExcInfo();
+    cpy_r_r592 = cpy_r_r591.f0;
+    CPy_INCREF(cpy_r_r592);
+    cpy_r_r593 = cpy_r_r591.f1;
+    CPy_INCREF(cpy_r_r593);
+    cpy_r_r594 = cpy_r_r591.f2;
+    CPy_INCREF(cpy_r_r594);
+    CPy_DecRef(cpy_r_r591.f0);
+    CPy_DecRef(cpy_r_r591.f1);
+    CPy_DecRef(cpy_r_r591.f2);
+    cpy_r_r595 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__75;
+    if (unlikely(cpy_r_r595 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__75", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL824;
+    }
+    CPy_INCREF(cpy_r_r595);
+CPyL572: ;
+    cpy_r_r596 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__76;
+    if (unlikely(cpy_r_r596 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__76", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL825;
+    }
+    CPy_INCREF(cpy_r_r596);
+CPyL573: ;
+    PyObject *cpy_r_r597[4] = {cpy_r_r596, cpy_r_r592, cpy_r_r593, cpy_r_r594};
+    cpy_r_r598 = (PyObject **)&cpy_r_r597;
+    cpy_r_r599 = PyObject_Vectorcall(cpy_r_r595, cpy_r_r598, 4, 0);
+    CPy_DecRef(cpy_r_r595);
+    if (unlikely(cpy_r_r599 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL826;
+    }
+    CPy_DecRef(cpy_r_r596);
+    CPy_DecRef(cpy_r_r592);
+    CPy_DecRef(cpy_r_r593);
+    CPy_DecRef(cpy_r_r594);
+    cpy_r_r600 = PyObject_IsTrue(cpy_r_r599);
+    CPy_DecRef(cpy_r_r599);
+    cpy_r_r601 = cpy_r_r600 >= 0;
+    if (unlikely(!cpy_r_r601)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL580;
+    }
+    cpy_r_r602 = cpy_r_r600;
+    if (cpy_r_r602) goto CPyL578;
     CPy_Reraise();
     if (!0) {
-        goto CPyL536;
+        goto CPyL580;
     } else
-        goto CPyL742;
-CPyL529: ;
+        goto CPyL827;
+CPyL577: ;
     CPy_Unreachable();
-CPyL530: ;
-    cpy_r_r548 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79;
-    if (unlikely(cpy_r_r548 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__79", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL575;
+CPyL578: ;
+    cpy_r_r603 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83;
+    if (unlikely(cpy_r_r603.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__83", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL585;
     }
-    CPy_INCREF(cpy_r_r548);
-CPyL531: ;
-    if (cpy_r_r548 == NULL) {
-        goto CPyL540;
+    CPy_INCREF(cpy_r_r603.f0);
+    CPy_INCREF(cpy_r_r603.f1);
+    CPy_INCREF(cpy_r_r603.f2);
+CPyL579: ;
+    CPy_RestoreExcInfo(cpy_r_r603);
+    CPy_DecRef(cpy_r_r603.f0);
+    CPy_DecRef(cpy_r_r603.f1);
+    CPy_DecRef(cpy_r_r603.f2);
+    goto CPyL583;
+CPyL580: ;
+    cpy_r_r604 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__83;
+    if (unlikely(cpy_r_r604.f0 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__83", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL585;
+    }
+    CPy_INCREF(cpy_r_r604.f0);
+    CPy_INCREF(cpy_r_r604.f1);
+    CPy_INCREF(cpy_r_r604.f2);
+CPyL581: ;
+    CPy_RestoreExcInfo(cpy_r_r604);
+    CPy_DecRef(cpy_r_r604.f0);
+    CPy_DecRef(cpy_r_r604.f1);
+    CPy_DecRef(cpy_r_r604.f2);
+    cpy_r_r605 = CPy_KeepPropagating();
+    if (!cpy_r_r605) {
+        goto CPyL585;
     } else
-        goto CPyL743;
-CPyL532: ;
-    cpy_r_r549 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_temp__79;
-    if (unlikely(cpy_r_r549 == NULL)) {
-        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__79", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL575;
+        goto CPyL828;
+CPyL582: ;
+    CPy_Unreachable();
+CPyL583: ;
+    cpy_r_r606 = NULL;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82);
     }
-    CPy_INCREF(cpy_r_r549);
-CPyL533: ;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
-    }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = -2;
-    cpy_r_r550 = 1;
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    if (unlikely(!cpy_r_r550)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82 = cpy_r_r606;
+    cpy_r_r607 = 1;
+    if (unlikely(!cpy_r_r607)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
-        goto CPyL744;
+        goto CPyL642;
     }
-    CPyGen_SetStopIterationValue(cpy_r_r549);
-    CPy_DECREF(cpy_r_r549);
-    if (!0) goto CPyL556;
-    CPy_Unreachable();
-CPyL536: ;
-    if (cpy_r_r537.f0 == NULL) goto CPyL538;
-    CPy_RestoreExcInfo(cpy_r_r537);
-    CPy_XDECREF(cpy_r_r537.f0);
-    CPy_XDECREF(cpy_r_r537.f1);
-    CPy_XDECREF(cpy_r_r537.f2);
-CPyL538: ;
-    cpy_r_r551 = CPy_KeepPropagating();
-    if (!cpy_r_r551) goto CPyL556;
-    CPy_Unreachable();
-CPyL540: ;
-    cpy_r_r552 = Py_None;
-    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ != CPY_INT_TAG) {
-        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__);
+CPyL584: ;
+    tuple_T3OOO __tmp98 = { NULL, NULL, NULL };
+    cpy_r_r608 = __tmp98;
+    cpy_r_r609 = cpy_r_r608;
+    goto CPyL587;
+CPyL585: ;
+    cpy_r_r610 = NULL;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82 != NULL) {
+        CPy_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82);
     }
-    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r20)->___mypyc_next_label__ = -2;
-    cpy_r_r553 = 1;
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    if (unlikely(!cpy_r_r553)) {
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82 = cpy_r_r610;
+    cpy_r_r611 = 1;
+    if (unlikely(!cpy_r_r611)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL642;
+    }
+    cpy_r_r612 = CPy_CatchError();
+    cpy_r_r609 = cpy_r_r612;
+CPyL587: ;
+    cpy_r_r613 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__77;
+    if (unlikely(cpy_r_r613 == 2)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__77", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL829;
+    }
+CPyL588: ;
+    if (!cpy_r_r613) goto CPyL593;
+CPyL589: ;
+    cpy_r_r614 = (PyObject *)&_Py_NoneStruct;
+    cpy_r_r615 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__75;
+    if (unlikely(cpy_r_r615 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__75", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL829;
+    }
+    CPy_INCREF(cpy_r_r615);
+CPyL590: ;
+    cpy_r_r616 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__76;
+    if (unlikely(cpy_r_r616 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__76", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL830;
+    }
+    CPy_INCREF(cpy_r_r616);
+CPyL591: ;
+    PyObject *cpy_r_r617[4] = {cpy_r_r616, cpy_r_r614, cpy_r_r614, cpy_r_r614};
+    cpy_r_r618 = (PyObject **)&cpy_r_r617;
+    cpy_r_r619 = PyObject_Vectorcall(cpy_r_r615, cpy_r_r618, 4, 0);
+    CPy_DECREF(cpy_r_r615);
+    if (unlikely(cpy_r_r619 == NULL)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 378, CPyStatic_streams___llamapay___globals);
+        goto CPyL831;
+    } else
+        goto CPyL832;
+CPyL592: ;
+    CPy_DECREF(cpy_r_r616);
+CPyL593: ;
+    if (cpy_r_r609.f0 == NULL) {
+        goto CPyL596;
+    } else
+        goto CPyL833;
+CPyL594: ;
+    CPy_Reraise();
+    if (!0) {
+        goto CPyL602;
+    } else
+        goto CPyL834;
+CPyL595: ;
+    CPy_Unreachable();
+CPyL596: ;
+    cpy_r_r620 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82;
+    if (unlikely(cpy_r_r620 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__82", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL642;
+    }
+    CPy_INCREF(cpy_r_r620);
+CPyL597: ;
+    if (cpy_r_r620 == NULL) {
+        goto CPyL606;
+    } else
+        goto CPyL835;
+CPyL598: ;
+    cpy_r_r621 = ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_temp__82;
+    if (unlikely(cpy_r_r621 == NULL)) {
+        CPy_AttributeError("dao_treasury/streams/llamapay.py", "process_stream_for_date", "process_stream_for_date_LlamaPayProcessor_env", "__mypyc_temp__82", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL642;
+    }
+    CPy_INCREF(cpy_r_r621);
+CPyL599: ;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = -2;
+    cpy_r_r622 = 1;
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    if (unlikely(!cpy_r_r622)) {
+        CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", -1, CPyStatic_streams___llamapay___globals);
+        goto CPyL836;
+    }
+    CPyGen_SetStopIterationValue(cpy_r_r621);
+    CPy_DECREF(cpy_r_r621);
+    if (!0) goto CPyL623;
+    CPy_Unreachable();
+CPyL602: ;
+    if (cpy_r_r609.f0 == NULL) goto CPyL604;
+    CPy_RestoreExcInfo(cpy_r_r609);
+    CPy_XDECREF(cpy_r_r609.f0);
+    CPy_XDECREF(cpy_r_r609.f1);
+    CPy_XDECREF(cpy_r_r609.f2);
+CPyL604: ;
+    cpy_r_r623 = CPy_KeepPropagating();
+    if (!cpy_r_r623) goto CPyL623;
+    CPy_Unreachable();
+CPyL606: ;
+    cpy_r_r624 = Py_None;
+    if (((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ != CPY_INT_TAG) {
+        CPyTagged_DECREF(((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__);
+    }
+    ((dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject *)cpy_r_r22)->___mypyc_next_label__ = -2;
+    cpy_r_r625 = 1;
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    if (unlikely(!cpy_r_r625)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 326, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
-    CPyGen_SetStopIterationValue(cpy_r_r552);
-    if (!0) goto CPyL556;
+    CPyGen_SetStopIterationValue(cpy_r_r624);
+    if (!0) goto CPyL623;
     CPy_Unreachable();
-CPyL543: ;
-    cpy_r_r554 = cpy_r_r21 == 0;
-    if (cpy_r_r554) goto CPyL745;
-    cpy_r_r555 = cpy_r_r21 == 2;
-    if (cpy_r_r555) {
-        goto CPyL746;
+CPyL609: ;
+    cpy_r_r626 = cpy_r_r23 == 0;
+    if (cpy_r_r626) goto CPyL837;
+    cpy_r_r627 = cpy_r_r23 == 2;
+    if (cpy_r_r627) {
+        goto CPyL838;
     } else
-        goto CPyL747;
-CPyL545: ;
-    cpy_r_r556 = cpy_r_r21 == 4;
-    if (cpy_r_r556) {
-        goto CPyL748;
+        goto CPyL839;
+CPyL611: ;
+    cpy_r_r628 = cpy_r_r23 == 4;
+    if (cpy_r_r628) {
+        goto CPyL840;
     } else
-        goto CPyL749;
-CPyL546: ;
-    cpy_r_r557 = cpy_r_r21 == 6;
-    if (cpy_r_r557) {
-        goto CPyL750;
+        goto CPyL841;
+CPyL612: ;
+    cpy_r_r629 = cpy_r_r23 == 6;
+    if (cpy_r_r629) {
+        goto CPyL842;
     } else
-        goto CPyL751;
-CPyL547: ;
-    cpy_r_r558 = cpy_r_r21 == 8;
-    if (cpy_r_r558) {
-        goto CPyL752;
+        goto CPyL843;
+CPyL613: ;
+    cpy_r_r630 = cpy_r_r23 == 8;
+    if (cpy_r_r630) goto CPyL844;
+    cpy_r_r631 = cpy_r_r23 == 10;
+    if (cpy_r_r631) {
+        goto CPyL845;
     } else
-        goto CPyL753;
-CPyL548: ;
-    cpy_r_r559 = cpy_r_r21 == 10;
-    if (cpy_r_r559) {
-        goto CPyL754;
+        goto CPyL846;
+CPyL615: ;
+    cpy_r_r632 = cpy_r_r23 == 12;
+    if (cpy_r_r632) {
+        goto CPyL847;
     } else
-        goto CPyL755;
-CPyL549: ;
-    cpy_r_r560 = cpy_r_r21 == 12;
-    if (cpy_r_r560) {
-        goto CPyL756;
+        goto CPyL848;
+CPyL616: ;
+    cpy_r_r633 = cpy_r_r23 == 14;
+    if (cpy_r_r633) {
+        goto CPyL849;
     } else
-        goto CPyL757;
-CPyL550: ;
-    cpy_r_r561 = cpy_r_r21 == 14;
-    if (cpy_r_r561) {
-        goto CPyL758;
+        goto CPyL850;
+CPyL617: ;
+    cpy_r_r634 = cpy_r_r23 == 16;
+    if (cpy_r_r634) {
+        goto CPyL851;
     } else
-        goto CPyL759;
-CPyL551: ;
-    cpy_r_r562 = cpy_r_r21 == 16;
-    if (cpy_r_r562) {
-        goto CPyL760;
+        goto CPyL852;
+CPyL618: ;
+    cpy_r_r635 = cpy_r_r23 == 18;
+    if (cpy_r_r635) {
+        goto CPyL853;
     } else
-        goto CPyL761;
-CPyL552: ;
-    cpy_r_r563 = cpy_r_r21 == 18;
-    if (cpy_r_r563) {
-        goto CPyL762;
+        goto CPyL854;
+CPyL619: ;
+    cpy_r_r636 = cpy_r_r23 == 20;
+    if (cpy_r_r636) {
+        goto CPyL855;
     } else
-        goto CPyL763;
-CPyL553: ;
-    cpy_r_r564 = cpy_r_r21 == 20;
-    CPyTagged_DECREF(cpy_r_r21);
-    if (cpy_r_r564) {
-        goto CPyL480;
+        goto CPyL856;
+CPyL620: ;
+    cpy_r_r637 = cpy_r_r23 == 22;
+    CPyTagged_DECREF(cpy_r_r23);
+    if (cpy_r_r637) {
+        goto CPyL546;
     } else
-        goto CPyL764;
-CPyL554: ;
+        goto CPyL857;
+CPyL621: ;
     PyErr_SetNone(PyExc_StopIteration);
-    cpy_r_r565 = 0;
-    if (unlikely(!cpy_r_r565)) {
+    cpy_r_r638 = 0;
+    if (unlikely(!cpy_r_r638)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "process_stream_for_date", 326, CPyStatic_streams___llamapay___globals);
-        goto CPyL556;
+        goto CPyL623;
     }
     CPy_Unreachable();
-CPyL556: ;
-    cpy_r_r566 = NULL;
-    return cpy_r_r566;
-CPyL557: ;
+CPyL623: ;
+    cpy_r_r639 = NULL;
+    return cpy_r_r639;
+CPyL624: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46033,8 +46540,9 @@ CPyL557: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    goto CPyL556;
-CPyL558: ;
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL623;
+CPyL625: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46045,9 +46553,10 @@ CPyL558: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL559: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL626: ;
     CPy_XDECREF(cpy_r_r1);
     CPy_XDECREF(cpy_r_r3);
     CPy_XDECREF(cpy_r_r5);
@@ -46058,9 +46567,10 @@ CPyL559: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL3;
-CPyL560: ;
+CPyL627: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46071,9 +46581,10 @@ CPyL560: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     goto CPyL6;
-CPyL561: ;
+CPyL628: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46084,44 +46595,47 @@ CPyL561: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r30);
-    goto CPyL556;
-CPyL562: ;
-    CPy_XDecRef(cpy_r_r1);
-    CPy_XDecRef(cpy_r_r3);
-    CPy_XDecRef(cpy_r_r5);
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r30);
-    CPy_DecRef(cpy_r_r31);
-    goto CPyL556;
-CPyL563: ;
-    CPy_XDecRef(cpy_r_r1);
-    CPy_XDecRef(cpy_r_r3);
-    CPy_XDecRef(cpy_r_r5);
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r30);
-    CPy_DecRef(cpy_r_r31);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     CPy_DecRef(cpy_r_r32);
-    goto CPyL556;
-CPyL564: ;
+    goto CPyL623;
+CPyL629: ;
+    CPy_XDecRef(cpy_r_r1);
+    CPy_XDecRef(cpy_r_r3);
+    CPy_XDecRef(cpy_r_r5);
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r32);
+    CPy_DecRef(cpy_r_r33);
+    goto CPyL623;
+CPyL630: ;
+    CPy_XDecRef(cpy_r_r1);
+    CPy_XDecRef(cpy_r_r3);
+    CPy_XDecRef(cpy_r_r5);
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r32);
+    CPy_DecRef(cpy_r_r33);
+    CPy_DecRef(cpy_r_r34);
+    goto CPyL623;
+CPyL631: ;
     CPy_XDECREF(cpy_r_r1);
     goto CPyL17;
-CPyL565: ;
+CPyL632: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46131,12 +46645,13 @@ CPyL565: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL566: ;
-    CPy_DecRef(cpy_r_r43);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL633: ;
+    CPy_DecRef(cpy_r_r45);
     goto CPyL26;
-CPyL567: ;
+CPyL634: ;
     CPy_XDECREF(cpy_r_r1);
     CPy_XDECREF(cpy_r_r3);
     CPy_XDECREF(cpy_r_r5);
@@ -46147,9 +46662,10 @@ CPyL567: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL21;
-CPyL568: ;
+CPyL635: ;
     CPy_XDECREF(cpy_r_r1);
     CPy_XDECREF(cpy_r_r3);
     CPy_XDECREF(cpy_r_r5);
@@ -46160,9 +46676,10 @@ CPyL568: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL24;
-CPyL569: ;
+CPyL636: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46173,8 +46690,9 @@ CPyL569: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
     goto CPyL34;
-CPyL570: ;
+CPyL637: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46185,9 +46703,10 @@ CPyL570: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r43);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r45);
     goto CPyL34;
-CPyL571: ;
+CPyL638: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46197,9 +46716,10 @@ CPyL571: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r42);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r44);
     goto CPyL34;
-CPyL572: ;
+CPyL639: ;
     CPy_XDecRef(cpy_r_r1);
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
@@ -46210,13 +46730,14 @@ CPyL572: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL573: ;
+    goto CPyL623;
+CPyL640: ;
     CPy_XDECREF(cpy_r_r1);
     goto CPyL40;
-CPyL574: ;
+CPyL641: ;
     CPy_XDECREF(cpy_r_r3);
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
@@ -46226,14 +46747,15 @@ CPyL574: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
     goto CPyL46;
-CPyL575: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL576: ;
-    CPy_DecRef(cpy_r_r64);
-    goto CPyL556;
-CPyL577: ;
+CPyL642: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL643: ;
+    CPy_DecRef(cpy_r_r66);
+    goto CPyL623;
+CPyL644: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46243,9 +46765,10 @@ CPyL577: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     goto CPyL51;
-CPyL578: ;
+CPyL645: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46255,10 +46778,11 @@ CPyL578: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r72);
-    goto CPyL556;
-CPyL579: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r74);
+    goto CPyL623;
+CPyL646: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46268,14 +46792,15 @@ CPyL579: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r72);
-    CPy_DecRef(cpy_r_r73);
-    goto CPyL556;
-CPyL580: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r74);
+    CPy_DecRef(cpy_r_r75);
+    goto CPyL623;
+CPyL647: ;
     CPy_XDECREF(cpy_r_r3);
     goto CPyL61;
-CPyL581: ;
+CPyL648: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46284,12 +46809,13 @@ CPyL581: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL582: ;
-    CPy_DecRef(cpy_r_r84);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL649: ;
+    CPy_DecRef(cpy_r_r86);
     goto CPyL70;
-CPyL583: ;
+CPyL650: ;
     CPy_XDECREF(cpy_r_r3);
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
@@ -46299,9 +46825,10 @@ CPyL583: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL65;
-CPyL584: ;
+CPyL651: ;
     CPy_XDECREF(cpy_r_r3);
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
@@ -46311,9 +46838,10 @@ CPyL584: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL68;
-CPyL585: ;
+CPyL652: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46323,8 +46851,9 @@ CPyL585: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
     goto CPyL78;
-CPyL586: ;
+CPyL653: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46334,9 +46863,10 @@ CPyL586: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r84);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r86);
     goto CPyL78;
-CPyL587: ;
+CPyL654: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46345,9 +46875,10 @@ CPyL587: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r83);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r85);
     goto CPyL78;
-CPyL588: ;
+CPyL655: ;
     CPy_XDecRef(cpy_r_r3);
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
@@ -46357,13 +46888,14 @@ CPyL588: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL589: ;
+    goto CPyL623;
+CPyL656: ;
     CPy_XDECREF(cpy_r_r3);
     goto CPyL84;
-CPyL590: ;
+CPyL657: ;
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
     CPy_XDECREF(cpy_r_r9);
@@ -46372,10 +46904,11 @@ CPyL590: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    CPy_DECREF(cpy_r_r100);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    CPy_DECREF(cpy_r_r102);
     goto CPyL88;
-CPyL591: ;
+CPyL658: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46384,10 +46917,11 @@ CPyL591: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r100);
-    goto CPyL556;
-CPyL592: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r102);
+    goto CPyL623;
+CPyL659: ;
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
     CPy_XDECREF(cpy_r_r9);
@@ -46396,10 +46930,11 @@ CPyL592: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    CPy_DECREF(cpy_r_r100);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    CPy_DECREF(cpy_r_r102);
     goto CPyL92;
-CPyL593: ;
+CPyL660: ;
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
     CPy_XDECREF(cpy_r_r9);
@@ -46408,10 +46943,11 @@ CPyL593: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    CPy_DECREF(cpy_r_r107);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    CPy_DECREF(cpy_r_r109);
     goto CPyL96;
-CPyL594: ;
+CPyL661: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46420,10 +46956,11 @@ CPyL594: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r109);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r111);
     goto CPyL100;
-CPyL595: ;
+CPyL662: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46432,10 +46969,11 @@ CPyL595: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r109);
-    goto CPyL556;
-CPyL596: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r111);
+    goto CPyL623;
+CPyL663: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46444,10 +46982,11 @@ CPyL596: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r117);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r119);
     goto CPyL105;
-CPyL597: ;
+CPyL664: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46456,10 +46995,11 @@ CPyL597: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r117);
-    goto CPyL556;
-CPyL598: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r119);
+    goto CPyL623;
+CPyL665: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46468,10 +47008,11 @@ CPyL598: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r127);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r129);
     goto CPyL112;
-CPyL599: ;
+CPyL666: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46480,10 +47021,11 @@ CPyL599: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r127);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r129);
     goto CPyL115;
-CPyL600: ;
+CPyL667: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46492,13 +47034,14 @@ CPyL600: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r127);
-    goto CPyL556;
-CPyL601: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r129);
+    goto CPyL623;
+CPyL668: ;
     CPy_XDECREF(cpy_r_r5);
     goto CPyL166;
-CPyL602: ;
+CPyL669: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46507,10 +47050,11 @@ CPyL602: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r138);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r140);
     goto CPyL123;
-CPyL603: ;
+CPyL670: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46519,10 +47063,11 @@ CPyL603: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r138);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r140);
     goto CPyL126;
-CPyL604: ;
+CPyL671: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46531,10 +47076,11 @@ CPyL604: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r138);
-    goto CPyL556;
-CPyL605: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r140);
+    goto CPyL623;
+CPyL672: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46543,10 +47089,11 @@ CPyL605: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r147);
-    goto CPyL556;
-CPyL606: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r149);
+    goto CPyL623;
+CPyL673: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46555,9 +47102,10 @@ CPyL606: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     goto CPyL134;
-CPyL607: ;
+CPyL674: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46566,13 +47114,14 @@ CPyL607: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r157);
-    goto CPyL556;
-CPyL608: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r159);
+    goto CPyL623;
+CPyL675: ;
     CPy_XDECREF(cpy_r_r5);
     goto CPyL141;
-CPyL609: ;
+CPyL676: ;
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
     CPy_XDecRef(cpy_r_r11);
@@ -46580,12 +47129,13 @@ CPyL609: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL610: ;
-    CPy_DecRef(cpy_r_r167);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL677: ;
+    CPy_DecRef(cpy_r_r169);
     goto CPyL150;
-CPyL611: ;
+CPyL678: ;
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
     CPy_XDECREF(cpy_r_r9);
@@ -46594,9 +47144,10 @@ CPyL611: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL145;
-CPyL612: ;
+CPyL679: ;
     CPy_XDECREF(cpy_r_r5);
     CPy_XDECREF(cpy_r_r7);
     CPy_XDECREF(cpy_r_r9);
@@ -46605,9 +47156,10 @@ CPyL612: ;
     CPy_XDECREF(cpy_r_r15);
     CPy_XDECREF(cpy_r_r17);
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
     goto CPyL148;
-CPyL613: ;
+CPyL680: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46616,8 +47168,9 @@ CPyL613: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
     goto CPyL158;
-CPyL614: ;
+CPyL681: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46626,9 +47179,10 @@ CPyL614: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r167);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r169);
     goto CPyL158;
-CPyL615: ;
+CPyL682: ;
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
     CPy_XDecRef(cpy_r_r11);
@@ -46636,8 +47190,9 @@ CPyL615: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
     goto CPyL158;
-CPyL616: ;
+CPyL683: ;
     CPy_XDecRef(cpy_r_r5);
     CPy_XDecRef(cpy_r_r7);
     CPy_XDecRef(cpy_r_r9);
@@ -46646,799 +47201,980 @@ CPyL616: ;
     CPy_XDecRef(cpy_r_r15);
     CPy_XDecRef(cpy_r_r17);
     CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
     CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL617: ;
+    goto CPyL623;
+CPyL684: ;
     CPy_XDECREF(cpy_r_r5);
     goto CPyL164;
-CPyL618: ;
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r183);
-    goto CPyL168;
-CPyL619: ;
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r183);
-    goto CPyL556;
-CPyL620: ;
-    CPy_XDECREF(cpy_r_r7);
-    goto CPyL175;
-CPyL621: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL622: ;
-    CPy_DecRef(cpy_r_r197);
-    goto CPyL184;
-CPyL623: ;
-    CPy_XDECREF(cpy_r_r7);
-    CPy_XDECREF(cpy_r_r9);
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL179;
-CPyL624: ;
-    CPy_XDECREF(cpy_r_r7);
-    CPy_XDECREF(cpy_r_r9);
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL182;
-CPyL625: ;
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL192;
-CPyL626: ;
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r197);
-    goto CPyL192;
-CPyL627: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r196);
-    goto CPyL192;
-CPyL628: ;
-    CPy_XDecRef(cpy_r_r7);
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL629: ;
-    CPy_XDECREF(cpy_r_r7);
-    goto CPyL198;
-CPyL630: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r214);
-    goto CPyL556;
-CPyL631: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r214);
-    CPy_DecRef(cpy_r_r215);
-    goto CPyL204;
-CPyL632: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r214);
-    CPy_DecRef(cpy_r_r215);
-    goto CPyL556;
-CPyL633: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r222);
-    goto CPyL208;
-CPyL634: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r222);
-    goto CPyL556;
-CPyL635: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r229);
-    goto CPyL556;
-CPyL636: ;
-    CPy_XDECREF(cpy_r_r9);
-    goto CPyL219;
-CPyL637: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL638: ;
-    CPy_DecRef(cpy_r_r238);
-    goto CPyL228;
-CPyL639: ;
-    CPy_XDECREF(cpy_r_r9);
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL223;
-CPyL640: ;
-    CPy_XDECREF(cpy_r_r9);
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL226;
-CPyL641: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL236;
-CPyL642: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r238);
-    goto CPyL236;
-CPyL643: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r237);
-    goto CPyL236;
-CPyL644: ;
-    CPy_XDecRef(cpy_r_r9);
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL645: ;
-    CPy_XDECREF(cpy_r_r9);
-    goto CPyL242;
-CPyL646: ;
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    goto CPyL385;
-CPyL647: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL249;
-CPyL648: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r264);
-    goto CPyL556;
-CPyL649: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r264);
-    CPy_DecRef(cpy_r_r265);
-    goto CPyL556;
-CPyL650: ;
-    CPy_XDECREF(cpy_r_r11);
-    goto CPyL259;
-CPyL651: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL652: ;
-    CPy_DecRef(cpy_r_r276);
-    goto CPyL268;
-CPyL653: ;
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL263;
-CPyL654: ;
-    CPy_XDECREF(cpy_r_r11);
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL266;
-CPyL655: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL276;
-CPyL656: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r276);
-    goto CPyL276;
-CPyL657: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r275);
-    goto CPyL276;
-CPyL658: ;
-    CPy_XDecRef(cpy_r_r11);
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL659: ;
-    CPy_XDECREF(cpy_r_r11);
-    goto CPyL282;
-CPyL660: ;
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    goto CPyL286;
-CPyL661: ;
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r295);
-    goto CPyL556;
-CPyL662: ;
-    CPy_DECREF(cpy_r_r299);
-    goto CPyL288;
-CPyL663: ;
-    CPy_XDECREF(cpy_r_r13);
-    goto CPyL330;
-CPyL664: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r308);
-    goto CPyL556;
-CPyL665: ;
-    CPy_DecRef(cpy_r_r317);
-    goto CPyL312;
-CPyL666: ;
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL307;
-CPyL667: ;
-    CPy_XDECREF(cpy_r_r13);
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL310;
-CPyL668: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL320;
-CPyL669: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r317);
-    goto CPyL320;
-CPyL670: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r316);
-    goto CPyL320;
-CPyL671: ;
-    CPy_XDecRef(cpy_r_r13);
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL672: ;
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL673: ;
-    CPy_XDECREF(cpy_r_r15);
-    goto CPyL336;
-CPyL674: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL556;
-CPyL675: ;
-    CPy_DecRef(cpy_r_r343);
-    goto CPyL345;
-CPyL676: ;
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL340;
-CPyL677: ;
-    CPy_XDECREF(cpy_r_r15);
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL343;
-CPyL678: ;
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL353;
-CPyL679: ;
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r343);
-    goto CPyL353;
-CPyL680: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r342);
-    goto CPyL353;
-CPyL681: ;
-    CPy_XDecRef(cpy_r_r15);
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL556;
-CPyL682: ;
-    CPy_XDECREF(cpy_r_r15);
-    goto CPyL359;
-CPyL683: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r342);
-    goto CPyL362;
-CPyL684: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r342);
-    goto CPyL365;
 CPyL685: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r342);
-    goto CPyL556;
-CPyL686: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r368);
-    goto CPyL556;
-CPyL687: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r372);
-    goto CPyL556;
-CPyL688: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r372);
-    CPy_DecRef(cpy_r_r373);
-    goto CPyL556;
-CPyL689: ;
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL376;
-CPyL690: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r381);
-    goto CPyL556;
-CPyL691: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r389);
-    goto CPyL556;
-CPyL692: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPyTagged_DecRef(cpy_r_r396);
-    goto CPyL556;
-CPyL693: ;
-    CPyTagged_DECREF(cpy_r_r402);
-    goto CPyL398;
-CPyL694: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r420);
-    goto CPyL556;
-CPyL695: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r424);
-    goto CPyL556;
-CPyL696: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL417;
-CPyL697: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r433);
-    goto CPyL556;
-CPyL698: ;
-    CPy_DECREF(cpy_r_r441);
-    goto CPyL423;
-CPyL699: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL503;
-CPyL700: ;
-    CPy_XDECREF(cpy_r_r17);
-    goto CPyL430;
-CPyL701: ;
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL503;
-CPyL702: ;
-    CPy_DecRef(cpy_r_r451);
-    goto CPyL439;
-CPyL703: ;
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL434;
-CPyL704: ;
-    CPy_XDECREF(cpy_r_r17);
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL437;
-CPyL705: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL447;
-CPyL706: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r451);
-    goto CPyL447;
-CPyL707: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r450);
-    goto CPyL447;
-CPyL708: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL449;
-CPyL709: ;
-    CPy_XDecRef(cpy_r_r17);
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL503;
-CPyL710: ;
-    CPy_XDECREF(cpy_r_r17);
-    goto CPyL453;
-CPyL711: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r450);
-    goto CPyL456;
-CPyL712: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL457;
-CPyL713: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r450);
-    goto CPyL503;
-CPyL714: ;
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL461;
-CPyL715: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL462;
-CPyL716: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r479);
-    goto CPyL503;
-CPyL717: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r479);
-    CPy_DecRef(cpy_r_r480);
-    goto CPyL503;
-CPyL718: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r479);
-    CPy_DecRef(cpy_r_r480);
-    CPy_DecRef(cpy_r_r481);
-    goto CPyL503;
-CPyL719: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r479);
-    CPy_DecRef(cpy_r_r480);
-    CPy_DecRef(cpy_r_r481);
-    CPy_DecRef(cpy_r_r482);
-    goto CPyL503;
-CPyL720: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r479);
-    CPy_DecRef(cpy_r_r480);
-    CPy_DecRef(cpy_r_r481);
-    CPy_DecRef(cpy_r_r482);
-    CPyTagged_DecRef(cpy_r_r483);
-    goto CPyL503;
-CPyL721: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r479);
-    CPy_DecRef(cpy_r_r480);
-    CPy_DecRef(cpy_r_r481);
-    CPy_DecRef(cpy_r_r482);
-    CPy_DecRef(cpy_r_r486);
-    goto CPyL503;
-CPyL722: ;
-    CPy_XDECREF(cpy_r_r19);
-    goto CPyL475;
-CPyL723: ;
-    CPy_DecRef(cpy_r_r497);
-    goto CPyL484;
-CPyL724: ;
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL479;
-CPyL725: ;
-    CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL482;
-CPyL726: ;
-    CPy_XDecRef(cpy_r_r19);
-    goto CPyL492;
-CPyL727: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_r497);
-    goto CPyL492;
-CPyL728: ;
-    CPy_DecRef(cpy_r_r496);
-    goto CPyL492;
-CPyL729: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL494;
-CPyL730: ;
-    CPy_XDecRef(cpy_r_r19);
-    CPy_DecRef(cpy_r_arg);
-    goto CPyL503;
-CPyL731: ;
-    CPy_XDECREF(cpy_r_r19);
-    goto CPyL498;
-CPyL732: ;
-    CPy_DecRef(cpy_r_r520);
-    CPy_DecRef(cpy_r_r521);
-    CPy_DecRef(cpy_r_r522);
-    goto CPyL514;
-CPyL733: ;
-    CPy_DecRef(cpy_r_r520);
-    CPy_DecRef(cpy_r_r521);
-    CPy_DecRef(cpy_r_r522);
-    CPy_DecRef(cpy_r_r523);
-    goto CPyL514;
-CPyL734: ;
-    CPy_DecRef(cpy_r_r520);
-    CPy_DecRef(cpy_r_r521);
-    CPy_DecRef(cpy_r_r522);
-    CPy_DecRef(cpy_r_r524);
-    goto CPyL514;
-CPyL735: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL511;
-CPyL736: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL516;
-CPyL737: ;
-    CPy_DecRef(cpy_r_r20);
-    goto CPyL536;
-CPyL738: ;
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r543);
-    goto CPyL536;
-CPyL739: ;
-    CPy_DecRef(cpy_r_r20);
-    CPy_DecRef(cpy_r_r544);
-    goto CPyL536;
-CPyL740: ;
-    CPy_DECREF(cpy_r_r547);
-    goto CPyL526;
-CPyL741: ;
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL528;
-CPyL742: ;
-    CPy_XDECREF(cpy_r_r537.f0);
-    CPy_XDECREF(cpy_r_r537.f1);
-    CPy_XDECREF(cpy_r_r537.f2);
-    goto CPyL529;
-CPyL743: ;
-    CPy_DECREF(cpy_r_r548);
-    goto CPyL532;
-CPyL744: ;
-    CPy_DecRef(cpy_r_r549);
-    goto CPyL556;
-CPyL745: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL2;
-CPyL746: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL22;
-CPyL747: ;
-    CPy_XDECREF(cpy_r_r1);
-    goto CPyL545;
-CPyL748: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL66;
-CPyL749: ;
-    CPy_XDECREF(cpy_r_r3);
-    goto CPyL546;
-CPyL750: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL146;
-CPyL751: ;
-    CPy_XDECREF(cpy_r_r5);
-    goto CPyL547;
-CPyL752: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL180;
-CPyL753: ;
     CPy_XDECREF(cpy_r_r7);
-    goto CPyL548;
-CPyL754: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL224;
-CPyL755: ;
     CPy_XDECREF(cpy_r_r9);
-    goto CPyL549;
-CPyL756: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL264;
-CPyL757: ;
+    goto CPyL267;
+CPyL686: ;
+    CPy_DecRef(cpy_r_r185);
+    goto CPyL169;
+CPyL687: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL170;
+CPyL688: ;
+    CPy_DecRef(cpy_r_r185);
+    goto CPyL202;
+CPyL689: ;
+    CPy_DecRef(cpy_r_r199);
+    goto CPyL185;
+CPyL690: ;
+    CPy_XDECREF(cpy_r_r7);
+    CPy_XDECREF(cpy_r_r9);
     CPy_XDECREF(cpy_r_r11);
-    goto CPyL550;
-CPyL758: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL308;
-CPyL759: ;
     CPy_XDECREF(cpy_r_r13);
-    goto CPyL551;
-CPyL760: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL341;
-CPyL761: ;
     CPy_XDECREF(cpy_r_r15);
-    goto CPyL552;
-CPyL762: ;
-    CPyTagged_DECREF(cpy_r_r21);
-    goto CPyL435;
-CPyL763: ;
     CPy_XDECREF(cpy_r_r17);
-    goto CPyL553;
-CPyL764: ;
     CPy_XDECREF(cpy_r_r19);
-    CPy_DECREF_NO_IMM(cpy_r_r20);
-    goto CPyL554;
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL180;
+CPyL691: ;
+    CPy_XDECREF(cpy_r_r7);
+    CPy_XDECREF(cpy_r_r9);
+    CPy_XDECREF(cpy_r_r11);
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL183;
+CPyL692: ;
+    CPy_DecRef(cpy_r_r199);
+    goto CPyL193;
+CPyL693: ;
+    CPy_DecRef(cpy_r_r198);
+    goto CPyL193;
+CPyL694: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL195;
+CPyL695: ;
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL202;
+CPyL696: ;
+    CPy_XDECREF(cpy_r_r7);
+    CPy_XDECREF(cpy_r_r9);
+    goto CPyL267;
+CPyL697: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL264;
+CPyL698: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL260;
+CPyL699: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r222);
+    goto CPyL207;
+CPyL700: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL208;
+CPyL701: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r222);
+    goto CPyL210;
+CPyL702: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL211;
+CPyL703: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r222);
+    goto CPyL264;
+CPyL704: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r231);
+    goto CPyL264;
+CPyL705: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL219;
+CPyL706: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL220;
+CPyL707: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r243);
+    CPy_DecRef(cpy_r_r247);
+    goto CPyL264;
+CPyL708: ;
+    CPy_DecRef(cpy_r_r250);
+    goto CPyL225;
+CPyL709: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r243);
+    goto CPyL264;
+CPyL710: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL228;
+CPyL711: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL229;
+CPyL712: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r257);
+    goto CPyL264;
+CPyL713: ;
+    CPy_DecRef(cpy_r_r267);
+    goto CPyL244;
+CPyL714: ;
+    CPy_XDECREF(cpy_r_r7);
+    CPy_XDECREF(cpy_r_r9);
+    CPy_XDECREF(cpy_r_r11);
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL239;
+CPyL715: ;
+    CPy_XDECREF(cpy_r_r7);
+    CPy_XDECREF(cpy_r_r9);
+    CPy_XDECREF(cpy_r_r11);
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL242;
+CPyL716: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL252;
+CPyL717: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r267);
+    goto CPyL252;
+CPyL718: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL254;
+CPyL719: ;
+    CPy_XDecRef(cpy_r_r7);
+    CPy_XDecRef(cpy_r_r9);
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL264;
+CPyL720: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL261;
+CPyL721: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL722: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r286);
+    goto CPyL623;
+CPyL723: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r286);
+    CPy_DecRef(cpy_r_r287);
+    goto CPyL270;
+CPyL724: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r286);
+    CPy_DecRef(cpy_r_r287);
+    goto CPyL623;
+CPyL725: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r294);
+    goto CPyL274;
+CPyL726: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r294);
+    goto CPyL623;
+CPyL727: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r301);
+    goto CPyL623;
+CPyL728: ;
+    CPy_XDECREF(cpy_r_r11);
+    goto CPyL285;
+CPyL729: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL730: ;
+    CPy_DecRef(cpy_r_r310);
+    goto CPyL294;
+CPyL731: ;
+    CPy_XDECREF(cpy_r_r11);
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL289;
+CPyL732: ;
+    CPy_XDECREF(cpy_r_r11);
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL292;
+CPyL733: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL302;
+CPyL734: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r310);
+    goto CPyL302;
+CPyL735: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r309);
+    goto CPyL302;
+CPyL736: ;
+    CPy_XDecRef(cpy_r_r11);
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL623;
+CPyL737: ;
+    CPy_XDECREF(cpy_r_r11);
+    goto CPyL308;
+CPyL738: ;
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    goto CPyL451;
+CPyL739: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL315;
+CPyL740: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r336);
+    goto CPyL623;
+CPyL741: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r336);
+    CPy_DecRef(cpy_r_r337);
+    goto CPyL623;
+CPyL742: ;
+    CPy_XDECREF(cpy_r_r13);
+    goto CPyL325;
+CPyL743: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL744: ;
+    CPy_DecRef(cpy_r_r348);
+    goto CPyL334;
+CPyL745: ;
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL329;
+CPyL746: ;
+    CPy_XDECREF(cpy_r_r13);
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL332;
+CPyL747: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL342;
+CPyL748: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r348);
+    goto CPyL342;
+CPyL749: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r347);
+    goto CPyL342;
+CPyL750: ;
+    CPy_XDecRef(cpy_r_r13);
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL623;
+CPyL751: ;
+    CPy_XDECREF(cpy_r_r13);
+    goto CPyL348;
+CPyL752: ;
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    goto CPyL352;
+CPyL753: ;
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r367);
+    goto CPyL623;
+CPyL754: ;
+    CPy_DECREF(cpy_r_r371);
+    goto CPyL354;
+CPyL755: ;
+    CPy_XDECREF(cpy_r_r15);
+    goto CPyL396;
+CPyL756: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r380);
+    goto CPyL623;
+CPyL757: ;
+    CPy_DecRef(cpy_r_r389);
+    goto CPyL378;
+CPyL758: ;
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL373;
+CPyL759: ;
+    CPy_XDECREF(cpy_r_r15);
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL376;
+CPyL760: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL386;
+CPyL761: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r389);
+    goto CPyL386;
+CPyL762: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r388);
+    goto CPyL386;
+CPyL763: ;
+    CPy_XDecRef(cpy_r_r15);
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL623;
+CPyL764: ;
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL765: ;
+    CPy_XDECREF(cpy_r_r17);
+    goto CPyL402;
+CPyL766: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL623;
+CPyL767: ;
+    CPy_DecRef(cpy_r_r415);
+    goto CPyL411;
+CPyL768: ;
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL406;
+CPyL769: ;
+    CPy_XDECREF(cpy_r_r17);
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL409;
+CPyL770: ;
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL419;
+CPyL771: ;
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r415);
+    goto CPyL419;
+CPyL772: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r414);
+    goto CPyL419;
+CPyL773: ;
+    CPy_XDecRef(cpy_r_r17);
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL623;
+CPyL774: ;
+    CPy_XDECREF(cpy_r_r17);
+    goto CPyL425;
+CPyL775: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r414);
+    goto CPyL428;
+CPyL776: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r414);
+    goto CPyL431;
+CPyL777: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r414);
+    goto CPyL623;
+CPyL778: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r440);
+    goto CPyL623;
+CPyL779: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r444);
+    goto CPyL623;
+CPyL780: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r444);
+    CPy_DecRef(cpy_r_r445);
+    goto CPyL623;
+CPyL781: ;
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL442;
+CPyL782: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r453);
+    goto CPyL623;
+CPyL783: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r461);
+    goto CPyL623;
+CPyL784: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPyTagged_DecRef(cpy_r_r468);
+    goto CPyL623;
+CPyL785: ;
+    CPyTagged_DECREF(cpy_r_r474);
+    goto CPyL464;
+CPyL786: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r492);
+    goto CPyL623;
+CPyL787: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r496);
+    goto CPyL623;
+CPyL788: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL483;
+CPyL789: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r505);
+    goto CPyL623;
+CPyL790: ;
+    CPy_DECREF(cpy_r_r513);
+    goto CPyL489;
+CPyL791: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL569;
+CPyL792: ;
+    CPy_XDECREF(cpy_r_r19);
+    goto CPyL496;
+CPyL793: ;
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL569;
+CPyL794: ;
+    CPy_DecRef(cpy_r_r523);
+    goto CPyL505;
+CPyL795: ;
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL500;
+CPyL796: ;
+    CPy_XDECREF(cpy_r_r19);
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL503;
+CPyL797: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL513;
+CPyL798: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r523);
+    goto CPyL513;
+CPyL799: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r522);
+    goto CPyL513;
+CPyL800: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL515;
+CPyL801: ;
+    CPy_XDecRef(cpy_r_r19);
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL569;
+CPyL802: ;
+    CPy_XDECREF(cpy_r_r19);
+    goto CPyL519;
+CPyL803: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r522);
+    goto CPyL522;
+CPyL804: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL523;
+CPyL805: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r522);
+    goto CPyL569;
+CPyL806: ;
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL527;
+CPyL807: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL528;
+CPyL808: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r551);
+    goto CPyL569;
+CPyL809: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r551);
+    CPy_DecRef(cpy_r_r552);
+    goto CPyL569;
+CPyL810: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r551);
+    CPy_DecRef(cpy_r_r552);
+    CPy_DecRef(cpy_r_r553);
+    goto CPyL569;
+CPyL811: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r551);
+    CPy_DecRef(cpy_r_r552);
+    CPy_DecRef(cpy_r_r553);
+    CPy_DecRef(cpy_r_r554);
+    goto CPyL569;
+CPyL812: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r551);
+    CPy_DecRef(cpy_r_r552);
+    CPy_DecRef(cpy_r_r553);
+    CPy_DecRef(cpy_r_r554);
+    CPyTagged_DecRef(cpy_r_r555);
+    goto CPyL569;
+CPyL813: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r551);
+    CPy_DecRef(cpy_r_r552);
+    CPy_DecRef(cpy_r_r553);
+    CPy_DecRef(cpy_r_r554);
+    CPy_DecRef(cpy_r_r558);
+    goto CPyL569;
+CPyL814: ;
+    CPy_XDECREF(cpy_r_r21);
+    goto CPyL541;
+CPyL815: ;
+    CPy_DecRef(cpy_r_r569);
+    goto CPyL550;
+CPyL816: ;
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL545;
+CPyL817: ;
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL548;
+CPyL818: ;
+    CPy_XDecRef(cpy_r_r21);
+    goto CPyL558;
+CPyL819: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_r569);
+    goto CPyL558;
+CPyL820: ;
+    CPy_DecRef(cpy_r_r568);
+    goto CPyL558;
+CPyL821: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL560;
+CPyL822: ;
+    CPy_XDecRef(cpy_r_r21);
+    CPy_DecRef(cpy_r_arg);
+    goto CPyL569;
+CPyL823: ;
+    CPy_XDECREF(cpy_r_r21);
+    goto CPyL564;
+CPyL824: ;
+    CPy_DecRef(cpy_r_r592);
+    CPy_DecRef(cpy_r_r593);
+    CPy_DecRef(cpy_r_r594);
+    goto CPyL580;
+CPyL825: ;
+    CPy_DecRef(cpy_r_r592);
+    CPy_DecRef(cpy_r_r593);
+    CPy_DecRef(cpy_r_r594);
+    CPy_DecRef(cpy_r_r595);
+    goto CPyL580;
+CPyL826: ;
+    CPy_DecRef(cpy_r_r592);
+    CPy_DecRef(cpy_r_r593);
+    CPy_DecRef(cpy_r_r594);
+    CPy_DecRef(cpy_r_r596);
+    goto CPyL580;
+CPyL827: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL577;
+CPyL828: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL582;
+CPyL829: ;
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL602;
+CPyL830: ;
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r615);
+    goto CPyL602;
+CPyL831: ;
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r616);
+    goto CPyL602;
+CPyL832: ;
+    CPy_DECREF(cpy_r_r619);
+    goto CPyL592;
+CPyL833: ;
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL594;
+CPyL834: ;
+    CPy_XDECREF(cpy_r_r609.f0);
+    CPy_XDECREF(cpy_r_r609.f1);
+    CPy_XDECREF(cpy_r_r609.f2);
+    goto CPyL595;
+CPyL835: ;
+    CPy_DECREF(cpy_r_r620);
+    goto CPyL598;
+CPyL836: ;
+    CPy_DecRef(cpy_r_r621);
+    goto CPyL623;
+CPyL837: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL2;
+CPyL838: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL22;
+CPyL839: ;
+    CPy_XDECREF(cpy_r_r1);
+    goto CPyL611;
+CPyL840: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL66;
+CPyL841: ;
+    CPy_XDECREF(cpy_r_r3);
+    goto CPyL612;
+CPyL842: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL146;
+CPyL843: ;
+    CPy_XDECREF(cpy_r_r5);
+    goto CPyL613;
+CPyL844: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL181;
+CPyL845: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL240;
+CPyL846: ;
+    CPy_XDECREF(cpy_r_r7);
+    CPy_XDECREF(cpy_r_r9);
+    goto CPyL615;
+CPyL847: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL290;
+CPyL848: ;
+    CPy_XDECREF(cpy_r_r11);
+    goto CPyL616;
+CPyL849: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL330;
+CPyL850: ;
+    CPy_XDECREF(cpy_r_r13);
+    goto CPyL617;
+CPyL851: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL374;
+CPyL852: ;
+    CPy_XDECREF(cpy_r_r15);
+    goto CPyL618;
+CPyL853: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL407;
+CPyL854: ;
+    CPy_XDECREF(cpy_r_r17);
+    goto CPyL619;
+CPyL855: ;
+    CPyTagged_DECREF(cpy_r_r23);
+    goto CPyL501;
+CPyL856: ;
+    CPy_XDECREF(cpy_r_r19);
+    goto CPyL620;
+CPyL857: ;
+    CPy_XDECREF(cpy_r_r21);
+    CPy_DECREF_NO_IMM(cpy_r_r22);
+    goto CPyL621;
 }
 
 PyObject *CPyPy_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen_____mypyc_generator_helper__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
@@ -47889,9 +48625,9 @@ char CPyDef_streams___llamapay___LlamaPayProcessor_____mypyc_defaults_setup(PyOb
     cpy_r_r5.f3 = cpy_r_r3;
     cpy_r_r5.f4 = cpy_r_r4;
     ((dao_treasury___streams___llamapay___LlamaPayProcessorObject *)cpy_r___mypyc_self__)->_handled_events = cpy_r_r5;
-    cpy_r_r6 = CPyStatics[313]; /* 'PayerDeposit' */
-    cpy_r_r7 = CPyStatics[314]; /* 'PayerWithdraw' */
-    cpy_r_r8 = CPyStatics[315]; /* 'Withdraw' */
+    cpy_r_r6 = CPyStatics[315]; /* 'PayerDeposit' */
+    cpy_r_r7 = CPyStatics[316]; /* 'PayerWithdraw' */
+    cpy_r_r8 = CPyStatics[317]; /* 'Withdraw' */
     CPy_INCREF(cpy_r_r6);
     CPy_INCREF(cpy_r_r7);
     CPy_INCREF(cpy_r_r8);
@@ -48307,15 +49043,15 @@ CPyL3: ;
     cpy_r_r9 = (void *)&cpy_r_r8;
     int64_t cpy_r_r10[3] = {1, 2, 3};
     cpy_r_r11 = (void *)&cpy_r_r10;
-    cpy_r_r12 = CPyStatics[511]; /* (('asyncio', 'asyncio', 'asyncio'),
+    cpy_r_r12 = CPyStatics[513]; /* (('asyncio', 'asyncio', 'asyncio'),
                                     ('datetime', 'datetime', 'dt'),
                                     ('decimal', 'decimal', 'decimal')) */
     cpy_r_r13 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r14 = CPyStatics[320]; /* 'dao_treasury/streams/llamapay.py' */
+    cpy_r_r14 = CPyStatics[322]; /* 'dao_treasury/streams/llamapay.py' */
     cpy_r_r15 = CPyStatics[171]; /* '<module>' */
     cpy_r_r16 = CPyImport_ImportMany(cpy_r_r12, cpy_r_r9, cpy_r_r13, cpy_r_r14, cpy_r_r15, cpy_r_r11);
     if (!cpy_r_r16) goto CPyL125;
-    cpy_r_r17 = CPyStatics[460]; /* ('getLogger',) */
+    cpy_r_r17 = CPyStatics[462]; /* ('getLogger',) */
     cpy_r_r18 = CPyStatics[26]; /* 'logging' */
     cpy_r_r19 = CPyStatic_streams___llamapay___globals;
     cpy_r_r20 = CPyImport_ImportFromMany(cpy_r_r18, cpy_r_r17, cpy_r_r17, cpy_r_r19);
@@ -48326,7 +49062,7 @@ CPyL3: ;
     CPyModule_logging = cpy_r_r20;
     CPy_INCREF(CPyModule_logging);
     CPy_DECREF(cpy_r_r20);
-    cpy_r_r21 = CPyStatics[512]; /* ('Awaitable', 'Callable', 'Dict', 'Final', 'Iterator',
+    cpy_r_r21 = CPyStatics[514]; /* ('Awaitable', 'Callable', 'Dict', 'Final', 'Iterator',
                                     'List', 'Optional', 'Set', 'final') */
     cpy_r_r22 = CPyStatics[29]; /* 'typing' */
     cpy_r_r23 = CPyStatic_streams___llamapay___globals;
@@ -48344,15 +49080,15 @@ CPyL3: ;
     cpy_r_r28 = (void *)&cpy_r_r27;
     int64_t cpy_r_r29[2] = {17, 18};
     cpy_r_r30 = (void *)&cpy_r_r29;
-    cpy_r_r31 = CPyStatics[515]; /* (('dank_mids', 'dank_mids', 'dank_mids'),
+    cpy_r_r31 = CPyStatics[517]; /* (('dank_mids', 'dank_mids', 'dank_mids'),
                                     ('pony.orm', 'pony', 'pony')) */
     cpy_r_r32 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r33 = CPyStatics[320]; /* 'dao_treasury/streams/llamapay.py' */
+    cpy_r_r33 = CPyStatics[322]; /* 'dao_treasury/streams/llamapay.py' */
     cpy_r_r34 = CPyStatics[171]; /* '<module>' */
     cpy_r_r35 = CPyImport_ImportMany(cpy_r_r31, cpy_r_r28, cpy_r_r32, cpy_r_r33, cpy_r_r34, cpy_r_r30);
     if (!cpy_r_r35) goto CPyL125;
-    cpy_r_r36 = CPyStatics[516]; /* ('AsyncThreadPoolExecutor', 'igather') */
-    cpy_r_r37 = CPyStatics[327]; /* 'a_sync' */
+    cpy_r_r36 = CPyStatics[518]; /* ('AsyncThreadPoolExecutor', 'igather') */
+    cpy_r_r37 = CPyStatics[329]; /* 'a_sync' */
     cpy_r_r38 = CPyStatic_streams___llamapay___globals;
     cpy_r_r39 = CPyImport_ImportFromMany(cpy_r_r37, cpy_r_r36, cpy_r_r36, cpy_r_r38);
     if (unlikely(cpy_r_r39 == NULL)) {
@@ -48362,8 +49098,8 @@ CPyL3: ;
     CPyModule_a_sync = cpy_r_r39;
     CPy_INCREF(CPyModule_a_sync);
     CPy_DECREF(cpy_r_r39);
-    cpy_r_r40 = CPyStatics[517]; /* ('_EventItem',) */
-    cpy_r_r41 = CPyStatics[329]; /* 'brownie.network.event' */
+    cpy_r_r40 = CPyStatics[519]; /* ('_EventItem',) */
+    cpy_r_r41 = CPyStatics[331]; /* 'brownie.network.event' */
     cpy_r_r42 = CPyStatic_streams___llamapay___globals;
     cpy_r_r43 = CPyImport_ImportFromMany(cpy_r_r41, cpy_r_r40, cpy_r_r40, cpy_r_r42);
     if (unlikely(cpy_r_r43 == NULL)) {
@@ -48373,7 +49109,7 @@ CPyL3: ;
     CPyModule_brownie___network___event = cpy_r_r43;
     CPy_INCREF(CPyModule_brownie___network___event);
     CPy_DECREF(cpy_r_r43);
-    cpy_r_r44 = CPyStatics[518]; /* ('BlockNumber', 'ChecksumAddress', 'HexAddress', 'HexStr') */
+    cpy_r_r44 = CPyStatics[520]; /* ('BlockNumber', 'ChecksumAddress', 'HexAddress', 'HexStr') */
     cpy_r_r45 = CPyStatics[130]; /* 'eth_typing' */
     cpy_r_r46 = CPyStatic_streams___llamapay___globals;
     cpy_r_r47 = CPyImport_ImportFromMany(cpy_r_r45, cpy_r_r44, cpy_r_r44, cpy_r_r46);
@@ -48384,8 +49120,8 @@ CPyL3: ;
     CPyModule_eth_typing = cpy_r_r47;
     CPy_INCREF(CPyModule_eth_typing);
     CPy_DECREF(cpy_r_r47);
-    cpy_r_r48 = CPyStatics[519]; /* ('tqdm_asyncio',) */
-    cpy_r_r49 = CPyStatics[331]; /* 'tqdm.asyncio' */
+    cpy_r_r48 = CPyStatics[521]; /* ('tqdm_asyncio',) */
+    cpy_r_r49 = CPyStatics[333]; /* 'tqdm.asyncio' */
     cpy_r_r50 = CPyStatic_streams___llamapay___globals;
     cpy_r_r51 = CPyImport_ImportFromMany(cpy_r_r49, cpy_r_r48, cpy_r_r48, cpy_r_r50);
     if (unlikely(cpy_r_r51 == NULL)) {
@@ -48400,14 +49136,14 @@ CPyL3: ;
     cpy_r_r54 = (void *)&cpy_r_r53;
     int64_t cpy_r_r55[1] = {24};
     cpy_r_r56 = (void *)&cpy_r_r55;
-    cpy_r_r57 = CPyStatics[521]; /* (('y', 'y', 'y'),) */
+    cpy_r_r57 = CPyStatics[523]; /* (('y', 'y', 'y'),) */
     cpy_r_r58 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r59 = CPyStatics[320]; /* 'dao_treasury/streams/llamapay.py' */
+    cpy_r_r59 = CPyStatics[322]; /* 'dao_treasury/streams/llamapay.py' */
     cpy_r_r60 = CPyStatics[171]; /* '<module>' */
     cpy_r_r61 = CPyImport_ImportMany(cpy_r_r57, cpy_r_r54, cpy_r_r58, cpy_r_r59, cpy_r_r60, cpy_r_r56);
     if (!cpy_r_r61) goto CPyL125;
-    cpy_r_r62 = CPyStatics[522]; /* ('UnixTimestamp',) */
-    cpy_r_r63 = CPyStatics[333]; /* 'y.time' */
+    cpy_r_r62 = CPyStatics[524]; /* ('NoBlockFound', 'UnixTimestamp') */
+    cpy_r_r63 = CPyStatics[335]; /* 'y.time' */
     cpy_r_r64 = CPyStatic_streams___llamapay___globals;
     cpy_r_r65 = CPyImport_ImportFromMany(cpy_r_r63, cpy_r_r62, cpy_r_r62, cpy_r_r64);
     if (unlikely(cpy_r_r65 == NULL)) {
@@ -48417,8 +49153,8 @@ CPyL3: ;
     CPyModule_y___time = cpy_r_r65;
     CPy_INCREF(CPyModule_y___time);
     CPy_DECREF(cpy_r_r65);
-    cpy_r_r66 = CPyStatics[523]; /* ('decode_logs', 'get_logs_asap') */
-    cpy_r_r67 = CPyStatics[334]; /* 'y.utils.events' */
+    cpy_r_r66 = CPyStatics[525]; /* ('decode_logs', 'get_logs_asap') */
+    cpy_r_r67 = CPyStatics[336]; /* 'y.utils.events' */
     cpy_r_r68 = CPyStatic_streams___llamapay___globals;
     cpy_r_r69 = CPyImport_ImportFromMany(cpy_r_r67, cpy_r_r66, cpy_r_r66, cpy_r_r68);
     if (unlikely(cpy_r_r69 == NULL)) {
@@ -48428,7 +49164,7 @@ CPyL3: ;
     CPyModule_y___utils___events = cpy_r_r69;
     CPy_INCREF(CPyModule_y___utils___events);
     CPy_DECREF(cpy_r_r69);
-    cpy_r_r70 = CPyStatics[524]; /* ('constants',) */
+    cpy_r_r70 = CPyStatics[526]; /* ('constants',) */
     cpy_r_r71 = CPyStatics[36]; /* 'dao_treasury' */
     cpy_r_r72 = CPyStatic_streams___llamapay___globals;
     cpy_r_r73 = CPyImport_ImportFromMany(cpy_r_r71, cpy_r_r70, cpy_r_r70, cpy_r_r72);
@@ -48439,7 +49175,7 @@ CPyL3: ;
     CPyModule_dao_treasury = cpy_r_r73;
     CPy_INCREF(CPyModule_dao_treasury);
     CPy_DECREF(cpy_r_r73);
-    cpy_r_r74 = CPyStatics[525]; /* ('Stream', 'StreamedFunds', 'Address', 'Token',
+    cpy_r_r74 = CPyStatics[527]; /* ('Stream', 'StreamedFunds', 'Address', 'Token',
                                     'must_sort_outbound_txgroup_dbid') */
     cpy_r_r75 = CPyStatics[111]; /* 'dao_treasury.db' */
     cpy_r_r76 = CPyStatic_streams___llamapay___globals;
@@ -48451,7 +49187,7 @@ CPyL3: ;
     CPyModule_dao_treasury___db = cpy_r_r77;
     CPy_INCREF(CPyModule_dao_treasury___db);
     CPy_DECREF(cpy_r_r77);
-    cpy_r_r78 = CPyStatics[466]; /* ('TreasuryWallet',) */
+    cpy_r_r78 = CPyStatics[468]; /* ('TreasuryWallet',) */
     cpy_r_r79 = CPyStatics[38]; /* 'dao_treasury._wallet' */
     cpy_r_r80 = CPyStatic_streams___llamapay___globals;
     cpy_r_r81 = CPyImport_ImportFromMany(cpy_r_r79, cpy_r_r78, cpy_r_r78, cpy_r_r80);
@@ -48503,13 +49239,13 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r96 = CPyModule_datetime;
-    cpy_r_r97 = CPyStatics[335]; /* 'timezone' */
+    cpy_r_r97 = CPyStatics[337]; /* 'timezone' */
     cpy_r_r98 = CPyObject_GetAttr(cpy_r_r96, cpy_r_r97);
     if (unlikely(cpy_r_r98 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 41, CPyStatic_streams___llamapay___globals);
         goto CPyL125;
     }
-    cpy_r_r99 = CPyStatics[336]; /* 'utc' */
+    cpy_r_r99 = CPyStatics[338]; /* 'utc' */
     cpy_r_r100 = CPyObject_GetAttr(cpy_r_r98, cpy_r_r99);
     CPy_DECREF(cpy_r_r98);
     if (unlikely(cpy_r_r100 == NULL)) {
@@ -48519,7 +49255,7 @@ CPyL3: ;
     CPyStatic_streams___llamapay____UTC = cpy_r_r100;
     CPy_INCREF(CPyStatic_streams___llamapay____UTC);
     cpy_r_r101 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r102 = CPyStatics[337]; /* '_UTC' */
+    cpy_r_r102 = CPyStatics[339]; /* '_UTC' */
     cpy_r_r103 = CPyDict_SetItem(cpy_r_r101, cpy_r_r102, cpy_r_r100);
     CPy_DECREF(cpy_r_r100);
     cpy_r_r104 = cpy_r_r103 >= 0;
@@ -48528,8 +49264,8 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r105 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r106 = CPyStatics[338]; /* '_ONE_DAY' */
-    cpy_r_r107 = CPyStatics[458]; /* 86400 */
+    cpy_r_r106 = CPyStatics[340]; /* '_ONE_DAY' */
+    cpy_r_r107 = CPyStatics[460]; /* 86400 */
     cpy_r_r108 = CPyDict_SetItem(cpy_r_r105, cpy_r_r106, cpy_r_r107);
     cpy_r_r109 = cpy_r_r108 >= 0;
     if (unlikely(!cpy_r_r109)) {
@@ -48537,13 +49273,13 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r110 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r111 = CPyStatics[326]; /* 'AsyncThreadPoolExecutor' */
+    cpy_r_r111 = CPyStatics[328]; /* 'AsyncThreadPoolExecutor' */
     cpy_r_r112 = CPyDict_GetItem(cpy_r_r110, cpy_r_r111);
     if (unlikely(cpy_r_r112 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 45, CPyStatic_streams___llamapay___globals);
         goto CPyL125;
     }
-    cpy_r_r113 = CPyStatics[457]; /* 1 */
+    cpy_r_r113 = CPyStatics[459]; /* 1 */
     PyObject *cpy_r_r114[1] = {cpy_r_r113};
     cpy_r_r115 = (PyObject **)&cpy_r_r114;
     cpy_r_r116 = PyObject_Vectorcall(cpy_r_r112, cpy_r_r115, 1, 0);
@@ -48555,7 +49291,7 @@ CPyL3: ;
     CPyStatic_streams___llamapay____STREAMS_THREAD = cpy_r_r116;
     CPy_INCREF(CPyStatic_streams___llamapay____STREAMS_THREAD);
     cpy_r_r117 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r118 = CPyStatics[339]; /* '_STREAMS_THREAD' */
+    cpy_r_r118 = CPyStatics[341]; /* '_STREAMS_THREAD' */
     cpy_r_r119 = CPyDict_SetItem(cpy_r_r117, cpy_r_r118, cpy_r_r116);
     CPy_DECREF(cpy_r_r116);
     cpy_r_r120 = cpy_r_r119 >= 0;
@@ -48564,7 +49300,7 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r121 = CPyModule_asyncio;
-    cpy_r_r122 = CPyStatics[340]; /* 'create_task' */
+    cpy_r_r122 = CPyStatics[342]; /* 'create_task' */
     cpy_r_r123 = CPyObject_GetAttr(cpy_r_r121, cpy_r_r122);
     if (unlikely(cpy_r_r123 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 47, CPyStatic_streams___llamapay___globals);
@@ -48573,7 +49309,7 @@ CPyL3: ;
     CPyStatic_streams___llamapay___create_task = cpy_r_r123;
     CPy_INCREF(CPyStatic_streams___llamapay___create_task);
     cpy_r_r124 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r125 = CPyStatics[340]; /* 'create_task' */
+    cpy_r_r125 = CPyStatics[342]; /* 'create_task' */
     cpy_r_r126 = CPyDict_SetItem(cpy_r_r124, cpy_r_r125, cpy_r_r123);
     CPy_DECREF(cpy_r_r123);
     cpy_r_r127 = cpy_r_r126 >= 0;
@@ -48582,7 +49318,7 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r128 = CPyModule_asyncio;
-    cpy_r_r129 = CPyStatics[341]; /* 'sleep' */
+    cpy_r_r129 = CPyStatics[343]; /* 'sleep' */
     cpy_r_r130 = CPyObject_GetAttr(cpy_r_r128, cpy_r_r129);
     if (unlikely(cpy_r_r130 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 48, CPyStatic_streams___llamapay___globals);
@@ -48591,7 +49327,7 @@ CPyL3: ;
     CPyStatic_streams___llamapay___sleep = cpy_r_r130;
     CPy_INCREF(CPyStatic_streams___llamapay___sleep);
     cpy_r_r131 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r132 = CPyStatics[341]; /* 'sleep' */
+    cpy_r_r132 = CPyStatics[343]; /* 'sleep' */
     cpy_r_r133 = CPyDict_SetItem(cpy_r_r131, cpy_r_r132, cpy_r_r130);
     CPy_DECREF(cpy_r_r130);
     cpy_r_r134 = cpy_r_r133 >= 0;
@@ -48600,7 +49336,7 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r135 = CPyModule_datetime;
-    cpy_r_r136 = CPyStatics[317]; /* 'datetime' */
+    cpy_r_r136 = CPyStatics[319]; /* 'datetime' */
     cpy_r_r137 = CPyObject_GetAttr(cpy_r_r135, cpy_r_r136);
     if (unlikely(cpy_r_r137 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 50, CPyStatic_streams___llamapay___globals);
@@ -48609,7 +49345,7 @@ CPyL3: ;
     CPyStatic_streams___llamapay___datetime = cpy_r_r137;
     CPy_INCREF(CPyStatic_streams___llamapay___datetime);
     cpy_r_r138 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r139 = CPyStatics[317]; /* 'datetime' */
+    cpy_r_r139 = CPyStatics[319]; /* 'datetime' */
     cpy_r_r140 = CPyDict_SetItem(cpy_r_r138, cpy_r_r139, cpy_r_r137);
     CPy_DECREF(cpy_r_r137);
     cpy_r_r141 = cpy_r_r140 >= 0;
@@ -48618,7 +49354,7 @@ CPyL3: ;
         goto CPyL125;
     }
     cpy_r_r142 = CPyModule_datetime;
-    cpy_r_r143 = CPyStatics[342]; /* 'timedelta' */
+    cpy_r_r143 = CPyStatics[344]; /* 'timedelta' */
     cpy_r_r144 = CPyObject_GetAttr(cpy_r_r142, cpy_r_r143);
     if (unlikely(cpy_r_r144 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 51, CPyStatic_streams___llamapay___globals);
@@ -48627,7 +49363,7 @@ CPyL3: ;
     CPyStatic_streams___llamapay___timedelta = cpy_r_r144;
     CPy_INCREF(CPyStatic_streams___llamapay___timedelta);
     cpy_r_r145 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r146 = CPyStatics[342]; /* 'timedelta' */
+    cpy_r_r146 = CPyStatics[344]; /* 'timedelta' */
     cpy_r_r147 = CPyDict_SetItem(cpy_r_r145, cpy_r_r146, cpy_r_r144);
     CPy_DECREF(cpy_r_r144);
     cpy_r_r148 = cpy_r_r147 >= 0;
@@ -48645,7 +49381,7 @@ CPyL3: ;
     }
     CPy_Unreachable();
 CPyL40: ;
-    cpy_r_r151 = CPyStatics[343]; /* 'fromtimestamp' */
+    cpy_r_r151 = CPyStatics[345]; /* 'fromtimestamp' */
     cpy_r_r152 = CPyObject_GetAttr(cpy_r_r149, cpy_r_r151);
     if (unlikely(cpy_r_r152 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 52, CPyStatic_streams___llamapay___globals);
@@ -48654,7 +49390,7 @@ CPyL40: ;
     CPyStatic_streams___llamapay___fromtimestamp = cpy_r_r152;
     CPy_INCREF(CPyStatic_streams___llamapay___fromtimestamp);
     cpy_r_r153 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r154 = CPyStatics[343]; /* 'fromtimestamp' */
+    cpy_r_r154 = CPyStatics[345]; /* 'fromtimestamp' */
     cpy_r_r155 = CPyDict_SetItem(cpy_r_r153, cpy_r_r154, cpy_r_r152);
     CPy_DECREF(cpy_r_r152);
     cpy_r_r156 = cpy_r_r155 >= 0;
@@ -48672,7 +49408,7 @@ CPyL40: ;
     }
     CPy_Unreachable();
 CPyL45: ;
-    cpy_r_r159 = CPyStatics[344]; /* 'now' */
+    cpy_r_r159 = CPyStatics[346]; /* 'now' */
     cpy_r_r160 = CPyObject_GetAttr(cpy_r_r157, cpy_r_r159);
     if (unlikely(cpy_r_r160 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 53, CPyStatic_streams___llamapay___globals);
@@ -48681,7 +49417,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___now = cpy_r_r160;
     CPy_INCREF(CPyStatic_streams___llamapay___now);
     cpy_r_r161 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r162 = CPyStatics[344]; /* 'now' */
+    cpy_r_r162 = CPyStatics[346]; /* 'now' */
     cpy_r_r163 = CPyDict_SetItem(cpy_r_r161, cpy_r_r162, cpy_r_r160);
     CPy_DECREF(cpy_r_r160);
     cpy_r_r164 = cpy_r_r163 >= 0;
@@ -48690,7 +49426,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r165 = CPyModule_decimal;
-    cpy_r_r166 = CPyStatics[345]; /* 'Decimal' */
+    cpy_r_r166 = CPyStatics[347]; /* 'Decimal' */
     cpy_r_r167 = CPyObject_GetAttr(cpy_r_r165, cpy_r_r166);
     if (unlikely(cpy_r_r167 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 55, CPyStatic_streams___llamapay___globals);
@@ -48699,7 +49435,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___Decimal = cpy_r_r167;
     CPy_INCREF(CPyStatic_streams___llamapay___Decimal);
     cpy_r_r168 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r169 = CPyStatics[345]; /* 'Decimal' */
+    cpy_r_r169 = CPyStatics[347]; /* 'Decimal' */
     cpy_r_r170 = CPyDict_SetItem(cpy_r_r168, cpy_r_r169, cpy_r_r167);
     CPy_DECREF(cpy_r_r167);
     cpy_r_r171 = cpy_r_r170 >= 0;
@@ -48708,7 +49444,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r172 = CPyModule_pony___orm;
-    cpy_r_r173 = CPyStatics[346]; /* 'ObjectNotFound' */
+    cpy_r_r173 = CPyStatics[348]; /* 'ObjectNotFound' */
     cpy_r_r174 = CPyObject_GetAttr(cpy_r_r172, cpy_r_r173);
     if (unlikely(cpy_r_r174 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 57, CPyStatic_streams___llamapay___globals);
@@ -48717,7 +49453,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___ObjectNotFound = cpy_r_r174;
     CPy_INCREF(CPyStatic_streams___llamapay___ObjectNotFound);
     cpy_r_r175 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r176 = CPyStatics[346]; /* 'ObjectNotFound' */
+    cpy_r_r176 = CPyStatics[348]; /* 'ObjectNotFound' */
     cpy_r_r177 = CPyDict_SetItem(cpy_r_r175, cpy_r_r176, cpy_r_r174);
     CPy_DECREF(cpy_r_r174);
     cpy_r_r178 = cpy_r_r177 >= 0;
@@ -48726,7 +49462,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r179 = CPyModule_pony___orm;
-    cpy_r_r180 = CPyStatics[347]; /* 'commit' */
+    cpy_r_r180 = CPyStatics[349]; /* 'commit' */
     cpy_r_r181 = CPyObject_GetAttr(cpy_r_r179, cpy_r_r180);
     if (unlikely(cpy_r_r181 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 58, CPyStatic_streams___llamapay___globals);
@@ -48735,7 +49471,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___commit = cpy_r_r181;
     CPy_INCREF(CPyStatic_streams___llamapay___commit);
     cpy_r_r182 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r183 = CPyStatics[347]; /* 'commit' */
+    cpy_r_r183 = CPyStatics[349]; /* 'commit' */
     cpy_r_r184 = CPyDict_SetItem(cpy_r_r182, cpy_r_r183, cpy_r_r181);
     CPy_DECREF(cpy_r_r181);
     cpy_r_r185 = cpy_r_r184 >= 0;
@@ -48762,7 +49498,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r193 = CPyModule_y;
-    cpy_r_r194 = CPyStatics[348]; /* 'Contract' */
+    cpy_r_r194 = CPyStatics[350]; /* 'Contract' */
     cpy_r_r195 = CPyObject_GetAttr(cpy_r_r193, cpy_r_r194);
     if (unlikely(cpy_r_r195 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 61, CPyStatic_streams___llamapay___globals);
@@ -48771,7 +49507,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___Contract = cpy_r_r195;
     CPy_INCREF(CPyStatic_streams___llamapay___Contract);
     cpy_r_r196 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r197 = CPyStatics[348]; /* 'Contract' */
+    cpy_r_r197 = CPyStatics[350]; /* 'Contract' */
     cpy_r_r198 = CPyDict_SetItem(cpy_r_r196, cpy_r_r197, cpy_r_r195);
     CPy_DECREF(cpy_r_r195);
     cpy_r_r199 = cpy_r_r198 >= 0;
@@ -48780,7 +49516,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r200 = CPyModule_y;
-    cpy_r_r201 = CPyStatics[349]; /* 'Network' */
+    cpy_r_r201 = CPyStatics[351]; /* 'Network' */
     cpy_r_r202 = CPyObject_GetAttr(cpy_r_r200, cpy_r_r201);
     if (unlikely(cpy_r_r202 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 62, CPyStatic_streams___llamapay___globals);
@@ -48789,7 +49525,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___Network = cpy_r_r202;
     CPy_INCREF(CPyStatic_streams___llamapay___Network);
     cpy_r_r203 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r204 = CPyStatics[349]; /* 'Network' */
+    cpy_r_r204 = CPyStatics[351]; /* 'Network' */
     cpy_r_r205 = CPyDict_SetItem(cpy_r_r203, cpy_r_r204, cpy_r_r202);
     CPy_DECREF(cpy_r_r202);
     cpy_r_r206 = cpy_r_r205 >= 0;
@@ -48798,7 +49534,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r207 = CPyModule_y;
-    cpy_r_r208 = CPyStatics[350]; /* 'get_block_at_timestamp' */
+    cpy_r_r208 = CPyStatics[352]; /* 'get_block_at_timestamp' */
     cpy_r_r209 = CPyObject_GetAttr(cpy_r_r207, cpy_r_r208);
     if (unlikely(cpy_r_r209 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 63, CPyStatic_streams___llamapay___globals);
@@ -48807,7 +49543,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___get_block_at_timestamp = cpy_r_r209;
     CPy_INCREF(CPyStatic_streams___llamapay___get_block_at_timestamp);
     cpy_r_r210 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r211 = CPyStatics[350]; /* 'get_block_at_timestamp' */
+    cpy_r_r211 = CPyStatics[352]; /* 'get_block_at_timestamp' */
     cpy_r_r212 = CPyDict_SetItem(cpy_r_r210, cpy_r_r211, cpy_r_r209);
     CPy_DECREF(cpy_r_r209);
     cpy_r_r213 = cpy_r_r212 >= 0;
@@ -48816,7 +49552,7 @@ CPyL45: ;
         goto CPyL125;
     }
     cpy_r_r214 = CPyModule_y;
-    cpy_r_r215 = CPyStatics[351]; /* 'get_price' */
+    cpy_r_r215 = CPyStatics[353]; /* 'get_price' */
     cpy_r_r216 = CPyObject_GetAttr(cpy_r_r214, cpy_r_r215);
     if (unlikely(cpy_r_r216 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 64, CPyStatic_streams___llamapay___globals);
@@ -48825,7 +49561,7 @@ CPyL45: ;
     CPyStatic_streams___llamapay___get_price = cpy_r_r216;
     CPy_INCREF(CPyStatic_streams___llamapay___get_price);
     cpy_r_r217 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r218 = CPyStatics[351]; /* 'get_price' */
+    cpy_r_r218 = CPyStatics[353]; /* 'get_price' */
     cpy_r_r219 = CPyDict_SetItem(cpy_r_r217, cpy_r_r218, cpy_r_r216);
     CPy_DECREF(cpy_r_r216);
     cpy_r_r220 = cpy_r_r219 >= 0;
@@ -48843,7 +49579,7 @@ CPyL45: ;
     }
     CPy_Unreachable();
 CPyL66: ;
-    cpy_r_r223 = CPyStatics[352]; /* 'Mainnet' */
+    cpy_r_r223 = CPyStatics[354]; /* 'Mainnet' */
     cpy_r_r224 = CPyObject_GetAttr(cpy_r_r221, cpy_r_r223);
     if (unlikely(cpy_r_r224 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 67, CPyStatic_streams___llamapay___globals);
@@ -48892,13 +49628,13 @@ CPyL66: ;
     }
     CPy_Unreachable();
 CPyL74: ;
-    cpy_r_r239 = CPyStatics[352]; /* 'Mainnet' */
+    cpy_r_r239 = CPyStatics[354]; /* 'Mainnet' */
     cpy_r_r240 = CPyObject_GetAttr(cpy_r_r237, cpy_r_r239);
     if (unlikely(cpy_r_r240 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 72, CPyStatic_streams___llamapay___globals);
         goto CPyL125;
     }
-    cpy_r_r241 = CPyStatics[353]; /* '0x60c7B0c5B3a4Dc8C690b074727a17fF7aA287Ff2' */
+    cpy_r_r241 = CPyStatics[355]; /* '0x60c7B0c5B3a4Dc8C690b074727a17fF7aA287Ff2' */
     cpy_r_r242 = CPyDict_Build(1, cpy_r_r240, cpy_r_r241);
     CPy_DECREF(cpy_r_r240);
     if (unlikely(cpy_r_r242 == NULL)) {
@@ -48929,7 +49665,7 @@ CPyL79: ;
         goto CPyL125;
     }
     cpy_r_r247 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r248 = CPyStatics[354]; /* 'dai_stream_factory' */
+    cpy_r_r248 = CPyStatics[356]; /* 'dai_stream_factory' */
     cpy_r_r249 = CPyDict_SetItem(cpy_r_r247, cpy_r_r248, cpy_r_r246);
     cpy_r_r250 = cpy_r_r249 >= 0;
     if (unlikely(!cpy_r_r250)) {
@@ -48959,7 +49695,7 @@ CPyL79: ;
         goto CPyL125;
     }
     cpy_r_r258 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r259 = CPyStatics[354]; /* 'dai_stream_factory' */
+    cpy_r_r259 = CPyStatics[356]; /* 'dai_stream_factory' */
     cpy_r_r260 = CPyDict_GetItem(cpy_r_r258, cpy_r_r259);
     if (unlikely(cpy_r_r260 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 74, CPyStatic_streams___llamapay___globals);
@@ -48984,13 +49720,13 @@ CPyL87: ;
     }
     CPy_Unreachable();
 CPyL90: ;
-    cpy_r_r265 = CPyStatics[352]; /* 'Mainnet' */
+    cpy_r_r265 = CPyStatics[354]; /* 'Mainnet' */
     cpy_r_r266 = CPyObject_GetAttr(cpy_r_r263, cpy_r_r265);
     if (unlikely(cpy_r_r266 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 77, CPyStatic_streams___llamapay___globals);
         goto CPyL125;
     }
-    cpy_r_r267 = CPyStatics[355]; /* '0xf3764eC89B1ad20A31ed633b1466363FAc1741c4' */
+    cpy_r_r267 = CPyStatics[357]; /* '0xf3764eC89B1ad20A31ed633b1466363FAc1741c4' */
     cpy_r_r268 = CPyDict_Build(1, cpy_r_r266, cpy_r_r267);
     CPy_DECREF(cpy_r_r266);
     if (unlikely(cpy_r_r268 == NULL)) {
@@ -49021,7 +49757,7 @@ CPyL95: ;
         goto CPyL125;
     }
     cpy_r_r273 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r274 = CPyStatics[356]; /* 'yfi_stream_factory' */
+    cpy_r_r274 = CPyStatics[358]; /* 'yfi_stream_factory' */
     cpy_r_r275 = CPyDict_SetItem(cpy_r_r273, cpy_r_r274, cpy_r_r272);
     cpy_r_r276 = cpy_r_r275 >= 0;
     if (unlikely(!cpy_r_r276)) {
@@ -49051,7 +49787,7 @@ CPyL95: ;
         goto CPyL125;
     }
     cpy_r_r284 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r285 = CPyStatics[356]; /* 'yfi_stream_factory' */
+    cpy_r_r285 = CPyStatics[358]; /* 'yfi_stream_factory' */
     cpy_r_r286 = CPyDict_GetItem(cpy_r_r284, cpy_r_r285);
     if (unlikely(cpy_r_r286 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 79, CPyStatic_streams___llamapay___globals);
@@ -49067,7 +49803,7 @@ CPyL95: ;
     }
 CPyL103: ;
     cpy_r_r289 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r290 = CPyStatics[322]; /* 'Callable' */
+    cpy_r_r290 = CPyStatics[324]; /* 'Callable' */
     cpy_r_r291 = CPyDict_GetItem(cpy_r_r289, cpy_r_r290);
     if (unlikely(cpy_r_r291 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 93, CPyStatic_streams___llamapay___globals);
@@ -49088,7 +49824,7 @@ CPyL103: ;
         goto CPyL135;
     }
     cpy_r_r298 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r299 = CPyStatics[330]; /* 'BlockNumber' */
+    cpy_r_r299 = CPyStatics[332]; /* 'BlockNumber' */
     cpy_r_r300 = CPyDict_GetItem(cpy_r_r298, cpy_r_r299);
     if (unlikely(cpy_r_r300 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 93, CPyStatic_streams___llamapay___globals);
@@ -49112,7 +49848,7 @@ CPyL103: ;
     cpy_r_r305 = cpy_r_r304 + 8;
     *(PyObject * *)cpy_r_r305 = cpy_r_r301;
     cpy_r_r306 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r307 = CPyStatics[321]; /* 'Awaitable' */
+    cpy_r_r307 = CPyStatics[323]; /* 'Awaitable' */
     cpy_r_r308 = CPyDict_GetItem(cpy_r_r306, cpy_r_r307);
     if (unlikely(cpy_r_r308 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 93, CPyStatic_streams___llamapay___globals);
@@ -49142,7 +49878,7 @@ CPyL103: ;
         goto CPyL125;
     }
     cpy_r_r314 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r315 = CPyStatics[357]; /* '_StreamToStart' */
+    cpy_r_r315 = CPyStatics[359]; /* '_StreamToStart' */
     cpy_r_r316 = CPyDict_SetItem(cpy_r_r314, cpy_r_r315, cpy_r_r313);
     CPy_DECREF(cpy_r_r313);
     cpy_r_r317 = cpy_r_r316 >= 0;
@@ -49158,7 +49894,7 @@ CPyL103: ;
     CPyStatic_streams___llamapay____streamToStart_cache = cpy_r_r318;
     CPy_INCREF(CPyStatic_streams___llamapay____streamToStart_cache);
     cpy_r_r319 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r320 = CPyStatics[358]; /* '_streamToStart_cache' */
+    cpy_r_r320 = CPyStatics[360]; /* '_streamToStart_cache' */
     cpy_r_r321 = CPyDict_SetItem(cpy_r_r319, cpy_r_r320, cpy_r_r318);
     CPy_DECREF(cpy_r_r318);
     cpy_r_r322 = cpy_r_r321 >= 0;
@@ -49174,7 +49910,7 @@ CPyL103: ;
     CPyStatic_streams___llamapay____block_timestamps = cpy_r_r323;
     CPy_INCREF(CPyStatic_streams___llamapay____block_timestamps);
     cpy_r_r324 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r325 = CPyStatics[359]; /* '_block_timestamps' */
+    cpy_r_r325 = CPyStatics[361]; /* '_block_timestamps' */
     cpy_r_r326 = CPyDict_SetItem(cpy_r_r324, cpy_r_r325, cpy_r_r323);
     CPy_DECREF(cpy_r_r323);
     cpy_r_r327 = cpy_r_r326 >= 0;
@@ -49183,7 +49919,7 @@ CPyL103: ;
         goto CPyL125;
     }
     cpy_r_r328 = NULL;
-    cpy_r_r329 = CPyStatics[360]; /* 'dao_treasury.streams.llamapay' */
+    cpy_r_r329 = CPyStatics[362]; /* 'dao_treasury.streams.llamapay' */
     cpy_r_r330 = (PyObject *)CPyType_streams___llamapay___LlamaPayProcessor_template;
     cpy_r_r331 = CPyType_FromTemplate(cpy_r_r330, cpy_r_r328, cpy_r_r329);
     if (unlikely(cpy_r_r331 == NULL)) {
@@ -49196,9 +49932,9 @@ CPyL103: ;
         goto CPyL139;
     }
     cpy_r_r333 = CPyStatics[137]; /* '__mypyc_attrs__' */
-    cpy_r_r334 = CPyStatics[361]; /* 'handled_events' */
-    cpy_r_r335 = CPyStatics[362]; /* 'skipped_events' */
-    cpy_r_r336 = CPyStatics[363]; /* 'stream_contracts' */
+    cpy_r_r334 = CPyStatics[363]; /* 'handled_events' */
+    cpy_r_r335 = CPyStatics[364]; /* 'skipped_events' */
+    cpy_r_r336 = CPyStatics[365]; /* 'stream_contracts' */
     cpy_r_r337 = PyTuple_Pack(3, cpy_r_r334, cpy_r_r335, cpy_r_r336);
     if (unlikely(cpy_r_r337 == NULL)) {
         CPy_AddTraceback("dao_treasury/streams/llamapay.py", "<module>", 150, CPyStatic_streams___llamapay___globals);
@@ -49214,7 +49950,7 @@ CPyL103: ;
     CPyType_streams___llamapay___LlamaPayProcessor = (PyTypeObject *)cpy_r_r331;
     CPy_INCREF(CPyType_streams___llamapay___LlamaPayProcessor);
     cpy_r_r340 = CPyStatic_streams___llamapay___globals;
-    cpy_r_r341 = CPyStatics[364]; /* 'LlamaPayProcessor' */
+    cpy_r_r341 = CPyStatics[366]; /* 'LlamaPayProcessor' */
     cpy_r_r342 = CPyDict_SetItem(cpy_r_r340, cpy_r_r341, cpy_r_r331);
     CPy_DECREF(cpy_r_r331);
     cpy_r_r343 = cpy_r_r342 >= 0;
@@ -49238,7 +49974,7 @@ CPyL103: ;
     cpy_r_r350.f2 = cpy_r_r347;
     cpy_r_r350.f3 = cpy_r_r348;
     cpy_r_r350.f4 = cpy_r_r349;
-    cpy_r_r351 = CPyStatics[361]; /* 'handled_events' */
+    cpy_r_r351 = CPyStatics[363]; /* 'handled_events' */
     CPy_INCREF(cpy_r_r350.f0);
     CPy_INCREF(cpy_r_r350.f1);
     CPy_INCREF(cpy_r_r350.f2);
@@ -49276,16 +50012,16 @@ CPyL103: ;
     CPy_DECREF(cpy_r_r350.f3);
     CPy_DECREF(cpy_r_r350.f4);
     cpy_r_r355 = (PyObject *)CPyType_streams___llamapay___LlamaPayProcessor;
-    cpy_r_r356 = CPyStatics[313]; /* 'PayerDeposit' */
-    cpy_r_r357 = CPyStatics[314]; /* 'PayerWithdraw' */
-    cpy_r_r358 = CPyStatics[315]; /* 'Withdraw' */
+    cpy_r_r356 = CPyStatics[315]; /* 'PayerDeposit' */
+    cpy_r_r357 = CPyStatics[316]; /* 'PayerWithdraw' */
+    cpy_r_r358 = CPyStatics[317]; /* 'Withdraw' */
     CPy_INCREF(cpy_r_r356);
     CPy_INCREF(cpy_r_r357);
     CPy_INCREF(cpy_r_r358);
     cpy_r_r359.f0 = cpy_r_r356;
     cpy_r_r359.f1 = cpy_r_r357;
     cpy_r_r359.f2 = cpy_r_r358;
-    cpy_r_r360 = CPyStatics[362]; /* 'skipped_events' */
+    cpy_r_r360 = CPyStatics[364]; /* 'skipped_events' */
     CPy_INCREF(cpy_r_r359.f0);
     CPy_INCREF(cpy_r_r359.f1);
     CPy_INCREF(cpy_r_r359.f2);
@@ -49969,9 +50705,9 @@ char CPyDef__docker___up(PyObject *cpy_r_services) {
     PyObject *cpy_r_r38;
     char cpy_r_r39;
     char cpy_r_r40;
-    cpy_r_r0 = CPyStatics[365]; /* 'victoria-metrics' */
+    cpy_r_r0 = CPyStatics[367]; /* 'victoria-metrics' */
     cpy_r_r1 = CPyModule_eth_portfolio_scripts___docker;
-    cpy_r_r2 = CPyStatics[366]; /* 'up' */
+    cpy_r_r2 = CPyStatics[368]; /* 'up' */
     cpy_r_r3 = CPyObject_GetAttr(cpy_r_r1, cpy_r_r2);
     if (unlikely(cpy_r_r3 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "up", 43, CPyStatic__docker___globals);
@@ -49988,7 +50724,7 @@ char CPyDef__docker___up(PyObject *cpy_r_services) {
         goto CPyL21;
 CPyL2: ;
     cpy_r_r7 = CPyStatic__docker___globals;
-    cpy_r_r8 = CPyStatics[367]; /* 'build' */
+    cpy_r_r8 = CPyStatics[369]; /* 'build' */
     cpy_r_r9 = CPyDict_GetItem(cpy_r_r7, cpy_r_r8);
     if (unlikely(cpy_r_r9 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "up", 44, CPyStatic__docker___globals);
@@ -50027,7 +50763,7 @@ CPyL5: ;
     } else
         goto CPyL26;
 CPyL8: ;
-    cpy_r_r15 = CPyStatics[368]; /* 'starting the ' */
+    cpy_r_r15 = CPyStatics[370]; /* 'starting the ' */
     cpy_r_r16 = PyObject_IsTrue(cpy_r_services);
     cpy_r_r17 = cpy_r_r16 >= 0;
     if (unlikely(!cpy_r_r17)) {
@@ -50036,7 +50772,7 @@ CPyL8: ;
     }
     cpy_r_r18 = cpy_r_r16;
     if (!cpy_r_r18) goto CPyL12;
-    cpy_r_r19 = CPyStatics[369]; /* ', ' */
+    cpy_r_r19 = CPyStatics[371]; /* ', ' */
     cpy_r_r20 = PyUnicode_Join(cpy_r_r19, cpy_r_services);
     if (unlikely(cpy_r_r20 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "up", 45, CPyStatic__docker___globals);
@@ -50045,11 +50781,11 @@ CPyL8: ;
     cpy_r_r21 = cpy_r_r20;
     goto CPyL13;
 CPyL12: ;
-    cpy_r_r22 = CPyStatics[370]; /* 'grafana' */
+    cpy_r_r22 = CPyStatics[372]; /* 'grafana' */
     CPy_INCREF(cpy_r_r22);
     cpy_r_r21 = cpy_r_r22;
 CPyL13: ;
-    cpy_r_r23 = CPyStatics[371]; /* ' container(s)' */
+    cpy_r_r23 = CPyStatics[373]; /* ' container(s)' */
     cpy_r_r24 = CPyStr_Build(3, cpy_r_r15, cpy_r_r21, cpy_r_r23);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r24 == NULL)) {
@@ -50057,7 +50793,7 @@ CPyL13: ;
         goto CPyL20;
     }
     cpy_r_r25 = CPyModule_builtins;
-    cpy_r_r26 = CPyStatics[372]; /* 'print' */
+    cpy_r_r26 = CPyStatics[374]; /* 'print' */
     cpy_r_r27 = CPyObject_GetAttr(cpy_r_r25, cpy_r_r26);
     if (unlikely(cpy_r_r27 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "up", 45, CPyStatic__docker___globals);
@@ -50074,8 +50810,8 @@ CPyL13: ;
         goto CPyL28;
 CPyL16: ;
     CPy_DECREF(cpy_r_r24);
-    cpy_r_r31 = CPyStatics[366]; /* 'up' */
-    cpy_r_r32 = CPyStatics[373]; /* '-d' */
+    cpy_r_r31 = CPyStatics[368]; /* 'up' */
+    cpy_r_r32 = CPyStatics[375]; /* '-d' */
     cpy_r_r33 = PyList_New(2);
     if (unlikely(cpy_r_r33 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "up", 46, CPyStatic__docker___globals);
@@ -50170,7 +50906,7 @@ char CPyDef__docker___down(void) {
     PyObject *cpy_r_r4;
     char cpy_r_r5;
     char cpy_r_r6;
-    cpy_r_r0 = CPyStatics[374]; /* 'down' */
+    cpy_r_r0 = CPyStatics[376]; /* 'down' */
     cpy_r_r1 = PyList_New(1);
     if (unlikely(cpy_r_r1 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "down", 62, CPyStatic__docker___globals);
@@ -50226,9 +50962,9 @@ char CPyDef__docker___build(PyObject *cpy_r_services) {
     PyObject *cpy_r_r12;
     char cpy_r_r13;
     char cpy_r_r14;
-    cpy_r_r0 = CPyStatics[375]; /* 'building the grafana containers' */
+    cpy_r_r0 = CPyStatics[377]; /* 'building the grafana containers' */
     cpy_r_r1 = CPyModule_builtins;
-    cpy_r_r2 = CPyStatics[372]; /* 'print' */
+    cpy_r_r2 = CPyStatics[374]; /* 'print' */
     cpy_r_r3 = CPyObject_GetAttr(cpy_r_r1, cpy_r_r2);
     if (unlikely(cpy_r_r3 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "build", 80, CPyStatic__docker___globals);
@@ -50244,7 +50980,7 @@ char CPyDef__docker___build(PyObject *cpy_r_services) {
     } else
         goto CPyL7;
 CPyL2: ;
-    cpy_r_r7 = CPyStatics[367]; /* 'build' */
+    cpy_r_r7 = CPyStatics[369]; /* 'build' */
     cpy_r_r8 = PyList_New(1);
     if (unlikely(cpy_r_r8 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "build", 81, CPyStatic__docker___globals);
@@ -50440,7 +51176,7 @@ CPyL4: ;
     }
     CPy_Unreachable();
 CPyL6: ;
-    cpy_r_r7 = CPyStatics[370]; /* 'grafana' */
+    cpy_r_r7 = CPyStatics[372]; /* 'grafana' */
     cpy_r_r8 = PyTuple_Pack(1, cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "compose_wrap", 126, CPyStatic__docker___globals);
@@ -51426,7 +52162,7 @@ PyObject *CPyDef__docker___ensure_containers(PyObject *cpy_r_fn) {
     }
 CPyL5: ;
     cpy_r_r5 = CPyStatic__docker___globals;
-    cpy_r_r6 = CPyStatics[376]; /* 'wraps' */
+    cpy_r_r6 = CPyStatics[378]; /* 'wraps' */
     cpy_r_r7 = CPyDict_GetItem(cpy_r_r5, cpy_r_r6);
     if (unlikely(cpy_r_r7 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "ensure_containers", 118, CPyStatic__docker___globals);
@@ -51452,7 +52188,7 @@ CPyL5: ;
     CPy_DECREF_NO_IMM(cpy_r_r2);
     CPy_INCREF(cpy_r_r13);
     cpy_r_r14 = CPyStatic__docker___globals;
-    cpy_r_r15 = CPyStatics[377]; /* 'compose_wrap' */
+    cpy_r_r15 = CPyStatics[379]; /* 'compose_wrap' */
     cpy_r_r16 = CPyDict_SetItem(cpy_r_r14, cpy_r_r15, cpy_r_r13);
     CPy_DECREF(cpy_r_r13);
     cpy_r_r17 = cpy_r_r16 >= 0;
@@ -51587,7 +52323,7 @@ char CPyDef__docker____exec_command(PyObject *cpy_r_command, PyObject *cpy_r_com
     cpy_r_compose_options = cpy_r_r1;
 CPyL2: ;
     cpy_r_r2 = CPyModule_eth_portfolio_scripts___docker;
-    cpy_r_r3 = CPyStatics[378]; /* 'check_system' */
+    cpy_r_r3 = CPyStatics[380]; /* 'check_system' */
     cpy_r_r4 = CPyObject_GetAttr(cpy_r_r2, cpy_r_r3);
     if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "_exec_command", 164, CPyStatic__docker___globals);
@@ -51601,9 +52337,9 @@ CPyL2: ;
     } else
         goto CPyL53;
 CPyL4: ;
-    cpy_r_r6 = CPyStatics[379]; /* 'docker' */
-    cpy_r_r7 = CPyStatics[380]; /* 'compose' */
-    cpy_r_r8 = CPyStatics[381]; /* '-f' */
+    cpy_r_r6 = CPyStatics[381]; /* 'docker' */
+    cpy_r_r7 = CPyStatics[382]; /* 'compose' */
+    cpy_r_r8 = CPyStatics[383]; /* '-f' */
     cpy_r_r9 = CPyStatic__docker___compose_file;
     if (likely(cpy_r_r9 != NULL)) goto CPyL7;
     PyErr_SetString(PyExc_NameError, "value for final name \"compose_file\" was not set");
@@ -51655,7 +52391,7 @@ CPyL9: ;
         goto CPyL57;
 CPyL12: ;
     cpy_r_r21 = CPyModule_subprocess;
-    cpy_r_r22 = CPyStatics[382]; /* 'check_output' */
+    cpy_r_r22 = CPyStatics[384]; /* 'check_output' */
     cpy_r_r23 = CPyObject_GetAttr(cpy_r_r21, cpy_r_r22);
     if (unlikely(cpy_r_r23 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "_exec_command", 166, CPyStatic__docker___globals);
@@ -51676,7 +52412,7 @@ CPyL14: ;
 CPyL15: ;
     cpy_r_r27 = CPy_CatchError();
     cpy_r_r28 = CPyModule_subprocess;
-    cpy_r_r29 = CPyStatics[383]; /* 'CalledProcessError' */
+    cpy_r_r29 = CPyStatics[385]; /* 'CalledProcessError' */
     cpy_r_r30 = CPyObject_GetAttr(cpy_r_r28, cpy_r_r29);
     if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "_exec_command", 169, CPyStatic__docker___globals);
@@ -51703,8 +52439,8 @@ CPyL15: ;
     if (!cpy_r_r36) goto CPyL61;
     cpy_r_r37 = CPy_GetExcValue();
     CPy_DecRef(cpy_r_r37);
-    cpy_r_r38 = CPyStatics[384]; /* 'docker-compose' */
-    cpy_r_r39 = CPyStatics[381]; /* '-f' */
+    cpy_r_r38 = CPyStatics[386]; /* 'docker-compose' */
+    cpy_r_r39 = CPyStatics[383]; /* '-f' */
     cpy_r_r40 = CPyStatic__docker___compose_file;
     if (unlikely(cpy_r_r40 == NULL)) {
         goto CPyL62;
@@ -51758,7 +52494,7 @@ CPyL24: ;
         goto CPyL67;
 CPyL27: ;
     cpy_r_r51 = CPyModule_subprocess;
-    cpy_r_r52 = CPyStatics[382]; /* 'check_output' */
+    cpy_r_r52 = CPyStatics[384]; /* 'check_output' */
     cpy_r_r53 = CPyObject_GetAttr(cpy_r_r51, cpy_r_r52);
     if (unlikely(cpy_r_r53 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "_exec_command", 171, CPyStatic__docker___globals);
@@ -51779,7 +52515,7 @@ CPyL29: ;
 CPyL30: ;
     cpy_r_r57 = CPy_CatchError();
     cpy_r_r58 = CPyModule_subprocess;
-    cpy_r_r59 = CPyStatics[383]; /* 'CalledProcessError' */
+    cpy_r_r59 = CPyStatics[385]; /* 'CalledProcessError' */
     cpy_r_r60 = CPyObject_GetAttr(cpy_r_r58, cpy_r_r59);
     if (unlikely(cpy_r_r60 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "_exec_command", 174, CPyStatic__docker___globals);
@@ -51805,8 +52541,8 @@ CPyL30: ;
     CPy_DecRef(cpy_r_r65);
     if (!cpy_r_r66) goto CPyL40;
     cpy_r_r67 = CPy_GetExcValue();
-    cpy_r_r68 = CPyStatics[385]; /* 'Error occurred while running ' */
-    cpy_r_r69 = CPyStatics[386]; /* ' ' */
+    cpy_r_r68 = CPyStatics[387]; /* 'Error occurred while running ' */
+    cpy_r_r69 = CPyStatics[388]; /* ' ' */
     cpy_r_r70 = PyUnicode_Join(cpy_r_r69, cpy_r_command);
     if (unlikely(cpy_r_r70 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "_exec_command", 176, CPyStatic__docker___globals);
@@ -52148,14 +52884,14 @@ CPyL3: ;
     cpy_r_r7 = (void *)&cpy_r_r6;
     int64_t cpy_r_r8[1] = {3};
     cpy_r_r9 = (void *)&cpy_r_r8;
-    cpy_r_r10 = CPyStatics[527]; /* (('logging', 'logging', 'logging'),) */
+    cpy_r_r10 = CPyStatics[529]; /* (('logging', 'logging', 'logging'),) */
     cpy_r_r11 = CPyStatic__docker___globals;
-    cpy_r_r12 = CPyStatics[387]; /* 'dao_treasury/_docker.py' */
+    cpy_r_r12 = CPyStatics[389]; /* 'dao_treasury/_docker.py' */
     cpy_r_r13 = CPyStatics[171]; /* '<module>' */
     cpy_r_r14 = CPyImport_ImportMany(cpy_r_r10, cpy_r_r7, cpy_r_r11, cpy_r_r12, cpy_r_r13, cpy_r_r9);
     if (!cpy_r_r14) goto CPyL28;
-    cpy_r_r15 = CPyStatics[528]; /* ('resources',) */
-    cpy_r_r16 = CPyStatics[389]; /* 'importlib' */
+    cpy_r_r15 = CPyStatics[530]; /* ('resources',) */
+    cpy_r_r16 = CPyStatics[391]; /* 'importlib' */
     cpy_r_r17 = CPyStatic__docker___globals;
     cpy_r_r18 = CPyImport_ImportFromMany(cpy_r_r16, cpy_r_r15, cpy_r_r15, cpy_r_r17);
     if (unlikely(cpy_r_r18 == NULL)) {
@@ -52170,14 +52906,14 @@ CPyL3: ;
     cpy_r_r21 = (void *)&cpy_r_r20;
     int64_t cpy_r_r22[1] = {5};
     cpy_r_r23 = (void *)&cpy_r_r22;
-    cpy_r_r24 = CPyStatics[530]; /* (('subprocess', 'subprocess', 'subprocess'),) */
+    cpy_r_r24 = CPyStatics[532]; /* (('subprocess', 'subprocess', 'subprocess'),) */
     cpy_r_r25 = CPyStatic__docker___globals;
-    cpy_r_r26 = CPyStatics[387]; /* 'dao_treasury/_docker.py' */
+    cpy_r_r26 = CPyStatics[389]; /* 'dao_treasury/_docker.py' */
     cpy_r_r27 = CPyStatics[171]; /* '<module>' */
     cpy_r_r28 = CPyImport_ImportMany(cpy_r_r24, cpy_r_r21, cpy_r_r25, cpy_r_r26, cpy_r_r27, cpy_r_r23);
     if (!cpy_r_r28) goto CPyL28;
-    cpy_r_r29 = CPyStatics[531]; /* ('wraps',) */
-    cpy_r_r30 = CPyStatics[391]; /* 'functools' */
+    cpy_r_r29 = CPyStatics[533]; /* ('wraps',) */
+    cpy_r_r30 = CPyStatics[393]; /* 'functools' */
     cpy_r_r31 = CPyStatic__docker___globals;
     cpy_r_r32 = CPyImport_ImportFromMany(cpy_r_r30, cpy_r_r29, cpy_r_r29, cpy_r_r31);
     if (unlikely(cpy_r_r32 == NULL)) {
@@ -52187,7 +52923,7 @@ CPyL3: ;
     CPyModule_functools = cpy_r_r32;
     CPy_INCREF(CPyModule_functools);
     CPy_DECREF(cpy_r_r32);
-    cpy_r_r33 = CPyStatics[532]; /* ('Any', 'Callable', 'Coroutine', 'Final', 'Iterable',
+    cpy_r_r33 = CPyStatics[534]; /* ('Any', 'Callable', 'Coroutine', 'Final', 'Iterable',
                                     'Tuple', 'TypeVar', 'List') */
     cpy_r_r34 = CPyStatics[29]; /* 'typing' */
     cpy_r_r35 = CPyStatic__docker___globals;
@@ -52204,14 +52940,14 @@ CPyL3: ;
     cpy_r_r39 = (void *)&cpy_r_r38;
     int64_t cpy_r_r40[1] = {9};
     cpy_r_r41 = (void *)&cpy_r_r40;
-    cpy_r_r42 = CPyStatics[534]; /* (('eth_portfolio_scripts.docker', 'eth_portfolio_scripts',
+    cpy_r_r42 = CPyStatics[536]; /* (('eth_portfolio_scripts.docker', 'eth_portfolio_scripts',
                                      'eth_portfolio_scripts'),) */
     cpy_r_r43 = CPyStatic__docker___globals;
-    cpy_r_r44 = CPyStatics[387]; /* 'dao_treasury/_docker.py' */
+    cpy_r_r44 = CPyStatics[389]; /* 'dao_treasury/_docker.py' */
     cpy_r_r45 = CPyStatics[171]; /* '<module>' */
     cpy_r_r46 = CPyImport_ImportMany(cpy_r_r42, cpy_r_r39, cpy_r_r43, cpy_r_r44, cpy_r_r45, cpy_r_r41);
     if (!cpy_r_r46) goto CPyL28;
-    cpy_r_r47 = CPyStatics[535]; /* ('ParamSpec',) */
+    cpy_r_r47 = CPyStatics[537]; /* ('ParamSpec',) */
     cpy_r_r48 = CPyStatics[135]; /* 'typing_extensions' */
     cpy_r_r49 = CPyStatic__docker___globals;
     cpy_r_r50 = CPyImport_ImportFromMany(cpy_r_r48, cpy_r_r47, cpy_r_r47, cpy_r_r49);
@@ -52264,13 +53000,13 @@ CPyL3: ;
     }
     cpy_r_r65 = CPyStatics[36]; /* 'dao_treasury' */
     cpy_r_r66 = CPyStatic__docker___globals;
-    cpy_r_r67 = CPyStatics[388]; /* 'resources' */
+    cpy_r_r67 = CPyStatics[390]; /* 'resources' */
     cpy_r_r68 = CPyDict_GetItem(cpy_r_r66, cpy_r_r67);
     if (unlikely(cpy_r_r68 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", 15, CPyStatic__docker___globals);
         goto CPyL28;
     }
-    cpy_r_r69 = CPyStatics[397]; /* 'files' */
+    cpy_r_r69 = CPyStatics[399]; /* 'files' */
     cpy_r_r70 = CPyObject_GetAttr(cpy_r_r68, cpy_r_r69);
     CPy_DECREF(cpy_r_r68);
     if (unlikely(cpy_r_r70 == NULL)) {
@@ -52285,8 +53021,8 @@ CPyL3: ;
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", 15, CPyStatic__docker___globals);
         goto CPyL28;
     }
-    cpy_r_r74 = CPyStatics[398]; /* 'docker-compose.yaml' */
-    cpy_r_r75 = CPyStatics[399]; /* 'joinpath' */
+    cpy_r_r74 = CPyStatics[400]; /* 'docker-compose.yaml' */
+    cpy_r_r75 = CPyStatics[401]; /* 'joinpath' */
     PyObject *cpy_r_r76[2] = {cpy_r_r73, cpy_r_r74};
     cpy_r_r77 = (PyObject **)&cpy_r_r76;
     cpy_r_r78 = PyObject_VectorcallMethod(cpy_r_r75, cpy_r_r77, 9223372036854775810ULL, 0);
@@ -52304,7 +53040,7 @@ CPyL3: ;
     CPyStatic__docker___compose_file = cpy_r_r79;
     CPy_INCREF(CPyStatic__docker___compose_file);
     cpy_r_r80 = CPyStatic__docker___globals;
-    cpy_r_r81 = CPyStatics[400]; /* 'compose_file' */
+    cpy_r_r81 = CPyStatics[402]; /* 'compose_file' */
     cpy_r_r82 = CPyDict_SetItem(cpy_r_r80, cpy_r_r81, cpy_r_r79);
     CPy_DECREF(cpy_r_r79);
     cpy_r_r83 = cpy_r_r82 >= 0;
@@ -52312,9 +53048,9 @@ CPyL3: ;
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", 14, CPyStatic__docker___globals);
         goto CPyL28;
     }
-    cpy_r_r84 = CPyStatics[401]; /* '_P' */
+    cpy_r_r84 = CPyStatics[403]; /* '_P' */
     cpy_r_r85 = CPyStatic__docker___globals;
-    cpy_r_r86 = CPyStatics[396]; /* 'ParamSpec' */
+    cpy_r_r86 = CPyStatics[398]; /* 'ParamSpec' */
     cpy_r_r87 = CPyDict_GetItem(cpy_r_r85, cpy_r_r86);
     if (unlikely(cpy_r_r87 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", 84, CPyStatic__docker___globals);
@@ -52329,7 +53065,7 @@ CPyL3: ;
         goto CPyL28;
     }
     cpy_r_r91 = CPyStatic__docker___globals;
-    cpy_r_r92 = CPyStatics[401]; /* '_P' */
+    cpy_r_r92 = CPyStatics[403]; /* '_P' */
     cpy_r_r93 = CPyDict_SetItem(cpy_r_r91, cpy_r_r92, cpy_r_r90);
     CPy_DECREF(cpy_r_r90);
     cpy_r_r94 = cpy_r_r93 >= 0;
@@ -52337,7 +53073,7 @@ CPyL3: ;
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", 84, CPyStatic__docker___globals);
         goto CPyL28;
     }
-    cpy_r_r95 = CPyStatics[402]; /* '_T' */
+    cpy_r_r95 = CPyStatics[404]; /* '_T' */
     cpy_r_r96 = CPyStatic__docker___globals;
     cpy_r_r97 = CPyStatics[231]; /* 'TypeVar' */
     cpy_r_r98 = CPyDict_GetItem(cpy_r_r96, cpy_r_r97);
@@ -52354,7 +53090,7 @@ CPyL3: ;
         goto CPyL28;
     }
     cpy_r_r102 = CPyStatic__docker___globals;
-    cpy_r_r103 = CPyStatics[402]; /* '_T' */
+    cpy_r_r103 = CPyStatics[404]; /* '_T' */
     cpy_r_r104 = CPyDict_SetItem(cpy_r_r102, cpy_r_r103, cpy_r_r101);
     CPy_DECREF(cpy_r_r101);
     cpy_r_r105 = cpy_r_r104 >= 0;
@@ -52501,8 +53237,8 @@ char CPyDef__nicknames___setup_address_nicknames_in_db(void) {
         goto CPyL47;
 CPyL4: ;
     cpy_r_r11 = 1;
-    cpy_r_r12 = CPyStatics[403]; /* '0x0000000000000000000000000000000000000000' */
-    cpy_r_r13 = CPyStatics[404]; /* 'Zero Address' */
+    cpy_r_r12 = CPyStatics[405]; /* '0x0000000000000000000000000000000000000000' */
+    cpy_r_r13 = CPyStatics[406]; /* 'Zero Address' */
     cpy_r_r14 = CPyStatic__nicknames___set_nickname;
     if (likely(cpy_r_r14 != NULL)) goto CPyL8;
     PyErr_SetString(PyExc_NameError, "value for final name \"set_nickname\" was not set");
@@ -52560,7 +53296,7 @@ CPyL13: ;
         CPy_TypeErrorTraceback("dao_treasury/_nicknames.py", "setup_address_nicknames_in_db", 15, CPyStatic__nicknames___globals, "str", cpy_r_r23);
         goto CPyL52;
     }
-    cpy_r_r25 = CPyStatics[405]; /* 'Disperse.app' */
+    cpy_r_r25 = CPyStatics[407]; /* 'Disperse.app' */
     cpy_r_r26 = CPyStatic__nicknames___set_nickname;
     if (unlikely(cpy_r_r26 == NULL)) {
         goto CPyL53;
@@ -52595,7 +53331,7 @@ CPyL20: ;
         goto CPyL23;
     }
     cpy_r_r32 = CPyStatic__nicknames___globals;
-    cpy_r_r33 = CPyStatics[406]; /* '_set_address_nicknames_for_tokens' */
+    cpy_r_r33 = CPyStatics[408]; /* '_set_address_nicknames_for_tokens' */
     cpy_r_r34 = CPyDict_GetItem(cpy_r_r32, cpy_r_r33);
     if (unlikely(cpy_r_r34 == NULL)) {
         CPy_AddTraceback("dao_treasury/_nicknames.py", "setup_address_nicknames_in_db", 17, CPyStatic__nicknames___globals);
@@ -52853,7 +53589,7 @@ char CPyDef__nicknames_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[536]; /* ('Final',) */
+    cpy_r_r5 = CPyStatics[538]; /* ('Final',) */
     cpy_r_r6 = CPyStatics[29]; /* 'typing' */
     cpy_r_r7 = CPyStatic__nicknames___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -52864,7 +53600,7 @@ CPyL3: ;
     CPyModule_typing = cpy_r_r8;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[480]; /* ('db_session',) */
+    cpy_r_r9 = CPyStatics[482]; /* ('db_session',) */
     cpy_r_r10 = CPyStatics[133]; /* 'pony.orm' */
     cpy_r_r11 = CPyStatic__nicknames___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -52875,7 +53611,7 @@ CPyL3: ;
     CPyModule_pony___orm = cpy_r_r12;
     CPy_INCREF(CPyModule_pony___orm);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[524]; /* ('constants',) */
+    cpy_r_r13 = CPyStatics[526]; /* ('constants',) */
     cpy_r_r14 = CPyStatics[36]; /* 'dao_treasury' */
     cpy_r_r15 = CPyStatic__nicknames___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -52886,7 +53622,7 @@ CPyL3: ;
     CPyModule_dao_treasury = cpy_r_r16;
     CPy_INCREF(CPyModule_dao_treasury);
     CPy_DECREF(cpy_r_r16);
-    cpy_r_r17 = CPyStatics[537]; /* ('Address', '_set_address_nicknames_for_tokens') */
+    cpy_r_r17 = CPyStatics[539]; /* ('Address', '_set_address_nicknames_for_tokens') */
     cpy_r_r18 = CPyStatics[111]; /* 'dao_treasury.db' */
     cpy_r_r19 = CPyStatic__nicknames___globals;
     cpy_r_r20 = CPyImport_ImportFromMany(cpy_r_r18, cpy_r_r17, cpy_r_r17, cpy_r_r19);
@@ -52904,7 +53640,7 @@ CPyL3: ;
         CPy_AddTraceback("dao_treasury/_nicknames.py", "<module>", 9, CPyStatic__nicknames___globals);
         goto CPyL11;
     }
-    cpy_r_r24 = CPyStatics[407]; /* 'set_nickname' */
+    cpy_r_r24 = CPyStatics[409]; /* 'set_nickname' */
     cpy_r_r25 = CPyObject_GetAttr(cpy_r_r23, cpy_r_r24);
     CPy_DECREF(cpy_r_r23);
     if (unlikely(cpy_r_r25 == NULL)) {
@@ -52914,7 +53650,7 @@ CPyL3: ;
     CPyStatic__nicknames___set_nickname = cpy_r_r25;
     CPy_INCREF(CPyStatic__nicknames___set_nickname);
     cpy_r_r26 = CPyStatic__nicknames___globals;
-    cpy_r_r27 = CPyStatics[407]; /* 'set_nickname' */
+    cpy_r_r27 = CPyStatics[409]; /* 'set_nickname' */
     cpy_r_r28 = CPyDict_SetItem(cpy_r_r26, cpy_r_r27, cpy_r_r25);
     CPy_DECREF(cpy_r_r25);
     cpy_r_r29 = cpy_r_r28 >= 0;
@@ -53618,7 +54354,7 @@ CPyL10: ;
     } else
         goto CPyL16;
 CPyL12: ;
-    cpy_r_r19 = CPyStatics[408]; /* ('You can only pass a start block or a start timestamp, '
+    cpy_r_r19 = CPyStatics[410]; /* ('You can only pass a start block or a start timestamp, '
                                     'not both.') */
     cpy_r_r20 = CPyModule_builtins;
     cpy_r_r21 = CPyStatics[93]; /* 'ValueError' */
@@ -53673,7 +54409,7 @@ CPyL21: ;
     } else
         goto CPyL26;
 CPyL22: ;
-    cpy_r_r34 = CPyStatics[409]; /* 'start_block can not be negative' */
+    cpy_r_r34 = CPyStatics[411]; /* 'start_block can not be negative' */
     cpy_r_r35 = CPyModule_builtins;
     cpy_r_r36 = CPyStatics[93]; /* 'ValueError' */
     cpy_r_r37 = CPyObject_GetAttr(cpy_r_r35, cpy_r_r36);
@@ -53726,7 +54462,7 @@ CPyL31: ;
 CPyL32: ;
     CPyTagged_DECREF(cpy_r_r43);
     if (!cpy_r_r49) goto CPyL37;
-    cpy_r_r51 = CPyStatics[410]; /* 'start_timestamp can not be negative' */
+    cpy_r_r51 = CPyStatics[412]; /* 'start_timestamp can not be negative' */
     cpy_r_r52 = CPyModule_builtins;
     cpy_r_r53 = CPyStatics[93]; /* 'ValueError' */
     cpy_r_r54 = CPyObject_GetAttr(cpy_r_r52, cpy_r_r53);
@@ -53774,7 +54510,7 @@ CPyL39: ;
     } else
         goto CPyL45;
 CPyL41: ;
-    cpy_r_r64 = CPyStatics[411]; /* ('You can only pass an end block or an end timestamp, '
+    cpy_r_r64 = CPyStatics[413]; /* ('You can only pass an end block or an end timestamp, '
                                     'not both.') */
     cpy_r_r65 = CPyModule_builtins;
     cpy_r_r66 = CPyStatics[93]; /* 'ValueError' */
@@ -53829,7 +54565,7 @@ CPyL50: ;
     } else
         goto CPyL55;
 CPyL51: ;
-    cpy_r_r79 = CPyStatics[412]; /* 'end_block can not be negative' */
+    cpy_r_r79 = CPyStatics[414]; /* 'end_block can not be negative' */
     cpy_r_r80 = CPyModule_builtins;
     cpy_r_r81 = CPyStatics[93]; /* 'ValueError' */
     cpy_r_r82 = CPyObject_GetAttr(cpy_r_r80, cpy_r_r81);
@@ -53882,7 +54618,7 @@ CPyL60: ;
 CPyL61: ;
     CPyTagged_DECREF(cpy_r_r88);
     if (!cpy_r_r94) goto CPyL66;
-    cpy_r_r96 = CPyStatics[413]; /* 'end_timestamp can not be negative' */
+    cpy_r_r96 = CPyStatics[415]; /* 'end_timestamp can not be negative' */
     cpy_r_r97 = CPyModule_builtins;
     cpy_r_r98 = CPyStatics[93]; /* 'ValueError' */
     cpy_r_r99 = CPyObject_GetAttr(cpy_r_r97, cpy_r_r98);
@@ -53942,14 +54678,14 @@ CPyL71: ;
     }
     cpy_r_r109 = cpy_r_r107;
     if (!cpy_r_r109) goto CPyL79;
-    cpy_r_r110 = CPyStatics[414]; /* 'TreasuryWallet ' */
+    cpy_r_r110 = CPyStatics[416]; /* 'TreasuryWallet ' */
     cpy_r_r111 = PyObject_Str(cpy_r_addr);
     CPy_DECREF(cpy_r_addr);
     if (unlikely(cpy_r_r111 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "__post_init__", 73, CPyStatic__wallet___globals);
         goto CPyL84;
     }
-    cpy_r_r112 = CPyStatics[415]; /* ' already exists' */
+    cpy_r_r112 = CPyStatics[417]; /* ' already exists' */
     cpy_r_r113 = CPyStr_Build(3, cpy_r_r110, cpy_r_r111, cpy_r_r112);
     CPy_DECREF(cpy_r_r111);
     if (unlikely(cpy_r_r113 == NULL)) {
@@ -54505,7 +55241,7 @@ CPyL5: ;
         goto CPyL13;
     }
     cpy_r_r9 = CPyStatic__wallet___globals;
-    cpy_r_r10 = CPyStatics[416]; /* 'closest_block_after_timestamp' */
+    cpy_r_r10 = CPyStatics[418]; /* 'closest_block_after_timestamp' */
     cpy_r_r11 = CPyDict_GetItem(cpy_r_r9, cpy_r_r10);
     if (unlikely(cpy_r_r11 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "_start_block", 100, CPyStatic__wallet___globals);
@@ -54521,7 +55257,7 @@ CPyL5: ;
         goto CPyL17;
     }
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r16 = CPyStatics[457]; /* 1 */
+    cpy_r_r16 = CPyStatics[459]; /* 1 */
     cpy_r_r17 = PyNumber_Subtract(cpy_r_r15, cpy_r_r16);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r17 == NULL)) {
@@ -54541,7 +55277,7 @@ CPyL5: ;
     cpy_r_r19 = CPyTagged_StealAsObject(cpy_r_r18);
     return cpy_r_r19;
 CPyL12: ;
-    cpy_r_r20 = CPyStatics[459]; /* 0 */
+    cpy_r_r20 = CPyStatics[461]; /* 0 */
     return cpy_r_r20;
 CPyL13: ;
     cpy_r_r21 = NULL;
@@ -54647,7 +55383,7 @@ CPyL5: ;
         goto CPyL13;
     }
     cpy_r_r9 = CPyStatic__wallet___globals;
-    cpy_r_r10 = CPyStatics[416]; /* 'closest_block_after_timestamp' */
+    cpy_r_r10 = CPyStatics[418]; /* 'closest_block_after_timestamp' */
     cpy_r_r11 = CPyDict_GetItem(cpy_r_r9, cpy_r_r10);
     if (unlikely(cpy_r_r11 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "_end_block", 110, CPyStatic__wallet___globals);
@@ -54663,7 +55399,7 @@ CPyL5: ;
         goto CPyL17;
     }
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r16 = CPyStatics[457]; /* 1 */
+    cpy_r_r16 = CPyStatics[459]; /* 1 */
     cpy_r_r17 = PyNumber_Subtract(cpy_r_r15, cpy_r_r16);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r17 == NULL)) {
@@ -55574,7 +56310,7 @@ PyObject *CPyDef__wallet___load_wallets_from_yaml(PyObject *cpy_r_path) {
 CPyL6: ;
     cpy_r_r11 = CPy_CatchError();
     cpy_r_r12 = CPyModule_builtins;
-    cpy_r_r13 = CPyStatics[417]; /* 'Exception' */
+    cpy_r_r13 = CPyStatics[419]; /* 'Exception' */
     cpy_r_r14 = CPyObject_GetAttr(cpy_r_r12, cpy_r_r13);
     if (unlikely(cpy_r_r14 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 138, CPyStatic__wallet___globals);
@@ -55584,7 +56320,7 @@ CPyL6: ;
     CPy_DecRef(cpy_r_r14);
     if (!cpy_r_r15) goto CPyL14;
     cpy_r_r16 = CPy_GetExcValue();
-    cpy_r_r17 = CPyStatics[418]; /* 'Failed to parse wallets YAML: ' */
+    cpy_r_r17 = CPyStatics[420]; /* 'Failed to parse wallets YAML: ' */
     cpy_r_r18 = PyObject_Str(cpy_r_r16);
     CPy_DecRef(cpy_r_r16);
     if (unlikely(cpy_r_r18 == NULL)) {
@@ -55652,7 +56388,7 @@ CPyL18: ;
     } else
         goto CPyL276;
 CPyL20: ;
-    cpy_r_r31 = CPyStatics[419]; /* 'Wallets YAML file must be a mapping of address to config' */
+    cpy_r_r31 = CPyStatics[421]; /* 'Wallets YAML file must be a mapping of address to config' */
     cpy_r_r32 = CPyModule_builtins;
     cpy_r_r33 = CPyStatics[93]; /* 'ValueError' */
     cpy_r_r34 = CPyObject_GetAttr(cpy_r_r32, cpy_r_r33);
@@ -55736,14 +56472,14 @@ CPyL31: ;
     } else
         goto CPyL283;
 CPyL33: ;
-    cpy_r_r56 = CPyStatics[420]; /* 'Invalid config for wallet ' */
+    cpy_r_r56 = CPyStatics[422]; /* 'Invalid config for wallet ' */
     cpy_r_r57 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r57 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 150, CPyStatic__wallet___globals);
         goto CPyL270;
     }
-    cpy_r_r58 = CPyStatics[421]; /* ', expected mapping' */
+    cpy_r_r58 = CPyStatics[423]; /* ', expected mapping' */
     cpy_r_r59 = CPyStr_Build(3, cpy_r_r56, cpy_r_r57, cpy_r_r58);
     CPy_DECREF(cpy_r_r57);
     if (unlikely(cpy_r_r59 == NULL)) {
@@ -55867,14 +56603,14 @@ CPyL55: ;
     } else
         goto CPyL288;
 CPyL56: ;
-    cpy_r_r100 = CPyStatics[422]; /* "'networks' for wallet " */
+    cpy_r_r100 = CPyStatics[424]; /* "'networks' for wallet " */
     cpy_r_r101 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r101 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 161, CPyStatic__wallet___globals);
         goto CPyL292;
     }
-    cpy_r_r102 = CPyStatics[423]; /* ' must be a list of integers, got ' */
+    cpy_r_r102 = CPyStatics[425]; /* ' must be a list of integers, got ' */
     cpy_r_r103 = PyObject_Str(cpy_r_networks);
     CPy_DECREF(cpy_r_networks);
     if (unlikely(cpy_r_r103 == NULL)) {
@@ -55934,7 +56670,7 @@ CPyL65: ;
         CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 166, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
         goto CPyL285;
     }
-    cpy_r_r116 = CPyStatics[424]; /* 'start' */
+    cpy_r_r116 = CPyStatics[426]; /* 'start' */
     cpy_r_r117 = PyDict_New();
     if (unlikely(cpy_r_r117 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 166, CPyStatic__wallet___globals);
@@ -55960,21 +56696,21 @@ CPyL65: ;
     } else
         goto CPyL297;
 CPyL70: ;
-    cpy_r_r123 = CPyStatics[425]; /* "Invalid 'start' for wallet " */
+    cpy_r_r123 = CPyStatics[427]; /* "Invalid 'start' for wallet " */
     cpy_r_r124 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r124 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 169, CPyStatic__wallet___globals);
         goto CPyL298;
     }
-    cpy_r_r125 = CPyStatics[426]; /* '. Expected mapping, got ' */
+    cpy_r_r125 = CPyStatics[428]; /* '. Expected mapping, got ' */
     cpy_r_r126 = PyObject_Str(cpy_r_r118);
     CPy_DECREF(cpy_r_r118);
     if (unlikely(cpy_r_r126 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 169, CPyStatic__wallet___globals);
         goto CPyL299;
     }
-    cpy_r_r127 = CPyStatics[427]; /* '.' */
+    cpy_r_r127 = CPyStatics[429]; /* '.' */
     cpy_r_r128 = CPyStr_Build(5, cpy_r_r123, cpy_r_r124, cpy_r_r125, cpy_r_r126, cpy_r_r127);
     CPy_DECREF(cpy_r_r124);
     CPy_DECREF(cpy_r_r126);
@@ -56035,7 +56771,7 @@ CPyL79: ;
     CPy_DECREF(cpy_r_r140.f3);
     cpy_r_key = cpy_r_r143;
     cpy_r_value = cpy_r_r144;
-    cpy_r_r145 = CPyStatics[311]; /* 'timestamp' */
+    cpy_r_r145 = CPyStatics[313]; /* 'timestamp' */
     cpy_r_r146 = PyObject_RichCompare(cpy_r_key, cpy_r_r145, 2);
     if (unlikely(cpy_r_r146 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 172, CPyStatic__wallet___globals);
@@ -56067,7 +56803,7 @@ CPyL83: ;
     } else
         goto CPyL89;
 CPyL85: ;
-    cpy_r_r154 = CPyStatics[428]; /* ('You cannot provide both a start block and a start '
+    cpy_r_r154 = CPyStatics[430]; /* ('You cannot provide both a start block and a start '
                                      'timestamp') */
     cpy_r_r155 = CPyModule_builtins;
     cpy_r_r156 = CPyStatics[93]; /* 'ValueError' */
@@ -56092,7 +56828,7 @@ CPyL85: ;
     }
     CPy_Unreachable();
 CPyL89: ;
-    cpy_r_r161 = CPyStatics[429]; /* 'start_timestamp' */
+    cpy_r_r161 = CPyStatics[431]; /* 'start_timestamp' */
     cpy_r_r162 = CPyDict_SetItem(cpy_r_r67, cpy_r_r161, cpy_r_value);
     CPy_DECREF(cpy_r_value);
     cpy_r_r163 = cpy_r_r162 >= 0;
@@ -56134,21 +56870,21 @@ CPyL93: ;
     } else
         goto CPyL310;
 CPyL95: ;
-    cpy_r_r173 = CPyStatics[430]; /* 'Invalid start block for wallet ' */
+    cpy_r_r173 = CPyStatics[432]; /* 'Invalid start block for wallet ' */
     cpy_r_r174 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r174 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
         goto CPyL311;
     }
-    cpy_r_r175 = CPyStatics[426]; /* '. Expected mapping, got ' */
+    cpy_r_r175 = CPyStatics[428]; /* '. Expected mapping, got ' */
     cpy_r_r176 = PyObject_Str(cpy_r_value);
     CPy_DECREF(cpy_r_value);
     if (unlikely(cpy_r_r176 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 181, CPyStatic__wallet___globals);
         goto CPyL312;
     }
-    cpy_r_r177 = CPyStatics[427]; /* '.' */
+    cpy_r_r177 = CPyStatics[429]; /* '.' */
     cpy_r_r178 = CPyStr_Build(5, cpy_r_r173, cpy_r_r174, cpy_r_r175, cpy_r_r176, cpy_r_r177);
     CPy_DECREF(cpy_r_r174);
     CPy_DECREF(cpy_r_r176);
@@ -56220,21 +56956,21 @@ CPyL104: ;
     } else
         goto CPyL317;
 CPyL107: ;
-    cpy_r_r199 = CPyStatics[431]; /* 'Invalid chainid for wallet ' */
+    cpy_r_r199 = CPyStatics[433]; /* 'Invalid chainid for wallet ' */
     cpy_r_r200 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r200 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
         goto CPyL318;
     }
-    cpy_r_r201 = CPyStatics[432]; /* ' start block. Expected integer, got ' */
+    cpy_r_r201 = CPyStatics[434]; /* ' start block. Expected integer, got ' */
     cpy_r_r202 = PyObject_Str(cpy_r_chainid);
     CPy_DECREF(cpy_r_chainid);
     if (unlikely(cpy_r_r202 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 186, CPyStatic__wallet___globals);
         goto CPyL319;
     }
-    cpy_r_r203 = CPyStatics[427]; /* '.' */
+    cpy_r_r203 = CPyStatics[429]; /* '.' */
     cpy_r_r204 = CPyStr_Build(5, cpy_r_r199, cpy_r_r200, cpy_r_r201, cpy_r_r202, cpy_r_r203);
     CPy_DECREF(cpy_r_r200);
     CPy_DECREF(cpy_r_r202);
@@ -56279,21 +57015,21 @@ CPyL114: ;
     } else
         goto CPyL321;
 CPyL116: ;
-    cpy_r_r215 = CPyStatics[430]; /* 'Invalid start block for wallet ' */
+    cpy_r_r215 = CPyStatics[432]; /* 'Invalid start block for wallet ' */
     cpy_r_r216 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r216 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 190, CPyStatic__wallet___globals);
         goto CPyL322;
     }
-    cpy_r_r217 = CPyStatics[433]; /* '. Expected integer, got ' */
+    cpy_r_r217 = CPyStatics[435]; /* '. Expected integer, got ' */
     cpy_r_r218 = PyObject_Str(cpy_r_r194);
     CPy_DECREF(cpy_r_r194);
     if (unlikely(cpy_r_r218 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 190, CPyStatic__wallet___globals);
         goto CPyL323;
     }
-    cpy_r_r219 = CPyStatics[427]; /* '.' */
+    cpy_r_r219 = CPyStatics[429]; /* '.' */
     cpy_r_r220 = CPyStr_Build(5, cpy_r_r215, cpy_r_r216, cpy_r_r217, cpy_r_r218, cpy_r_r219);
     CPy_DECREF(cpy_r_r216);
     CPy_DECREF(cpy_r_r218);
@@ -56361,7 +57097,7 @@ CPyL129: ;
 CPyL130: ;
     CPyTagged_DECREF(cpy_r_r227);
     if (!cpy_r_r233) goto CPyL327;
-    cpy_r_r235 = CPyStatics[429]; /* 'start_timestamp' */
+    cpy_r_r235 = CPyStatics[431]; /* 'start_timestamp' */
     cpy_r_r236 = PyDict_Contains(cpy_r_r67, cpy_r_r235);
     cpy_r_r237 = cpy_r_r236 >= 0;
     if (unlikely(!cpy_r_r237)) {
@@ -56374,7 +57110,7 @@ CPyL130: ;
     } else
         goto CPyL137;
 CPyL133: ;
-    cpy_r_r239 = CPyStatics[428]; /* ('You cannot provide both a start block and a start '
+    cpy_r_r239 = CPyStatics[430]; /* ('You cannot provide both a start block and a start '
                                      'timestamp') */
     cpy_r_r240 = CPyModule_builtins;
     cpy_r_r241 = CPyStatics[93]; /* 'ValueError' */
@@ -56433,14 +57169,14 @@ CPyL140: ;
     } else
         goto CPyL147;
 CPyL141: ;
-    cpy_r_r253 = CPyStatics[434]; /* 'Invalid key: ' */
+    cpy_r_r253 = CPyStatics[436]; /* 'Invalid key: ' */
     cpy_r_r254 = PyObject_Str(cpy_r_key);
     CPy_DECREF(cpy_r_key);
     if (unlikely(cpy_r_r254 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 200, CPyStatic__wallet___globals);
         goto CPyL270;
     }
-    cpy_r_r255 = CPyStatics[435]; /* ". Valid options are 'block' or 'timestamp'." */
+    cpy_r_r255 = CPyStatics[437]; /* ". Valid options are 'block' or 'timestamp'." */
     cpy_r_r256 = CPyStr_Build(3, cpy_r_r253, cpy_r_r254, cpy_r_r255);
     CPy_DECREF(cpy_r_r254);
     if (unlikely(cpy_r_r256 == NULL)) {
@@ -56579,7 +57315,7 @@ CPyL164: ;
     } else
         goto CPyL339;
 CPyL167: ;
-    cpy_r_r285 = CPyStatics[436]; /* 'Invalid start.block for chain ' */
+    cpy_r_r285 = CPyStatics[438]; /* 'Invalid start.block for chain ' */
     cpy_r_r286 = CPyStatic_constants___CHAINID;
     if (unlikely(cpy_r_r286 == CPY_INT_TAG)) {
         goto CPyL340;
@@ -56599,7 +57335,7 @@ CPyL170: ;
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 207, CPyStatic__wallet___globals);
         goto CPyL341;
     }
-    cpy_r_r289 = CPyStatics[437]; /* ' on ' */
+    cpy_r_r289 = CPyStatics[439]; /* ' on ' */
     cpy_r_r290 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r290 == NULL)) {
@@ -56663,7 +57399,7 @@ CPyL179: ;
         CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 212, CPyStatic__wallet___globals, "dict", cpy_r_cfg);
         goto CPyL344;
     }
-    cpy_r_r304 = CPyStatics[438]; /* 'end' */
+    cpy_r_r304 = CPyStatics[440]; /* 'end' */
     cpy_r_r305 = PyDict_New();
     if (unlikely(cpy_r_r305 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 212, CPyStatic__wallet___globals);
@@ -56689,21 +57425,21 @@ CPyL179: ;
     } else
         goto CPyL347;
 CPyL184: ;
-    cpy_r_r311 = CPyStatics[439]; /* "Invalid 'end' for wallet " */
+    cpy_r_r311 = CPyStatics[441]; /* "Invalid 'end' for wallet " */
     cpy_r_r312 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r312 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 215, CPyStatic__wallet___globals);
         goto CPyL348;
     }
-    cpy_r_r313 = CPyStatics[426]; /* '. Expected mapping, got ' */
+    cpy_r_r313 = CPyStatics[428]; /* '. Expected mapping, got ' */
     cpy_r_r314 = PyObject_Str(cpy_r_r306);
     CPy_DECREF(cpy_r_r306);
     if (unlikely(cpy_r_r314 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 215, CPyStatic__wallet___globals);
         goto CPyL349;
     }
-    cpy_r_r315 = CPyStatics[427]; /* '.' */
+    cpy_r_r315 = CPyStatics[429]; /* '.' */
     cpy_r_r316 = CPyStr_Build(5, cpy_r_r311, cpy_r_r312, cpy_r_r313, cpy_r_r314, cpy_r_r315);
     CPy_DECREF(cpy_r_r312);
     CPy_DECREF(cpy_r_r314);
@@ -56763,7 +57499,7 @@ CPyL193: ;
     CPy_DECREF(cpy_r_r328.f3);
     cpy_r_key = cpy_r_r331;
     cpy_r_value = cpy_r_r332;
-    cpy_r_r333 = CPyStatics[311]; /* 'timestamp' */
+    cpy_r_r333 = CPyStatics[313]; /* 'timestamp' */
     cpy_r_r334 = PyObject_RichCompare(cpy_r_key, cpy_r_r333, 2);
     if (unlikely(cpy_r_r334 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 219, CPyStatic__wallet___globals);
@@ -56795,7 +57531,7 @@ CPyL197: ;
     } else
         goto CPyL203;
 CPyL199: ;
-    cpy_r_r342 = CPyStatics[440]; /* ('You cannot provide both an end block and an end '
+    cpy_r_r342 = CPyStatics[442]; /* ('You cannot provide both an end block and an end '
                                      'timestamp') */
     cpy_r_r343 = CPyModule_builtins;
     cpy_r_r344 = CPyStatics[93]; /* 'ValueError' */
@@ -56820,7 +57556,7 @@ CPyL199: ;
     }
     CPy_Unreachable();
 CPyL203: ;
-    cpy_r_r349 = CPyStatics[441]; /* 'end_timestamp' */
+    cpy_r_r349 = CPyStatics[443]; /* 'end_timestamp' */
     cpy_r_r350 = CPyDict_SetItem(cpy_r_r67, cpy_r_r349, cpy_r_value);
     CPy_DECREF(cpy_r_value);
     cpy_r_r351 = cpy_r_r350 >= 0;
@@ -56862,21 +57598,21 @@ CPyL207: ;
     } else
         goto CPyL360;
 CPyL209: ;
-    cpy_r_r361 = CPyStatics[442]; /* 'Invalid end block for wallet ' */
+    cpy_r_r361 = CPyStatics[444]; /* 'Invalid end block for wallet ' */
     cpy_r_r362 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r362 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
         goto CPyL311;
     }
-    cpy_r_r363 = CPyStatics[426]; /* '. Expected mapping, got ' */
+    cpy_r_r363 = CPyStatics[428]; /* '. Expected mapping, got ' */
     cpy_r_r364 = PyObject_Str(cpy_r_value);
     CPy_DECREF(cpy_r_value);
     if (unlikely(cpy_r_r364 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 228, CPyStatic__wallet___globals);
         goto CPyL361;
     }
-    cpy_r_r365 = CPyStatics[427]; /* '.' */
+    cpy_r_r365 = CPyStatics[429]; /* '.' */
     cpy_r_r366 = CPyStr_Build(5, cpy_r_r361, cpy_r_r362, cpy_r_r363, cpy_r_r364, cpy_r_r365);
     CPy_DECREF(cpy_r_r362);
     CPy_DECREF(cpy_r_r364);
@@ -56948,21 +57684,21 @@ CPyL218: ;
     } else
         goto CPyL366;
 CPyL221: ;
-    cpy_r_r387 = CPyStatics[431]; /* 'Invalid chainid for wallet ' */
+    cpy_r_r387 = CPyStatics[433]; /* 'Invalid chainid for wallet ' */
     cpy_r_r388 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r388 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 233, CPyStatic__wallet___globals);
         goto CPyL318;
     }
-    cpy_r_r389 = CPyStatics[443]; /* ' end block. Expected integer, got ' */
+    cpy_r_r389 = CPyStatics[445]; /* ' end block. Expected integer, got ' */
     cpy_r_r390 = PyObject_Str(cpy_r_chainid);
     CPy_DECREF(cpy_r_chainid);
     if (unlikely(cpy_r_r390 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 233, CPyStatic__wallet___globals);
         goto CPyL367;
     }
-    cpy_r_r391 = CPyStatics[427]; /* '.' */
+    cpy_r_r391 = CPyStatics[429]; /* '.' */
     cpy_r_r392 = CPyStr_Build(5, cpy_r_r387, cpy_r_r388, cpy_r_r389, cpy_r_r390, cpy_r_r391);
     CPy_DECREF(cpy_r_r388);
     CPy_DECREF(cpy_r_r390);
@@ -57007,21 +57743,21 @@ CPyL228: ;
     } else
         goto CPyL369;
 CPyL230: ;
-    cpy_r_r403 = CPyStatics[442]; /* 'Invalid end block for wallet ' */
+    cpy_r_r403 = CPyStatics[444]; /* 'Invalid end block for wallet ' */
     cpy_r_r404 = PyObject_Str(cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     if (unlikely(cpy_r_r404 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 237, CPyStatic__wallet___globals);
         goto CPyL370;
     }
-    cpy_r_r405 = CPyStatics[433]; /* '. Expected integer, got ' */
+    cpy_r_r405 = CPyStatics[435]; /* '. Expected integer, got ' */
     cpy_r_r406 = PyObject_Str(cpy_r_r382);
     CPy_DECREF(cpy_r_r382);
     if (unlikely(cpy_r_r406 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 237, CPyStatic__wallet___globals);
         goto CPyL371;
     }
-    cpy_r_r407 = CPyStatics[427]; /* '.' */
+    cpy_r_r407 = CPyStatics[429]; /* '.' */
     cpy_r_r408 = CPyStr_Build(5, cpy_r_r403, cpy_r_r404, cpy_r_r405, cpy_r_r406, cpy_r_r407);
     CPy_DECREF(cpy_r_r404);
     CPy_DECREF(cpy_r_r406);
@@ -57123,14 +57859,14 @@ CPyL248: ;
     } else
         goto CPyL255;
 CPyL249: ;
-    cpy_r_r430 = CPyStatics[434]; /* 'Invalid key: ' */
+    cpy_r_r430 = CPyStatics[436]; /* 'Invalid key: ' */
     cpy_r_r431 = PyObject_Str(cpy_r_key);
     CPy_DECREF(cpy_r_key);
     if (unlikely(cpy_r_r431 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 243, CPyStatic__wallet___globals);
         goto CPyL270;
     }
-    cpy_r_r432 = CPyStatics[435]; /* ". Valid options are 'block' or 'timestamp'." */
+    cpy_r_r432 = CPyStatics[437]; /* ". Valid options are 'block' or 'timestamp'." */
     cpy_r_r433 = CPyStr_Build(3, cpy_r_r430, cpy_r_r431, cpy_r_r432);
     CPy_DECREF(cpy_r_r431);
     if (unlikely(cpy_r_r433 == NULL)) {
@@ -57204,7 +57940,7 @@ CPyL256: ;
         CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 246, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r447);
         goto CPyL380;
     }
-    cpy_r_r449 = CPyStatics[444]; /* 'initialized ' */
+    cpy_r_r449 = CPyStatics[446]; /* 'initialized ' */
     cpy_r_r450 = PyObject_Str(cpy_r_r448);
     if (unlikely(cpy_r_r450 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 247, CPyStatic__wallet___globals);
@@ -57217,7 +57953,7 @@ CPyL256: ;
         goto CPyL381;
     }
     cpy_r_r452 = CPyModule_builtins;
-    cpy_r_r453 = CPyStatics[372]; /* 'print' */
+    cpy_r_r453 = CPyStatics[374]; /* 'print' */
     cpy_r_r454 = CPyObject_GetAttr(cpy_r_r452, cpy_r_r453);
     if (unlikely(cpy_r_r454 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "load_wallets_from_yaml", 247, CPyStatic__wallet___globals);
@@ -58161,7 +58897,7 @@ char CPyDef__wallet_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[494]; /* ('dataclass',) */
+    cpy_r_r5 = CPyStatics[496]; /* ('dataclass',) */
     cpy_r_r6 = CPyStatics[228]; /* 'dataclasses' */
     cpy_r_r7 = CPyStatic__wallet___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -58172,7 +58908,7 @@ CPyL3: ;
     CPyModule_dataclasses = cpy_r_r8;
     CPy_INCREF(CPyModule_dataclasses);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[483]; /* ('Path',) */
+    cpy_r_r9 = CPyStatics[485]; /* ('Path',) */
     cpy_r_r10 = CPyStatics[166]; /* 'pathlib' */
     cpy_r_r11 = CPyStatic__wallet___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -58183,7 +58919,7 @@ CPyL3: ;
     CPyModule_pathlib = cpy_r_r12;
     CPy_INCREF(CPyModule_pathlib);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[538]; /* ('Dict', 'Final', 'List', 'Optional', 'final') */
+    cpy_r_r13 = CPyStatics[540]; /* ('Dict', 'Final', 'List', 'Optional', 'final') */
     cpy_r_r14 = CPyStatics[29]; /* 'typing' */
     cpy_r_r15 = CPyStatic__wallet___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -58199,13 +58935,13 @@ CPyL3: ;
     cpy_r_r19 = (void *)&cpy_r_r18;
     int64_t cpy_r_r20[1] = {5};
     cpy_r_r21 = (void *)&cpy_r_r20;
-    cpy_r_r22 = CPyStatics[486]; /* (('yaml', 'yaml', 'yaml'),) */
+    cpy_r_r22 = CPyStatics[488]; /* (('yaml', 'yaml', 'yaml'),) */
     cpy_r_r23 = CPyStatic__wallet___globals;
-    cpy_r_r24 = CPyStatics[445]; /* 'dao_treasury/_wallet.py' */
+    cpy_r_r24 = CPyStatics[447]; /* 'dao_treasury/_wallet.py' */
     cpy_r_r25 = CPyStatics[171]; /* '<module>' */
     cpy_r_r26 = CPyImport_ImportMany(cpy_r_r22, cpy_r_r19, cpy_r_r23, cpy_r_r24, cpy_r_r25, cpy_r_r21);
     if (!cpy_r_r26) goto CPyL42;
-    cpy_r_r27 = CPyStatics[496]; /* ('EthAddress',) */
+    cpy_r_r27 = CPyStatics[498]; /* ('EthAddress',) */
     cpy_r_r28 = CPyStatics[232]; /* 'brownie.convert.datatypes' */
     cpy_r_r29 = CPyStatic__wallet___globals;
     cpy_r_r30 = CPyImport_ImportFromMany(cpy_r_r28, cpy_r_r27, cpy_r_r27, cpy_r_r29);
@@ -58216,7 +58952,7 @@ CPyL3: ;
     CPyModule_brownie___convert___datatypes = cpy_r_r30;
     CPy_INCREF(CPyModule_brownie___convert___datatypes);
     CPy_DECREF(cpy_r_r30);
-    cpy_r_r31 = CPyStatics[539]; /* ('BlockNumber', 'ChecksumAddress', 'HexAddress') */
+    cpy_r_r31 = CPyStatics[541]; /* ('BlockNumber', 'ChecksumAddress', 'HexAddress') */
     cpy_r_r32 = CPyStatics[130]; /* 'eth_typing' */
     cpy_r_r33 = CPyStatic__wallet___globals;
     cpy_r_r34 = CPyImport_ImportFromMany(cpy_r_r32, cpy_r_r31, cpy_r_r31, cpy_r_r33);
@@ -58227,7 +58963,7 @@ CPyL3: ;
     CPyModule_eth_typing = cpy_r_r34;
     CPy_INCREF(CPyModule_eth_typing);
     CPy_DECREF(cpy_r_r34);
-    cpy_r_r35 = CPyStatics[482]; /* ('convert',) */
+    cpy_r_r35 = CPyStatics[484]; /* ('convert',) */
     cpy_r_r36 = CPyStatics[136]; /* 'y' */
     cpy_r_r37 = CPyStatic__wallet___globals;
     cpy_r_r38 = CPyImport_ImportFromMany(cpy_r_r36, cpy_r_r35, cpy_r_r35, cpy_r_r37);
@@ -58238,8 +58974,8 @@ CPyL3: ;
     CPyModule_y = cpy_r_r38;
     CPy_INCREF(CPyModule_y);
     CPy_DECREF(cpy_r_r38);
-    cpy_r_r39 = CPyStatics[540]; /* ('closest_block_after_timestamp',) */
-    cpy_r_r40 = CPyStatics[333]; /* 'y.time' */
+    cpy_r_r39 = CPyStatics[542]; /* ('closest_block_after_timestamp',) */
+    cpy_r_r40 = CPyStatics[335]; /* 'y.time' */
     cpy_r_r41 = CPyStatic__wallet___globals;
     cpy_r_r42 = CPyImport_ImportFromMany(cpy_r_r40, cpy_r_r39, cpy_r_r39, cpy_r_r41);
     if (unlikely(cpy_r_r42 == NULL)) {
@@ -58249,7 +58985,7 @@ CPyL3: ;
     CPyModule_y___time = cpy_r_r42;
     CPy_INCREF(CPyModule_y___time);
     CPy_DECREF(cpy_r_r42);
-    cpy_r_r43 = CPyStatics[487]; /* ('CHAINID',) */
+    cpy_r_r43 = CPyStatics[489]; /* ('CHAINID',) */
     cpy_r_r44 = CPyStatics[173]; /* 'dao_treasury.constants' */
     cpy_r_r45 = CPyStatic__wallet___globals;
     cpy_r_r46 = CPyImport_ImportFromMany(cpy_r_r44, cpy_r_r43, cpy_r_r43, cpy_r_r45);
@@ -58268,7 +59004,7 @@ CPyL3: ;
     CPyStatic__wallet___WALLETS = cpy_r_r47;
     CPy_INCREF(CPyStatic__wallet___WALLETS);
     cpy_r_r48 = CPyStatic__wallet___globals;
-    cpy_r_r49 = CPyStatics[446]; /* 'WALLETS' */
+    cpy_r_r49 = CPyStatics[448]; /* 'WALLETS' */
     cpy_r_r50 = CPyDict_SetItem(cpy_r_r48, cpy_r_r49, cpy_r_r47);
     CPy_DECREF(cpy_r_r47);
     cpy_r_r51 = cpy_r_r50 >= 0;
@@ -58318,8 +59054,8 @@ CPyL3: ;
     cpy_r_r67 = CPyStatics[12]; /* 'address' */
     cpy_r_r68 = CPyStatics[292]; /* 'start_block' */
     cpy_r_r69 = CPyStatics[295]; /* 'end_block' */
-    cpy_r_r70 = CPyStatics[429]; /* 'start_timestamp' */
-    cpy_r_r71 = CPyStatics[441]; /* 'end_timestamp' */
+    cpy_r_r70 = CPyStatics[431]; /* 'start_timestamp' */
+    cpy_r_r71 = CPyStatics[443]; /* 'end_timestamp' */
     cpy_r_r72 = CPyStatics[204]; /* 'networks' */
     cpy_r_r73 = PyTuple_Pack(6, cpy_r_r67, cpy_r_r68, cpy_r_r69, cpy_r_r70, cpy_r_r71, cpy_r_r72);
     if (unlikely(cpy_r_r73 == NULL)) {
@@ -58403,14 +59139,14 @@ CPyL3: ;
         goto CPyL45;
     }
     cpy_r_r106 = (PyObject *)&PyType_Type;
-    cpy_r_r107 = CPyStatics[429]; /* 'start_timestamp' */
+    cpy_r_r107 = CPyStatics[431]; /* 'start_timestamp' */
     cpy_r_r108 = CPyDict_SetItem(cpy_r_r82, cpy_r_r107, cpy_r_r106);
     cpy_r_r109 = cpy_r_r108 >= 0;
     if (unlikely(!cpy_r_r109)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 33, CPyStatic__wallet___globals);
         goto CPyL45;
     }
-    cpy_r_r110 = CPyStatics[429]; /* 'start_timestamp' */
+    cpy_r_r110 = CPyStatics[431]; /* 'start_timestamp' */
     cpy_r_r111 = Py_None;
     cpy_r_r112 = CPyDict_SetItem(cpy_r_r80, cpy_r_r110, cpy_r_r111);
     cpy_r_r113 = cpy_r_r112 >= 0;
@@ -58419,14 +59155,14 @@ CPyL3: ;
         goto CPyL45;
     }
     cpy_r_r114 = (PyObject *)&PyType_Type;
-    cpy_r_r115 = CPyStatics[441]; /* 'end_timestamp' */
+    cpy_r_r115 = CPyStatics[443]; /* 'end_timestamp' */
     cpy_r_r116 = CPyDict_SetItem(cpy_r_r82, cpy_r_r115, cpy_r_r114);
     cpy_r_r117 = cpy_r_r116 >= 0;
     if (unlikely(!cpy_r_r117)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "<module>", 36, CPyStatic__wallet___globals);
         goto CPyL45;
     }
-    cpy_r_r118 = CPyStatics[441]; /* 'end_timestamp' */
+    cpy_r_r118 = CPyStatics[443]; /* 'end_timestamp' */
     cpy_r_r119 = Py_None;
     cpy_r_r120 = CPyDict_SetItem(cpy_r_r80, cpy_r_r118, cpy_r_r119);
     cpy_r_r121 = cpy_r_r120 >= 0;
@@ -58607,7 +59343,7 @@ char CPyDef_constants_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[536]; /* ('Final',) */
+    cpy_r_r5 = CPyStatics[538]; /* ('Final',) */
     cpy_r_r6 = CPyStatics[29]; /* 'typing' */
     cpy_r_r7 = CPyStatic_constants___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
@@ -58623,9 +59359,9 @@ CPyL3: ;
     cpy_r_r11 = (void *)&cpy_r_r10;
     int64_t cpy_r_r12[1] = {3};
     cpy_r_r13 = (void *)&cpy_r_r12;
-    cpy_r_r14 = CPyStatics[542]; /* (('y.constants', 'y', 'y'),) */
+    cpy_r_r14 = CPyStatics[544]; /* (('y.constants', 'y', 'y'),) */
     cpy_r_r15 = CPyStatic_constants___globals;
-    cpy_r_r16 = CPyStatics[448]; /* 'dao_treasury/constants.py' */
+    cpy_r_r16 = CPyStatics[450]; /* 'dao_treasury/constants.py' */
     cpy_r_r17 = CPyStatics[171]; /* '<module>' */
     cpy_r_r18 = CPyImport_ImportMany(cpy_r_r14, cpy_r_r11, cpy_r_r15, cpy_r_r16, cpy_r_r17, cpy_r_r13);
     if (!cpy_r_r18) goto CPyL11;
@@ -58658,17 +59394,17 @@ CPyL3: ;
         CPy_AddTraceback("dao_treasury/constants.py", "<module>", 6, CPyStatic_constants___globals);
         goto CPyL11;
     }
-    cpy_r_r28 = CPyStatics[403]; /* '0x0000000000000000000000000000000000000000' */
+    cpy_r_r28 = CPyStatics[405]; /* '0x0000000000000000000000000000000000000000' */
     cpy_r_r29 = CPyStatic_constants___globals;
-    cpy_r_r30 = CPyStatics[449]; /* 'ZERO_ADDRESS' */
+    cpy_r_r30 = CPyStatics[451]; /* 'ZERO_ADDRESS' */
     cpy_r_r31 = CPyDict_SetItem(cpy_r_r29, cpy_r_r30, cpy_r_r28);
     cpy_r_r32 = cpy_r_r31 >= 0;
     if (unlikely(!cpy_r_r32)) {
         CPy_AddTraceback("dao_treasury/constants.py", "<module>", 8, CPyStatic_constants___globals);
         goto CPyL11;
     }
-    cpy_r_r33 = CPyStatics[450]; /* '0xD152f549545093347A162Dce210e7293f1452150' */
-    cpy_r_r34 = CPyStatics[451]; /* '0xd15fE25eD0Dba12fE05e7029C88b10C25e8880E3' */
+    cpy_r_r33 = CPyStatics[452]; /* '0xD152f549545093347A162Dce210e7293f1452150' */
+    cpy_r_r34 = CPyStatics[453]; /* '0xd15fE25eD0Dba12fE05e7029C88b10C25e8880E3' */
     CPy_INCREF(cpy_r_r33);
     CPy_INCREF(cpy_r_r34);
     cpy_r_r35.f0 = cpy_r_r33;
@@ -58677,7 +59413,7 @@ CPyL3: ;
     CPy_INCREF(CPyStatic_constants___DISPERSE_APP.f0);
     CPy_INCREF(CPyStatic_constants___DISPERSE_APP.f1);
     cpy_r_r36 = CPyStatic_constants___globals;
-    cpy_r_r37 = CPyStatics[452]; /* 'DISPERSE_APP' */
+    cpy_r_r37 = CPyStatics[454]; /* 'DISPERSE_APP' */
     cpy_r_r38 = PyTuple_New(2);
     if (unlikely(cpy_r_r38 == NULL))
         CPyError_OutOfMemory();
@@ -58870,7 +59606,7 @@ char CPyDef_types_____top_level__(void) {
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[543]; /* ('TYPE_CHECKING', 'Awaitable', 'Callable', 'Iterable',
+    cpy_r_r5 = CPyStatics[545]; /* ('TYPE_CHECKING', 'Awaitable', 'Callable', 'Iterable',
                                    'Literal', 'NewType', 'Union') */
     cpy_r_r6 = CPyStatics[29]; /* 'typing' */
     cpy_r_r7 = CPyStatic_types___globals;
@@ -58882,7 +59618,7 @@ CPyL3: ;
     CPyModule_typing = cpy_r_r8;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[544]; /* ('Network',) */
+    cpy_r_r9 = CPyStatics[546]; /* ('Network',) */
     cpy_r_r10 = CPyStatics[136]; /* 'y' */
     cpy_r_r11 = CPyStatic_types___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
@@ -58901,7 +59637,7 @@ CPyL3: ;
         goto CPyL35;
     }
     cpy_r_r16 = CPyStatic_types___globals;
-    cpy_r_r17 = CPyStatics[349]; /* 'Network' */
+    cpy_r_r17 = CPyStatics[351]; /* 'Network' */
     cpy_r_r18 = CPyDict_GetItem(cpy_r_r16, cpy_r_r17);
     if (unlikely(cpy_r_r18 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 17, CPyStatic_types___globals);
@@ -58915,7 +59651,7 @@ CPyL3: ;
         goto CPyL37;
     }
     cpy_r_r22 = CPyStatic_types___globals;
-    cpy_r_r23 = CPyStatics[349]; /* 'Network' */
+    cpy_r_r23 = CPyStatics[351]; /* 'Network' */
     cpy_r_r24 = CPyDict_GetItem(cpy_r_r22, cpy_r_r23);
     if (unlikely(cpy_r_r24 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 17, CPyStatic_types___globals);
@@ -58954,7 +59690,7 @@ CPyL3: ;
         goto CPyL35;
     }
     cpy_r_r33 = CPyStatic_types___globals;
-    cpy_r_r34 = CPyStatics[453]; /* 'Literal' */
+    cpy_r_r34 = CPyStatics[455]; /* 'Literal' */
     cpy_r_r35 = CPyDict_GetItem(cpy_r_r33, cpy_r_r34);
     if (unlikely(cpy_r_r35 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 36, CPyStatic_types___globals);
@@ -59012,7 +59748,7 @@ CPyL3: ;
     cpy_r_r49 = CPyStatics[60]; /* 'TxGroupDbid' */
     cpy_r_r50 = (PyObject *)&PyLong_Type;
     cpy_r_r51 = CPyStatic_types___globals;
-    cpy_r_r52 = CPyStatics[454]; /* 'NewType' */
+    cpy_r_r52 = CPyStatics[456]; /* 'NewType' */
     cpy_r_r53 = CPyDict_GetItem(cpy_r_r51, cpy_r_r52);
     if (unlikely(cpy_r_r53 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 58, CPyStatic_types___globals);
@@ -59052,7 +59788,7 @@ CPyL3: ;
         goto CPyL35;
     }
     cpy_r_r69 = CPyStatic_types___globals;
-    cpy_r_r70 = CPyStatics[322]; /* 'Callable' */
+    cpy_r_r70 = CPyStatics[324]; /* 'Callable' */
     cpy_r_r71 = CPyDict_GetItem(cpy_r_r69, cpy_r_r70);
     if (unlikely(cpy_r_r71 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 85, CPyStatic_types___globals);
@@ -59087,7 +59823,7 @@ CPyL3: ;
         goto CPyL39;
     }
     cpy_r_r80 = CPyStatic_types___globals;
-    cpy_r_r81 = CPyStatics[322]; /* 'Callable' */
+    cpy_r_r81 = CPyStatics[324]; /* 'Callable' */
     cpy_r_r82 = CPyDict_GetItem(cpy_r_r80, cpy_r_r81);
     if (unlikely(cpy_r_r82 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 86, CPyStatic_types___globals);
@@ -59104,7 +59840,7 @@ CPyL3: ;
     CPy_INCREF(cpy_r_r83);
     *(PyObject * *)cpy_r_r86 = cpy_r_r83;
     cpy_r_r87 = CPyStatic_types___globals;
-    cpy_r_r88 = CPyStatics[321]; /* 'Awaitable' */
+    cpy_r_r88 = CPyStatics[323]; /* 'Awaitable' */
     cpy_r_r89 = CPyDict_GetItem(cpy_r_r87, cpy_r_r88);
     if (unlikely(cpy_r_r89 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", 86, CPyStatic_types___globals);
@@ -59387,7 +60123,7 @@ int CPyGlobalsInit(void)
     return 0;
 }
 
-PyObject *CPyStatics[545];
+PyObject *CPyStatics[547];
 const char * const CPyLit_Str[] = {
     "\005\ffrom_address\nto_address\fblock_number\031OUT_OF_RANGE_TXGROUP_DBID\004hash",
     "\004\017TransactionHash\003hex\034this isnt supposed to happen\023NotImplementedError",
@@ -59460,20 +60196,20 @@ const char * const CPyLit_Str[] = {
     "\002.Processing stream events and streamed funds...\ftqdm_asyncio",
     "\005\020LlamaPay Streams\006gather\004desc\022_get_start_and_end\rStreamedFunds",
     "\005\nget_entity\031_get_token_and_start_date\aseconds\002tz\rtotal_seconds",
-    "\005\fcheck_closed\006cancel\ttimestamp\rcreate_entity\fPayerDeposit",
-    "\006\rPayerWithdraw\bWithdraw\aasyncio\bdatetime\002dt\adecimal",
-    "\004 dao_treasury/streams/llamapay.py\tAwaitable\bCallable\bIterator",
-    "\005\tdank_mids\004pony\027AsyncThreadPoolExecutor\006a_sync\n_EventItem",
-    "\005\025brownie.network.event\vBlockNumber\ftqdm.asyncio\rUnixTimestamp\006y.time",
-    "\a\016y.utils.events\btimezone\003utc\004_UTC\b_ONE_DAY\017_STREAMS_THREAD\vcreate_task",
-    "\a\005sleep\ttimedelta\rfromtimestamp\003now\aDecimal\016ObjectNotFound\006commit",
-    "\005\bContract\aNetwork\026get_block_at_timestamp\tget_price\aMainnet",
-    "\002*0x60c7B0c5B3a4Dc8C690b074727a17fF7aA287Ff2\022dai_stream_factory",
-    "\002*0xf3764eC89B1ad20A31ed633b1466363FAc1741c4\022yfi_stream_factory",
-    "\003\016_StreamToStart\024_streamToStart_cache\021_block_timestamps",
-    "\003\035dao_treasury.streams.llamapay\016handled_events\016skipped_events",
-    "\005\020stream_contracts\021LlamaPayProcessor\020victoria-metrics\002up\005build",
-    "\a\rstarting the \002, \agrafana\r container(s)\005print\002-d\004down",
+    "\004\fNoBlockFound#no block found for %s, sleeping %ss\fcheck_closed\006cancel",
+    "\006\ttimestamp\rcreate_entity\fPayerDeposit\rPayerWithdraw\bWithdraw\aasyncio",
+    "\005\bdatetime\002dt\adecimal dao_treasury/streams/llamapay.py\tAwaitable",
+    "\006\bCallable\bIterator\tdank_mids\004pony\027AsyncThreadPoolExecutor\006a_sync",
+    "\004\n_EventItem\025brownie.network.event\vBlockNumber\ftqdm.asyncio",
+    "\a\rUnixTimestamp\006y.time\016y.utils.events\btimezone\003utc\004_UTC\b_ONE_DAY",
+    "\a\017_STREAMS_THREAD\vcreate_task\005sleep\ttimedelta\rfromtimestamp\003now\aDecimal",
+    "\005\016ObjectNotFound\006commit\bContract\aNetwork\026get_block_at_timestamp",
+    "\003\tget_price\aMainnet*0x60c7B0c5B3a4Dc8C690b074727a17fF7aA287Ff2",
+    "\002\022dai_stream_factory*0xf3764eC89B1ad20A31ed633b1466363FAc1741c4",
+    "\003\022yfi_stream_factory\016_StreamToStart\024_streamToStart_cache",
+    "\003\021_block_timestamps\035dao_treasury.streams.llamapay\016handled_events",
+    "\005\016skipped_events\020stream_contracts\021LlamaPayProcessor\020victoria-metrics\002up",
+    "\b\005build\rstarting the \002, \agrafana\r container(s)\005print\002-d\004down",
     "\004\037building the grafana containers\005wraps\fcompose_wrap\fcheck_system",
     "\006\006docker\acompose\002-f\fcheck_output\022CalledProcessError\016docker-compose",
     "\004\035Error occurred while running \001 \027dao_treasury/_docker.py\tresources",
@@ -59521,21 +60257,21 @@ const int CPyLit_Tuple[] = {
     40, 41, 42, 7, 44, 45, 46, 47, 48, 49, 50, 7, 17, 52, 53, 54, 55, 56,
     57, 1, 60, 2, 73, 74, 1, 81, 1, 47, 1, 79, 1, 65, 1, 113, 8, 121, 122,
     27, 123, 124, 28, 125, 126, 3, 127, 128, 129, 1, 95, 1, 132, 1, 134,
-    1, 105, 1, 165, 4, 27, 167, 168, 126, 3, 169, 169, 169, 1, 485, 1,
+    1, 105, 1, 165, 4, 27, 167, 168, 126, 3, 169, 169, 169, 1, 487, 1,
     172, 2, 174, 60, 2, 189, 190, 7, 197, 27, 198, 28, 168, 126, 199, 7,
     52, 53, 54, 55, 56, 57, 200, 3, 201, 202, 203, 1, 225, 1, 227, 8, 229,
     230, 122, 27, 124, 28, 167, 231, 1, 210, 1, 129, 1, 233, 4, 202, 235,
     60, 203, 2, 251, 252, 1, 253, 1, 256, 1, 266, 1, 273, 8, 291, 261,
-    292, 290, 3, 4, 293, 189, 1, 306, 1, 307, 3, 316, 316, 316, 3, 317,
-    317, 318, 3, 319, 319, 319, 3, 508, 509, 510, 9, 321, 322, 122, 27,
-    323, 124, 28, 125, 126, 3, 324, 324, 324, 3, 133, 325, 325, 2, 513,
-    514, 2, 326, 271, 1, 328, 4, 330, 127, 128, 129, 1, 298, 3, 136, 136,
-    136, 1, 520, 1, 332, 2, 274, 272, 1, 34, 5, 260, 303, 279, 289, 68, 3,
-    26, 26, 26, 1, 526, 1, 388, 3, 390, 390, 390, 1, 529, 1, 376, 8, 197,
-    322, 392, 27, 123, 393, 231, 124, 3, 394, 395, 395, 1, 533, 1, 396, 1,
-    27, 2, 279, 406, 5, 122, 27, 124, 28, 126, 3, 330, 127, 128, 1, 416,
-    3, 447, 136, 136, 1, 541, 7, 229, 321, 322, 123, 453, 454, 168, 1,
-    349
+    292, 290, 3, 4, 293, 189, 1, 306, 1, 307, 3, 318, 318, 318, 3, 319,
+    319, 320, 3, 321, 321, 321, 3, 510, 511, 512, 9, 323, 324, 122, 27,
+    325, 124, 28, 125, 126, 3, 326, 326, 326, 3, 133, 327, 327, 2, 515,
+    516, 2, 328, 271, 1, 330, 4, 332, 127, 128, 129, 1, 298, 3, 136, 136,
+    136, 1, 522, 2, 309, 334, 2, 274, 272, 1, 34, 5, 260, 303, 279, 289,
+    68, 3, 26, 26, 26, 1, 528, 1, 390, 3, 392, 392, 392, 1, 531, 1, 378,
+    8, 197, 324, 394, 27, 123, 395, 231, 124, 3, 396, 397, 397, 1, 535, 1,
+    398, 1, 27, 2, 279, 408, 5, 122, 27, 124, 28, 126, 3, 332, 127, 128,
+    1, 418, 3, 449, 136, 136, 1, 543, 7, 229, 323, 324, 123, 455, 456,
+    168, 1, 351
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_dao_treasury___sorting_internal = NULL;
