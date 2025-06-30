@@ -97,7 +97,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm_asyncio</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">y</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">y.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnixTimestamp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">y.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoBlockFound</span><span class="p">,</span> <span class="n">UnixTimestamp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y.utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode_logs</span><span class="p">,</span> <span class="n">get_logs_asap</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
@@ -432,7 +432,19 @@
         <span class="n">check_at</span> <span class="o">=</span> <span class="n">date_obj</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">check_at</span> <span class="o">&gt;</span> <span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">):</span>
             <span class="k">await</span> <span class="n">sleep</span><span class="p">((</span><span class="n">check_at</span> <span class="o">-</span> <span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
-        <span class="n">block</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_block_at_timestamp</span><span class="p">(</span><span class="n">check_at</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_block_at_timestamp</span><span class="p">(</span><span class="n">check_at</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">NoBlockFound</span><span class="p">:</span>
+                <span class="n">sleep_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">check_at</span> <span class="o">-</span> <span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">_UTC</span><span class="p">))</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="s2">&quot;no block found for </span><span class="si">%s</span><span class="s2">, sleeping </span><span class="si">%s</span><span class="s2">s&quot;</span><span class="p">,</span> <span class="n">check_at</span><span class="p">,</span> <span class="n">sleep_time</span>
+                <span class="p">)</span>
+                <span class="k">await</span> <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+
         <span class="n">price_fut</span> <span class="o">=</span> <span class="n">create_task</span><span class="p">(</span><span class="n">get_price</span><span class="p">(</span><span class="n">stream_token</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
         <span class="n">start_timestamp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_get_start_timestamp</span><span class="p">(</span><span class="n">stream_id</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start_timestamp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
