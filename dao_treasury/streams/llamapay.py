@@ -22,7 +22,7 @@ from eth_typing import BlockNumber, ChecksumAddress, HexAddress, HexStr
 from tqdm.asyncio import tqdm_asyncio
 
 import y
-from y.time import UnixTimestamp
+from y.time import NoBlockFound, UnixTimestamp
 from y.utils.events import decode_logs, get_logs_asap
 
 from dao_treasury import constants
@@ -338,7 +338,19 @@ class LlamaPayProcessor:
         check_at = date_obj + timedelta(days=1) - timedelta(seconds=1)
         if check_at > now(tz=_UTC):
             await sleep((check_at - now(tz=_UTC)).total_seconds())
-        block = await get_block_at_timestamp(check_at, sync=False)
+
+        while True:
+            try:
+                block = await get_block_at_timestamp(check_at, sync=False)
+            except NoBlockFound:
+                sleep_time = (check_at - now(tz=_UTC)).total_seconds()
+                logger.debug(
+                    "no block found for %s, sleeping %ss", check_at, sleep_time
+                )
+                await sleep(sleep_time)
+            else:
+                break
+
         price_fut = create_task(get_price(stream_token, block, sync=False))
         start_timestamp = await _get_start_timestamp(stream_id, block)
         if start_timestamp == 0:
