@@ -1,3 +1,20 @@
+"""Treasury orchestration and analytics interface.
+
+This module defines the Treasury class, which aggregates DAO wallets, sets up
+sorting rules, and manages transaction ingestion and streaming analytics.
+It coordinates the end-to-end flow from wallet configuration to database
+population and dashboard analytics.
+
+Key Responsibilities:
+    - Aggregate and manage DAO-controlled wallets.
+    - Ingest and process on-chain transactions.
+    - Apply sorting/categorization rules.
+    - Integrate with streaming protocols (e.g., LlamaPay).
+    - Populate the database for analytics and dashboards.
+
+This is the main entry point for orchestrating DAO treasury analytics.
+"""
+
 from asyncio import create_task, gather
 from logging import getLogger
 from pathlib import Path

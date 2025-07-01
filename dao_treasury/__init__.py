@@ -1,3 +1,17 @@
+"""DAO Treasury package initializer.
+
+Exposes the main public API for the library, including the Treasury class,
+wallet management, sorting rules, and database models. Sets up address
+nicknames and enables SQL debugging if configured.
+
+Key Responsibilities:
+    - Import and expose core classes and functions.
+    - Initialize address nicknames in the database.
+    - Configure SQL debugging for development.
+
+This is the main import point for users and integrations.
+"""
+
 from dao_treasury import ENVIRONMENT_VARIABLES as ENVS
 from dao_treasury._nicknames import setup_address_nicknames_in_db
 from dao_treasury._wallet import TreasuryWallet
