@@ -155,20 +155,22 @@
 <span class="sd">            TypeError: If any item in `wallets` is not a str or TreasuryWallet.</span>
 
 <span class="sd">        Examples:</span>
-<span class="sd">            Create a synchronous Treasury:</span>
-<span class="sd">            &gt;&gt;&gt; treasury = Treasury(</span>
-<span class="sd">            ...     wallets=[&quot;0xAbc123...&quot;, TreasuryWallet(&quot;0xDef456...&quot;, start_block=1000)],</span>
-<span class="sd">            ...     sort_rules=Path(&quot;/path/to/rules&quot;),</span>
-<span class="sd">            ...     start_block=500,</span>
-<span class="sd">            ...     label=&quot;DAO Treasury&quot;,</span>
-<span class="sd">            ...     asynchronous=False</span>
-<span class="sd">            ... )</span>
+<span class="sd">            .. code-block:: python</span>
 
-<span class="sd">            Create an asynchronous Treasury:</span>
-<span class="sd">            &gt;&gt;&gt; treasury_async = Treasury(</span>
-<span class="sd">            ...     wallets=[&quot;0xAbc123...&quot;],</span>
-<span class="sd">            ...     asynchronous=True</span>
-<span class="sd">            ... )</span>
+<span class="sd">                # Create a synchronous Treasury</span>
+<span class="sd">                treasury = Treasury(</span>
+<span class="sd">                    wallets=[&quot;0xAbc123...&quot;, TreasuryWallet(&quot;0xDef456...&quot;, start_block=1000)],</span>
+<span class="sd">                    sort_rules=Path(&quot;/path/to/rules&quot;),</span>
+<span class="sd">                    start_block=500,</span>
+<span class="sd">                    label=&quot;DAO Treasury&quot;,</span>
+<span class="sd">                    asynchronous=False</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Create an asynchronous Treasury</span>
+<span class="sd">                treasury_async = Treasury(</span>
+<span class="sd">                    wallets=[&quot;0xAbc123...&quot;],</span>
+<span class="sd">                    asynchronous=True</span>
+<span class="sd">                )</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">global</span> <span class="n">TREASURY</span>
         <span class="k">if</span> <span class="n">TREASURY</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

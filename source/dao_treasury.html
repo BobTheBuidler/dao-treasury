@@ -2148,19 +2148,22 @@ history.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>Create a synchronous Treasury:
-&gt;&gt;&gt; treasury = Treasury(
-…     wallets=[“0xAbc123…”, TreasuryWallet(“0xDef456…”, start_block=1000)],
-…     sort_rules=Path(“/path/to/rules”),
-…     start_block=500,
-…     label=”DAO Treasury”,
-…     asynchronous=False
-… )</p>
-<p>Create an asynchronous Treasury:
-&gt;&gt;&gt; treasury_async = Treasury(
-…     wallets=[“0xAbc123…”],
-…     asynchronous=True
-… )</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a synchronous Treasury</span>
+<span class="n">treasury</span> <span class="o">=</span> <span class="n">Treasury</span><span class="p">(</span>
+    <span class="n">wallets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0xAbc123...&quot;</span><span class="p">,</span> <span class="n">TreasuryWallet</span><span class="p">(</span><span class="s2">&quot;0xDef456...&quot;</span><span class="p">,</span> <span class="n">start_block</span><span class="o">=</span><span class="mi">1000</span><span class="p">)],</span>
+    <span class="n">sort_rules</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/path/to/rules&quot;</span><span class="p">),</span>
+    <span class="n">start_block</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DAO Treasury&quot;</span><span class="p">,</span>
+    <span class="n">asynchronous</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Create an asynchronous Treasury</span>
+<span class="n">treasury_async</span> <span class="o">=</span> <span class="n">Treasury</span><span class="p">(</span>
+    <span class="n">wallets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0xAbc123...&quot;</span><span class="p">],</span>
+    <span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -3285,19 +3288,22 @@ history.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>Create a synchronous Treasury:
-&gt;&gt;&gt; treasury = Treasury(
-…     wallets=[“0xAbc123…”, TreasuryWallet(“0xDef456…”, start_block=1000)],
-…     sort_rules=Path(“/path/to/rules”),
-…     start_block=500,
-…     label=”DAO Treasury”,
-…     asynchronous=False
-… )</p>
-<p>Create an asynchronous Treasury:
-&gt;&gt;&gt; treasury_async = Treasury(
-…     wallets=[“0xAbc123…”],
-…     asynchronous=True
-… )</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a synchronous Treasury</span>
+<span class="n">treasury</span> <span class="o">=</span> <span class="n">Treasury</span><span class="p">(</span>
+    <span class="n">wallets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0xAbc123...&quot;</span><span class="p">,</span> <span class="n">TreasuryWallet</span><span class="p">(</span><span class="s2">&quot;0xDef456...&quot;</span><span class="p">,</span> <span class="n">start_block</span><span class="o">=</span><span class="mi">1000</span><span class="p">)],</span>
+    <span class="n">sort_rules</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/path/to/rules&quot;</span><span class="p">),</span>
+    <span class="n">start_block</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DAO Treasury&quot;</span><span class="p">,</span>
+    <span class="n">asynchronous</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Create an asynchronous Treasury</span>
+<span class="n">treasury_async</span> <span class="o">=</span> <span class="n">Treasury</span><span class="p">(</span>
+    <span class="n">wallets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0xAbc123...&quot;</span><span class="p">],</span>
+    <span class="n">asynchronous</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
