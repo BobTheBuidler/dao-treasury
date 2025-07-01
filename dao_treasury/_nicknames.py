@@ -1,3 +1,18 @@
+"""Address nickname setup utilities.
+
+This module provides functions to assign human-readable nicknames to
+important on-chain addresses (e.g., Zero Address, Disperse.app, tokens).
+It is used at package initialization to ensure all analytics and dashboards
+display professional, consistent labels.
+
+Key Responsibilities:
+    - Set nicknames for core addresses in the database.
+    - Integrate with constants and token metadata.
+    - Support professional, readable analytics outputs.
+
+This is called automatically on package import.
+"""
+
 from typing import Final
 
 from pony.orm import db_session

@@ -1,4 +1,17 @@
-"""This module contains utilities for managing dao-treasury's docker containers"""
+"""Docker orchestration utilities for DAO Treasury.
+
+Provides functions to build, start, and stop Docker Compose services
+required for analytics dashboards (Grafana, renderer). Integrates with
+eth-portfolio's Docker setup and ensures all containers are managed
+consistently for local analytics.
+
+Key Responsibilities:
+    - Build and manage Grafana and renderer containers.
+    - Integrate with eth-portfolio Docker services.
+    - Provide decorators/utilities for container lifecycle management.
+
+This is the main entry for all Docker-based orchestration.
+"""
 
 import logging
 from importlib import resources
