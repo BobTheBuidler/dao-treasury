@@ -59722,7 +59722,7 @@ CPyL3: ;
     cpy_r_r7 = CPyStatic_constants___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 1, CPyStatic_constants___globals);
+        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 17, CPyStatic_constants___globals);
         goto CPyL11;
     }
     CPyModule_typing = cpy_r_r8;
@@ -59731,7 +59731,7 @@ CPyL3: ;
     cpy_r_r9 = (PyObject **)&CPyModule_y___constants;
     PyObject **cpy_r_r10[1] = {cpy_r_r9};
     cpy_r_r11 = (void *)&cpy_r_r10;
-    int64_t cpy_r_r12[1] = {3};
+    int64_t cpy_r_r12[1] = {19};
     cpy_r_r13 = (void *)&cpy_r_r12;
     cpy_r_r14 = CPyStatics[552]; /* (('y.constants', 'y', 'y'),) */
     cpy_r_r15 = CPyStatic_constants___globals;
@@ -59743,7 +59743,7 @@ CPyL3: ;
     cpy_r_r20 = CPyStatics[90]; /* 'CHAINID' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 6, CPyStatic_constants___globals);
+        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 22, CPyStatic_constants___globals);
         goto CPyL11;
     }
     if (likely(PyLong_Check(cpy_r_r21)))
@@ -59753,7 +59753,7 @@ CPyL3: ;
     }
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 6, CPyStatic_constants___globals);
+        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 22, CPyStatic_constants___globals);
         goto CPyL11;
     }
     CPyStatic_constants___CHAINID = cpy_r_r22;
@@ -59765,7 +59765,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r25);
     cpy_r_r27 = cpy_r_r26 >= 0;
     if (unlikely(!cpy_r_r27)) {
-        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 6, CPyStatic_constants___globals);
+        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 22, CPyStatic_constants___globals);
         goto CPyL11;
     }
     cpy_r_r28 = CPyStatics[411]; /* '0x0000000000000000000000000000000000000000' */
@@ -59774,7 +59774,7 @@ CPyL3: ;
     cpy_r_r31 = CPyDict_SetItem(cpy_r_r29, cpy_r_r30, cpy_r_r28);
     cpy_r_r32 = cpy_r_r31 >= 0;
     if (unlikely(!cpy_r_r32)) {
-        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 8, CPyStatic_constants___globals);
+        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 25, CPyStatic_constants___globals);
         goto CPyL11;
     }
     cpy_r_r33 = CPyStatics[458]; /* '0xD152f549545093347A162Dce210e7293f1452150' */
@@ -59799,7 +59799,7 @@ CPyL3: ;
     CPy_DECREF(cpy_r_r38);
     cpy_r_r40 = cpy_r_r39 >= 0;
     if (unlikely(!cpy_r_r40)) {
-        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 11, CPyStatic_constants___globals);
+        CPy_AddTraceback("dao_treasury/constants.py", "<module>", 29, CPyStatic_constants___globals);
         goto CPyL11;
     }
     return 1;
