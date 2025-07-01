@@ -438,6 +438,17 @@
 </section>
 <section id="module-dao_treasury.ENVIRONMENT_VARIABLES">
 <span id="dao-treasury-environment-variables-module"></span><h2>dao_treasury.ENVIRONMENT_VARIABLES module<a class="headerlink" href="#module-dao_treasury.ENVIRONMENT_VARIABLES" title="Link to this heading"></a></h2>
+<p>Environment variable configuration for DAO Treasury.</p>
+<p>Defines and loads environment variables (with types and defaults) used for
+system configuration, such as SQL debugging. Uses <a class="reference external" href="https://bobthebuidler.github.io/typed-envs/source/typed_envs.html#module-typed_envs" title="(in typed-envs)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">typed_envs</span></code></a> for convenience and safety.</p>
+<dl class="simple">
+<dt>Key Responsibilities:</dt><dd><ul class="simple">
+<li><p>Define and load environment variables for the system.</p></li>
+<li><p>Provide type-safe access to configuration options.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is the single source of truth for environment-based settings.</p>
 </section>
 <section id="module-dao_treasury.constants">
 <span id="dao-treasury-constants-module"></span><h2>dao_treasury.constants module<a class="headerlink" href="#module-dao_treasury.constants" title="Link to this heading"></a></h2>
@@ -2068,6 +2079,22 @@ and txgroups to produce a vesting ledger.</p>
 </section>
 <section id="module-dao_treasury.treasury">
 <span id="dao-treasury-treasury-module"></span><h2>dao_treasury.treasury module<a class="headerlink" href="#module-dao_treasury.treasury" title="Link to this heading"></a></h2>
+<p>Treasury orchestration and analytics interface.</p>
+<p>This module defines the Treasury class, which aggregates DAO wallets, sets up
+sorting rules, and manages transaction ingestion and streaming analytics.
+It coordinates the end-to-end flow from wallet configuration to database
+population and dashboard analytics.</p>
+<dl class="simple">
+<dt>Key Responsibilities:</dt><dd><ul class="simple">
+<li><p>Aggregate and manage DAO-controlled wallets.</p></li>
+<li><p>Ingest and process on-chain transactions.</p></li>
+<li><p>Apply sorting/categorization rules.</p></li>
+<li><p>Integrate with streaming protocols (e.g., LlamaPay).</p></li>
+<li><p>Populate the database for analytics and dashboards.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is the main entry point for orchestrating DAO treasury analytics.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dao_treasury.treasury.Treasury">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dao_treasury.treasury.</span></span><span class="sig-name descname"><span class="pre">Treasury</span></span><a class="reference internal" href="../_modules/dao_treasury/treasury.html#Treasury"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.treasury.Treasury" title="Link to this definition"></a></dt>
@@ -2321,6 +2348,19 @@ generate financial reports.</p>
 </section>
 <section id="module-dao_treasury">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dao_treasury" title="Link to this heading"></a></h2>
+<p>DAO Treasury package initializer.</p>
+<p>Exposes the main public API for the library, including the Treasury class,
+wallet management, sorting rules, and database models. Sets up address
+nicknames and enables SQL debugging if configured.</p>
+<dl class="simple">
+<dt>Key Responsibilities:</dt><dd><ul class="simple">
+<li><p>Import and expose core classes and functions.</p></li>
+<li><p>Initialize address nicknames in the database.</p></li>
+<li><p>Configure SQL debugging for development.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is the main import point for users and integrations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dao_treasury.CostOfRevenueSortRule">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dao_treasury.</span></span><span class="sig-name descname"><span class="pre">CostOfRevenueSortRule</span></span><a class="reference internal" href="../_modules/dao_treasury/sorting/rule.html#CostOfRevenueSortRule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.CostOfRevenueSortRule" title="Link to this definition"></a></dt>

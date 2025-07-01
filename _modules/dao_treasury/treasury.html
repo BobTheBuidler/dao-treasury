@@ -73,7 +73,24 @@
            <div itemprop="articleBody">
              
   <h1>Source code for dao_treasury.treasury</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_task</span><span class="p">,</span> <span class="n">gather</span>
+<span></span><span class="sd">&quot;&quot;&quot;Treasury orchestration and analytics interface.</span>
+
+<span class="sd">This module defines the Treasury class, which aggregates DAO wallets, sets up</span>
+<span class="sd">sorting rules, and manages transaction ingestion and streaming analytics.</span>
+<span class="sd">It coordinates the end-to-end flow from wallet configuration to database</span>
+<span class="sd">population and dashboard analytics.</span>
+
+<span class="sd">Key Responsibilities:</span>
+<span class="sd">    - Aggregate and manage DAO-controlled wallets.</span>
+<span class="sd">    - Ingest and process on-chain transactions.</span>
+<span class="sd">    - Apply sorting/categorization rules.</span>
+<span class="sd">    - Integrate with streaming protocols (e.g., LlamaPay).</span>
+<span class="sd">    - Populate the database for analytics and dashboards.</span>
+
+<span class="sd">This is the main entry point for orchestrating DAO treasury analytics.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_task</span><span class="p">,</span> <span class="n">gather</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
