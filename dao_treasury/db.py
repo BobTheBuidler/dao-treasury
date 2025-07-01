@@ -3,6 +3,7 @@
 Database models and utilities for DAO treasury reporting.
 
 This module defines Pony ORM entities for:
+
 - Blockchain networks (:class:`Chain`)
 - On-chain addresses (:class:`Address`)
 - ERC-20 tokens and native coin placeholder (:class:`Token`)
