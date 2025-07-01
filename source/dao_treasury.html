@@ -452,6 +452,21 @@ system configuration, such as SQL debugging. Uses <a class="reference external" 
 </section>
 <section id="module-dao_treasury.constants">
 <span id="dao-treasury-constants-module"></span><h2>dao_treasury.constants module<a class="headerlink" href="#module-dao_treasury.constants" title="Link to this heading"></a></h2>
+<p>Core constants for DAO Treasury.</p>
+<p>All constants are marked with <cite>Final</cite>, ensuring immutability and allowing
+mypyc to compile them as extremely fast C-level constants for maximum
+performance. Defines chain IDs, zero address, and key contract addresses
+(e.g., Disperse.app) used throughout the system for transaction processing,
+nickname assignment, and analytics.</p>
+<dl class="simple">
+<dt>Key Responsibilities:</dt><dd><ul class="simple">
+<li><p>Provide canonical addresses and chain IDs.</p></li>
+<li><p>Support nickname setup and transaction categorization.</p></li>
+<li><p>Guarantee fast, immutable constants at runtime.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This is the single source of truth for system-wide constants.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="dao_treasury.constants.DISPERSE_APP">
 <span class="sig-prename descclassname"><span class="pre">dao_treasury.constants.</span></span><span class="sig-name descname"><span class="pre">DISPERSE_APP</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.13)"><span class="pre">Final</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('0xD152f549545093347A162Dce210e7293f1452150',</span> <span class="pre">'0xd15fE25eD0Dba12fE05e7029C88b10C25e8880E3')</span></em><a class="headerlink" href="#dao_treasury.constants.DISPERSE_APP" title="Link to this definition"></a></dt>
@@ -462,13 +477,15 @@ system configuration, such as SQL debugging. Uses <a class="reference external" 
 <section id="module-dao_treasury.db">
 <span id="dao-treasury-db-module"></span><h2>dao_treasury.db module<a class="headerlink" href="#module-dao_treasury.db" title="Link to this heading"></a></h2>
 <p>Database models and utilities for DAO treasury reporting.</p>
-<p>This module defines Pony ORM entities for:
-- Blockchain networks (<a class="reference internal" href="#dao_treasury.db.Chain" title="dao_treasury.db.Chain"><code class="xref py py-class docutils literal notranslate"><span class="pre">Chain</span></code></a>)
-- On-chain addresses (<a class="reference internal" href="#dao_treasury.db.Address" title="dao_treasury.db.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>)
-- ERC-20 tokens and native coin placeholder (<a class="reference internal" href="#dao_treasury.db.Token" title="dao_treasury.db.Token"><code class="xref py py-class docutils literal notranslate"><span class="pre">Token</span></code></a>)
-- Hierarchical transaction grouping (<a class="reference internal" href="#dao_treasury.db.TxGroup" title="dao_treasury.db.TxGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">TxGroup</span></code></a>)
-- Treasury transaction records (<a class="reference internal" href="#dao_treasury.db.TreasuryTx" title="dao_treasury.db.TreasuryTx"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreasuryTx</span></code></a>)
-- Streams and StreamedFunds for streaming payments</p>
+<p>This module defines Pony ORM entities for:</p>
+<ul class="simple">
+<li><p>Blockchain networks (<a class="reference internal" href="#dao_treasury.db.Chain" title="dao_treasury.db.Chain"><code class="xref py py-class docutils literal notranslate"><span class="pre">Chain</span></code></a>)</p></li>
+<li><p>On-chain addresses (<a class="reference internal" href="#dao_treasury.db.Address" title="dao_treasury.db.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>)</p></li>
+<li><p>ERC-20 tokens and native coin placeholder (<a class="reference internal" href="#dao_treasury.db.Token" title="dao_treasury.db.Token"><code class="xref py py-class docutils literal notranslate"><span class="pre">Token</span></code></a>)</p></li>
+<li><p>Hierarchical transaction grouping (<a class="reference internal" href="#dao_treasury.db.TxGroup" title="dao_treasury.db.TxGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">TxGroup</span></code></a>)</p></li>
+<li><p>Treasury transaction records (<a class="reference internal" href="#dao_treasury.db.TreasuryTx" title="dao_treasury.db.TreasuryTx"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreasuryTx</span></code></a>)</p></li>
+<li><p>Streams and StreamedFunds for streaming payments</p></li>
+</ul>
 <p>It also provides helper functions for inserting ledger entries,
 resolving integrity conflicts, caching transaction receipts,
 and creating SQL views for reporting.</p>
