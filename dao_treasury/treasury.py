@@ -76,20 +76,22 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             TypeError: If any item in `wallets` is not a str or TreasuryWallet.
 
         Examples:
-            Create a synchronous Treasury:
-            >>> treasury = Treasury(
-            ...     wallets=["0xAbc123...", TreasuryWallet("0xDef456...", start_block=1000)],
-            ...     sort_rules=Path("/path/to/rules"),
-            ...     start_block=500,
-            ...     label="DAO Treasury",
-            ...     asynchronous=False
-            ... )
+            .. code-block:: python
 
-            Create an asynchronous Treasury:
-            >>> treasury_async = Treasury(
-            ...     wallets=["0xAbc123..."],
-            ...     asynchronous=True
-            ... )
+                # Create a synchronous Treasury
+                treasury = Treasury(
+                    wallets=["0xAbc123...", TreasuryWallet("0xDef456...", start_block=1000)],
+                    sort_rules=Path("/path/to/rules"),
+                    start_block=500,
+                    label="DAO Treasury",
+                    asynchronous=False
+                )
+
+                # Create an asynchronous Treasury
+                treasury_async = Treasury(
+                    wallets=["0xAbc123..."],
+                    asynchronous=True
+                )
         """
         global TREASURY
         if TREASURY is not None:
