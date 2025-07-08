@@ -101,6 +101,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timezone</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">eth_portfolio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie</span><span class="w"> </span><span class="kn">import</span> <span class="n">chain</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">brownie.convert.datatypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">HexString</span>
@@ -1567,6 +1568,27 @@
         <span class="p">)</span>
         <span class="k">else</span> <span class="kc">None</span>
     <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_drop_shitcoin_txs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Purge any shitcoin txs from the db.</span>
+
+<span class="sd">    These should not be frequent, and only occur if a user populated the db before a shitcoin was added to the SHITCOINS mapping.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shitcoins</span> <span class="o">=</span> <span class="n">eth_portfolio</span><span class="o">.</span><span class="n">SHITCOINS</span><span class="p">[</span><span class="n">CHAINID</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+        <span class="n">shitcoin_txs</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span>
+            <span class="n">tx</span> <span class="k">for</span> <span class="n">tx</span> <span class="ow">in</span> <span class="n">TreasuryTx</span> <span class="k">if</span> <span class="n">tx</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">address</span> <span class="ow">in</span> <span class="n">shitcoins</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">count</span> <span class="o">:=</span> <span class="n">shitcoin_txs</span><span class="o">.</span><span class="n">count</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Purging </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> shitcoin txs from the database...&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">tx</span> <span class="ow">in</span> <span class="n">shitcoin_txs</span><span class="p">:</span>
+                <span class="n">tx</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Shitcoin tx purge complete.&quot;</span><span class="p">)</span>
+
+
+<span class="n">_drop_shitcoin_txs</span><span class="p">()</span>
 </pre></div>
 
            </div>
