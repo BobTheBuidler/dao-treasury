@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Dict, Final, Tuple, Union, final
 from datetime import date, datetime, time, timezone
 
+import eth_portfolio
 from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
 from brownie.convert.datatypes import HexString
@@ -1384,3 +1385,24 @@ def _validate_integrity_error(
         )
         else None
     )
+
+
+def _drop_shitcoin_txs() -> None:
+    """
+    Purge any shitcoin txs from the db.
+
+    These should not be frequent, and only occur if a user populated the db before a shitcoin was added to the SHITCOINS mapping.
+    """
+    shitcoins = eth_portfolio.SHITCOINS[CHAINID]
+    with db_session:
+        shitcoin_txs = select(
+            tx for tx in TreasuryTx if tx.token.address.address in shitcoins
+        )
+        if count := shitcoin_txs.count():
+            logger.info(f"Purging {count} shitcoin txs from the database...")
+            for tx in shitcoin_txs:
+                tx.delete()
+            logger.info("Shitcoin tx purge complete.")
+
+
+_drop_shitcoin_txs()
