@@ -85,13 +85,8 @@ typedef struct tuple_T6OOOOOO {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_entry;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *_txgroup_dbid;
     PyObject *___mypyc_temp__0;
     CPyTagged ___mypyc_temp__1;
@@ -106,12 +101,6 @@ typedef struct {
     tuple_T3OOO ___mypyc_temp__8;
     PyObject *___mypyc_temp__9;
     tuple_T3OOO ___mypyc_temp__10;
-} dao_treasury___sorting___sort_advanced_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___sorting___sort_advanced_genObject;
 
 typedef struct {
@@ -207,14 +196,15 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
+    vectorcallfunc vectorcall;
+} dao_treasury___sorting___rule___match__SortRule_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
     PyObject *_self;
     PyObject *_tx;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *_matchers;
     PyObject *___mypyc_temp__0;
     CPyTagged ___mypyc_temp__1;
@@ -222,34 +212,7 @@ typedef struct {
     PyObject *_match;
     PyObject *___mypyc_temp__2;
     tuple_T3OOO ___mypyc_temp__3;
-} dao_treasury___sorting___rule___match__SortRule_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    vectorcallfunc vectorcall;
-} dao_treasury___sorting___rule___match__SortRule_objObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___sorting___rule___match__SortRule_genObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
-    PyObject *_self;
-    PyObject *_tx;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
-    PyObject *___mypyc_temp__4;
-    tuple_T3OOO ___mypyc_temp__5;
-} dao_treasury___sorting___rule___match__InboundSortRule_envObject;
 
 typedef struct {
     PyObject_HEAD
@@ -260,23 +223,12 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
-} dao_treasury___sorting___rule___match__InboundSortRule_genObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_self;
     PyObject *_tx;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
-    PyObject *___mypyc_temp__6;
-    tuple_T3OOO ___mypyc_temp__7;
-} dao_treasury___sorting___rule___match__OutboundSortRule_envObject;
+    int32_t ___mypyc_next_label__;
+    PyObject *___mypyc_temp__4;
+    tuple_T3OOO ___mypyc_temp__5;
+} dao_treasury___sorting___rule___match__InboundSortRule_genObject;
 
 typedef struct {
     PyObject_HEAD
@@ -287,7 +239,11 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
+    PyObject *_self;
+    PyObject *_tx;
+    int32_t ___mypyc_next_label__;
+    PyObject *___mypyc_temp__6;
+    tuple_T3OOO ___mypyc_temp__7;
 } dao_treasury___sorting___rule___match__OutboundSortRule_genObject;
 
 typedef struct {
@@ -337,104 +293,55 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_start;
     PyObject *_end;
     char _stop_at_today;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *_current;
-} dao_treasury___streams___llamapay____generate_dates_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay____generate_dates_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_stream_id;
     PyObject *_block;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *_streamToStart;
     PyObject *___mypyc_temp__0;
     tuple_T3OOO ___mypyc_temp__1;
     PyObject *___mypyc_temp__2;
     tuple_T3OOO ___mypyc_temp__3;
-} dao_treasury___streams___llamapay____get_start_timestamp_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay____get_start_timestamp_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_block;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *_timestamp;
     PyObject *___mypyc_temp__4;
     tuple_T3OOO ___mypyc_temp__5;
-} dao_treasury___streams___llamapay____get_block_timestamp_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay____get_block_timestamp_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_self;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *___mypyc_temp__6;
     PyObject *___mypyc_temp__7;
     PyObject *___mypyc_temp__8;
     PyObject *_stream_contract;
     PyObject *___mypyc_temp__9;
     tuple_T3OOO ___mypyc_temp__10;
-} dao_treasury___streams___llamapay____get_streams_LlamaPayProcessor_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay____get_streams_LlamaPayProcessor_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_self;
     PyObject *_stream_contract;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *___mypyc_temp__11;
     tuple_T3OOO ___mypyc_temp__12;
     PyObject *_events;
@@ -469,12 +376,6 @@ typedef struct {
     PyObject *___mypyc_temp__34;
     PyObject *___mypyc_temp__35;
     tuple_T3OOO ___mypyc_temp__36;
-} dao_treasury___streams___llamapay____load_contract_events_LlamaPayProcessor_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay____load_contract_events_LlamaPayProcessor_genObject;
 
 typedef struct {
@@ -512,14 +413,9 @@ typedef struct {
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_self;
     char _run_forever;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *___mypyc_temp__37;
     tuple_T3OOO ___mypyc_temp__38;
     PyObject *___mypyc_temp__39;
@@ -536,26 +432,15 @@ typedef struct {
     PyObject *_stream_id;
     PyObject *___mypyc_temp__48;
     tuple_T3OOO ___mypyc_temp__49;
-} dao_treasury___streams___llamapay___process_streams_LlamaPayProcessor_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay___process_streams_LlamaPayProcessor_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
     PyObject *_self;
     PyObject *_stream_id;
     char _run_forever;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *___mypyc_temp__50;
     tuple_T3OOO ___mypyc_temp__51;
     PyObject *_start;
@@ -565,27 +450,16 @@ typedef struct {
     PyObject *_date_obj;
     PyObject *___mypyc_temp__54;
     tuple_T3OOO ___mypyc_temp__55;
-} dao_treasury___streams___llamapay___process_stream_LlamaPayProcessor_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay___process_stream_LlamaPayProcessor_genObject;
 
 typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
     uint32_t bitmap;
-    PyObject *___mypyc_self__;
     PyObject *_self;
     PyObject *_stream_id;
     PyObject *_date_obj;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *___mypyc_temp__56;
     tuple_T3OOO ___mypyc_temp__57;
     PyObject *_entity;
@@ -627,12 +501,6 @@ typedef struct {
     tuple_T3OOO ___mypyc_temp__81;
     PyObject *___mypyc_temp__82;
     tuple_T3OOO ___mypyc_temp__83;
-} dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
 } dao_treasury___streams___llamapay___process_stream_for_date_LlamaPayProcessor_genObject;
 
 typedef struct {
@@ -654,7 +522,7 @@ typedef struct {
     PyObject *_value;
     PyObject *_traceback;
     PyObject *_arg;
-    CPyTagged ___mypyc_next_label__;
+    int32_t ___mypyc_next_label__;
     PyObject *___mypyc_temp__0;
     tuple_T3OOO ___mypyc_temp__1;
     PyObject *___mypyc_temp__2;
@@ -691,8 +559,6 @@ struct export_table_bf2b4fe1f86ad2ea158b {
     PyObject **CPyStatic_sorting___MUST_SORT_INBOUND_TXGROUP_DBID;
     PyObject **CPyStatic_sorting___MUST_SORT_OUTBOUND_TXGROUP_DBID;
     PyObject **CPyStatic_sorting___INTERNAL_TRANSFER_TXGROUP_DBID;
-    PyTypeObject **CPyType_sorting___sort_advanced_env;
-    PyObject *(*CPyDef_sorting___sort_advanced_env)(void);
     PyTypeObject **CPyType_sorting___sort_advanced_gen;
     PyObject *(*CPyDef_sorting___sort_advanced_gen)(void);
     PyObject *(*CPyDef_sorting___sort_basic)(PyObject *cpy_r_entry);
@@ -773,20 +639,14 @@ struct export_table_bf2b4fe1f86ad2ea158b {
     PyObject *(*CPyDef_rule_____post_init___3__SortRule_obj)(void);
     PyTypeObject **CPyType_rule___txgroup_dbid__SortRule_obj;
     PyObject *(*CPyDef_rule___txgroup_dbid__SortRule_obj)(void);
-    PyTypeObject **CPyType_rule___match__SortRule_env;
-    PyObject *(*CPyDef_rule___match__SortRule_env)(void);
     PyTypeObject **CPyType_rule___match__SortRule_obj;
     PyObject *(*CPyDef_rule___match__SortRule_obj)(void);
     PyTypeObject **CPyType_rule___match__SortRule_gen;
     PyObject *(*CPyDef_rule___match__SortRule_gen)(void);
-    PyTypeObject **CPyType_rule___match__InboundSortRule_env;
-    PyObject *(*CPyDef_rule___match__InboundSortRule_env)(void);
     PyTypeObject **CPyType_rule___match__InboundSortRule_obj;
     PyObject *(*CPyDef_rule___match__InboundSortRule_obj)(void);
     PyTypeObject **CPyType_rule___match__InboundSortRule_gen;
     PyObject *(*CPyDef_rule___match__InboundSortRule_gen)(void);
-    PyTypeObject **CPyType_rule___match__OutboundSortRule_env;
-    PyObject *(*CPyDef_rule___match__OutboundSortRule_env)(void);
     PyTypeObject **CPyType_rule___match__OutboundSortRule_obj;
     PyObject *(*CPyDef_rule___match__OutboundSortRule_obj)(void);
     PyTypeObject **CPyType_rule___match__OutboundSortRule_gen;
@@ -872,24 +732,14 @@ struct export_table_bf2b4fe1f86ad2ea158b {
     tuple_T3OOO *CPyStatic_streams___llamapay___LlamaPayProcessor___skipped_events;
     PyTypeObject **CPyType_streams___llamapay___LlamaPayProcessor;
     PyObject *(*CPyDef_streams___llamapay___LlamaPayProcessor)(void);
-    PyTypeObject **CPyType_streams___llamapay____generate_dates_env;
-    PyObject *(*CPyDef_streams___llamapay____generate_dates_env)(void);
     PyTypeObject **CPyType_streams___llamapay____generate_dates_gen;
     PyObject *(*CPyDef_streams___llamapay____generate_dates_gen)(void);
-    PyTypeObject **CPyType_streams___llamapay____get_start_timestamp_env;
-    PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_env)(void);
     PyTypeObject **CPyType_streams___llamapay____get_start_timestamp_gen;
     PyObject *(*CPyDef_streams___llamapay____get_start_timestamp_gen)(void);
-    PyTypeObject **CPyType_streams___llamapay____get_block_timestamp_env;
-    PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_env)(void);
     PyTypeObject **CPyType_streams___llamapay____get_block_timestamp_gen;
     PyObject *(*CPyDef_streams___llamapay____get_block_timestamp_gen)(void);
-    PyTypeObject **CPyType_streams___llamapay____get_streams_LlamaPayProcessor_env;
-    PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_env)(void);
     PyTypeObject **CPyType_streams___llamapay____get_streams_LlamaPayProcessor_gen;
     PyObject *(*CPyDef_streams___llamapay____get_streams_LlamaPayProcessor_gen)(void);
-    PyTypeObject **CPyType_streams___llamapay____load_contract_events_LlamaPayProcessor_env;
-    PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_env)(void);
     PyTypeObject **CPyType_streams___llamapay____load_contract_events_LlamaPayProcessor_gen;
     PyObject *(*CPyDef_streams___llamapay____load_contract_events_LlamaPayProcessor_gen)(void);
     PyTypeObject **CPyType_streams___llamapay___streams_for_recipient_LlamaPayProcessor_env;
@@ -900,16 +750,10 @@ struct export_table_bf2b4fe1f86ad2ea158b {
     PyObject *(*CPyDef_streams___llamapay___streams_for_token_LlamaPayProcessor_env)(void);
     PyTypeObject **CPyType_streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_obj;
     PyObject *(*CPyDef_streams___llamapay_____mypyc_lambda__1_streams_for_token_LlamaPayProcessor_obj)(void);
-    PyTypeObject **CPyType_streams___llamapay___process_streams_LlamaPayProcessor_env;
-    PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_env)(void);
     PyTypeObject **CPyType_streams___llamapay___process_streams_LlamaPayProcessor_gen;
     PyObject *(*CPyDef_streams___llamapay___process_streams_LlamaPayProcessor_gen)(void);
-    PyTypeObject **CPyType_streams___llamapay___process_stream_LlamaPayProcessor_env;
-    PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_env)(void);
     PyTypeObject **CPyType_streams___llamapay___process_stream_LlamaPayProcessor_gen;
     PyObject *(*CPyDef_streams___llamapay___process_stream_LlamaPayProcessor_gen)(void);
-    PyTypeObject **CPyType_streams___llamapay___process_stream_for_date_LlamaPayProcessor_env;
-    PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_env)(void);
     PyTypeObject **CPyType_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen;
     PyObject *(*CPyDef_streams___llamapay___process_stream_for_date_LlamaPayProcessor_gen)(void);
     PyObject *(*CPyDef_streams___llamapay____generate_dates_gen_____mypyc_generator_helper__)(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg);
