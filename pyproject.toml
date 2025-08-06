@@ -33,6 +33,7 @@ requires = [
     "tomli>=2.0.0; python_version < '3.11'", 
     "types-tqdm", 
     "types-PyYAML",
+    "eth-brownie==1.21.0",
     "eth-typing==4.4.0",
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
     "ez-a-sync>=0.32.7,<0.33",
