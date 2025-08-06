@@ -34,6 +34,7 @@ requires = [
     "types-tqdm", 
     "types-PyYAML",
     "eth-typing==4.4.0",
+    "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
     "ez-a-sync>=0.32.7,<0.33",
     "pony",
     "pony-stubs",
