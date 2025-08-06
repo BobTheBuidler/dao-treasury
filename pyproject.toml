@@ -19,8 +19,6 @@ pytest-asyncio = "^0.15.1"
 mypy = ">=1.15,<1.17"
 types-tqdm = "*"
 types-pyyaml = "*"
-eth-typing = "4.4.0"
-evmspec = ">=0.4.1,<0.5"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "*"
@@ -35,6 +33,8 @@ requires = [
     "tomli>=2.0.0; python_version < '3.11'", 
     "types-tqdm", 
     "types-PyYAML",
+    "eth-typing==4.4.0",
+    "evmspec>=0.4.1,<0.5",
     "pony",
     "pony-stubs",
 ]
