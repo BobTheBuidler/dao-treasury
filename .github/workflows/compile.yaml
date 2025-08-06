@@ -26,10 +26,15 @@ jobs:
           
       - name: Install Mypyc and Stubs
         run: pip install "mypy[mypyc]==1.17.0" types-PyYAML types-tqdm
-        
-      - name: Install Dependencies
+
+      - name: Install Pandas from Wheel
+        # For some reason the workflow keeps installing pandas from source which takes 10 minutes
+        # and isn't necessary, so here we force the workflow to use the wheel.
         env:
           PIP_ONLY_BINARY: ":pandas:"
+        run: pip install pandas
+        
+      - name: Install Dependencies
         run: pip install .
         
       - name: Run Mypyc
