@@ -20,6 +20,7 @@ mypy = ">=1.15,<1.17"
 types-tqdm = "*"
 types-pyyaml = "*"
 eth-typing = "4.4.0"
+evmspec = ">=0.4.1,<0.5"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "*"
