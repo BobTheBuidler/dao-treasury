@@ -5,7 +5,7 @@ networks:
 
 services:
   grafana:
-    image: grafana/grafana:10.4.19
+    image: grafana/grafana:12.1.0
     ports:
       - 127.0.0.1:${DAO_TREASURY_GRAFANA_PORT:-3004}:3000
     environment:
