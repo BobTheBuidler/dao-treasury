@@ -10,7 +10,7 @@ readme = "README.md"
 dao-treasury = "dao_treasury.main:main"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
+python = ">=3.13,<3.14"
 eth-portfolio-temp = ">=0.1.1.dev0,<0.2"
 
 [tool.poetry.group.dev.dependencies]
