@@ -11,7 +11,7 @@ dao-treasury = "dao_treasury.main:main"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-eth-portfolio-temp = ">=0.1.6.dev0,<0.2"
+eth-portfolio-temp = ">=0.1.7.dev0,<0.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
