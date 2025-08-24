@@ -23,7 +23,18 @@ from functools import lru_cache
 from logging import getLogger
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Coroutine, Dict, Final, Literal, Tuple, Union, final, overload
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Coroutine,
+    Dict,
+    Final,
+    Literal,
+    Tuple,
+    Union,
+    final,
+    overload,
+)
 from datetime import date, datetime, time, timezone
 
 import eth_portfolio
@@ -734,7 +745,9 @@ class TreasuryTx(DbEntity):
         return self._transaction.events
 
     @overload
-    def get_events(self, event_name: str, sync: Literal[False]) -> Coroutine[Any, Any, _EventItem]: ...
+    def get_events(
+        self, event_name: str, sync: Literal[False]
+    ) -> Coroutine[Any, Any, _EventItem]: ...
     @overload
     def get_events(self, event_name: str, sync: bool = True) -> _EventItem: ...
     def get_events(self, event_name: str, sync: bool = True) -> _EventItem:
