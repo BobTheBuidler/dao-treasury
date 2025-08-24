@@ -33,13 +33,14 @@ from brownie.convert.datatypes import HexString
 from brownie.exceptions import EventLookupError
 from brownie.network.event import EventDict, _EventItem
 from brownie.network.transaction import TransactionReceipt
-from eth_typing import ChecksumAddress, HexAddress, HexStr
 from eth_portfolio.structs import (
     InternalTransfer,
     LedgerEntry,
     TokenTransfer,
     Transaction,
 )
+from eth_retry import auto_retry
+from eth_typing import ChecksumAddress, HexAddress, HexStr
 from pony.orm import (
     Database,
     InterfaceError,
@@ -748,6 +749,7 @@ class TreasuryTx(DbEntity):
         return get_transaction(self.hash)
 
     @staticmethod
+    @auto_retry
     async def insert(entry: LedgerEntry) -> None:
         """Asynchronously insert and sort a ledger entry.
 
