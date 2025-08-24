@@ -23,7 +23,7 @@ from functools import lru_cache
 from logging import getLogger
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Dict, Final, Tuple, Union, final
+from typing import TYPE_CHECKING, Any, Coroutine, Dict, Final, Literal, Tuple, Union, final, overload
 from datetime import date, datetime, time, timezone
 
 import eth_portfolio
@@ -72,6 +72,7 @@ SQLITE_DIR.mkdir(parents=True, exist_ok=True)
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_THREAD = AsyncThreadPoolExecutor(1)
+_EVENTS_THREADS = AsyncThreadPoolExecutor(16)
 _SORT_SEMAPHORE = Semaphore(50)
 
 _UTC = timezone.utc
@@ -732,7 +733,13 @@ class TreasuryTx(DbEntity):
         """Decoded event logs for this transaction."""
         return self._transaction.events
 
-    def get_events(self, event_name: str) -> _EventItem:
+    @overload
+    def get_events(self, event_name: str, sync: Literal[False]) -> Coroutine[Any, Any, _EventItem]: ...
+    @overload
+    def get_events(self, event_name: str, sync: bool = True) -> _EventItem: ...
+    def get_events(self, event_name: str, sync: bool = True) -> _EventItem:
+        if not sync:
+            return _EVENTS_THREADS.run(self.get_events, event_name)
         try:
             return self.events[event_name]
         except EventLookupError:
