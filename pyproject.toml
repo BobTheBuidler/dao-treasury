@@ -14,7 +14,7 @@ python = ">=3.10,<3.13"
 eth-portfolio-temp = ">=0.1.7.dev0,<0.2"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^6.2.5"
+pytest = "^8.0.0"
 pytest-asyncio = "^0.15.1"
 mypy = ">=1.17,<1.18"
 types-tqdm = "*"
