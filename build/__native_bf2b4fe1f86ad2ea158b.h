@@ -873,6 +873,7 @@ struct export_table_bf2b4fe1f86ad2ea158b {
     char (*CPyDef__wallet_____top_level__)(void);
     CPyTagged *CPyStatic_constants___CHAINID;
     tuple_T2OO *CPyStatic_constants___DISPERSE_APP;
+    PyObject **CPyStatic_constants___SUPPRESS_ERROR_LOGS;
     char (*CPyDef_constants_____top_level__)(void);
     char (*CPyDef_types_____top_level__)(void);
 };
