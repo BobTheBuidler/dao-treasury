@@ -875,6 +875,17 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Decoded event logs for this transaction.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span><span class="o">.</span><span class="n">events</span>
 
+<div class="viewcode-block" id="TreasuryTx.events_async">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.TreasuryTx.events_async">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">events_async</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventDict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asynchronously fetch decoded event logs for this transaction.&quot;&quot;&quot;</span>
+        <span class="n">tx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transaction</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">_events</span>
+        <span class="k">if</span> <span class="n">events</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_EVENTS_THREADS</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="nb">getattr</span><span class="p">,</span> <span class="n">tx</span><span class="p">,</span> <span class="s2">&quot;events&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">events</span></div>
+
+
     <span class="nd">@overload</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_events</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">event_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sync</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span>
