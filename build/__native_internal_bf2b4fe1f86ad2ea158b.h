@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[547];
+extern PyObject *CPyStatics[553];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -91,6 +91,7 @@ extern PyObject *CPyStatic__nicknames___globals;
 extern PyObject *CPyStatic__wallet___globals;
 extern PyObject *CPyStatic_constants___globals;
 extern CPyModule *CPyModule_y___constants;
+extern CPyModule *CPyModule_eth_portfolio;
 extern PyObject *CPyStatic_types___globals;
 extern PyObject *CPyStatic_sorting___logger;
 extern PyObject *CPyStatic_sorting___TxGroup;
@@ -573,6 +574,7 @@ extern PyObject *CPyPy__wallet___load_wallets_from_yaml(PyObject *self, PyObject
 extern char CPyDef__wallet_____top_level__(void);
 extern CPyTagged CPyStatic_constants___CHAINID;
 extern tuple_T2OO CPyStatic_constants___DISPERSE_APP;
+extern PyObject *CPyStatic_constants___SUPPRESS_ERROR_LOGS;
 extern char CPyDef_constants_____top_level__(void);
 extern char CPyDef_types_____top_level__(void);
 #endif
