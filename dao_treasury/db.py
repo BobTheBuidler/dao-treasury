@@ -744,6 +744,14 @@ class TreasuryTx(DbEntity):
         """Decoded event logs for this transaction."""
         return self._transaction.events
 
+    async def events_async(self) -> EventDict:
+        """Asynchronously fetch decoded event logs for this transaction."""
+        tx = self._transaction
+        events = tx._events
+        if events is None:
+            events = await _EVENTS_THREADS.run(getattr, tx, "events")
+        return events
+    
     @overload
     def get_events(
         self, event_name: str, sync: Literal[False]
