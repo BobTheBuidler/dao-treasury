@@ -16,8 +16,8 @@ This is the single source of truth for system-wide constants.
 
 from typing import Final
 
+import eth_portfolio._utils
 import y.constants
-from eth_portfolio import _utils as eth_portfolio_utils
 
 
 CHAINID: Final = y.constants.CHAINID
@@ -35,5 +35,5 @@ DISPERSE_APP: Final = (
 # TODO: all crosslink to disperse.py once ready
 
 
-SUPPRESS_ERROR_LOGS: Final = eth_portfolio_utils.SUPPRESS_ERROR_LOGS
+SUPPRESS_ERROR_LOGS: Final = eth_portfolio._utils.SUPPRESS_ERROR_LOGS
 """Append tokens here when you don't expect them to price successfully and do not want to see the associated error logs."""
