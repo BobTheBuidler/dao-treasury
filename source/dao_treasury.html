@@ -57,6 +57,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-dao_treasury.ENVIRONMENT_VARIABLES">dao_treasury.ENVIRONMENT_VARIABLES module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-dao_treasury.constants">dao_treasury.constants module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.constants.DISPERSE_APP"><code class="docutils literal notranslate"><span class="pre">DISPERSE_APP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dao_treasury.constants.SUPPRESS_ERROR_LOGS"><code class="docutils literal notranslate"><span class="pre">SUPPRESS_ERROR_LOGS</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-dao_treasury.db">dao_treasury.db module</a><ul>
@@ -471,6 +472,12 @@ nickname assignment, and analytics.</p>
 <dt class="sig sig-object py" id="dao_treasury.constants.DISPERSE_APP">
 <span class="sig-prename descclassname"><span class="pre">dao_treasury.constants.</span></span><span class="sig-name descname"><span class="pre">DISPERSE_APP</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.13)"><span class="pre">Final</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('0xD152f549545093347A162Dce210e7293f1452150',</span> <span class="pre">'0xd15fE25eD0Dba12fE05e7029C88b10C25e8880E3')</span></em><a class="headerlink" href="#dao_treasury.constants.DISPERSE_APP" title="Link to this definition"></a></dt>
 <dd><p>If your treasury sends funds to disperse.app, we create additional txs in the db so each individual send can be accounted for.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dao_treasury.constants.SUPPRESS_ERROR_LOGS">
+<span class="sig-prename descclassname"><span class="pre">dao_treasury.constants.</span></span><span class="sig-name descname"><span class="pre">SUPPRESS_ERROR_LOGS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.13)"><span class="pre">Final</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#dao_treasury.constants.SUPPRESS_ERROR_LOGS" title="Link to this definition"></a></dt>
+<dd><p>Append tokens here when you don’t expect them to price successfully and do not want to see the associated error logs.</p>
 </dd></dl>
 
 </section>
