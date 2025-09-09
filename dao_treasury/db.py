@@ -751,7 +751,7 @@ class TreasuryTx(DbEntity):
         if events is None:
             events = await _EVENTS_THREADS.run(getattr, tx, "events")
         return events
-    
+
     @overload
     def get_events(
         self, event_name: str, sync: Literal[False]
