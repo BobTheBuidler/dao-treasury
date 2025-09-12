@@ -25,7 +25,7 @@ jobs:
           python-version: "3.12"
           
       - name: Install Mypyc
-        run: pip install "mypy[mypyc]==1.17.0" types-PyYAML types-tqdm .
+        run: pip install "mypy[mypyc]==1.18.1" types-PyYAML types-tqdm .
         
       - name: Run Mypyc
         env:
