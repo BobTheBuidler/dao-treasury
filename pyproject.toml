@@ -29,7 +29,7 @@ myst-parser = "*"
 requires = [
     "setuptools", 
     "wheel", 
-    "mypy[mypyc]==1.17.1", 
+    "mypy[mypyc]==1.18.1", 
     "tomli>=2.0.0; python_version < '3.11'", 
     "types-tqdm", 
     "types-PyYAML",
