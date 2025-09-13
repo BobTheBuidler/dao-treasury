@@ -130,8 +130,6 @@ class _SortRule:
     func: Optional[SortFunction] = None
     """Custom matching function that takes a `TreasuryTx` and returns a bool or an awaitable that returns a bool."""
 
-    # __instances__: ClassVar[List[Self]] = []
-
     def __post_init__(self) -> None:
         """Validate inputs, checksum addresses, and register the rule.
 
