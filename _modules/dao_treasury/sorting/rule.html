@@ -205,8 +205,6 @@
     <span class="n">func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SortFunction</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom matching function that takes a `TreasuryTx` and returns a bool or an awaitable that returns a bool.&quot;&quot;&quot;</span>
 
-    <span class="c1"># __instances__: ClassVar[List[Self]] = []</span>
-
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate inputs, checksum addresses, and register the rule.</span>
 
@@ -310,7 +308,7 @@
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">tx</span><span class="o">.</span><span class="n">to_address</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="ow">and</span> <span class="n">TreasuryWallet</span><span class="o">.</span><span class="n">check_membership</span><span class="p">(</span><span class="n">tx</span><span class="o">.</span><span class="n">to_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">tx</span><span class="o">.</span><span class="n">block</span><span class="p">)</span>
-            <span class="ow">and</span> <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="k">await</span> <span class="nb">super</span><span class="p">(</span><span class="n">_InboundSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
         <span class="p">)</span>
 
 
@@ -325,7 +323,7 @@
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tx</span><span class="p">:</span> <span class="s2">&quot;TreasuryTx&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">TreasuryWallet</span><span class="o">.</span><span class="n">check_membership</span><span class="p">(</span>
             <span class="n">tx</span><span class="o">.</span><span class="n">from_address</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">tx</span><span class="o">.</span><span class="n">block</span>
-        <span class="p">)</span> <span class="ow">and</span> <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
+        <span class="p">)</span> <span class="ow">and</span> <span class="k">await</span> <span class="nb">super</span><span class="p">(</span><span class="n">_OutboundSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="RevenueSortRule">
@@ -344,7 +342,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepends `self.txgroup` with &#39;Revenue:&#39;.&quot;&quot;&quot;</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Revenue:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RevenueSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
 
 
 
@@ -360,7 +358,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepends `self.txgroup` with &#39;Cost of Revenue:&#39;.&quot;&quot;&quot;</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Cost of Revenue:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CostOfRevenueSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
 
 
 
@@ -376,7 +374,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepends `self.txgroup` with &#39;Expenses:&#39;.&quot;&quot;&quot;</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expenses:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ExpenseSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
 
 
 
@@ -392,7 +390,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepends `self.txgroup` with &#39;Other Income:&#39;.&quot;&quot;&quot;</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Other Income:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OtherIncomeSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
 
 
 
@@ -408,7 +406,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepends `self.txgroup` with &#39;Other Expenses:&#39;.&quot;&quot;&quot;</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Other Expenses:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OtherExpenseSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
 
 
 
@@ -424,7 +422,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepends `self.txgroup` with &#39;Ignore:&#39;.&quot;&quot;&quot;</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Ignore:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IgnoreSortRule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span></div>
 
 
 
