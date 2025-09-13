@@ -15152,13 +15152,13 @@ char CPyDef_rule_____post_init___3__SortRule_obj_____call__(PyObject *cpy_r___my
     cpy_r_r0 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r1 = CPyObject_GetAttr(cpy_r_self, cpy_r_r0);
     if (unlikely(cpy_r_r1 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 142, CPyStatic_rule___globals);
         goto CPyL79;
     }
     if (likely(PyUnicode_Check(cpy_r_r1)))
         cpy_r_r2 = cpy_r_r1;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals, "str", cpy_r_r1);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 142, CPyStatic_rule___globals, "str", cpy_r_r1);
         goto CPyL79;
     }
     cpy_r_r3 = CPyStatic_rule____match_all;
@@ -15170,7 +15170,7 @@ CPyL3: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_match_all\" was not set");
     cpy_r_r4 = 0;
     if (unlikely(!cpy_r_r4)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 142, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15179,7 +15179,7 @@ CPyL5: ;
     CPy_DECREF(cpy_r_r2);
     cpy_r_r6 = cpy_r_r5 >= 0;
     if (unlikely(!cpy_r_r6)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 142, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r7 = cpy_r_r5;
@@ -15188,33 +15188,33 @@ CPyL5: ;
     cpy_r_r9 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r10 = CPyObject_GetAttr(cpy_r_self, cpy_r_r9);
     if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 146, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals);
         goto CPyL79;
     }
     if (likely(PyUnicode_Check(cpy_r_r10)))
         cpy_r_r11 = cpy_r_r10;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 146, CPyStatic_rule___globals, "str", cpy_r_r10);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals, "str", cpy_r_r10);
         goto CPyL79;
     }
     cpy_r_r12 = CPyStatics[91]; /* ': ' */
     cpy_r_r13 = PyObject_Str(cpy_r_self);
     if (unlikely(cpy_r_r13 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 146, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals);
         goto CPyL81;
     }
     cpy_r_r14 = CPyStr_Build(4, cpy_r_r8, cpy_r_r11, cpy_r_r12, cpy_r_r13);
     CPy_DECREF(cpy_r_r11);
     CPy_DECREF(cpy_r_r13);
     if (unlikely(cpy_r_r14 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 146, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 144, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r15 = CPyModule_builtins;
     cpy_r_r16 = CPyStatics[92]; /* 'ValueError' */
     cpy_r_r17 = CPyObject_GetAttr(cpy_r_r15, cpy_r_r16);
     if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 145, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 143, CPyStatic_rule___globals);
         goto CPyL82;
     }
     PyObject *cpy_r_r18[1] = {cpy_r_r14};
@@ -15222,14 +15222,14 @@ CPyL5: ;
     cpy_r_r20 = PyObject_Vectorcall(cpy_r_r17, cpy_r_r19, 1, 0);
     CPy_DECREF(cpy_r_r17);
     if (unlikely(cpy_r_r20 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 145, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 143, CPyStatic_rule___globals);
         goto CPyL82;
     }
     CPy_DECREF(cpy_r_r14);
     CPy_Raise(cpy_r_r20);
     CPy_DECREF(cpy_r_r20);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 145, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 143, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15239,7 +15239,7 @@ CPyL15: ;
     cpy_r_r23 = CPyStatics[207]; /* 'token_address' */
     cpy_r_r24 = PyList_New(3);
     if (unlikely(cpy_r_r24 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 150, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 148, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r25 = (CPyPtr)&((PyListObject *)cpy_r_r24)->ob_item;
@@ -15267,12 +15267,12 @@ CPyL17: ;
     if (likely(PyUnicode_Check(cpy_r_r37)))
         cpy_r_r38 = cpy_r_r37;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 150, CPyStatic_rule___globals, "str", cpy_r_r37);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 148, CPyStatic_rule___globals, "str", cpy_r_r37);
         goto CPyL84;
     }
     cpy_r_r39 = CPyObject_GetAttr(cpy_r_self, cpy_r_r38);
     if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 151, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 149, CPyStatic_rule___globals);
         goto CPyL85;
     }
     cpy_r_r40 = (PyObject *)&_Py_NoneStruct;
@@ -15282,7 +15282,7 @@ CPyL17: ;
     cpy_r_r43 = CPyStatics[208]; /* 'EthAddress' */
     cpy_r_r44 = CPyDict_GetItem(cpy_r_r42, cpy_r_r43);
     if (unlikely(cpy_r_r44 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 153, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 151, CPyStatic_rule___globals);
         goto CPyL87;
     }
     PyObject *cpy_r_r45[1] = {cpy_r_r39};
@@ -15290,7 +15290,7 @@ CPyL17: ;
     cpy_r_r47 = PyObject_Vectorcall(cpy_r_r44, cpy_r_r46, 1, 0);
     CPy_DECREF(cpy_r_r44);
     if (unlikely(cpy_r_r47 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 153, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 151, CPyStatic_rule___globals);
         goto CPyL87;
     }
     CPy_DECREF(cpy_r_r39);
@@ -15298,7 +15298,7 @@ CPyL17: ;
     cpy_r_r49 = CPyStatics[209]; /* 'object' */
     cpy_r_r50 = CPyObject_GetAttr(cpy_r_r48, cpy_r_r49);
     if (unlikely(cpy_r_r50 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 155, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 153, CPyStatic_rule___globals);
         goto CPyL88;
     }
     cpy_r_r51 = CPyStatics[210]; /* '__setattr__' */
@@ -15306,7 +15306,7 @@ CPyL17: ;
     cpy_r_r53 = (PyObject **)&cpy_r_r52;
     cpy_r_r54 = PyObject_VectorcallMethod(cpy_r_r51, cpy_r_r53, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r54 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 155, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 153, CPyStatic_rule___globals);
         goto CPyL89;
     } else
         goto CPyL90;
@@ -15321,7 +15321,7 @@ CPyL26: ;
 CPyL27: ;
     cpy_r_r56 = PyList_New(0);
     if (unlikely(cpy_r_r56 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r57 = CPyStatic_rule____MATCHING_ATTRS;
@@ -15333,7 +15333,7 @@ CPyL29: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_MATCHING_ATTRS\" was not set");
     cpy_r_r58 = 0;
     if (unlikely(!cpy_r_r58)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15368,7 +15368,7 @@ CPyL31: ;
     cpy_r_r60 = PyObject_GetIter(cpy_r_r59);
     CPy_DECREF(cpy_r_r59);
     if (unlikely(cpy_r_r60 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals);
         goto CPyL92;
     }
 CPyL32: ;
@@ -15377,12 +15377,12 @@ CPyL32: ;
     if (likely(PyUnicode_Check(cpy_r_r61)))
         cpy_r_r62 = cpy_r_r61;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals, "str", cpy_r_r61);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals, "str", cpy_r_r61);
         goto CPyL94;
     }
     cpy_r_r63 = CPyObject_GetAttr(cpy_r_self, cpy_r_r62);
     if (unlikely(cpy_r_r63 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals);
         goto CPyL95;
     }
     cpy_r_r64 = (PyObject *)&_Py_NoneStruct;
@@ -15393,14 +15393,14 @@ CPyL32: ;
     CPy_DECREF(cpy_r_r62);
     cpy_r_r67 = cpy_r_r66 >= 0;
     if (unlikely(!cpy_r_r67)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals);
         goto CPyL94;
     } else
         goto CPyL32;
 CPyL37: ;
     cpy_r_r68 = CPy_NoErrOccurred();
     if (unlikely(!cpy_r_r68)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 158, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 156, CPyStatic_rule___globals);
         goto CPyL92;
     }
     cpy_r_r69 = CPyStatic_rule____match_all;
@@ -15412,7 +15412,7 @@ CPyL39: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_match_all\" was not set");
     cpy_r_r70 = 0;
     if (unlikely(!cpy_r_r70)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 159, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 157, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15420,26 +15420,26 @@ CPyL41: ;
     cpy_r_r71 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r72 = CPyObject_GetAttr(cpy_r_self, cpy_r_r71);
     if (unlikely(cpy_r_r72 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 159, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 157, CPyStatic_rule___globals);
         goto CPyL98;
     }
     if (likely(PyUnicode_Check(cpy_r_r72)))
         cpy_r_r73 = cpy_r_r72;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 159, CPyStatic_rule___globals, "str", cpy_r_r72);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 157, CPyStatic_rule___globals, "str", cpy_r_r72);
         goto CPyL98;
     }
     cpy_r_r74 = CPyDict_SetItem(cpy_r_r69, cpy_r_r73, cpy_r_r56);
     CPy_DECREF(cpy_r_r73);
     cpy_r_r75 = cpy_r_r74 >= 0;
     if (unlikely(!cpy_r_r75)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 159, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 157, CPyStatic_rule___globals);
         goto CPyL98;
     }
     cpy_r_r76 = CPyStatics[188]; /* 'func' */
     cpy_r_r77 = CPyObject_GetAttr(cpy_r_self, cpy_r_r76);
     if (unlikely(cpy_r_r77 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 161, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 159, CPyStatic_rule___globals);
         goto CPyL98;
     }
     cpy_r_r78 = (PyObject *)&_Py_NoneStruct;
@@ -15461,7 +15461,7 @@ CPyL47: ;
     cpy_r_r86 = CPyStatics[92]; /* 'ValueError' */
     cpy_r_r87 = CPyObject_GetAttr(cpy_r_r85, cpy_r_r86);
     if (unlikely(cpy_r_r87 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 162, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 160, CPyStatic_rule___globals);
         goto CPyL79;
     }
     PyObject *cpy_r_r88[1] = {cpy_r_r84};
@@ -15469,13 +15469,13 @@ CPyL47: ;
     cpy_r_r90 = PyObject_Vectorcall(cpy_r_r87, cpy_r_r89, 1, 0);
     CPy_DECREF(cpy_r_r87);
     if (unlikely(cpy_r_r90 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 162, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 160, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Raise(cpy_r_r90);
     CPy_DECREF(cpy_r_r90);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 162, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 160, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15483,7 +15483,7 @@ CPyL51: ;
     cpy_r_r91 = CPyStatics[188]; /* 'func' */
     cpy_r_r92 = CPyObject_GetAttr(cpy_r_self, cpy_r_r91);
     if (unlikely(cpy_r_r92 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 166, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 164, CPyStatic_rule___globals);
         goto CPyL98;
     }
     cpy_r_r93 = (PyObject *)&_Py_NoneStruct;
@@ -15502,7 +15502,7 @@ CPyL51: ;
     cpy_r_r101 = CPyStatics[92]; /* 'ValueError' */
     cpy_r_r102 = CPyObject_GetAttr(cpy_r_r100, cpy_r_r101);
     if (unlikely(cpy_r_r102 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 167, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 165, CPyStatic_rule___globals);
         goto CPyL79;
     }
     PyObject *cpy_r_r103[1] = {cpy_r_r99};
@@ -15510,13 +15510,13 @@ CPyL51: ;
     cpy_r_r105 = PyObject_Vectorcall(cpy_r_r102, cpy_r_r104, 1, 0);
     CPy_DECREF(cpy_r_r102);
     if (unlikely(cpy_r_r105 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 167, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 165, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Raise(cpy_r_r105);
     CPy_DECREF(cpy_r_r105);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 167, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 165, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15524,7 +15524,7 @@ CPyL58: ;
     cpy_r_r106 = CPyStatics[188]; /* 'func' */
     cpy_r_r107 = CPyObject_GetAttr(cpy_r_self, cpy_r_r106);
     if (unlikely(cpy_r_r107 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 171, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 169, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r108 = (PyObject *)&_Py_NoneStruct;
@@ -15534,14 +15534,14 @@ CPyL58: ;
     cpy_r_r110 = CPyStatics[188]; /* 'func' */
     cpy_r_r111 = CPyObject_GetAttr(cpy_r_self, cpy_r_r110);
     if (unlikely(cpy_r_r111 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 171, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 169, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r112 = CPyModule_builtins;
     cpy_r_r113 = CPyStatics[185]; /* 'callable' */
     cpy_r_r114 = CPyObject_GetAttr(cpy_r_r112, cpy_r_r113);
     if (unlikely(cpy_r_r114 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 171, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 169, CPyStatic_rule___globals);
         goto CPyL101;
     }
     PyObject *cpy_r_r115[1] = {cpy_r_r111};
@@ -15549,7 +15549,7 @@ CPyL58: ;
     cpy_r_r117 = PyObject_Vectorcall(cpy_r_r114, cpy_r_r116, 1, 0);
     CPy_DECREF(cpy_r_r114);
     if (unlikely(cpy_r_r117 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 171, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 169, CPyStatic_rule___globals);
         goto CPyL101;
     }
     CPy_DECREF(cpy_r_r111);
@@ -15559,7 +15559,7 @@ CPyL58: ;
         cpy_r_r118 = cpy_r_r117 == Py_True;
     CPy_DECREF(cpy_r_r117);
     if (unlikely(cpy_r_r118 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 171, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 169, CPyStatic_rule___globals);
         goto CPyL79;
     }
     if (cpy_r_r118) goto CPyL73;
@@ -15569,7 +15569,7 @@ CPyL58: ;
     cpy_r_r122 = CPyStatics[188]; /* 'func' */
     cpy_r_r123 = CPyObject_GetAttr(cpy_r_self, cpy_r_r122);
     if (unlikely(cpy_r_r123 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r124 = CPyStatics[93]; /* '' */
@@ -15578,13 +15578,13 @@ CPyL58: ;
     cpy_r_r127 = (PyObject **)&cpy_r_r126;
     cpy_r_r128 = PyObject_VectorcallMethod(cpy_r_r125, cpy_r_r127, 9223372036854775811ULL, 0);
     if (unlikely(cpy_r_r128 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL102;
     }
     CPy_DECREF(cpy_r_r123);
     cpy_r_r129 = PyList_New(2);
     if (unlikely(cpy_r_r129 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL103;
     }
     cpy_r_r130 = (CPyPtr)&((PyListObject *)cpy_r_r129)->ob_item;
@@ -15596,14 +15596,14 @@ CPyL58: ;
     cpy_r_r133 = PyUnicode_Join(cpy_r_r119, cpy_r_r129);
     CPy_DECREF_NO_IMM(cpy_r_r129);
     if (unlikely(cpy_r_r133 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL79;
     }
     cpy_r_r134 = CPyModule_builtins;
     cpy_r_r135 = CPyStatics[88]; /* 'TypeError' */
     cpy_r_r136 = CPyObject_GetAttr(cpy_r_r134, cpy_r_r135);
     if (unlikely(cpy_r_r136 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL104;
     }
     PyObject *cpy_r_r137[1] = {cpy_r_r133};
@@ -15611,14 +15611,14 @@ CPyL58: ;
     cpy_r_r139 = PyObject_Vectorcall(cpy_r_r136, cpy_r_r138, 1, 0);
     CPy_DECREF(cpy_r_r136);
     if (unlikely(cpy_r_r139 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL104;
     }
     CPy_DECREF(cpy_r_r133);
     CPy_Raise(cpy_r_r139);
     CPy_DECREF(cpy_r_r139);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 172, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 170, CPyStatic_rule___globals);
         goto CPyL79;
     }
     CPy_Unreachable();
@@ -15627,13 +15627,13 @@ CPyL73: ;
     cpy_r_r141 = CPyStatics[17]; /* 'SORT_RULES' */
     cpy_r_r142 = CPyDict_GetItem(cpy_r_r140, cpy_r_r141);
     if (unlikely(cpy_r_r142 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 179, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 177, CPyStatic_rule___globals);
         goto CPyL79;
     }
     if (likely(PyDict_Check(cpy_r_r142)))
         cpy_r_r143 = cpy_r_r142;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 179, CPyStatic_rule___globals, "dict", cpy_r_r142);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 177, CPyStatic_rule___globals, "dict", cpy_r_r142);
         goto CPyL79;
     }
     cpy_r_r144 = CPy_TYPE(cpy_r_self);
@@ -15641,20 +15641,20 @@ CPyL73: ;
     CPy_DECREF(cpy_r_r143);
     CPy_DECREF(cpy_r_r144);
     if (unlikely(cpy_r_r145 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 179, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 177, CPyStatic_rule___globals);
         goto CPyL79;
     }
     if (likely(PyList_Check(cpy_r_r145)))
         cpy_r_r146 = cpy_r_r145;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 179, CPyStatic_rule___globals, "list", cpy_r_r145);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 177, CPyStatic_rule___globals, "list", cpy_r_r145);
         goto CPyL79;
     }
     cpy_r_r147 = PyList_Append(cpy_r_r146, cpy_r_self);
     CPy_DECREF_NO_IMM(cpy_r_r146);
     cpy_r_r148 = cpy_r_r147 >= 0;
     if (unlikely(!cpy_r_r148)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 179, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 177, CPyStatic_rule___globals);
         goto CPyL79;
     }
     return 1;
@@ -15774,7 +15774,7 @@ PyObject *CPyPy_rule_____post_init___3__SortRule_obj_____call__(PyObject *self, 
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 135, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 133, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -15854,7 +15854,7 @@ CPyTagged CPyDef_rule___txgroup_dbid__SortRule_obj_____call__(PyObject *cpy_r___
     cpy_r_r2 = CPyStatic_rule___globals;
     cpy_r_r3 = CPyImport_ImportFromMany(cpy_r_r1, cpy_r_r0, cpy_r_r0, cpy_r_r2);
     if (unlikely(cpy_r_r3 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 191, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 189, CPyStatic_rule___globals);
         goto CPyL14;
     }
     CPyModule_dao_treasury___db = cpy_r_r3;
@@ -15865,20 +15865,20 @@ CPyTagged CPyDef_rule___txgroup_dbid__SortRule_obj_____call__(PyObject *cpy_r___
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 194, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 192, CPyStatic_rule___globals);
         goto CPyL15;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 194, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 192, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL15;
     }
     cpy_r_r8 = CPyStatics[184]; /* ':' */
     cpy_r_r9 = PyUnicode_Split(cpy_r_r7, cpy_r_r8, -1);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r9 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 194, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 192, CPyStatic_rule___globals);
         goto CPyL15;
     }
     cpy_r_r10 = 0;
@@ -15896,14 +15896,14 @@ CPyL5: ;
     if (likely(PyUnicode_Check(cpy_r_r18)))
         cpy_r_r19 = cpy_r_r18;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 194, CPyStatic_rule___globals, "str", cpy_r_r18);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 192, CPyStatic_rule___globals, "str", cpy_r_r18);
         goto CPyL17;
     }
     cpy_r_r20 = CPyStatic_rule___globals;
     cpy_r_r21 = CPyStatics[65]; /* 'TxGroup' */
     cpy_r_r22 = CPyDict_GetItem(cpy_r_r20, cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 195, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 193, CPyStatic_rule___globals);
         goto CPyL18;
     }
     cpy_r_r23 = CPyStatics[72]; /* 'get_dbid' */
@@ -15911,7 +15911,7 @@ CPyL5: ;
     cpy_r_r25 = (PyObject **)&cpy_r_r24;
     cpy_r_r26 = PyObject_VectorcallMethod(cpy_r_r23, cpy_r_r25, 9223372036854775811ULL, 0);
     if (unlikely(cpy_r_r26 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 195, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 193, CPyStatic_rule___globals);
         goto CPyL19;
     }
     CPy_DECREF(cpy_r_r22);
@@ -15924,7 +15924,7 @@ CPyL5: ;
     }
     CPy_DECREF(cpy_r_r26);
     if (unlikely(cpy_r_r27 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 195, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 193, CPyStatic_rule___globals);
         goto CPyL20;
     }
     cpy_r_r28 = CPyTagged_StealAsObject(cpy_r_r27);
@@ -15940,7 +15940,7 @@ CPyL12: ;
     }
     CPy_DECREF(cpy_r_txgroup);
     if (unlikely(cpy_r_r30 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 196, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 194, CPyStatic_rule___globals);
         goto CPyL14;
     }
     return cpy_r_r30;
@@ -15996,7 +15996,7 @@ PyObject *CPyPy_rule___txgroup_dbid__SortRule_obj_____call__(PyObject *self, PyO
     PyObject *retbox = CPyTagged_StealAsObject(retval);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 182, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "txgroup_dbid", 180, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -16151,7 +16151,7 @@ CPyL1: ;
     if (!cpy_r_r4) goto CPyL4;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 196, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_Unreachable();
@@ -16161,14 +16161,14 @@ CPyL4: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_match_all\" was not set");
     cpy_r_r6 = 0;
     if (unlikely(!cpy_r_r6)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_Unreachable();
 CPyL7: ;
     cpy_r_r7 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__self;
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 216, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 214, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF_NO_IMM(cpy_r_r7);
@@ -16177,25 +16177,25 @@ CPyL8: ;
     cpy_r_r9 = CPyObject_GetAttr(cpy_r_r7, cpy_r_r8);
     CPy_DECREF_NO_IMM(cpy_r_r7);
     if (unlikely(cpy_r_r9 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals);
         goto CPyL96;
     }
     if (likely(PyUnicode_Check(cpy_r_r9)))
         cpy_r_r10 = cpy_r_r9;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals, "str", cpy_r_r9);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals, "str", cpy_r_r9);
         goto CPyL96;
     }
     cpy_r_r11 = CPyDict_GetItem(cpy_r_r5, cpy_r_r10);
     CPy_DECREF(cpy_r_r10);
     if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals);
         goto CPyL96;
     }
     if (likely(PyList_Check(cpy_r_r11)))
         cpy_r_r12 = cpy_r_r11;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals, "list", cpy_r_r11);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals, "list", cpy_r_r11);
         goto CPyL96;
     }
     CPy_INCREF_NO_IMM(cpy_r_r12);
@@ -16205,7 +16205,7 @@ CPyL8: ;
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__matchers = cpy_r_r12;
     cpy_r_r13 = 1;
     if (unlikely(!cpy_r_r13)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 214, CPyStatic_rule___globals);
         goto CPyL97;
     }
     cpy_r_r14 = (CPyPtr)&((PyVarObject *)cpy_r_r12)->ob_size;
@@ -16217,7 +16217,7 @@ CPyL8: ;
     cpy_r_r18 = 1;
     cpy_r_r19 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__matchers;
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "matchers", 218, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "matchers", 216, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF_NO_IMM(cpy_r_r19);
@@ -16240,7 +16240,7 @@ CPyL15: ;
 CPyL17: ;
     cpy_r_r22 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__0;
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__0", 217, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__0", 215, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF_NO_IMM(cpy_r_r22);
@@ -16250,7 +16250,7 @@ CPyL18: ;
     CPy_DECREF_NO_IMM(cpy_r_r22);
     cpy_r_r25 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__1;
     if (unlikely(cpy_r_r25 == -113)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__1", 217, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__1", 215, CPyStatic_rule___globals);
         goto CPyL96;
     }
 CPyL19: ;
@@ -16258,14 +16258,14 @@ CPyL19: ;
     if (!cpy_r_r26) goto CPyL36;
     cpy_r_r27 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__0;
     if (unlikely(cpy_r_r27 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__0", 217, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__0", 215, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF_NO_IMM(cpy_r_r27);
 CPyL21: ;
     cpy_r_r28 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__1;
     if (unlikely(cpy_r_r28 == -113)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__1", 217, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__1", 215, CPyStatic_rule___globals);
         goto CPyL98;
     }
 CPyL22: ;
@@ -16279,7 +16279,7 @@ CPyL22: ;
     if (likely(PyUnicode_Check(cpy_r_r33)))
         cpy_r_r34 = cpy_r_r33;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 217, CPyStatic_rule___globals, "str", cpy_r_r33);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 215, CPyStatic_rule___globals, "str", cpy_r_r33);
         goto CPyL96;
     }
     if (((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__matcher != NULL) {
@@ -16288,19 +16288,19 @@ CPyL22: ;
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__matcher = cpy_r_r34;
     cpy_r_r35 = 1;
     if (unlikely(!cpy_r_r35)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 217, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 215, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r36 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r36 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "tx", 218, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "tx", 216, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF(cpy_r_r36);
 CPyL25: ;
     cpy_r_r37 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__matcher;
     if (unlikely(cpy_r_r37 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "matcher", 218, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "matcher", 216, CPyStatic_rule___globals);
         goto CPyL99;
     }
     CPy_INCREF(cpy_r_r37);
@@ -16309,19 +16309,19 @@ CPyL26: ;
     CPy_DECREF(cpy_r_r36);
     CPy_DECREF(cpy_r_r37);
     if (unlikely(cpy_r_r38 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 218, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r39 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__self;
     if (unlikely(cpy_r_r39 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 218, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 216, CPyStatic_rule___globals);
         goto CPyL100;
     }
     CPy_INCREF_NO_IMM(cpy_r_r39);
 CPyL28: ;
     cpy_r_r40 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__matcher;
     if (unlikely(cpy_r_r40 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "matcher", 218, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "matcher", 216, CPyStatic_rule___globals);
         goto CPyL101;
     }
     CPy_INCREF(cpy_r_r40);
@@ -16330,21 +16330,21 @@ CPyL29: ;
     CPy_DECREF_NO_IMM(cpy_r_r39);
     CPy_DECREF(cpy_r_r40);
     if (unlikely(cpy_r_r41 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 218, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
         goto CPyL100;
     }
     cpy_r_r42 = PyObject_RichCompare(cpy_r_r38, cpy_r_r41, 2);
     CPy_DECREF(cpy_r_r38);
     CPy_DECREF(cpy_r_r41);
     if (unlikely(cpy_r_r42 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 218, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 216, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r43 = PyObject_Not(cpy_r_r42);
     CPy_DECREF(cpy_r_r42);
     cpy_r_r44 = cpy_r_r43 >= 0;
     if (unlikely(!cpy_r_r44)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 217, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 215, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r45 = cpy_r_r43;
@@ -16354,7 +16354,7 @@ CPyL29: ;
 CPyL34: ;
     cpy_r_r46 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__1;
     if (unlikely(cpy_r_r46 == -113)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__1", 217, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "__mypyc_temp__1", 215, CPyStatic_rule___globals);
         goto CPyL96;
     }
 CPyL35: ;
@@ -16362,7 +16362,7 @@ CPyL35: ;
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__1 = cpy_r_r47;
     cpy_r_r48 = 1;
     if (unlikely(!cpy_r_r48)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 217, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 215, CPyStatic_rule___globals);
         goto CPyL96;
     } else
         goto CPyL17;
@@ -16380,14 +16380,14 @@ CPyL41: ;
     cpy_r_r51 = CPyStatics[214]; /* 'checking %s for %s' */
     cpy_r_r52 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r52 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "tx", 221, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "tx", 219, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF(cpy_r_r52);
 CPyL42: ;
     cpy_r_r53 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__self;
     if (unlikely(cpy_r_r53 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 221, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 219, CPyStatic_rule___globals);
         goto CPyL102;
     }
     CPy_INCREF_NO_IMM(cpy_r_r53);
@@ -16396,7 +16396,7 @@ CPyL43: ;
     cpy_r_r55 = CPyObject_GetAttr(cpy_r_r53, cpy_r_r54);
     CPy_DECREF_NO_IMM(cpy_r_r53);
     if (unlikely(cpy_r_r55 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 219, CPyStatic_rule___globals);
         goto CPyL102;
     }
     cpy_r_r56 = CPyStatic_rule____log_debug;
@@ -16408,7 +16408,7 @@ CPyL45: ;
     PyErr_SetString(PyExc_NameError, "value for final name \"_log_debug\" was not set");
     cpy_r_r57 = 0;
     if (unlikely(!cpy_r_r57)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 219, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_Unreachable();
@@ -16417,7 +16417,7 @@ CPyL47: ;
     cpy_r_r59 = (PyObject **)&cpy_r_r58;
     cpy_r_r60 = PyObject_Vectorcall(cpy_r_r56, cpy_r_r59, 3, 0);
     if (unlikely(cpy_r_r60 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 219, CPyStatic_rule___globals);
         goto CPyL104;
     } else
         goto CPyL105;
@@ -16426,14 +16426,14 @@ CPyL48: ;
     CPy_DECREF(cpy_r_r55);
     cpy_r_r61 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__self;
     if (unlikely(cpy_r_r61 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 222, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "self", 220, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF_NO_IMM(cpy_r_r61);
 CPyL49: ;
     cpy_r_r62 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r62 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "tx", 222, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "tx", 220, CPyStatic_rule___globals);
         goto CPyL106;
     }
     CPy_INCREF(cpy_r_r62);
@@ -16443,7 +16443,7 @@ CPyL50: ;
     cpy_r_r65 = (PyObject **)&cpy_r_r64;
     cpy_r_r66 = PyObject_VectorcallMethod(cpy_r_r63, cpy_r_r65, 9223372036854775810ULL, 0);
     if (unlikely(cpy_r_r66 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 222, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 220, CPyStatic_rule___globals);
         goto CPyL107;
     }
     CPy_DECREF_NO_IMM(cpy_r_r61);
@@ -16454,12 +16454,12 @@ CPyL50: ;
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__match = cpy_r_r66;
     cpy_r_r67 = 1;
     if (unlikely(!cpy_r_r67)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 222, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 220, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r68 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__match;
     if (unlikely(cpy_r_r68 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "match", 223, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF(cpy_r_r68);
@@ -16469,7 +16469,7 @@ CPyL53: ;
     if (!cpy_r_r69) goto CPyL57;
     cpy_r_r70 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__match;
     if (unlikely(cpy_r_r70 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "match", 223, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF(cpy_r_r70);
@@ -16480,7 +16480,7 @@ CPyL55: ;
         cpy_r_r71 = cpy_r_r70 == Py_True;
     CPy_DECREF(cpy_r_r70);
     if (unlikely(cpy_r_r71 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r72 = cpy_r_r71 ? Py_True : Py_False;
@@ -16489,7 +16489,7 @@ CPyL55: ;
 CPyL57: ;
     cpy_r_r74 = ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__match;
     if (unlikely(cpy_r_r74 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "match", 223, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__SortRule_gen", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_INCREF(cpy_r_r74);
@@ -16497,7 +16497,7 @@ CPyL58: ;
     cpy_r_r75 = CPy_GetCoro(cpy_r_r74);
     CPy_DECREF(cpy_r_r74);
     if (unlikely(cpy_r_r75 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     if (((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__2 != NULL) {
@@ -16521,7 +16521,7 @@ CPyL61: ;
     if (cpy_r_r78 != NULL) goto CPyL64;
     cpy_r_r79 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r79 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r80 = cpy_r_r79;
@@ -16532,7 +16532,7 @@ CPyL61: ;
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__2 = cpy_r_r81;
     cpy_r_r82 = 1;
     if (unlikely(!cpy_r_r82)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL108;
     } else
         goto CPyL86;
@@ -16547,7 +16547,7 @@ CPyL66: ;
     if (!cpy_r_r86) goto CPyL109;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL70;
     } else
         goto CPyL110;
@@ -16580,7 +16580,7 @@ CPyL72: ;
     cpy_r_r91 = CPy_YieldFromErrorHandle(cpy_r_r90, cpy_r_r89);
     CPy_DecRef(cpy_r_r90);
     if (unlikely(cpy_r_r91 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL111;
     }
     if (cpy_r_r91) goto CPyL76;
@@ -16649,7 +16649,7 @@ CPyL82: ;
 CPyL84: ;
     cpy_r_r98 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r98 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 223, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 221, CPyStatic_rule___globals);
         goto CPyL96;
     }
     cpy_r_r80 = cpy_r_r98;
@@ -16677,7 +16677,7 @@ CPyL94: ;
     PyErr_SetNone(PyExc_StopIteration);
     cpy_r_r102 = 0;
     if (unlikely(!cpy_r_r102)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 196, CPyStatic_rule___globals);
         goto CPyL96;
     }
     CPy_Unreachable();
@@ -17046,7 +17046,7 @@ PyObject *CPyDef_rule___match__SortRule_obj_____call__(PyObject *cpy_r___mypyc_s
     PyObject *cpy_r_r4;
     cpy_r_r0 = CPyDef_rule___match__SortRule_gen();
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 196, CPyStatic_rule___globals);
         goto CPyL4;
     }
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r_r0)->___mypyc_next_label__ = 0;
@@ -17057,7 +17057,7 @@ PyObject *CPyDef_rule___match__SortRule_obj_____call__(PyObject *cpy_r___mypyc_s
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r_r0)->___mypyc_generator_attribute__self = cpy_r_self;
     cpy_r_r2 = 1;
     if (unlikely(!cpy_r_r2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 196, CPyStatic_rule___globals);
         goto CPyL5;
     }
     CPy_INCREF(cpy_r_tx);
@@ -17067,7 +17067,7 @@ PyObject *CPyDef_rule___match__SortRule_obj_____call__(PyObject *cpy_r___mypyc_s
     ((dao_treasury___sorting___rule___match__SortRule_genObject *)cpy_r_r0)->___mypyc_generator_attribute__tx = cpy_r_tx;
     cpy_r_r3 = 1;
     if (unlikely(!cpy_r_r3)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 196, CPyStatic_rule___globals);
         goto CPyL5;
     }
     return cpy_r_r0;
@@ -17100,7 +17100,7 @@ PyObject *CPyPy_rule___match__SortRule_obj_____call__(PyObject *self, PyObject *
     PyObject *retval = CPyDef_rule___match__SortRule_obj_____call__(arg___mypyc_self__, arg_self, arg_tx);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 198, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 196, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -17220,14 +17220,14 @@ CPyL1: ;
     if (!cpy_r_r4) goto CPyL4;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 232, CPyStatic_rule___globals);
         goto CPyL64;
     }
     CPy_Unreachable();
 CPyL4: ;
     cpy_r_r5 = ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r5 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 236, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 234, CPyStatic_rule___globals);
         goto CPyL64;
     }
     CPy_INCREF(cpy_r_r5);
@@ -17236,7 +17236,7 @@ CPyL5: ;
     cpy_r_r7 = CPyObject_GetAttr(cpy_r_r5, cpy_r_r6);
     CPy_DECREF(cpy_r_r5);
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r8 = (PyObject *)&_Py_NoneStruct;
@@ -17248,7 +17248,7 @@ CPyL5: ;
 CPyL8: ;
     cpy_r_r11 = ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 237, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 235, CPyStatic_rule___globals);
         goto CPyL64;
     }
     CPy_INCREF(cpy_r_r11);
@@ -17257,25 +17257,25 @@ CPyL9: ;
     cpy_r_r13 = CPyObject_GetAttr(cpy_r_r11, cpy_r_r12);
     CPy_DECREF(cpy_r_r11);
     if (unlikely(cpy_r_r13 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 237, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 235, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r14 = CPyStatics[12]; /* 'address' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     CPy_DECREF(cpy_r_r13);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 237, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 235, CPyStatic_rule___globals);
         goto CPyL64;
     }
     if (likely(PyUnicode_Check(cpy_r_r15)))
         cpy_r_r16 = cpy_r_r15;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 237, CPyStatic_rule___globals, "str", cpy_r_r15);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 235, CPyStatic_rule___globals, "str", cpy_r_r15);
         goto CPyL64;
     }
     cpy_r_r17 = ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r17 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 237, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 235, CPyStatic_rule___globals);
         goto CPyL65;
     }
     CPy_INCREF(cpy_r_r17);
@@ -17284,7 +17284,7 @@ CPyL13: ;
     cpy_r_r19 = CPyObject_GetAttr(cpy_r_r17, cpy_r_r18);
     CPy_DECREF(cpy_r_r17);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 237, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 235, CPyStatic_rule___globals);
         goto CPyL65;
     }
     if (likely(PyLong_Check(cpy_r_r19)))
@@ -17294,7 +17294,7 @@ CPyL13: ;
     }
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r20 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 237, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 235, CPyStatic_rule___globals);
         goto CPyL65;
     }
     cpy_r_r21 = CPyTagged_StealAsObject(cpy_r_r20);
@@ -17302,7 +17302,7 @@ CPyL13: ;
     CPy_DECREF(cpy_r_r16);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 237, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 235, CPyStatic_rule___globals);
         goto CPyL64;
     }
     if (cpy_r_r22) goto CPyL18;
@@ -17313,13 +17313,13 @@ CPyL18: ;
     cpy_r_r25 = CPyStatics[215]; /* 'super' */
     cpy_r_r26 = CPyObject_GetAttr(cpy_r_r24, cpy_r_r25);
     if (unlikely(cpy_r_r26 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r27 = (PyObject *)CPyType_rule____InboundSortRule;
     cpy_r_r28 = ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__self;
     if (unlikely(cpy_r_r28 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "self", 238, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "self", 236, CPyStatic_rule___globals);
         goto CPyL66;
     }
     CPy_INCREF_NO_IMM(cpy_r_r28);
@@ -17329,7 +17329,7 @@ CPyL20: ;
     cpy_r_r31 = PyObject_Vectorcall(cpy_r_r26, cpy_r_r30, 2, 0);
     CPy_DECREF(cpy_r_r26);
     if (unlikely(cpy_r_r31 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL67;
     }
     CPy_DECREF_NO_IMM(cpy_r_r28);
@@ -17337,12 +17337,12 @@ CPyL20: ;
     cpy_r_r33 = CPyObject_GetAttr(cpy_r_r31, cpy_r_r32);
     CPy_DECREF(cpy_r_r31);
     if (unlikely(cpy_r_r33 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r34 = ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r34 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 238, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__InboundSortRule_gen", "tx", 236, CPyStatic_rule___globals);
         goto CPyL68;
     }
     CPy_INCREF(cpy_r_r34);
@@ -17352,14 +17352,14 @@ CPyL23: ;
     cpy_r_r37 = PyObject_Vectorcall(cpy_r_r33, cpy_r_r36, 1, 0);
     CPy_DECREF(cpy_r_r33);
     if (unlikely(cpy_r_r37 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL69;
     }
     CPy_DECREF(cpy_r_r34);
     cpy_r_r38 = CPy_GetCoro(cpy_r_r37);
     CPy_DECREF(cpy_r_r37);
     if (unlikely(cpy_r_r38 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL64;
     }
     if (((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__4 != NULL) {
@@ -17383,7 +17383,7 @@ CPyL27: ;
     if (cpy_r_r41 != NULL) goto CPyL30;
     cpy_r_r42 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r42 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r43 = cpy_r_r42;
@@ -17394,7 +17394,7 @@ CPyL27: ;
     ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__4 = cpy_r_r44;
     cpy_r_r45 = 1;
     if (unlikely(!cpy_r_r45)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL70;
     } else
         goto CPyL52;
@@ -17409,7 +17409,7 @@ CPyL32: ;
     if (!cpy_r_r49) goto CPyL71;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL36;
     } else
         goto CPyL72;
@@ -17442,7 +17442,7 @@ CPyL38: ;
     cpy_r_r54 = CPy_YieldFromErrorHandle(cpy_r_r53, cpy_r_r52);
     CPy_DecRef(cpy_r_r53);
     if (unlikely(cpy_r_r54 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL73;
     }
     if (cpy_r_r54) goto CPyL42;
@@ -17511,7 +17511,7 @@ CPyL48: ;
 CPyL50: ;
     cpy_r_r61 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r61 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r43 = cpy_r_r61;
@@ -17522,7 +17522,7 @@ CPyL52: ;
         cpy_r_r62 = cpy_r_r43 == Py_True;
     CPy_DECREF(cpy_r_r43);
     if (unlikely(cpy_r_r62 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 238, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 236, CPyStatic_rule___globals);
         goto CPyL64;
     }
     cpy_r_r23 = cpy_r_r62;
@@ -17550,7 +17550,7 @@ CPyL62: ;
     PyErr_SetNone(PyExc_StopIteration);
     cpy_r_r67 = 0;
     if (unlikely(!cpy_r_r67)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 232, CPyStatic_rule___globals);
         goto CPyL64;
     }
     CPy_Unreachable();
@@ -17897,7 +17897,7 @@ PyObject *CPyDef_rule___match__InboundSortRule_obj_____call__(PyObject *cpy_r___
     PyObject *cpy_r_r4;
     cpy_r_r0 = CPyDef_rule___match__InboundSortRule_gen();
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 232, CPyStatic_rule___globals);
         goto CPyL4;
     }
     ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r_r0)->___mypyc_next_label__ = 0;
@@ -17908,7 +17908,7 @@ PyObject *CPyDef_rule___match__InboundSortRule_obj_____call__(PyObject *cpy_r___
     ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r_r0)->___mypyc_generator_attribute__self = cpy_r_self;
     cpy_r_r2 = 1;
     if (unlikely(!cpy_r_r2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 232, CPyStatic_rule___globals);
         goto CPyL5;
     }
     CPy_INCREF(cpy_r_tx);
@@ -17918,7 +17918,7 @@ PyObject *CPyDef_rule___match__InboundSortRule_obj_____call__(PyObject *cpy_r___
     ((dao_treasury___sorting___rule___match__InboundSortRule_genObject *)cpy_r_r0)->___mypyc_generator_attribute__tx = cpy_r_tx;
     cpy_r_r3 = 1;
     if (unlikely(!cpy_r_r3)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 232, CPyStatic_rule___globals);
         goto CPyL5;
     }
     return cpy_r_r0;
@@ -17951,7 +17951,7 @@ PyObject *CPyPy_rule___match__InboundSortRule_obj_____call__(PyObject *self, PyO
     PyObject *retval = CPyDef_rule___match__InboundSortRule_obj_____call__(arg___mypyc_self__, arg_self, arg_tx);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 234, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 232, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -18065,14 +18065,14 @@ CPyL1: ;
     if (!cpy_r_r4) goto CPyL4;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 248, CPyStatic_rule___globals);
         goto CPyL59;
     }
     CPy_Unreachable();
 CPyL4: ;
     cpy_r_r5 = ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r5 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "tx", 252, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "tx", 250, CPyStatic_rule___globals);
         goto CPyL59;
     }
     CPy_INCREF(cpy_r_r5);
@@ -18081,19 +18081,19 @@ CPyL5: ;
     cpy_r_r7 = CPyObject_GetAttr(cpy_r_r5, cpy_r_r6);
     CPy_DECREF(cpy_r_r5);
     if (unlikely(cpy_r_r7 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 252, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r8 = CPyStatics[12]; /* 'address' */
     cpy_r_r9 = CPyObject_GetAttr(cpy_r_r7, cpy_r_r8);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r9 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 252, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r10 = ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "tx", 252, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "tx", 250, CPyStatic_rule___globals);
         goto CPyL60;
     }
     CPy_INCREF(cpy_r_r10);
@@ -18102,7 +18102,7 @@ CPyL8: ;
     cpy_r_r12 = CPyObject_GetAttr(cpy_r_r10, cpy_r_r11);
     CPy_DECREF(cpy_r_r10);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 252, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
         goto CPyL60;
     }
     if (likely(PyLong_Check(cpy_r_r12)))
@@ -18112,7 +18112,7 @@ CPyL8: ;
     }
     CPy_DECREF(cpy_r_r12);
     if (unlikely(cpy_r_r13 == CPY_INT_TAG)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 252, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
         goto CPyL60;
     }
     if (PyUnicode_Check(cpy_r_r9))
@@ -18127,7 +18127,7 @@ CPyL8: ;
         cpy_r_r14 = NULL;
     }
     if (cpy_r_r14 != NULL) goto __LL31;
-    CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals, "str or None", cpy_r_r9);
+    CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "match", 249, CPyStatic_rule___globals, "str or None", cpy_r_r9);
     goto CPyL61;
 __LL31: ;
     cpy_r_r15 = CPyTagged_StealAsObject(cpy_r_r13);
@@ -18135,7 +18135,7 @@ __LL31: ;
     CPy_DECREF(cpy_r_r14);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r16 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 249, CPyStatic_rule___globals);
         goto CPyL59;
     }
     if (cpy_r_r16) goto CPyL14;
@@ -18146,13 +18146,13 @@ CPyL14: ;
     cpy_r_r19 = CPyStatics[215]; /* 'super' */
     cpy_r_r20 = CPyObject_GetAttr(cpy_r_r18, cpy_r_r19);
     if (unlikely(cpy_r_r20 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r21 = (PyObject *)CPyType_rule____OutboundSortRule;
     cpy_r_r22 = ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__self;
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "self", 253, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "self", 251, CPyStatic_rule___globals);
         goto CPyL62;
     }
     CPy_INCREF_NO_IMM(cpy_r_r22);
@@ -18162,7 +18162,7 @@ CPyL16: ;
     cpy_r_r25 = PyObject_Vectorcall(cpy_r_r20, cpy_r_r24, 2, 0);
     CPy_DECREF(cpy_r_r20);
     if (unlikely(cpy_r_r25 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL63;
     }
     CPy_DECREF_NO_IMM(cpy_r_r22);
@@ -18170,12 +18170,12 @@ CPyL16: ;
     cpy_r_r27 = CPyObject_GetAttr(cpy_r_r25, cpy_r_r26);
     CPy_DECREF(cpy_r_r25);
     if (unlikely(cpy_r_r27 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r28 = ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_generator_attribute__tx;
     if (unlikely(cpy_r_r28 == NULL)) {
-        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "tx", 253, CPyStatic_rule___globals);
+        CPy_AttributeError("dao_treasury/sorting/rule.py", "match", "match__OutboundSortRule_gen", "tx", 251, CPyStatic_rule___globals);
         goto CPyL64;
     }
     CPy_INCREF(cpy_r_r28);
@@ -18185,14 +18185,14 @@ CPyL19: ;
     cpy_r_r31 = PyObject_Vectorcall(cpy_r_r27, cpy_r_r30, 1, 0);
     CPy_DECREF(cpy_r_r27);
     if (unlikely(cpy_r_r31 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL65;
     }
     CPy_DECREF(cpy_r_r28);
     cpy_r_r32 = CPy_GetCoro(cpy_r_r31);
     CPy_DECREF(cpy_r_r31);
     if (unlikely(cpy_r_r32 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL59;
     }
     if (((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6 != NULL) {
@@ -18216,7 +18216,7 @@ CPyL23: ;
     if (cpy_r_r35 != NULL) goto CPyL26;
     cpy_r_r36 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r36 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r37 = cpy_r_r36;
@@ -18227,7 +18227,7 @@ CPyL23: ;
     ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r___mypyc_self__)->___mypyc_temp__6 = cpy_r_r38;
     cpy_r_r39 = 1;
     if (unlikely(!cpy_r_r39)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL66;
     } else
         goto CPyL48;
@@ -18242,7 +18242,7 @@ CPyL28: ;
     if (!cpy_r_r43) goto CPyL67;
     CPyErr_SetObjectAndTraceback(cpy_r_type, cpy_r_value, cpy_r_traceback);
     if (unlikely(!0)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL32;
     } else
         goto CPyL68;
@@ -18275,7 +18275,7 @@ CPyL34: ;
     cpy_r_r48 = CPy_YieldFromErrorHandle(cpy_r_r47, cpy_r_r46);
     CPy_DecRef(cpy_r_r47);
     if (unlikely(cpy_r_r48 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL69;
     }
     if (cpy_r_r48) goto CPyL38;
@@ -18344,7 +18344,7 @@ CPyL44: ;
 CPyL46: ;
     cpy_r_r55 = CPy_FetchStopIterationValue();
     if (unlikely(cpy_r_r55 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r37 = cpy_r_r55;
@@ -18355,7 +18355,7 @@ CPyL48: ;
         cpy_r_r56 = cpy_r_r37 == Py_True;
     CPy_DECREF(cpy_r_r37);
     if (unlikely(cpy_r_r56 == 2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 253, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 251, CPyStatic_rule___globals);
         goto CPyL59;
     }
     cpy_r_r17 = cpy_r_r56;
@@ -18381,7 +18381,7 @@ CPyL57: ;
     PyErr_SetNone(PyExc_StopIteration);
     cpy_r_r61 = 0;
     if (unlikely(!cpy_r_r61)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 248, CPyStatic_rule___globals);
         goto CPyL59;
     }
     CPy_Unreachable();
@@ -18731,7 +18731,7 @@ PyObject *CPyDef_rule___match__OutboundSortRule_obj_____call__(PyObject *cpy_r__
     PyObject *cpy_r_r4;
     cpy_r_r0 = CPyDef_rule___match__OutboundSortRule_gen();
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 248, CPyStatic_rule___globals);
         goto CPyL4;
     }
     ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r_r0)->___mypyc_next_label__ = 0;
@@ -18742,7 +18742,7 @@ PyObject *CPyDef_rule___match__OutboundSortRule_obj_____call__(PyObject *cpy_r__
     ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r_r0)->___mypyc_generator_attribute__self = cpy_r_self;
     cpy_r_r2 = 1;
     if (unlikely(!cpy_r_r2)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 248, CPyStatic_rule___globals);
         goto CPyL5;
     }
     CPy_INCREF(cpy_r_tx);
@@ -18752,7 +18752,7 @@ PyObject *CPyDef_rule___match__OutboundSortRule_obj_____call__(PyObject *cpy_r__
     ((dao_treasury___sorting___rule___match__OutboundSortRule_genObject *)cpy_r_r0)->___mypyc_generator_attribute__tx = cpy_r_tx;
     cpy_r_r3 = 1;
     if (unlikely(!cpy_r_r3)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 248, CPyStatic_rule___globals);
         goto CPyL5;
     }
     return cpy_r_r0;
@@ -18785,7 +18785,7 @@ PyObject *CPyPy_rule___match__OutboundSortRule_obj_____call__(PyObject *self, Py
     PyObject *retval = CPyDef_rule___match__OutboundSortRule_obj_____call__(arg___mypyc_self__, arg_self, arg_tx);
     return retval;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 250, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "match", 248, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -18854,7 +18854,7 @@ char CPyDef_rule_____post_init___3_RevenueSortRule_obj_____call__(PyObject *cpy_
     cpy_r_r1 = CPyStatics[209]; /* 'object' */
     cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 269, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 267, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r3 = CPyStatics[187]; /* 'txgroup' */
@@ -18862,19 +18862,19 @@ char CPyDef_rule_____post_init___3_RevenueSortRule_obj_____call__(PyObject *cpy_
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 269, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 267, CPyStatic_rule___globals);
         goto CPyL11;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 269, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 267, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL11;
     }
     cpy_r_r8 = CPyStr_Build(2, cpy_r_r4, cpy_r_r7);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 269, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 267, CPyStatic_rule___globals);
         goto CPyL11;
     }
     cpy_r_r9 = CPyStatics[210]; /* '__setattr__' */
@@ -18882,7 +18882,7 @@ char CPyDef_rule_____post_init___3_RevenueSortRule_obj_____call__(PyObject *cpy_
     cpy_r_r11 = (PyObject **)&cpy_r_r10;
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 269, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 267, CPyStatic_rule___globals);
         goto CPyL12;
     } else
         goto CPyL13;
@@ -18893,7 +18893,7 @@ CPyL5: ;
     cpy_r_r14 = CPyStatics[215]; /* 'super' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 270, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 268, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r16 = (PyObject *)CPyType_rule___RevenueSortRule;
@@ -18902,20 +18902,20 @@ CPyL5: ;
     cpy_r_r19 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r18, 2, 0);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 270, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 268, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r20 = CPyStatics[217]; /* '__post_init__' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 270, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 268, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r22 = PyObject_Vectorcall(cpy_r_r21, 0, 0, 0);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 270, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 268, CPyStatic_rule___globals);
         goto CPyL10;
     } else
         goto CPyL14;
@@ -18963,7 +18963,7 @@ PyObject *CPyPy_rule_____post_init___3_RevenueSortRule_obj_____call__(PyObject *
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 267, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 265, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -19032,7 +19032,7 @@ char CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj_____call__(PyObject
     cpy_r_r1 = CPyStatics[209]; /* 'object' */
     cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 282, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 280, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r3 = CPyStatics[187]; /* 'txgroup' */
@@ -19040,19 +19040,19 @@ char CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj_____call__(PyObject
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 282, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 280, CPyStatic_rule___globals);
         goto CPyL11;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 282, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 280, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL11;
     }
     cpy_r_r8 = CPyStr_Build(2, cpy_r_r4, cpy_r_r7);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 282, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 280, CPyStatic_rule___globals);
         goto CPyL11;
     }
     cpy_r_r9 = CPyStatics[210]; /* '__setattr__' */
@@ -19060,7 +19060,7 @@ char CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj_____call__(PyObject
     cpy_r_r11 = (PyObject **)&cpy_r_r10;
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 282, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 280, CPyStatic_rule___globals);
         goto CPyL12;
     } else
         goto CPyL13;
@@ -19071,7 +19071,7 @@ CPyL5: ;
     cpy_r_r14 = CPyStatics[215]; /* 'super' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 283, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 281, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r16 = (PyObject *)CPyType_rule___CostOfRevenueSortRule;
@@ -19080,20 +19080,20 @@ CPyL5: ;
     cpy_r_r19 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r18, 2, 0);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 283, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 281, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r20 = CPyStatics[217]; /* '__post_init__' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 283, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 281, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r22 = PyObject_Vectorcall(cpy_r_r21, 0, 0, 0);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 283, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 281, CPyStatic_rule___globals);
         goto CPyL10;
     } else
         goto CPyL14;
@@ -19141,7 +19141,7 @@ PyObject *CPyPy_rule_____post_init___3_CostOfRevenueSortRule_obj_____call__(PyOb
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 280, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 278, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -19210,7 +19210,7 @@ char CPyDef_rule_____post_init___3_ExpenseSortRule_obj_____call__(PyObject *cpy_
     cpy_r_r1 = CPyStatics[209]; /* 'object' */
     cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 295, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 293, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r3 = CPyStatics[187]; /* 'txgroup' */
@@ -19218,19 +19218,19 @@ char CPyDef_rule_____post_init___3_ExpenseSortRule_obj_____call__(PyObject *cpy_
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 295, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 293, CPyStatic_rule___globals);
         goto CPyL11;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 295, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 293, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL11;
     }
     cpy_r_r8 = CPyStr_Build(2, cpy_r_r4, cpy_r_r7);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 295, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 293, CPyStatic_rule___globals);
         goto CPyL11;
     }
     cpy_r_r9 = CPyStatics[210]; /* '__setattr__' */
@@ -19238,7 +19238,7 @@ char CPyDef_rule_____post_init___3_ExpenseSortRule_obj_____call__(PyObject *cpy_
     cpy_r_r11 = (PyObject **)&cpy_r_r10;
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 295, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 293, CPyStatic_rule___globals);
         goto CPyL12;
     } else
         goto CPyL13;
@@ -19249,7 +19249,7 @@ CPyL5: ;
     cpy_r_r14 = CPyStatics[215]; /* 'super' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 296, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 294, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r16 = (PyObject *)CPyType_rule___ExpenseSortRule;
@@ -19258,20 +19258,20 @@ CPyL5: ;
     cpy_r_r19 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r18, 2, 0);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 296, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 294, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r20 = CPyStatics[217]; /* '__post_init__' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 296, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 294, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r22 = PyObject_Vectorcall(cpy_r_r21, 0, 0, 0);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 296, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 294, CPyStatic_rule___globals);
         goto CPyL10;
     } else
         goto CPyL14;
@@ -19319,7 +19319,7 @@ PyObject *CPyPy_rule_____post_init___3_ExpenseSortRule_obj_____call__(PyObject *
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 293, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 291, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -19388,7 +19388,7 @@ char CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj_____call__(PyObject *
     cpy_r_r1 = CPyStatics[209]; /* 'object' */
     cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 308, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 306, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r3 = CPyStatics[187]; /* 'txgroup' */
@@ -19396,19 +19396,19 @@ char CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj_____call__(PyObject *
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 308, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 306, CPyStatic_rule___globals);
         goto CPyL11;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 308, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 306, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL11;
     }
     cpy_r_r8 = CPyStr_Build(2, cpy_r_r4, cpy_r_r7);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 308, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 306, CPyStatic_rule___globals);
         goto CPyL11;
     }
     cpy_r_r9 = CPyStatics[210]; /* '__setattr__' */
@@ -19416,7 +19416,7 @@ char CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj_____call__(PyObject *
     cpy_r_r11 = (PyObject **)&cpy_r_r10;
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 308, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 306, CPyStatic_rule___globals);
         goto CPyL12;
     } else
         goto CPyL13;
@@ -19427,7 +19427,7 @@ CPyL5: ;
     cpy_r_r14 = CPyStatics[215]; /* 'super' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 309, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 307, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r16 = (PyObject *)CPyType_rule___OtherIncomeSortRule;
@@ -19436,20 +19436,20 @@ CPyL5: ;
     cpy_r_r19 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r18, 2, 0);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 309, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 307, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r20 = CPyStatics[217]; /* '__post_init__' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 309, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 307, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r22 = PyObject_Vectorcall(cpy_r_r21, 0, 0, 0);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 309, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 307, CPyStatic_rule___globals);
         goto CPyL10;
     } else
         goto CPyL14;
@@ -19497,7 +19497,7 @@ PyObject *CPyPy_rule_____post_init___3_OtherIncomeSortRule_obj_____call__(PyObje
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 306, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 304, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -19566,7 +19566,7 @@ char CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj_____call__(PyObject 
     cpy_r_r1 = CPyStatics[209]; /* 'object' */
     cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 321, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 319, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r3 = CPyStatics[187]; /* 'txgroup' */
@@ -19574,19 +19574,19 @@ char CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj_____call__(PyObject 
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 321, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 319, CPyStatic_rule___globals);
         goto CPyL11;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 321, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 319, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL11;
     }
     cpy_r_r8 = CPyStr_Build(2, cpy_r_r4, cpy_r_r7);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 321, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 319, CPyStatic_rule___globals);
         goto CPyL11;
     }
     cpy_r_r9 = CPyStatics[210]; /* '__setattr__' */
@@ -19594,7 +19594,7 @@ char CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj_____call__(PyObject 
     cpy_r_r11 = (PyObject **)&cpy_r_r10;
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 321, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 319, CPyStatic_rule___globals);
         goto CPyL12;
     } else
         goto CPyL13;
@@ -19605,7 +19605,7 @@ CPyL5: ;
     cpy_r_r14 = CPyStatics[215]; /* 'super' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 322, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 320, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r16 = (PyObject *)CPyType_rule___OtherExpenseSortRule;
@@ -19614,20 +19614,20 @@ CPyL5: ;
     cpy_r_r19 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r18, 2, 0);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 322, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 320, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r20 = CPyStatics[217]; /* '__post_init__' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 322, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 320, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r22 = PyObject_Vectorcall(cpy_r_r21, 0, 0, 0);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 322, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 320, CPyStatic_rule___globals);
         goto CPyL10;
     } else
         goto CPyL14;
@@ -19675,7 +19675,7 @@ PyObject *CPyPy_rule_____post_init___3_OtherExpenseSortRule_obj_____call__(PyObj
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 319, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 317, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -19744,7 +19744,7 @@ char CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____call__(PyObject *cpy_r
     cpy_r_r1 = CPyStatics[209]; /* 'object' */
     cpy_r_r2 = CPyObject_GetAttr(cpy_r_r0, cpy_r_r1);
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 334, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 332, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r3 = CPyStatics[187]; /* 'txgroup' */
@@ -19752,19 +19752,19 @@ char CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____call__(PyObject *cpy_r
     cpy_r_r5 = CPyStatics[187]; /* 'txgroup' */
     cpy_r_r6 = CPyObject_GetAttr(cpy_r_self, cpy_r_r5);
     if (unlikely(cpy_r_r6 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 334, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 332, CPyStatic_rule___globals);
         goto CPyL11;
     }
     if (likely(PyUnicode_Check(cpy_r_r6)))
         cpy_r_r7 = cpy_r_r6;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 334, CPyStatic_rule___globals, "str", cpy_r_r6);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "__post_init__", 332, CPyStatic_rule___globals, "str", cpy_r_r6);
         goto CPyL11;
     }
     cpy_r_r8 = CPyStr_Build(2, cpy_r_r4, cpy_r_r7);
     CPy_DECREF(cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 334, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 332, CPyStatic_rule___globals);
         goto CPyL11;
     }
     cpy_r_r9 = CPyStatics[210]; /* '__setattr__' */
@@ -19772,7 +19772,7 @@ char CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____call__(PyObject *cpy_r
     cpy_r_r11 = (PyObject **)&cpy_r_r10;
     cpy_r_r12 = PyObject_VectorcallMethod(cpy_r_r9, cpy_r_r11, 9223372036854775812ULL, 0);
     if (unlikely(cpy_r_r12 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 334, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 332, CPyStatic_rule___globals);
         goto CPyL12;
     } else
         goto CPyL13;
@@ -19783,7 +19783,7 @@ CPyL5: ;
     cpy_r_r14 = CPyStatics[215]; /* 'super' */
     cpy_r_r15 = CPyObject_GetAttr(cpy_r_r13, cpy_r_r14);
     if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 335, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 333, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r16 = (PyObject *)CPyType_rule___IgnoreSortRule;
@@ -19792,20 +19792,20 @@ CPyL5: ;
     cpy_r_r19 = PyObject_Vectorcall(cpy_r_r15, cpy_r_r18, 2, 0);
     CPy_DECREF(cpy_r_r15);
     if (unlikely(cpy_r_r19 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 335, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 333, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r20 = CPyStatics[217]; /* '__post_init__' */
     cpy_r_r21 = CPyObject_GetAttr(cpy_r_r19, cpy_r_r20);
     CPy_DECREF(cpy_r_r19);
     if (unlikely(cpy_r_r21 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 335, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 333, CPyStatic_rule___globals);
         goto CPyL10;
     }
     cpy_r_r22 = PyObject_Vectorcall(cpy_r_r21, 0, 0, 0);
     CPy_DECREF(cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 335, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 333, CPyStatic_rule___globals);
         goto CPyL10;
     } else
         goto CPyL14;
@@ -19853,7 +19853,7 @@ PyObject *CPyPy_rule_____post_init___3_IgnoreSortRule_obj_____call__(PyObject *s
     CPy_INCREF(retbox);
     return retbox;
 fail: ;
-    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 332, CPyStatic_rule___globals);
+    CPy_AddTraceback("dao_treasury/sorting/rule.py", "__post_init__", 330, CPyStatic_rule___globals);
     return NULL;
 }
 
@@ -20993,7 +20993,7 @@ CPyL38: ;
     }
     cpy_r_r185 = CPyDef_rule_____post_init___3__SortRule_obj();
     if (unlikely(cpy_r_r185 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 135, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 133, CPyStatic_rule___globals);
         goto CPyL253;
     }
     cpy_r_r186 = CPyStatics[217]; /* '__post_init__' */
@@ -21001,19 +21001,19 @@ CPyL38: ;
     CPy_DECREF_NO_IMM(cpy_r_r185);
     cpy_r_r188 = cpy_r_r187 >= 0;
     if (unlikely(!cpy_r_r188)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 135, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 133, CPyStatic_rule___globals);
         goto CPyL253;
     }
     cpy_r_r189 = CPyDef_rule___txgroup_dbid__SortRule_obj();
     if (unlikely(cpy_r_r189 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 182, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 180, CPyStatic_rule___globals);
         goto CPyL253;
     }
     cpy_r_r190 = CPyModule_builtins;
     cpy_r_r191 = CPyStatics[245]; /* 'property' */
     cpy_r_r192 = CPyObject_GetAttr(cpy_r_r190, cpy_r_r191);
     if (unlikely(cpy_r_r192 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 182, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 180, CPyStatic_rule___globals);
         goto CPyL254;
     }
     PyObject *cpy_r_r193[1] = {cpy_r_r189};
@@ -21021,7 +21021,7 @@ CPyL38: ;
     cpy_r_r195 = PyObject_Vectorcall(cpy_r_r192, cpy_r_r194, 1, 0);
     CPy_DECREF(cpy_r_r192);
     if (unlikely(cpy_r_r195 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 182, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 180, CPyStatic_rule___globals);
         goto CPyL254;
     }
     CPy_DECREF_NO_IMM(cpy_r_r189);
@@ -21030,12 +21030,12 @@ CPyL38: ;
     CPy_DECREF(cpy_r_r195);
     cpy_r_r198 = cpy_r_r197 >= 0;
     if (unlikely(!cpy_r_r198)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 182, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 180, CPyStatic_rule___globals);
         goto CPyL253;
     }
     cpy_r_r199 = CPyDef_rule___match__SortRule_obj();
     if (unlikely(cpy_r_r199 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 196, CPyStatic_rule___globals);
         goto CPyL253;
     }
     cpy_r_r200 = CPyStatics[18]; /* 'match' */
@@ -21043,7 +21043,7 @@ CPyL38: ;
     CPy_DECREF_NO_IMM(cpy_r_r199);
     cpy_r_r202 = cpy_r_r201 >= 0;
     if (unlikely(!cpy_r_r202)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 198, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 196, CPyStatic_rule___globals);
         goto CPyL253;
     }
     cpy_r_r203 = CPyStatics[244]; /* '_SortRule' */
@@ -21149,19 +21149,19 @@ CPyL38: ;
     cpy_r_r247 = CPyStatics[244]; /* '_SortRule' */
     cpy_r_r248 = CPyDict_GetItem(cpy_r_r246, cpy_r_r247);
     if (unlikely(cpy_r_r248 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r249 = PyTuple_Pack(1, cpy_r_r248);
     CPy_DECREF(cpy_r_r248);
     if (unlikely(cpy_r_r249 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r250 = (PyObject *)&PyType_Type;
     cpy_r_r251 = CPy_CalculateMetaclass(cpy_r_r250, cpy_r_r249);
     if (unlikely(cpy_r_r251 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL257;
     }
     cpy_r_r252 = CPyStatics[243]; /* '__prepare__' */
@@ -21171,7 +21171,7 @@ CPyL38: ;
     cpy_r_r255 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r256 = CPyObject_GetAttr(cpy_r_r251, cpy_r_r255);
     if (unlikely(cpy_r_r256 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL257;
     }
     PyObject *cpy_r_r257[2] = {cpy_r_r254, cpy_r_r249};
@@ -21179,13 +21179,13 @@ CPyL38: ;
     cpy_r_r259 = PyObject_Vectorcall(cpy_r_r256, cpy_r_r258, 2, 0);
     CPy_DECREF(cpy_r_r256);
     if (unlikely(cpy_r_r259 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL257;
     }
     if (likely(PyDict_Check(cpy_r_r259)))
         cpy_r_r260 = cpy_r_r259;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals, "dict", cpy_r_r259);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals, "dict", cpy_r_r259);
         goto CPyL257;
     }
     cpy_r_r261 = cpy_r_r260;
@@ -21193,19 +21193,19 @@ CPyL38: ;
 CPyL85: ;
     cpy_r_r262 = PyDict_New();
     if (unlikely(cpy_r_r262 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL257;
     }
     cpy_r_r261 = cpy_r_r262;
 CPyL87: ;
     cpy_r_r263 = PyDict_New();
     if (unlikely(cpy_r_r263 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL258;
     }
     cpy_r_r264 = CPyDef_rule___match__InboundSortRule_obj();
     if (unlikely(cpy_r_r264 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 232, CPyStatic_rule___globals);
         goto CPyL259;
     }
     cpy_r_r265 = CPyStatics[18]; /* 'match' */
@@ -21213,7 +21213,7 @@ CPyL87: ;
     CPy_DECREF_NO_IMM(cpy_r_r264);
     cpy_r_r267 = cpy_r_r266 >= 0;
     if (unlikely(!cpy_r_r267)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 234, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 232, CPyStatic_rule___globals);
         goto CPyL259;
     }
     cpy_r_r268 = CPyStatics[253]; /* '_InboundSortRule' */
@@ -21222,7 +21222,7 @@ CPyL87: ;
     CPy_DECREF(cpy_r_r263);
     cpy_r_r271 = cpy_r_r270 >= 0;
     if (unlikely(!cpy_r_r271)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL258;
     }
     cpy_r_r272 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -21230,7 +21230,7 @@ CPyL87: ;
     cpy_r_r274 = CPyDict_SetItem(cpy_r_r261, cpy_r_r273, cpy_r_r272);
     cpy_r_r275 = cpy_r_r274 >= 0;
     if (unlikely(!cpy_r_r275)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL258;
     }
     cpy_r_r276 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -21238,14 +21238,14 @@ CPyL87: ;
     cpy_r_r278 = CPyDict_SetItem(cpy_r_r261, cpy_r_r277, cpy_r_r276);
     cpy_r_r279 = cpy_r_r278 >= 0;
     if (unlikely(!cpy_r_r279)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL258;
     }
     PyObject *cpy_r_r280[3] = {cpy_r_r268, cpy_r_r249, cpy_r_r261};
     cpy_r_r281 = (PyObject **)&cpy_r_r280;
     cpy_r_r282 = PyObject_Vectorcall(cpy_r_r251, cpy_r_r281, 3, 0);
     if (unlikely(cpy_r_r282 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL258;
     }
     CPy_DECREF(cpy_r_r261);
@@ -21254,7 +21254,7 @@ CPyL87: ;
     cpy_r_r284 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r285 = CPyDict_GetItem(cpy_r_r283, cpy_r_r284);
     if (unlikely(cpy_r_r285 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 226, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 224, CPyStatic_rule___globals);
         goto CPyL260;
     }
     cpy_r_r286 = 0 ? Py_True : Py_False;
@@ -21264,7 +21264,7 @@ CPyL87: ;
     cpy_r_r290 = PyObject_Vectorcall(cpy_r_r285, cpy_r_r288, 0, cpy_r_r289);
     CPy_DECREF(cpy_r_r285);
     if (unlikely(cpy_r_r290 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 226, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 224, CPyStatic_rule___globals);
         goto CPyL260;
     }
     PyObject *cpy_r_r291[1] = {cpy_r_r282};
@@ -21272,7 +21272,7 @@ CPyL87: ;
     cpy_r_r293 = PyObject_Vectorcall(cpy_r_r290, cpy_r_r292, 1, 0);
     CPy_DECREF(cpy_r_r290);
     if (unlikely(cpy_r_r293 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL260;
     }
     CPy_DECREF(cpy_r_r282);
@@ -21284,7 +21284,7 @@ CPyL87: ;
     CPy_DECREF(cpy_r_r293);
     cpy_r_r297 = cpy_r_r296 >= 0;
     if (unlikely(!cpy_r_r297)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 227, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 225, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r298 = (PyObject *)CPyType_rule____InboundSortRule;
@@ -21292,19 +21292,19 @@ CPyL87: ;
     cpy_r_r300 = CPyStatics[244]; /* '_SortRule' */
     cpy_r_r301 = CPyDict_GetItem(cpy_r_r299, cpy_r_r300);
     if (unlikely(cpy_r_r301 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r302 = PyTuple_Pack(1, cpy_r_r301);
     CPy_DECREF(cpy_r_r301);
     if (unlikely(cpy_r_r302 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r303 = (PyObject *)&PyType_Type;
     cpy_r_r304 = CPy_CalculateMetaclass(cpy_r_r303, cpy_r_r302);
     if (unlikely(cpy_r_r304 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL261;
     }
     cpy_r_r305 = CPyStatics[243]; /* '__prepare__' */
@@ -21314,7 +21314,7 @@ CPyL87: ;
     cpy_r_r308 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r309 = CPyObject_GetAttr(cpy_r_r304, cpy_r_r308);
     if (unlikely(cpy_r_r309 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL261;
     }
     PyObject *cpy_r_r310[2] = {cpy_r_r307, cpy_r_r302};
@@ -21322,13 +21322,13 @@ CPyL87: ;
     cpy_r_r312 = PyObject_Vectorcall(cpy_r_r309, cpy_r_r311, 2, 0);
     CPy_DECREF(cpy_r_r309);
     if (unlikely(cpy_r_r312 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL261;
     }
     if (likely(PyDict_Check(cpy_r_r312)))
         cpy_r_r313 = cpy_r_r312;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals, "dict", cpy_r_r312);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals, "dict", cpy_r_r312);
         goto CPyL261;
     }
     cpy_r_r314 = cpy_r_r313;
@@ -21336,19 +21336,19 @@ CPyL87: ;
 CPyL106: ;
     cpy_r_r315 = PyDict_New();
     if (unlikely(cpy_r_r315 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL261;
     }
     cpy_r_r314 = cpy_r_r315;
 CPyL108: ;
     cpy_r_r316 = PyDict_New();
     if (unlikely(cpy_r_r316 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL262;
     }
     cpy_r_r317 = CPyDef_rule___match__OutboundSortRule_obj();
     if (unlikely(cpy_r_r317 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 248, CPyStatic_rule___globals);
         goto CPyL263;
     }
     cpy_r_r318 = CPyStatics[18]; /* 'match' */
@@ -21356,7 +21356,7 @@ CPyL108: ;
     CPy_DECREF_NO_IMM(cpy_r_r317);
     cpy_r_r320 = cpy_r_r319 >= 0;
     if (unlikely(!cpy_r_r320)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 250, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 248, CPyStatic_rule___globals);
         goto CPyL263;
     }
     cpy_r_r321 = CPyStatics[254]; /* '_OutboundSortRule' */
@@ -21365,7 +21365,7 @@ CPyL108: ;
     CPy_DECREF(cpy_r_r316);
     cpy_r_r324 = cpy_r_r323 >= 0;
     if (unlikely(!cpy_r_r324)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL262;
     }
     cpy_r_r325 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -21373,7 +21373,7 @@ CPyL108: ;
     cpy_r_r327 = CPyDict_SetItem(cpy_r_r314, cpy_r_r326, cpy_r_r325);
     cpy_r_r328 = cpy_r_r327 >= 0;
     if (unlikely(!cpy_r_r328)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL262;
     }
     cpy_r_r329 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -21381,14 +21381,14 @@ CPyL108: ;
     cpy_r_r331 = CPyDict_SetItem(cpy_r_r314, cpy_r_r330, cpy_r_r329);
     cpy_r_r332 = cpy_r_r331 >= 0;
     if (unlikely(!cpy_r_r332)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL262;
     }
     PyObject *cpy_r_r333[3] = {cpy_r_r321, cpy_r_r302, cpy_r_r314};
     cpy_r_r334 = (PyObject **)&cpy_r_r333;
     cpy_r_r335 = PyObject_Vectorcall(cpy_r_r304, cpy_r_r334, 3, 0);
     if (unlikely(cpy_r_r335 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL262;
     }
     CPy_DECREF(cpy_r_r314);
@@ -21397,7 +21397,7 @@ CPyL108: ;
     cpy_r_r337 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r338 = CPyDict_GetItem(cpy_r_r336, cpy_r_r337);
     if (unlikely(cpy_r_r338 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 242, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 240, CPyStatic_rule___globals);
         goto CPyL264;
     }
     cpy_r_r339 = 0 ? Py_True : Py_False;
@@ -21407,7 +21407,7 @@ CPyL108: ;
     cpy_r_r343 = PyObject_Vectorcall(cpy_r_r338, cpy_r_r341, 0, cpy_r_r342);
     CPy_DECREF(cpy_r_r338);
     if (unlikely(cpy_r_r343 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 242, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 240, CPyStatic_rule___globals);
         goto CPyL264;
     }
     PyObject *cpy_r_r344[1] = {cpy_r_r335};
@@ -21415,7 +21415,7 @@ CPyL108: ;
     cpy_r_r346 = PyObject_Vectorcall(cpy_r_r343, cpy_r_r345, 1, 0);
     CPy_DECREF(cpy_r_r343);
     if (unlikely(cpy_r_r346 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL264;
     }
     CPy_DECREF(cpy_r_r335);
@@ -21427,7 +21427,7 @@ CPyL108: ;
     CPy_DECREF(cpy_r_r346);
     cpy_r_r350 = cpy_r_r349 >= 0;
     if (unlikely(!cpy_r_r350)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 243, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 241, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r351 = (PyObject *)CPyType_rule____OutboundSortRule;
@@ -21435,19 +21435,19 @@ CPyL108: ;
     cpy_r_r353 = CPyStatics[253]; /* '_InboundSortRule' */
     cpy_r_r354 = CPyDict_GetItem(cpy_r_r352, cpy_r_r353);
     if (unlikely(cpy_r_r354 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r355 = PyTuple_Pack(1, cpy_r_r354);
     CPy_DECREF(cpy_r_r354);
     if (unlikely(cpy_r_r355 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r356 = (PyObject *)&PyType_Type;
     cpy_r_r357 = CPy_CalculateMetaclass(cpy_r_r356, cpy_r_r355);
     if (unlikely(cpy_r_r357 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL265;
     }
     cpy_r_r358 = CPyStatics[243]; /* '__prepare__' */
@@ -21457,7 +21457,7 @@ CPyL108: ;
     cpy_r_r361 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r362 = CPyObject_GetAttr(cpy_r_r357, cpy_r_r361);
     if (unlikely(cpy_r_r362 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL265;
     }
     PyObject *cpy_r_r363[2] = {cpy_r_r360, cpy_r_r355};
@@ -21465,13 +21465,13 @@ CPyL108: ;
     cpy_r_r365 = PyObject_Vectorcall(cpy_r_r362, cpy_r_r364, 2, 0);
     CPy_DECREF(cpy_r_r362);
     if (unlikely(cpy_r_r365 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL265;
     }
     if (likely(PyDict_Check(cpy_r_r365)))
         cpy_r_r366 = cpy_r_r365;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals, "dict", cpy_r_r365);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals, "dict", cpy_r_r365);
         goto CPyL265;
     }
     cpy_r_r367 = cpy_r_r366;
@@ -21479,19 +21479,19 @@ CPyL108: ;
 CPyL127: ;
     cpy_r_r368 = PyDict_New();
     if (unlikely(cpy_r_r368 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL265;
     }
     cpy_r_r367 = cpy_r_r368;
 CPyL129: ;
     cpy_r_r369 = PyDict_New();
     if (unlikely(cpy_r_r369 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL266;
     }
     cpy_r_r370 = CPyDef_rule_____post_init___3_RevenueSortRule_obj();
     if (unlikely(cpy_r_r370 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 267, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 265, CPyStatic_rule___globals);
         goto CPyL267;
     }
     cpy_r_r371 = CPyStatics[217]; /* '__post_init__' */
@@ -21499,7 +21499,7 @@ CPyL129: ;
     CPy_DECREF_NO_IMM(cpy_r_r370);
     cpy_r_r373 = cpy_r_r372 >= 0;
     if (unlikely(!cpy_r_r373)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 267, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 265, CPyStatic_rule___globals);
         goto CPyL267;
     }
     cpy_r_r374 = CPyStatics[57]; /* 'RevenueSortRule' */
@@ -21508,7 +21508,7 @@ CPyL129: ;
     CPy_DECREF(cpy_r_r369);
     cpy_r_r377 = cpy_r_r376 >= 0;
     if (unlikely(!cpy_r_r377)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL266;
     }
     cpy_r_r378 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -21516,7 +21516,7 @@ CPyL129: ;
     cpy_r_r380 = CPyDict_SetItem(cpy_r_r367, cpy_r_r379, cpy_r_r378);
     cpy_r_r381 = cpy_r_r380 >= 0;
     if (unlikely(!cpy_r_r381)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL266;
     }
     cpy_r_r382 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -21524,14 +21524,14 @@ CPyL129: ;
     cpy_r_r384 = CPyDict_SetItem(cpy_r_r367, cpy_r_r383, cpy_r_r382);
     cpy_r_r385 = cpy_r_r384 >= 0;
     if (unlikely(!cpy_r_r385)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL266;
     }
     PyObject *cpy_r_r386[3] = {cpy_r_r374, cpy_r_r355, cpy_r_r367};
     cpy_r_r387 = (PyObject **)&cpy_r_r386;
     cpy_r_r388 = PyObject_Vectorcall(cpy_r_r357, cpy_r_r387, 3, 0);
     if (unlikely(cpy_r_r388 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL266;
     }
     CPy_DECREF(cpy_r_r367);
@@ -21540,7 +21540,7 @@ CPyL129: ;
     cpy_r_r390 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r391 = CPyDict_GetItem(cpy_r_r389, cpy_r_r390);
     if (unlikely(cpy_r_r391 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 256, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 254, CPyStatic_rule___globals);
         goto CPyL268;
     }
     cpy_r_r392 = 0 ? Py_True : Py_False;
@@ -21550,7 +21550,7 @@ CPyL129: ;
     cpy_r_r396 = PyObject_Vectorcall(cpy_r_r391, cpy_r_r394, 0, cpy_r_r395);
     CPy_DECREF(cpy_r_r391);
     if (unlikely(cpy_r_r396 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 256, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 254, CPyStatic_rule___globals);
         goto CPyL268;
     }
     PyObject *cpy_r_r397[1] = {cpy_r_r388};
@@ -21558,7 +21558,7 @@ CPyL129: ;
     cpy_r_r399 = PyObject_Vectorcall(cpy_r_r396, cpy_r_r398, 1, 0);
     CPy_DECREF(cpy_r_r396);
     if (unlikely(cpy_r_r399 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL268;
     }
     CPy_DECREF(cpy_r_r388);
@@ -21570,7 +21570,7 @@ CPyL129: ;
     CPy_DECREF(cpy_r_r399);
     cpy_r_r403 = cpy_r_r402 >= 0;
     if (unlikely(!cpy_r_r403)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 257, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 255, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r404 = (PyObject *)CPyType_rule___RevenueSortRule;
@@ -21578,19 +21578,19 @@ CPyL129: ;
     cpy_r_r406 = CPyStatics[254]; /* '_OutboundSortRule' */
     cpy_r_r407 = CPyDict_GetItem(cpy_r_r405, cpy_r_r406);
     if (unlikely(cpy_r_r407 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r408 = PyTuple_Pack(1, cpy_r_r407);
     CPy_DECREF(cpy_r_r407);
     if (unlikely(cpy_r_r408 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r409 = (PyObject *)&PyType_Type;
     cpy_r_r410 = CPy_CalculateMetaclass(cpy_r_r409, cpy_r_r408);
     if (unlikely(cpy_r_r410 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL269;
     }
     cpy_r_r411 = CPyStatics[243]; /* '__prepare__' */
@@ -21600,7 +21600,7 @@ CPyL129: ;
     cpy_r_r414 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r415 = CPyObject_GetAttr(cpy_r_r410, cpy_r_r414);
     if (unlikely(cpy_r_r415 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL269;
     }
     PyObject *cpy_r_r416[2] = {cpy_r_r413, cpy_r_r408};
@@ -21608,13 +21608,13 @@ CPyL129: ;
     cpy_r_r418 = PyObject_Vectorcall(cpy_r_r415, cpy_r_r417, 2, 0);
     CPy_DECREF(cpy_r_r415);
     if (unlikely(cpy_r_r418 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL269;
     }
     if (likely(PyDict_Check(cpy_r_r418)))
         cpy_r_r419 = cpy_r_r418;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals, "dict", cpy_r_r418);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals, "dict", cpy_r_r418);
         goto CPyL269;
     }
     cpy_r_r420 = cpy_r_r419;
@@ -21622,19 +21622,19 @@ CPyL129: ;
 CPyL148: ;
     cpy_r_r421 = PyDict_New();
     if (unlikely(cpy_r_r421 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL269;
     }
     cpy_r_r420 = cpy_r_r421;
 CPyL150: ;
     cpy_r_r422 = PyDict_New();
     if (unlikely(cpy_r_r422 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL270;
     }
     cpy_r_r423 = CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj();
     if (unlikely(cpy_r_r423 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 280, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 278, CPyStatic_rule___globals);
         goto CPyL271;
     }
     cpy_r_r424 = CPyStatics[217]; /* '__post_init__' */
@@ -21642,7 +21642,7 @@ CPyL150: ;
     CPy_DECREF_NO_IMM(cpy_r_r423);
     cpy_r_r426 = cpy_r_r425 >= 0;
     if (unlikely(!cpy_r_r426)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 280, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 278, CPyStatic_rule___globals);
         goto CPyL271;
     }
     cpy_r_r427 = CPyStatics[52]; /* 'CostOfRevenueSortRule' */
@@ -21651,7 +21651,7 @@ CPyL150: ;
     CPy_DECREF(cpy_r_r422);
     cpy_r_r430 = cpy_r_r429 >= 0;
     if (unlikely(!cpy_r_r430)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL270;
     }
     cpy_r_r431 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -21659,7 +21659,7 @@ CPyL150: ;
     cpy_r_r433 = CPyDict_SetItem(cpy_r_r420, cpy_r_r432, cpy_r_r431);
     cpy_r_r434 = cpy_r_r433 >= 0;
     if (unlikely(!cpy_r_r434)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL270;
     }
     cpy_r_r435 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -21667,14 +21667,14 @@ CPyL150: ;
     cpy_r_r437 = CPyDict_SetItem(cpy_r_r420, cpy_r_r436, cpy_r_r435);
     cpy_r_r438 = cpy_r_r437 >= 0;
     if (unlikely(!cpy_r_r438)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL270;
     }
     PyObject *cpy_r_r439[3] = {cpy_r_r427, cpy_r_r408, cpy_r_r420};
     cpy_r_r440 = (PyObject **)&cpy_r_r439;
     cpy_r_r441 = PyObject_Vectorcall(cpy_r_r410, cpy_r_r440, 3, 0);
     if (unlikely(cpy_r_r441 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL270;
     }
     CPy_DECREF(cpy_r_r420);
@@ -21683,7 +21683,7 @@ CPyL150: ;
     cpy_r_r443 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r444 = CPyDict_GetItem(cpy_r_r442, cpy_r_r443);
     if (unlikely(cpy_r_r444 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 273, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 271, CPyStatic_rule___globals);
         goto CPyL272;
     }
     cpy_r_r445 = 0 ? Py_True : Py_False;
@@ -21693,7 +21693,7 @@ CPyL150: ;
     cpy_r_r449 = PyObject_Vectorcall(cpy_r_r444, cpy_r_r447, 0, cpy_r_r448);
     CPy_DECREF(cpy_r_r444);
     if (unlikely(cpy_r_r449 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 273, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 271, CPyStatic_rule___globals);
         goto CPyL272;
     }
     PyObject *cpy_r_r450[1] = {cpy_r_r441};
@@ -21701,7 +21701,7 @@ CPyL150: ;
     cpy_r_r452 = PyObject_Vectorcall(cpy_r_r449, cpy_r_r451, 1, 0);
     CPy_DECREF(cpy_r_r449);
     if (unlikely(cpy_r_r452 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL272;
     }
     CPy_DECREF(cpy_r_r441);
@@ -21713,7 +21713,7 @@ CPyL150: ;
     CPy_DECREF(cpy_r_r452);
     cpy_r_r456 = cpy_r_r455 >= 0;
     if (unlikely(!cpy_r_r456)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 274, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 272, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r457 = (PyObject *)CPyType_rule___CostOfRevenueSortRule;
@@ -21721,19 +21721,19 @@ CPyL150: ;
     cpy_r_r459 = CPyStatics[254]; /* '_OutboundSortRule' */
     cpy_r_r460 = CPyDict_GetItem(cpy_r_r458, cpy_r_r459);
     if (unlikely(cpy_r_r460 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r461 = PyTuple_Pack(1, cpy_r_r460);
     CPy_DECREF(cpy_r_r460);
     if (unlikely(cpy_r_r461 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r462 = (PyObject *)&PyType_Type;
     cpy_r_r463 = CPy_CalculateMetaclass(cpy_r_r462, cpy_r_r461);
     if (unlikely(cpy_r_r463 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL273;
     }
     cpy_r_r464 = CPyStatics[243]; /* '__prepare__' */
@@ -21743,7 +21743,7 @@ CPyL150: ;
     cpy_r_r467 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r468 = CPyObject_GetAttr(cpy_r_r463, cpy_r_r467);
     if (unlikely(cpy_r_r468 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL273;
     }
     PyObject *cpy_r_r469[2] = {cpy_r_r466, cpy_r_r461};
@@ -21751,13 +21751,13 @@ CPyL150: ;
     cpy_r_r471 = PyObject_Vectorcall(cpy_r_r468, cpy_r_r470, 2, 0);
     CPy_DECREF(cpy_r_r468);
     if (unlikely(cpy_r_r471 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL273;
     }
     if (likely(PyDict_Check(cpy_r_r471)))
         cpy_r_r472 = cpy_r_r471;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals, "dict", cpy_r_r471);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals, "dict", cpy_r_r471);
         goto CPyL273;
     }
     cpy_r_r473 = cpy_r_r472;
@@ -21765,19 +21765,19 @@ CPyL150: ;
 CPyL169: ;
     cpy_r_r474 = PyDict_New();
     if (unlikely(cpy_r_r474 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL273;
     }
     cpy_r_r473 = cpy_r_r474;
 CPyL171: ;
     cpy_r_r475 = PyDict_New();
     if (unlikely(cpy_r_r475 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL274;
     }
     cpy_r_r476 = CPyDef_rule_____post_init___3_ExpenseSortRule_obj();
     if (unlikely(cpy_r_r476 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 293, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 291, CPyStatic_rule___globals);
         goto CPyL275;
     }
     cpy_r_r477 = CPyStatics[217]; /* '__post_init__' */
@@ -21785,7 +21785,7 @@ CPyL171: ;
     CPy_DECREF_NO_IMM(cpy_r_r476);
     cpy_r_r479 = cpy_r_r478 >= 0;
     if (unlikely(!cpy_r_r479)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 293, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 291, CPyStatic_rule___globals);
         goto CPyL275;
     }
     cpy_r_r480 = CPyStatics[53]; /* 'ExpenseSortRule' */
@@ -21794,7 +21794,7 @@ CPyL171: ;
     CPy_DECREF(cpy_r_r475);
     cpy_r_r483 = cpy_r_r482 >= 0;
     if (unlikely(!cpy_r_r483)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL274;
     }
     cpy_r_r484 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -21802,7 +21802,7 @@ CPyL171: ;
     cpy_r_r486 = CPyDict_SetItem(cpy_r_r473, cpy_r_r485, cpy_r_r484);
     cpy_r_r487 = cpy_r_r486 >= 0;
     if (unlikely(!cpy_r_r487)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL274;
     }
     cpy_r_r488 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -21810,14 +21810,14 @@ CPyL171: ;
     cpy_r_r490 = CPyDict_SetItem(cpy_r_r473, cpy_r_r489, cpy_r_r488);
     cpy_r_r491 = cpy_r_r490 >= 0;
     if (unlikely(!cpy_r_r491)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL274;
     }
     PyObject *cpy_r_r492[3] = {cpy_r_r480, cpy_r_r461, cpy_r_r473};
     cpy_r_r493 = (PyObject **)&cpy_r_r492;
     cpy_r_r494 = PyObject_Vectorcall(cpy_r_r463, cpy_r_r493, 3, 0);
     if (unlikely(cpy_r_r494 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL274;
     }
     CPy_DECREF(cpy_r_r473);
@@ -21826,7 +21826,7 @@ CPyL171: ;
     cpy_r_r496 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r497 = CPyDict_GetItem(cpy_r_r495, cpy_r_r496);
     if (unlikely(cpy_r_r497 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 286, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 284, CPyStatic_rule___globals);
         goto CPyL276;
     }
     cpy_r_r498 = 0 ? Py_True : Py_False;
@@ -21836,7 +21836,7 @@ CPyL171: ;
     cpy_r_r502 = PyObject_Vectorcall(cpy_r_r497, cpy_r_r500, 0, cpy_r_r501);
     CPy_DECREF(cpy_r_r497);
     if (unlikely(cpy_r_r502 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 286, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 284, CPyStatic_rule___globals);
         goto CPyL276;
     }
     PyObject *cpy_r_r503[1] = {cpy_r_r494};
@@ -21844,7 +21844,7 @@ CPyL171: ;
     cpy_r_r505 = PyObject_Vectorcall(cpy_r_r502, cpy_r_r504, 1, 0);
     CPy_DECREF(cpy_r_r502);
     if (unlikely(cpy_r_r505 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL276;
     }
     CPy_DECREF(cpy_r_r494);
@@ -21856,7 +21856,7 @@ CPyL171: ;
     CPy_DECREF(cpy_r_r505);
     cpy_r_r509 = cpy_r_r508 >= 0;
     if (unlikely(!cpy_r_r509)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 287, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 285, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r510 = (PyObject *)CPyType_rule___ExpenseSortRule;
@@ -21864,19 +21864,19 @@ CPyL171: ;
     cpy_r_r512 = CPyStatics[253]; /* '_InboundSortRule' */
     cpy_r_r513 = CPyDict_GetItem(cpy_r_r511, cpy_r_r512);
     if (unlikely(cpy_r_r513 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r514 = PyTuple_Pack(1, cpy_r_r513);
     CPy_DECREF(cpy_r_r513);
     if (unlikely(cpy_r_r514 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r515 = (PyObject *)&PyType_Type;
     cpy_r_r516 = CPy_CalculateMetaclass(cpy_r_r515, cpy_r_r514);
     if (unlikely(cpy_r_r516 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL277;
     }
     cpy_r_r517 = CPyStatics[243]; /* '__prepare__' */
@@ -21886,7 +21886,7 @@ CPyL171: ;
     cpy_r_r520 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r521 = CPyObject_GetAttr(cpy_r_r516, cpy_r_r520);
     if (unlikely(cpy_r_r521 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL277;
     }
     PyObject *cpy_r_r522[2] = {cpy_r_r519, cpy_r_r514};
@@ -21894,13 +21894,13 @@ CPyL171: ;
     cpy_r_r524 = PyObject_Vectorcall(cpy_r_r521, cpy_r_r523, 2, 0);
     CPy_DECREF(cpy_r_r521);
     if (unlikely(cpy_r_r524 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL277;
     }
     if (likely(PyDict_Check(cpy_r_r524)))
         cpy_r_r525 = cpy_r_r524;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals, "dict", cpy_r_r524);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals, "dict", cpy_r_r524);
         goto CPyL277;
     }
     cpy_r_r526 = cpy_r_r525;
@@ -21908,19 +21908,19 @@ CPyL171: ;
 CPyL190: ;
     cpy_r_r527 = PyDict_New();
     if (unlikely(cpy_r_r527 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL277;
     }
     cpy_r_r526 = cpy_r_r527;
 CPyL192: ;
     cpy_r_r528 = PyDict_New();
     if (unlikely(cpy_r_r528 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL278;
     }
     cpy_r_r529 = CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj();
     if (unlikely(cpy_r_r529 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 306, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 304, CPyStatic_rule___globals);
         goto CPyL279;
     }
     cpy_r_r530 = CPyStatics[217]; /* '__post_init__' */
@@ -21928,7 +21928,7 @@ CPyL192: ;
     CPy_DECREF_NO_IMM(cpy_r_r529);
     cpy_r_r532 = cpy_r_r531 >= 0;
     if (unlikely(!cpy_r_r532)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 306, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 304, CPyStatic_rule___globals);
         goto CPyL279;
     }
     cpy_r_r533 = CPyStatics[56]; /* 'OtherIncomeSortRule' */
@@ -21937,7 +21937,7 @@ CPyL192: ;
     CPy_DECREF(cpy_r_r528);
     cpy_r_r536 = cpy_r_r535 >= 0;
     if (unlikely(!cpy_r_r536)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL278;
     }
     cpy_r_r537 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -21945,7 +21945,7 @@ CPyL192: ;
     cpy_r_r539 = CPyDict_SetItem(cpy_r_r526, cpy_r_r538, cpy_r_r537);
     cpy_r_r540 = cpy_r_r539 >= 0;
     if (unlikely(!cpy_r_r540)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL278;
     }
     cpy_r_r541 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -21953,14 +21953,14 @@ CPyL192: ;
     cpy_r_r543 = CPyDict_SetItem(cpy_r_r526, cpy_r_r542, cpy_r_r541);
     cpy_r_r544 = cpy_r_r543 >= 0;
     if (unlikely(!cpy_r_r544)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL278;
     }
     PyObject *cpy_r_r545[3] = {cpy_r_r533, cpy_r_r514, cpy_r_r526};
     cpy_r_r546 = (PyObject **)&cpy_r_r545;
     cpy_r_r547 = PyObject_Vectorcall(cpy_r_r516, cpy_r_r546, 3, 0);
     if (unlikely(cpy_r_r547 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL278;
     }
     CPy_DECREF(cpy_r_r526);
@@ -21969,7 +21969,7 @@ CPyL192: ;
     cpy_r_r549 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r550 = CPyDict_GetItem(cpy_r_r548, cpy_r_r549);
     if (unlikely(cpy_r_r550 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 299, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 297, CPyStatic_rule___globals);
         goto CPyL280;
     }
     cpy_r_r551 = 0 ? Py_True : Py_False;
@@ -21979,7 +21979,7 @@ CPyL192: ;
     cpy_r_r555 = PyObject_Vectorcall(cpy_r_r550, cpy_r_r553, 0, cpy_r_r554);
     CPy_DECREF(cpy_r_r550);
     if (unlikely(cpy_r_r555 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 299, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 297, CPyStatic_rule___globals);
         goto CPyL280;
     }
     PyObject *cpy_r_r556[1] = {cpy_r_r547};
@@ -21987,7 +21987,7 @@ CPyL192: ;
     cpy_r_r558 = PyObject_Vectorcall(cpy_r_r555, cpy_r_r557, 1, 0);
     CPy_DECREF(cpy_r_r555);
     if (unlikely(cpy_r_r558 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL280;
     }
     CPy_DECREF(cpy_r_r547);
@@ -21999,7 +21999,7 @@ CPyL192: ;
     CPy_DECREF(cpy_r_r558);
     cpy_r_r562 = cpy_r_r561 >= 0;
     if (unlikely(!cpy_r_r562)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 300, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 298, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r563 = (PyObject *)CPyType_rule___OtherIncomeSortRule;
@@ -22007,19 +22007,19 @@ CPyL192: ;
     cpy_r_r565 = CPyStatics[254]; /* '_OutboundSortRule' */
     cpy_r_r566 = CPyDict_GetItem(cpy_r_r564, cpy_r_r565);
     if (unlikely(cpy_r_r566 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r567 = PyTuple_Pack(1, cpy_r_r566);
     CPy_DECREF(cpy_r_r566);
     if (unlikely(cpy_r_r567 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r568 = (PyObject *)&PyType_Type;
     cpy_r_r569 = CPy_CalculateMetaclass(cpy_r_r568, cpy_r_r567);
     if (unlikely(cpy_r_r569 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL281;
     }
     cpy_r_r570 = CPyStatics[243]; /* '__prepare__' */
@@ -22029,7 +22029,7 @@ CPyL192: ;
     cpy_r_r573 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r574 = CPyObject_GetAttr(cpy_r_r569, cpy_r_r573);
     if (unlikely(cpy_r_r574 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL281;
     }
     PyObject *cpy_r_r575[2] = {cpy_r_r572, cpy_r_r567};
@@ -22037,13 +22037,13 @@ CPyL192: ;
     cpy_r_r577 = PyObject_Vectorcall(cpy_r_r574, cpy_r_r576, 2, 0);
     CPy_DECREF(cpy_r_r574);
     if (unlikely(cpy_r_r577 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL281;
     }
     if (likely(PyDict_Check(cpy_r_r577)))
         cpy_r_r578 = cpy_r_r577;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals, "dict", cpy_r_r577);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals, "dict", cpy_r_r577);
         goto CPyL281;
     }
     cpy_r_r579 = cpy_r_r578;
@@ -22051,19 +22051,19 @@ CPyL192: ;
 CPyL211: ;
     cpy_r_r580 = PyDict_New();
     if (unlikely(cpy_r_r580 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL281;
     }
     cpy_r_r579 = cpy_r_r580;
 CPyL213: ;
     cpy_r_r581 = PyDict_New();
     if (unlikely(cpy_r_r581 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL282;
     }
     cpy_r_r582 = CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj();
     if (unlikely(cpy_r_r582 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 319, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 317, CPyStatic_rule___globals);
         goto CPyL283;
     }
     cpy_r_r583 = CPyStatics[217]; /* '__post_init__' */
@@ -22071,7 +22071,7 @@ CPyL213: ;
     CPy_DECREF_NO_IMM(cpy_r_r582);
     cpy_r_r585 = cpy_r_r584 >= 0;
     if (unlikely(!cpy_r_r585)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 319, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 317, CPyStatic_rule___globals);
         goto CPyL283;
     }
     cpy_r_r586 = CPyStatics[55]; /* 'OtherExpenseSortRule' */
@@ -22080,7 +22080,7 @@ CPyL213: ;
     CPy_DECREF(cpy_r_r581);
     cpy_r_r589 = cpy_r_r588 >= 0;
     if (unlikely(!cpy_r_r589)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL282;
     }
     cpy_r_r590 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -22088,7 +22088,7 @@ CPyL213: ;
     cpy_r_r592 = CPyDict_SetItem(cpy_r_r579, cpy_r_r591, cpy_r_r590);
     cpy_r_r593 = cpy_r_r592 >= 0;
     if (unlikely(!cpy_r_r593)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL282;
     }
     cpy_r_r594 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -22096,14 +22096,14 @@ CPyL213: ;
     cpy_r_r596 = CPyDict_SetItem(cpy_r_r579, cpy_r_r595, cpy_r_r594);
     cpy_r_r597 = cpy_r_r596 >= 0;
     if (unlikely(!cpy_r_r597)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL282;
     }
     PyObject *cpy_r_r598[3] = {cpy_r_r586, cpy_r_r567, cpy_r_r579};
     cpy_r_r599 = (PyObject **)&cpy_r_r598;
     cpy_r_r600 = PyObject_Vectorcall(cpy_r_r569, cpy_r_r599, 3, 0);
     if (unlikely(cpy_r_r600 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL282;
     }
     CPy_DECREF(cpy_r_r579);
@@ -22112,7 +22112,7 @@ CPyL213: ;
     cpy_r_r602 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r603 = CPyDict_GetItem(cpy_r_r601, cpy_r_r602);
     if (unlikely(cpy_r_r603 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 312, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 310, CPyStatic_rule___globals);
         goto CPyL284;
     }
     cpy_r_r604 = 0 ? Py_True : Py_False;
@@ -22122,7 +22122,7 @@ CPyL213: ;
     cpy_r_r608 = PyObject_Vectorcall(cpy_r_r603, cpy_r_r606, 0, cpy_r_r607);
     CPy_DECREF(cpy_r_r603);
     if (unlikely(cpy_r_r608 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 312, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 310, CPyStatic_rule___globals);
         goto CPyL284;
     }
     PyObject *cpy_r_r609[1] = {cpy_r_r600};
@@ -22130,7 +22130,7 @@ CPyL213: ;
     cpy_r_r611 = PyObject_Vectorcall(cpy_r_r608, cpy_r_r610, 1, 0);
     CPy_DECREF(cpy_r_r608);
     if (unlikely(cpy_r_r611 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL284;
     }
     CPy_DECREF(cpy_r_r600);
@@ -22142,7 +22142,7 @@ CPyL213: ;
     CPy_DECREF(cpy_r_r611);
     cpy_r_r615 = cpy_r_r614 >= 0;
     if (unlikely(!cpy_r_r615)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 313, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 311, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r616 = (PyObject *)CPyType_rule___OtherExpenseSortRule;
@@ -22150,19 +22150,19 @@ CPyL213: ;
     cpy_r_r618 = CPyStatics[244]; /* '_SortRule' */
     cpy_r_r619 = CPyDict_GetItem(cpy_r_r617, cpy_r_r618);
     if (unlikely(cpy_r_r619 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r620 = PyTuple_Pack(1, cpy_r_r619);
     CPy_DECREF(cpy_r_r619);
     if (unlikely(cpy_r_r620 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r621 = (PyObject *)&PyType_Type;
     cpy_r_r622 = CPy_CalculateMetaclass(cpy_r_r621, cpy_r_r620);
     if (unlikely(cpy_r_r622 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL285;
     }
     cpy_r_r623 = CPyStatics[243]; /* '__prepare__' */
@@ -22172,7 +22172,7 @@ CPyL213: ;
     cpy_r_r626 = CPyStatics[243]; /* '__prepare__' */
     cpy_r_r627 = CPyObject_GetAttr(cpy_r_r622, cpy_r_r626);
     if (unlikely(cpy_r_r627 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL285;
     }
     PyObject *cpy_r_r628[2] = {cpy_r_r625, cpy_r_r620};
@@ -22180,13 +22180,13 @@ CPyL213: ;
     cpy_r_r630 = PyObject_Vectorcall(cpy_r_r627, cpy_r_r629, 2, 0);
     CPy_DECREF(cpy_r_r627);
     if (unlikely(cpy_r_r630 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL285;
     }
     if (likely(PyDict_Check(cpy_r_r630)))
         cpy_r_r631 = cpy_r_r630;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals, "dict", cpy_r_r630);
+        CPy_TypeErrorTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals, "dict", cpy_r_r630);
         goto CPyL285;
     }
     cpy_r_r632 = cpy_r_r631;
@@ -22194,19 +22194,19 @@ CPyL213: ;
 CPyL232: ;
     cpy_r_r633 = PyDict_New();
     if (unlikely(cpy_r_r633 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL285;
     }
     cpy_r_r632 = cpy_r_r633;
 CPyL234: ;
     cpy_r_r634 = PyDict_New();
     if (unlikely(cpy_r_r634 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL286;
     }
     cpy_r_r635 = CPyDef_rule_____post_init___3_IgnoreSortRule_obj();
     if (unlikely(cpy_r_r635 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 332, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 330, CPyStatic_rule___globals);
         goto CPyL287;
     }
     cpy_r_r636 = CPyStatics[217]; /* '__post_init__' */
@@ -22214,7 +22214,7 @@ CPyL234: ;
     CPy_DECREF_NO_IMM(cpy_r_r635);
     cpy_r_r638 = cpy_r_r637 >= 0;
     if (unlikely(!cpy_r_r638)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 332, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 330, CPyStatic_rule___globals);
         goto CPyL287;
     }
     cpy_r_r639 = CPyStatics[54]; /* 'IgnoreSortRule' */
@@ -22223,7 +22223,7 @@ CPyL234: ;
     CPy_DECREF(cpy_r_r634);
     cpy_r_r642 = cpy_r_r641 >= 0;
     if (unlikely(!cpy_r_r642)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL286;
     }
     cpy_r_r643 = CPyStatics[247]; /* 'mypyc filler docstring' */
@@ -22231,7 +22231,7 @@ CPyL234: ;
     cpy_r_r645 = CPyDict_SetItem(cpy_r_r632, cpy_r_r644, cpy_r_r643);
     cpy_r_r646 = cpy_r_r645 >= 0;
     if (unlikely(!cpy_r_r646)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL286;
     }
     cpy_r_r647 = CPyStatics[58]; /* 'dao_treasury.sorting.rule' */
@@ -22239,14 +22239,14 @@ CPyL234: ;
     cpy_r_r649 = CPyDict_SetItem(cpy_r_r632, cpy_r_r648, cpy_r_r647);
     cpy_r_r650 = cpy_r_r649 >= 0;
     if (unlikely(!cpy_r_r650)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL286;
     }
     PyObject *cpy_r_r651[3] = {cpy_r_r639, cpy_r_r620, cpy_r_r632};
     cpy_r_r652 = (PyObject **)&cpy_r_r651;
     cpy_r_r653 = PyObject_Vectorcall(cpy_r_r622, cpy_r_r652, 3, 0);
     if (unlikely(cpy_r_r653 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL286;
     }
     CPy_DECREF(cpy_r_r632);
@@ -22255,7 +22255,7 @@ CPyL234: ;
     cpy_r_r655 = CPyStatics[231]; /* 'mypyc_attr' */
     cpy_r_r656 = CPyDict_GetItem(cpy_r_r654, cpy_r_r655);
     if (unlikely(cpy_r_r656 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 325, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 323, CPyStatic_rule___globals);
         goto CPyL288;
     }
     cpy_r_r657 = 0 ? Py_True : Py_False;
@@ -22265,7 +22265,7 @@ CPyL234: ;
     cpy_r_r661 = PyObject_Vectorcall(cpy_r_r656, cpy_r_r659, 0, cpy_r_r660);
     CPy_DECREF(cpy_r_r656);
     if (unlikely(cpy_r_r661 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 325, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 323, CPyStatic_rule___globals);
         goto CPyL288;
     }
     PyObject *cpy_r_r662[1] = {cpy_r_r653};
@@ -22273,7 +22273,7 @@ CPyL234: ;
     cpy_r_r664 = PyObject_Vectorcall(cpy_r_r661, cpy_r_r663, 1, 0);
     CPy_DECREF(cpy_r_r661);
     if (unlikely(cpy_r_r664 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL288;
     }
     CPy_DECREF(cpy_r_r653);
@@ -22285,7 +22285,7 @@ CPyL234: ;
     CPy_DECREF(cpy_r_r664);
     cpy_r_r668 = cpy_r_r667 >= 0;
     if (unlikely(!cpy_r_r668)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 326, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 324, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r669 = (PyObject *)CPyType_rule___IgnoreSortRule;
@@ -22300,7 +22300,7 @@ CPyL234: ;
     cpy_r_r678 = CPyStatics[229]; /* 'TypeVar' */
     cpy_r_r679 = CPyDict_GetItem(cpy_r_r677, cpy_r_r678);
     if (unlikely(cpy_r_r679 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 338, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 336, CPyStatic_rule___globals);
         goto CPyL249;
     }
     PyObject *cpy_r_r680[7] = {
@@ -22311,7 +22311,7 @@ CPyL234: ;
     cpy_r_r682 = PyObject_Vectorcall(cpy_r_r679, cpy_r_r681, 7, 0);
     CPy_DECREF(cpy_r_r679);
     if (unlikely(cpy_r_r682 == NULL)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 338, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 336, CPyStatic_rule___globals);
         goto CPyL249;
     }
     cpy_r_r683 = CPyStatic_rule___globals;
@@ -22320,7 +22320,7 @@ CPyL234: ;
     CPy_DECREF(cpy_r_r682);
     cpy_r_r686 = cpy_r_r685 >= 0;
     if (unlikely(!cpy_r_r686)) {
-        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 338, CPyStatic_rule___globals);
+        CPy_AddTraceback("dao_treasury/sorting/rule.py", "<module>", 336, CPyStatic_rule___globals);
         goto CPyL249;
     }
     return 1;
