@@ -235,7 +235,7 @@ class _InboundSortRule(_SortRule):
         return (
             tx.to_address is not None
             and TreasuryWallet.check_membership(tx.to_address.address, tx.block)
-            and await super().match(tx)
+            and await super(_InboundSortRule, self).match(tx)
         )
 
 
@@ -250,7 +250,7 @@ class _OutboundSortRule(_SortRule):
     async def match(self, tx: "TreasuryTx") -> bool:
         return TreasuryWallet.check_membership(
             tx.from_address.address, tx.block
-        ) and await super().match(tx)
+        ) and await super(_OutboundSortRule, self).match(tx)
 
 
 @mypyc_attr(native_class=False)
@@ -267,7 +267,7 @@ class RevenueSortRule(_InboundSortRule):
     def __post_init__(self) -> None:
         """Prepends `self.txgroup` with 'Revenue:'."""
         object.__setattr__(self, "txgroup", f"Revenue:{self.txgroup}")
-        super().__post_init__()
+        super(RevenueSortRule, self).__post_init__()
 
 
 @mypyc_attr(native_class=False)
@@ -280,7 +280,7 @@ class CostOfRevenueSortRule(_OutboundSortRule):
     def __post_init__(self) -> None:
         """Prepends `self.txgroup` with 'Cost of Revenue:'."""
         object.__setattr__(self, "txgroup", f"Cost of Revenue:{self.txgroup}")
-        super().__post_init__()
+        super(CostOfRevenueSortRule, self).__post_init__()
 
 
 @mypyc_attr(native_class=False)
@@ -293,7 +293,7 @@ class ExpenseSortRule(_OutboundSortRule):
     def __post_init__(self) -> None:
         """Prepends `self.txgroup` with 'Expenses:'."""
         object.__setattr__(self, "txgroup", f"Expenses:{self.txgroup}")
-        super().__post_init__()
+        super(ExpenseSortRule, self).__post_init__()
 
 
 @mypyc_attr(native_class=False)
@@ -306,7 +306,7 @@ class OtherIncomeSortRule(_InboundSortRule):
     def __post_init__(self) -> None:
         """Prepends `self.txgroup` with 'Other Income:'."""
         object.__setattr__(self, "txgroup", f"Other Income:{self.txgroup}")
-        super().__post_init__()
+        super(OtherIncomeSortRule, self).__post_init__()
 
 
 @mypyc_attr(native_class=False)
@@ -319,7 +319,7 @@ class OtherExpenseSortRule(_OutboundSortRule):
     def __post_init__(self) -> None:
         """Prepends `self.txgroup` with 'Other Expenses:'."""
         object.__setattr__(self, "txgroup", f"Other Expenses:{self.txgroup}")
-        super().__post_init__()
+        super(OtherExpenseSortRule, self).__post_init__()
 
 
 @mypyc_attr(native_class=False)
@@ -332,7 +332,7 @@ class IgnoreSortRule(_SortRule):
     def __post_init__(self) -> None:
         """Prepends `self.txgroup` with 'Ignore:'."""
         object.__setattr__(self, "txgroup", f"Ignore:{self.txgroup}")
-        super().__post_init__()
+        super(IgnoreSortRule, self).__post_init__()
 
 
 TRule = TypeVar(
