@@ -20,11 +20,9 @@
     },
     "editable": true,
     "fiscalYearStartMonth": 0,
-    "gnetId": null,
     "graphTooltip": 1,
-    "id": 26,
+    "id": 7,
     "links": [],
-    "liveNow": false,
     "panels": [
         {
             "datasource": "PROMETHEUS",
@@ -39,7 +37,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -62,6 +60,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -69,10 +68,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -170,7 +171,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -194,6 +195,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -201,10 +203,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -233,7 +237,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -257,6 +261,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -264,10 +269,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -296,7 +303,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -320,6 +327,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -327,10 +335,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -357,7 +367,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -381,6 +391,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -388,10 +399,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -418,7 +431,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -442,6 +455,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -449,10 +463,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -481,7 +497,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -505,6 +521,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -512,10 +529,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -544,7 +563,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -568,6 +587,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -575,10 +595,12 @@
                     "fields": "",
                     "values": false
                 },
+                "showPercentChange": false,
                 "text": {},
-                "textMode": "auto"
+                "textMode": "auto",
+                "wideLayout": true
             },
-            "pluginVersion": "10.2.0",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -606,6 +628,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 0,
                         "gradientMode": "none",
@@ -637,7 +660,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             }
                         ]
                     },
@@ -662,10 +685,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -703,6 +728,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 0,
                         "gradientMode": "none",
@@ -734,7 +760,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -763,10 +789,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -794,6 +822,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 0,
                         "gradientMode": "none",
@@ -825,7 +854,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -854,10 +883,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -922,6 +953,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 0,
                         "gradientMode": "none",
@@ -953,7 +985,7 @@
                         "steps": [
                             {
                                 "color": "green",
-                                "value": null
+                                "value": 0
                             },
                             {
                                 "color": "red",
@@ -980,11 +1012,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "8.2.1",
+            "pluginVersion": "12.1.1",
             "targets": [
                 {
                     "datasource": "PROMETHEUS",
@@ -1028,10 +1061,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1041,10 +1070,6 @@
             "id": 33,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1052,46 +1077,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 26
                     },
-                    "hiddenSeries": false,
                     "id": 15,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1103,46 +1099,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid Cash",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid Cash",
@@ -1150,7 +1108,6 @@
         },
         {
             "collapsed": true,
-            "datasource": "PROMETHEUS",
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1160,10 +1117,6 @@
             "id": 31,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1171,46 +1124,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 28
                     },
-                    "hiddenSeries": false,
                     "id": 21,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1222,46 +1146,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid ETH",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid ETH",
@@ -1269,10 +1155,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1282,10 +1164,6 @@
             "id": 29,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1293,46 +1171,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 28
                     },
-                    "hiddenSeries": false,
                     "id": 22,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1344,46 +1193,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid BTC",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid BTC",
@@ -1391,10 +1202,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1404,10 +1211,6 @@
             "id": 27,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1415,46 +1218,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 28
                     },
-                    "hiddenSeries": false,
                     "id": 23,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1466,46 +1240,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid Everything Else",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid Everything Else",
@@ -1513,10 +1249,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1526,10 +1258,6 @@
             "id": 40,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1537,46 +1265,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 29
                     },
-                    "hiddenSeries": false,
                     "id": 45,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1588,46 +1287,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid Cash by Wallet",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid Cash by Wallet",
@@ -1635,10 +1296,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1648,57 +1305,24 @@
             "id": 42,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
-                        "unit": "currencyUSD"
+                            "unit": "currencyUSD"
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 30
                     },
-                    "hiddenSeries": false,
                     "id": 36,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1710,46 +1334,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid ETH by Wallet",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid ETH by Wallet",
@@ -1757,10 +1343,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1770,10 +1352,6 @@
             "id": 44,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1781,46 +1359,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 31
                     },
-                    "hiddenSeries": false,
                     "id": 48,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1832,46 +1381,8 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid BTC by Wallet",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                    }
-                ],
-                "targets": [
-                    {
-                    "datasource": {
-                        "type": "frser-sqlite-datasource",
-                        "uid": "P2D2EEF3E092AF52B"
-                    },
-                    "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid BTC by Wallet",
@@ -1879,10 +1390,6 @@
         },
         {
             "collapsed": true,
-            "datasource": {
-                "type": "frser-sqlite-datasource",
-                "uid": "P2D2EEF3E092AF52B"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -1892,10 +1399,6 @@
             "id": 47,
             "panels": [
                 {
-                    "aliasColors": {},
-                    "bars": false,
-                    "dashLength": 10,
-                    "dashes": false,
                     "datasource": "PROMETHEUS",
                     "fieldConfig": {
                         "defaults": {
@@ -1903,46 +1406,17 @@
                         },
                         "overrides": []
                     },
-                    "fill": 0,
-                    "fillGradient": 0,
                     "gridPos": {
                         "h": 16,
                         "w": 24,
                         "x": 0,
                         "y": 32
                     },
-                    "hiddenSeries": false,
                     "id": 49,
-                    "legend": {
-                        "alignAsTable": true,
-                        "avg": false,
-                        "current": true,
-                        "hideEmpty": true,
-                        "hideZero": true,
-                        "max": false,
-                        "min": false,
-                        "rightSide": true,
-                        "show": true,
-                        "sort": "current",
-                        "sortDesc": true,
-                        "total": false,
-                        "values": true
-                    },
-                    "lines": true,
-                    "linewidth": 1,
-                    "nullPointMode": "null as zero",
                     "options": {
                         "alertThreshold": true
                     },
-                    "percentage": false,
                     "pluginVersion": "8.2.1",
-                    "pointradius": 2,
-                    "points": false,
-                    "renderer": "flot",
-                    "seriesOverrides": [],
-                    "spaceLength": 10,
-                    "stack": false,
-                    "steppedLine": false,
                     "targets": [
                         {
                             "datasource": "PROMETHEUS",
@@ -1954,54 +1428,17 @@
                             "refId": "A"
                         }
                     ],
-                    "thresholds": [],
-                    "timeRegions": [],
                     "title": "Liquid Everything Else by Wallet",
-                    "tooltip": {
-                        "shared": true,
-                        "sort": 2,
-                        "value_type": "individual"
-                    },
-                    "type": "graph",
-                    "xaxis": {
-                        "mode": "time",
-                        "show": true,
-                        "values": []
-                    },
-                    "yaxes": [
-                        {
-                            "$$hashKey": "object:72",
-                            "format": "currencyUSD",
-                            "logBase": 1,
-                            "show": true
-                        },
-                        {
-                            "$$hashKey": "object:73",
-                            "format": "short",
-                            "logBase": 1,
-                            "show": false
-                        }
-                    ],
-                    "yaxis": {
-                        "align": false
-                    }
-                }
-            ],
-            "targets": [
-                {
-                "datasource": {
-                    "type": "frser-sqlite-datasource",
-                    "uid": "P2D2EEF3E092AF52B"
-                },
-                "refId": "A"
+                    "type": "timeseries"
                 }
             ],
             "title": "Liquid Everything Else by Wallet",
             "type": "row"
         }
     ],
+    "preload": false,
     "refresh": "30s",
-    "schemaVersion": 38,
+    "schemaVersion": 41,
     "tags": [],
     "templating": {
         "list": []
@@ -2014,5 +1451,5 @@
     "timezone": "",
     "title": "Treasury Balances",
     "uid": "9_ppKhd7z",
-    "version": 1
+    "version": 4
 }

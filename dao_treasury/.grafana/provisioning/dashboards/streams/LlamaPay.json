@@ -18,9 +18,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 11,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -46,7 +45,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -185,7 +184,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": {
@@ -206,8 +205,9 @@
       "type": "table"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 38,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
@@ -220,6 +220,5 @@
   "timezone": "",
   "title": "LlamaPay",
   "uid": "aa4d62a2-9e52-4acc-8f38-a96c77810aca",
-  "version": 2,
-  "weekStart": ""
+  "version": 1
 }
