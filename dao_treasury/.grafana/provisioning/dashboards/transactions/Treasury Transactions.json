@@ -15,8 +15,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 9,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "datasource": "SQLite",
@@ -36,7 +36,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -203,7 +203,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -221,154 +221,127 @@
       "type": "table"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 38,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id;",
-        "hide": 0,
         "includeAll": true,
         "label": "Top Level",
-        "multi": false,
         "name": "Top",
         "options": [],
         "query": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id;",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid",
         "description": "",
-        "hide": 0,
         "includeAll": true,
-        "multi": false,
         "name": "Chain",
         "options": [],
         "query": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id",
-        "hide": 0,
         "includeAll": true,
-        "multi": false,
         "name": "Token",
         "options": [],
         "query": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id",
-        "hide": 0,
         "includeAll": true,
         "label": "From Address",
-        "multi": false,
         "name": "From",
         "options": [],
         "query": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id",
-        "hide": 0,
         "includeAll": true,
         "label": "From Nickname",
-        "multi": false,
         "name": "FromNickname",
         "options": [],
         "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id",
-        "hide": 0,
         "includeAll": true,
         "label": "To Address",
-        "multi": false,
         "name": "To",
         "options": [],
         "query": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "SQLite",
         "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id",
-        "hide": 0,
         "includeAll": true,
         "label": "To Nickname",
-        "multi": false,
         "name": "ToNickname",
         "options": [],
         "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
       }
@@ -382,6 +355,5 @@
   "timezone": "",
   "title": "Treasury Transactions",
   "uid": "b21f1092-66a4-4fb0-90ef-ed77d2becaa4",
-  "version": 1,
-  "weekStart": ""
+  "version": 1
 }
