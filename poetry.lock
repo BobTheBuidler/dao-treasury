@@ -1023,7 +1023,10 @@ files = [
 ]
 
 [package.dependencies]
-msgspec = {version = ">=0.18.5", markers = "python_version < \"3.13\""}
+msgspec = [
+    {version = ">=0.18.5", markers = "python_version < \"3.13\""},
+    {version = ">=0.19.0", markers = "python_version >= \"3.13\""},
+]
 
 [[package]]
 name = "docutils"
@@ -4635,5 +4638,5 @@ type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.10,<3.13"
-content-hash = "3b67b6f2f3dd369aa2ac4405ae275f6908968dd3b17efb275e13f257a2d684df"
+python-versions = ">=3.10,<3.14"
+content-hash = "61f2ebde64ed8bfd92cea4fb4d8280245c9f1ff4bf26d055b7cf69f6bc71c741"
