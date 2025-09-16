@@ -1450,6 +1450,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "Treasury Balances",
+    "description": "Displays real-time balances of the DAO's treasury assets, including YFI, ETH, BTC, \"cash\" (stablecoins), and other assets, as well as liabilities and debt. Useful for monitoring the DAO's current financial position and asset allocation.",
     "uid": "9_ppKhd7z",
     "version": 4
 }
