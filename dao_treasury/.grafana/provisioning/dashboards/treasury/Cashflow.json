@@ -543,6 +543,7 @@
           "options": {
             "conversions": [
               {
+                "dateFormat": "YYYY-WW",
                 "destinationType": "time",
                 "targetField": "timestamp"
               }
