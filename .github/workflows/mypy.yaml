@@ -5,6 +5,8 @@ on:
     paths:
       - '**.py'
       - '.github/workflows/mypy.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
