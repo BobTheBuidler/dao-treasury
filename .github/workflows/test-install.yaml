@@ -4,7 +4,17 @@ on:
   push:
     branches:
       - master
+    paths:
+      - '**.py'
+      - '.github/workflows/test-install.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
   pull_request:
+    paths:
+      - '**.py'
+      - '.github/workflows/test-install.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
       
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
