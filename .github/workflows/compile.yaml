@@ -4,9 +4,13 @@ on:
   pull_request:
     branches:
       - master
-    paths-ignore:
-      - '.github/workflows/**'
-      - '!.github/workflows/compile.yaml'
+    paths:
+      - ".github/workflows/compile.yaml"
+      - "dao_treasury/**.py"
+      - "dao_treasury/**.json"
+      - "pyproject.toml"
+      - "poetry.lock"
+      - "setup.py"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,6 +30,10 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+              pyproject.toml
+              poetry.lock
           
       - name: Install DAO Treasury
         env:
