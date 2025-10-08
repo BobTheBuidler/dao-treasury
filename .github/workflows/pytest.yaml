@@ -8,6 +8,8 @@ on:
       - '**/pytest.yaml'
       - 'pyproject.toml'
       - 'poetry.lock'
+  schedule:
+    - cron: '0 0 * * *'  # Weekdays 00:00 UTC
   workflow_dispatch:
       
 concurrency:
