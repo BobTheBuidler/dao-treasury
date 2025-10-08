@@ -4,6 +4,13 @@ on:
   pull_request:
     branches:
       - master
+    paths:
+      - ".github/workflows/compile.yaml"
+      - "dao_treasury/**.py"
+      - "dao_treasury/**.json"
+      - "pyproject.toml"
+      - "poetry.lock"
+      - "setup.py"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
