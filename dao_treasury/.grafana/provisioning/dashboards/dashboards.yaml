@@ -58,3 +58,19 @@ providers:
   editable: false
   options:
     path: /etc/grafana/provisioning/dashboards/streams
+
+- name: 'Revenue Over Time'
+  folder: 'Breakdowns'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/breakdowns
+
+- name: 'Expenses Over Time'
+  folder: 'Breakdowns'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/breakdowns
