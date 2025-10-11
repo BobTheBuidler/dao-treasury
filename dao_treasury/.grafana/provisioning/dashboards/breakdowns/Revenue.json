@@ -15,7 +15,7 @@
       }
     ]
   },
-  "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
+  "description": "Shows a breakdown of expenses over time.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
