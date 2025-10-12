@@ -11,7 +11,7 @@ providers:
     path: /etc/grafana/provisioning/dashboards/summary
 
 # Dashboards
-- name: 'Treasury'
+- name: 'Current Treasury Assets'
   folder: 'Treasury'
   type: file
   disableDeletion: true
@@ -36,6 +36,14 @@ providers:
     path: /etc/grafana/provisioning/dashboards/treasury
 
 - name: 'Total Cashflow Summary (Including Unsorted)'
+  folder: 'Treasury'
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /etc/grafana/provisioning/dashboards/treasury
+  
+- name: 'Historical Treasury Balances'
   folder: 'Treasury'
   type: file
   disableDeletion: true
