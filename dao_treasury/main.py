@@ -100,8 +100,8 @@ parser.add_argument(
 parser.add_argument(
     "--concurrency",
     type=int,
-    help="The max number of historical blocks to export concurrently. default: 50",
-    default=50,
+    help="The max number of historical blocks to export concurrently. default: 40",
+    default=40,
 )
 parser.add_argument(
     "--daemon",
