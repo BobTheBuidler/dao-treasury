@@ -24,6 +24,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -89,6 +90,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -154,6 +156,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -219,6 +222,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -284,6 +288,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -350,6 +355,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -416,6 +422,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "palette-classic"
@@ -651,6 +658,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -717,6 +725,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -783,6 +792,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
