@@ -24,6 +24,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -89,6 +90,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -154,6 +156,7 @@
     {
       "datasource": "SQLite",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -220,6 +223,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -286,6 +290,7 @@
       "datasource": "SQLite",
       "description": "",
       "fieldConfig": {
+        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "palette-classic"
@@ -504,5 +509,5 @@
   "title": "Operating Cashflow Summary",
   "description": "Provides a focused view of core operational cashflows, including only sorted transactions in Revenue, Cost of Revenue, and Expenses categories. Excludes unsorted transactions and non-operational activity, helping monitor specifically the DAO's operational financial flows.",
   "uid": "fdf9969c-357a-4203-ae7b-12816e87bc7e",
-  "version": 4
+  "version": 5
 }
