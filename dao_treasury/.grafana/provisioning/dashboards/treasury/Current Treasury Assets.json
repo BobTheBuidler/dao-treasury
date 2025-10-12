@@ -75,7 +75,7 @@
         {
           "datasource": "PROMETHEUS",
           "editorMode": "code",
-          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000)",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket, token)",
           "format": "table",
           "instant": false,
           "legendFormat": "__auto",
@@ -83,15 +83,53 @@
           "refId": "A"
         }
       ],
-      "title": "Total Balance (dont trust this yet)",
+      "title": "Total Assets",
       "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "Value": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "token": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Value (last)",
+                "Time (last)"
+              ]
+            }
+          }
+        },
         {
           "id": "reduce",
           "options": {
             "includeTimeField": false,
             "mode": "reduceFields",
             "reducers": [
-              "last"
+              "sum"
             ]
           }
         }
@@ -240,7 +278,7 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "Last Known Value USD"
+            "displayName": "Current Balance"
           }
         ]
       },
@@ -250,7 +288,7 @@
           "datasource": "PROMETHEUS",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket)",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
           "format": "table",
           "instant": false,
           "interval": "",
@@ -324,19 +362,57 @@
           }
         },
         {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Last Known Value USD": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Last Seen": {
+                "aggregations": [
+                  "min"
+                ],
+                "operation": "aggregate"
+              },
+              "Time (last)": {
+                "aggregations": [
+                  "min"
+                ],
+                "operation": "aggregate"
+              },
+              "Value (last)": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {},
             "includeByName": {},
             "indexByName": {
-              "Time (last)": 3,
-              "Value (last)": 2,
-              "bucket": 0,
-              "token": 1
+              "Time (last) (min)": 2,
+              "Value (last) (sum)": 1,
+              "bucket": 0
             },
             "renameByName": {
-              "Time (last)": "Last Seen",
-              "Value (last)": "Last Known Value USD",
+              "Time (last) (min)": "Last Seen",
+              "Value (last) (sum)": "Last Known Value USD",
               "bucket": "Bucket",
               "token": "Token"
             }
@@ -422,7 +498,7 @@
           "refId": "B"
         }
       ],
-      "title": "Asset Breakdown",
+      "title": "Current Asset Breakdown",
       "transformations": [
         {
           "id": "groupBy",
@@ -506,12 +582,12 @@
     "list": []
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Current Treasury Assets",
+  "title": "Current Assets",
   "uid": "ad47zqk",
-  "version": 1
+  "version": 2
 }
