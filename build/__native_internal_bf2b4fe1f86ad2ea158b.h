@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[548];
+extern PyObject *CPyStatics[550];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -603,7 +603,7 @@ extern PyObject *CPyPy__wallet___TreasuryWallet____get_instance(PyObject *self, 
 extern PyObject *CPyDef__wallet___load_wallets_from_yaml(PyObject *cpy_r_path);
 extern PyObject *CPyPy__wallet___load_wallets_from_yaml(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__wallet_____top_level__(void);
-extern CPyTagged CPyStatic_constants___CHAINID;
+extern PyObject *CPyStatic_constants___CHAINID;
 extern tuple_T2OO CPyStatic_constants___DISPERSE_APP;
 extern PyObject *CPyStatic_constants___SUPPRESS_ERROR_LOGS;
 extern char CPyDef_constants_____top_level__(void);
