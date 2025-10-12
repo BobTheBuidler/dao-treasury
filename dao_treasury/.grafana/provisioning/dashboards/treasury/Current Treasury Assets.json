@@ -22,10 +22,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PDC1078F23EBDF0E5"
-      },
+      "datasource": "PROMETHEUS",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -76,10 +73,7 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket, token)",
           "format": "table",
@@ -143,10 +137,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PDC1078F23EBDF0E5"
-      },
+      "datasource": "PROMETHEUS",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -196,10 +187,7 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000)",
           "format": "table",
@@ -243,10 +231,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PDC1078F23EBDF0E5"
-      },
+      "datasource": "PROMETHEUS",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -300,10 +285,7 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "exemplar": false,
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
@@ -315,10 +297,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
           "hide": true,
@@ -432,10 +411,8 @@
               "bucket": 0
             },
             "renameByName": {
-              "Time (last)": "Last Seen",
               "Time (last) (min)": "Last Seen",
-              "Value (last)": "Last Known Value USD",
-              "Value (last) (sum)": "Current Balance",
+              "Value (last) (sum)": "Last Known Value USD",
               "bucket": "Bucket",
               "token": "Token"
             }
@@ -445,10 +422,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PDC1078F23EBDF0E5"
-      },
+      "datasource": "PROMETHEUS",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -502,10 +476,7 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "exemplar": false,
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
@@ -517,10 +488,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
           "hide": true,
@@ -621,5 +589,5 @@
   "timezone": "browser",
   "title": "Current Assets",
   "uid": "ad47zqk",
-  "version": 4
+  "version": 2
 }
