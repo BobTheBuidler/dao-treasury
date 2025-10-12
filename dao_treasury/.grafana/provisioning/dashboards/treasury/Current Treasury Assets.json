@@ -22,7 +22,10 @@
   "links": [],
   "panels": [
     {
-      "datasource": "PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PDC1078F23EBDF0E5"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -73,9 +76,12 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": "PROMETHEUS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PDC1078F23EBDF0E5"
+          },
           "editorMode": "code",
-          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000)",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket, token)",
           "format": "table",
           "instant": false,
           "legendFormat": "__auto",
@@ -83,15 +89,53 @@
           "refId": "A"
         }
       ],
-      "title": "Total Balance (dont trust this yet)",
+      "title": "Total Assets",
       "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "Value": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "token": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Value (last)",
+                "Time (last)"
+              ]
+            }
+          }
+        },
         {
           "id": "reduce",
           "options": {
             "includeTimeField": false,
             "mode": "reduceFields",
             "reducers": [
-              "last"
+              "sum"
             ]
           }
         }
@@ -99,7 +143,10 @@
       "type": "stat"
     },
     {
-      "datasource": "PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PDC1078F23EBDF0E5"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -149,7 +196,10 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": "PROMETHEUS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PDC1078F23EBDF0E5"
+          },
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000)",
           "format": "table",
@@ -193,7 +243,10 @@
       "type": "table"
     },
     {
-      "datasource": "PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PDC1078F23EBDF0E5"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -240,17 +293,20 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "Last Known Value USD"
+            "displayName": "Current Balance"
           }
         ]
       },
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": "PROMETHEUS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PDC1078F23EBDF0E5"
+          },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket)",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
           "format": "table",
           "instant": false,
           "interval": "",
@@ -259,7 +315,10 @@
           "refId": "A"
         },
         {
-          "datasource": "PROMETHEUS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PDC1078F23EBDF0E5"
+          },
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
           "hide": true,
@@ -324,19 +383,59 @@
           }
         },
         {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Last Known Value USD": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Last Seen": {
+                "aggregations": [
+                  "min"
+                ],
+                "operation": "aggregate"
+              },
+              "Time (last)": {
+                "aggregations": [
+                  "min"
+                ],
+                "operation": "aggregate"
+              },
+              "Value (last)": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {},
             "includeByName": {},
             "indexByName": {
-              "Time (last)": 3,
-              "Value (last)": 2,
-              "bucket": 0,
-              "token": 1
+              "Time (last) (min)": 2,
+              "Value (last) (sum)": 1,
+              "bucket": 0
             },
             "renameByName": {
               "Time (last)": "Last Seen",
+              "Time (last) (min)": "Last Seen",
               "Value (last)": "Last Known Value USD",
+              "Value (last) (sum)": "Current Balance",
               "bucket": "Bucket",
               "token": "Token"
             }
@@ -346,7 +445,10 @@
       "type": "table"
     },
     {
-      "datasource": "PROMETHEUS",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PDC1078F23EBDF0E5"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -400,7 +502,10 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "datasource": "PROMETHEUS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PDC1078F23EBDF0E5"
+          },
           "editorMode": "code",
           "exemplar": false,
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
@@ -412,7 +517,10 @@
           "refId": "A"
         },
         {
-          "datasource": "PROMETHEUS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PDC1078F23EBDF0E5"
+          },
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
           "hide": true,
@@ -422,7 +530,7 @@
           "refId": "B"
         }
       ],
-      "title": "Asset Breakdown",
+      "title": "Current Asset Breakdown",
       "transformations": [
         {
           "id": "groupBy",
@@ -506,12 +614,12 @@
     "list": []
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Current Treasury Assets",
+  "title": "Current Assets",
   "uid": "ad47zqk",
-  "version": 1
+  "version": 4
 }
