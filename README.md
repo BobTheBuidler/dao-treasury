@@ -42,6 +42,7 @@ poetry run dao-treasury run --wallet 0x123 --network mainnet --interval 12h
 **CLI Options:**
 - `--network`: The id of the brownie network the exporter will connect to (default: mainnet)
 - `--interval`: The time interval between each data snapshot (default: 12h)
+- `--concurrency`: The max number of historical blocks to export concurrently. (default: 30)
 - `--daemon`: Run the export process in the background (default: False) (NOTE: currently unsupported)
 - `--grafana-port`: Set the port for the Grafana dashboard where you can view data (default: 3004)
 - `--renderer-port`: Set the port for the report rendering service (default: 8091)
