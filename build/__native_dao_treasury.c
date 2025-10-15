@@ -16,8 +16,8 @@
 #include "misc_ops.c"
 #include "generic_ops.c"
 #include "pythonsupport.c"
-#include "__native_bf2b4fe1f86ad2ea158b.h"
-#include "__native_internal_bf2b4fe1f86ad2ea158b.h"
+#include "__native_dao_treasury.h"
+#include "__native_internal_dao_treasury.h"
 
 static PyAsyncMethods sorting___sort_advanced_gen_as_async = {
     .am_await = CPyDef_sorting___sort_advanced_gen_____await__,
@@ -57505,14 +57505,14 @@ PyObject *CPyStatic_constants___SUPPRESS_ERROR_LOGS = NULL;
 char CPyDef_constants_____top_level__(void);
 char CPyDef_types_____top_level__(void);
 
-static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
+static int exec_dao_treasury__mypyc(PyObject *module)
 {
     int res;
     PyObject *capsule;
     PyObject *tmp;
     
     extern PyObject *CPyInit_dao_treasury___sorting(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting, "dao_treasury__mypyc.init_dao_treasury___sorting", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57523,7 +57523,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting___rules(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rules, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting___rules", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rules, "dao_treasury__mypyc.init_dao_treasury___sorting___rules", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57534,7 +57534,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting___rules___ignore(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rules___ignore, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting___rules___ignore", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rules___ignore, "dao_treasury__mypyc.init_dao_treasury___sorting___rules___ignore", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57545,7 +57545,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting___rules___ignore___llamapay(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rules___ignore___llamapay, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting___rules___ignore___llamapay", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rules___ignore___llamapay, "dao_treasury__mypyc.init_dao_treasury___sorting___rules___ignore___llamapay", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57556,7 +57556,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting____matchers(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting____matchers, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting____matchers", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting____matchers, "dao_treasury__mypyc.init_dao_treasury___sorting____matchers", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57567,7 +57567,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting____rules(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting____rules, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting____rules", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting____rules, "dao_treasury__mypyc.init_dao_treasury___sorting____rules", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57578,7 +57578,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting___factory(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___factory, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting___factory", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___factory, "dao_treasury__mypyc.init_dao_treasury___sorting___factory", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57589,7 +57589,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___sorting___rule(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rule, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___sorting___rule", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___sorting___rule, "dao_treasury__mypyc.init_dao_treasury___sorting___rule", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57600,7 +57600,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___streams(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___streams, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___streams", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___streams, "dao_treasury__mypyc.init_dao_treasury___streams", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57611,7 +57611,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___streams___llamapay(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___streams___llamapay, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___streams___llamapay", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___streams___llamapay, "dao_treasury__mypyc.init_dao_treasury___streams___llamapay", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57622,7 +57622,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury____docker(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury____docker, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury____docker", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury____docker, "dao_treasury__mypyc.init_dao_treasury____docker", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57633,7 +57633,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury____nicknames(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury____nicknames, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury____nicknames", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury____nicknames, "dao_treasury__mypyc.init_dao_treasury____nicknames", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57644,7 +57644,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury____wallet(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury____wallet, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury____wallet", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury____wallet, "dao_treasury__mypyc.init_dao_treasury____wallet", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57655,7 +57655,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___constants(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___constants, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___constants", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___constants, "dao_treasury__mypyc.init_dao_treasury___constants", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57666,7 +57666,7 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     }
     
     extern PyObject *CPyInit_dao_treasury___types(void);
-    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___types, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury___types", NULL);
+    capsule = PyCapsule_New((void *)CPyInit_dao_treasury___types, "dao_treasury__mypyc.init_dao_treasury___types", NULL);
     if (!capsule) {
         goto fail;
     }
@@ -57680,24 +57680,24 @@ static int exec_bf2b4fe1f86ad2ea158b__mypyc(PyObject *module)
     fail:
     return -1;
 }
-static PyModuleDef module_def_bf2b4fe1f86ad2ea158b__mypyc = {
+static PyModuleDef module_def_dao_treasury__mypyc = {
     PyModuleDef_HEAD_INIT,
-    .m_name = "bf2b4fe1f86ad2ea158b__mypyc",
+    .m_name = "dao_treasury__mypyc",
     .m_doc = NULL,
     .m_size = -1,
     .m_methods = NULL,
 };
-PyMODINIT_FUNC PyInit_bf2b4fe1f86ad2ea158b__mypyc(void) {
+PyMODINIT_FUNC PyInit_dao_treasury__mypyc(void) {
     static PyObject *module = NULL;
     if (module) {
         Py_INCREF(module);
         return module;
     }
-    module = PyModule_Create(&module_def_bf2b4fe1f86ad2ea158b__mypyc);
+    module = PyModule_Create(&module_def_dao_treasury__mypyc);
     if (!module) {
         return NULL;
     }
-    if (exec_bf2b4fe1f86ad2ea158b__mypyc(module) < 0) {
+    if (exec_dao_treasury__mypyc(module) < 0) {
         Py_DECREF(module);
         return NULL;
     }
