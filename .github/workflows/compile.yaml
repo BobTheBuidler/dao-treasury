@@ -33,6 +33,9 @@ jobs:
           cache-dependency-path: |
               pyproject.toml
               poetry.lock
+
+      - name: Delete existing build files
+        run: rm -rf build
           
       - name: Install DAO Treasury
         env:
