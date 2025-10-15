@@ -1,5 +1,5 @@
-#ifndef MYPYC_NATIVE_bf2b4fe1f86ad2ea158b_H
-#define MYPYC_NATIVE_bf2b4fe1f86ad2ea158b_H
+#ifndef MYPYC_NATIVE_dao_treasury_H
+#define MYPYC_NATIVE_dao_treasury_H
 #include <Python.h>
 #include <CPy.h>
 #ifndef MYPYC_DECLARED_tuple_T2OO
