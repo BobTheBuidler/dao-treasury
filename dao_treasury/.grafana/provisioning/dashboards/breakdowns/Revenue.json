@@ -498,8 +498,8 @@
       {
         "allowCustomValue": true,
         "current": {
-          "text": "Vaults V2",
-          "value": "Vaults V2"
+          "text": "All",
+          "value": "$__all"
         },
         "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id where gh.top_category = 'Revenue' or gh.top_category = 'Other Income';",
         "description": "",
@@ -522,5 +522,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 2
+  "version": 1
 }
