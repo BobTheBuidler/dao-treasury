@@ -494,7 +494,25 @@
   "schemaVersion": 42,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allowCustomValue": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id where gh.top_category = 'Revenue' or gh.top_category = 'Other Income';",
+        "description": "",
+        "includeAll": true,
+        "name": "Txgroup",
+        "options": [],
+        "query": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id where gh.top_category = 'Revenue' or gh.top_category = 'Other Income';",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-6M",
@@ -503,5 +521,5 @@
   "timepicker": {},
   "timezone": "",
   "title": "Expenses Over Time",
-  "version": 1
+  "version": 2
 }
