@@ -18,6 +18,7 @@ and creating SQL views for reporting.
 
 import typing
 from asyncio import Semaphore
+from collections import OrderedDict
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
@@ -73,6 +74,9 @@ from y.exceptions import ContractNotVerified
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.types import TxGroupDbid, TxGroupName
+
+
+EventItem = _EventItem[_EventItem[OrderedDict[str, Any]]]
 
 
 SQLITE_DIR = Path(path.expanduser("~")) / ".dao-treasury"
@@ -755,10 +759,10 @@ class TreasuryTx(DbEntity):
     @overload
     def get_events(
         self, event_name: str, sync: Literal[False]
-    ) -> Coroutine[Any, Any, _EventItem]: ...
+    ) -> Coroutine[Any, Any, EventItem]: ...
     @overload
-    def get_events(self, event_name: str, sync: bool = True) -> _EventItem: ...
-    def get_events(self, event_name: str, sync: bool = True) -> _EventItem:
+    def get_events(self, event_name: str, sync: bool = True) -> EventItem: ...
+    def get_events(self, event_name: str, sync: bool = True) -> EventItem:
         if not sync:
             return _EVENTS_THREADS.run(self.get_events, event_name)
         try:
