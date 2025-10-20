@@ -9,13 +9,13 @@ dao\_treasury.streams.llamapay module
 
 .. automodule:: dao_treasury.streams.llamapay
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: dao_treasury.streams
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

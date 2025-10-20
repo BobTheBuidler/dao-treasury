@@ -17,21 +17,21 @@ dao\_treasury.sorting.factory module
 
 .. automodule:: dao_treasury.sorting.factory
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 dao\_treasury.sorting.rule module
 ---------------------------------
 
 .. automodule:: dao_treasury.sorting.rule
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: dao_treasury.sorting
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
