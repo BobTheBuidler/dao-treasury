@@ -54,13 +54,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-dao_treasury.ENVIRONMENT_VARIABLES">dao_treasury.ENVIRONMENT_VARIABLES module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-dao_treasury.constants">dao_treasury.constants module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-dao_treasury.db">dao_treasury.db module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#dao-treasury-environment-variables-module">dao_treasury.ENVIRONMENT_VARIABLES module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#dao-treasury-constants-module">dao_treasury.constants module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#dao-treasury-db-module">dao_treasury.db module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#dao-treasury-main-module">dao_treasury.main module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-dao_treasury.treasury">dao_treasury.treasury module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-dao_treasury.types">dao_treasury.types module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-dao_treasury">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#dao-treasury-treasury-module">dao_treasury.treasury module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#dao-treasury-types-module">dao_treasury.types module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dao_treasury.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -100,136 +100,11 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-dao_treasury.streams.llamapay">
-<span id="dao-treasury-streams-llamapay-module"></span><h2>dao_treasury.streams.llamapay module<a class="headerlink" href="#module-dao_treasury.streams.llamapay" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor">
-<em class="property"><span class="pre">final</span><span class="w"> </span><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dao_treasury.streams.llamapay.</span></span><span class="sig-name descname"><span class="pre">LlamaPayProcessor</span></span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Generalized async processor for DAO stream contracts.
-Args are passed in at construction time.
-Supports time-bounded admin periods for filtering.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.__init__" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_forever</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor.process_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_id</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.encoding.HexStr" title="(in eth-typing v5.2)"><em>HexStr</em></a>)</p></li>
-<li><p><strong>run_forever</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream_for_date">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_stream_for_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor.process_stream_for_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.process_stream_for_date" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_id</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.encoding.HexStr" title="(in eth-typing v5.2)"><em>HexStr</em></a>)</p></li>
-<li><p><strong>date_obj</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a>)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="dao_treasury.html#dao_treasury.db.StreamedFunds" title="dao_treasury.db.StreamedFunds"><em>StreamedFunds</em></a> | None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.process_streams">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_streams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_forever</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor.process_streams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.process_streams" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>run_forever</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.streams_for_recipient">
-<span class="sig-name descname"><span class="pre">streams_for_recipient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recipient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">at_block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor.streams_for_recipient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.streams_for_recipient" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>recipient</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.ChecksumAddress" title="(in eth-typing v5.2)"><em>ChecksumAddress</em></a>)</p></li>
-<li><p><strong>at_block</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.BlockNumber" title="(in eth-typing v5.2)"><em>BlockNumber</em></a><em> | </em><em>None</em>)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference internal" href="dao_treasury.html#dao_treasury.db.Stream" title="dao_treasury.db.Stream"><em>Stream</em></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.streams_for_token">
-<span class="sig-name descname"><span class="pre">streams_for_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_inactive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/streams/llamapay.html#LlamaPayProcessor.streams_for_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.streams_for_token" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>token</strong> (<a class="reference external" href="https://eth-typing.readthedocs.io/en/stable/eth_typing.html#eth_typing.evm.ChecksumAddress" title="(in eth-typing v5.2)"><em>ChecksumAddress</em></a>)</p></li>
-<li><p><strong>include_inactive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference internal" href="dao_treasury.html#dao_treasury.db.Stream" title="dao_treasury.db.Stream"><em>Stream</em></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.handled_events">
-<span class="sig-name descname"><span class="pre">handled_events</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.14)"><span class="pre">Final</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('StreamCreated',</span> <span class="pre">'StreamCreatedWithReason',</span> <span class="pre">'StreamModified',</span> <span class="pre">'StreamPaused',</span> <span class="pre">'StreamCancelled')</span></em><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.handled_events" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.LlamaPayProcessor.skipped_events">
-<span class="sig-name descname"><span class="pre">skipped_events</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.14)"><span class="pre">Final</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('PayerDeposit',</span> <span class="pre">'PayerWithdraw',</span> <span class="pre">'Withdraw')</span></em><a class="headerlink" href="#dao_treasury.streams.llamapay.LlamaPayProcessor.skipped_events" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.fromtimestamp">
-<span class="sig-prename descclassname"><span class="pre">dao_treasury.streams.llamapay.</span></span><span class="sig-name descname"><span class="pre">fromtimestamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.streams.llamapay.fromtimestamp" title="Link to this definition"></a></dt>
-<dd><p>timestamp[, tz] -&gt; tz’s local time from POSIX timestamp.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="dao_treasury.streams.llamapay.now">
-<span class="sig-prename descclassname"><span class="pre">dao_treasury.streams.llamapay.</span></span><span class="sig-name descname"><span class="pre">now</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dao_treasury.streams.llamapay.now" title="Link to this definition"></a></dt>
-<dd><p>Returns new datetime object representing current time local to tz.</p>
-<blockquote>
-<div><dl class="simple">
-<dt>tz</dt><dd><p>Timezone object.</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>If no tz is specified, uses local timezone.</p>
-</dd></dl>
-
+<section id="dao-treasury-streams-llamapay-module">
+<h2>dao_treasury.streams.llamapay module<a class="headerlink" href="#dao-treasury-streams-llamapay-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-dao_treasury.streams">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dao_treasury.streams" title="Link to this heading"></a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 </section>
 </section>
 

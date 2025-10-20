@@ -97,7 +97,7 @@ identifier (txgroup) with a fixed category (e.g. “Revenue”, “Expenses”, 
 Internally, these classes register rules under their composite key fullname (e.g., “Revenue:Sales:Ice Cream”)
 for matching purposes.</p></li>
 <li><p>Custom Matching via SortRuleFactory – Factories (provided by functions like <code class="xref py py-func docutils literal notranslate"><span class="pre">revenue()</span></code>,
-<code class="xref py py-func docutils literal notranslate"><span class="pre">expense()</span></code>, etc. in <a class="reference internal" href="source/dao_treasury.sorting.html#module-dao_treasury.sorting.factory" title="dao_treasury.sorting.factory"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.factory</span></code></a>) allow registration of custom
+<code class="xref py py-func docutils literal notranslate"><span class="pre">expense()</span></code>, etc. in <code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.factory</span></code>) allow registration of custom
 synchronous or asynchronous matching functions.</p></li>
 <li><p>External YAML-Based Sort Rules – Declarative rules defined in YAML files can be loaded at
 runtime by passing the directory path to the CLI via the <cite>–sort-rules</cite> flag.</p></li>
@@ -106,7 +106,7 @@ runtime by passing the directory path to the CLI via the <cite>–sort-rules</ci
 </section>
 <section id="defining-sort-rules-with-predefined-classes">
 <h2>1. Defining Sort Rules with Predefined Classes<a class="headerlink" href="#defining-sort-rules-with-predefined-classes" title="Link to this heading"></a></h2>
-<p>DAO Treasury provides specialized rule classes in <a class="reference internal" href="source/dao_treasury.sorting.html#module-dao_treasury.sorting.rule" title="dao_treasury.sorting.rule"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.rule</span></code></a>
+<p>DAO Treasury provides specialized rule classes in <code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.rule</span></code>
 to cover common transaction types:</p>
 <ul class="simple">
 <li><p><strong>RevenueSortRule</strong>: Intended for inbound transactions representing revenue.
@@ -141,7 +141,7 @@ to cover common transaction types:</p>
 <section id="registering-custom-matchers-using-sortrulefactory">
 <h2>2. Registering Custom Matchers Using SortRuleFactory<a class="headerlink" href="#registering-custom-matchers-using-sortrulefactory" title="Link to this heading"></a></h2>
 <p>For more dynamic rules, DAO Treasury offers a decorator interface through
-<a class="reference internal" href="source/dao_treasury.sorting.html#module-dao_treasury.sorting.factory" title="dao_treasury.sorting.factory"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.factory</span></code></a>. Factory functions such as <cite>revenue</cite>, <cite>expense</cite>,
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.factory</span></code>. Factory functions such as <cite>revenue</cite>, <cite>expense</cite>,
 <cite>other_income</cite>, etc., return a SortRuleFactory preconfigured with the appropriate rule type.
 These factories support two patterns:</p>
 <p><strong>A. Decorator form</strong>:</p>
@@ -224,8 +224,8 @@ only one matching strategy (either attribute-based or function-based) is used fo
 <p>This modular design enables DAO Treasury users to flexibly adapt its sorting strategy to the evolving requirements of their DAO.</p>
 <p>For details, see:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="source/dao_treasury.sorting.html#module-dao_treasury.sorting.rule" title="dao_treasury.sorting.rule"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.rule</span></code></a></p></li>
-<li><p><a class="reference internal" href="source/dao_treasury.sorting.html#module-dao_treasury.sorting.factory" title="dao_treasury.sorting.factory"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.factory</span></code></a></p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.rule</span></code></p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">dao_treasury.sorting.factory</span></code></p></li>
 </ul>
 </section>
 </section>
