@@ -40,7 +40,9 @@ jobs:
       - name: Install DAO Treasury
         env:
           MYPYC_STRICT_DUNDER_TYPING: 1
-        run: pip install .
+        run: |
+          pip install --only-binary=:all: pandas==2.3.3
+          pip install .
           
       - name: Normalize C files for diffchecking
         # This makes it much easier to diffcheck changes in the C files
