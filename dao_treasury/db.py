@@ -254,6 +254,10 @@ class Address(DbEntity):
     def contract(self) -> Contract:
         return Contract(self.address)
 
+    @property
+    def contract_coro(self) -> Coroutine[Any, Any, Contract]:
+        return Contract.coroutine(self.address)
+
     @staticmethod
     @lru_cache(maxsize=None)
     def get_dbid(address: HexAddress) -> int:
@@ -423,6 +427,10 @@ class Token(DbEntity):
     @property
     def contract(self) -> Contract:
         return Contract(self.address.address)
+
+    @property
+    def contract_coro(self) -> Coroutine[Any, Any, Contract]:
+        return Contract.coroutine(self.address.address)
 
     @property
     def scale(self) -> int:
