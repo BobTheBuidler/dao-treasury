@@ -94,7 +94,9 @@ def build(*services: str) -> None:
     _exec_command(["build", *services])
 
 
-def _print_notice(doing: Literal["building", "starting"], services: Tuple[str, ...]) -> None:
+def _print_notice(
+    doing: Literal["building", "starting"], services: Tuple[str, ...]
+) -> None:
     if len(services) == 1:
         container = services[0]
         print(f"{doing} the {container} container")
