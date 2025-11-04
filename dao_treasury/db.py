@@ -747,6 +747,10 @@ class TreasuryTx(DbEntity):
         return self.from_address.nickname or self.from_address.address  # type: ignore [union-attr]
 
     @property
+    def token_address(self) -> ChecksumAddress:
+        return self.token.address.address
+
+    @property
     def symbol(self) -> str:
         """Ticker symbol for the transferred token."""
         return self.token.symbol  # type: ignore [no-any-return]
