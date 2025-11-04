@@ -5552,4 +5552,4 @@ python-dateutil = "*"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.13"
-content-hash = "c43e74c2daaba4afdf1bf8bd3aee80479827e0727b993170babe38a854445142"
+content-hash = "4ef28ad15898884370cfb02bb9d5c039c6ae90b71de6ae1c2d8374e4e2c1529a"
