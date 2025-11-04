@@ -546,7 +546,7 @@ typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
     PyObject *___mypyc_env__;
-} dao_treasury____docker___compose_wrap_gen___3_146Object;
+} dao_treasury____docker___compose_wrap_gen___3_147Object;
 
 typedef struct {
     PyObject_HEAD
