@@ -19,6 +19,7 @@ from importlib import resources
 from typing import Any, Callable, Coroutine, Final, Literal, Tuple, TypeVar, List
 
 import eth_portfolio_scripts.docker
+from eth_portfolio_scripts.docker import docker_compose
 from typing_extensions import ParamSpec
 
 logger: Final = logging.getLogger(__name__)
@@ -188,6 +189,6 @@ def _exec_command(command: List[str], *, compose_options: Tuple[str, ...] = ()) 
     See Also:
         :func:`check_system`
     """
-    eth_portfolio_scripts.docker._exec_command(
+    docker_compose._exec_command(
         command, compose_file=COMPOSE_FILE, compose_options=compose_options
     )
