@@ -23,6 +23,7 @@ See Also:
 import argparse
 import asyncio
 import importlib.metadata
+import importlib.util
 import logging
 import os
 import shlex
@@ -297,4 +298,4 @@ async def export(args) -> None:
 
 if __name__ == "__main__":
     os.environ["BROWNIE_NETWORK_ID"] = args.network
-    brownie.project.run(__file__)
+    brownie.project.run(importlib.util.resolve_name(__name__, None))
