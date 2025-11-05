@@ -17,4 +17,6 @@ RUN apt-get update && \
 WORKDIR /app
 
 RUN pip install --upgrade pip
-RUN pip install dao-treasury==${DAO_TREASURY_VERSION}
+
+# we must pin setuptools==80.9.0 to prevent a conflict with web3 v6
+RUN pip install setuptools==80.9.0 dao-treasury==${DAO_TREASURY_VERSION}
