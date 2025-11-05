@@ -63,10 +63,8 @@ services:
     volumes:
       - ~/.dao-treasury/:/app/dao-treasury-data
       - ~/.ypricemagic/:/home/ubuntu/.ypricemagic
-      - ~/.eth_portfolio/:/home/ubuntu/.eth_portfolio
+      - ~/.eth-portfolio/:/home/ubuntu/.eth-portfolio
       - ~/.brownie/:/home/ubuntu/.brownie
-      - ./.grafana/provisioning/:/etc/grafana/provisioning/
-      - ~/.dao-treasury/dao-treasury.sqlite:/app/dao-treasury-data/dao-treasury.sqlite
     networks:
       - dao_treasury
       - docker_eth_portfolio
