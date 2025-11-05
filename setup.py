@@ -180,7 +180,6 @@ setup(
     python_requires=">=3.10,<3.13",
     packages=find_packages(),
     package_data={"dao_treasury": ["docker-compose.yaml", "py.typed"]},
-    data_files=[("dao_treasury", ["pyproject.toml", "poetry.lock"])],
     include_package_data=True,
     description=poetry_config["description"],
     long_description=long_description,
