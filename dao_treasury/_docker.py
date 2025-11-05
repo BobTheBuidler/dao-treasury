@@ -16,7 +16,7 @@ This is the main entry for all Docker-based orchestration.
 import logging
 from functools import wraps
 from importlib import resources
-from typing import Any, Callable, Coroutine, Final, Literal, Tuple, TypeVar, List
+from typing import Any, Callable, Coroutine, Final, Tuple, TypeVar, List
 
 import eth_portfolio_scripts.docker
 from eth_portfolio_scripts.docker import docker_compose
@@ -56,7 +56,7 @@ def up(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
     # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
     eth_portfolio_scripts.docker.up("victoria-metrics")
     build(*services, build_args=build_args)
-    _print_notice("starting", services)
+    docker_compose._print_notice("starting", services)
     _exec_command(["up", "-d", *services])
 
 
@@ -92,7 +92,7 @@ def build(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
         :func:`up`
         :func:`_exec_command`
     """
-    _print_notice("building", services)
+    docker_compose._print_notice("building", services)
     if isinstance(build_args, str):
         build_args = (build_args,)
     build_cmd = ["build"]
@@ -100,20 +100,6 @@ def build(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
         build_cmd += ["--build-arg", arg]
     build_cmd += list(services)
     _exec_command(build_cmd)
-
-
-def _print_notice(
-    doing: Literal["building", "starting"], services: Tuple[str, ...]
-) -> None:
-    if len(services) == 1:
-        container = services[0]
-        print(f"{doing} the {container} container")
-    elif len(services) == 2:
-        first, second = services
-        print(f"{doing} the {first} and {second} containers")
-    else:
-        *all_but_last, last = services
-        print(f"{doing} the {', '.join(all_but_last)}, and {last} containers")
 
 
 _P = ParamSpec("_P")
