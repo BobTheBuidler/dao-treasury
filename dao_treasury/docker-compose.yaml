@@ -63,7 +63,7 @@ services:
       - ~/.dao-treasury/:/app/dao-treasury-data
       - ~/.ypricemagic/:/home/ubuntu/.ypricemagic
       - ~/.eth_portfolio/:/home/ubuntu/.eth_portfolio
-      - ~/.brownie/:~/.brownie
+      - ~/.brownie/:/home/ubuntu/.brownie
       - ./.grafana/provisioning/:/etc/grafana/provisioning/
       - ~/.dao-treasury/dao-treasury.sqlite:/app/dao-treasury-data/dao-treasury.sqlite
     networks:
