@@ -165,7 +165,7 @@ def set_dao_treasury_run_flags_env(args):
 if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
     set_dao_treasury_run_flags_env(args)
     version = importlib.metadata.version("dao-treasury")
-    _docker.up("exporter", build_args=[f"DAO_TREASURY_VERSION={version}"])
+    _docker.up("exporter", build_args=f"DAO_TREASURY_VERSION={version}")
     print(
         "Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):"
     )
