@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[550];
+extern PyObject *CPyStatics[552];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -550,9 +550,9 @@ extern CPyThreadLocal dao_treasury____docker___compose_wrap_ensure_containers_en
 extern PyTypeObject *CPyType__docker___compose_wrap_ensure_containers_obj;
 extern PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj(void);
 extern CPyThreadLocal dao_treasury____docker___compose_wrap_ensure_containers_objObject *_docker___compose_wrap_ensure_containers_obj_free_instance;
-extern PyTypeObject *CPyType__docker___compose_wrap_gen___3_153;
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153(void);
-extern CPyThreadLocal dao_treasury____docker___compose_wrap_gen___3_153Object *_docker___compose_wrap_gen___3_153_free_instance;
+extern PyTypeObject *CPyType__docker___compose_wrap_gen___3_154;
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154(void);
+extern CPyThreadLocal dao_treasury____docker___compose_wrap_gen___3_154Object *_docker___compose_wrap_gen___3_154_free_instance;
 extern char CPyDef__docker___up(PyObject *cpy_r_services, PyObject *cpy_r_build_args);
 extern PyObject *CPyPy__docker___up(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__docker___down(void);
@@ -563,19 +563,19 @@ extern char CPyDef__docker____print_notice(PyObject *cpy_r_doing, PyObject *cpy_
 extern PyObject *CPyPy__docker____print_notice(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
 extern PyObject *CPyPy__docker___compose_wrap_ensure_containers_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153_____next__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy__docker___compose_wrap_gen___3_153_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
-extern PyObject *CPyPy__docker___compose_wrap_gen___3_153___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153_____iter__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy__docker___compose_wrap_gen___3_153_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
-extern PyObject *CPyPy__docker___compose_wrap_gen___3_153___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153___close(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy__docker___compose_wrap_gen___3_153___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-extern PyObject *CPyDef__docker___compose_wrap_gen___3_153_____await__(PyObject *cpy_r___mypyc_self__);
-extern PyObject *CPyPy__docker___compose_wrap_gen___3_153_____await__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154_____next__(PyObject *cpy_r___mypyc_self__);
+extern PyObject *CPyPy__docker___compose_wrap_gen___3_154_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+extern PyObject *CPyPy__docker___compose_wrap_gen___3_154___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154_____iter__(PyObject *cpy_r___mypyc_self__);
+extern PyObject *CPyPy__docker___compose_wrap_gen___3_154_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+extern PyObject *CPyPy__docker___compose_wrap_gen___3_154___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154___close(PyObject *cpy_r___mypyc_self__);
+extern PyObject *CPyPy__docker___compose_wrap_gen___3_154___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+extern PyObject *CPyDef__docker___compose_wrap_gen___3_154_____await__(PyObject *cpy_r___mypyc_self__);
+extern PyObject *CPyPy__docker___compose_wrap_gen___3_154_____await__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 extern PyObject *CPyPy__docker___compose_wrap_ensure_containers_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern PyObject *CPyDef__docker___ensure_containers(PyObject *cpy_r_fn);
