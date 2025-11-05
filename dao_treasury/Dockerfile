@@ -16,7 +16,11 @@ RUN apt-get update && \
 # Set workdir
 WORKDIR /app
 
-RUN pip install --upgrade pip
 
-# we must pin setuptools==80.9.0 to prevent a conflict with web3 v6
+# Invalidate the docker cache if dao-treasury was updated
+RUN echo "DAO_TREASURY_VERSION=${DAO_TREASURY_VERSION}"
+
+# Install container dependencies
+RUN pip install --upgrade pip
+# NOTE We must pin setuptools==80.9.0 to prevent a conflict with web3 v6
 RUN pip install setuptools==80.9.0 dao-treasury==${DAO_TREASURY_VERSION}
