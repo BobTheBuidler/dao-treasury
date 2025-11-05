@@ -42,7 +42,7 @@ services:
 
   exporter:
     build:
-      context: ../
+      context: .
       dockerfile: Dockerfile
     command: ["poetry", "run", "dao-treasury", "run"]
     environment:
