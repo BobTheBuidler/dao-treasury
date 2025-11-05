@@ -43,13 +43,37 @@ poetry run dao-treasury run --wallet 0x123 --network mainnet --interval 12h
 - `--network`: The id of the brownie network the exporter will connect to (default: mainnet)
 - `--interval`: The time interval between each data snapshot (default: 12h)
 - `--concurrency`: The max number of historical blocks to export concurrently. (default: 30)
-- `--daemon`: Run the export process in the background (default: False) (NOTE: currently unsupported)
+- `--daemon`: Run the export process as a Docker container (using the `exporter` service) alongside the other DAO Treasury backend services.
 - `--grafana-port`: Set the port for the Grafana dashboard where you can view data (default: 3004)
 - `--renderer-port`: Set the port for the report rendering service (default: 8091)
 - `--victoria-port`: Set the port for the Victoria metrics reporting endpoint (default: 8430)
 - `--start-renderer`: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.
 
 After running the command, the export script will run continuously until you close your terminal.
+
+### Running in Daemon Mode
+
+To run the export process in the background as a Docker container (recommended for production or unattended operation), use the `--daemon` flag:
+
+```bash
+dao-treasury run --wallet 0x123 --network mainnet --interval 12h --daemon
+```
+
+When `--daemon` is set, the CLI will start the export process as a Docker container (service: `exporter`) alongside the other backend services (e.g., Grafana, renderer). The process will continue running in the background, managed by Docker Compose.
+
+To stop the export process and other containers, use:
+
+```bash
+docker compose -f dao_treasury/docker-compose.yaml down
+```
+
+Or, to stop just the exporter service:
+
+```bash
+docker compose -f dao_treasury/docker-compose.yaml stop exporter
+```
+
+After running the command, the export script will run continuously until you stop the container(s).
 To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
 
 ## Docker
@@ -72,10 +96,16 @@ When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-
   - Tightly integrated with the Grafana container for seamless image rendering.
   - **Note:** The renderer container is only started if you pass the `--start-renderer` CLI flag.
 
+- **exporter**
+  - Runs the DAO Treasury export process itself when `--daemon` is used.
+  - Managed as a Docker service alongside Grafana and renderer.
+  - Recommended for background/production operation.
+
 **How it works:**
 1. DAO Treasury collects and exports treasury data.
 2. Grafana displays this data in pre-built dashboards for analysis and reporting.
 3. The renderer container allows dashboards to be exported as images directly from Grafana (if enabled).
+4. The exporter container runs the export process in the background when `--daemon` is used.
 
 **Additional Information:**
 - All containers are orchestrated via Docker Compose and started automatically as needed.

@@ -63,18 +63,18 @@ typedef struct tuple_T5OOOOO {
 } tuple_T5OOOOO;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T1O
-#define MYPYC_DECLARED_tuple_T1O
-typedef struct tuple_T1O {
-    PyObject *f0;
-} tuple_T1O;
-#endif
-
 #ifndef MYPYC_DECLARED_tuple_T0
 #define MYPYC_DECLARED_tuple_T0
 typedef struct tuple_T0 {
     int empty_struct_error_flag;
 } tuple_T0;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T1O
+#define MYPYC_DECLARED_tuple_T1O
+typedef struct tuple_T1O {
+    PyObject *f0;
+} tuple_T1O;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T6OOOOOO
@@ -546,7 +546,7 @@ typedef struct {
     PyObject_HEAD
     CPyVTableItem *vtable;
     PyObject *___mypyc_env__;
-} dao_treasury____docker___compose_wrap_gen___3_146Object;
+} dao_treasury____docker___compose_wrap_gen___3_140Object;
 
 typedef struct {
     PyObject_HEAD

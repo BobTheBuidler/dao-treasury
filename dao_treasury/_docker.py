@@ -16,7 +16,7 @@ This is the main entry for all Docker-based orchestration.
 import logging
 from functools import wraps
 from importlib import resources
-from typing import Any, Callable, Coroutine, Final, Literal, Tuple, TypeVar, List
+from typing import Any, Callable, Coroutine, Final, Tuple, TypeVar, List
 
 import eth_portfolio_scripts.docker
 from eth_portfolio_scripts.docker import docker_compose
@@ -30,11 +30,12 @@ COMPOSE_FILE: Final = str(
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
-def up(*services: str) -> None:
+def up(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
     """Build and start the specified containers defined in the compose file.
 
     Args:
         services: service names to bring up.
+        build_args: list of build-arg strings to pass to Docker Compose build.
 
     This function first builds the Docker services by invoking
     :func:`build` and then starts the specified services in detached mode using
@@ -54,8 +55,8 @@ def up(*services: str) -> None:
     """
     # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
     eth_portfolio_scripts.docker.up("victoria-metrics")
-    build(*services)
-    _print_notice("starting", services)
+    build(*services, build_args=build_args)
+    docker_compose._print_notice("starting", services)
     _exec_command(["up", "-d", *services])
 
 
@@ -76,7 +77,7 @@ def down() -> None:
     _exec_command(["down"])
 
 
-def build(*services: str) -> None:
+def build(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
     """Build Docker images for Grafana containers.
 
     This function builds all services defined in the Docker Compose
@@ -91,22 +92,14 @@ def build(*services: str) -> None:
         :func:`up`
         :func:`_exec_command`
     """
-    _print_notice("building", services)
-    _exec_command(["build", *services])
-
-
-def _print_notice(
-    doing: Literal["building", "starting"], services: Tuple[str, ...]
-) -> None:
-    if len(services) == 1:
-        container = services[0]
-        print(f"{doing} the {container} container")
-    elif len(services) == 2:
-        first, second = services
-        print(f"{doing} the {first} and {second} containers")
-    else:
-        *all_but_last, last = services
-        print(f"{doing} the {', '.join(all_but_last)}, and {last} containers")
+    docker_compose._print_notice("building", services)
+    if isinstance(build_args, str):
+        build_args = (build_args,)
+    build_cmd = ["build"]
+    for arg in build_args:
+        build_cmd += ["--build-arg", arg]
+    build_cmd += list(services)
+    _exec_command(build_cmd)
 
 
 _P = ParamSpec("_P")

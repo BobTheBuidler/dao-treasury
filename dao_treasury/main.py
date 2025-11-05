@@ -22,8 +22,13 @@ See Also:
 
 import argparse
 import asyncio
+import importlib.metadata
+import importlib.util
 import logging
 import os
+import shlex
+import subprocess
+import sys
 from pathlib import Path
 
 import brownie
@@ -33,6 +38,7 @@ from dao_treasury._wallet import load_wallets_from_yaml
 from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
 
+from dao_treasury import _docker
 from dao_treasury.constants import CHAINID
 
 
@@ -106,7 +112,7 @@ parser.add_argument(
 parser.add_argument(
     "--daemon",
     action="store_true",
-    help="TODO: If True, run as a background daemon. Not currently supported.",
+    help="If True, run the export process as a Docker container (using the 'exporter' service) alongside the other DAO Treasury backend services. The CLI will stream logs from the exporter container.",
 )
 parser.add_argument(
     "--grafana-port",
@@ -130,6 +136,48 @@ args = parser.parse_args()
 
 os.environ["DAO_TREASURY_GRAFANA_PORT"] = str(args.grafana_port)
 os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
+
+
+def set_dao_treasury_run_flags_env(args):
+    """
+    Collect all user CLI flags (except host-only flags like --daemon) into a string
+    and set the DAO_TREASURY_RUN_FLAGS environment variable for the container.
+    """
+    flag_parts = []
+    for arg, value in vars(args).items():
+        if arg == "daemon":
+            # skip host-only flags
+            continue
+        if isinstance(value, bool):
+            if value:
+                flag_parts.append(f"--{arg.replace('_', '-')}")
+        elif value is not None:
+            if isinstance(value, list):
+                for v in value:
+                    flag_parts.append(f"--{arg.replace('_', '-')}")
+                    flag_parts.append(str(v))
+            else:
+                flag_parts.append(f"--{arg.replace('_', '-')}")
+                flag_parts.append(str(value))
+    os.environ["DAO_TREASURY_RUN_FLAGS"] = shlex.join(flag_parts)
+
+
+# Only run daemon logic if not inside the exporter container
+if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
+    set_dao_treasury_run_flags_env(args)
+    version = importlib.metadata.version("dao-treasury")
+    _docker.up("exporter", build_args=f"DAO_TREASURY_VERSION={version}")
+    print(
+        "Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):"
+    )
+    # Build the docker compose logs command using deterministic path
+    compose_file = str((Path(__file__).parent / "docker-compose.yaml").resolve())
+    cmd = ["docker", "compose", "-f", compose_file, "logs", "-ft", "exporter"]
+    try:
+        subprocess.run(cmd, check=True)
+    except KeyboardInterrupt:
+        print("\nLog streaming interrupted by user.")
+    sys.exit(0)
 
 
 # TODO: run forever arg
@@ -250,4 +298,4 @@ async def export(args) -> None:
 
 if __name__ == "__main__":
     os.environ["BROWNIE_NETWORK_ID"] = args.network
-    brownie.project.run(__file__)
+    brownie.project.run(importlib.util.resolve_name(__name__, None))
