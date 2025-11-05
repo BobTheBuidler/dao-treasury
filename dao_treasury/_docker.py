@@ -30,7 +30,7 @@ COMPOSE_FILE: Final = str(
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
-def up(*services: str, build_args: List[str] = None) -> None:
+def up(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
     """Build and start the specified containers defined in the compose file.
 
     Args:
@@ -77,7 +77,7 @@ def down() -> None:
     _exec_command(["down"])
 
 
-def build(*services: str, build_args: List[str] = None) -> None:
+def build(*services: str, build_args: str | Tuple[str, ...] = ()) -> None:
     """Build Docker images for Grafana containers.
 
     This function builds all services defined in the Docker Compose
@@ -93,10 +93,11 @@ def build(*services: str, build_args: List[str] = None) -> None:
         :func:`_exec_command`
     """
     _print_notice("building", services)
+    if isinstance(build_args, str):
+        build_args = (build_args,)
     build_cmd = ["build"]
-    if build_args:
-        for arg in build_args:
-            build_cmd += ["--build-arg", arg]
+    for arg in build_args:
+        build_cmd += ["--build-arg", arg]
     build_cmd += list(services)
     _exec_command(build_cmd)
 
