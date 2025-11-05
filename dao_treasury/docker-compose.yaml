@@ -39,3 +39,32 @@ services:
       - dao_treasury
       - docker_eth_portfolio
     restart: always
+
+  exporter:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command: ["poetry", "run", "dao-treasury", "run"]
+    environment:
+      - IN_EXPORTER_CONTAINER=1
+      - ETHERSCAN_TOKEN
+      - BROWNIE_NETWORK_ID
+      - DAO_TREASURY_GRAFANA_PORT
+      - DAO_TREASURY_RENDERER_PORT
+      - GRAFANA_HOST
+      - GRAFANA_PORT
+      - RENDERER_HOST
+      - RENDERER_PORT
+      - GRAFANA_URL=${GRAFANA_URL:-http://${GRAFANA_HOST:-grafana}:${GRAFANA_PORT:-3004}}
+      - RENDERER_URL=${RENDERER_URL:-http://${RENDERER_HOST:-renderer}:${RENDERER_PORT:-8092}}
+    volumes:
+      - ~/.dao-treasury/:/app/dao-treasury-data
+      - ./.grafana/provisioning/:/etc/grafana/provisioning/
+      - ~/.dao-treasury/dao-treasury.sqlite:/app/dao-treasury-data/dao-treasury.sqlite
+    networks:
+      - dao_treasury
+      - docker_eth_portfolio
+    restart: unless-stopped
+    depends_on:
+      - grafana
+      - renderer

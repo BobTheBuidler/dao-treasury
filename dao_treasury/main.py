@@ -24,6 +24,8 @@ import argparse
 import asyncio
 import logging
 import os
+import sys
+import subprocess
 from pathlib import Path
 
 import brownie
@@ -33,6 +35,7 @@ from dao_treasury._wallet import load_wallets_from_yaml
 from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
 
+from dao_treasury import _docker
 from dao_treasury.constants import CHAINID
 
 
@@ -106,7 +109,7 @@ parser.add_argument(
 parser.add_argument(
     "--daemon",
     action="store_true",
-    help="TODO: If True, run as a background daemon. Not currently supported.",
+    help="If True, run the export process as a Docker container (using the 'exporter' service) alongside the other DAO Treasury backend services. The CLI will stream logs from the exporter container.",
 )
 parser.add_argument(
     "--grafana-port",
@@ -131,6 +134,21 @@ args = parser.parse_args()
 os.environ["DAO_TREASURY_GRAFANA_PORT"] = str(args.grafana_port)
 os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
+# Only run daemon logic if not inside the exporter container
+if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
+    _docker.up("exporter", override_path=args.docker_compose_override)
+    print("Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):")
+    # Build the docker compose logs command using deterministic path
+    compose_file = str((Path(__file__).parent / "docker-compose.yaml").resolve())
+    cmd = ["docker", "compose", "-f", compose_file]
+    if args.docker_compose_override:
+        cmd += ["-f", args.docker_compose_override]
+    cmd += ["logs", "-ft", "exporter"]
+    try:
+        subprocess.run(cmd, check=True)
+    except KeyboardInterrupt:
+        print("\nLog streaming interrupted by user.")
+    sys.exit(0)
 
 # TODO: run forever arg
 def main() -> None:
