@@ -136,14 +136,11 @@ os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
 # Only run daemon logic if not inside the exporter container
 if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
-    _docker.up("exporter", override_path=args.docker_compose_override)
+    _docker.up("exporter")
     print("Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):")
     # Build the docker compose logs command using deterministic path
     compose_file = str((Path(__file__).parent / "docker-compose.yaml").resolve())
-    cmd = ["docker", "compose", "-f", compose_file]
-    if args.docker_compose_override:
-        cmd += ["-f", args.docker_compose_override]
-    cmd += ["logs", "-ft", "exporter"]
+    cmd = ["docker", "compose", "-f", compose_file, "logs", "-ft", "exporter"]
     try:
         subprocess.run(cmd, check=True)
     except KeyboardInterrupt:
