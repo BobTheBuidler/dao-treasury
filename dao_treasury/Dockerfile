@@ -16,4 +16,5 @@ RUN apt-get update && \
 # Set workdir
 WORKDIR /app
 
-RUN pip install --upgrade pip && pip install dao-treasury==${DAO_TREASURY_VERSION}
+RUN pip install --upgrade pip
+RUN pip install poetry dao-treasury==${DAO_TREASURY_VERSION}
