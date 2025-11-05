@@ -137,7 +137,9 @@ os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 # Only run daemon logic if not inside the exporter container
 if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
     _docker.up("exporter")
-    print("Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):")
+    print(
+        "Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):"
+    )
     # Build the docker compose logs command using deterministic path
     compose_file = str((Path(__file__).parent / "docker-compose.yaml").resolve())
     cmd = ["docker", "compose", "-f", compose_file, "logs", "-ft", "exporter"]
@@ -146,6 +148,7 @@ if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
     except KeyboardInterrupt:
         print("\nLog streaming interrupted by user.")
     sys.exit(0)
+
 
 # TODO: run forever arg
 def main() -> None:
