@@ -59,6 +59,9 @@ services:
       - RENDERER_URL=${RENDERER_URL:-http://${RENDERER_HOST:-renderer}:${RENDERER_PORT:-8092}}
     volumes:
       - ~/.dao-treasury/:/app/dao-treasury-data
+      - ~/.ypricemagic/:~/.ypricemagic
+      - ~/.eth_portfolio/:~/.eth_portfolio
+      - ~/.brownie/:~/.brownie
       - ./.grafana/provisioning/:/etc/grafana/provisioning/
       - ~/.dao-treasury/dao-treasury.sqlite:/app/dao-treasury-data/dao-treasury.sqlite
     networks:
