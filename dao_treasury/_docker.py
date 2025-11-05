@@ -30,11 +30,12 @@ COMPOSE_FILE: Final = str(
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
-def up(*services: str) -> None:
+def up(*services: str, build_args: List[str] = None) -> None:
     """Build and start the specified containers defined in the compose file.
 
     Args:
         services: service names to bring up.
+        build_args: list of build-arg strings to pass to Docker Compose build.
 
     This function first builds the Docker services by invoking
     :func:`build` and then starts the specified services in detached mode using
@@ -54,7 +55,7 @@ def up(*services: str) -> None:
     """
     # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
     eth_portfolio_scripts.docker.up("victoria-metrics")
-    build(*services)
+    build(*services, build_args=build_args)
     _print_notice("starting", services)
     _exec_command(["up", "-d", *services])
 
@@ -76,7 +77,7 @@ def down() -> None:
     _exec_command(["down"])
 
 
-def build(*services: str) -> None:
+def build(*services: str, build_args: List[str] = None) -> None:
     """Build Docker images for Grafana containers.
 
     This function builds all services defined in the Docker Compose
@@ -92,7 +93,12 @@ def build(*services: str) -> None:
         :func:`_exec_command`
     """
     _print_notice("building", services)
-    _exec_command(["build", *services])
+    build_cmd = ["build"]
+    if build_args:
+        for arg in build_args:
+            build_cmd += ["--build-arg", arg]
+    build_cmd += list(services)
+    _exec_command(build_cmd)
 
 
 def _print_notice(

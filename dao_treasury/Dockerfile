@@ -2,6 +2,8 @@
 
 FROM python:3.12-slim
 
+ARG DAO_TREASURY_VERSION
+
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -14,15 +16,4 @@ RUN apt-get update && \
 # Set workdir
 WORKDIR /app
 
-# Copy poetry.lock and pyproject.toml
-COPY pyproject.toml poetry.lock ./
-
-# Install Poetry
-RUN pip install --upgrade pip && pip install poetry
-
-# Install Python dependencies
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi --only main
-
-# Copy the rest of the application code
-COPY . .
+RUN pip install --upgrade pip && pip install dao-treasury==${DAO_TREASURY_VERSION}

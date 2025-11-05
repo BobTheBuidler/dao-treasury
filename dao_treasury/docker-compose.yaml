@@ -44,6 +44,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        DAO_TREASURY_VERSION: ""
     command: ["poetry", "run", "dao-treasury", "run"]
     environment:
       - IN_EXPORTER_CONTAINER=1

@@ -22,6 +22,7 @@ See Also:
 
 import argparse
 import asyncio
+import importlib.metadata
 import logging
 import os
 import sys
@@ -136,7 +137,8 @@ os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
 # Only run daemon logic if not inside the exporter container
 if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
-    _docker.up("exporter")
+    version = importlib.metadata.version("dao-treasury")
+    _docker.up("exporter", build_args=[f"DAO_TREASURY_VERSION={version}"])
     print(
         "Exporter started as a Docker container (service: 'exporter'). Streaming logs (Ctrl+C to exit):"
     )
