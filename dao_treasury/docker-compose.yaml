@@ -46,8 +46,9 @@ services:
       dockerfile: Dockerfile
       args:
         DAO_TREASURY_VERSION: ""
-    command: ["poetry", "run", "dao-treasury", "run"]
+    command: ["sh", "-c", "dao-treasury run $DAO_TREASURY_RUN_FLAGS"]
     environment:
+      - DAO_TREASURY_RUN_FLAGS
       - IN_EXPORTER_CONTAINER=1
       - ETHERSCAN_TOKEN
       - BROWNIE_NETWORK_ID

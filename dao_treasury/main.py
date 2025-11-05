@@ -25,8 +25,9 @@ import asyncio
 import importlib.metadata
 import logging
 import os
-import sys
+import shlex
 import subprocess
+import sys
 from pathlib import Path
 
 import brownie
@@ -135,8 +136,34 @@ args = parser.parse_args()
 os.environ["DAO_TREASURY_GRAFANA_PORT"] = str(args.grafana_port)
 os.environ["DAO_TREASURY_RENDERER_PORT"] = str(args.renderer_port)
 
+
+def set_dao_treasury_run_flags_env(args):
+    """
+    Collect all user CLI flags (except host-only flags like --daemon) into a string
+    and set the DAO_TREASURY_RUN_FLAGS environment variable for the container.
+    """
+    flag_parts = []
+    for arg, value in vars(args).items():
+        if arg == "daemon":
+            # skip host-only flags
+            continue
+        if isinstance(value, bool):
+            if value:
+                flag_parts.append(f"--{arg.replace('_', '-')}")
+        elif value is not None:
+            if isinstance(value, list):
+                for v in value:
+                    flag_parts.append(f"--{arg.replace('_', '-')}")
+                    flag_parts.append(str(v))
+            else:
+                flag_parts.append(f"--{arg.replace('_', '-')}")
+                flag_parts.append(str(value))
+    os.environ["DAO_TREASURY_RUN_FLAGS"] = shlex.join(flag_parts)
+
+
 # Only run daemon logic if not inside the exporter container
 if args.daemon and not os.environ.get("IN_EXPORTER_CONTAINER"):
+    set_dao_treasury_run_flags_env(args)
     version = importlib.metadata.version("dao-treasury")
     _docker.up("exporter", build_args=[f"DAO_TREASURY_VERSION={version}"])
     print(
