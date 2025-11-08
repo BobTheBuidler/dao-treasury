@@ -501,13 +501,13 @@
           "text": "All",
           "value": "$__all"
         },
-        "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id where gh.top_category = 'Revenue' or gh.top_category = 'Other Income';",
+        "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id WHERE (gh.top_category = 'Revenue' OR gh.top_category = 'Other Income') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
         "description": "",
         "includeAll": true,
         "label": "Tx Group",
         "name": "Txgroup",
         "options": [],
-        "query": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id where gh.top_category = 'Revenue' or gh.top_category = 'Other Income';",
+        "query": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id WHERE (gh.top_category = 'Revenue' OR gh.top_category = 'Other Income') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -523,5 +523,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 3
+  "version": 4
 }
