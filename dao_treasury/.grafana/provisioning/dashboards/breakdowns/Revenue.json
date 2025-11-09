@@ -85,7 +85,7 @@
           ]
         }
       ],
-      "title": "Total Revenue",
+      "title": "Revenue",
       "type": "stat"
     },
     {
@@ -344,31 +344,7 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Net (sum)"
-            },
-            "properties": [
-              {
-                "id": "custom.drawStyle",
-                "value": "line"
-              },
-              {
-                "id": "custom.stacking",
-                "value": {
-                  "group": "A",
-                  "mode": "none"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 19
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 12,
@@ -377,9 +353,12 @@
         "y": 4
       },
       "id": 11,
+      "type": "timeseries",
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
@@ -394,9 +373,9 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY timestamp ORDER BY timestamp;",
+          "queryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "queryType": "table",
-          "rawQueryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY timestamp ORDER BY timestamp;",
+          "rawQueryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "refId": "A",
           "timeColumns": [
             "timestamp"
@@ -431,53 +410,11 @@
           "id": "groupBy",
           "options": {
             "fields": {
-              "Cost of Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Net": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Other Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Other Income": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Timestamp": {
+              "TxGroup": {
                 "aggregations": [],
                 "operation": "groupby"
               },
-              "Total Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Total Revenue": {
+              "Revenue": {
                 "aggregations": [
                   "sum"
                 ],
@@ -489,9 +426,20 @@
               }
             }
           }
+        },
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "TxGroup"
+            ],
+            "keepFields": false,
+            "naming": {
+              "asLabels": false
+            }
+          }
         }
-      ],
-      "type": "timeseries"
+      ]
     }
   ],
   "preload": false,
