@@ -483,6 +483,10 @@
                 ],
                 "operation": "aggregate"
               },
+              "TxGroup": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
               "timestamp": {
                 "aggregations": [],
                 "operation": "groupby"
