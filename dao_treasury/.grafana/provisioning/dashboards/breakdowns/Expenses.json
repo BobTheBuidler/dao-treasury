@@ -424,6 +424,18 @@
               }
             }
           }
+        },
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "TxGroup"
+            ],
+            "keepFields": false,
+            "naming": {
+              "asLabels": false
+            }
+          }
         }
       ]
     }
