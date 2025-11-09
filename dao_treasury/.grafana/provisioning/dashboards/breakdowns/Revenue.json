@@ -15,7 +15,7 @@
       }
     ]
   },
-  "description": "Shows a breakdown of expenses over time.",
+  "description": "Shows a breakdown of revenue over time.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -324,7 +324,20 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Monthly Avg"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "line"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 12,
@@ -351,14 +364,14 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
+          "queryText": "SELECT t1.timestamp, g1.name AS \"TxGroup\",\n  SUM(CASE WHEN gh1.top_category in ('Revenue', 'Other Income') THEN t1.value_usd ELSE 0 END) AS \"Revenue\",\n  (\n    SELECT SUM(t2.value_usd) / 30.436875\n    FROM general_ledger t2\n    JOIN txgroup_hierarchy gh2 ON t2.txgroup_id = gh2.txgroup_id\n    INNER JOIN txgroups g2 USING (txgroup_id)\n    WHERE gh2.top_category in ('Revenue', 'Other Income')\n      AND g2.name IN (${Txgroup:sqlstring})\n      AND t2.timestamp <= t1.timestamp\n      AND t2.timestamp > t1.timestamp - (30.436875 * 86400)\n  ) AS \"Monthly Avg\"\nFROM general_ledger t1\nJOIN txgroup_hierarchy gh1 ON t1.txgroup_id = gh1.txgroup_id\nINNER JOIN txgroups g1 USING (txgroup_id)\nWHERE t1.timestamp >= $__from/1000 AND t1.timestamp <= $__to/1000 AND g1.name IN (${Txgroup:sqlstring})\nGROUP BY t1.timestamp\nORDER BY t1.timestamp;",
           "queryType": "table",
-          "rawQueryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
+          "rawQueryText": "SELECT t1.timestamp, g1.name AS \"TxGroup\",\n  SUM(CASE WHEN gh1.top_category in ('Revenue', 'Other Income') THEN t1.value_usd ELSE 0 END) AS \"Revenue\",\n  (\n    SELECT SUM(t2.value_usd) / 30.436875\n    FROM general_ledger t2\n    JOIN txgroup_hierarchy gh2 ON t2.txgroup_id = gh2.txgroup_id\n    INNER JOIN txgroups g2 USING (txgroup_id)\n    WHERE gh2.top_category in ('Revenue', 'Other Income')\n      AND g2.name IN (${Txgroup:sqlstring})\n      AND t2.timestamp <= t1.timestamp\n      AND t2.timestamp > t1.timestamp - (30.436875 * 86400)\n  ) AS \"Monthly Avg\"\nFROM general_ledger t1\nJOIN txgroup_hierarchy gh1 ON t1.txgroup_id = gh1.txgroup_id\nINNER JOIN txgroups g1 USING (txgroup_id)\nWHERE t1.timestamp >= $__from/1000 AND t1.timestamp <= $__to/1000 AND g1.name IN (${Txgroup:sqlstring})\nGROUP BY t1.timestamp\nORDER BY t1.timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
       ],
-      "title": "Weekly Cashflow",
+      "title": "Revenue Cashflow",
       "transformations": [
         {
           "id": "formatTime",
