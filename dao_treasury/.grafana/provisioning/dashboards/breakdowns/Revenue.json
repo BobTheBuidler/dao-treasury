@@ -344,20 +344,7 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Monthly Avg"
-            },
-            "properties": [
-              {
-                "id": "custom.drawStyle",
-                "value": "line"
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 12,
@@ -422,20 +409,12 @@
           "options": {
             "fields": {
               "TxGroup": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": [],
                 "operation": "groupby"
               },
               "Total Revenue": {
                 "aggregations": [
                   "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Monthly Avg": {
-                "aggregations": [
-                  "lastNotNull"
                 ],
                 "operation": "aggregate"
               },
