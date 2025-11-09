@@ -68,7 +68,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -172,7 +172,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -276,7 +276,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -380,7 +380,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -485,7 +485,7 @@
         "cellHeight": "sm",
         "showHeader": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -532,6 +532,130 @@
       "fieldConfig": {
         "defaults": {
           "color": {
+            "fixedColor": "#0066ff",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "BTC"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#0066ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cash & cash equivalents"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Other short term assets"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 3
+      },
+      "id": 13,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": ["percent"]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "asc"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "type": "piechart"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
             "mode": "thresholds"
           },
           "custom": {
@@ -563,10 +687,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 24,
-        "x": 0,
-        "y": 6
+        "h": 7,
+        "w": 15,
+        "x": 9,
+        "y": 3
       },
       "id": 1,
       "options": {
@@ -575,11 +699,11 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "Current Balance"
+            "displayName": "Last Known Value USD"
           }
         ]
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -638,15 +762,6 @@
                 "aggregations": [],
                 "operation": "groupby"
               }
-            }
-          }
-        },
-        {
-          "disabled": true,
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "names": ["bucket", "token", "Value (last)"]
             }
           }
         },
@@ -741,7 +856,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 10
       },
       "id": 4,
       "options": {
@@ -754,7 +869,7 @@
           }
         ]
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "PROMETHEUS",
@@ -855,7 +970,7 @@
     "list": []
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-3d",
     "to": "now"
   },
   "timepicker": {},
