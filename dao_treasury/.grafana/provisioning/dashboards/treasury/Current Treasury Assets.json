@@ -528,10 +528,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PDC1078F23EBDF0E5"
-      },
+      "datasource": "PROMETHEUS",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -642,10 +639,7 @@
       "pluginVersion": "12.2.1",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PDC1078F23EBDF0E5"
-          },
+          "datasource": "PROMETHEUS",
           "editorMode": "code",
           "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket)",
           "instant": false,
