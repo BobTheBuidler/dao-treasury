@@ -60,9 +60,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -78,10 +76,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Revenue",
@@ -126,9 +121,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -144,10 +137,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Cost of Revenue",
@@ -192,9 +182,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -210,10 +198,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Expenses",
@@ -259,9 +244,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -277,10 +260,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Operating Total",
@@ -397,9 +377,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END) AS \"Total Revenue\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\",\r\n       SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
           "refId": "A",
-          "timeColumns": [
-            "timestamp"
-          ]
+          "timeColumns": ["timestamp"]
         }
       ],
       "title": "Weekly Cashflow",
@@ -431,39 +409,27 @@
           "options": {
             "fields": {
               "Cost of Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Net": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Other Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Other Income": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Timestamp": {
@@ -471,15 +437,11 @@
                 "operation": "groupby"
               },
               "Total Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Total Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "timestamp": {
