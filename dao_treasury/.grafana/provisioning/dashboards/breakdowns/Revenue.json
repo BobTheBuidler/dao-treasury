@@ -348,23 +348,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Net (sum)"
+              "options": "Monthly Avg"
             },
             "properties": [
               {
                 "id": "custom.drawStyle",
                 "value": "line"
-              },
-              {
-                "id": "custom.stacking",
-                "value": {
-                  "group": "A",
-                  "mode": "none"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 19
               }
             ]
           }
@@ -377,6 +366,7 @@
         "y": 4
       },
       "id": 11,
+      "type": "timeseries",
       "options": {
         "legend": {
           "calcs": [],
@@ -431,51 +421,11 @@
           "id": "groupBy",
           "options": {
             "fields": {
-              "Cost of Revenue": {
+              "TxGroup": {
                 "aggregations": [
                   "sum"
                 ],
-                "operation": "aggregate"
-              },
-              "Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Net": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Other Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Other Income": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
-              },
-              "Timestamp": {
-                "aggregations": [],
                 "operation": "groupby"
-              },
-              "Total Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
-                "operation": "aggregate"
               },
               "Total Revenue": {
                 "aggregations": [
@@ -483,9 +433,11 @@
                 ],
                 "operation": "aggregate"
               },
-              "TxGroup": {
-                "aggregations": [],
-                "operation": "groupby"
+              "Monthly Avg": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
               },
               "timestamp": {
                 "aggregations": [],
@@ -494,8 +446,7 @@
             }
           }
         }
-      ],
-      "type": "timeseries"
+      ]
     }
   ],
   "preload": false,
