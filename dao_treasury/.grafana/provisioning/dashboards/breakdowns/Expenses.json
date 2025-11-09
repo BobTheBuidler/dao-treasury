@@ -368,9 +368,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT t1.timestamp, g1.name AS \"TxGroup\", SUM(CASE WHEN gh1.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t1.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger t1 JOIN txgroup_hierarchy gh1 ON t1.txgroup_id = gh1.txgroup_id INNER JOIN txgroups g1 USING (txgroup_id) WHERE t1.timestamp >= $__from/1000 AND t1.timestamp <= $__to/1000 AND g1.name IN (${Txgroup:sqlstring}) GROUP BY t1.timestamp, g1.name ORDER BY t1.timestamp;",
           "refId": "A",
-          "timeColumns": [
-            "timestamp"
-          ]
+          "timeColumns": ["timestamp"]
         },
         {
           "datasource": "SQLite",
@@ -378,9 +376,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT t1.timestamp, (SELECT SUM(t2.value_usd) / 30.436875 FROM general_ledger t2 JOIN txgroup_hierarchy gh2 ON t2.txgroup_id = gh2.txgroup_id INNER JOIN txgroups g2 USING (txgroup_id) WHERE gh2.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND g2.name IN (${Txgroup:sqlstring}) AND t2.timestamp <= t1.timestamp AND t2.timestamp > t1.timestamp - (30.436875 * 86400)) AS \"Monthly Avg\" FROM general_ledger t1 WHERE t1.timestamp >= $__from/1000 AND t1.timestamp <= $__to/1000 GROUP BY t1.timestamp ORDER BY t1.timestamp;",
           "refId": "B",
-          "timeColumns": [
-            "timestamp"
-          ]
+          "timeColumns": ["timestamp"]
         }
       ],
       "title": "Expenses Cashflow",
