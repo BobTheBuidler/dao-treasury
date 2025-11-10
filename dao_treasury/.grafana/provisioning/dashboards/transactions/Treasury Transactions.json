@@ -214,7 +214,7 @@
       ],
       "title": "Transactions",
       "type": "table",
-      "description": "Displays all of the DAO's treasury transactions with full details, including timestamp, block, hash, token, sender/recipient address and nickname, amount, price, value in USD, and transaction group. Includes direct links to Etherscan for transaction, block, and address fields."
+      "description": "Displays all of the DAO's treasury transactions with full details, including timestamp, block, hash, token, sender/recipient address and nickname, amount, price, value in USD, and transaction group.\n\nIncludes direct links to Etherscan for transaction, block, and address fields."
     }
   ],
   "preload": false,
@@ -239,7 +239,7 @@
         "regex": "",
         "sort": 5,
         "type": "query",
-        "description": "Filter transactions by top-level category (e.g., Revenue, Cost of Revenue, Expenses, Other Income, Other Expenses, Unsorted Income, Unsorted Expense). Selecting 'All' includes all categories."
+        "description": "Filter transactions by top-level category (e.g., Revenue, Cost of Revenue, Expenses, Other Income, Other Expenses, Unsorted Income, Unsorted Expense).\n\nSelecting 'All' includes all categories."
       },
       {
         "current": {
@@ -248,7 +248,7 @@
         },
         "datasource": "SQLite",
         "definition": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
-        "description": "Filter transactions by blockchain network. Selecting 'All' includes all supported chains.",
+        "description": "Filter transactions by blockchain network.\n\nSelecting 'All' includes all supported chains.",
         "includeAll": true,
         "label": "Chain",
         "name": "Chain",
@@ -266,7 +266,7 @@
         },
         "datasource": "SQLite",
         "definition": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
-        "description": "Filter transactions by token symbol. Selecting 'All' includes all tokens.",
+        "description": "Filter transactions by token symbol.\n\nSelecting 'All' includes all tokens.",
         "includeAll": true,
         "label": "Token",
         "name": "Token",
@@ -284,7 +284,7 @@
         },
         "datasource": "SQLite",
         "definition": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
-        "description": "Filter transactions by sender address. Selecting 'All' includes all sender addresses.",
+        "description": "Filter transactions by sender address.\n\nSelecting 'All' includes all sender addresses.",
         "includeAll": true,
         "label": "From Address",
         "name": "From",
@@ -302,7 +302,7 @@
         },
         "datasource": "SQLite",
         "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
-        "description": "Filter transactions by sender nickname. Selecting 'All' includes all senders.",
+        "description": "Filter transactions by sender nickname.\n\nSelecting 'All' includes all senders.",
         "includeAll": true,
         "label": "From Nickname",
         "name": "FromNickname",
@@ -320,7 +320,7 @@
         },
         "datasource": "SQLite",
         "definition": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
-        "description": "Filter transactions by recipient address. Selecting 'All' includes all recipient addresses.",
+        "description": "Filter transactions by recipient address.\n\nSelecting 'All' includes all recipient addresses.",
         "includeAll": true,
         "label": "To Address",
         "name": "To",
@@ -338,7 +338,7 @@
         },
         "datasource": "SQLite",
         "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
-        "description": "Filter transactions by recipient nickname. Selecting 'All' includes all recipients.",
+        "description": "Filter transactions by recipient nickname.\n\nSelecting 'All' includes all recipients.",
         "includeAll": true,
         "label": "To Nickname",
         "name": "ToNickname",
