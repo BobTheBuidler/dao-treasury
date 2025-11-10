@@ -50,7 +50,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 20,
         "w": 24,
         "x": 0,
         "y": 0
@@ -102,5 +102,5 @@
   "title": "Monthly P&L",
   "description": "Summarizes the DAO's monthly profit and loss, providing a breakdown of sorted and unsorted financial activity for each month. Supports financial reporting and tracking the progress of transaction categorization.",
   "uid": "a63fa9a7-d4f3-4092-9bde-194add8bcbeb",
-  "version": 2
+  "version": 3
 }
