@@ -100,7 +100,7 @@
           "refId": "C"
         }
       ],
-      "title": "YFI in Treasury",
+      "title": "YFI",
       "transformations": [
         {
           "id": "calculateField",
@@ -218,7 +218,7 @@
           "refId": "A"
         }
       ],
-      "title": "YFI in Treasury ($)",
+      "title": "YFI ($)",
       "type": "stat",
       "description": "Displays the total USD value of all YFI and yvYFI tokens held in the DAO's treasury."
     },
@@ -283,7 +283,7 @@
           "refId": "A"
         }
       ],
-      "title": "Liquid Assets",
+      "title": "Liquid",
       "type": "stat",
       "description": "Displays the total USD value of all liquid assets in the DAO's treasury, excluding YFI and other long-term assets."
     },
@@ -539,7 +539,7 @@
           "refId": "A"
         }
       ],
-      "title": "Treasury Debt",
+      "title": "Debt",
       "type": "stat",
       "description": "Displays the total USD value of all outstanding debt/liabilities in the DAO's treasury."
     },
@@ -2977,5 +2977,5 @@
   "title": "Historical Treasury Balances",
   "description": "Displays real-time balances of the DAO's treasury assets, including YFI, ETH, BTC, \"cash\" (stablecoins), and other assets, as well as liabilities and debt. Useful for monitoring the DAO's current financial position and asset allocation.",
   "uid": "9_ppKhd7z",
-  "version": 9
+  "version": 10
 }
