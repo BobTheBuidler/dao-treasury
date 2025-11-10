@@ -402,6 +402,9 @@ class Token(DbEntity):
     decimals = Required(int, lazy=True)
     """Number of decimals used for value scaling."""
 
+    bucket = Required(str, lazy=True)
+    """The sorting "bucket" the token fits into."""
+
     if TYPE_CHECKING:
         treasury_tx: Set["TreasuryTx"]
 
