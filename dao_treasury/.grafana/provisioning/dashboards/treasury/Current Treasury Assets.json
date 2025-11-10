@@ -850,7 +850,26 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "token"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "View Transactions for ${__value.raw}",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Token=${__value.raw}from=now-5y&to=now",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 13,
@@ -977,5 +996,5 @@
   "timezone": "browser",
   "title": "Current Assets",
   "uid": "ad47zqk",
-  "version": 5
+  "version": 6
 }
