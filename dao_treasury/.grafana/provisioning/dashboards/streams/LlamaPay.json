@@ -26,7 +26,7 @@
         "type": "frser-sqlite-datasource",
         "uid": "P2D2EEF3E092AF52B"
       },
-      "description": "",
+      "description": "Displays all LlamaPay payment streams managed by the DAO, including stream ID, factory, start/end block, token, sender, recipient, reason, budget request, amount per second, status, and transaction group.\n\nData Links: Click on addresses or blocks to view them on Etherscan. Click on a budget request to view the related Github issue.",
       "fieldConfig": {
         "defaults": {
           "color": {
