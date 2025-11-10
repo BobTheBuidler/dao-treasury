@@ -15,7 +15,7 @@
       }
     ]
   },
-  "description": "Shows a breakdown of expenses over time.",
+  "description": "Provides a detailed breakdown of DAO revenue over time, including totals and averages by period and transaction group. Intended for monitoring income streams, identifying trends, and supporting financial reporting. Use the 'Tx Group' filter to view specific revenue categories (e.g., Revenue, Other Income) or all groups. Data Links in panels allow quick navigation to filtered transaction details.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -100,7 +100,8 @@
         }
       ],
       "title": "Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total revenue for the selected period, aggregated across all revenue transaction groups.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
@@ -180,7 +181,8 @@
         }
       ],
       "title": "Monthly Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Shows the average revenue per month for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
@@ -260,7 +262,8 @@
         }
       ],
       "title": "Weekly Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Shows the average revenue per week for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
@@ -340,11 +343,12 @@
         }
       ],
       "title": "Daily Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Shows the average revenue per day for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Time series chart of revenue by transaction group, aggregated weekly for the selected period.\n\nClicking a group name opens a filtered transactions dashboard for that group and period.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -522,7 +526,7 @@
           "value": "$__all"
         },
         "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id WHERE (gh.top_category = 'Revenue' OR gh.top_category = 'Other Income') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
-        "description": "",
+        "description": "Filter the dashboard by transaction group.\n\nSelect one or more groups to view revenue for specific categories, or 'All' to include every group.",
         "includeAll": true,
         "label": "Tx Group",
         "name": "Txgroup",
@@ -543,5 +547,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 7
+  "version": 8
 }

@@ -15,7 +15,7 @@
       }
     ]
   },
-  "description": "Shows a breakdown of expenses over time.",
+  "description": "Provides a detailed breakdown of DAO expenses over time, including totals and averages by period and transaction group. Intended for monitoring spending trends, identifying cost drivers, and supporting financial reporting. Use the 'Tx Group' filter to view specific categories (e.g., Expenses, Cost of Revenue, Other Expense) or all groups. Data Links in panels allow quick navigation to filtered transaction details.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -100,7 +100,8 @@
         }
       ],
       "title": "Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total expenses for the selected period, aggregated across all expense transaction groups. Useful for understanding overall spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
@@ -180,7 +181,8 @@
         }
       ],
       "title": "Monthly Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Shows the average expenses per month for the selected period. Useful for tracking monthly spending trends.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
@@ -260,7 +262,8 @@
         }
       ],
       "title": "Weekly Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Shows the average expenses per week for the selected period. Useful for monitoring short-term spending changes.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
@@ -340,11 +343,12 @@
         }
       ],
       "title": "Daily Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Shows the average expenses per day for the selected period. Useful for fine-grained monitoring of spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Time series chart of expenses by transaction group, aggregated weekly for the selected period. Useful for visualizing spending trends and identifying cost drivers.\n\nData Link: Clicking a group name opens a filtered transactions dashboard for that group and period.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -522,7 +526,7 @@
           "value": "$__all"
         },
         "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id WHERE (gh.top_category = 'Expenses' OR gh.top_category = 'Cost of Revenue' OR gh.top_category = 'Other Expense') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
-        "description": "",
+        "description": "Filter the dashboard by transaction group.\n\nSelect one or more groups to view expenses for specific categories, or 'All' to include every group.",
         "includeAll": true,
         "label": "Tx Group",
         "name": "Txgroup",
@@ -543,5 +547,5 @@
   "timezone": "",
   "title": "Expenses Over Time",
   "uid": "62bccd38-918c-4395-9180-8f7f911e9ddf",
-  "version": 10
+  "version": 11
 }
