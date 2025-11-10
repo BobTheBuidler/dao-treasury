@@ -154,7 +154,8 @@
           }
         }
       ],
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total YFI and yvYFI token balances in the DAO's treasury, including both direct and vault holdings. Useful for tracking the DAO's exposure to YFI."
     },
     {
       "datasource": "PROMETHEUS",
@@ -218,7 +219,8 @@
         }
       ],
       "title": "YFI in Treasury ($)",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all YFI and yvYFI tokens held in the DAO's treasury."
     },
     {
       "datasource": "PROMETHEUS",
@@ -282,7 +284,8 @@
         }
       ],
       "title": "Liquid Assets",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all liquid assets in the DAO's treasury, excluding YFI and other long-term assets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -344,7 +347,8 @@
         }
       ],
       "title": "ETH",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all ETH and ETH-like tokens held in the DAO's treasury."
     },
     {
       "datasource": "PROMETHEUS",
@@ -406,7 +410,8 @@
         }
       ],
       "title": "BTC",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all BTC and BTC-like tokens held in the DAO's treasury."
     },
     {
       "datasource": "PROMETHEUS",
@@ -470,7 +475,8 @@
         }
       ],
       "title": "Cash",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all stablecoins and cash equivalents held in the DAO's treasury."
     },
     {
       "datasource": "PROMETHEUS",
@@ -534,7 +540,8 @@
         }
       ],
       "title": "Treasury Debt",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all outstanding debt/liabilities in the DAO's treasury."
     },
     {
       "datasource": "PROMETHEUS",
@@ -596,7 +603,8 @@
         }
       ],
       "title": "Cash - Debt",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the net USD value of cash and cash equivalents after subtracting all outstanding debt."
     },
     {
       "datasource": "PROMETHEUS",
@@ -694,7 +702,8 @@
         }
       ],
       "title": "Liquid Assets",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid assets in the DAO's treasury, grouped by asset bucket, over time."
     },
     {
       "datasource": "PROMETHEUS",
@@ -786,7 +795,8 @@
         }
       ],
       "title": "Protocol Debt",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of protocol debt/liabilities in the DAO's treasury, grouped by token, over time."
     },
     {
       "datasource": "PROMETHEUS",
@@ -915,7 +925,8 @@
         }
       ],
       "title": "Assets - Debt",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of liquid assets, cash, debt, and net positions (cash minus debt, liquid assets minus debt) in the DAO's treasury over time."
     },
     {
       "datasource": "PROMETHEUS",
@@ -1035,7 +1046,8 @@
           }
         }
       ],
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the ratio of total debt to total assets (excluding long-term assets) in the DAO's treasury, expressed as a percentage."
     },
     {
       "collapsed": false,
@@ -1287,7 +1299,8 @@
         }
       ],
       "title": "Liquid Cash",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time."
     },
     {
       "collapsed": false,
@@ -1435,7 +1448,8 @@
         }
       ],
       "title": "Liquid ETH",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time."
     },
     {
       "collapsed": false,
@@ -1583,7 +1597,8 @@
         }
       ],
       "title": "Liquid BTC",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time."
     },
     {
       "collapsed": false,
@@ -1957,7 +1972,8 @@
         }
       ],
       "title": "Liquid Everything Else",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time."
     },
     {
       "collapsed": false,
@@ -2237,7 +2253,8 @@
         }
       ],
       "title": "Liquid Cash by Wallet",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time."
     },
     {
       "collapsed": false,
@@ -2385,7 +2402,8 @@
         }
       ],
       "title": "Liquid ETH by Wallet",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time."
     },
     {
       "collapsed": false,
@@ -2533,7 +2551,8 @@
         }
       ],
       "title": "Liquid BTC by Wallet",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time."
     },
     {
       "collapsed": false,
@@ -2938,7 +2957,8 @@
         }
       ],
       "title": "Liquid Everything Else by Wallet",
-      "type": "timeseries"
+      "type": "timeseries",
+      "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time."
     }
   ],
   "preload": false,
@@ -2957,5 +2977,5 @@
   "title": "Historical Treasury Balances",
   "description": "Displays real-time balances of the DAO's treasury assets, including YFI, ETH, BTC, \"cash\" (stablecoins), and other assets, as well as liabilities and debt. Useful for monitoring the DAO's current financial position and asset allocation.",
   "uid": "9_ppKhd7z",
-  "version": 5
+  "version": 9
 }
