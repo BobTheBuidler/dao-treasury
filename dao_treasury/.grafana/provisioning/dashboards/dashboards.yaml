@@ -1,84 +1,11 @@
 apiVersion: 1
 
 providers:
-# Home
-- name: 'Summary'
-  folder: 'Summary'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/summary
-
-# Dashboards
-- name: 'Current Treasury Assets'
-  folder: 'Treasury'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/treasury
-
-- name: 'Operating Cashflow Summary'
-  folder: 'Treasury'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/treasury
-
-- name: 'Total Cashflow Summary'
-  folder: 'Treasury'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/treasury
-
-- name: 'Total Cashflow Summary (Including Unsorted)'
-  folder: 'Treasury'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/treasury
-  
-- name: 'Historical Treasury Balances'
-  folder: 'Treasury'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/treasury
-
-- name: 'Treasury Transactions'
-  folder: 'Transactions'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/transactions
-
-- name: 'LlamaPay Streams'
-  folder: 'Streams'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/streams
-
-- name: 'Revenue Over Time'
-  folder: 'Breakdowns'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/breakdowns
-
-- name: 'Expenses Over Time'
-  folder: 'Breakdowns'
-  type: file
-  disableDeletion: true
-  editable: false
-  options:
-    path: /etc/grafana/provisioning/dashboards/breakdowns
+  - name: 'All Dashboards'
+    orgId: 1
+    folder: ''
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards
