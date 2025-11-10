@@ -123,7 +123,8 @@
           }
         }
       ],
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all DAO treasury assets in USD, aggregated across all wallets, asset types, and buckets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -227,7 +228,8 @@
           }
         }
       ],
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all stablecoins (cash & cash equivalents) held in any of the DAO's treasury wallets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -331,7 +333,8 @@
           }
         }
       ],
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all ETH and ETH-like tokens held in any of the DAO's treasury wallets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -435,7 +438,8 @@
           }
         }
       ],
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total USD value of all BTC and BTC-like tokens held in any of the DAO's treasury wallets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -525,7 +529,8 @@
           }
         }
       ],
-      "type": "table"
+      "type": "table",
+      "description": "Shows the timestamp of the most recent complete data snapshot for treasury assets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -649,7 +654,8 @@
         }
       ],
       "title": "",
-      "type": "piechart"
+      "type": "piechart",
+      "description": "Pie chart visualizing the distribution of treasury assets by bucket (e.g., stablecoins, ETH, BTC, other assets)."
     },
     {
       "datasource": "PROMETHEUS",
@@ -815,7 +821,8 @@
           }
         }
       ],
-      "type": "table"
+      "type": "table",
+      "description": "Table summarizing the latest known USD value for each asset token and bucket, including all available tokens in any of the DAO's treasury wallets."
     },
     {
       "datasource": "PROMETHEUS",
@@ -979,7 +986,8 @@
           }
         }
       ],
-      "type": "table"
+      "type": "table",
+      "description": "Detailed breakdown of the latest known USD value for each asset token and bucket, including all available tokens in any of the DAO's treasury wallets.\n\nData Link: Click any token to view all transactions for that token in the Treasury Transactions dashboard."
     }
   ],
   "preload": false,
@@ -995,6 +1003,7 @@
   "timepicker": {},
   "timezone": "browser",
   "title": "Current Assets",
+  "description": "Provides a real-time summary and detailed breakdown of all assets currently held in the DAO's treasury, including stablecoins, ETH, BTC, and other asset types. Useful for monitoring the DAO's current financial position, asset allocation, and recent changes. Data Links allow quick navigation to transaction details for each token.",
   "uid": "ad47zqk",
-  "version": 6
+  "version": 7
 }
