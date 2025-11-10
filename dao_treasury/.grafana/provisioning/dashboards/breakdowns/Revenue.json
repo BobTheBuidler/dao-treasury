@@ -45,7 +45,26 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "View Revenue Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Revenue&from=$__from&to=$__to",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 4,
@@ -106,7 +125,26 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "View Revenue Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Revenue&from=$__from&to=$__to",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 4,
@@ -167,7 +205,26 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "View Revenue Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Revenue&from=$__from&to=$__to",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 4,
@@ -228,7 +285,26 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "View Revenue Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Revenue&from=$__from&to=$__to",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 4,
@@ -324,7 +400,26 @@
           },
           "unit": "currencyUSD"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TxGroup"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "View ${__value.raw} Transactions",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=${__value.raw}&from=$__from&to=$__to",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 12,
@@ -448,5 +543,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 4
+  "version": 6
 }

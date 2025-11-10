@@ -869,7 +869,7 @@
                 "value": [
                   {
                     "title": "View Transactions for ${__value.raw}",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Token=${__value.raw}from=now-5y&to=now",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Token=${__value.raw}&from=now-5y&to=now",
                     "targetBlank": true
                   }
                 ]
@@ -1005,5 +1005,5 @@
   "title": "Current Assets",
   "description": "Provides a real-time summary and detailed breakdown of all assets currently held in the DAO's treasury, including stablecoins, ETH, BTC, and other asset types. Useful for monitoring the DAO's current financial position, asset allocation, and recent changes. Data Links allow quick navigation to transaction details for each token.",
   "uid": "ad47zqk",
-  "version": 7
+  "version": 8
 }
