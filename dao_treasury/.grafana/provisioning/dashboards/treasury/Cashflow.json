@@ -580,7 +580,7 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 41,
-  "tags": [],
+  "tags": ["cashflow"],
   "templating": {
     "list": []
   },
@@ -593,5 +593,5 @@
   "title": "Total Cashflow Summary",
   "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
   "uid": "7e2b1c8a-4e2d-4b7a-9c1a-2f8e6b7d9c3f",
-  "version": 5
+  "version": 6
 }

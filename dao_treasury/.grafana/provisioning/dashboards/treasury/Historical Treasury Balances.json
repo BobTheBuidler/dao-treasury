@@ -2972,7 +2972,7 @@
   "preload": false,
   "refresh": "30s",
   "schemaVersion": 41,
-  "tags": [],
+  "tags": ["assets", "balances", "historical"],
   "templating": {
     "list": []
   },

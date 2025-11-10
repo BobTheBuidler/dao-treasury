@@ -11,8 +11,9 @@ DAO Treasury was designed to make it easy for less technical users to contribute
 3. [Creating a New Dashboard](#creating-a-new-dashboard)
 4. [Editing an Existing Dashboard](#editing-an-existing-dashboard)
 5. [Important Requirements for Dashboard Contributions](#important-requirements-for-dashboard-contributions)
-6. [Submitting Your Changes](#submitting-your-changes)
-7. [Additional Notes](#additional-notes)
+6. [Dashboard Tagging Policy](#dashboard-tagging-policy)
+7. [Submitting Your Changes](#submitting-your-changes)
+8. [Additional Notes](#additional-notes)
 
 ---
 
@@ -97,6 +98,19 @@ When contributing new dashboards or updating existing ones, please follow these 
   - Avoid leaving descriptions blank or using placeholders like "No description" or "TBD".
 
 Following these requirements helps keep our dashboards user-friendly, well-documented, and easy to maintain!
+
+---
+
+## Dashboard Tagging Policy
+
+- **Purpose:**  
+  Dashboard tags are used to help users filter and discover dashboards by function, data type, or business process.
+- **Tagging Rules:**  
+  - Only use tags that are distinguishing and not universal (do not use tags like "treasury" or "reporting", they could apply to all dashboards).
+  - Tags should be concise, descriptive, and useful for filtering.
+  - Example tags: `breakdown`, `revenue`, `expenses`, `pnl`, `monthly`, `cashflow`, `operating`, `assets`, `balances`, `historical`, `unsorted`, `current`, `streams`, `llamapay`, `payments`, `transactions`, `detailed`.
+  - When adding or editing a dashboard, review the current tags in use and select those that best describe the dashboard's unique purpose.
+  - Update the documentation and tag mapping in `docs/dashboards.rst` if you introduce new tags.
 
 ---
 
