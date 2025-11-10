@@ -83,7 +83,8 @@
         }
       ],
       "title": "Monthly Profit & Loss",
-      "type": "table"
+      "type": "table",
+      "description": "Displays a table of monthly profit and loss for the DAO, including Revenue, Cost of Revenue, Expenses, Other Income, Other Expense, Sorted Net, Unsorted Income, Unsorted Expense.\n\nUseful for high-level financial reporting and tracking the progress of transaction categorization."
     }
   ],
   "preload": false,
@@ -102,5 +103,5 @@
   "title": "Monthly P&L",
   "description": "Summarizes the DAO's monthly profit and loss, providing a breakdown of sorted and unsorted financial activity for each month. Supports financial reporting and tracking the progress of transaction categorization.",
   "uid": "a63fa9a7-d4f3-4092-9bde-194add8bcbeb",
-  "version": 3
+  "version": 4
 }
