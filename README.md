@@ -5,6 +5,7 @@ DAO Treasury is a comprehensive financial reporting and treasury management solu
 - **Financial Reporting for DAOs:** Extends core portfolio functionalities to generate detailed reports tailored for on-chain organizations.
 - **Dashboard Provisioning:** Utilizes [Grafana](https://grafana.com/) dashboards—defined in JSON files within the .grafana/provisioning directories—to offer real-time, dynamic visualizations of treasury data.
 - **Automated Data Export:** Features a treasury export tool that, once configured (with a supported [brownie network](https://eth-brownie.readthedocs.io/en/stable/network-management.html) and [Docker](https://www.docker.com/get-started/)), continuously captures financial snapshots at set intervals.
+- **Custom Buckets for Wallets:** Assign custom categories ("buckets") to specific wallet addresses for more granular reporting using the `--custom-bucket` CLI option.
 - **Ease of Contribution:** Non-technical users can easily update or create dashboard visuals using Grafana’s intuitive UI. The [Contributing Guidelines](https://github.com/BobTheBuidler/dao-treasury/blob/master/CONTRIBUTING.md) document provides a step-by-step guide to defining new visuals and dashboards and integrating those changes into the repository, ensuring that anyone can contribute to the visual reporting aspect of the project.
 
 ## Requirements
@@ -39,15 +40,28 @@ For local development (from source installation), use:
 poetry run dao-treasury run --wallet 0x123 --network mainnet --interval 12h
 ```
 
+**Assigning Custom Buckets to Wallets:**
+
+You can assign custom categories ("buckets") to specific wallet addresses for more granular reporting. Use the `--custom-bucket` option one or more times, each with the format `address:bucket_name`:
+
+```bash
+dao-treasury run --wallet 0x123 --network mainnet --custom-bucket "0x123:Operations" --custom-bucket "0x456:Grants" --custom-bucket "0x789:Investments"
+```
+
 **CLI Options:**
+> Only optional arguments are listed here. Required arguments (such as `--wallet` or `--wallets`) are shown in the usage examples above.
+
 - `--network`: The id of the brownie network the exporter will connect to (default: mainnet)
 - `--interval`: The time interval between each data snapshot (default: 12h)
 - `--concurrency`: The max number of historical blocks to export concurrently. (default: 30)
 - `--daemon`: Run the export process in the background (default: False) (NOTE: currently unsupported)
+- `--sort-rules`: Directory containing sort rules definitions for transaction categorization.
+- `--nicknames`: File containing address nicknames for reporting.
 - `--grafana-port`: Set the port for the Grafana dashboard where you can view data (default: 3004)
 - `--renderer-port`: Set the port for the report rendering service (default: 8091)
 - `--victoria-port`: Set the port for the Victoria metrics reporting endpoint (default: 8430)
 - `--start-renderer`: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.
+- `--custom-bucket`: Assign a custom bucket/category to a wallet address for reporting. Specify as `address:bucket_name`. Can be used multiple times.
 
 After running the command, the export script will run continuously until you close your terminal.
 To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
