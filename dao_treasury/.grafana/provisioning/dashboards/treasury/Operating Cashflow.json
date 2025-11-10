@@ -80,7 +80,8 @@
         }
       ],
       "title": "Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Revenue for the selected period."
     },
     {
       "datasource": "SQLite",
@@ -141,7 +142,8 @@
         }
       ],
       "title": "Cost of Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Cost of Revenue for the selected period."
     },
     {
       "datasource": "SQLite",
@@ -202,11 +204,12 @@
         }
       ],
       "title": "Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Expenses for the selected period."
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Shows the net operating cashflow (Revenue minus Cost of Revenue and Expenses) for the selected period.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -268,7 +271,7 @@
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Time series chart of all sorted operational cashflows, grouped by category, for the selected period. Shows Total Revenue, Total Expenses, and Net for each week, helping to analyze trends in the DAO's operational financial flows over time.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {

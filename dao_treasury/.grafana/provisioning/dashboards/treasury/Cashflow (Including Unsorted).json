@@ -80,7 +80,8 @@
         }
       ],
       "title": "Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as revenue for the selected period."
     },
     {
       "datasource": "SQLite",
@@ -141,7 +142,8 @@
         }
       ],
       "title": "Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as expenses for the selected period."
     },
     {
       "datasource": "SQLite",
@@ -202,7 +204,8 @@
         }
       ],
       "title": "Cost of Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as cost of revenue for the selected period."
     },
     {
       "datasource": "SQLite",
@@ -263,7 +266,8 @@
         }
       ],
       "title": "Other Income",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as other income for the selected period."
     },
     {
       "datasource": "SQLite",
@@ -324,11 +328,12 @@
         }
       ],
       "title": "Other Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as other expenses for the selected period."
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Shows the net total cashflow (all revenue minus all expenses) for the selected period, including both sorted and unsorted transactions.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -390,7 +395,7 @@
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Time series chart of all cashflows (including unsorted), grouped by category, for the selected period.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -598,7 +603,7 @@
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Displays the total value of inbound transactions pending categorization for the selected period.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -660,7 +665,7 @@
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Displays the total value of outbound transactions pending categorization for the selected period.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -722,7 +727,7 @@
     },
     {
       "datasource": "SQLite",
-      "description": "",
+      "description": "Shows the overall net cashflow (including unsorted) for the selected period.",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
