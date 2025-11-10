@@ -57,7 +57,7 @@
                 "value": [
                   {
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Expenses&from=$__from&to=$__to",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
                     "targetBlank": true
                   }
                 ]
@@ -138,7 +138,7 @@
                 "value": [
                   {
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Expenses&from=$__from&to=$__to",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
                     "targetBlank": true
                   }
                 ]
@@ -219,7 +219,7 @@
                 "value": [
                   {
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Expenses&from=$__from&to=$__to",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
                     "targetBlank": true
                   }
                 ]
@@ -300,7 +300,7 @@
                 "value": [
                   {
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=Expenses&from=$__from&to=$__to",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
                     "targetBlank": true
                   }
                 ]
@@ -416,7 +416,7 @@
                 "value": [
                   {
                     "title": "View ${__series.name} Transactions",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-TxGroup=${__series.name}&from=$__from&to=$__to",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=${__series.name}&from=$__from&to=$__to",
                     "targetBlank": true
                   }
                 ]
@@ -547,5 +547,5 @@
   "timezone": "",
   "title": "Expenses Over Time",
   "uid": "62bccd38-918c-4395-9180-8f7f911e9ddf",
-  "version": 12
+  "version": 13
 }
