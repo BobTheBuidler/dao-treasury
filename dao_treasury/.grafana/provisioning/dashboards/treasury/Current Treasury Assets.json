@@ -992,7 +992,7 @@
   ],
   "preload": false,
   "schemaVersion": 42,
-  "tags": [],
+  "tags": ["assets", "current"],
   "templating": {
     "list": []
   },
@@ -1005,5 +1005,5 @@
   "title": "Current Assets",
   "description": "Provides a real-time summary and detailed breakdown of all assets currently held in the DAO's treasury, including stablecoins, ETH, BTC, and other asset types. Useful for monitoring the DAO's current financial position, asset allocation, and recent changes. Data Links allow quick navigation to transaction details for each token.",
   "uid": "ad47zqk",
-  "version": 8
+  "version": 9
 }

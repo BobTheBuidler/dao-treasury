@@ -516,7 +516,7 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 42,
-  "tags": [],
+  "tags": ["breakdown", "revenue"],
   "templating": {
     "list": [
       {
@@ -547,5 +547,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 10
+  "version": 11
 }

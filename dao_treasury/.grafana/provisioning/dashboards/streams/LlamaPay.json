@@ -203,7 +203,7 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 41,
-  "tags": [],
+  "tags": ["streams", "llamapay", "payments"],
   "templating": {
     "list": []
   },
@@ -216,5 +216,5 @@
   "title": "LlamaPay",
   "description": "A simple dashboard with a comprehensive view of all LlamaPay payment streams managed by the DAO, including stream status, participants, configuration, and transaction group.",
   "uid": "aa4d62a2-9e52-4acc-8f38-a96c77810aca",
-  "version": 2
+  "version": 3
 }
