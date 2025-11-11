@@ -19,15 +19,17 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 5,
+  "id": 1,
   "links": [],
   "panels": [
     {
       "datasource": "SQLite",
+      "description": "Displays the total expenses for the selected period, aggregated across all expense transaction groups. Useful for understanding overall spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "dark-red",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -56,9 +58,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -74,7 +76,7 @@
       },
       "id": 1,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -88,7 +90,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -100,15 +102,16 @@
         }
       ],
       "title": "Expenses",
-      "type": "stat",
-      "description": "Displays the total expenses for the selected period, aggregated across all expense transaction groups. Useful for understanding overall spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
+      "description": "Shows the average expenses per month for the selected period. Useful for tracking monthly spending trends.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "dark-red",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -137,9 +140,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -155,7 +158,7 @@
       },
       "id": 4,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -169,7 +172,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -181,15 +184,16 @@
         }
       ],
       "title": "Monthly Expenses",
-      "type": "stat",
-      "description": "Shows the average expenses per month for the selected period. Useful for tracking monthly spending trends.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
+      "description": "Shows the average expenses per week for the selected period. Useful for monitoring short-term spending changes.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "dark-red",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -218,9 +222,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -236,7 +240,7 @@
       },
       "id": 2,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -250,7 +254,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -262,15 +266,16 @@
         }
       ],
       "title": "Weekly Expenses",
-      "type": "stat",
-      "description": "Shows the average expenses per week for the selected period. Useful for monitoring short-term spending changes.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
+      "description": "Shows the average expenses per day for the selected period. Useful for fine-grained monitoring of spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "dark-red",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -299,9 +304,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Expense Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -317,7 +322,7 @@
       },
       "id": 3,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -331,7 +336,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -343,8 +348,7 @@
         }
       ],
       "title": "Daily Expenses",
-      "type": "stat",
-      "description": "Shows the average expenses per day for the selected period. Useful for fine-grained monitoring of spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
@@ -352,7 +356,9 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "fixedColor": "dark-red",
+            "mode": "continuous-YlRd",
+            "seriesBy": "max"
           },
           "custom": {
             "axisBorderShow": false,
@@ -395,10 +401,6 @@
               {
                 "color": "green",
                 "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -415,9 +417,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View ${__series.name} Transactions",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=${__series.name}&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=${__series.name}&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -432,7 +434,6 @@
         "y": 4
       },
       "id": 11,
-      "type": "timeseries",
       "options": {
         "legend": {
           "calcs": ["sum"],
@@ -446,7 +447,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -485,13 +486,13 @@
           "id": "groupBy",
           "options": {
             "fields": {
-              "TxGroup": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
               "Expenses": {
                 "aggregations": ["sum"],
                 "operation": "aggregate"
+              },
+              "TxGroup": {
+                "aggregations": [],
+                "operation": "groupby"
               },
               "timestamp": {
                 "aggregations": [],
@@ -510,7 +511,8 @@
             }
           }
         }
-      ]
+      ],
+      "type": "timeseries"
     }
   ],
   "preload": false,
@@ -547,5 +549,5 @@
   "timezone": "",
   "title": "Expenses Over Time",
   "uid": "62bccd38-918c-4395-9180-8f7f911e9ddf",
-  "version": 14
+  "version": 15
 }
