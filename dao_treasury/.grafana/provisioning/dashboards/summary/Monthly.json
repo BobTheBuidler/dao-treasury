@@ -310,6 +310,9 @@
                 "value": {
                   "type": "color-text"
                 }
+              },
+              {
+                "id": "links"
               }
             ]
           }
