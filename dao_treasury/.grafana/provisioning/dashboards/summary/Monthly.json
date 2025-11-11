@@ -291,7 +291,8 @@
                 }
               }
             ]
-          },{
+          },
+          {
             "matcher": {
               "id": "byName",
               "options": "Month"
