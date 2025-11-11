@@ -1489,7 +1489,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 42
+            "y": 106
           },
           "id": 21,
           "options": {
@@ -1639,7 +1639,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 59
+            "y": 123
           },
           "id": 22,
           "options": {
@@ -2015,7 +2015,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 76
+            "y": 140
           },
           "id": 23,
           "options": {
@@ -2053,14 +2053,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 25 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
       "id": 1033,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -2072,27 +2080,49 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "auto",
+                "showValues": false,
                 "spanNulls": 3600000,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
-                "steps": [{ "color": "green", "value": 0 }]
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 26 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 27
+          },
           "id": 1015,
           "options": {
             "alertThreshold": true,
@@ -2102,9 +2132,13 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
-          "pluginVersion": "12.1.1",
+          "pluginVersion": "12.2.1",
           "targets": [
             {
               "datasource": "PROMETHEUS",
@@ -2117,8 +2151,7 @@
             }
           ],
           "title": "Liquid Cash (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid Cash (Stacked)",
@@ -2126,14 +2159,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 42 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
       "id": 1031,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -2145,30 +2186,53 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 43 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 50
+          },
           "id": 1021,
           "options": {
             "alertThreshold": true,
@@ -2178,9 +2242,13 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
-          "pluginVersion": "12.1.1",
+          "pluginVersion": "12.2.1",
           "targets": [
             {
               "datasource": "PROMETHEUS",
@@ -2193,8 +2261,7 @@
             }
           ],
           "title": "Liquid ETH (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid ETH (Stacked)",
@@ -2202,14 +2269,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 59 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
       "id": 1029,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -2221,30 +2296,52 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 60 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 124
+          },
           "id": 1022,
           "options": {
             "alertThreshold": true,
@@ -2254,7 +2351,11 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
           "pluginVersion": "12.1.1",
           "targets": [
@@ -2269,8 +2370,7 @@
             }
           ],
           "title": "Liquid BTC (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid BTC (Stacked)",
@@ -2278,14 +2378,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 76 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
       "id": 1027,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -2297,30 +2405,52 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 77 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 141
+          },
           "id": 1023,
           "options": {
             "alertThreshold": true,
@@ -2330,7 +2460,11 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
           "pluginVersion": "12.1.1",
           "targets": [
@@ -2345,8 +2479,7 @@
             }
           ],
           "title": "Liquid Everything Else (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid Everything Else (Stacked)",
@@ -2358,7 +2491,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 32
       },
       "id": 40,
       "panels": [
@@ -2598,7 +2731,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 93
+            "y": 157
           },
           "id": 45,
           "options": {
@@ -2640,7 +2773,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 33
       },
       "id": 42,
       "panels": [
@@ -2748,7 +2881,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 110
+            "y": 174
           },
           "id": 36,
           "options": {
@@ -2790,7 +2923,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 34
       },
       "id": 44,
       "panels": [
@@ -2898,7 +3031,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 127
+            "y": 191
           },
           "id": 48,
           "options": {
@@ -2940,7 +3073,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 35
       },
       "id": 47,
       "panels": [
@@ -3305,7 +3438,7 @@
             "h": 16,
             "w": 24,
             "x": 0,
-            "y": 144
+            "y": 208
           },
           "id": 49,
           "options": {
@@ -3343,14 +3476,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 93 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
       "id": 1045,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -3362,30 +3503,53 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 94 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 53
+          },
           "id": 1036,
           "options": {
             "alertThreshold": true,
@@ -3395,9 +3559,13 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
-          "pluginVersion": "12.1.1",
+          "pluginVersion": "12.2.1",
           "targets": [
             {
               "datasource": "PROMETHEUS",
@@ -3410,8 +3578,7 @@
             }
           ],
           "title": "Liquid Cash by Wallet (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid Cash by Wallet (Stacked)",
@@ -3419,14 +3586,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 110 },
-      "id": 1036,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 1050,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -3438,30 +3613,52 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 111 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 175
+          },
           "id": 1037,
           "options": {
             "alertThreshold": true,
@@ -3471,7 +3668,11 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
           "pluginVersion": "12.1.1",
           "targets": [
@@ -3486,8 +3687,7 @@
             }
           ],
           "title": "Liquid ETH by Wallet (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid ETH by Wallet (Stacked)",
@@ -3495,14 +3695,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 127 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
       "id": 1048,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -3514,30 +3722,52 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 128 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 192
+          },
           "id": 1038,
           "options": {
             "alertThreshold": true,
@@ -3547,7 +3777,11 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
           "pluginVersion": "12.1.1",
           "targets": [
@@ -3562,8 +3796,7 @@
             }
           ],
           "title": "Liquid BTC by Wallet (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid BTC by Wallet (Stacked)",
@@ -3571,14 +3804,22 @@
     },
     {
       "collapsed": true,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 144 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
       "id": 1049,
       "panels": [
         {
           "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -3590,30 +3831,52 @@
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "linear",
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "never",
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "normal" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": 0 },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               },
               "unit": "currencyUSD"
             },
             "overrides": []
           },
-          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 145 },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 209
+          },
           "id": 1039,
           "options": {
             "alertThreshold": true,
@@ -3623,7 +3886,11 @@
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
           },
           "pluginVersion": "12.1.1",
           "targets": [
@@ -3638,8 +3905,7 @@
             }
           ],
           "title": "Liquid Everything Else by Wallet (Stacked)",
-          "type": "timeseries",
-          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+          "type": "timeseries"
         }
       ],
       "title": "Liquid Everything Else by Wallet (Stacked)",
@@ -3661,5 +3927,5 @@
   "timezone": "",
   "title": "Historical Treasury Balances",
   "uid": "9_ppKhd7z",
-  "version": 12
+  "version": 3
 }
