@@ -451,7 +451,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= 1746978113279/1000 AND t.timestamp <= 1762875713279/1000 AND g.name IN ('Simple Vesting Escrow','Tenderly Subscription') GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
+          "queryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= 1762875713279/1000 AND g.name IN ('Simple Vesting Escrow','Tenderly Subscription') GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "queryType": "table",
           "rawQueryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "refId": "A",
@@ -549,5 +549,5 @@
   "timezone": "",
   "title": "Expenses Over Time",
   "uid": "62bccd38-918c-4395-9180-8f7f911e9ddf",
-  "version": 1
+  "version": 15
 }
