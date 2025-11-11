@@ -109,15 +109,6 @@
               "names": ["Time", "Value (sum)"]
             }
           }
-        },
-        {
-          "disabled": true,
-          "id": "reduce",
-          "options": {
-            "includeTimeField": true,
-            "mode": "reduceFields",
-            "reducers": ["sum"]
-          }
         }
       ],
       "type": "stat"
@@ -186,20 +177,18 @@
           "options": {
             "fields": {
               "Time": {
-                "aggregations": ["last"],
-                "operation": "aggregate"
+                "aggregations": [],
+                "operation": "groupby"
               },
               "Value": {
-                "aggregations": ["last"],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "bucket": {
-                "aggregations": [],
-                "operation": "groupby"
+                "aggregations": []
               },
               "token": {
-                "aggregations": [],
-                "operation": "groupby"
+                "aggregations": []
               }
             }
           }
@@ -208,16 +197,8 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": ["Value (last)", "Time (last)"]
+              "names": ["Time", "Value (sum)"]
             }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "includeTimeField": false,
-            "mode": "reduceFields",
-            "reducers": ["sum"]
           }
         }
       ],
@@ -287,20 +268,18 @@
           "options": {
             "fields": {
               "Time": {
-                "aggregations": ["last"],
-                "operation": "aggregate"
+                "aggregations": [],
+                "operation": "groupby"
               },
               "Value": {
-                "aggregations": ["last"],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "bucket": {
-                "aggregations": [],
-                "operation": "groupby"
+                "aggregations": []
               },
               "token": {
-                "aggregations": [],
-                "operation": "groupby"
+                "aggregations": []
               }
             }
           }
@@ -309,16 +288,8 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": ["Value (last)", "Time (last)"]
+              "names": ["Time", "Value (sum)"]
             }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "includeTimeField": false,
-            "mode": "reduceFields",
-            "reducers": ["sum"]
           }
         }
       ],
@@ -388,20 +359,18 @@
           "options": {
             "fields": {
               "Time": {
-                "aggregations": ["last"],
-                "operation": "aggregate"
+                "aggregations": [],
+                "operation": "groupby"
               },
               "Value": {
-                "aggregations": ["last"],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "bucket": {
-                "aggregations": [],
-                "operation": "groupby"
+                "aggregations": []
               },
               "token": {
-                "aggregations": [],
-                "operation": "groupby"
+                "aggregations": []
               }
             }
           }
@@ -410,16 +379,8 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": ["Value (last)", "Time (last)"]
+              "names": ["Time", "Value (sum)"]
             }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "includeTimeField": false,
-            "mode": "reduceFields",
-            "reducers": ["sum"]
           }
         }
       ],
@@ -976,5 +937,5 @@
   "timezone": "browser",
   "title": "Current Treasury Assets",
   "uid": "ad47zqk",
-  "version": 10
+  "version": 11
 }
