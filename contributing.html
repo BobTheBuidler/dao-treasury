@@ -53,6 +53,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#system-patterns-and-best-practices">System Patterns and Best Practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-new-dashboard">Creating a New Dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#editing-an-existing-dashboard">Editing an Existing Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-requirements-for-dashboard-contributions">Important Requirements for Dashboard Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dashboard-tagging-policy">Dashboard Tagging Policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#submitting-your-changes">Submitting Your Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a></li>
 </ul>
@@ -94,6 +96,8 @@
 <li><p><a class="reference internal" href="#system-patterns-and-best-practices"><span class="xref myst">System Patterns and Best Practices</span></a></p></li>
 <li><p><a class="reference internal" href="#creating-a-new-dashboard"><span class="xref myst">Creating a New Dashboard</span></a></p></li>
 <li><p><a class="reference internal" href="#editing-an-existing-dashboard"><span class="xref myst">Editing an Existing Dashboard</span></a></p></li>
+<li><p><a class="reference internal" href="#important-requirements-for-dashboard-contributions"><span class="xref myst">Important Requirements for Dashboard Contributions</span></a></p></li>
+<li><p><a class="reference internal" href="#dashboard-tagging-policy"><span class="xref myst">Dashboard Tagging Policy</span></a></p></li>
 <li><p><a class="reference internal" href="#submitting-your-changes"><span class="xref myst">Submitting Your Changes</span></a></p></li>
 <li><p><a class="reference internal" href="#additional-notes"><span class="xref myst">Additional Notes</span></a></p></li>
 </ol>
@@ -188,6 +192,41 @@
 </ul>
 </li>
 </ol>
+</section>
+<hr class="docutils" />
+<section id="important-requirements-for-dashboard-contributions">
+<h2>Important Requirements for Dashboard Contributions<a class="headerlink" href="#important-requirements-for-dashboard-contributions" title="Link to this heading"></a></h2>
+<p>When contributing new dashboards or updating existing ones, please follow these important requirements to ensure quality and consistency:</p>
+<ul class="simple">
+<li><p><strong>Descriptions are Required:</strong>
+Every dashboard and every panel must have a clear, specific, and helpful description.</p>
+<ul>
+<li><p>The description should explain the purpose, key metrics, and intended use.</p></li>
+<li><p>If the dashboard or panel uses filters (templating variables), describe what each filter does and how it affects the data shown.</p></li>
+<li><p>If a panel uses Data Links, explain what those links do and, if possible, provide an example use case.</p></li>
+<li><p>For longer descriptions, use newlines to break up content for readability.</p></li>
+<li><p>Avoid leaving descriptions blank or using placeholders like “No description” or “TBD”.</p></li>
+</ul>
+</li>
+</ul>
+<p>Following these requirements helps keep our dashboards user-friendly, well-documented, and easy to maintain!</p>
+</section>
+<hr class="docutils" />
+<section id="dashboard-tagging-policy">
+<h2>Dashboard Tagging Policy<a class="headerlink" href="#dashboard-tagging-policy" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Purpose:</strong>
+Dashboard tags are used to help users filter and discover dashboards by function, data type, or business process.</p></li>
+<li><p><strong>Tagging Rules:</strong></p>
+<ul>
+<li><p>Only use tags that are distinguishing and not universal (do not use tags like “treasury” or “reporting”, they could apply to all dashboards).</p></li>
+<li><p>Tags should be concise, descriptive, and useful for filtering.</p></li>
+<li><p>Example tags: <code class="docutils literal notranslate"><span class="pre">breakdown</span></code>, <code class="docutils literal notranslate"><span class="pre">revenue</span></code>, <code class="docutils literal notranslate"><span class="pre">expenses</span></code>, <code class="docutils literal notranslate"><span class="pre">pnl</span></code>, <code class="docutils literal notranslate"><span class="pre">monthly</span></code>, <code class="docutils literal notranslate"><span class="pre">cashflow</span></code>, <code class="docutils literal notranslate"><span class="pre">operating</span></code>, <code class="docutils literal notranslate"><span class="pre">assets</span></code>, <code class="docutils literal notranslate"><span class="pre">balances</span></code>, <code class="docutils literal notranslate"><span class="pre">historical</span></code>, <code class="docutils literal notranslate"><span class="pre">unsorted</span></code>, <code class="docutils literal notranslate"><span class="pre">current</span></code>, <code class="docutils literal notranslate"><span class="pre">streams</span></code>, <code class="docutils literal notranslate"><span class="pre">llamapay</span></code>, <code class="docutils literal notranslate"><span class="pre">payments</span></code>, <code class="docutils literal notranslate"><span class="pre">transactions</span></code>, <code class="docutils literal notranslate"><span class="pre">detailed</span></code>.</p></li>
+<li><p>When adding or editing a dashboard, review the current tags in use and select those that best describe the dashboard’s unique purpose.</p></li>
+<li><p>Update the documentation and tag mapping in <code class="docutils literal notranslate"><span class="pre">docs/dashboards.rst</span></code> if you introduce new tags.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 <hr class="docutils" />
 <section id="submitting-your-changes">

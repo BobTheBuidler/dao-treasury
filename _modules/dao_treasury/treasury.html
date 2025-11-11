@@ -93,11 +93,11 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_task</span><span class="p">,</span> <span class="n">gather</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">a_sync</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">a_sync.a_sync.abstract</span><span class="w"> </span><span class="kn">import</span> <span class="n">ASyncABC</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlockNumber</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">eth_typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlockNumber</span><span class="p">,</span> <span class="n">HexAddress</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio.structs</span><span class="w"> </span><span class="kn">import</span> <span class="n">LedgerEntry</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PortfolioBalances</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">eth_portfolio_scripts._portfolio</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExportablePortfolio</span>
@@ -131,6 +131,7 @@
         <span class="n">sort_rules</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">start_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;your org&#39;s treasury&quot;</span><span class="p">,</span>
+        <span class="n">custom_buckets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">HexAddress</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">asynchronous</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Treasury singleton for managing DAO funds.</span>
@@ -203,6 +204,7 @@
             <span class="n">start_block</span><span class="o">=</span><span class="n">start_block</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">load_prices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">custom_buckets</span><span class="o">=</span><span class="n">custom_buckets</span><span class="p">,</span>
             <span class="n">asynchronous</span><span class="o">=</span><span class="n">asynchronous</span><span class="p">,</span>
         <span class="p">)</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;An eth_portfolio.Portfolio object used for exporting tx and balance history&quot;&quot;&quot;</span>
