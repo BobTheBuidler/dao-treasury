@@ -33,11 +33,23 @@
               "type": "auto"
             },
             "footer": {
-              "reducers": ["sum", "max", "mean", "median"]
+              "reducers": [
+                "sum",
+                "max",
+                "mean",
+                "median"
+              ]
             },
             "inspect": true
           },
           "fieldMinMax": true,
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "View ${__field.name}﻿﻿ transactions for this period",
+              "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4/treasury-transactions?var-Top=${__field.name}﻿﻿&from=${__data.fields.month_start}&to=${__data.fields.month_end}"
+            }
+          ],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -66,6 +78,9 @@
                 "value": {
                   "type": "color-text"
                 }
+              },
+              {
+                "id": "links"
               }
             ]
           },
@@ -80,6 +95,9 @@
                 "value": {
                   "type": "color-text"
                 }
+              },
+              {
+                "id": "links"
               }
             ]
           },
@@ -106,7 +124,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Unsorted Expense"
+              "options": "Unsorted Expenses"
             },
             "properties": [
               {
@@ -146,7 +164,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Other Expense"
+              "options": "Other Expenses"
             },
             "properties": [
               {
@@ -180,6 +198,102 @@
                 "value": {
                   "mode": "continuous-RdYlGr"
                 }
+              },
+              {
+                "id": "links"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "month_start"
+            },
+            "properties": [
+              {
+                "id": "unit"
+              },
+              {
+                "id": "custom.hideFrom.viz",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "month_end"
+            },
+            "properties": [
+              {
+                "id": "unit"
+              },
+              {
+                "id": "custom.hideFrom.viz",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Revenue"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffffff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Expenses"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffffff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cost of Revenue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ffffff",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
               }
             ]
           }
@@ -206,11 +320,14 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT\n    month AS \"Month\",\n    SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END) AS \"Revenue\",\n    SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"Cost of Revenue\",\n    SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END) AS \"Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Operating Net\",\n    SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"Other Income\",\n    SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"Other Expense\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Sorted Net\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Income\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Expense\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n    ) AS \"Net\"\nFROM (\n    SELECT\n        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n        gh.top_category,\n        COALESCE(t.value_usd, 0) AS value_usd\n    FROM treasury_txs AS t\n    JOIN txgroups AS tg ON t.txgroup_id = tg.txgroup_id\n    JOIN txgroup_hierarchy AS gh ON tg.txgroup_id = gh.txgroup_id\n    WHERE t.timestamp >= strftime('%s', '2025-01-01') AND tg.name <> 'Ignore'\n) AS s\nGROUP BY month;",
+          "queryText": "SELECT\n    month AS \"Month\",\n    SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END) AS \"Revenue\",\n    SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"Cost of Revenue\",\n    SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END) AS \"Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Operating Net\",\n    SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"Other Income\",\n    SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"Other Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Sorted Net\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Income\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n    ) AS \"Net\",\n    -- Month Start as UNIX timestamp (midnight on the first day)\n    CAST(strftime('%s', month || '-01') * 1000 AS TEXT) AS \"month_start\",\n    -- Month End as UNIX timestamp (one millisecond before the next month starts)\n    CAST(strftime('%s', date(month || '-01', '+1 month')) * 1000 - 1 AS TEXT) AS \"month_end\"\nFROM (\n    SELECT\n        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n        gh.top_category,\n        COALESCE(t.value_usd, 0) AS value_usd\n    FROM treasury_txs AS t\n    JOIN txgroups AS tg ON t.txgroup_id = tg.txgroup_id\n    JOIN txgroup_hierarchy AS gh ON tg.txgroup_id = gh.txgroup_id\n    WHERE t.timestamp >= strftime('%s', '2025-01-01') AND tg.name <> 'Ignore'\n) AS s\nGROUP BY month;",
           "queryType": "table",
-          "rawQueryText": "SELECT\n    month AS \"Month\",\n    SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END) AS \"Revenue\",\n    SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"Cost of Revenue\",\n    SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END) AS \"Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Operating Net\",\n    SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"Other Income\",\n    SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"Other Expense\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Sorted Net\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Income\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Expense\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n    ) AS \"Net\"\nFROM (\n    SELECT\n        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n        gh.top_category,\n        COALESCE(t.value_usd, 0) AS value_usd\n    FROM treasury_txs AS t\n    JOIN txgroups AS tg ON t.txgroup_id = tg.txgroup_id\n    JOIN txgroup_hierarchy AS gh ON tg.txgroup_id = gh.txgroup_id\n    WHERE t.timestamp >= strftime('%s', '2025-01-01') AND tg.name <> 'Ignore'\n) AS s\nGROUP BY month;",
+          "rawQueryText": "SELECT\n    month AS \"Month\",\n    SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END) AS \"Revenue\",\n    SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"Cost of Revenue\",\n    SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END) AS \"Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Operating Net\",\n    SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"Other Income\",\n    SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"Other Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Sorted Net\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Income\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n    ) AS \"Net\",\n    -- Month Start as UNIX timestamp (midnight on the first day)\n    CAST(strftime('%s', month || '-01') * 1000 AS TEXT) AS \"month_start\",\n    -- Month End as UNIX timestamp (one millisecond before the next month starts)\n    CAST(strftime('%s', date(month || '-01', '+1 month')) * 1000 - 1 AS TEXT) AS \"month_end\"\nFROM (\n    SELECT\n        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n        gh.top_category,\n        COALESCE(t.value_usd, 0) AS value_usd\n    FROM treasury_txs AS t\n    JOIN txgroups AS tg ON t.txgroup_id = tg.txgroup_id\n    JOIN txgroup_hierarchy AS gh ON tg.txgroup_id = gh.txgroup_id\n    WHERE t.timestamp >= strftime('%s', '2025-01-01') AND tg.name <> 'Ignore'\n) AS s\nGROUP BY month;",
           "refId": "A",
-          "timeColumns": ["time", "ts"]
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
         }
       ],
       "title": "Monthly Profit & Loss",
