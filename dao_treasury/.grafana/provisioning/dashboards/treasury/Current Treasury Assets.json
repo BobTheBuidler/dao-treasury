@@ -58,9 +58,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -92,9 +90,7 @@
                 "operation": "groupby"
               },
               "Value": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -110,10 +106,7 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": [
-                "Time",
-                "Value (sum)"
-              ]
+              "names": ["Time", "Value (sum)"]
             }
           }
         },
@@ -123,9 +116,7 @@
           "options": {
             "includeTimeField": true,
             "mode": "reduceFields",
-            "reducers": [
-              "sum"
-            ]
+            "reducers": ["sum"]
           }
         }
       ],
@@ -167,9 +158,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -197,15 +186,11 @@
           "options": {
             "fields": {
               "Time": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "Value": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -223,10 +208,7 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": [
-                "Value (last)",
-                "Time (last)"
-              ]
+              "names": ["Value (last)", "Time (last)"]
             }
           }
         },
@@ -235,9 +217,7 @@
           "options": {
             "includeTimeField": false,
             "mode": "reduceFields",
-            "reducers": [
-              "sum"
-            ]
+            "reducers": ["sum"]
           }
         }
       ],
@@ -279,9 +259,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -309,15 +287,11 @@
           "options": {
             "fields": {
               "Time": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "Value": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -335,10 +309,7 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": [
-                "Value (last)",
-                "Time (last)"
-              ]
+              "names": ["Value (last)", "Time (last)"]
             }
           }
         },
@@ -347,9 +318,7 @@
           "options": {
             "includeTimeField": false,
             "mode": "reduceFields",
-            "reducers": [
-              "sum"
-            ]
+            "reducers": ["sum"]
           }
         }
       ],
@@ -391,9 +360,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "fields": "",
           "values": false
         },
@@ -421,15 +388,11 @@
           "options": {
             "fields": {
               "Time": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "Value": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -447,10 +410,7 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": [
-                "Value (last)",
-                "Time (last)"
-              ]
+              "names": ["Value (last)", "Time (last)"]
             }
           }
         },
@@ -459,9 +419,7 @@
           "options": {
             "includeTimeField": false,
             "mode": "reduceFields",
-            "reducers": [
-              "sum"
-            ]
+            "reducers": ["sum"]
           }
         }
       ],
@@ -532,9 +490,7 @@
           "options": {
             "includeTimeField": true,
             "mode": "reduceFields",
-            "reducers": [
-              "last"
-            ]
+            "reducers": ["last"]
           }
         },
         {
@@ -542,9 +498,7 @@
           "options": {
             "byVariable": false,
             "include": {
-              "names": [
-                "Time"
-              ]
+              "names": ["Time"]
             }
           }
         },
@@ -653,15 +607,11 @@
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true,
-          "values": [
-            "percent"
-          ]
+          "values": ["percent"]
         },
         "pieType": "pie",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -701,9 +651,7 @@
               "type": "auto"
             },
             "footer": {
-              "reducers": [
-                "sum"
-              ]
+              "reducers": ["sum"]
             },
             "inspect": false
           },
@@ -782,15 +730,11 @@
                 "aggregations": []
               },
               "Time": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "Value": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -813,27 +757,19 @@
                 "operation": "groupby"
               },
               "Last Known Value USD": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Last Seen": {
-                "aggregations": [
-                  "min"
-                ],
+                "aggregations": ["min"],
                 "operation": "aggregate"
               },
               "Time (last)": {
-                "aggregations": [
-                  "min"
-                ],
+                "aggregations": ["min"],
                 "operation": "aggregate"
               },
               "Value (last)": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -976,15 +912,11 @@
                 "aggregations": []
               },
               "Time": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "Value": {
-                "aggregations": [
-                  "last"
-                ],
+                "aggregations": ["last"],
                 "operation": "aggregate"
               },
               "bucket": {
@@ -1003,11 +935,7 @@
           "id": "filterFieldsByName",
           "options": {
             "include": {
-              "names": [
-                "bucket",
-                "token",
-                "Value (last)"
-              ]
+              "names": ["bucket", "token", "Value (last)"]
             }
           }
         },
@@ -1036,10 +964,7 @@
   ],
   "preload": false,
   "schemaVersion": 42,
-  "tags": [
-    "assets",
-    "current"
-  ],
+  "tags": ["assets", "current"],
   "templating": {
     "list": []
   },
