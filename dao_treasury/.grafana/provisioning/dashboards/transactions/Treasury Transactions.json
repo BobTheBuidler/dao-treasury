@@ -12,39 +12,24 @@
       }
     ]
   },
-  "description": "Summarizes the DAO's monthly profit and loss, providing a breakdown of sorted and unsorted financial activity for each month. Supports financial reporting and tracking the progress of transaction categorization.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 9,
   "links": [],
   "panels": [
     {
       "datasource": "SQLite",
-      "description": "Displays a table of monthly profit and loss for the DAO, including Revenue, Cost of Revenue, Expenses, Other Income, Other Expense, Sorted Net, Unsorted Income, Unsorted Expense.\n\nUseful for high-level financial reporting and tracking the progress of transaction categorization.",
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "continuous-RdYlGr"
-          },
           "custom": {
             "align": "auto",
             "cellOptions": {
               "type": "auto"
             },
-            "footer": {
-              "reducers": ["sum", "max", "mean", "median"]
-            },
-            "inspect": true
+            "inspect": false
           },
-          "fieldMinMax": true,
-          "links": [
-            {
-              "targetBlank": true,
-              "title": "View ${__field.name}﻿﻿ transactions for this period",
-              "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4/treasury-transactions?var-Top=${__field.name}﻿﻿&from=${__data.fields.month_start}&to=${__data.fields.month_end}"
-            }
-          ],
+          "decimals": 8,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -58,244 +43,143 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "currencyUSD"
+          }
         },
         "overrides": [
           {
             "matcher": {
               "id": "byName",
-              "options": "Sorted Net"
+              "options": "Hash"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "links"
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/tx/${__value.raw}﻿"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Net"
+              "options": "Block"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "links"
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/block/${__value.raw}"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Unsorted Income"
+              "options": "To"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed"
-                }
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__value.raw}"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Unsorted Expenses"
+              "options": "From"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed"
-                }
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__value.raw}"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Other Income"
+              "options": "From Nickname"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed"
-                }
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__data.fields.From}"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Other Expenses"
+              "options": "To Nickname"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed"
-                }
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__data.fields.To}"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Operating Net"
+              "options": "Block"
             },
             "properties": [
               {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "continuous-RdYlGr"
-                }
-              },
-              {
-                "id": "links"
+                "id": "decimals"
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "month_start"
+              "options": "Log Index"
             },
             "properties": [
               {
-                "id": "unit"
-              },
-              {
-                "id": "custom.hideFrom.viz",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "month_end"
-            },
-            "properties": [
-              {
-                "id": "unit"
-              },
-              {
-                "id": "custom.hideFrom.viz",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Revenue"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#ffffff",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Expenses"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#ffffff",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Cost of Revenue"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#ffffff",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
+                "id": "decimals"
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 20,
+        "h": 18,
         "w": 24,
         "x": 0,
         "y": 0
@@ -303,43 +187,178 @@
       "id": 1,
       "options": {
         "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
             "desc": true,
-            "displayName": "Month"
+            "displayName": "Timestamp"
           }
         ]
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT\n    month AS \"Month\",\n    SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END) AS \"Revenue\",\n    SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"Cost of Revenue\",\n    SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END) AS \"Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Operating Net\",\n    SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"Other Income\",\n    SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"Other Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Sorted Net\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Income\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n    ) AS \"Net\",\n    -- Month Start as UNIX timestamp (midnight on the first day)\n    CAST(strftime('%s', month || '-01') * 1000 AS TEXT) AS \"month_start\",\n    -- Month End as UNIX timestamp (one millisecond before the next month starts)\n    CAST(strftime('%s', date(month || '-01', '+1 month')) * 1000 - 1 AS TEXT) AS \"month_end\"\nFROM (\n    SELECT\n        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n        gh.top_category,\n        COALESCE(t.value_usd, 0) AS value_usd\n    FROM treasury_txs AS t\n    JOIN txgroups AS tg ON t.txgroup_id = tg.txgroup_id\n    JOIN txgroup_hierarchy AS gh ON tg.txgroup_id = gh.txgroup_id\n    WHERE t.timestamp >= strftime('%s', '2025-01-01') AND tg.name <> 'Ignore'\n) AS s\nGROUP BY month;",
+          "queryText": "select timestamp as \"Timestamp\", block as \"Block\", hash as \"Hash\", token as \"Token\", \"from\" as \"From\", from_nickname as \"From Nickname\", \"to\" as \"To\", to_nickname as \"To Nickname\", amount as \"Amount\", price as \"Price\", value_usd as \"Value USD\", txgroup as \"TxGroup\", a.parent_txgroup as \"Parent TxGroup\", log_index as \"Log Index\" from ( SELECT datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id, a.log_index FROM treasury_txs a LEFT JOIN chains b ON a.chain = b.chain_dbid LEFT JOIN tokens c ON a.token_id = c.token_id LEFT JOIN addresses d ON a.\"from\" = d.address_id LEFT JOIN addresses e ON a.\"to\" = e.address_id LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and b.chain_name IN (${Chain:sqlstring}) and c.symbol IN (${Token:sqlstring}) and d.address IN (${From:sqlstring}) and e.address IN (${To:sqlstring}) and d.nickname IN (${FromNickname:sqlstring}) and e.nickname IN (${ToNickname:sqlstring}) ) a left join txgroup_hierarchy b on a.txgroup_id = b.txgroup_id WHERE b.top_category IN (${Top:sqlstring}) ORDER BY timestamp",
           "queryType": "table",
-          "rawQueryText": "SELECT\n    month AS \"Month\",\n    SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END) AS \"Revenue\",\n    SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS \"Cost of Revenue\",\n    SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END) AS \"Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Operating Net\",\n    SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END) AS \"Other Income\",\n    SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS \"Other Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n    ) AS \"Sorted Net\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Income\",\n    SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS \"Unsorted Expenses\",\n    (\n        SUM(CASE WHEN s.top_category = 'Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Other Income' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n      + SUM(CASE WHEN s.top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)\n      - SUM(CASE WHEN s.top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)\n    ) AS \"Net\",\n    -- Month Start as UNIX timestamp (midnight on the first day)\n    CAST(strftime('%s', month || '-01') * 1000 AS TEXT) AS \"month_start\",\n    -- Month End as UNIX timestamp (one millisecond before the next month starts)\n    CAST(strftime('%s', date(month || '-01', '+1 month')) * 1000 - 1 AS TEXT) AS \"month_end\"\nFROM (\n    SELECT\n        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,\n        gh.top_category,\n        COALESCE(t.value_usd, 0) AS value_usd\n    FROM treasury_txs AS t\n    JOIN txgroups AS tg ON t.txgroup_id = tg.txgroup_id\n    JOIN txgroup_hierarchy AS gh ON tg.txgroup_id = gh.txgroup_id\n    WHERE t.timestamp >= strftime('%s', '2025-01-01') AND tg.name <> 'Ignore'\n) AS s\nGROUP BY month;",
+          "rawQueryText": "select timestamp as \"Timestamp\", block as \"Block\", hash as \"Hash\", token as \"Token\", \"from\" as \"From\", from_nickname as \"From Nickname\", \"to\" as \"To\", to_nickname as \"To Nickname\", amount as \"Amount\", price as \"Price\", value_usd as \"Value USD\", txgroup as \"TxGroup\", a.parent_txgroup as \"Parent TxGroup\", log_index as \"Log Index\" from ( SELECT datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id, a.log_index FROM treasury_txs a LEFT JOIN chains b ON a.chain = b.chain_dbid LEFT JOIN tokens c ON a.token_id = c.token_id LEFT JOIN addresses d ON a.\"from\" = d.address_id LEFT JOIN addresses e ON a.\"to\" = e.address_id LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and b.chain_name IN (${Chain:sqlstring}) and c.symbol IN (${Token:sqlstring}) and d.address IN (${From:sqlstring}) and e.address IN (${To:sqlstring}) and d.nickname IN (${FromNickname:sqlstring}) and e.nickname IN (${ToNickname:sqlstring}) ) a left join txgroup_hierarchy b on a.txgroup_id = b.txgroup_id WHERE b.top_category IN (${Top:sqlstring}) ORDER BY timestamp",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
       ],
-      "title": "Monthly Profit & Loss",
-      "type": "table"
+      "title": "Transactions",
+      "type": "table",
+      "description": "Displays all of the DAO's treasury transactions with full details, including timestamp, block, hash, token, sender/recipient address and nickname, amount, price, value in USD, and transaction group.\n\nIncludes direct links to Etherscan for transaction, block, and address fields."
     }
   ],
   "preload": false,
   "refresh": "",
-  "schemaVersion": 42,
-  "tags": [],
+  "schemaVersion": 41,
+  "tags": ["transactions", "detailed"],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "includeAll": true,
+        "label": "Top Level",
+        "name": "Top",
+        "options": [],
+        "query": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query",
+        "description": "Filter transactions by top-level category (e.g., Revenue, Cost of Revenue, Expenses, Other Income, Other Expenses, Unsorted Income, Unsorted Expense).\n\nSelecting 'All' includes all categories."
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by blockchain network.\n\nSelecting 'All' includes all supported chains.",
+        "includeAll": true,
+        "label": "Chain",
+        "name": "Chain",
+        "options": [],
+        "query": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by token symbol.\n\nSelecting 'All' includes all tokens.",
+        "includeAll": true,
+        "label": "Token",
+        "name": "Token",
+        "options": [],
+        "query": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by sender address.\n\nSelecting 'All' includes all sender addresses.",
+        "includeAll": true,
+        "label": "From Address",
+        "name": "From",
+        "options": [],
+        "query": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by sender nickname.\n\nSelecting 'All' includes all senders.",
+        "includeAll": true,
+        "label": "From Nickname",
+        "name": "FromNickname",
+        "options": [],
+        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by recipient address.\n\nSelecting 'All' includes all recipient addresses.",
+        "includeAll": true,
+        "label": "To Address",
+        "name": "To",
+        "options": [],
+        "query": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by recipient nickname.\n\nSelecting 'All' includes all recipients.",
+        "includeAll": true,
+        "label": "To Nickname",
+        "name": "ToNickname",
+        "options": [],
+        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      }
+    ]
   },
   "time": {
-    "from": "now/y",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Monthly P&L",
-  "uid": "a63fa9a7-d4f3-4092-9bde-194add8bcbeb",
-  "version": 7
+  "title": "Treasury Transactions",
+  "description": "Provides a real-time, filterable table of all transactions in the DAO treasury database, including timestamp, block, hash, token, addresses, nicknames, amount, price, and value in USD. Enables detailed analysis and monitoring of all value transfers.",
+  "uid": "b21f1092-66a4-4fb0-90ef-ed77d2becaa4",
+  "version": 6
 }
