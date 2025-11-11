@@ -19,15 +19,17 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 15,
+  "id": 9,
   "links": [],
   "panels": [
     {
       "datasource": "SQLite",
+      "description": "Displays the total revenue for the selected period, aggregated across all revenue transaction groups.\n\nClicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "semi-dark-green",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -56,9 +58,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Revenue Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -74,13 +76,15 @@
       },
       "id": 1,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -88,27 +92,31 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": ["time", "ts"]
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
         }
       ],
       "title": "Revenue",
-      "type": "stat",
-      "description": "Displays the total revenue for the selected period, aggregated across all revenue transaction groups.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
+      "description": "Shows the average revenue per month for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "semi-dark-green",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -137,9 +145,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Revenue Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -155,13 +163,15 @@
       },
       "id": 4,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -169,27 +179,31 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "queryText": "SELECT SUM(t.value_usd) / (((1762874961336 - 1746977361336) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": ["time", "ts"]
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
         }
       ],
       "title": "Monthly Revenue",
-      "type": "stat",
-      "description": "Shows the average revenue per month for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
+      "description": "Shows the average revenue per week for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "semi-dark-green",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -218,9 +232,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Revenue Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -236,13 +250,15 @@
       },
       "id": 2,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -250,27 +266,31 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "queryText": "SELECT SUM(t.value_usd) / (((1762874961336 - 1746977361336) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": ["time", "ts"]
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
         }
       ],
       "title": "Weekly Revenue",
-      "type": "stat",
-      "description": "Shows the average revenue per week for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
+      "description": "Shows the average revenue per day for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "semi-dark-green",
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -299,9 +319,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View Revenue Transactions For This Period",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Revenue&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -317,13 +337,15 @@
       },
       "id": 3,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -331,20 +353,22 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "queryText": "SELECT SUM(t.value_usd) / (((1762874961336 - 1746977361336) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": ["time", "ts"]
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
         }
       ],
       "title": "Daily Revenue",
-      "type": "stat",
-      "description": "Shows the average revenue per day for the selected period.\n\nClicking the value opens a filtered transactions dashboard for this period and group."
+      "type": "stat"
     },
     {
       "datasource": "SQLite",
@@ -415,9 +439,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "View ${__series.name} Transactions",
-                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=${__series.name}&from=$__from&to=$__to",
-                    "targetBlank": true
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=${__series.name}&from=$__from&to=$__to"
                   }
                 ]
               }
@@ -432,10 +456,11 @@
         "y": 4
       },
       "id": 11,
-      "type": "timeseries",
       "options": {
         "legend": {
-          "calcs": ["sum"],
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
@@ -446,7 +471,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "targets": [
         {
           "datasource": "SQLite",
@@ -454,7 +479,9 @@
           "queryType": "table",
           "rawQueryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "refId": "A",
-          "timeColumns": ["timestamp"]
+          "timeColumns": [
+            "timestamp"
+          ]
         }
       ],
       "title": "Weekly Cashflow",
@@ -485,13 +512,15 @@
           "id": "groupBy",
           "options": {
             "fields": {
+              "Revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
               "TxGroup": {
                 "aggregations": [],
                 "operation": "groupby"
-              },
-              "Revenue": {
-                "aggregations": ["sum"],
-                "operation": "aggregate"
               },
               "timestamp": {
                 "aggregations": [],
@@ -503,20 +532,26 @@
         {
           "id": "partitionByValues",
           "options": {
-            "fields": ["TxGroup"],
+            "fields": [
+              "TxGroup"
+            ],
             "keepFields": false,
             "naming": {
               "asLabels": false
             }
           }
         }
-      ]
+      ],
+      "type": "timeseries"
     }
   ],
   "preload": false,
   "refresh": "",
   "schemaVersion": 42,
-  "tags": ["breakdown", "revenue"],
+  "tags": [
+    "breakdown",
+    "revenue"
+  ],
   "templating": {
     "list": [
       {
@@ -547,5 +582,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 11
+  "version": 1
 }
