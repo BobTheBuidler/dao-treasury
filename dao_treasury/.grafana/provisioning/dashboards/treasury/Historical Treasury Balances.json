@@ -2063,7 +2063,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2150,11 +2150,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid Cash (Stacked)",
+          "title": "Liquid Cash - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid Cash (Stacked)",
+      "title": "Liquid Cash - Stacked",
       "type": "row"
     },
     {
@@ -2169,7 +2169,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2260,11 +2260,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid ETH (Stacked)",
+          "title": "Liquid ETH - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid ETH (Stacked)",
+      "title": "Liquid ETH - Stacked",
       "type": "row"
     },
     {
@@ -2279,7 +2279,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2369,11 +2369,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid BTC (Stacked)",
+          "title": "Liquid BTC - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid BTC (Stacked)",
+      "title": "Liquid BTC - Stacked",
       "type": "row"
     },
     {
@@ -2388,7 +2388,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2478,11 +2478,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid Everything Else (Stacked)",
+          "title": "Liquid Everything Else - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid Everything Else (Stacked)",
+      "title": "Liquid Everything Else - Stacked",
       "type": "row"
     },
     {
@@ -3486,7 +3486,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token and wallet, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -3577,11 +3577,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid Cash by Wallet (Stacked)",
+          "title": "Liquid Cash by Wallet - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid Cash by Wallet (Stacked)",
+      "title": "Liquid Cash by Wallet - Stacked",
       "type": "row"
     },
     {
@@ -3596,7 +3596,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -3686,11 +3686,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid ETH by Wallet (Stacked)",
+          "title": "Liquid ETH by Wallet - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid ETH by Wallet (Stacked)",
+      "title": "Liquid ETH by Wallet - Stacked",
       "type": "row"
     },
     {
@@ -3705,7 +3705,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -3795,11 +3795,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid BTC by Wallet (Stacked)",
+          "title": "Liquid BTC by Wallet - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid BTC by Wallet (Stacked)",
+      "title": "Liquid BTC by Wallet - Stacked",
       "type": "row"
     },
     {
@@ -3814,7 +3814,7 @@
       "panels": [
         {
           "datasource": "PROMETHEUS",
-          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)",
+          "description": "Stacked time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -3904,11 +3904,11 @@
               "refId": "A"
             }
           ],
-          "title": "Liquid Everything Else by Wallet (Stacked)",
+          "title": "Liquid Everything Else by Wallet - Stacked",
           "type": "timeseries"
         }
       ],
-      "title": "Liquid Everything Else by Wallet (Stacked)",
+      "title": "Liquid Everything Else by Wallet - Stacked",
       "type": "row"
     }
   ],
