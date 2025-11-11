@@ -94,7 +94,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
+          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= $__to/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
@@ -176,7 +176,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / (((1762874961336 - 1746977361336) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
+          "queryText": "SELECT SUM(t.value_usd) / ((($__to - 1746977361336) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= $__to/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
@@ -258,7 +258,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / (((1762874961336 - 1746977361336) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
+          "queryText": "SELECT SUM(t.value_usd) / ((($__to - 1746977361336) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= $__to/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
@@ -340,7 +340,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / (((1762874961336 - 1746977361336) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= 1762874961336/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
+          "queryText": "SELECT SUM(t.value_usd) / ((($__to - 1746977361336) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= 1746977361336/1000 AND t.timestamp <= $__to/1000 AND t.name IN ('SAFE','USDS Referral Code','Vaults V2','yCRV Bribes','yTeam Rev Share')",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
