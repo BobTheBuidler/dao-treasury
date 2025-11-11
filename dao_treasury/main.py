@@ -226,16 +226,22 @@ async def export(args) -> None:
     if args.custom_bucket:
         custom_buckets = {}
         for item in args.custom_bucket:
-            if ':' not in item:
-                parser.error(f"Invalid format for --custom-bucket: '{item}'. Must be 'address:bucket_name'.")
-            address, bucket = item.split(':', 1)
+            if ":" not in item:
+                parser.error(
+                    f"Invalid format for --custom-bucket: '{item}'. Must be 'address:bucket_name'."
+                )
+            address, bucket = item.split(":", 1)
             address = address.strip()
             bucket = bucket.strip()
             if not address or not bucket:
-                parser.error(f"Invalid format for --custom-bucket: '{item}'. Both address and bucket_name are required.")
+                parser.error(
+                    f"Invalid format for --custom-bucket: '{item}'. Both address and bucket_name are required."
+                )
             custom_buckets[address] = bucket
 
-    treasury = Treasury(wallets, args.sort_rules, custom_buckets=custom_buckets, asynchronous=True)
+    treasury = Treasury(
+        wallets, args.sort_rules, custom_buckets=custom_buckets, asynchronous=True
+    )
 
     # Start only the requested containers
     if args.start_renderer is True:
