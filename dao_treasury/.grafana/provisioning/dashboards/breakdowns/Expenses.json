@@ -176,7 +176,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / (((1755884654373 - 1755770465706) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= 1755770465706/1000 AND t.timestamp <= 1755884654373/1000 AND g.name IN ()",
+          "queryText": "SELECT SUM(t.value_usd) / ((($__to - 1755770465706) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= 1755770465706/1000 AND t.timestamp <= $__to/1000 AND g.name IN ()",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
@@ -258,7 +258,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / (((1755884654373 - 1755770465706) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= 1755770465706/1000 AND t.timestamp <= 1755884654373/1000 AND g.name IN ()",
+          "queryText": "SELECT SUM(t.value_usd) / ((($__to - 1755770465706) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= 1755770465706/1000 AND t.timestamp <= $__to/1000 AND g.name IN ()",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
@@ -340,7 +340,7 @@
       "targets": [
         {
           "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) / (((1755884654373 - 1755770465706) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= 1755770465706/1000 AND t.timestamp <= 1755884654373/1000 AND g.name IN ()",
+          "queryText": "SELECT SUM(t.value_usd) / ((($__to - 1755770465706) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= 1755770465706/1000 AND t.timestamp <= $__to/1000 AND g.name IN ()",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
