@@ -82,9 +82,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -100,10 +98,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Expenses",
@@ -169,9 +164,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -187,10 +180,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Monthly Expenses",
@@ -256,9 +246,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -274,10 +262,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Weekly Expenses",
@@ -343,9 +328,7 @@
         "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -361,10 +344,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Daily Expenses",
@@ -456,9 +436,7 @@
       "id": 11,
       "options": {
         "legend": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
@@ -477,9 +455,7 @@
           "queryType": "table",
           "rawQueryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "refId": "A",
-          "timeColumns": [
-            "timestamp"
-          ]
+          "timeColumns": ["timestamp"]
         }
       ],
       "title": "Weekly Cashflow",
@@ -511,9 +487,7 @@
           "options": {
             "fields": {
               "Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "TxGroup": {
@@ -530,9 +504,7 @@
         {
           "id": "partitionByValues",
           "options": {
-            "fields": [
-              "TxGroup"
-            ],
+            "fields": ["TxGroup"],
             "keepFields": false,
             "naming": {
               "asLabels": false
@@ -546,10 +518,7 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 42,
-  "tags": [
-    "breakdown",
-    "expenses"
-  ],
+  "tags": ["breakdown", "expenses"],
   "templating": {
     "list": [
       {
