@@ -2084,7 +2084,10 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [{ "color": "green", "value": 0 }]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -2093,7 +2096,12 @@
           "id": 1015,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -2149,7 +2157,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -2158,7 +2172,12 @@
           "id": 1021,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -2214,7 +2233,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -2223,7 +2248,12 @@
           "id": 1022,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -2279,7 +2309,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -2288,7 +2324,12 @@
           "id": 1023,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -3333,7 +3374,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -3342,7 +3389,12 @@
           "id": 1036,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -3398,7 +3450,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -3407,7 +3465,12 @@
           "id": 1037,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -3463,7 +3526,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -3472,7 +3541,12 @@
           "id": 1038,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
@@ -3528,7 +3602,13 @@
                 "thresholdsStyle": { "mode": "off" }
               },
               "mappings": [],
-              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": 0 },
+                  { "color": "red", "value": 80 }
+                ]
+              },
               "unit": "currencyUSD"
             },
             "overrides": []
@@ -3537,7 +3617,12 @@
           "id": 1039,
           "options": {
             "alertThreshold": true,
-            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
             "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
           },
           "pluginVersion": "12.1.1",
