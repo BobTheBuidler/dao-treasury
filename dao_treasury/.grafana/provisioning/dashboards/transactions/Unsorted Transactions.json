@@ -1,0 +1,361 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Primarily for administrators, provides a real-time, filterable table of unsorted transactions in the DAO treasury database, including timestamp, block, hash, token, addresses, nicknames, amount, price, and value in USD. Helps the maintainers of your DAO Treasury deployment keep everything up-to-date.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 0,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "SQLite",
+      "description": "Primarily for administrators, displays all of the DAO's unsorted treasury transactions with full details, including timestamp, block, hash, token, sender/recipient address and nickname, amount, price, value in USD, and transaction group.\n\nIncludes direct links to Etherscan for transaction, block, and address fields.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "decimals": 8,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Hash"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/tx/${__value.raw}﻿"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Block"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/block/${__value.raw}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "To"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__value.raw}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "From"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__value.raw}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "From Nickname"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__data.fields.From}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "To Nickname"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View on Etherscan",
+                    "url": "https://etherscan.io/address/${__data.fields.To}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Block"
+            },
+            "properties": [
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Log Index"
+            },
+            "properties": [
+              {
+                "id": "decimals"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Timestamp"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "SQLite",
+          "queryText": "select timestamp as \"Timestamp\", block as \"Block\", hash as \"Hash\", token as \"Token\", \"from\" as \"From\", from_nickname as \"From Nickname\", \"to\" as \"To\", to_nickname as \"To Nickname\", amount as \"Amount\", price as \"Price\", value_usd as \"Value USD\", txgroup as \"TxGroup\", a.parent_txgroup as \"Parent TxGroup\", log_index as \"Log Index\" from ( SELECT datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id, a.log_index FROM treasury_txs a LEFT JOIN chains b ON a.chain = b.chain_dbid LEFT JOIN tokens c ON a.token_id = c.token_id LEFT JOIN addresses d ON a.\"from\" = d.address_id LEFT JOIN addresses e ON a.\"to\" = e.address_id LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id WHERE a.timestamp >= 1756684800000 / 1000 and a.timestamp < 1759276799999 / 1000 and b.chain_name IN ('Mainnet') and c.symbol IN ('crvUSD','DAI','lp-yCRVv2','sUSDS','USDC','USDS','USDT','YFI','yvcrvUSD-2','yvCurve-3Crypto-f','yvCurve-3CryptoUSDC-f','yvCurve-3CryptoUSDT-f','yvCurve-3EUR-f','yvCurve-alETH-frxETH-f','yvCurve-alETH-pxETH-f','yvCurve-alUSD-FRAXBP-f','yvCurve-alUSD-sDOLA-f','yvCurve-CLEV-ETH-f','yvCurve-Compound','yvCurve-CVX-ETH-f','yvCurve-CVXETH','yvCurve-deUSD-USDC-f','yvCurve-deUSDUSDT-f','yvCurve-dgnETH-ETH+-f','yvCurve-DOLA-scrvUSD-f','yvCurve-DOLA-sUSDe-f','yvCurve-DOLA-sUSDS-f','yvCurve-DOLA-USR-f','yvCurve-ETH+-f','yvCurve-eUSD-USDC-f','yvCurve-frxUSDUSDf-f','yvCurve-GEAR-ETH-f','yvCurve-LUSD','yvCurve-lvlUSD-USDC-f','yvCurve-MIM','yvCurve-MIM-f','yvCurve-msETH-f','yvCurve-msUSD-FRAXBP-f','yvCurve-OHM-FRAXBP-f','yvCurve-pxETH-stETH-f','yvCurve-reUSD-scrvUSD-f','yvCurve-reUSD-sDOLA-f','yvCurve-reUSD-sfrxUSD-f','yvCurve-RSUP-WETH-f','yvCurve-sdCRVv2-f','yvCurve-sDOLA-scrvUSD-f','yvCurve-stETH-f','yvCurve-TOKE-ETH-f','yvCurve-TriCRV-f','yvCurve-TriCryptoGHO-f','yvCurve-TriCryptoLLAMA-f','yvCurve-USD3-sUSDe-f','yvCurve-USD3sUSDS-f','yvCurve-USDaf-scrvUSD-f','yvCurve-USDC-crvUSD-f','yvCurve-USDC-USDT-f','yvCurve-USDf-USDC-f','yvCurve-USDT-crvUSD-f','yvCurve-xETH-f','yvCurve-yETH-f','yvCurve-YFIETH','yvCurve-ynETHx-f','yvDAI','yvLUSD','yvUSDC','yvUSDC-1','yvUSDC-2','yvUSDT','yvWBTC','yvWETH','yvyCRV') and d.address IN ('0x0000000000000000000000000000000000000000','0x00000F91109c4d0007e90000D9facAD5298A0CAc','0x04c8bfe2eb09a1e2e9fA97A2fd970E06d87B43de','0x05F471262d15EECA4059DadE070e5BEd509a4e73','0x05Fc8174050f0A41dEB7e562187911d45cd5e401','0x0a35322c5C9Dd22fF592bfC5b134c5CE78154d10','0x0Bd7B7d511d9f60D5Fa5846A9B911168C5a82094','0x150F76e1339A918BaA38338ED9bd695Bd0924Bcf','0x1635b506a88fBF428465Ad65d00e8d6B6E5846C3','0x19D3364A399d251E894aC732651be8B0E4e85001','0x22A956C4755d8C4294b358dC346E74250E175622','0x241AdD131B9aaa7527132b752252b99420937ADc','0x278374fFb10B7D16E7633444c13e6E565EA57c28','0x2c8a33C66c00264316Ea4E4433e86A386Eb6ECBf','0x2DfB14E32e2F8156ec15a2c21c3A6c053af52Be8','0x37305B1cD40574E4C5Ce33f8e8306Be057fD7341','0x378cb52b00F9D0921cb46dFc099CFf73b42419dC','0x3a51269E0707A3416044bad5066858A12198fCf5','0x3a7FBB727d11d3543c5b90a04cB1bA231F105eE1','0x3B27F92C0e212C671EA351827EDF93DB27cc0c65','0x3f34A7eF4f17528CbFFb7817060941BCdaC924fa','0x507c6dE33f50c0505F77F598c0B3CA7b5fEB3D68','0x50f02612EA1F79a84ef72d6912A5452F40a88eDd','0x58900d761Ae3765B75DDFc235c1536B527F25d8F','0x5895D114A4992F4ce71D61293F7d4fDe93FCd695','0x5f18C75AbDAe578b483E5F43f12a39cF75b973a9','0x5fA5B62c8AF877CB37031e0a3B2f34A78e3C56A6','0x6F9A3ab8Aea89892b4157643A6e75d8E6ff2291d','0x75A291F0232ADD37d72Dd1Dcff55B715755ECDEe','0x7788A5492bc948e1d8c2caa53b2e0a60ed5403b0','0x7845Ebf66c9575Fc5f5A0dBb9a34a706Ad997a3f','0x790a60024bC3aea28385b60480f15a0771f26D09','0x7c439Df9ADE8831180EA4D546c1E910D4Ba71a86','0x7cA00559B978CFde81297849be6151d3ccB408A9','0x7Da96a3891Add058AdA2E826306D812C638D87a7','0x8017B5d498f75d12dA6A857e867699fB07De41a4','0x8078198Fc424986ae89Ce4a910Fc109587b6aBF3','0x82c83ddA32DB09F63F9A59A129278f3fdC3EeE67','0x849dC56ceCa7Cf55AbF5ec87910DA21c5C7dA581','0x8770d076dC2db46f368BDc8EaAE3b7164e59267b','0x8Bb5491c0872445EC15d9b67CC6117811e0D8498','0x8fb66F38cF86A3d5e8768f8F1754A24A6c661Fb8','0x9008D19f58AAbD9eD0D60971565AA8510560ab41','0x9289D26fD70867af2f4523EBada69A0d0deEC6c3','0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde','0x961Ad224fedDFa468c81acB3A9Cc2cC4731809f4','0xa258C4606Ca8206D8aA700cE2143D7db854D168c','0xa354F35829Ae975e850e23e9615b11Da1B3dC4DE','0xa540744DEDBDA9eF64cf753F0E851EfE4a419EA9','0xa669d6C2Df33F41940c2646A9BF3031e2524d515','0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E','0xA6AeBf9680FC87F7641c40Edd95cf52512f228B0','0xa9fE4601811213c340e850ea305481afF02f5b28','0xaA379c2aA72529d5ec0da8A41e2F41ED7Fe4b48C','0xAD2f9A55518Dba12E8AB069502820923351667C5','0xB3445D5413abf63Df1112A4a517de2602F249785','0xb7b1C394b3F82091988A1e400C6499178eE64b99','0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204','0xBf2BD27F8C4B38aBdcaD6d3E37445343Cb0630eF','0xBF319dDC2Edc1Eb6FDf9910E39b37Be221C8805F','0xBfBC4acAE2ceC91A5bC80eCA1C9290F92959f7c3','0xBfDC8a852532aaf90e93968f1D1Ab48B80E15571','0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B','0xc139A6FD6Db661694b11F0B24Bab30F00b3539B8','0xc9e146B126f4ca0Aa8edA3BDBCd76a960B4dcba7','0xce2f57252644Db26c76011aD490553d88C3B9030','0xd0002c648CCa8DeE2f2b8D70D542Ccde8ad6EC03','0xd02b103f7f5dba89Ad316E2b3Fe247F280CcE5b2','0xD2433Ec6De2a932Ab7bc1A0080676333AeF8B546','0xD6Ea40597Be05c201845c0bFd2e96A60bACde267','0xdA816459F1AB5631232FE5e97a05BBBb94970c95','0xDb26d8815EdA864Dfa43306766f2F8CA50C03F9E','0xE08D97e151473A848C3d9CA3f323Cb720472D015','0xE2CaD35CFD1A9B5acD557558f44B096ef8340C1B','0xe3Bf2D04cd3B6e74613D36368c7D21B2d6C26d72','0xe7c25cb1eac7D870F3cD103cBB060A6DFbc5eaF2','0xF0D539955974b248d763D60C3663eF272dfC6971','0xf165a634296800812B8B0607a75DeDdcD4D3cC88','0xfA0253943c3FF0e43898cba5A7a0dA9D17C27995','0xfBd4d8bf19c67582168059332c46567563d0d75f','0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52') and e.address IN ('0x0000000000000000000000000000000000000000','0x0E70bB71F86c8a6312Ce4B237e9e3E3Ef70092Ba','0x278374fFb10B7D16E7633444c13e6E565EA57c28','0x2CdC4C9FBdd57De9D15a4b851415D5de627179F4','0x3038d7f8e2E8523A4C4D3E820aC40A22b6Dd21cA','0x33C959d2493008112843eF8028d7E3Ca88B81f72','0x4707C855323545223fA2bA4150A83950F6F53b6E','0x6F17b88CB1c0a5B374A25dA4A5311B1290D9f6D9','0x70CCBE10F980d80b7eBaab7D2E3A73e87D67B775','0x78F5164a4427F2C91950eFe80A4921896b07E755','0x8973B848775a87a0D5bcf262C555859b87E6F7dA','0x8E6A115bd8e24d2D86A1AacCC56221e5Bd4577ba','0x9008D19f58AAbD9eD0D60971565AA8510560ab41','0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde','0xA1f46212234d665f9fe8060576cDA556331AE260','0xa420BfCa1b853028288BEBA01394c9bCeDBf2946','0xA7b6f3d18db39F65C8056d0892Af76c07d15Fc5a','0xbDdB94D3caED87E8Ff35aF0bc3c1702A80E279A1','0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204','0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B','0xEf77cc176c748d291EfB6CdC982c5744fC7211c8','0xF6060cE3fC3df2640F72E42441355f50F195D96a','0xf6e72Db5454dd049d0788e411b06CfAF16853042','0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52') and d.nickname IN ('','Contract: GPv2Settlement','Contract: SafeProxy','Contract: SplitsWarehouse','Contract: YCRVSplitter','Non-Verified Contract: 0x00000F91109c4d0007e90000D9facAD5298A0CAc','Non-Verified Contract: 0x22A956C4755d8C4294b358dC346E74250E175622','Non-Verified Contract: 0x3a7FBB727d11d3543c5b90a04cB1bA231F105eE1','Non-Verified Contract: 0x50f02612EA1F79a84ef72d6912A5452F40a88eDd','Non-Verified Contract: 0x5895D114A4992F4ce71D61293F7d4fDe93FCd695','Non-Verified Contract: 0xB3445D5413abf63Df1112A4a517de2602F249785','Non-Verified Contract: 0xBfDC8a852532aaf90e93968f1D1Ab48B80E15571','Non-Verified Contract: 0xc139A6FD6Db661694b11F0B24Bab30F00b3539B8','Non-Verified Contract: 0xE08D97e151473A848C3d9CA3f323Cb720472D015','Non-Verified Contract: 0xF0D539955974b248d763D60C3663eF272dfC6971','Non-Verified Contract: 0xfA0253943c3FF0e43898cba5A7a0dA9D17C27995','Token Dumper Multisig','Token: crvUSD-2 yVault','Token: Curve 3Crypto Factory yVault','Token: Curve 3EUR Factory yVault','Token: Curve alETH-frxETH Factory yVault','Token: Curve alETH-pxETH Factory yVault','Token: Curve alUSD-FRAXBP Factory yVault','Token: Curve alUSD-sDOLA Factory yVault','Token: Curve CLEV-ETH Factory yVault','Token: Curve Compound Pool yVault','Token: Curve CVX-ETH Factory yVault','Token: Curve CVX-ETH Pool yVault','Token: Curve deUSD-USDC Factory yVault','Token: Curve deUSDUSDT Factory yVault','Token: Curve dgnETH-ETH+ Factory yVault','Token: Curve ETH+ Factory yVault','Token: Curve eUSD-USDC Factory yVault','Token: Curve frxUSDUSDf Factory yVault','Token: Curve GEAR-ETH Factory yVault','Token: Curve LUSD Pool yVault','Token: Curve lvlUSD-USDC Factory yVault','Token: Curve MIM Factory yVault','Token: Curve MIM Pool yVault','Token: Curve msETH Factory yVault','Token: Curve msUSD-FRAXBP Factory yVault','Token: Curve OHM-FRAXBP Factory yVault','Token: Curve pxETH-stETH Factory yVault','Token: Curve reUSD-scrvUSD Factory yVault','Token: Curve reUSD-sDOLA Factory yVault','Token: Curve reUSD-sfrxUSD Factory yVault','Token: Curve RSUP-WETH Factory yVault','Token: Curve sdCRVv2 Factory yVault','Token: Curve TOKE-ETH Factory yVault','Token: Curve TriCRV Factory yVault','Token: Curve TriCryptoGHO Factory yVault','Token: Curve TriCryptoLLAMA Factory yVault','Token: Curve TriCryptoUSDC Factory yVault','Token: Curve TriCryptoUSDT Factory yVault','Token: Curve USD3-sUSDe Factory yVault','Token: Curve USD3sUSDS Factory yVault','Token: Curve USDaf-scrvUSD Factory yVault','Token: Curve USDC-crvUSD Factory yVault','Token: Curve USDC-USDT Factory yVault','Token: Curve USDf-USDC Factory yVault','Token: Curve USDT-crvUSD Factory yVault','Token: Curve xETH Factory yVault','Token: Curve yETH Factory yVault','Token: Curve YFI-ETH Pool yVault','Token: Curve ynETHx Factory yVault','Token: DAI yVault','Token: LUSD yVault','Token: USDC yVault','Token: USDC-1 yVault','Token: USDT yVault','Token: WBTC yVault','Token: WETH yVault','Yearn Treasury','Yearn yChad Multisig','yRoboTreasury Stables Reserve','Zero Address') and e.nickname IN ('','Contract: Conversion factory','Contract: DssLitePsm','Contract: GnosisSafe','Contract: GnosisSafeProxy','Contract: GPv2Settlement','Contract: SafeProxy','Contract: Simple Vesting Escrow','Contract: Vyper_contract','Token Dumper Multisig','Token: USDC-1 yVault','Yearn Treasury','Yearn yChad Multisig','yRoboTreasury Stables Reserve','yRoboTreasury Treasury Contract','Zero Address') ) a left join txgroup_hierarchy b on a.txgroup_id = b.txgroup_id WHERE b.top_category IN ('Revenue') ORDER BY timestamp",
+          "queryType": "table",
+          "rawQueryText": "select timestamp as \"Timestamp\", block as \"Block\", hash as \"Hash\", token as \"Token\", \"from\" as \"From\", from_nickname as \"From Nickname\", \"to\" as \"To\", to_nickname as \"To Nickname\", amount as \"Amount\", price as \"Price\", value_usd as \"Value USD\", txgroup as \"TxGroup\", a.parent_txgroup as \"Parent TxGroup\", log_index as \"Log Index\" from ( SELECT datetime(a.timestamp, 'unixepoch') AS timestamp, a.block, a.hash, c.symbol AS token, d.address AS \"from\", d.nickname as from_nickname, e.address AS \"to\", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id, a.log_index FROM treasury_txs a LEFT JOIN chains b ON a.chain = b.chain_dbid LEFT JOIN tokens c ON a.token_id = c.token_id LEFT JOIN addresses d ON a.\"from\" = d.address_id LEFT JOIN addresses e ON a.\"to\" = e.address_id LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id WHERE a.timestamp >= $__from / 1000 and a.timestamp < $__to / 1000 and b.chain_name IN (${Chain:sqlstring}) and c.symbol IN (${Token:sqlstring}) and d.address IN (${From:sqlstring}) and e.address IN (${To:sqlstring}) and d.nickname IN (${FromNickname:sqlstring}) and e.nickname IN (${ToNickname:sqlstring}) ) a left join txgroup_hierarchy b on a.txgroup_id = b.txgroup_id WHERE b.top_category IN (${Top:sqlstring}) ORDER BY timestamp",
+          "refId": "A",
+          "timeColumns": ["time", "ts"]
+        }
+      ],
+      "title": "Transactions",
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "Sort Me (Outbound)",
+          "value": "Sort Me (Outbound)"
+        },
+        "datasource": "SQLite",
+        "definition": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE gh.top_category IN ('Sort Me (Inbound)', 'Sort Me (Outbound)') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "description": "Filter transactions by top-level category (e.g., Revenue, Cost of Revenue, Expenses, Other Income, Other Expenses, Unsorted Income, Unsorted Expense).\n\nSelecting 'All' includes all categories.",
+        "includeAll": true,
+        "label": "Top Level",
+        "name": "Top",
+        "options": [],
+        "query": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE gh.top_category IN ('Sort Me (Inbound)', 'Sort Me (Outbound)') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "Mainnet",
+          "value": "Mainnet"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by blockchain network.\n\nSelecting 'All' includes all supported chains.",
+        "includeAll": true,
+        "label": "Chain",
+        "name": "Chain",
+        "options": [],
+        "query": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by token symbol.\n\nSelecting 'All' includes all tokens.",
+        "includeAll": true,
+        "label": "Token",
+        "name": "Token",
+        "options": [],
+        "query": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by sender address.\n\nSelecting 'All' includes all sender addresses.",
+        "includeAll": true,
+        "label": "From Address",
+        "name": "From",
+        "options": [],
+        "query": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by sender nickname.\n\nSelecting 'All' includes all senders.",
+        "includeAll": true,
+        "label": "From Nickname",
+        "name": "FromNickname",
+        "options": [],
+        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by recipient address.\n\nSelecting 'All' includes all recipient addresses.",
+        "includeAll": true,
+        "label": "To Address",
+        "name": "To",
+        "options": [],
+        "query": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "SQLite",
+        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "description": "Filter transactions by recipient nickname.\n\nSelecting 'All' includes all recipients.",
+        "includeAll": true,
+        "label": "To Nickname",
+        "name": "ToNickname",
+        "options": [],
+        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Unsorted Transactions",
+  "uid": "adw45kc",
+  "version": 2
+}
