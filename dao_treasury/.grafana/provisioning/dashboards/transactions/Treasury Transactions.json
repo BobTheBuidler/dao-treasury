@@ -75,7 +75,7 @@
                 "value": [
                   {
                     "targetBlank": true,
-                    "title": "View on Etherscan",
+                    "title": "View block ${__value.raw} on Etherscan",
                     "url": "https://etherscan.io/block/${__value.raw}"
                   }
                 ]
@@ -214,7 +214,7 @@
       ],
       "title": "Transactions",
       "type": "table",
-      "description": "Displays all of the DAO's treasury transactions with full details, including timestamp, block, hash, token, sender/recipient address and nickname, amount, price, value in USD, and transaction group.\n\nIncludes direct links to Etherscan for transaction, block, and address fields."
+      "description": "Displays all of the DAO's treasury transactions with full details, including timestamp, block, hash, token, sender/recipient address and nickname, amount, price, value in USD, and transaction group.\n\nIncludes direct links to Etherscan for transaction, block, and address fields.\n\nFilters:\n- Top Level: Filters by transaction category\n- Chain: Filters by blockchain network\n- Token: Filters by token symbol\n- From/To Address: Filters by sender/recipient address\n- From/To Nickname: Filters by sender/recipient nickname"
     }
   ],
   "preload": false,
@@ -229,12 +229,12 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "definition": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN chains b ON a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND b.chain_name IN (${Chain:sqlstring});",
         "includeAll": true,
         "label": "Top Level",
         "name": "Top",
         "options": [],
-        "query": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "query": "SELECT DISTINCT gh.top_category FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN chains b ON a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND b.chain_name IN (${Chain:sqlstring});",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -247,13 +247,13 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "definition": "SELECT DISTINCT chain_name FROM treasury_txs a LEFT JOIN chains b ON a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
         "description": "Filter transactions by blockchain network.\n\nSelecting 'All' includes all supported chains.",
         "includeAll": true,
         "label": "Chain",
         "name": "Chain",
         "options": [],
-        "query": "select distinct chain_name from treasury_txs a left join chains b on a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "query": "SELECT DISTINCT chain_name FROM treasury_txs a LEFT JOIN chains b ON a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -265,13 +265,13 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "definition": "SELECT DISTINCT c.symbol FROM treasury_txs a LEFT JOIN tokens c ON a.token_id = c.token_id LEFT JOIN chains b ON a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND b.chain_name IN (${Chain:sqlstring});",
         "description": "Filter transactions by token symbol.\n\nSelecting 'All' includes all tokens.",
         "includeAll": true,
         "label": "Token",
         "name": "Token",
         "options": [],
-        "query": "select distinct symbol from treasury_txs a left join tokens b on a.token_id = b.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "query": "SELECT DISTINCT c.symbol FROM treasury_txs a LEFT JOIN tokens c ON a.token_id = c.token_id LEFT JOIN chains b ON a.chain = b.chain_dbid WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND b.chain_name IN (${Chain:sqlstring});",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -283,13 +283,13 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "definition": "SELECT DISTINCT d.address FROM treasury_txs a LEFT JOIN addresses d ON a.\"from\" = d.address_id LEFT JOIN tokens c ON a.token_id = c.token_id INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND gh.top_category IN (${Top:sqlstring}) AND c.symbol IN (${Token:sqlstring});",
         "description": "Filter transactions by sender address.\n\nSelecting 'All' includes all sender addresses.",
         "includeAll": true,
         "label": "From Address",
         "name": "From",
         "options": [],
-        "query": "select distinct address from treasury_txs a left join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "query": "SELECT DISTINCT d.address FROM treasury_txs a LEFT JOIN addresses d ON a.\"from\" = d.address_id LEFT JOIN tokens c ON a.token_id = c.token_id INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND gh.top_category IN (${Top:sqlstring}) AND c.symbol IN (${Token:sqlstring});",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -301,13 +301,13 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id left join tokens c on a.token_id = c.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 and b.address IN (${From:sqlstring})",
         "description": "Filter transactions by sender nickname.\n\nSelecting 'All' includes all senders.",
         "includeAll": true,
         "label": "From Nickname",
         "name": "FromNickname",
         "options": [],
-        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"from\" = b.address_id left join tokens c on a.token_id = c.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 and b.address IN (${From:sqlstring})",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -319,13 +319,13 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "definition": "SELECT DISTINCT e.address FROM treasury_txs a LEFT JOIN addresses e ON a.\"to\" = e.address_id LEFT JOIN tokens c ON a.token_id = c.token_id INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND gh.top_category IN (${Top:sqlstring}) AND c.symbol IN (${Token:sqlstring});",
         "description": "Filter transactions by recipient address.\n\nSelecting 'All' includes all recipient addresses.",
         "includeAll": true,
         "label": "To Address",
         "name": "To",
         "options": [],
-        "query": "select distinct address from treasury_txs a left join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "query": "SELECT DISTINCT e.address FROM treasury_txs a LEFT JOIN addresses e ON a.\"to\" = e.address_id LEFT JOIN tokens c ON a.token_id = c.token_id INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 AND gh.top_category IN (${Top:sqlstring}) AND c.symbol IN (${Token:sqlstring});",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -337,13 +337,13 @@
           "value": "$__all"
         },
         "datasource": "SQLite",
-        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "definition": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id left join tokens c on a.token_id = c.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 and b.address IN (${To:sqlstring})",
         "description": "Filter transactions by recipient nickname.\n\nSelecting 'All' includes all recipients.",
         "includeAll": true,
         "label": "To Nickname",
         "name": "ToNickname",
         "options": [],
-        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000",
+        "query": "select distinct nickname from treasury_txs a inner join addresses b on a.\"to\" = b.address_id left join tokens c on a.token_id = c.token_id WHERE a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000 and b.address IN (${To:sqlstring})",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -360,5 +360,5 @@
   "title": "Treasury Transactions",
   "description": "Provides a real-time, filterable table of all transactions in the DAO treasury database, including timestamp, block, hash, token, addresses, nicknames, amount, price, and value in USD. Enables detailed analysis and monitoring of all value transfers.",
   "uid": "b21f1092-66a4-4fb0-90ef-ed77d2becaa4",
-  "version": 6
+  "version": 8
 }
