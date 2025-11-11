@@ -125,6 +125,18 @@ parser.add_argument(
     help="Port for the Grafana rendering service. Default: 8091",
     default=8091,
 )
+parser.add_argument(
+    "--custom-bucket",
+    type=str,
+    action="append",
+    help=(
+        "Custom bucket mapping for a wallet address. "
+        "Specify as 'address:bucket_name'. "
+        "Can be used multiple times. Example: "
+        "--custom-bucket '0x123:My Bucket' --custom-bucket '0x456:Other Bucket'"
+    ),
+    default=None,
+)
 
 args = parser.parse_args()
 
@@ -209,7 +221,27 @@ async def export(args) -> None:
             for address in addresses:
                 db.Address.set_nickname(address, nickname)
 
-    treasury = Treasury(wallets, args.sort_rules, asynchronous=True)
+    # Parse custom_buckets from --custom-bucket arguments
+    custom_buckets = None
+    if args.custom_bucket:
+        custom_buckets = {}
+        for item in args.custom_bucket:
+            if ":" not in item:
+                parser.error(
+                    f"Invalid format for --custom-bucket: '{item}'. Must be 'address:bucket_name'."
+                )
+            address, bucket = item.split(":", 1)
+            address = address.strip()
+            bucket = bucket.strip()
+            if not address or not bucket:
+                parser.error(
+                    f"Invalid format for --custom-bucket: '{item}'. Both address and bucket_name are required."
+                )
+            custom_buckets[address] = bucket
+
+    treasury = Treasury(
+        wallets, args.sort_rules, custom_buckets=custom_buckets, asynchronous=True
+    )
 
     # Start only the requested containers
     if args.start_renderer is True:
