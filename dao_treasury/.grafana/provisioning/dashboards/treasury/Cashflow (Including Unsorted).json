@@ -804,5 +804,5 @@
   "title": "Total Cashflow Summary (Including Unsorted)",
   "description": "Offers a complete picture of all DAO cashflows, including both sorted and unsorted transactions. This dashboard is ideal for tracking transactions still pending categorization and understanding their impact on overall cashflow.",
   "uid": "2b6e7c1d-8f4a-4e3b-9b2a-1c7d8e9f0a2b",
-  "version": 7
+  "version": 100
 }
