@@ -21,7 +21,7 @@
   "panels": [
     {
       "datasource": "SQLite",
-      "description": "Displays a table of monthly profit and loss for the DAO, including Revenue, Cost of Revenue, Expenses, Other Income, Other Expense, Sorted Net, Unsorted Income, Unsorted Expense.\n\nUseful for high-level financial reporting and tracking the progress of transaction categorization.\n\nClick on any underlined cell value to see all transactions for that transaction group and time period.\n\nYou can download this table as a CSV. Click on the three dots in the upper right corner, navigate \"Inspect\" -> \"Data\", select your desired options and click "Download CSV".
+      "description": "Displays a table of monthly profit and loss for the DAO, including Revenue, Cost of Revenue, Expenses, Other Income, Other Expense, Sorted Net, Unsorted Income, Unsorted Expense.\n\nUseful for high-level financial reporting and tracking the progress of transaction categorization.\n\nClick on any underlined cell value to see all transactions for that transaction group and time period.\n\nYou can download this table as a CSV. Click on the three dots in the upper right corner, navigate \"Inspect\" -> \"Data\", select your desired options and click \"Download CSV\".",
       "fieldConfig": {
         "defaults": {
           "color": {
