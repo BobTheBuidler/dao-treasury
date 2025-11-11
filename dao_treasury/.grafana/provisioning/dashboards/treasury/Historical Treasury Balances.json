@@ -2053,6 +2053,266 @@
     },
     {
       "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 25 },
+      "id": 1033,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "auto",
+                "spanNulls": 3600000,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 26 },
+          "id": 1015,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Cash (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid Cash (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 42 },
+      "id": 1031,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 43 },
+          "id": 1021,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid ETH (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid ETH (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 59 },
+      "id": 1029,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 60 },
+          "id": 1022,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid BTC (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid BTC (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 76 },
+      "id": 1027,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 77 },
+          "id": 1023,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Everything Else (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid Everything Else (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3038,6 +3298,266 @@
         }
       ],
       "title": "Liquid Everything Else by Wallet",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 93 },
+      "id": 1045,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 94 },
+          "id": 1036,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (token,wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Cash by Wallet (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid Cash by Wallet (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 110 },
+      "id": 1036,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 111 },
+          "id": 1037,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (token,wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid ETH by Wallet (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid ETH by Wallet (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 127 },
+      "id": 1048,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 128 },
+          "id": 1038,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (token, wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid BTC by Wallet (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid BTC by Wallet (Stacked)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 144 },
+      "id": 1049,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "fieldConfig": {
+            "defaults": {
+              "color": { "mode": "palette-classic" },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": { "type": "linear" },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": { "group": "A", "mode": "normal" },
+                "thresholdsStyle": { "mode": "off" }
+              },
+              "mappings": [],
+              "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": 0 }, { "color": "red", "value": 80 }] },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": { "h": 16, "w": 24, "x": 0, "y": 145 },
+          "id": 1039,
+          "options": {
+            "alertThreshold": true,
+            "legend": { "calcs": ["lastNotNull"], "displayMode": "table", "placement": "right", "showLegend": true },
+            "tooltip": { "hideZeros": false, "mode": "multi", "sort": "desc" }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}<500_000_000) by (token, wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Everything Else by Wallet (Stacked)",
+          "type": "timeseries",
+          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time. (Stacked)"
+        }
+      ],
+      "title": "Liquid Everything Else by Wallet (Stacked)",
       "type": "row"
     }
   ],
