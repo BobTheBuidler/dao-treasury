@@ -52,5 +52,7 @@ services:
       POSTGRES_DB: dao_treasury
     volumes:
       - dao_treasury_pgdata:/var/lib/postgresql/data
+    ports:
+      - 127.0.0.1:${DAO_TREASURY_POSTGRES_PORT:-8675}:8091
     networks:
       - dao_treasury
