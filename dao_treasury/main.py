@@ -2,7 +2,7 @@
 
 This module parses command-line arguments, sets up environment variables for
 Grafana and its renderer, and defines the entrypoint for a one-time export of
-DAO treasury transactions. It populates the local SQLite database and starts
+DAO treasury transactions. It populates the local PostgreSQL database and starts
 the required Docker services for Grafana dashboards. Transactions are fetched
 via :class:`dao_treasury.Treasury`, sorted according to optional rules, and
 inserted using the database routines (:func:`dao_treasury.db.TreasuryTx.insert`).
