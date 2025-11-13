@@ -37,6 +37,7 @@ from typing import (
     overload,
 )
 from datetime import date, datetime, time, timezone
+import os
 
 import eth_portfolio
 from a_sync import AsyncThreadPoolExecutor
@@ -79,11 +80,12 @@ from dao_treasury.types import TxGroupDbid, TxGroupName
 EventItem = _EventItem[_EventItem[OrderedDict[str, Any]]]
 
 
-SQLITE_DIR = Path(path.expanduser("~")) / ".dao-treasury"
-"""Path to the directory in the user's home where the DAO treasury SQLite database is stored."""
-
-SQLITE_DIR.mkdir(parents=True, exist_ok=True)
-
+# Postgres connection parameters from environment variables (with docker-compose defaults)
+POSTGRES_USER = os.getenv("DAO_TREASURY_DB_USER", "dao_treasury")
+POSTGRES_PASSWORD = os.getenv("DAO_TREASURY_DB_PASSWORD", "dao_treasury")
+POSTGRES_DB = os.getenv("DAO_TREASURY_DB_NAME", "dao_treasury")
+POSTGRES_HOST = os.getenv("DAO_TREASURY_DB_HOST", "postgres")
+POSTGRES_PORT = os.getenv("DAO_TREASURY_DB_PORT", "5432")
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_THREAD = AsyncThreadPoolExecutor(1)
@@ -1146,9 +1148,12 @@ class StreamedFunds(DbEntity):
 
 
 db.bind(
-    provider="sqlite",  # TODO: let user choose postgres with server connection params
-    filename=str(SQLITE_DIR / "dao-treasury.sqlite"),
-    create_db=True,
+    provider="postgres",
+    user=POSTGRES_USER,
+    password=POSTGRES_PASSWORD,
+    host=POSTGRES_HOST,
+    port=POSTGRES_PORT,
+    database=POSTGRES_DB,
 )
 
 db.generate_mapping(create_tables=True)
