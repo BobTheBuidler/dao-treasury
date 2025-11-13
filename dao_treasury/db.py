@@ -210,7 +210,7 @@ class Address(DbEntity):
     address = Required(str, index=True)
     """Checksum string of the on-chain address."""
 
-    nickname = Optional(str)
+    nickname = Optional(str, index=True)
     """Optional human-readable label (e.g., contract name or token name)."""
 
     is_contract = Required(bool, index=True, lazy=True)
@@ -396,7 +396,7 @@ class Token(DbEntity):
     symbol = Required(str, index=True, lazy=True)
     """Short ticker symbol for the token."""
 
-    name = Required(str, lazy=True)
+    name = Required(str, lazy=True, index=True)
     """Full human-readable name of the token."""
 
     decimals = Required(int, lazy=True)
@@ -409,11 +409,14 @@ class Token(DbEntity):
     """Inverse relation for treasury transactions involving this token."""
     # partner_harvest_event = Set('PartnerHarvestEvent', reverse="vault", lazy=True)
 
-    address = Required(Address, column="address_id")
+    address = Required(Address, column="address_id", unique=True)
     """Foreign key to the address record for this token contract."""
 
     streams = Set("Stream", reverse="token", lazy=True)
     # vesting_escrows = Set("VestingEscrow", reverse="token", lazy=True)
+
+    composite_index(chain, name)
+    composite_index(chain, symbol)
 
     def __eq__(self, other: Union["Token", Address, ChecksumAddress]) -> bool:  # type: ignore [override]
         if isinstance(other, str):
@@ -557,13 +560,13 @@ class TxGroup(DbEntity):
     txgroup_id = PrimaryKey(int, auto=True)
     """Auto-incremented primary key for transaction groups."""
 
-    name = Required(str)
+    name = Required(str, index=True)
     """Name of the grouping category, e.g., 'Revenue', 'Expenses'."""
 
     treasury_tx = Set("TreasuryTx", reverse="txgroup", lazy=True)
     """Inverse relation for treasury transactions assigned to this group."""
 
-    parent_txgroup = Optional("TxGroup", reverse="child_txgroups")
+    parent_txgroup = Optional("TxGroup", reverse="child_txgroups", index=True)
     """Optional reference to a parent group for nesting."""
 
     composite_key(name, parent_txgroup)
@@ -733,6 +736,25 @@ class TreasuryTx(DbEntity):
     """Foreign key to the categorization group."""
 
     composite_index(chain, txgroup)
+    composite_index(chain, token)
+    composite_index(chain, from_address)
+    composite_index(chain, to_address)
+    composite_index(chain, from_address, to_address)
+    composite_index(timestamp, txgroup)
+    composite_index(timestamp, token)
+    composite_index(timestamp, from_address)
+    composite_index(timestamp, to_address)
+    composite_index(timestamp, from_address, to_address)
+    composite_index(timestamp, chain, txgroup)
+    composite_index(timestamp, chain, token)
+    composite_index(timestamp, chain, from_address)
+    composite_index(timestamp, chain, to_address)
+    composite_index(timestamp, chain, from_address, to_address)
+    composite_index(chain, timestamp, txgroup)
+    composite_index(chain, timestamp, token)
+    composite_index(chain, timestamp, from_address)
+    composite_index(chain, timestamp, to_address)
+    composite_index(chain, timestamp, from_address, to_address)
 
     @property
     def to_nickname(self) -> typing.Optional[str]:
@@ -985,16 +1007,16 @@ class Stream(DbEntity):
     _table_ = "streams"
     stream_id = PrimaryKey(str)
 
-    contract = Required("Address", reverse="streams")
-    start_block = Required(int)
-    end_block = Optional(int)
+    contract = Required("Address", reverse="streams", index=True)
+    start_block = Required(int, index=True)
+    end_block = Optional(int, index=True)
     token = Required("Token", reverse="streams", index=True)
-    from_address = Required("Address", reverse="streams_from")
-    to_address = Required("Address", reverse="streams_to")
-    reason = Optional(str)
+    from_address = Required("Address", reverse="streams_from", index=True)
+    to_address = Required("Address", reverse="streams_to", index=True)
+    reason = Optional(str, index=True)
     amount_per_second = Required(Decimal, 38, 1)
-    status = Required(str, default="Active")
-    txgroup = Optional("TxGroup", reverse="streams")
+    status = Required(str, default="Active", index=True)
+    txgroup = Optional("TxGroup", reverse="streams", index=True)
 
     streamed_funds = Set("StreamedFunds", lazy=True)
 
