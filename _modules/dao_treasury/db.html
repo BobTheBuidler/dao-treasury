@@ -299,7 +299,7 @@
     <span class="n">address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checksum string of the on-chain address.&quot;&quot;&quot;</span>
 
-    <span class="n">nickname</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">nickname</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional human-readable label (e.g., contract name or token name).&quot;&quot;&quot;</span>
 
     <span class="n">is_contract</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -500,7 +500,7 @@
     <span class="n">symbol</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Short ticker symbol for the token.&quot;&quot;&quot;</span>
 
-    <span class="n">name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Full human-readable name of the token.&quot;&quot;&quot;</span>
 
     <span class="n">decimals</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -513,11 +513,14 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for treasury transactions involving this token.&quot;&quot;&quot;</span>
     <span class="c1"># partner_harvest_event = Set(&#39;PartnerHarvestEvent&#39;, reverse=&quot;vault&quot;, lazy=True)</span>
 
-    <span class="n">address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;address_id&quot;</span><span class="p">)</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Address</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;address_id&quot;</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the address record for this token contract.&quot;&quot;&quot;</span>
 
     <span class="n">streams</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;Stream&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1"># vesting_escrows = Set(&quot;VestingEscrow&quot;, reverse=&quot;token&quot;, lazy=True)</span>
+
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">symbol</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">Address</span><span class="p">,</span> <span class="n">ChecksumAddress</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># type: ignore [override]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -673,13 +676,13 @@
     <span class="n">txgroup_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Auto-incremented primary key for transaction groups.&quot;&quot;&quot;</span>
 
-    <span class="n">name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of the grouping category, e.g., &#39;Revenue&#39;, &#39;Expenses&#39;.&quot;&quot;&quot;</span>
 
     <span class="n">treasury_tx</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;TreasuryTx&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;txgroup&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Inverse relation for treasury transactions assigned to this group.&quot;&quot;&quot;</span>
 
-    <span class="n">parent_txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;child_txgroups&quot;</span><span class="p">)</span>
+    <span class="n">parent_txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;child_txgroups&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional reference to a parent group for nesting.&quot;&quot;&quot;</span>
 
     <span class="n">composite_key</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_txgroup</span><span class="p">)</span>
@@ -864,6 +867,25 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Foreign key to the categorization group.&quot;&quot;&quot;</span>
 
     <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">from_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">from_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">chain</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">chain</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">chain</span><span class="p">,</span> <span class="n">from_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">chain</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">chain</span><span class="p">,</span> <span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">txgroup</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">from_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
+    <span class="n">composite_index</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">from_address</span><span class="p">,</span> <span class="n">to_address</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_nickname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -1128,16 +1150,16 @@
     <span class="n">_table_</span> <span class="o">=</span> <span class="s2">&quot;streams&quot;</span>
     <span class="n">stream_id</span> <span class="o">=</span> <span class="n">PrimaryKey</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 
-    <span class="n">contract</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
-    <span class="n">start_block</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    <span class="n">end_block</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">start_block</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">end_block</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">token</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">from_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_from&quot;</span><span class="p">)</span>
-    <span class="n">to_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_to&quot;</span><span class="p">)</span>
-    <span class="n">reason</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">from_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_from&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">to_address</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="s2">&quot;Address&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams_to&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">reason</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">amount_per_second</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="n">Decimal</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Active&quot;</span><span class="p">)</span>
-    <span class="n">txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">Required</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Active&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">txgroup</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">(</span><span class="s2">&quot;TxGroup&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">streamed_funds</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="s2">&quot;StreamedFunds&quot;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
