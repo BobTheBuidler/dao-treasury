@@ -1158,6 +1158,7 @@ def init_db() -> None:
     global db_ready
     if db_ready:
         return
+    
     db.bind(
         provider="postgres",
         user=POSTGRES_USER,
@@ -1166,6 +1167,7 @@ def init_db() -> None:
         port=POSTGRES_PORT,
         database=POSTGRES_DB,
     )
+    
     db.generate_mapping(create_tables=True)
     
     with db_session:
