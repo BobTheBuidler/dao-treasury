@@ -17,7 +17,7 @@ and creating SQL views for reporting.
 """
 
 import typing
-from asyncio import Semaphore
+from asyncio import Lock, Semaphore
 from collections import OrderedDict
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
@@ -95,6 +95,12 @@ _SORT_SEMAPHORE = Semaphore(50)
 _UTC = timezone.utc
 
 db = Database()
+
+db_ready: bool = False
+startup_lock: Final = Lock()
+
+must_sort_inbound_txgroup_dbid: int = None
+must_sort_outbound_txgroup_dbid: int = None
 
 logger = getLogger("dao_treasury.db")
 
@@ -1147,20 +1153,43 @@ class StreamedFunds(DbEntity):
         return entity
 
 
-db.bind(
-    provider="postgres",
-    user=POSTGRES_USER,
-    password=POSTGRES_PASSWORD,
-    host=POSTGRES_HOST,
-    port=POSTGRES_PORT,
-    database=POSTGRES_DB,
-)
+def init_db() -> None:
+    """Initialize the database if not yet initialized."""
+    global db_ready
+    if db_ready:
+        return
+    db.bind(
+        provider="postgres",
+        user=POSTGRES_USER,
+        password=POSTGRES_PASSWORD,
+        host=POSTGRES_HOST,
+        port=POSTGRES_PORT,
+        database=POSTGRES_DB,
+    )
+    db.generate_mapping(create_tables=True)
+    
+    with db_session:
+        create_stream_ledger_view()
+        create_txgroup_hierarchy_view()
+        # create_vesting_ledger_view()
+        create_general_ledger_view()
+        create_unsorted_txs_view()
+        # create_monthly_pnl_view()
 
-db.generate_mapping(create_tables=True)
+    global must_sort_inbound_txgroup_dbid
+    must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
+
+    global must_sort_outbound_txgroup_dbid
+    must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
+
+    _drop_shitcoin_txs()
+    
+    db_ready = True
 
 
-def _set_address_nicknames_for_tokens() -> None:
+def set_address_nicknames_for_tokens() -> None:
     """Set address.nickname for addresses belonging to tokens."""
+    init_db()
     for address in select(a for a in Address if a.token and not a.nickname):
         address.nickname = f"Token: {address.token.name}"
         db.commit()
@@ -1371,18 +1400,6 @@ def create_monthly_pnl_view() -> None:
     db.execute(sql)
 
 
-with db_session:
-    create_stream_ledger_view()
-    create_txgroup_hierarchy_view()
-    # create_vesting_ledger_view()
-    create_general_ledger_view()
-    create_unsorted_txs_view()
-    # create_monthly_pnl_view()
-
-    must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
-    must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
-
-
 @db_session
 def _validate_integrity_error(
     entry: LedgerEntry, log_index: int
@@ -1476,6 +1493,3 @@ def _drop_shitcoin_txs() -> None:
             for tx in shitcoin_txs:
                 tx.delete()
             logger.info("Shitcoin tx purge complete.")
-
-
-_drop_shitcoin_txs()
