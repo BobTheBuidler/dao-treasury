@@ -1208,7 +1208,7 @@ def create_stream_ledger_view() -> None:
     """
     db.execute(
         """
-        DROP VIEW IF EXISTS stream_ledger;
+        DROP VIEW IF EXISTS stream_ledger CASCADE;
         CREATE VIEW stream_ledger AS
         SELECT
             'Mainnet' as chain_name,
