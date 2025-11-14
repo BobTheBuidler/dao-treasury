@@ -1206,33 +1206,35 @@ def create_stream_ledger_view() -> None:
     Examples:
         >>> create_stream_ledger_view()
     """
-    db.execute("""DROP VIEW IF EXISTS stream_ledger;""")
     db.execute(
         """
-        create view stream_ledger as
-        SELECT  'Mainnet' as chain_name,
-                cast(strftime('%s', date || ' 00:00:00') as INTEGER) as timestamp,
-                NULL as block, 
-                NULL as hash, 
-                NULL as log_index, 
-                symbol as token, 
-                d.address AS "from", 
-                d.nickname as from_nickname, 
-                e.address AS "to", 
-                e.nickname as to_nickname, 
-                amount, 
-                price, 
-                value_usd, 
-                txgroup.name as txgroup, 
-                parent.name as parent_txgroup, 
-                txgroup.txgroup_id
+        DROP VIEW IF EXISTS stream_ledger;
+        CREATE VIEW stream_ledger AS
+        SELECT
+            'Mainnet' as chain_name,
+            EXTRACT(EPOCH FROM (date::date))::integer as timestamp,
+            CAST(NULL as integer) as block,
+            NULL as hash,
+            CAST(NULL as integer) as log_index,
+            symbol as token,
+            d.address AS "from",
+            d.nickname as from_nickname,
+            e.address AS "to",
+            e.nickname as to_nickname,
+            amount,
+            price,
+            value_usd,
+            txgroup.name as txgroup,
+            parent.name as parent_txgroup,
+            txgroup.txgroup_id
         FROM streamed_funds a
             LEFT JOIN streams b ON a.stream = b.stream_id
             LEFT JOIN tokens c ON b.token = c.token_id
             LEFT JOIN addresses d ON b.from_address = d.address_id
             LEFT JOIN addresses e ON b.to_address = e.address_id
             LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id
-            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id
+            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;
+
         """
     )
 
@@ -1243,9 +1245,9 @@ def create_txgroup_hierarchy_view() -> None:
     This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,
     matching the recursive CTE logic used in dashboards.
     """
-    db.execute("DROP VIEW IF EXISTS txgroup_hierarchy;")
     db.execute(
         """
+        DROP VIEW IF EXISTS txgroup_hierarchy;
         CREATE VIEW txgroup_hierarchy AS
         WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
             SELECT txgroup_id, name AS top_category, parent_txgroup
@@ -1275,11 +1277,12 @@ def create_vesting_ledger_view() -> None:
         """
         DROP VIEW IF EXISTS vesting_ledger;
         CREATE VIEW vesting_ledger AS
-        SELECT  d.chain_name, 
-            CAST(date AS timestamp) AS "timestamp",
-            cast(NULL as int) AS block,
+        SELECT
+            d.chain_name,
+            date::timestamp AS "timestamp",
+            CAST(NULL as integer) AS block,
             NULL AS "hash",
-            cast(NULL as int) AS "log_index",
+            CAST(NULL as integer) AS "log_index",
             c.symbol AS "token",
             e.address AS "from",
             e.nickname as from_nickname,
@@ -1291,14 +1294,14 @@ def create_vesting_ledger_view() -> None:
             g.name as txgroup,
             h.name AS parent_txgroup,
             g.txgroup_id
-        FROM vested_funds a 
+        FROM vested_funds a
         LEFT JOIN vesting_escrows b ON a.escrow = b.escrow_id
         LEFT JOIN tokens c ON b.token = c.token_id
         LEFT JOIN chains d ON c.chain = d.chain_dbid
         LEFT JOIN addresses e ON b.address = e.address_id
         LEFT JOIN addresses f ON b.recipient = f.address_id
         LEFT JOIN txgroups g ON b.txgroup = g.txgroup_id
-        left JOIN txgroups h ON g.parent_txgroup = h.txgroup_id
+        LEFT JOIN txgroups h ON g.parent_txgroup = h.txgroup_id;
     """
     )
 
@@ -1311,13 +1314,17 @@ def create_general_ledger_view() -> None:
     Examples:
         >>> create_general_ledger_view()
     """
-    db.execute("drop VIEW IF EXISTS general_ledger")
     db.execute(
         """
-        create VIEW general_ledger as
-        select *
-        from (
-            SELECT treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS "from", d.nickname as from_nickname, e.address AS "to", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id
+        DROP VIEW IF EXISTS general_ledger;
+        CREATE VIEW general_ledger AS
+        SELECT *
+        FROM (
+            SELECT
+                treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index,
+                c.symbol AS token, d.address AS "from", d.nickname as from_nickname,
+                e.address AS "to", e.nickname as to_nickname, a.amount, a.price, a.value_usd,
+                f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id
             FROM treasury_txs a
                 LEFT JOIN chains b ON a.chain = b.chain_dbid
                 LEFT JOIN tokens c ON a.token_id = c.token_id
@@ -1326,13 +1333,15 @@ def create_general_ledger_view() -> None:
                 LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id
                 LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id
             UNION
-            SELECT -1, chain_name, timestamp, block, hash, log_index, token, "from", from_nickname, "to", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id
+            SELECT
+                -1, chain_name, timestamp, block, hash, log_index, token, "from", from_nickname,
+                "to", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id
             FROM stream_ledger
             --UNION
             --SELECT -1, *
             --FROM vesting_ledger
         ) a
-        ORDER BY timestamp
+        ORDER BY timestamp;
         """
     )
 
@@ -1345,14 +1354,14 @@ def create_unsorted_txs_view() -> None:
     Examples:
         >>> create_unsorted_txs_view()
     """
-    db.execute("DROP VIEW IF EXISTS unsorted_txs;")
     db.execute(
         """
-        CREATE VIEW unsorted_txs as
+        DROP VIEW IF EXISTS unsorted_txs;
+        CREATE VIEW unsorted_txs AS
         SELECT *
         FROM general_ledger
         WHERE txgroup = 'Categorization Pending'
-        ORDER BY TIMESTAMP desc
+        ORDER BY timestamp DESC;
         """
     )
 
@@ -1365,37 +1374,37 @@ def create_monthly_pnl_view() -> None:
     Examples:
         >>> create_monthly_pnl_view()
     """
-    db.execute("DROP VIEW IF EXISTS monthly_pnl;")
     sql = """
+    DROP VIEW IF EXISTS monthly_pnl;
     CREATE VIEW monthly_pnl AS
     WITH categorized AS (
-      SELECT
-        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,
+    SELECT
+        to_char(to_timestamp(t.timestamp), 'YYYY-MM') AS month,
         CASE
-          WHEN p.name IS NOT NULL THEN p.name
-          ELSE tg.name
+        WHEN p.name IS NOT NULL THEN p.name
+        ELSE tg.name
         END AS top_category,
         --COALESCE(t.value_usd, 0) AS value_usd,
         --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost
-      FROM treasury_txs t
-      JOIN txgroups tg ON t.txgroup = tg.txgroup_id
-      LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id
-      WHERE tg.name <> 'Ignore'
+    FROM treasury_txs t
+    JOIN txgroups tg ON t.txgroup = tg.txgroup_id
+    LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id
+    WHERE tg.name <> 'Ignore'
     )
     SELECT
-      month,
-      SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS revenue,
-      SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS cost_of_revenue,
-      SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS expenses,
-      SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS other_income,
-      SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS other_expense,
-      (
+    month,
+    SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS revenue,
+    SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS cost_of_revenue,
+    SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS expenses,
+    SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS other_income,
+    SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS other_expense,
+    (
         SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -
         SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -
         SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +
         SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -
         SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
-      ) AS net_profit
+    ) AS net_profit
     FROM categorized
     GROUP BY month;
     """

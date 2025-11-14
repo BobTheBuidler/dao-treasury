@@ -23,7 +23,6 @@ services:
       - GF_LOG_FILTERS=rendering:debug
       - GF_INSTALL_PLUGINS=volkovlabs-variable-panel
     volumes:
-      - ~/.dao-treasury/:/app/dao-treasury-data
       - ./.grafana/provisioning/:/etc/grafana/provisioning/
     networks:
       - dao_treasury
@@ -44,7 +43,7 @@ services:
     restart: always
 
   postgres:
-    image: postgres:15
+    image: postgres:18
     restart: always
     environment:
       POSTGRES_USER: dao_treasury
