@@ -50,7 +50,7 @@ services:
       POSTGRES_PASSWORD: dao_treasury
       POSTGRES_DB: dao_treasury
     volumes:
-      - dao_treasury_pgdata:/var/lib/postgresql/data
+      - dao_treasury_pgdata:/var/lib/postgresql
     ports:
       - 127.0.0.1:${DAO_TREASURY_POSTGRES_PORT:-8675}:5432
     networks:
