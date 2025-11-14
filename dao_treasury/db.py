@@ -84,8 +84,8 @@ EventItem = _EventItem[_EventItem[OrderedDict[str, Any]]]
 POSTGRES_USER = os.getenv("DAO_TREASURY_DB_USER", "dao_treasury")
 POSTGRES_PASSWORD = os.getenv("DAO_TREASURY_DB_PASSWORD", "dao_treasury")
 POSTGRES_DB = os.getenv("DAO_TREASURY_DB_NAME", "dao_treasury")
-POSTGRES_HOST = os.getenv("DAO_TREASURY_DB_HOST", "http://127.0.0.1")
-POSTGRES_PORT = os.getenv("DAO_TREASURY_DB_PORT", "8675")
+POSTGRES_HOST = os.getenv("DAO_TREASURY_DB_HOST", "127.0.0.1")
+POSTGRES_PORT = int(os.getenv("DAO_TREASURY_DB_PORT", "8675"))
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_THREAD = AsyncThreadPoolExecutor(1)
