@@ -92,7 +92,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Semaphore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lock</span><span class="p">,</span> <span class="n">Semaphore</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span><span class="p">,</span> <span class="n">InvalidOperation</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
@@ -112,6 +112,7 @@
     <span class="n">overload</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">eth_portfolio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span>
@@ -154,11 +155,12 @@
 <span class="n">EventItem</span> <span class="o">=</span> <span class="n">_EventItem</span><span class="p">[</span><span class="n">_EventItem</span><span class="p">[</span><span class="n">OrderedDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]</span>
 
 
-<span class="n">SQLITE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">))</span> <span class="o">/</span> <span class="s2">&quot;.dao-treasury&quot;</span>
-<span class="sd">&quot;&quot;&quot;Path to the directory in the user&#39;s home where the DAO treasury SQLite database is stored.&quot;&quot;&quot;</span>
-
-<span class="n">SQLITE_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
+<span class="c1"># Postgres connection parameters from environment variables (with docker-compose defaults)</span>
+<span class="n">POSTGRES_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DAO_TREASURY_DB_USER&quot;</span><span class="p">,</span> <span class="s2">&quot;dao_treasury&quot;</span><span class="p">)</span>
+<span class="n">POSTGRES_PASSWORD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DAO_TREASURY_DB_PASSWORD&quot;</span><span class="p">,</span> <span class="s2">&quot;dao_treasury&quot;</span><span class="p">)</span>
+<span class="n">POSTGRES_DB</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DAO_TREASURY_DB_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;dao_treasury&quot;</span><span class="p">)</span>
+<span class="n">POSTGRES_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DAO_TREASURY_DB_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">)</span>
+<span class="n">POSTGRES_PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DAO_TREASURY_DB_PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;8675&quot;</span><span class="p">))</span>
 
 <span class="n">_INSERT_THREAD</span> <span class="o">=</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">_SORT_THREAD</span> <span class="o">=</span> <span class="n">AsyncThreadPoolExecutor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -168,6 +170,12 @@
 <span class="n">_UTC</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>
+
+<span class="n">db_ready</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">startup_lock</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+
+<span class="n">must_sort_inbound_txgroup_dbid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">must_sort_outbound_txgroup_dbid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;dao_treasury.db&quot;</span><span class="p">)</span>
 
@@ -1313,20 +1321,54 @@
 
 
 
-<span class="n">db</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
-    <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>  <span class="c1"># TODO: let user choose postgres with server connection params</span>
-    <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">SQLITE_DIR</span> <span class="o">/</span> <span class="s2">&quot;dao-treasury.sqlite&quot;</span><span class="p">),</span>
-    <span class="n">create_db</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="viewcode-block" id="init_db">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.init_db">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the database if not yet initialized.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">db_ready</span>
+    <span class="k">if</span> <span class="n">db_ready</span><span class="p">:</span>
+        <span class="k">return</span>
 
-<span class="n">db</span><span class="o">.</span><span class="n">generate_mapping</span><span class="p">(</span><span class="n">create_tables</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span>
+        <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="n">POSTGRES_USER</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="n">POSTGRES_PASSWORD</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="n">POSTGRES_HOST</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="n">POSTGRES_PORT</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">POSTGRES_DB</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">generate_mapping</span><span class="p">(</span><span class="n">create_tables</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
+        <span class="n">create_stream_ledger_view</span><span class="p">()</span>
+        <span class="n">create_txgroup_hierarchy_view</span><span class="p">()</span>
+        <span class="c1"># create_vesting_ledger_view()</span>
+        <span class="n">create_general_ledger_view</span><span class="p">()</span>
+        <span class="n">create_unsorted_txs_view</span><span class="p">()</span>
+        <span class="c1"># create_monthly_pnl_view()</span>
+
+    <span class="k">global</span> <span class="n">must_sort_inbound_txgroup_dbid</span>
+    <span class="n">must_sort_inbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Inbound)&quot;</span><span class="p">)</span>
+
+    <span class="k">global</span> <span class="n">must_sort_outbound_txgroup_dbid</span>
+    <span class="n">must_sort_outbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Outbound)&quot;</span><span class="p">)</span>
+
+    <span class="n">_drop_shitcoin_txs</span><span class="p">()</span>
+
+    <span class="n">db_ready</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_set_address_nicknames_for_tokens</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="set_address_nicknames_for_tokens">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.set_address_nicknames_for_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_address_nicknames_for_tokens</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set address.nickname for addresses belonging to tokens.&quot;&quot;&quot;</span>
+    <span class="n">init_db</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">select</span><span class="p">(</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">Address</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">token</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">a</span><span class="o">.</span><span class="n">nickname</span><span class="p">):</span>
         <span class="n">address</span><span class="o">.</span><span class="n">nickname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Token: </span><span class="si">{</span><span class="n">address</span><span class="o">.</span><span class="n">token</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
 
 
 <div class="viewcode-block" id="create_stream_ledger_view">
@@ -1340,33 +1382,35 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; create_stream_ledger_view()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DROP VIEW IF EXISTS stream_ledger;&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        create view stream_ledger as</span>
-<span class="sd">        SELECT  &#39;Mainnet&#39; as chain_name,</span>
-<span class="sd">                cast(strftime(&#39;%s&#39;, date || &#39; 00:00:00&#39;) as INTEGER) as timestamp,</span>
-<span class="sd">                NULL as block, </span>
-<span class="sd">                NULL as hash, </span>
-<span class="sd">                NULL as log_index, </span>
-<span class="sd">                symbol as token, </span>
-<span class="sd">                d.address AS &quot;from&quot;, </span>
-<span class="sd">                d.nickname as from_nickname, </span>
-<span class="sd">                e.address AS &quot;to&quot;, </span>
-<span class="sd">                e.nickname as to_nickname, </span>
-<span class="sd">                amount, </span>
-<span class="sd">                price, </span>
-<span class="sd">                value_usd, </span>
-<span class="sd">                txgroup.name as txgroup, </span>
-<span class="sd">                parent.name as parent_txgroup, </span>
-<span class="sd">                txgroup.txgroup_id</span>
+<span class="sd">        DROP VIEW IF EXISTS stream_ledger CASCADE;</span>
+<span class="sd">        CREATE VIEW stream_ledger AS</span>
+<span class="sd">        SELECT</span>
+<span class="sd">            &#39;Mainnet&#39; as chain_name,</span>
+<span class="sd">            EXTRACT(EPOCH FROM (date::date))::integer as timestamp,</span>
+<span class="sd">            CAST(NULL as integer) as block,</span>
+<span class="sd">            NULL as hash,</span>
+<span class="sd">            CAST(NULL as integer) as log_index,</span>
+<span class="sd">            symbol as token,</span>
+<span class="sd">            d.address AS &quot;from&quot;,</span>
+<span class="sd">            d.nickname as from_nickname,</span>
+<span class="sd">            e.address AS &quot;to&quot;,</span>
+<span class="sd">            e.nickname as to_nickname,</span>
+<span class="sd">            amount,</span>
+<span class="sd">            price,</span>
+<span class="sd">            value_usd,</span>
+<span class="sd">            txgroup.name as txgroup,</span>
+<span class="sd">            parent.name as parent_txgroup,</span>
+<span class="sd">            txgroup.txgroup_id</span>
 <span class="sd">        FROM streamed_funds a</span>
 <span class="sd">            LEFT JOIN streams b ON a.stream = b.stream_id</span>
 <span class="sd">            LEFT JOIN tokens c ON b.token = c.token_id</span>
 <span class="sd">            LEFT JOIN addresses d ON b.from_address = d.address_id</span>
 <span class="sd">            LEFT JOIN addresses e ON b.to_address = e.address_id</span>
 <span class="sd">            LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id</span>
-<span class="sd">            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id</span>
+<span class="sd">            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="p">)</span></div>
 
@@ -1380,9 +1424,9 @@
 <span class="sd">    This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,</span>
 <span class="sd">    matching the recursive CTE logic used in dashboards.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS txgroup_hierarchy;&quot;</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DROP VIEW IF EXISTS txgroup_hierarchy;</span>
 <span class="sd">        CREATE VIEW txgroup_hierarchy AS</span>
 <span class="sd">        WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (</span>
 <span class="sd">            SELECT txgroup_id, name AS top_category, parent_txgroup</span>
@@ -1415,11 +1459,12 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        DROP VIEW IF EXISTS vesting_ledger;</span>
 <span class="sd">        CREATE VIEW vesting_ledger AS</span>
-<span class="sd">        SELECT  d.chain_name, </span>
-<span class="sd">            CAST(date AS timestamp) AS &quot;timestamp&quot;,</span>
-<span class="sd">            cast(NULL as int) AS block,</span>
+<span class="sd">        SELECT</span>
+<span class="sd">            d.chain_name,</span>
+<span class="sd">            date::timestamp AS &quot;timestamp&quot;,</span>
+<span class="sd">            CAST(NULL as integer) AS block,</span>
 <span class="sd">            NULL AS &quot;hash&quot;,</span>
-<span class="sd">            cast(NULL as int) AS &quot;log_index&quot;,</span>
+<span class="sd">            CAST(NULL as integer) AS &quot;log_index&quot;,</span>
 <span class="sd">            c.symbol AS &quot;token&quot;,</span>
 <span class="sd">            e.address AS &quot;from&quot;,</span>
 <span class="sd">            e.nickname as from_nickname,</span>
@@ -1431,14 +1476,14 @@
 <span class="sd">            g.name as txgroup,</span>
 <span class="sd">            h.name AS parent_txgroup,</span>
 <span class="sd">            g.txgroup_id</span>
-<span class="sd">        FROM vested_funds a </span>
+<span class="sd">        FROM vested_funds a</span>
 <span class="sd">        LEFT JOIN vesting_escrows b ON a.escrow = b.escrow_id</span>
 <span class="sd">        LEFT JOIN tokens c ON b.token = c.token_id</span>
 <span class="sd">        LEFT JOIN chains d ON c.chain = d.chain_dbid</span>
 <span class="sd">        LEFT JOIN addresses e ON b.address = e.address_id</span>
 <span class="sd">        LEFT JOIN addresses f ON b.recipient = f.address_id</span>
 <span class="sd">        LEFT JOIN txgroups g ON b.txgroup = g.txgroup_id</span>
-<span class="sd">        left JOIN txgroups h ON g.parent_txgroup = h.txgroup_id</span>
+<span class="sd">        LEFT JOIN txgroups h ON g.parent_txgroup = h.txgroup_id;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">)</span></div>
 
@@ -1454,13 +1499,17 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; create_general_ledger_view()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;drop VIEW IF EXISTS general_ledger&quot;</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        create VIEW general_ledger as</span>
-<span class="sd">        select *</span>
-<span class="sd">        from (</span>
-<span class="sd">            SELECT treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS &quot;from&quot;, d.nickname as from_nickname, e.address AS &quot;to&quot;, e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id</span>
+<span class="sd">        DROP VIEW IF EXISTS general_ledger;</span>
+<span class="sd">        CREATE VIEW general_ledger AS</span>
+<span class="sd">        SELECT *</span>
+<span class="sd">        FROM (</span>
+<span class="sd">            SELECT</span>
+<span class="sd">                treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index,</span>
+<span class="sd">                c.symbol AS token, d.address AS &quot;from&quot;, d.nickname as from_nickname,</span>
+<span class="sd">                e.address AS &quot;to&quot;, e.nickname as to_nickname, a.amount, a.price, a.value_usd,</span>
+<span class="sd">                f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id</span>
 <span class="sd">            FROM treasury_txs a</span>
 <span class="sd">                LEFT JOIN chains b ON a.chain = b.chain_dbid</span>
 <span class="sd">                LEFT JOIN tokens c ON a.token_id = c.token_id</span>
@@ -1469,13 +1518,15 @@
 <span class="sd">                LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id</span>
 <span class="sd">                LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id</span>
 <span class="sd">            UNION</span>
-<span class="sd">            SELECT -1, chain_name, timestamp, block, hash, log_index, token, &quot;from&quot;, from_nickname, &quot;to&quot;, to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id</span>
+<span class="sd">            SELECT</span>
+<span class="sd">                -1, chain_name, timestamp, block, hash, log_index, token, &quot;from&quot;, from_nickname,</span>
+<span class="sd">                &quot;to&quot;, to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id</span>
 <span class="sd">            FROM stream_ledger</span>
 <span class="sd">            --UNION</span>
 <span class="sd">            --SELECT -1, *</span>
 <span class="sd">            --FROM vesting_ledger</span>
 <span class="sd">        ) a</span>
-<span class="sd">        ORDER BY timestamp</span>
+<span class="sd">        ORDER BY timestamp;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="p">)</span></div>
 
@@ -1491,14 +1542,14 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; create_unsorted_txs_view()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS unsorted_txs;&quot;</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        CREATE VIEW unsorted_txs as</span>
+<span class="sd">        DROP VIEW IF EXISTS unsorted_txs;</span>
+<span class="sd">        CREATE VIEW unsorted_txs AS</span>
 <span class="sd">        SELECT *</span>
 <span class="sd">        FROM general_ledger</span>
 <span class="sd">        WHERE txgroup = &#39;Categorization Pending&#39;</span>
-<span class="sd">        ORDER BY TIMESTAMP desc</span>
+<span class="sd">        ORDER BY timestamp DESC;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="p">)</span></div>
 
@@ -1514,54 +1565,42 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; create_monthly_pnl_view()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS monthly_pnl;&quot;</span><span class="p">)</span>
     <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    DROP VIEW IF EXISTS monthly_pnl;</span>
 <span class="s2">    CREATE VIEW monthly_pnl AS</span>
 <span class="s2">    WITH categorized AS (</span>
-<span class="s2">      SELECT</span>
-<span class="s2">        strftime(&#39;%Y-%m&#39;, datetime(t.timestamp, &#39;unixepoch&#39;)) AS month,</span>
+<span class="s2">    SELECT</span>
+<span class="s2">        to_char(to_timestamp(t.timestamp), &#39;YYYY-MM&#39;) AS month,</span>
 <span class="s2">        CASE</span>
-<span class="s2">          WHEN p.name IS NOT NULL THEN p.name</span>
-<span class="s2">          ELSE tg.name</span>
+<span class="s2">        WHEN p.name IS NOT NULL THEN p.name</span>
+<span class="s2">        ELSE tg.name</span>
 <span class="s2">        END AS top_category,</span>
 <span class="s2">        --COALESCE(t.value_usd, 0) AS value_usd,</span>
 <span class="s2">        --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost</span>
-<span class="s2">      FROM treasury_txs t</span>
-<span class="s2">      JOIN txgroups tg ON t.txgroup = tg.txgroup_id</span>
-<span class="s2">      LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id</span>
-<span class="s2">      WHERE tg.name &lt;&gt; &#39;Ignore&#39;</span>
+<span class="s2">    FROM treasury_txs t</span>
+<span class="s2">    JOIN txgroups tg ON t.txgroup = tg.txgroup_id</span>
+<span class="s2">    LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id</span>
+<span class="s2">    WHERE tg.name &lt;&gt; &#39;Ignore&#39;</span>
 <span class="s2">    )</span>
 <span class="s2">    SELECT</span>
-<span class="s2">      month,</span>
-<span class="s2">      SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) AS revenue,</span>
-<span class="s2">      SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) AS cost_of_revenue,</span>
-<span class="s2">      SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) AS expenses,</span>
-<span class="s2">      SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) AS other_income,</span>
-<span class="s2">      SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END) AS other_expense,</span>
-<span class="s2">      (</span>
+<span class="s2">    month,</span>
+<span class="s2">    SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) AS revenue,</span>
+<span class="s2">    SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) AS cost_of_revenue,</span>
+<span class="s2">    SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) AS expenses,</span>
+<span class="s2">    SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) AS other_income,</span>
+<span class="s2">    SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END) AS other_expense,</span>
+<span class="s2">    (</span>
 <span class="s2">        SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) -</span>
 <span class="s2">        SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) -</span>
 <span class="s2">        SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) +</span>
 <span class="s2">        SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) -</span>
 <span class="s2">        SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END)</span>
-<span class="s2">      ) AS net_profit</span>
+<span class="s2">    ) AS net_profit</span>
 <span class="s2">    FROM categorized</span>
 <span class="s2">    GROUP BY month;</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span></div>
 
-
-
-<span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
-    <span class="n">create_stream_ledger_view</span><span class="p">()</span>
-    <span class="n">create_txgroup_hierarchy_view</span><span class="p">()</span>
-    <span class="c1"># create_vesting_ledger_view()</span>
-    <span class="n">create_general_ledger_view</span><span class="p">()</span>
-    <span class="n">create_unsorted_txs_view</span><span class="p">()</span>
-    <span class="c1"># create_monthly_pnl_view()</span>
-
-    <span class="n">must_sort_inbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Inbound)&quot;</span><span class="p">)</span>
-    <span class="n">must_sort_outbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Outbound)&quot;</span><span class="p">)</span>
 
 
 <span class="nd">@db_session</span>
@@ -1657,9 +1696,6 @@
             <span class="k">for</span> <span class="n">tx</span> <span class="ow">in</span> <span class="n">shitcoin_txs</span><span class="p">:</span>
                 <span class="n">tx</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Shitcoin tx purge complete.&quot;</span><span class="p">)</span>
-
-
-<span class="n">_drop_shitcoin_txs</span><span class="p">()</span>
 </pre></div>
 
            </div>
