@@ -249,7 +249,7 @@ async def export(args) -> None:
         _docker.up()
     else:
         _docker.up("grafana", "postgres")
-        
+
     setup_address_nicknames_in_db()
 
     # eth-portfolio needs this present

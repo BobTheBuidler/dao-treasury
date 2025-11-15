@@ -138,7 +138,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
     """
     global INTERNAL_TRANSFER_TXGROUP_DBID
     global OUT_OF_RANGE_TXGROUP_DBID
-    
+
     from_address = entry.from_address
     to_address = entry.to_address
     block = entry.block_number

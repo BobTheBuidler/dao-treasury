@@ -54,7 +54,7 @@ def up(*services: str) -> None:
     """
     # the proper envs for victoria-metrics arent set yet when we need to start up the postgres container,
     # but they're ready by the time we start the other containers
-    if services != ("postgres", ):
+    if services != ("postgres",):
         # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
         eth_portfolio_scripts.docker.up("victoria-metrics")
 

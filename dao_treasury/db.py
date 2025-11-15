@@ -1158,7 +1158,7 @@ def init_db() -> None:
     global db_ready
     if db_ready:
         return
-    
+
     db.bind(
         provider="postgres",
         user=POSTGRES_USER,
@@ -1169,7 +1169,7 @@ def init_db() -> None:
     )
 
     db.generate_mapping(create_tables=True)
-    
+
     with db_session:
         create_stream_ledger_view()
         create_txgroup_hierarchy_view()
@@ -1185,7 +1185,7 @@ def init_db() -> None:
     must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
 
     _drop_shitcoin_txs()
-    
+
     db_ready = True
 
 
