@@ -22,7 +22,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -71,7 +71,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
@@ -84,7 +84,7 @@
       "description": "Displays the total value of all transactions sorted as Revenue for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -133,7 +133,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
@@ -146,7 +146,7 @@
       "description": "Displays the total value of all transactions sorted as Expenses for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -195,7 +195,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
@@ -208,7 +208,7 @@
       "description": "Displays the total value of all transactions sorted as Cost of Revenue for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -257,7 +257,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
@@ -270,7 +270,7 @@
       "description": "Displays the total value of all transactions sorted as Other Income for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "unit": "currencyUSD",
         "defaults": {
@@ -319,7 +319,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
@@ -332,7 +332,7 @@
       "description": "Displays the total value of all transactions sorted as Other Expenses for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Shows the net total cashflow (all Revenue and Other Income minus all Expenses, Cost of Revenue, and Other Expenses) for the selected period.",
       "fieldConfig": {
         "unit": "currencyUSD",
@@ -382,7 +382,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "queryType": "table",
           "rawQueryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
@@ -394,7 +394,7 @@
       "type": "stat"
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Time series chart of all sorted cashflows, grouped by category, for the selected period. Shows Total Revenue, Total Expenses, and Net for each week, helping to analyze trends in the DAO's financial flows over time.",
       "fieldConfig": {
         "unit": "currencyUSD",
@@ -499,7 +499,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
           "queryType": "table",
           "rawQueryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",

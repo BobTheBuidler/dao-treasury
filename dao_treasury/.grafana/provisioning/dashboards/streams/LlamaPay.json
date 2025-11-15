@@ -22,10 +22,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "frser-sqlite-datasource",
-        "uid": "P2D2EEF3E092AF52B"
-      },
+      "datasource": "PostgreSQL",
       "description": "Displays all LlamaPay payment streams managed by the DAO, including stream ID, factory, start/end block, token, sender, recipient, reason, budget request, amount per second, status, and transaction group.\n\nData Links: Click on addresses or blocks to view them on Etherscan. Click on a budget request to view the related Github issue.",
       "fieldConfig": {
         "defaults": {
@@ -185,10 +182,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": {
-            "type": "frser-sqlite-datasource",
-            "uid": "P2D2EEF3E092AF52B"
-          },
+          "datasource": "PostgreSQL",
           "queryText": "SELECT\n  stream_id as \"Stream ID\",\n  b.address as \"Factory\",\n  start_block as \"Start Block\",\n  end_block as \"End Block\",\n  c.symbol as \"Token\",\n  d.address as \"From\",\n  e.address as \"To\",\n  reason as \"Reason\",\n  CASE\n    WHEN reason LIKE 'gh-%' AND\n         -- ensures all after \"gh-\" is digits\n         REPLACE(SUBSTR(reason, 4), '0', '') >= '' AND\n         CAST(SUBSTR(reason, 4) AS INTEGER) || '' = SUBSTR(reason, 4)\n    THEN CAST(SUBSTR(reason, 4) AS INTEGER)\n    ELSE NULL\n  END AS \"Budget Request\",\n  amount_per_second as \"Amount Per Second\",\n  status as \"Status\",\n  txgroup as \"TxGroup\"\n\nFROM streams a\nLEFT JOIN addresses b ON a.contract = b.address_id\nLEFT JOIN tokens c ON a.token = c.token_id\nLEFT JOIN addresses d ON a.from_address = d.address_id\nLEFT JOIN addresses e ON a.to_address = e.address_id",
           "queryType": "table",
           "rawQueryText": "SELECT\n  stream_id as \"Stream ID\",\n  b.address as \"Factory\",\n  start_block as \"Start Block\",\n  end_block as \"End Block\",\n  c.symbol as \"Token\",\n  d.address as \"From\",\n  e.address as \"To\",\n  reason as \"Reason\",\n  CASE\n    WHEN reason LIKE 'gh-%' AND\n         -- ensures all after \"gh-\" is digits\n         REPLACE(SUBSTR(reason, 4), '0', '') >= '' AND\n         CAST(SUBSTR(reason, 4) AS INTEGER) || '' = SUBSTR(reason, 4)\n    THEN CAST(SUBSTR(reason, 4) AS INTEGER)\n    ELSE NULL\n  END AS \"Budget Request\",\n  amount_per_second as \"Amount Per Second\",\n  status as \"Status\",\n  txgroup as \"TxGroup\"\n\nFROM streams a\nLEFT JOIN addresses b ON a.contract = b.address_id\nLEFT JOIN tokens c ON a.token = c.token_id\nLEFT JOIN addresses d ON a.from_address = d.address_id\nLEFT JOIN addresses e ON a.to_address = e.address_id",

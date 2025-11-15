@@ -2,7 +2,7 @@
 
 This module parses command-line arguments, sets up environment variables for
 Grafana and its renderer, and defines the entrypoint for a one-time export of
-DAO treasury transactions. It populates the local SQLite database and starts
+DAO treasury transactions. It populates the local PostgreSQL database and starts
 the required Docker services for Grafana dashboards. Transactions are fetched
 via :class:`dao_treasury.Treasury`, sorted according to optional rules, and
 inserted using the database routines (:func:`dao_treasury.db.TreasuryTx.insert`).
@@ -29,6 +29,7 @@ from pathlib import Path
 import brownie
 import yaml
 from a_sync import create_task
+from dao_treasury._nicknames import setup_address_nicknames_in_db
 from dao_treasury._wallet import load_wallets_from_yaml
 from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
@@ -247,7 +248,9 @@ async def export(args) -> None:
     if args.start_renderer is True:
         _docker.up()
     else:
-        _docker.up("grafana")
+        _docker.up("grafana", "postgres")
+
+    setup_address_nicknames_in_db()
 
     # eth-portfolio needs this present
     # TODO: we need to update eth-portfolio to honor wallet join and exit times

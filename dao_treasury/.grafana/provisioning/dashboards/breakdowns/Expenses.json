@@ -23,7 +23,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Displays the total expenses for the selected period, aggregated across all expense transaction groups. Useful for understanding overall spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
@@ -93,7 +93,7 @@
       "pluginVersion": "12.2.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
@@ -105,7 +105,7 @@
       "type": "stat"
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Shows the average expenses per month for the selected period. Useful for tracking monthly spending trends.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
@@ -175,7 +175,7 @@
       "pluginVersion": "12.2.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
@@ -187,7 +187,7 @@
       "type": "stat"
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Shows the average expenses per week for the selected period. Useful for monitoring short-term spending changes.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
@@ -257,7 +257,7 @@
       "pluginVersion": "12.2.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
@@ -269,7 +269,7 @@
       "type": "stat"
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Shows the average expenses per day for the selected period. Useful for fine-grained monitoring of spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
       "fieldConfig": {
         "defaults": {
@@ -339,7 +339,7 @@
       "pluginVersion": "12.2.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
           "queryType": "table",
           "rawQueryText": "SELECT SUM(t.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups g USING (txgroup_id) WHERE gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring})",
@@ -351,7 +351,7 @@
       "type": "stat"
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "description": "Time series chart of expenses by transaction group, aggregated weekly for the selected period. Useful for visualizing spending trends and identifying cost drivers.\n\nData Link: Clicking a group name opens a filtered transactions dashboard for that group and period.",
       "fieldConfig": {
         "defaults": {
@@ -450,7 +450,7 @@
       "pluginVersion": "12.2.1",
       "targets": [
         {
-          "datasource": "SQLite",
+          "datasource": "PostgreSQL",
           "queryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
           "queryType": "table",
           "rawQueryText": "SELECT t.timestamp, g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue', 'Expenses', 'Other Expense') THEN t.value_usd ELSE 0 END) AS \"Expenses\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g USING (txgroup_id) WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",

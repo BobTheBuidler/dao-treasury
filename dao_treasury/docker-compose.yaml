@@ -3,6 +3,9 @@ networks:
   docker_eth_portfolio:
     external: true
 
+volumes:
+  dao_treasury_pgdata:
+
 services:
   grafana:
     image: grafana/grafana:12.2.1
@@ -18,9 +21,8 @@ services:
       - GF_RENDERING_SERVER_URL=http://renderer:8091/render
       - GF_RENDERING_CALLBACK_URL=http://grafana:3000/
       - GF_LOG_FILTERS=rendering:debug
-      - GF_INSTALL_PLUGINS=volkovlabs-variable-panel,frser-sqlite-datasource
+      - GF_INSTALL_PLUGINS=volkovlabs-variable-panel
     volumes:
-      - ~/.dao-treasury/:/app/dao-treasury-data
       - ./.grafana/provisioning/:/etc/grafana/provisioning/
     networks:
       - dao_treasury
@@ -39,3 +41,17 @@ services:
       - dao_treasury
       - docker_eth_portfolio
     restart: always
+
+  postgres:
+    image: postgres:18
+    restart: always
+    environment:
+      POSTGRES_USER: dao_treasury
+      POSTGRES_PASSWORD: dao_treasury
+      POSTGRES_DB: dao_treasury
+    volumes:
+      - dao_treasury_pgdata:/var/lib/postgresql
+    ports:
+      - 127.0.0.1:${DAO_TREASURY_POSTGRES_PORT:-8675}:5432
+    networks:
+      - dao_treasury
