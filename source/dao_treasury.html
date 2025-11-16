@@ -77,6 +77,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.create_vesting_ledger_view"><code class="docutils literal notranslate"><span class="pre">create_vesting_ledger_view()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.get_transaction"><code class="docutils literal notranslate"><span class="pre">get_transaction()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.init_db"><code class="docutils literal notranslate"><span class="pre">init_db()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.refresh_matview"><code class="docutils literal notranslate"><span class="pre">refresh_matview()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dao_treasury.db.set_address_nicknames_for_tokens"><code class="docutils literal notranslate"><span class="pre">set_address_nicknames_for_tokens()</span></code></a></li>
 </ul>
 </li>
@@ -1033,10 +1034,16 @@ the verified contract name or fallback label.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dao_treasury.db.Stream.pause">
-<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.pause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.pause" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.pause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.pause" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>~_P</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>~_P</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>_T</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1058,13 +1065,16 @@ the verified contract name or fallback label.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dao_treasury.db.Stream.stop_stream">
-<span class="sig-name descname"><span class="pre">stop_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.stop_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.stop_stream" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">stop_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#Stream.stop_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.Stream.stop_stream" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>~_P</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>~_P</em>)</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dd class="field-even"><p><em>_T</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1183,19 +1193,16 @@ the verified contract name or fallback label.</p>
 <p>Each object represents one calendar day of tokens streamed for a particular stream.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dao_treasury.db.StreamedFunds.create_entity">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds_active</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last_day</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#StreamedFunds.create_entity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.StreamedFunds.create_entity" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#StreamedFunds.create_entity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.StreamedFunds.create_entity" title="Link to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stream_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><em>datetime</em></a>)</p></li>
-<li><p><strong>price</strong> (<a class="reference external" href="https://docs.python.org/3/library/decimal.html#decimal.Decimal" title="(in Python v3.14)"><em>Decimal</em></a>)</p></li>
-<li><p><strong>seconds_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
-<li><p><strong>is_last_day</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>args</strong> (<em>~_P</em>)</p></li>
+<li><p><strong>kwargs</strong> (<em>~_P</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#dao_treasury.db.StreamedFunds" title="dao_treasury.db.StreamedFunds"><em>StreamedFunds</em></a></p>
+<dd class="field-even"><p><em>_T</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2126,6 +2133,19 @@ and txgroups to produce a vesting ledger.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dao_treasury.db.refresh_matview">
+<span class="sig-prename descclassname"><span class="pre">dao_treasury.db.</span></span><span class="sig-name descname"><span class="pre">refresh_matview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dao_treasury/db.html#refresh_matview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dao_treasury.db.refresh_matview" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a>[[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a>[[~_P], <em>_T</em>]], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a>[[~_P], <em>_T</em>]]</p>
 </dd>
 </dl>
 </dd></dl>

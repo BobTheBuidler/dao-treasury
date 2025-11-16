@@ -102,11 +102,13 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Callable</span><span class="p">,</span>
     <span class="n">Coroutine</span><span class="p">,</span>
     <span class="n">Dict</span><span class="p">,</span>
     <span class="n">Final</span><span class="p">,</span>
     <span class="n">Literal</span><span class="p">,</span>
     <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">TypeVar</span><span class="p">,</span>
     <span class="n">Union</span><span class="p">,</span>
     <span class="n">final</span><span class="p">,</span>
     <span class="n">overload</span><span class="p">,</span>
@@ -142,6 +144,7 @@
     <span class="n">rollback</span><span class="p">,</span>
     <span class="n">select</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParamSpec</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y</span><span class="w"> </span><span class="kn">import</span> <span class="n">EEE_ADDRESS</span><span class="p">,</span> <span class="n">Contract</span><span class="p">,</span> <span class="n">Network</span><span class="p">,</span> <span class="n">convert</span><span class="p">,</span> <span class="n">get_block_timestamp_async</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y._db.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">retry_locked</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y.contracts</span><span class="w"> </span><span class="kn">import</span> <span class="n">_get_code</span>
@@ -150,6 +153,9 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CHAINID</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">TxGroupDbid</span><span class="p">,</span> <span class="n">TxGroupName</span>
 
+
+<span class="n">_T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+<span class="n">_P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;_P&quot;</span><span class="p">)</span>
 
 <span class="n">EventItem</span> <span class="o">=</span> <span class="n">_EventItem</span><span class="p">[</span><span class="n">_EventItem</span><span class="p">[</span><span class="n">OrderedDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]</span>
 
@@ -173,8 +179,8 @@
 <span class="n">db_ready</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">startup_lock</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
 
-<span class="n">must_sort_inbound_txgroup_dbid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">must_sort_outbound_txgroup_dbid</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">must_sort_inbound_txgroup_dbid</span><span class="p">:</span> <span class="n">TxGroupDbid</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">must_sort_outbound_txgroup_dbid</span><span class="p">:</span> <span class="n">TxGroupDbid</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;dao_treasury.db&quot;</span><span class="p">)</span>
 
@@ -1153,6 +1159,20 @@
 <span class="n">_stream_metadata_cache</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">HexStr</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ChecksumAddress</span><span class="p">,</span> <span class="n">date</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
 
 
+<div class="viewcode-block" id="refresh_matview">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.refresh_matview">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">refresh_matview</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">]],</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">matview_deco</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">matview_refresh_wrap</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_T</span><span class="p">:</span>
+            <span class="n">retval</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">commit</span><span class="p">()</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">;&quot;</span><span class="p">)</span>
+            <span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">retval</span>
+        <span class="k">return</span> <span class="n">matview_refresh_wrap</span>
+    <span class="k">return</span> <span class="n">matview_deco</span></div>
+
+
 <div class="viewcode-block" id="Stream">
 <a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Stream</span><span class="p">(</span><span class="n">DbEntity</span><span class="p">):</span>
@@ -1215,6 +1235,7 @@
 
 <div class="viewcode-block" id="Stream.stop_stream">
 <a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.stop_stream">[docs]</a>
+    <span class="nd">@refresh_matview</span><span class="p">(</span><span class="s2">&quot;stream_ledger&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">stop_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">end_block</span> <span class="o">=</span> <span class="n">block</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Stopped&quot;</span></div>
@@ -1222,6 +1243,7 @@
 
 <div class="viewcode-block" id="Stream.pause">
 <a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.Stream.pause">[docs]</a>
+    <span class="nd">@refresh_matview</span><span class="p">(</span><span class="s2">&quot;stream_ledger&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;Paused&quot;</span></div>
 
@@ -1296,6 +1318,7 @@
 <a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.StreamedFunds.create_entity">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="nd">@db_session</span>
+    <span class="nd">@refresh_matview</span><span class="p">(</span><span class="s2">&quot;stream_ledger&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_entity</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">stream_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -1383,37 +1406,46 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; create_stream_ledger_view()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DROP VIEW IF EXISTS stream_ledger CASCADE;</span>
-<span class="sd">        CREATE VIEW stream_ledger AS</span>
-<span class="sd">        SELECT</span>
-<span class="sd">            &#39;Mainnet&#39; as chain_name,</span>
-<span class="sd">            EXTRACT(EPOCH FROM (date::date))::integer as timestamp,</span>
-<span class="sd">            CAST(NULL as integer) as block,</span>
-<span class="sd">            NULL as hash,</span>
-<span class="sd">            CAST(NULL as integer) as log_index,</span>
-<span class="sd">            symbol as token,</span>
-<span class="sd">            d.address AS &quot;from&quot;,</span>
-<span class="sd">            d.nickname as from_nickname,</span>
-<span class="sd">            e.address AS &quot;to&quot;,</span>
-<span class="sd">            e.nickname as to_nickname,</span>
-<span class="sd">            amount,</span>
-<span class="sd">            price,</span>
-<span class="sd">            value_usd,</span>
-<span class="sd">            txgroup.name as txgroup,</span>
-<span class="sd">            parent.name as parent_txgroup,</span>
-<span class="sd">            txgroup.txgroup_id</span>
-<span class="sd">        FROM streamed_funds a</span>
-<span class="sd">            LEFT JOIN streams b ON a.stream = b.stream_id</span>
-<span class="sd">            LEFT JOIN tokens c ON b.token = c.token_id</span>
-<span class="sd">            LEFT JOIN addresses d ON b.from_address = d.address_id</span>
-<span class="sd">            LEFT JOIN addresses e ON b.to_address = e.address_id</span>
-<span class="sd">            LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id</span>
-<span class="sd">            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            DROP MATERIALIZED VIEW IF EXISTS stream_ledger CASCADE;</span>
+<span class="sd">            CREATE MATERIALIZED VIEW stream_ledger AS</span>
+<span class="sd">            SELECT</span>
+<span class="sd">                &#39;Mainnet&#39; as chain_name,</span>
+<span class="sd">                EXTRACT(EPOCH FROM (date::date))::integer as timestamp,</span>
+<span class="sd">                CAST(NULL as integer) as block,</span>
+<span class="sd">                NULL as hash,</span>
+<span class="sd">                CAST(NULL as integer) as log_index,</span>
+<span class="sd">                symbol as token,</span>
+<span class="sd">                d.address AS &quot;from&quot;,</span>
+<span class="sd">                d.nickname as from_nickname,</span>
+<span class="sd">                e.address AS &quot;to&quot;,</span>
+<span class="sd">                e.nickname as to_nickname,</span>
+<span class="sd">                amount,</span>
+<span class="sd">                price,</span>
+<span class="sd">                value_usd,</span>
+<span class="sd">                txgroup.name as txgroup,</span>
+<span class="sd">                parent.name as parent_txgroup,</span>
+<span class="sd">                txgroup.txgroup_id</span>
+<span class="sd">            FROM streamed_funds a</span>
+<span class="sd">                LEFT JOIN streams b ON a.stream = b.stream_id</span>
+<span class="sd">                LEFT JOIN tokens c ON b.token = c.token_id</span>
+<span class="sd">                LEFT JOIN addresses d ON b.from_address = d.address_id</span>
+<span class="sd">                LEFT JOIN addresses e ON b.to_address = e.address_id</span>
+<span class="sd">                LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id</span>
+<span class="sd">                LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="p">)</span></div>
+<span class="sd">            &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;&quot;stream_ledger&quot; is not a materialized view&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+            <span class="k">raise</span>
+        <span class="c1"># we&#39;re running an old schema, lets migrate it</span>
+        <span class="n">rollback</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS stream_ledger CASCADE;&quot;</span><span class="p">)</span>
+        <span class="n">commit</span><span class="p">()</span>
+        <span class="n">create_stream_ledger_view</span><span class="p">()</span></div>
 
 
 
