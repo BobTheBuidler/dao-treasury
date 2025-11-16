@@ -1084,12 +1084,12 @@ class Stream(DbEntity):
                 end = datetime.fromtimestamp(chain[stream.end_block].timestamp, tz=_UTC)
             return start, end
 
-    @refresh_matview("streamed_funds")
+    @refresh_matview("stream_ledger")
     def stop_stream(self, block: int) -> None:
         self.end_block = block
         self.status = "Stopped"
 
-    @refresh_matview("streamed_funds")
+    @refresh_matview("stream_ledger")
     def pause(self) -> None:
         self.status = "Paused"
 
@@ -1149,7 +1149,7 @@ class StreamedFunds(DbEntity):
 
     @classmethod
     @db_session
-    @refresh_matview("streamed_funds")
+    @refresh_matview("stream_ledger")
     def create_entity(
         cls,
         stream_id: str,
@@ -1260,11 +1260,11 @@ def create_stream_ledger_view() -> None:
             """
         )
     except Exception as e:
-        if '"streamed_funds" is not a materialized view' not in str(e):
+        if '"stream_ledger" is not a materialized view' not in str(e):
             raise
         # we're running an old schema, lets migrate it
         rollback()
-        db.execute("DROP VIEW IF EXISTS streamed_funds CASCADE;")
+        db.execute("DROP VIEW IF EXISTS stream_ledger CASCADE;")
         commit()
         create_stream_ledger_view()
 
