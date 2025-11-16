@@ -91,14 +91,14 @@
 <span class="sd">and creating SQL views for reporting.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lock</span><span class="p">,</span> <span class="n">Semaphore</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timezone</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span><span class="p">,</span> <span class="n">InvalidOperation</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">getLogger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">os</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">TYPE_CHECKING</span><span class="p">,</span>
     <span class="n">Any</span><span class="p">,</span>
@@ -111,8 +111,6 @@
     <span class="n">final</span><span class="p">,</span>
     <span class="n">overload</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timezone</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">eth_portfolio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">a_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncThreadPoolExecutor</span>
@@ -141,6 +139,7 @@
     <span class="n">composite_key</span><span class="p">,</span>
     <span class="n">composite_index</span><span class="p">,</span>
     <span class="n">db_session</span><span class="p">,</span>
+    <span class="n">rollback</span><span class="p">,</span>
     <span class="n">select</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">y</span><span class="w"> </span><span class="kn">import</span> <span class="n">EEE_ADDRESS</span><span class="p">,</span> <span class="n">Contract</span><span class="p">,</span> <span class="n">Network</span><span class="p">,</span> <span class="n">convert</span><span class="p">,</span> <span class="n">get_block_timestamp_async</span>
@@ -782,6 +781,8 @@
             <span class="k">if</span> <span class="n">txgroup</span> <span class="o">:=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">parent_txgroup</span><span class="o">=</span><span class="n">parent</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">txgroup</span>  <span class="c1"># type: ignore [no-any-return]</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW txgroup_hierarchy;&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">txgroup</span>  <span class="c1"># type: ignore [no-any-return]</span></div>
 </div>
 
@@ -1424,23 +1425,42 @@
 <span class="sd">    This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,</span>
 <span class="sd">    matching the recursive CTE logic used in dashboards.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DROP VIEW IF EXISTS txgroup_hierarchy;</span>
-<span class="sd">        CREATE VIEW txgroup_hierarchy AS</span>
-<span class="sd">        WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (</span>
-<span class="sd">            SELECT txgroup_id, name AS top_category, parent_txgroup</span>
-<span class="sd">            FROM txgroups</span>
-<span class="sd">            WHERE parent_txgroup IS NULL</span>
-<span class="sd">            UNION ALL</span>
-<span class="sd">            SELECT child.txgroup_id, parent.top_category, child.parent_txgroup</span>
-<span class="sd">            FROM txgroups AS child</span>
-<span class="sd">            JOIN group_hierarchy AS parent</span>
-<span class="sd">                ON child.parent_txgroup = parent.txgroup_id</span>
-<span class="sd">        )</span>
-<span class="sd">        SELECT * FROM group_hierarchy;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-    <span class="p">)</span></div>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy CASCADE;</span>
+<span class="sd">            CREATE MATERIALIZED VIEW txgroup_hierarchy AS</span>
+<span class="sd">            WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (</span>
+<span class="sd">                SELECT txgroup_id, name AS top_category, parent_txgroup</span>
+<span class="sd">                FROM txgroups</span>
+<span class="sd">                WHERE parent_txgroup IS NULL</span>
+<span class="sd">                UNION ALL</span>
+<span class="sd">                SELECT child.txgroup_id, parent.top_category, child.parent_txgroup</span>
+<span class="sd">                FROM txgroups AS child</span>
+<span class="sd">                JOIN group_hierarchy AS parent</span>
+<span class="sd">                    ON child.parent_txgroup = parent.txgroup_id</span>
+<span class="sd">            )</span>
+<span class="sd">            SELECT * FROM group_hierarchy;</span>
+<span class="sd">            </span>
+<span class="sd">            -- Indexes</span>
+<span class="sd">            CREATE UNIQUE INDEX idx_txgroup_hierarchy_txgroup_id</span>
+<span class="sd">                ON txgroup_hierarchy (txgroup_id);</span>
+
+<span class="sd">            CREATE INDEX idx_txgroup_hierarchy_top_category</span>
+<span class="sd">                ON txgroup_hierarchy (top_category);</span>
+
+<span class="sd">            CREATE INDEX idx_txgroup_hierarchy_parent</span>
+<span class="sd">                ON txgroup_hierarchy (parent_txgroup);</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;&quot;txgroup_hierarchy&quot; is not a materialized view&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+            <span class="k">raise</span>
+        <span class="c1"># we&#39;re running an old schema, lets migrate it</span>
+        <span class="n">rollback</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP VIEW IF EXISTS txgroup_hierarchy CASCADE;&quot;</span><span class="p">)</span>
+        <span class="n">commit</span><span class="p">()</span>
+        <span class="n">create_txgroup_hierarchy_view</span><span class="p">()</span></div>
 
 
 
