@@ -72,9 +72,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -134,9 +133,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -196,9 +194,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -258,9 +255,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -320,9 +316,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -383,9 +378,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -500,9 +494,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
-          "queryType": "table",
-          "rawQueryText": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
+          "format": "table",
+          "rawSql": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
@@ -653,9 +646,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Inbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Inbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Inbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -715,9 +707,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Outbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Outbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Sort Me (Outbound)' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -777,9 +768,8 @@
       "targets": [
         {
           "datasource": "PostgreSQL",
-          "queryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "format": "table",
+          "rawSql": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Sort Me (Inbound)' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Sort Me (Outbound)' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -804,5 +794,5 @@
   "title": "Total Cashflow Summary (Including Unsorted)",
   "description": "Offers a complete picture of all DAO cashflows, including both sorted and unsorted transactions. This dashboard is ideal for tracking transactions still pending categorization and understanding their impact on overall cashflow.",
   "uid": "2b6e7c1d-8f4a-4e3b-9b2a-1c7d8e9f0a2b",
-  "version": 100
+  "version": 102
 }
