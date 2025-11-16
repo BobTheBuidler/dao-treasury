@@ -104,8 +104,8 @@ db = Database()
 db_ready: bool = False
 startup_lock: Final = Lock()
 
-must_sort_inbound_txgroup_dbid: int = None
-must_sort_outbound_txgroup_dbid: int = None
+must_sort_inbound_txgroup_dbid: TxGroupDbid = None
+must_sort_outbound_txgroup_dbid: TxGroupDbid = None
 
 logger = getLogger("dao_treasury.db")
 
