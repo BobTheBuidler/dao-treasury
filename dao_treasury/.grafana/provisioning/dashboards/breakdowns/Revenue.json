@@ -95,7 +95,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(p.value_usd) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND txgroup_name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -176,7 +176,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(p.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND txgroup_name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -257,7 +257,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(p.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND txgroup_name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -338,7 +338,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(p.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND txgroup_name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -450,7 +450,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT to_timestamp(p.timestamp) AS \"timestamp\", g.name AS \"TxGroup\", SUM(p.value_usd) AS \"Revenue\" FROM usdvalue_presum AS p JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id INNER JOIN txgroups g ON gh.txgroup_id = g.txgroup_id WHERE p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) AND gh.top_category in ('Revenue', 'Other Income') GROUP BY p.timestamp, g.name ORDER BY p.timestamp;",
+          "rawSql": "SELECT to_timestamp(timestamp) AS \"timestamp\", txgroup_name AS \"TxGroup\", SUM(value_usd) AS \"Revenue\" FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND txgroup_name IN (${Txgroup:sqlstring}) GROUP BY timestamp, txgroup_name ORDER BY timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
@@ -524,13 +524,13 @@
           "text": "All",
           "value": "$__all"
         },
-        "definition": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id WHERE (gh.top_category = 'Revenue' OR gh.top_category = 'Other Income') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "definition": "SELECT DISTINCT txgroup_name FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000;",
         "description": "Filter the dashboard by transaction group.\n\nSelect one or more groups to view revenue for specific categories, or 'All' to include every group.",
         "includeAll": true,
         "label": "Tx Group",
         "name": "Txgroup",
         "options": [],
-        "query": "SELECT DISTINCT t.name FROM treasury_txs a INNER JOIN txgroup_hierarchy gh ON a.txgroup_id = gh.txgroup_id LEFT JOIN txgroups t ON gh.txgroup_id = t.txgroup_id WHERE (gh.top_category = 'Revenue' OR gh.top_category = 'Other Income') AND a.timestamp >= $__from/1000 AND a.timestamp <= $__to/1000;",
+        "query": "SELECT DISTINCT txgroup_name FROM usdvalue_presum_revenue WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000;",
         "refresh": 2,
         "regex": "",
         "sort": 5,
@@ -546,5 +546,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 17
+  "version": 18
 }
