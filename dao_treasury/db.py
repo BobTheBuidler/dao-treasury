@@ -1249,7 +1249,7 @@ def create_txgroup_hierarchy_view() -> None:
     try:
         db.execute(
             """
-            DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy;
+            DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy CASCADE;
             CREATE MATERIALIZED VIEW txgroup_hierarchy AS
             WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
                 SELECT txgroup_id, name AS top_category, parent_txgroup
@@ -1279,7 +1279,7 @@ def create_txgroup_hierarchy_view() -> None:
             raise
         # we're running an old schema, lets migrate it
         rollback()
-        db.execute("DROP VIEW IF EXISTS txgroup_hierarchy;")
+        db.execute("DROP VIEW IF EXISTS txgroup_hierarchy CASCADE;")
         commit()
         create_txgroup_hierarchy_view()
 
