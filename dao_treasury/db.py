@@ -1003,6 +1003,7 @@ class TreasuryTx(DbEntity):
             ):
                 with db_session:
                     db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
+                    db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
                 logger.info(
                     "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
                 )
@@ -1016,6 +1017,7 @@ class TreasuryTx(DbEntity):
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
             commit()
             db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
+            db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
 
 
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
@@ -1204,6 +1206,7 @@ def init_db() -> None:
         create_general_ledger_view()
         create_unsorted_txs_view()
         create_usdval_presum_matview()
+        create_usdval_presum_revenue_matview()
         # create_monthly_pnl_view()
 
     global must_sort_inbound_txgroup_dbid
@@ -1487,6 +1490,47 @@ def create_usdval_presum_matview() -> None:
 
         CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_txgroup_id
             ON usdvalue_presum (timestamp, txgroup_id);
+        """
+    )
+
+
+def create_usdval_presum_revenue_matview() -> None:
+    # This view is specifically for the Revenue Over Time dashboard.
+    # It presums usd value for Revenue and Other Income categories only, pre-joining txgroups and top_category.
+    db.execute(
+        """
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_revenue;
+        CREATE MATERIALIZED VIEW usdvalue_presum_revenue AS
+        SELECT
+            p.txgroup_id,
+            t.name AS txgroup_name,
+            gh.top_category,
+            p.timestamp,
+            SUM(p.value_usd) AS value_usd
+        FROM general_ledger p
+        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
+        JOIN txgroups t ON p.txgroup_id = t.txgroup_id
+        WHERE gh.top_category IN ('Revenue', 'Other Income')
+        GROUP BY p.txgroup_id, t.name, gh.top_category, p.timestamp;
+
+        -- Indexes
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_txgroup_id_timestamp
+            ON usdvalue_presum_revenue (txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_timestamp_txgroup_id
+            ON usdvalue_presum_revenue (timestamp, txgroup_id);
+
+        CREATE INDEX idx_usdvalue_presum_revenue_txgroup_name_timestamp
+            ON usdvalue_presum_revenue (txgroup_name, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_timestamp_txgroup_name
+            ON usdvalue_presum_revenue (timestamp, txgroup_name);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_id_timestamp
+            ON usdvalue_presum_revenue (top_category, txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_name_timestamp
+            ON usdvalue_presum_revenue (top_category, txgroup_name, timestamp);
         """
     )
 
