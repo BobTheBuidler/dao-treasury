@@ -658,6 +658,8 @@ class TxGroup(DbEntity):
             if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
                 return txgroup  # type: ignore [no-any-return]
             raise Exception(e, name, parent) from e
+        else:
+            db.execute("REFRESH MATERIALIZED VIEW txgroup_hierarchy;")
         return txgroup  # type: ignore [no-any-return]
 
 
@@ -1247,8 +1249,8 @@ def create_txgroup_hierarchy_view() -> None:
     """
     db.execute(
         """
-        DROP VIEW IF EXISTS txgroup_hierarchy;
-        CREATE VIEW txgroup_hierarchy AS
+        DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy;
+        CREATE MATERIALIZED VIEW txgroup_hierarchy AS
         WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
             SELECT txgroup_id, name AS top_category, parent_txgroup
             FROM txgroups
@@ -1260,6 +1262,16 @@ def create_txgroup_hierarchy_view() -> None:
                 ON child.parent_txgroup = parent.txgroup_id
         )
         SELECT * FROM group_hierarchy;
+        
+        -- Indexes
+        CREATE UNIQUE INDEX idx_txgroup_hierarchy_txgroup_id
+            ON txgroup_hierarchy (txgroup_id);
+
+        CREATE INDEX idx_txgroup_hierarchy_top_category
+            ON txgroup_hierarchy (top_category);
+
+        CREATE INDEX idx_txgroup_hierarchy_parent
+            ON txgroup_hierarchy (parent_txgroup);
         """
     )
 
