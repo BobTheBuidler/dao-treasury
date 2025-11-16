@@ -24,7 +24,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -42,7 +41,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -85,7 +85,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -103,7 +102,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -146,7 +146,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -164,7 +163,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -208,7 +208,6 @@
       "datasource": "PostgreSQL",
       "description": "Shows the net operating cashflow (Revenue minus Cost of Revenue and Expenses) for the selected period.",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -226,7 +225,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -269,7 +269,6 @@
       "datasource": "PostgreSQL",
       "description": "Time series chart of all sorted operational cashflows, grouped by category, for the selected period. Shows Total Revenue, Total Expenses, and Net for each week, helping to analyze trends in the DAO's operational financial flows over time.",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "palette-classic"
@@ -320,7 +319,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": [
           {
@@ -469,5 +469,5 @@
   "title": "Operating Cashflow Summary",
   "description": "Provides a focused view of core operational cashflows, including only sorted transactions in Revenue, Cost of Revenue, and Expenses categories. Excludes unsorted transactions and non-operational activity, helping monitor specifically the DAO's operational financial flows.",
   "uid": "fdf9969c-357a-4203-ae7b-12816e87bc7e",
-  "version": 103
+  "version": 104
 }

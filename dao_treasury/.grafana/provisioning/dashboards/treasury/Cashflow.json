@@ -24,7 +24,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -42,7 +41,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -85,7 +85,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -103,7 +102,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -146,7 +146,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -164,7 +163,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -207,7 +207,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -225,7 +224,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -268,7 +268,6 @@
     {
       "datasource": "PostgreSQL",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -286,7 +285,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -330,7 +330,6 @@
       "datasource": "PostgreSQL",
       "description": "Shows the net total cashflow (all Revenue and Other Income minus all Expenses, Cost of Revenue, and Other Expenses) for the selected period.",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "thresholds"
@@ -348,7 +347,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -391,7 +391,6 @@
       "datasource": "PostgreSQL",
       "description": "Time series chart of all sorted cashflows, grouped by category, for the selected period. Shows Total Revenue, Total Expenses, and Net for each week, helping to analyze trends in the DAO's financial flows over time.",
       "fieldConfig": {
-        "unit": "currencyUSD",
         "defaults": {
           "color": {
             "mode": "palette-classic"
@@ -442,7 +441,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": [
           {
@@ -591,5 +591,5 @@
   "title": "Total Cashflow Summary",
   "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
   "uid": "7e2b1c8a-4e2d-4b7a-9c1a-2f8e6b7d9c3f",
-  "version": 103
+  "version": 104
 }
