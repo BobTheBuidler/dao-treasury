@@ -27,11 +27,13 @@ from logging import getLogger
 from typing import (
     TYPE_CHECKING,
     Any,
+    Callable,
     Coroutine,
     Dict,
     Final,
     Literal,
     Tuple,
+    TypeVar,
     Union,
     final,
     overload,
@@ -67,6 +69,7 @@ from pony.orm import (
     rollback,
     select,
 )
+from typing_extensions import ParamSpec
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
 from y._db.decorators import retry_locked
 from y.contracts import _get_code
@@ -75,6 +78,9 @@ from y.exceptions import ContractNotVerified
 from dao_treasury.constants import CHAINID
 from dao_treasury.types import TxGroupDbid, TxGroupName
 
+
+_T = TypeVar("_T")
+_P = ParamSpec("_P")
 
 EventItem = _EventItem[_EventItem[OrderedDict[str, Any]]]
 
@@ -1012,6 +1018,17 @@ class TreasuryTx(DbEntity):
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
 
 
+def refresh_matview(name: str) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]:
+    def matview_deco(fn: Callable[_P, _T]) -> Callable[_P, _T]:
+        def matview_refresh_wrap(*args: _P.args, **kwargs: _P.kwargs) -> _T:
+            retval = fn(*args, **kwargs)
+            commit()
+            db.execute(f"REFRESH MATERIALIZED VIEW {name};")
+            commit()
+            return retval
+        return matview_refresh_wrap
+    return matview_deco
+
 class Stream(DbEntity):
     _table_ = "streams"
     stream_id = PrimaryKey(str)
@@ -1067,10 +1084,12 @@ class Stream(DbEntity):
                 end = datetime.fromtimestamp(chain[stream.end_block].timestamp, tz=_UTC)
             return start, end
 
+    @refresh_matview("streamed_funds")
     def stop_stream(self, block: int) -> None:
         self.end_block = block
         self.status = "Stopped"
 
+    @refresh_matview("streamed_funds")
     def pause(self) -> None:
         self.status = "Paused"
 
@@ -1130,6 +1149,7 @@ class StreamedFunds(DbEntity):
 
     @classmethod
     @db_session
+    @refresh_matview("streamed_funds")
     def create_entity(
         cls,
         stream_id: str,
@@ -1207,37 +1227,46 @@ def create_stream_ledger_view() -> None:
     Examples:
         >>> create_stream_ledger_view()
     """
-    db.execute(
-        """
-        DROP VIEW IF EXISTS stream_ledger CASCADE;
-        CREATE VIEW stream_ledger AS
-        SELECT
-            'Mainnet' as chain_name,
-            EXTRACT(EPOCH FROM (date::date))::integer as timestamp,
-            CAST(NULL as integer) as block,
-            NULL as hash,
-            CAST(NULL as integer) as log_index,
-            symbol as token,
-            d.address AS "from",
-            d.nickname as from_nickname,
-            e.address AS "to",
-            e.nickname as to_nickname,
-            amount,
-            price,
-            value_usd,
-            txgroup.name as txgroup,
-            parent.name as parent_txgroup,
-            txgroup.txgroup_id
-        FROM streamed_funds a
-            LEFT JOIN streams b ON a.stream = b.stream_id
-            LEFT JOIN tokens c ON b.token = c.token_id
-            LEFT JOIN addresses d ON b.from_address = d.address_id
-            LEFT JOIN addresses e ON b.to_address = e.address_id
-            LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id
-            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;
+    try:
+        db.execute(
+            """
+            DROP MATERIALIZED VIEW IF EXISTS stream_ledger CASCADE;
+            CREATE MATERIALIZED VIEW stream_ledger AS
+            SELECT
+                'Mainnet' as chain_name,
+                EXTRACT(EPOCH FROM (date::date))::integer as timestamp,
+                CAST(NULL as integer) as block,
+                NULL as hash,
+                CAST(NULL as integer) as log_index,
+                symbol as token,
+                d.address AS "from",
+                d.nickname as from_nickname,
+                e.address AS "to",
+                e.nickname as to_nickname,
+                amount,
+                price,
+                value_usd,
+                txgroup.name as txgroup,
+                parent.name as parent_txgroup,
+                txgroup.txgroup_id
+            FROM streamed_funds a
+                LEFT JOIN streams b ON a.stream = b.stream_id
+                LEFT JOIN tokens c ON b.token = c.token_id
+                LEFT JOIN addresses d ON b.from_address = d.address_id
+                LEFT JOIN addresses e ON b.to_address = e.address_id
+                LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id
+                LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;
 
-        """
-    )
+            """
+        )
+    except Exception as e:
+        if '"streamed_funds" is not a materialized view' not in str(e):
+            raise
+        # we're running an old schema, lets migrate it
+        rollback()
+        db.execute("DROP VIEW IF EXISTS streamed_funds CASCADE;")
+        commit()
+        create_stream_ledger_view()
 
 
 def create_txgroup_hierarchy_view() -> None:
