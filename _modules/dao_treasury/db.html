@@ -1143,6 +1143,8 @@
             <span class="p">):</span>
                 <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
                     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum;&quot;</span><span class="p">)</span>
+                    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;&quot;</span><span class="p">)</span>
+                    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;&quot;</span><span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
                     <span class="s2">&quot;Sorted </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="p">,</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_fullname</span><span class="p">(</span><span class="n">txgroup_dbid</span><span class="p">)</span>
                 <span class="p">)</span>
@@ -1155,7 +1157,9 @@
         <span class="k">with</span> <span class="n">db_session</span><span class="p">:</span>
             <span class="n">TreasuryTx</span><span class="p">[</span><span class="n">treasury_tx_dbid</span><span class="p">]</span><span class="o">.</span><span class="n">txgroup</span> <span class="o">=</span> <span class="n">txgroup_dbid</span>
             <span class="n">commit</span><span class="p">()</span>
-            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum;&quot;</span><span class="p">)</span></div>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum;&quot;</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;&quot;</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;&quot;</span><span class="p">)</span></div>
 
 
 
@@ -1377,6 +1381,8 @@
         <span class="n">create_general_ledger_view</span><span class="p">()</span>
         <span class="n">create_unsorted_txs_view</span><span class="p">()</span>
         <span class="n">create_usdval_presum_matview</span><span class="p">()</span>
+        <span class="n">create_usdval_presum_revenue_matview</span><span class="p">()</span>
+        <span class="n">create_usdval_presum_expenses_matview</span><span class="p">()</span>
         <span class="c1"># create_monthly_pnl_view()</span>
 
     <span class="k">global</span> <span class="n">must_sort_inbound_txgroup_dbid</span>
@@ -1684,6 +1690,94 @@
 
 <span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_txgroup_id</span>
 <span class="sd">            ON usdvalue_presum (timestamp, txgroup_id);</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_usdval_presum_revenue_matview">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_usdval_presum_revenue_matview">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_usdval_presum_revenue_matview</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># This view is specifically for the Revenue Over Time dashboard.</span>
+    <span class="c1"># It presums usd value for Revenue and Other Income categories only, pre-joining txgroups and top_category.</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_revenue;</span>
+<span class="sd">        CREATE MATERIALIZED VIEW usdvalue_presum_revenue AS</span>
+<span class="sd">        SELECT</span>
+<span class="sd">            p.txgroup_id,</span>
+<span class="sd">            t.name AS txgroup_name,</span>
+<span class="sd">            gh.top_category,</span>
+<span class="sd">            p.timestamp,</span>
+<span class="sd">            SUM(p.value_usd) AS value_usd</span>
+<span class="sd">        FROM general_ledger p</span>
+<span class="sd">        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id</span>
+<span class="sd">        JOIN txgroups t ON p.txgroup_id = t.txgroup_id</span>
+<span class="sd">        WHERE gh.top_category IN (&#39;Revenue&#39;, &#39;Other Income&#39;)</span>
+<span class="sd">        GROUP BY p.txgroup_id, t.name, gh.top_category, p.timestamp;</span>
+
+<span class="sd">        -- Indexes</span>
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_txgroup_id_timestamp</span>
+<span class="sd">            ON usdvalue_presum_revenue (txgroup_id, timestamp);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_timestamp_txgroup_id</span>
+<span class="sd">            ON usdvalue_presum_revenue (timestamp, txgroup_id);</span>
+
+<span class="sd">        CREATE INDEX idx_usdvalue_presum_revenue_txgroup_name_timestamp</span>
+<span class="sd">            ON usdvalue_presum_revenue (txgroup_name, timestamp);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_timestamp_txgroup_name</span>
+<span class="sd">            ON usdvalue_presum_revenue (timestamp, txgroup_name);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_id_timestamp</span>
+<span class="sd">            ON usdvalue_presum_revenue (top_category, txgroup_id, timestamp);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_name_timestamp</span>
+<span class="sd">            ON usdvalue_presum_revenue (top_category, txgroup_name, timestamp);</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_usdval_presum_expenses_matview">
+<a class="viewcode-back" href="../../source/dao_treasury.html#dao_treasury.db.create_usdval_presum_expenses_matview">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_usdval_presum_expenses_matview</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># This view is specifically for the Expenses Over Time dashboard.</span>
+    <span class="c1"># It presums usd value for Expenses, Cost of Revenue, and Other Expense categories only, pre-joining txgroups and top_category</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_expenses;</span>
+<span class="sd">        CREATE MATERIALIZED VIEW usdvalue_presum_expenses AS</span>
+<span class="sd">        SELECT</span>
+<span class="sd">            p.txgroup_id,</span>
+<span class="sd">            g.name AS txgroup_name,</span>
+<span class="sd">            gh.top_category,</span>
+<span class="sd">            p.timestamp,</span>
+<span class="sd">            SUM(p.value_usd) AS value_usd</span>
+<span class="sd">        FROM general_ledger p</span>
+<span class="sd">        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id</span>
+<span class="sd">        JOIN txgroups g ON p.txgroup_id = g.txgroup_id</span>
+<span class="sd">        WHERE gh.top_category IN (&#39;Expenses&#39;, &#39;Cost of Revenue&#39;, &#39;Other Expense&#39;)</span>
+<span class="sd">        GROUP BY p.txgroup_id, g.name, gh.top_category, p.timestamp;</span>
+
+<span class="sd">        -- Indexes</span>
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_txgroup_id_timestamp</span>
+<span class="sd">            ON usdvalue_presum_expenses (txgroup_id, timestamp);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_timestamp_txgroup_id</span>
+<span class="sd">            ON usdvalue_presum_expenses (timestamp, txgroup_id);</span>
+
+<span class="sd">        CREATE INDEX idx_usdvalue_presum_expenses_txgroup_name_timestamp</span>
+<span class="sd">            ON usdvalue_presum_expenses (txgroup_name, timestamp);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_timestamp_txgroup_name</span>
+<span class="sd">            ON usdvalue_presum_expenses (timestamp, txgroup_name);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_id_timestamp</span>
+<span class="sd">            ON usdvalue_presum_expenses (top_category, txgroup_id, timestamp);</span>
+
+<span class="sd">        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_name_timestamp</span>
+<span class="sd">            ON usdvalue_presum_expenses (top_category, txgroup_name, timestamp);</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="p">)</span></div>
 
