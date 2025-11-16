@@ -1004,6 +1004,7 @@ class TreasuryTx(DbEntity):
                 with db_session:
                     db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
                     db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
+                    db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;")
                 logger.info(
                     "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
                 )
@@ -1018,6 +1019,7 @@ class TreasuryTx(DbEntity):
             commit()
             db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
             db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
+            db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;")
 
 
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
@@ -1207,6 +1209,7 @@ def init_db() -> None:
         create_unsorted_txs_view()
         create_usdval_presum_matview()
         create_usdval_presum_revenue_matview()
+        create_usdval_presum_expenses_matview()
         # create_monthly_pnl_view()
 
     global must_sort_inbound_txgroup_dbid
@@ -1531,6 +1534,47 @@ def create_usdval_presum_revenue_matview() -> None:
 
         CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_name_timestamp
             ON usdvalue_presum_revenue (top_category, txgroup_name, timestamp);
+        """
+    )
+
+
+def create_usdval_presum_expenses_matview() -> None:
+    # This view is specifically for the Expenses Over Time dashboard.
+    # It presums usd value for Expenses, Cost of Revenue, and Other Expense categories only, pre-joining txgroups and top_category
+    db.execute(
+        """
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_expenses;
+        CREATE MATERIALIZED VIEW usdvalue_presum_expenses AS
+        SELECT
+            p.txgroup_id,
+            g.name AS txgroup_name,
+            gh.top_category,
+            p.timestamp,
+            SUM(p.value_usd) AS value_usd
+        FROM general_ledger p
+        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
+        JOIN txgroups g ON p.txgroup_id = g.txgroup_id
+        WHERE gh.top_category IN ('Expenses', 'Cost of Revenue', 'Other Expense')
+        GROUP BY p.txgroup_id, g.name, gh.top_category, p.timestamp;
+
+        -- Indexes
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_txgroup_id_timestamp
+            ON usdvalue_presum_expenses (txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_timestamp_txgroup_id
+            ON usdvalue_presum_expenses (timestamp, txgroup_id);
+
+        CREATE INDEX idx_usdvalue_presum_expenses_txgroup_name_timestamp
+            ON usdvalue_presum_expenses (txgroup_name, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_timestamp_txgroup_name
+            ON usdvalue_presum_expenses (timestamp, txgroup_name);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_id_timestamp
+            ON usdvalue_presum_expenses (top_category, txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_name_timestamp
+            ON usdvalue_presum_expenses (top_category, txgroup_name, timestamp);
         """
     )
 
