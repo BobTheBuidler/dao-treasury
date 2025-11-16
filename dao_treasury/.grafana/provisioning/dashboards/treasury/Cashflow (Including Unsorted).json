@@ -495,7 +495,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT t.timestamp,\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
+          "rawSql": "SELECT to_timestamp(t.timestamp) AS \"timestamp\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) AS \"Total Received\",\r\n       SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Sent\",\r\n       SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income','Sort Me (Inbound)') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses','Sort Me (Outbound)') THEN t.value_usd ELSE 0 END) AS \"Net\"\r\nFROM general_ledger AS t\r\nJOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id\r\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000\r\nGROUP BY timestamp\r\nORDER BY timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
@@ -794,5 +794,5 @@
   "title": "Total Cashflow Summary (Including Unsorted)",
   "description": "Offers a complete picture of all DAO cashflows, including both sorted and unsorted transactions. This dashboard is ideal for tracking transactions still pending categorization and understanding their impact on overall cashflow.",
   "uid": "2b6e7c1d-8f4a-4e3b-9b2a-1c7d8e9f0a2b",
-  "version": 102
+  "version": 103
 }
