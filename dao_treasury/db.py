@@ -1029,8 +1029,11 @@ def refresh_matview(name: str) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]
             db.execute(f"REFRESH MATERIALIZED VIEW {name};")
             commit()
             return retval
+
         return matview_refresh_wrap
+
     return matview_deco
+
 
 class Stream(DbEntity):
     _table_ = "streams"
@@ -1486,7 +1489,6 @@ def create_usdval_presum_matview() -> None:
             ON usdvalue_presum (timestamp, txgroup_id);
         """
     )
-
 
 
 @db_session
