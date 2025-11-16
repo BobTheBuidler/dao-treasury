@@ -495,7 +495,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
+          "rawSql": "SELECT to_timestamp(t.timestamp) AS \"timestamp\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
@@ -591,5 +591,5 @@
   "title": "Total Cashflow Summary",
   "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
   "uid": "7e2b1c8a-4e2d-4b7a-9c1a-2f8e6b7d9c3f",
-  "version": 102
+  "version": 103
 }
