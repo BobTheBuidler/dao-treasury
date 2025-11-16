@@ -5,12 +5,14 @@ datasources:
   type: postgres
   isDefault: true
   editable: false
-  url: postgres://dao_treasury:dao_treasury@postgres:5432/dao_treasury
+  url: postgres:5432
   user: dao_treasury
-  database: dao_treasury
   jsonData:
+    database: dao_treasury
     sslmode: "disable"
-  secureJsonData: {}
+    postgresVersion: 1801
+  secureJsonData:
+    password: dao_treasury
 
 - name: 'PROMETHEUS'
   type: 'prometheus'
