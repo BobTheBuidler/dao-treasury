@@ -16,14 +16,14 @@ resolving integrity conflicts, caching transaction receipts,
 and creating SQL views for reporting.
 """
 
+import os
 import typing
 from asyncio import Lock, Semaphore
 from collections import OrderedDict
+from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
-from os import path
-from pathlib import Path
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -36,8 +36,6 @@ from typing import (
     final,
     overload,
 )
-from datetime import date, datetime, time, timezone
-import os
 
 import eth_portfolio
 from a_sync import AsyncThreadPoolExecutor
@@ -66,6 +64,7 @@ from pony.orm import (
     composite_key,
     composite_index,
     db_session,
+    rollback,
     select,
 )
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
@@ -1279,7 +1278,9 @@ def create_txgroup_hierarchy_view() -> None:
         if '"txgroup_hierarchy" is not a materialized view' not in str(e):
             raise
         # we're running an old schema, lets migrate it
+        rollback()
         db.execute("DROP VIEW IF EXISTS txgroup_hierarchy;")
+        commit()
         create_txgroup_hierarchy_view()
 
 
