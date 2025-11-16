@@ -379,7 +379,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN p.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN p.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN p.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN p.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN p.value_usd ELSE 0 END)\n) AS total_net\nFROM usdvalue_presum p\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000",
+          "rawSql": "SELECT (\n  SUM(p.value_usd) FILTER (WHERE gh.top_category = 'Revenue')\n  - SUM(p.value_usd) FILTER (WHERE gh.top_category = 'Cost of Revenue')\n  - SUM(p.value_usd) FILTER (WHERE gh.top_category = 'Expenses')\n  + SUM(p.value_usd) FILTER (WHERE gh.top_category = 'Other Income')\n  - SUM(p.value_usd) FILTER (WHERE gh.top_category = 'Other Expenses')\n) AS total_net\nFROM usdvalue_presum p\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -495,7 +495,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT to_timestamp(p.timestamp) AS \"timestamp\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN p.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN p.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN p.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN p.value_usd ELSE 0 END) AS \"Net\" FROM usdvalue_presum AS p JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id WHERE p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
+          "rawSql": "SELECT to_timestamp(p.timestamp) AS \"timestamp\", SUM(p.value_usd) FILTER (WHERE gh.top_category in ('Revenue', 'Other Income')) AS \"Total Revenue\", SUM(p.value_usd) FILTER (WHERE gh.top_category in ('Cost of Revenue','Expenses','Other Expenses')) * -1 AS \"Total Expenses\", SUM(p.value_usd) FILTER (WHERE gh.top_category in ('Revenue', 'Other Income')) - SUM(p.value_usd) FILTER (WHERE gh.top_category in ('Cost of Revenue','Expenses','Other Expenses')) AS \"Net\" FROM usdvalue_presum AS p JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id WHERE p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
@@ -591,5 +591,5 @@
   "title": "Total Cashflow Summary",
   "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
   "uid": "7e2b1c8a-4e2d-4b7a-9c1a-2f8e6b7d9c3f",
-  "version": 105
+  "version": 106
 }
