@@ -16,14 +16,14 @@ resolving integrity conflicts, caching transaction receipts,
 and creating SQL views for reporting.
 """
 
+import os
 import typing
 from asyncio import Lock, Semaphore
 from collections import OrderedDict
+from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
-from os import path
-from pathlib import Path
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -36,8 +36,6 @@ from typing import (
     final,
     overload,
 )
-from datetime import date, datetime, time, timezone
-import os
 
 import eth_portfolio
 from a_sync import AsyncThreadPoolExecutor
@@ -66,6 +64,7 @@ from pony.orm import (
     composite_key,
     composite_index,
     db_session,
+    rollback,
     select,
 )
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
@@ -658,6 +657,8 @@ class TxGroup(DbEntity):
             if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
                 return txgroup  # type: ignore [no-any-return]
             raise Exception(e, name, parent) from e
+        else:
+            db.execute("REFRESH MATERIALIZED VIEW txgroup_hierarchy;")
         return txgroup  # type: ignore [no-any-return]
 
 
@@ -1245,23 +1246,42 @@ def create_txgroup_hierarchy_view() -> None:
     This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,
     matching the recursive CTE logic used in dashboards.
     """
-    db.execute(
-        """
-        DROP VIEW IF EXISTS txgroup_hierarchy;
-        CREATE VIEW txgroup_hierarchy AS
-        WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
-            SELECT txgroup_id, name AS top_category, parent_txgroup
-            FROM txgroups
-            WHERE parent_txgroup IS NULL
-            UNION ALL
-            SELECT child.txgroup_id, parent.top_category, child.parent_txgroup
-            FROM txgroups AS child
-            JOIN group_hierarchy AS parent
-                ON child.parent_txgroup = parent.txgroup_id
+    try:
+        db.execute(
+            """
+            DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy CASCADE;
+            CREATE MATERIALIZED VIEW txgroup_hierarchy AS
+            WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
+                SELECT txgroup_id, name AS top_category, parent_txgroup
+                FROM txgroups
+                WHERE parent_txgroup IS NULL
+                UNION ALL
+                SELECT child.txgroup_id, parent.top_category, child.parent_txgroup
+                FROM txgroups AS child
+                JOIN group_hierarchy AS parent
+                    ON child.parent_txgroup = parent.txgroup_id
+            )
+            SELECT * FROM group_hierarchy;
+            
+            -- Indexes
+            CREATE UNIQUE INDEX idx_txgroup_hierarchy_txgroup_id
+                ON txgroup_hierarchy (txgroup_id);
+
+            CREATE INDEX idx_txgroup_hierarchy_top_category
+                ON txgroup_hierarchy (top_category);
+
+            CREATE INDEX idx_txgroup_hierarchy_parent
+                ON txgroup_hierarchy (parent_txgroup);
+            """
         )
-        SELECT * FROM group_hierarchy;
-        """
-    )
+    except Exception as e:
+        if '"txgroup_hierarchy" is not a materialized view' not in str(e):
+            raise
+        # we're running an old schema, lets migrate it
+        rollback()
+        db.execute("DROP VIEW IF EXISTS txgroup_hierarchy CASCADE;")
+        commit()
+        create_txgroup_hierarchy_view()
 
 
 def create_vesting_ledger_view() -> None:
