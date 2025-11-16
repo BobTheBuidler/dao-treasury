@@ -95,7 +95,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(txs.value_usd) AS total_revenue FROM general_ledger txs JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND txs.timestamp >= $__from/1000 AND txs.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(p.value_usd) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) inner join txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -176,7 +176,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(txs.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM general_ledger txs JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND txs.timestamp >= $__from/1000 AND txs.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(p.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -257,7 +257,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(txs.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM general_ledger txs JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND txs.timestamp >= $__from/1000 AND txs.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(p.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -338,7 +338,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(txs.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM general_ledger txs JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND txs.timestamp >= $__from/1000 AND txs.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
+          "rawSql": "SELECT SUM(p.value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM usdvalue_presum p JOIN txgroup_hierarchy gh USING (txgroup_id) INNER JOIN txgroups t USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND t.name IN (${Txgroup:sqlstring})",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -450,7 +450,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT to_timestamp(t.timestamp) AS \"timestamp\", g.name AS \"TxGroup\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Revenue\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id INNER JOIN txgroups g ON gh.txgroup_id = g.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) GROUP BY t.timestamp, g.name ORDER BY t.timestamp;",
+          "rawSql": "SELECT to_timestamp(p.timestamp) AS \"timestamp\", g.name AS \"TxGroup\", SUM(p.value_usd) AS \"Revenue\" FROM usdvalue_presum AS p JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id INNER JOIN txgroups g ON gh.txgroup_id = g.txgroup_id WHERE p.timestamp >= $__from/1000 AND p.timestamp <= $__to/1000 AND g.name IN (${Txgroup:sqlstring}) AND gh.top_category in ('Revenue', 'Other Income') GROUP BY p.timestamp, g.name ORDER BY p.timestamp;",
           "refId": "A",
           "timeColumns": ["timestamp"]
         }
@@ -546,5 +546,5 @@
   "timezone": "",
   "title": "Revenue Over Time",
   "uid": "5284bb56-b9fb-4f36-b971-eb125bfdac7d",
-  "version": 16
+  "version": 17
 }

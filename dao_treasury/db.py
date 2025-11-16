@@ -1001,6 +1001,8 @@ class TreasuryTx(DbEntity):
                 must_sort_inbound_txgroup_dbid,
                 must_sort_outbound_txgroup_dbid,
             ):
+                with db_session:
+                    db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
                 logger.info(
                     "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
                 )
@@ -1013,6 +1015,7 @@ class TreasuryTx(DbEntity):
         with db_session:
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
             commit()
+            db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
 
 
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
@@ -1192,11 +1195,12 @@ def init_db() -> None:
     db.generate_mapping(create_tables=True)
 
     with db_session:
-        create_stream_ledger_view()
-        create_txgroup_hierarchy_view()
+        create_stream_ledger_matview()
+        create_txgroup_hierarchy_matview()
         # create_vesting_ledger_view()
         create_general_ledger_view()
         create_unsorted_txs_view()
+        create_usdval_presum_matview()
         # create_monthly_pnl_view()
 
     global must_sort_inbound_txgroup_dbid
@@ -1218,7 +1222,7 @@ def set_address_nicknames_for_tokens() -> None:
         db.commit()
 
 
-def create_stream_ledger_view() -> None:
+def create_stream_ledger_matview() -> None:
     """Create or replace the SQL view `stream_ledger` for streamed funds reporting.
 
     This view joins streamed funds, streams, tokens, addresses, and txgroups
@@ -1266,10 +1270,10 @@ def create_stream_ledger_view() -> None:
         rollback()
         db.execute("DROP VIEW IF EXISTS stream_ledger CASCADE;")
         commit()
-        create_stream_ledger_view()
+        create_stream_ledger_matview()
 
 
-def create_txgroup_hierarchy_view() -> None:
+def create_txgroup_hierarchy_matview() -> None:
     """Create or replace the SQL view `txgroup_hierarchy` for recursive txgroup hierarchy.
 
     This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,
@@ -1310,7 +1314,7 @@ def create_txgroup_hierarchy_view() -> None:
         rollback()
         db.execute("DROP VIEW IF EXISTS txgroup_hierarchy CASCADE;")
         commit()
-        create_txgroup_hierarchy_view()
+        create_txgroup_hierarchy_matview()
 
 
 def create_vesting_ledger_view() -> None:
@@ -1458,6 +1462,31 @@ def create_monthly_pnl_view() -> None:
     GROUP BY month;
     """
     db.execute(sql)
+
+
+def create_usdval_presum_matview() -> None:
+    # This view presums usd value from the general_ledger view,
+    # grouped by timestamp and txgroup
+    db.execute(
+        """
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum
+        CREATE MATERIALIZED VIEW usdvalue_presum AS
+        SELECT
+            txgroup_id,
+            timestamp,
+            SUM(value_usd) AS value_usd
+        FROM general_ledger
+        GROUP BY txgroup_id, timestamp;
+        
+        -- Indexes
+        CREATE UNIQUE INDEX idx_usdvalue_presum_txgroup_id_timestamp
+            ON usdvalue_presum (txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_txgroup_id
+            ON usdvalue_presum (timestamp, txgroup_id);
+        """
+    )
+
 
 
 @db_session
