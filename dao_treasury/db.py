@@ -1469,7 +1469,7 @@ def create_usdval_presum_matview() -> None:
     # grouped by timestamp and txgroup
     db.execute(
         """
-        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum;
         CREATE MATERIALIZED VIEW usdvalue_presum AS
         SELECT
             txgroup_id,
