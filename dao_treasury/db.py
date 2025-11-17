@@ -1442,16 +1442,12 @@ def create_monthly_pnl_view() -> None:
     WITH categorized AS (
     SELECT
         to_char(to_timestamp(t.timestamp), 'YYYY-MM') AS month,
-        CASE
-        WHEN p.name IS NOT NULL THEN p.name
-        ELSE tg.name
-        END AS top_category,
+        gh.top_category,
         --COALESCE(t.value_usd, 0) AS value_usd,
         --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost
     FROM treasury_txs t
-    JOIN txgroups tg ON t.txgroup = tg.txgroup_id
-    LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id
-    WHERE tg.name <> 'Ignore'
+    JOIN txgroup_hierarchy gh ON t.txgroup = gh.txgroup_id
+    WHERE gh.top_category <> 'Ignore'
     )
     SELECT
     month,
