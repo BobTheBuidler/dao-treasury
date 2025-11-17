@@ -1510,7 +1510,7 @@ def create_usdval_presum_revenue_matview() -> None:
             gh.top_category,
             p.timestamp,
             SUM(p.value_usd) AS value_usd
-        FROM general_ledger p
+        FROM usdvalue_presum p
         JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
         JOIN txgroups t ON p.txgroup_id = t.txgroup_id
         WHERE gh.top_category IN ('Revenue', 'Other Income')
@@ -1551,7 +1551,7 @@ def create_usdval_presum_expenses_matview() -> None:
             gh.top_category,
             p.timestamp,
             SUM(p.value_usd) AS value_usd
-        FROM general_ledger p
+        FROM usdvalue_presum p
         JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
         JOIN txgroups g ON p.txgroup_id = g.txgroup_id
         WHERE gh.top_category IN ('Expenses', 'Cost of Revenue', 'Other Expense')
