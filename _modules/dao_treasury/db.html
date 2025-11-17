@@ -1710,7 +1710,7 @@
 <span class="sd">            gh.top_category,</span>
 <span class="sd">            p.timestamp,</span>
 <span class="sd">            SUM(p.value_usd) AS value_usd</span>
-<span class="sd">        FROM general_ledger p</span>
+<span class="sd">        FROM usdvalue_presum p</span>
 <span class="sd">        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id</span>
 <span class="sd">        JOIN txgroups t ON p.txgroup_id = t.txgroup_id</span>
 <span class="sd">        WHERE gh.top_category IN (&#39;Revenue&#39;, &#39;Other Income&#39;)</span>
@@ -1754,7 +1754,7 @@
 <span class="sd">            gh.top_category,</span>
 <span class="sd">            p.timestamp,</span>
 <span class="sd">            SUM(p.value_usd) AS value_usd</span>
-<span class="sd">        FROM general_ledger p</span>
+<span class="sd">        FROM usdvalue_presum p</span>
 <span class="sd">        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id</span>
 <span class="sd">        JOIN txgroups g ON p.txgroup_id = g.txgroup_id</span>
 <span class="sd">        WHERE gh.top_category IN (&#39;Expenses&#39;, &#39;Cost of Revenue&#39;, &#39;Other Expense&#39;)</span>
