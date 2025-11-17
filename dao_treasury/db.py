@@ -1481,11 +1481,13 @@ def create_usdval_presum_matview() -> None:
         DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum;
         CREATE MATERIALIZED VIEW usdvalue_presum AS
         SELECT
-            txgroup_id,
-            timestamp,
+            gl.txgroup_id,
+            gh.top_category
+            gl.timestamp,
             SUM(value_usd) AS value_usd
-        FROM general_ledger
-        GROUP BY txgroup_id, timestamp;
+        FROM general_ledger gl
+        JOIN group_hierarchy gh USING (txgroup_id)
+        GROUP BY gl.txgroup_id, gh.top_category, gl.timestamp;
         
         -- Indexes
         CREATE UNIQUE INDEX idx_usdvalue_presum_txgroup_id_timestamp
@@ -1493,6 +1495,18 @@ def create_usdval_presum_matview() -> None:
 
         CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_txgroup_id
             ON usdvalue_presum (timestamp, txgroup_id);
+
+        CREATE INDEX idx_usdvalue_presum_top_category_timestamp
+            ON usdvalue_presum (top_category, timestamp);
+
+        CREATE INDEX idx_usdvalue_presum_timestamp_top_category
+            ON usdvalue_presum (timestamp, top_category);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_top_category_txgroup_id_timestamp
+            ON usdvalue_presum (top_category, txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_top_category_txgroup_id
+            ON usdvalue_presum (timestamp, top_category, txgroup_id);
         """
     )
 
@@ -1507,14 +1521,13 @@ def create_usdval_presum_revenue_matview() -> None:
         SELECT
             p.txgroup_id,
             t.name AS txgroup_name,
-            gh.top_category,
+            p.top_category,
             p.timestamp,
             SUM(p.value_usd) AS value_usd
         FROM usdvalue_presum p
-        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
         JOIN txgroups t ON p.txgroup_id = t.txgroup_id
-        WHERE gh.top_category IN ('Revenue', 'Other Income')
-        GROUP BY p.txgroup_id, t.name, gh.top_category, p.timestamp;
+        WHERE p.top_category IN ('Revenue', 'Other Income')
+        GROUP BY p.txgroup_id, t.name, p.top_category, p.timestamp;
 
         -- Indexes
         CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_txgroup_id_timestamp
@@ -1548,14 +1561,14 @@ def create_usdval_presum_expenses_matview() -> None:
         SELECT
             p.txgroup_id,
             g.name AS txgroup_name,
-            gh.top_category,
+            p.top_category,
             p.timestamp,
             SUM(p.value_usd) AS value_usd
         FROM usdvalue_presum p
         JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
         JOIN txgroups g ON p.txgroup_id = g.txgroup_id
-        WHERE gh.top_category IN ('Expenses', 'Cost of Revenue', 'Other Expense')
-        GROUP BY p.txgroup_id, g.name, gh.top_category, p.timestamp;
+        WHERE p.top_category IN ('Expenses', 'Cost of Revenue', 'Other Expense')
+        GROUP BY p.txgroup_id, g.name, p.top_category, p.timestamp;
 
         -- Indexes
         CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_txgroup_id_timestamp
