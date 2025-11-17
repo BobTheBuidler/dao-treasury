@@ -1486,7 +1486,7 @@ def create_usdval_presum_matview() -> None:
             gl.timestamp,
             SUM(value_usd) AS value_usd
         FROM general_ledger gl
-        JOIN group_hierarchy gh USING (txgroup_id)
+        JOIN txgroup_hierarchy gh USING (txgroup_id)
         GROUP BY gl.txgroup_id, gh.top_category, gl.timestamp;
         
         -- Indexes
