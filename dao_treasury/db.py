@@ -1207,10 +1207,10 @@ def init_db() -> None:
         # create_vesting_ledger_view()
         create_general_ledger_view()
         create_unsorted_txs_view()
+        create_monthly_pnl_view()
         create_usdval_presum_matview()
         create_usdval_presum_revenue_matview()
         create_usdval_presum_expenses_matview()
-        # create_monthly_pnl_view()
 
     global must_sort_inbound_txgroup_dbid
     must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
