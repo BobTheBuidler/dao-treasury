@@ -1482,7 +1482,7 @@ def create_usdval_presum_matview() -> None:
         CREATE MATERIALIZED VIEW usdvalue_presum AS
         SELECT
             gl.txgroup_id,
-            gh.top_category
+            gh.top_category,
             gl.timestamp,
             SUM(value_usd) AS value_usd
         FROM general_ledger gl
