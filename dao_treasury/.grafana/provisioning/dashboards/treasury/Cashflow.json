@@ -73,7 +73,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE gh.top_category = 'Revenue' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE top_category = 'Revenue' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -591,5 +591,5 @@
   "title": "Total Cashflow Summary",
   "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
   "uid": "7e2b1c8a-4e2d-4b7a-9c1a-2f8e6b7d9c3f",
-  "version": 106
+  "version": 107
 }
