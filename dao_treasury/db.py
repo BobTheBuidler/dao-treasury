@@ -1480,8 +1480,8 @@ def create_monthly_pnl_view() -> None:
           + SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)
           - SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)
         ) AS "Net",
-        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD'))) * 1000 AS TEXT) AS "month_start",
-        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD') + INTERVAL '1 month' - INTERVAL '1 millisecond')) * 1000 AS TEXT) AS "month_end"
+        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD'))) * 1000 AS BIGINT) AS "month_start",
+        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD') + INTERVAL '1 month' - INTERVAL '1 millisecond')) * 1000 AS BIGINT) AS "month_end"
     FROM monthly
     GROUP BY month;
     """

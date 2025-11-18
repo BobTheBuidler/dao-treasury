@@ -340,7 +340,7 @@
         {
           "datasource": "PostgreSQL",
           "format": "table",
-          "rawSql": "SELECT * FROM monthly_pnl;",
+          "rawSql": "SELECT * FROM monthly_pnl WHERE month_end >= $__from AND month_start <= $__to;",
           "refId": "A",
           "timeColumns": ["time", "ts"]
         }
@@ -364,5 +364,5 @@
   "timezone": "",
   "title": "Monthly P&L",
   "uid": "a63fa9a7-d4f3-4092-9bde-194add8bcbeb",
-  "version": 9
+  "version": 10
 }
