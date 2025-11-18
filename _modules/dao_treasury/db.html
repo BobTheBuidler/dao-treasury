@@ -1381,9 +1381,11 @@
         <span class="n">create_general_ledger_view</span><span class="p">()</span>
         <span class="n">create_unsorted_txs_view</span><span class="p">()</span>
         <span class="n">create_usdval_presum_matview</span><span class="p">()</span>
+
+        <span class="c1"># depends on usdvalue_presum</span>
+        <span class="n">create_monthly_pnl_view</span><span class="p">()</span>
         <span class="n">create_usdval_presum_revenue_matview</span><span class="p">()</span>
         <span class="n">create_usdval_presum_expenses_matview</span><span class="p">()</span>
-        <span class="c1"># create_monthly_pnl_view()</span>
 
     <span class="k">global</span> <span class="n">must_sort_inbound_txgroup_dbid</span>
     <span class="n">must_sort_inbound_txgroup_dbid</span> <span class="o">=</span> <span class="n">TxGroup</span><span class="o">.</span><span class="n">get_dbid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sort Me (Inbound)&quot;</span><span class="p">)</span>
@@ -1633,35 +1635,48 @@
     <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    DROP VIEW IF EXISTS monthly_pnl;</span>
 <span class="s2">    CREATE VIEW monthly_pnl AS</span>
-<span class="s2">    WITH categorized AS (</span>
-<span class="s2">    SELECT</span>
-<span class="s2">        to_char(to_timestamp(t.timestamp), &#39;YYYY-MM&#39;) AS month,</span>
-<span class="s2">        CASE</span>
-<span class="s2">        WHEN p.name IS NOT NULL THEN p.name</span>
-<span class="s2">        ELSE tg.name</span>
-<span class="s2">        END AS top_category,</span>
-<span class="s2">        --COALESCE(t.value_usd, 0) AS value_usd,</span>
-<span class="s2">        --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost</span>
-<span class="s2">    FROM treasury_txs t</span>
-<span class="s2">    JOIN txgroups tg ON t.txgroup = tg.txgroup_id</span>
-<span class="s2">    LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id</span>
-<span class="s2">    WHERE tg.name &lt;&gt; &#39;Ignore&#39;</span>
+<span class="s2">    WITH monthly AS (</span>
+<span class="s2">        SELECT</span>
+<span class="s2">            to_char(to_timestamp(timestamp), &#39;YYYY-MM&#39;) AS month,</span>
+<span class="s2">            top_category,</span>
+<span class="s2">            SUM(value_usd) AS value_usd</span>
+<span class="s2">        FROM usdvalue_presum</span>
+<span class="s2">        WHERE top_category &lt;&gt; &#39;Ignore&#39;</span>
+<span class="s2">        GROUP BY month, top_category</span>
 <span class="s2">    )</span>
 <span class="s2">    SELECT</span>
-<span class="s2">    month,</span>
-<span class="s2">    SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) AS revenue,</span>
-<span class="s2">    SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) AS cost_of_revenue,</span>
-<span class="s2">    SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) AS expenses,</span>
-<span class="s2">    SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) AS other_income,</span>
-<span class="s2">    SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END) AS other_expense,</span>
-<span class="s2">    (</span>
-<span class="s2">        SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) -</span>
-<span class="s2">        SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) -</span>
-<span class="s2">        SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) +</span>
-<span class="s2">        SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) -</span>
-<span class="s2">        SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END)</span>
-<span class="s2">    ) AS net_profit</span>
-<span class="s2">    FROM categorized</span>
+<span class="s2">        month AS &quot;Month&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END) AS &quot;Revenue&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END) AS &quot;Cost of Revenue&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END) AS &quot;Expenses&quot;,</span>
+<span class="s2">        (</span>
+<span class="s2">            SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">        ) AS &quot;Operating Net&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END) AS &quot;Other Income&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END) AS &quot;Other Expenses&quot;,</span>
+<span class="s2">        (</span>
+<span class="s2">            SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          + SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">        ) AS &quot;Sorted Net&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Sort Me (Inbound)&#39; THEN value_usd ELSE 0 END) AS &quot;Unsorted Income&quot;,</span>
+<span class="s2">        SUM(CASE WHEN top_category = &#39;Sort Me (Outbound)&#39; THEN value_usd ELSE 0 END) AS &quot;Unsorted Expenses&quot;,</span>
+<span class="s2">        (</span>
+<span class="s2">            SUM(CASE WHEN top_category = &#39;Revenue&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Cost of Revenue&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Expenses&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          + SUM(CASE WHEN top_category = &#39;Other Income&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Other Expenses&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          + SUM(CASE WHEN top_category = &#39;Sort Me (Inbound)&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">          - SUM(CASE WHEN top_category = &#39;Sort Me (Outbound)&#39; THEN value_usd ELSE 0 END)</span>
+<span class="s2">        ) AS &quot;Net&quot;,</span>
+<span class="s2">        CAST(EXTRACT(EPOCH FROM (to_date(month || &#39;-01&#39;, &#39;YYYY-MM-DD&#39;))) * 1000 AS BIGINT) AS &quot;month_start&quot;,</span>
+<span class="s2">        CAST(EXTRACT(EPOCH FROM (to_date(month || &#39;-01&#39;, &#39;YYYY-MM-DD&#39;) + INTERVAL &#39;1 month&#39; - INTERVAL &#39;1 millisecond&#39;)) * 1000 AS BIGINT) AS &quot;month_end&quot;</span>
+<span class="s2">    FROM monthly</span>
 <span class="s2">    GROUP BY month;</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span></div>
