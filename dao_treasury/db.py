@@ -1207,8 +1207,10 @@ def init_db() -> None:
         # create_vesting_ledger_view()
         create_general_ledger_view()
         create_unsorted_txs_view()
-        create_monthly_pnl_view()
         create_usdval_presum_matview()
+
+        # depends on usdvalue_presum
+        create_monthly_pnl_view()
         create_usdval_presum_revenue_matview()
         create_usdval_presum_expenses_matview()
 
