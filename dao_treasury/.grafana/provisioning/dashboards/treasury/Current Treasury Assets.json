@@ -653,7 +653,7 @@
           "datasource": "PROMETHEUS",
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=~\"${Bucket}\"}<500_000_000) by (token, bucket)",
           "format": "table",
           "instant": false,
           "interval": "",
@@ -664,7 +664,7 @@
         {
           "datasource": "PROMETHEUS",
           "editorMode": "code",
-          "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
+          "expr": "sum(treasury_assets{param=\"value\",bucket=~\"${Bucket}\"}<500_000_000) by (token, bucket)",
           "hide": true,
           "instant": false,
           "legendFormat": "__auto",
@@ -763,7 +763,7 @@
     },
     {
       "datasource": "PROMETHEUS",
-      "description": "Detailed breakdown of the latest known USD value for each asset token and bucket, including all available tokens in any of the DAO's treasury wallets.\n\nData Link: Click any token to view all transactions for that token in the Treasury Transactions dashboard.",
+      "description": "Detailed breakdown of the latest known USD value for each asset token and bucket, including all available tokens in any of the DAO's treasury wallets.\n\nFilters:\n- Bucket: Filter by asset bucket\n\nData Link: Click any token to view all transactions for that token in the Treasury Transactions dashboard.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -927,7 +927,20 @@
   "schemaVersion": 42,
   "tags": ["assets", "current"],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "name": "Bucket",
+        "type": "query",
+        "datasource": "SQLite",
+        "refresh": 2,
+        "definition": "select distinct bucket from treasury_assets",
+        "description": "Filter by asset bucket.\n\nSelecting 'All' includes all buckets.",
+        "includeAll": true,
+        "multi": true,
+        "options": [],
+        "query": "select distinct bucket from treasury_assets"
+      }
+    ]
   },
   "time": {
     "from": "now-3d",
