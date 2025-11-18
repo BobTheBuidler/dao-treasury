@@ -1208,9 +1208,11 @@ def init_db() -> None:
         create_general_ledger_view()
         create_unsorted_txs_view()
         create_usdval_presum_matview()
+
+        # depends on usdvalue_presum
+        create_monthly_pnl_view()
         create_usdval_presum_revenue_matview()
         create_usdval_presum_expenses_matview()
-        # create_monthly_pnl_view()
 
     global must_sort_inbound_txgroup_dbid
     must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
@@ -1439,35 +1441,48 @@ def create_monthly_pnl_view() -> None:
     sql = """
     DROP VIEW IF EXISTS monthly_pnl;
     CREATE VIEW monthly_pnl AS
-    WITH categorized AS (
-    SELECT
-        to_char(to_timestamp(t.timestamp), 'YYYY-MM') AS month,
-        CASE
-        WHEN p.name IS NOT NULL THEN p.name
-        ELSE tg.name
-        END AS top_category,
-        --COALESCE(t.value_usd, 0) AS value_usd,
-        --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost
-    FROM treasury_txs t
-    JOIN txgroups tg ON t.txgroup = tg.txgroup_id
-    LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id
-    WHERE tg.name <> 'Ignore'
+    WITH monthly AS (
+        SELECT
+            to_char(to_timestamp(timestamp), 'YYYY-MM') AS month,
+            top_category,
+            SUM(value_usd) AS value_usd
+        FROM usdvalue_presum
+        WHERE top_category <> 'Ignore'
+        GROUP BY month, top_category
     )
     SELECT
-    month,
-    SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS revenue,
-    SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS cost_of_revenue,
-    SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS expenses,
-    SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS other_income,
-    SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS other_expense,
-    (
-        SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -
-        SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -
-        SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +
-        SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -
-        SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
-    ) AS net_profit
-    FROM categorized
+        month AS "Month",
+        SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS "Revenue",
+        SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS "Cost of Revenue",
+        SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS "Expenses",
+        (
+            SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)
+        ) AS "Operating Net",
+        SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS "Other Income",
+        SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS "Other Expenses",
+        (
+            SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)
+          + SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
+        ) AS "Sorted Net",
+        SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS "Unsorted Income",
+        SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS "Unsorted Expenses",
+        (
+            SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)
+          + SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
+          + SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)
+        ) AS "Net",
+        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD'))) * 1000 AS BIGINT) AS "month_start",
+        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD') + INTERVAL '1 month' - INTERVAL '1 millisecond')) * 1000 AS BIGINT) AS "month_end"
+    FROM monthly
     GROUP BY month;
     """
     db.execute(sql)
