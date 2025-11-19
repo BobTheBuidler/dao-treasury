@@ -226,6 +226,7 @@ async def export(args) -> None:
     custom_buckets = None
     if args.custom_bucket:
         custom_buckets = {}
+        item: str
         for item in args.custom_bucket:
             if ":" not in item:
                 parser.error(
@@ -266,7 +267,9 @@ async def export(args) -> None:
 
     export_task = create_task(
         asyncio.gather(
-            export_balances(args),
+            # TODO: combine these into Treasury class?
+            # would allow for only one set of logs in memory
+            export_balances(args, custom_buckets),
             treasury.populate_db(BlockNumber(0), brownie.chain.height),
         )
     )
