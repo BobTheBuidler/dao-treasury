@@ -812,7 +812,6 @@
             },
             "inspect": false
           },
-          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
