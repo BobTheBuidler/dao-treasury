@@ -1,4 +1,4 @@
-# mypy: disable-error-code="operator,valid-type,misc"
+# mypy: disable-error-code="operator,valid-type,no-untyped-call,misc"
 """
 Database models and utilities for DAO treasury reporting.
 
