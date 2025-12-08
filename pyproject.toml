@@ -35,6 +35,7 @@ requires = [
     "types-tqdm", 
     "types-PyYAML",
     "eth-brownie==1.22.0.dev0; platform_system == 'Linux' and platform_machine != 'i686'",
+    "eth-retry==0.3.5",
     "eth-typing==5.2.1",
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
     "ez-a-sync==0.33.3",
