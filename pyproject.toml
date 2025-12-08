@@ -42,7 +42,6 @@ requires = [
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
     "ez-a-sync==0.33.3",
     "pony",
-    "pony-stubs",
 ]
 build-backend = "setuptools.build_meta"
 
