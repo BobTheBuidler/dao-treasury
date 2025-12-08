@@ -41,7 +41,7 @@ requires = [
     "eth-typing==5.2.1",
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
     "ez-a-sync==0.33.3",
-    "pony",
+    "pony==0.7.19",
 ]
 build-backend = "setuptools.build_meta"
 
