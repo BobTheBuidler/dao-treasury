@@ -5137,6 +5137,46 @@ files = [
 ]
 
 [[package]]
+name = "types-pony"
+version = "0.7.0.20250822"
+description = "Typing stubs for pony"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_pony-0.7.0.20250822-py3-none-any.whl", hash = "sha256:e717b3c60a40500a072b5f56755a367ba1596bb8b99f639430bada8b1a6f86a3"},
+    {file = "types_pony-0.7.0.20250822.tar.gz", hash = "sha256:6823320f96b81edcd5f58833095a2bd7e9aab3e549d4896f220cbd9af28107c0"},
+]
+
+[package.dependencies]
+types-psycopg2 = "*"
+types-PyMySQL = "*"
+
+[[package]]
+name = "types-psycopg2"
+version = "2.9.21.20251012"
+description = "Typing stubs for psycopg2"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_psycopg2-2.9.21.20251012-py3-none-any.whl", hash = "sha256:712bad5c423fe979e357edbf40a07ca40ef775d74043de72bd4544ca328cc57e"},
+    {file = "types_psycopg2-2.9.21.20251012.tar.gz", hash = "sha256:4cdafd38927da0cfde49804f39ab85afd9c6e9c492800e42f1f0c1a1b0312935"},
+]
+
+[[package]]
+name = "types-pymysql"
+version = "1.1.0.20250916"
+description = "Typing stubs for PyMySQL"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_pymysql-1.1.0.20250916-py3-none-any.whl", hash = "sha256:873eb9836bb5e3de4368cc7010ca72775f86e9692a5c7810f8c7f48da082e55b"},
+    {file = "types_pymysql-1.1.0.20250916.tar.gz", hash = "sha256:98d75731795fcc06723a192786662bdfa760e1e00f22809c104fbb47bac5e29b"},
+]
+
+[[package]]
 name = "types-pyyaml"
 version = "6.0.12.20250915"
 description = "Typing stubs for PyYAML"
@@ -5807,4 +5847,4 @@ python-dateutil = "*"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.13"
-content-hash = "a55690042f0382d77c49f9f1bc396df8e2a98fbda0c0d78bfcb0441484f25082"
+content-hash = "964eba539e51e752a2848d490601c8d8168f8f5814d36950ad84398af4606546"
