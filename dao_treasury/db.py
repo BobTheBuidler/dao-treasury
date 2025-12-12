@@ -67,7 +67,6 @@ from pony.orm import (
     commit,
     composite_key,
     composite_index,
-    db_session,
     rollback,
     select,
 )
