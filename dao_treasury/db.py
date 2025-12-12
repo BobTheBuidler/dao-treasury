@@ -112,7 +112,9 @@ logger = getLogger("dao_treasury.db")
 
 # these helpers are to avoid mypy err code [untyped-decorator]
 db_session: Callable[[Callable[_P, _T]], Callable[_P, _T]] = pony.orm.db_session
-retry_locked: Callable[[Callable[_P, _T]], Callable[_P, _T]] = y._db.decorators.retry_locked
+retry_locked: Callable[[Callable[_P, _T]], Callable[_P, _T]] = (
+    y._db.decorators.retry_locked
+)
 
 
 @final
