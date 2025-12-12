@@ -40,6 +40,8 @@ from typing import (
 )
 
 import eth_portfolio
+import pony.orm
+import y._db.decorators
 from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
 from brownie.convert.datatypes import HexString
@@ -71,7 +73,6 @@ from pony.orm import (
 )
 from typing_extensions import ParamSpec
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
-from y._db.decorators import retry_locked
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
@@ -108,6 +109,10 @@ must_sort_inbound_txgroup_dbid: TxGroupDbid = None
 must_sort_outbound_txgroup_dbid: TxGroupDbid = None
 
 logger = getLogger("dao_treasury.db")
+
+# these helpers are to avoid mypy err code [untyped-decorator]
+db_session: Callable[[Callable[_P, _T]], Callable[_P, _T]] = pony.orm.db_session
+retry_locked: Callable[[Callable[_P, _T]], Callable[_P, _T]] = y._db.decorators.retry_locked
 
 
 @final
