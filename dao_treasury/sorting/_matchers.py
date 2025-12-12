@@ -1,5 +1,16 @@
 from logging import getLogger
-from typing import Callable, ClassVar, Dict, Final, Iterable, List, Optional, Set, TypeVar, final
+from typing import (
+    Callable,
+    ClassVar,
+    Dict,
+    Final,
+    Iterable,
+    List,
+    Optional,
+    Set,
+    TypeVar,
+    final,
+)
 
 import pony.orm
 from eth_typing import ChecksumAddress, HexAddress, HexStr
