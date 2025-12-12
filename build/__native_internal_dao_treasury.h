@@ -1,12 +1,12 @@
-#ifndef MYPYC_NATIVE_INTERNAL_dao_treasury_H
-#define MYPYC_NATIVE_INTERNAL_dao_treasury_H
+#ifndef MYPYC_LIBRT_INTERNAL_dao_treasury_H
+#define MYPYC_LIBRT_INTERNAL_dao_treasury_H
 #include <Python.h>
 #include <CPy.h>
 #include "__native_dao_treasury.h"
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[426];
+extern PyObject *CPyStatics[431];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -45,9 +45,9 @@ extern CPyModule *CPyModule_dao_treasury___sorting___rules___ignore___llamapay;
 extern PyObject *CPyStatic_llamapay___globals;
 extern CPyModule *CPyModule_dao_treasury___streams;
 extern PyObject *CPyStatic__matchers___globals;
+extern CPyModule *CPyModule_pony___orm;
 extern CPyModule *CPyModule_eth_typing;
 extern CPyModule *CPyModule_eth_utils;
-extern CPyModule *CPyModule_pony___orm;
 extern CPyModule *CPyModule_typing_extensions;
 extern CPyModule *CPyModule_y;
 extern CPyModule *CPyModule_dao_treasury___db;
@@ -110,6 +110,7 @@ extern char CPyDef_llamapay___is_llamapay_stream_replenishment(PyObject *cpy_r_t
 extern PyObject *CPyPy_llamapay___is_llamapay_stream_replenishment(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef_llamapay_____top_level__(void);
 extern PyObject *CPyStatic__matchers___logger;
+extern PyObject *CPyStatic__matchers___db_session;
 extern PyTypeObject *CPyType__matchers____Matcher;
 extern PyObject *CPyDef__matchers____Matcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_validated_values);
 extern PyTypeObject *CPyType__matchers____HexStringMatcher;
@@ -142,6 +143,7 @@ extern PyObject *CPyDef__matchers___HashMatcher_____repr__(PyObject *cpy_r_self)
 extern PyObject *CPyPy__matchers___HashMatcher_____repr__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 extern char CPyDef__matchers_____top_level__(void);
 extern PyObject *CPyStatic__rules___logger;
+extern PyObject *CPyStatic__rules___db_session;
 extern PyTypeObject *CPyType__rules___Rules;
 extern PyObject *CPyDef__rules___Rules(PyObject *cpy_r_path);
 extern char CPyDef__rules___Rules_____init__(PyObject *cpy_r_self, PyObject *cpy_r_path);
