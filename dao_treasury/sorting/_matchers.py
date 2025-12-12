@@ -1,16 +1,33 @@
 from logging import getLogger
-from typing import ClassVar, Dict, Final, Iterable, List, Optional, Set, final
+from typing import (
+    Callable,
+    ClassVar,
+    Dict,
+    Final,
+    Iterable,
+    List,
+    Optional,
+    Set,
+    TypeVar,
+    final,
+)
 
+import pony.orm
 from eth_typing import ChecksumAddress, HexAddress, HexStr
 from eth_utils import is_hexstr
-from pony.orm import db_session
-from typing_extensions import Self
+from typing_extensions import ParamSpec, Self
 from y import convert
 
 from dao_treasury.types import TxGroupDbid
 
 
+_T = TypeVar("_T")
+_P = ParamSpec("_P")
+
 logger: Final = getLogger("dao_treasury")
+
+# this helper is to avoid mypy err code [untyped-decorator]
+db_session: Final[Callable[[Callable[_P, _T]], Callable[_P, _T]]] = pony.orm.db_session
 
 
 class _Matcher:
@@ -247,7 +264,7 @@ class _AddressMatcher(_HexStringMatcher):
         logger.info("%s created", self)
         self.__instances__.append(self)  # type: ignore [arg-type]
 
-    @db_session  # type: ignore [misc]
+    @db_session
     def __repr__(self) -> str:
         """Return a string representation including the full txgroup path and addresses.
 

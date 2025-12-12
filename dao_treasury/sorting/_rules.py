@@ -1,9 +1,10 @@
 from logging import getLogger
 from pathlib import Path
-from typing import Final, Type, Union, final
+from typing import Callable, Final, Type, TypeVar, Union, final
 
+import pony.orm
 import yaml
-from pony.orm import db_session
+from typing_extensions import ParamSpec
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.sorting import (
@@ -15,7 +16,13 @@ from dao_treasury.sorting import (
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
 
 
+_T = TypeVar("_T")
+_P = ParamSpec("_P")
+
 logger: Final = getLogger("dao_treasury.rules")
+
+# this helper is to avoid mypy err code [untyped-decorator]
+db_session: Final[Callable[[Callable[_P, _T]], Callable[_P, _T]]] = pony.orm.db_session
 
 
 @final
