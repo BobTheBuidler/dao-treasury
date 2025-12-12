@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dao_treasury.sorting.factory &mdash; dao-treasury  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dao-treasury
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../wallets.html">Specifying Treasury Wallets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sort_rules.html">Defining Sort Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/modules.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dashboards.html">DAO Treasury Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing to DAO Treasury</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dao-treasury</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dao_treasury.sorting.factory</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dao_treasury.sorting.factory</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">overload</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">CHAINID</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.sorting.rule</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CostOfRevenueSortRule</span><span class="p">,</span>
+    <span class="n">ExpenseSortRule</span><span class="p">,</span>
+    <span class="n">IgnoreSortRule</span><span class="p">,</span>
+    <span class="n">OtherExpenseSortRule</span><span class="p">,</span>
+    <span class="n">OtherIncomeSortRule</span><span class="p">,</span>
+    <span class="n">RevenueSortRule</span><span class="p">,</span>
+    <span class="n">TRule</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dao_treasury.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Networks</span><span class="p">,</span> <span class="n">SortFunction</span><span class="p">,</span> <span class="n">TxGroupName</span>
+
+
+<div class="viewcode-block" id="revenue">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.revenue">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">revenue</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span> <span class="o">=</span> <span class="n">CHAINID</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory[RevenueSortRule]&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a factory to register revenue sort rules for a given transaction group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txgroup: Base name of the transaction group to categorize as revenue.</span>
+<span class="sd">        networks: Network ID or iterable of network IDs on which this rule applies.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :func:`cost_of_revenue`</span>
+<span class="sd">        :class:`SortRuleFactory`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import revenue</span>
+<span class="sd">        &gt;&gt;&gt; @revenue(&quot;Token Sales&quot;)</span>
+<span class="sd">        ... def match_sales(tx):</span>
+<span class="sd">        ...     return tx.amount &gt; 0 and tx.to_address is not None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">networks</span><span class="p">,</span> <span class="n">RevenueSortRule</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cost_of_revenue">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.cost_of_revenue">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cost_of_revenue</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span> <span class="o">=</span> <span class="n">CHAINID</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory[CostOfRevenueSortRule]&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a factory to register cost‐of‐revenue sort rules for a given transaction group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txgroup: Base name of the transaction group to categorize as cost of revenue.</span>
+<span class="sd">        networks: Network ID or iterable of network IDs on which this rule applies.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :func:`revenue`</span>
+<span class="sd">        :class:`SortRuleFactory`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import cost_of_revenue</span>
+<span class="sd">        &gt;&gt;&gt; @cost_of_revenue(&quot;Manufacturing&quot;)</span>
+<span class="sd">        ... def match_manufacturing(tx):</span>
+<span class="sd">        ...     return tx.from_address is not None and tx.amount_usd &gt; 1000</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">networks</span><span class="p">,</span> <span class="n">CostOfRevenueSortRule</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="expense">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.expense">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">expense</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span> <span class="o">=</span> <span class="n">CHAINID</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory[ExpenseSortRule]&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a factory to register expense sort rules for a given transaction group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txgroup: Base name of the transaction group to categorize as expense.</span>
+<span class="sd">        networks: Network ID or iterable of network IDs on which this rule applies.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :func:`other_expense`</span>
+<span class="sd">        :class:`SortRuleFactory`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import expense</span>
+<span class="sd">        &gt;&gt;&gt; @expense(&quot;Office Supplies&quot;)</span>
+<span class="sd">        ... def match_supplies(tx):</span>
+<span class="sd">        ...     return tx.symbol == &quot;USD&quot; and tx.amount &lt; 500</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">networks</span><span class="p">,</span> <span class="n">ExpenseSortRule</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="other_income">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.other_income">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">other_income</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span> <span class="o">=</span> <span class="n">CHAINID</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory[OtherIncomeSortRule]&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a factory to register other‐income sort rules for a given transaction group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txgroup: Base name of the transaction group to categorize as other income.</span>
+<span class="sd">        networks: Network ID or iterable of network IDs on which this rule applies.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :func:`revenue`</span>
+<span class="sd">        :class:`SortRuleFactory`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import other_income</span>
+<span class="sd">        &gt;&gt;&gt; @other_income(&quot;Interest&quot;)</span>
+<span class="sd">        ... def match_interest(tx):</span>
+<span class="sd">        ...     return tx.token_address == SOME_TOKEN and tx.amount &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">networks</span><span class="p">,</span> <span class="n">OtherIncomeSortRule</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="other_expense">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.other_expense">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">other_expense</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span> <span class="o">=</span> <span class="n">CHAINID</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory[OtherExpenseSortRule]&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a factory to register other‐expense sort rules for a given transaction group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txgroup: Base name of the transaction group to categorize as other expense.</span>
+<span class="sd">        networks: Network ID or iterable of network IDs on which this rule applies.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :func:`expense`</span>
+<span class="sd">        :class:`SortRuleFactory`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import other_expense</span>
+<span class="sd">        &gt;&gt;&gt; @other_expense(&quot;Misc Fees&quot;)</span>
+<span class="sd">        ... def match_misc(tx):</span>
+<span class="sd">        ...     return tx.amount_usd &lt; 0 and tx.symbol == &quot;ETH&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">networks</span><span class="p">,</span> <span class="n">OtherExpenseSortRule</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ignore">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.ignore">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ignore</span><span class="p">(</span>
+    <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span> <span class="o">=</span> <span class="n">CHAINID</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory[IgnoreSortRule]&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a factory to register ignore sort rules for a given transaction group.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        txgroup: Base name of the transaction group to categorize as ignored.</span>
+<span class="sd">        networks: Network ID or iterable of network IDs on which this rule applies.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :class:`SortRuleFactory`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import ignore</span>
+<span class="sd">        &gt;&gt;&gt; @ignore(&quot;Dust&quot;)</span>
+<span class="sd">        ... def match_dust(tx):</span>
+<span class="sd">        ...     return abs(tx.value_usd) &lt; 0.01</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">networks</span><span class="p">,</span> <span class="n">IgnoreSortRule</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SortRuleFactory">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.SortRuleFactory">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SortRuleFactory</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">TRule</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Builder for creating sort rule instances for a specific transaction group and network(s).</span>
+
+<span class="sd">    This factory supports two patterns:</span>
+
+<span class="sd">    1. Decorating a function to register a dynamic matching rule.</span>
+<span class="sd">    2. Calling :meth:`match` to supply static match attributes.</span>
+
+<span class="sd">    Use the convenience functions like :func:`revenue`, :func:`expense`, etc.,</span>
+<span class="sd">    to obtain an instance of this factory preconfigured with the appropriate rule type.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from dao_treasury.sorting.factory import revenue</span>
+<span class="sd">        &gt;&gt;&gt; @revenue(&quot;Sales&quot;, networks=[1, 3])</span>
+<span class="sd">        ... def match_large_sales(tx):</span>
+<span class="sd">        ...     return tx.value_usd &gt; 1000</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SortRuleFactory.__init__">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.SortRuleFactory.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">txgroup</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span>
+        <span class="n">networks</span><span class="p">:</span> <span class="n">Networks</span><span class="p">,</span>
+        <span class="n">rule_type</span><span class="p">:</span> <span class="n">TRule</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the sort rule factory.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            txgroup: Base name of the transaction group.</span>
+<span class="sd">            networks: Single network ID or iterable of network IDs where the rule applies.</span>
+<span class="sd">            rule_type: Sort rule class (e.g., RevenueSortRule) to instantiate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">txgroup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span><span class="n">networks</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">networks</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">networks</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rule_type</span><span class="p">:</span> <span class="n">Final</span> <span class="o">=</span> <span class="n">rule_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rule</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TRule</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">txgroup_name</span><span class="p">:</span> <span class="n">TxGroupName</span><span class="p">,</span> <span class="n">networks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Networks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SortRuleFactory&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configure a nested sub‐group.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            txgroup_name: Sub‐group name.</span>
+<span class="sd">            networks: Optional network specification.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">SortFunction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SortFunction</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a matching function.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            func: The custom matching function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>  <span class="c1"># type: ignore [misc]</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">func</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TxGroupName</span><span class="p">,</span> <span class="n">SortFunction</span><span class="p">],</span>
+        <span class="n">networks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Networks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;SortRuleFactory&quot;</span><span class="p">,</span> <span class="n">SortFunction</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configure a nested sub‐group or register a matching function.</span>
+
+<span class="sd">        Overloads:</span>
+<span class="sd">            * If `func` is a string, returns a new factory for `txgroup:func`.</span>
+<span class="sd">            * If `func` is callable, registers it as the match logic.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            func: Sub‐group suffix (str) or a custom matching function.</span>
+<span class="sd">            networks: Optional networks override (only valid when `func` is str).</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If `networks` is passed when `func` is callable.</span>
+<span class="sd">            ValueError: If `func` is neither str nor callable.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`match`</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; fees = expense(&quot;Fees&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; @fees(&quot;Gas&quot;)</span>
+<span class="sd">            ... def match_gas(tx):</span>
+<span class="sd">            ...     return tx.symbol == &quot;ETH&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">SortRuleFactory</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">networks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">networks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rule_type</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">networks</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;you can only pass networks if `func` is a string&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">CHAINID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__check_locked</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_rule</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rule_type</span><span class="p">(</span><span class="n">txgroup</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rule</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TRule</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the created sort rule instance, if any.</span>
+
+<span class="sd">        After decoration or a call to :meth:`match`, this property holds the</span>
+<span class="sd">        concrete :class:`~dao_treasury.types.SortRule` instance.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; @other_income(&quot;Interest&quot;)</span>
+<span class="sd">            ... def match_i(tx):</span>
+<span class="sd">            ...     return tx.value_usd &gt; 100</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rule</span>
+
+<div class="viewcode-block" id="SortRuleFactory.match">
+<a class="viewcode-back" href="../../../source/dao_treasury.sorting.html#dao_treasury.SortRuleFactory.match">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">match</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">match_values</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># TODO: give this proper kwargs</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define static matching attributes for the sort rule.</span>
+
+<span class="sd">        Call this method with keyword matchers corresponding to rule attributes</span>
+<span class="sd">        (e.g., hash, from_address, symbol) to create a rule matching based on these values.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            func: Must be None; a function match must use the decorator form.</span>
+<span class="sd">            **match_values: Attribute values for matching (e.g., hash=&quot;0x123&quot;, symbol=&quot;DAI&quot;).</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If `func` is not None.</span>
+<span class="sd">            RuntimeError: If a matcher has already been set.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :meth:`__call__`</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; ignore(&quot;Dust&quot;).match(symbol=&quot;WETH&quot;, from_address=&quot;0xAAA&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;You cannot pass a func here, call </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2"> with the function as the sole arg instead&quot;</span>
+            <span class="p">)</span>
+        <span class="c1"># Only instantiate when we&#39;re on an allowed network</span>
+        <span class="k">if</span> <span class="n">CHAINID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__check_locked</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rule</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rule_type</span><span class="p">(</span><span class="n">txgroup</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">txgroup</span><span class="p">,</span> <span class="o">**</span><span class="n">match_values</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">locked</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__check_locked</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure that no matcher has already been registered.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If this factory already has a matcher assigned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2"> already has a matcher&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BobTheBuidler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
