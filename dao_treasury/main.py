@@ -270,7 +270,7 @@ async def export(args) -> None:
         # TODO: this should just be a method of Treasury class
         from_block = BlockNumber(0)
         while True:
-            while (to_block = await dank_mids.eth.block_number) == from_block:
+            while (to_block := await dank_mids.eth.block_number) == from_block:
                 # Once we've caught up to the chain head, we just check in 10s intervals
                 await asyncio.sleep(10)
             await treasury.populate_db(from_block, to_block)
