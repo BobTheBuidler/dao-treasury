@@ -25,6 +25,7 @@ import asyncio
 import logging
 import os
 from pathlib import Path
+from typing import NoReturn
 
 import brownie
 import yaml
@@ -265,15 +266,26 @@ async def export(args) -> None:
     # TODO: make this user configurable? would require some dynamic grafana dashboard files
     args.label = "Treasury"
 
-    export_task = create_task(
-        asyncio.gather(
-            # TODO: combine these into Treasury class?
-            # would allow for only one set of logs in memory
-            export_balances(args, custom_buckets),
-            treasury.populate_db(BlockNumber(0), brownie.chain.height),
-        )
-    )
+    async def export_transactions(treasury: Treasury) -> NoReturn:
+        # TODO: this should just be a method of Treasury class
+        from_block = BlockNumber(0)
+        while True:
+            while (to_block = await dank_mids.eth.block_number) == from_block:
+                # Once we've caught up to the chain head, we just check in 10s intervals
+                await asyncio.sleep(10)
+            await treasury.populate_db(from_block, to_block)
+            from_block = BlockNumber(to_block + 1)
 
+    async def export_forever() -> NoReturn:
+        await asyncio.gather(
+            # TODO: combine these into Treasury class to allow for only one set of logs in memory
+            export_balances(args, custom_buckets),
+            export_transactions(treasury),
+        )
+
+    export_task = create_task(export_forever())
+
+    # Let the task start doing some stuff
     await asyncio.sleep(1)
 
     # we don't need these containers since dao-treasury uses its own.
