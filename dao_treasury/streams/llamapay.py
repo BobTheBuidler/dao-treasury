@@ -4,11 +4,7 @@ import decimal
 from logging import getLogger
 from typing import (
     Callable,
-    Dict,
     Final,
-    List,
-    Optional,
-    Set,
     final,
 )
 from collections.abc import Awaitable, Iterator
@@ -89,7 +85,7 @@ def _generate_dates(
             break
 
 
-_StreamToStart = Callable[[HexStr, Optional[BlockNumber]], Awaitable[int]]
+_StreamToStart = Callable[[HexStr, BlockNumber | None], Awaitable[int]]
 
 _streamToStart_cache: Final[dict[HexStr, _StreamToStart]] = {}
 
@@ -105,7 +101,7 @@ def _get_streamToStart(stream_id: HexStr) -> _StreamToStart:
 
 
 async def _get_start_timestamp(
-    stream_id: HexStr, block: Optional[BlockNumber] = None
+    stream_id: HexStr, block: BlockNumber | None = None
 ) -> int:
     streamToStart = _streamToStart_cache.get(stream_id)
     if streamToStart is None:
@@ -279,7 +275,7 @@ class LlamaPayProcessor:
                 return entity
 
     def streams_for_recipient(
-        self, recipient: ChecksumAddress, at_block: Optional[BlockNumber] = None
+        self, recipient: ChecksumAddress, at_block: BlockNumber | None = None
     ) -> list[Stream]:
         with db_session:
             streams = Stream.select(lambda s: s.to_address.address == recipient)
@@ -324,7 +320,7 @@ class LlamaPayProcessor:
 
     async def process_stream_for_date(
         self, stream_id: HexStr, date_obj: dt.datetime
-    ) -> Optional[StreamedFunds]:
+    ) -> StreamedFunds | None:
         entity = await _STREAMS_THREAD.run(
             StreamedFunds.get_entity, stream_id, date_obj
         )
