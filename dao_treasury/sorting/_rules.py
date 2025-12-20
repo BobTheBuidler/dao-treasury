@@ -192,9 +192,7 @@ class Rules:
 
         from dao_treasury.db import TxGroup
 
-        parent: TxGroup | TxGroupDbid = TxGroup.get_or_insert(
-            top_level_name, None
-        )
+        parent: TxGroup | TxGroupDbid = TxGroup.get_or_insert(top_level_name, None)
         parsed = yaml.safe_load(matchers.read_bytes())
         if not parsed:
             logger.warning(f"no content in rule file: {rules}")
