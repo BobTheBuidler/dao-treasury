@@ -32,13 +32,7 @@ See Also:
 from collections import defaultdict
 from dataclasses import dataclass
 from logging import getLogger
-from typing import (
-    TYPE_CHECKING,
-    DefaultDict,
-    Final,
-    Optional,
-    TypeVar,
-)
+from typing import TYPE_CHECKING, DefaultDict, Final, TypeVar
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
