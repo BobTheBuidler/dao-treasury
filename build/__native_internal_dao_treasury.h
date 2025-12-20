@@ -6,7 +6,7 @@
 
 int CPyGlobalsInit(void);
 
-extern PyObject *CPyStatics[431];
+extern PyObject *CPyStatics[432];
 extern const char * const CPyLit_Str[];
 extern const char * const CPyLit_Bytes[];
 extern const char * const CPyLit_Int[];
@@ -45,6 +45,7 @@ extern CPyModule *CPyModule_dao_treasury___sorting___rules___ignore___llamapay;
 extern PyObject *CPyStatic_llamapay___globals;
 extern CPyModule *CPyModule_dao_treasury___streams;
 extern PyObject *CPyStatic__matchers___globals;
+extern CPyModule *CPyModule_collections___abc;
 extern CPyModule *CPyModule_pony___orm;
 extern CPyModule *CPyModule_eth_typing;
 extern CPyModule *CPyModule_eth_utils;

@@ -1,6 +1,6 @@
 from logging import getLogger
 from pathlib import Path
-from typing import Callable, Final, Type, TypeVar, Union, final
+from typing import Callable, Final, TypeVar, Union, final
 
 import pony.orm
 import yaml
@@ -115,7 +115,7 @@ class Rules:
         self.__initialized = True
 
     def __build_matchers_for_all_groups(
-        self, match_rules_filename: str, matcher_cls: Type[_Matcher]
+        self, match_rules_filename: str, matcher_cls: type[_Matcher]
     ) -> None:
         """Register one type of matcher across all top‐level categories.
 
@@ -160,7 +160,7 @@ class Rules:
         top_level_name: TopLevelCategory,
         rules: Path,
         filename: str,
-        matcher_cls: Type[_Matcher],
+        matcher_cls: type[_Matcher],
     ) -> None:
         """Load and instantiate matchers defined in a specific category directory.
 

@@ -3,16 +3,11 @@ import datetime as dt
 import decimal
 from logging import getLogger
 from typing import (
-    Awaitable,
     Callable,
-    Dict,
     Final,
-    Iterator,
-    List,
-    Optional,
-    Set,
     final,
 )
+from collections.abc import Awaitable, Iterator
 
 import dank_mids
 import pony.orm
@@ -66,7 +61,7 @@ get_price: Final = y.get_price
 
 networks: Final = [Network.Mainnet]
 
-factories: List[HexAddress] = []
+factories: list[HexAddress] = []
 
 if dai_stream_factory := {
     Network.Mainnet: "0x60c7B0c5B3a4Dc8C690b074727a17fF7aA287Ff2",
@@ -90,9 +85,9 @@ def _generate_dates(
             break
 
 
-_StreamToStart = Callable[[HexStr, Optional[BlockNumber]], Awaitable[int]]
+_StreamToStart = Callable[[HexStr, BlockNumber | None], Awaitable[int]]
 
-_streamToStart_cache: Final[Dict[HexStr, _StreamToStart]] = {}
+_streamToStart_cache: Final[dict[HexStr, _StreamToStart]] = {}
 
 
 def _get_streamToStart(stream_id: HexStr) -> _StreamToStart:
@@ -106,7 +101,7 @@ def _get_streamToStart(stream_id: HexStr) -> _StreamToStart:
 
 
 async def _get_start_timestamp(
-    stream_id: HexStr, block: Optional[BlockNumber] = None
+    stream_id: HexStr, block: BlockNumber | None = None
 ) -> int:
     streamToStart = _streamToStart_cache.get(stream_id)
     if streamToStart is None:
@@ -127,7 +122,7 @@ def _stop_stream(stream_id: str, block: BlockNumber) -> None:
         Stream[stream_id].stop_stream(block)  # type: ignore [misc]
 
 
-_block_timestamps: Final[Dict[BlockNumber, UnixTimestamp]] = {}
+_block_timestamps: Final[dict[BlockNumber, UnixTimestamp]] = {}
 
 
 async def _get_block_timestamp(block: BlockNumber) -> UnixTimestamp:
@@ -180,7 +175,7 @@ class LlamaPayProcessor:
         events = decode_logs(
             await get_logs_asap(stream_contract.address, None, sync=False)
         )
-        keys: Set[str] = set(events.keys())
+        keys: set[str] = set(events.keys())
         for k in keys:
             if k not in self.handled_events and k not in self.skipped_events:
                 raise NotImplementedError(f"Need to handle event: {k}")
@@ -280,8 +275,8 @@ class LlamaPayProcessor:
                 return entity
 
     def streams_for_recipient(
-        self, recipient: ChecksumAddress, at_block: Optional[BlockNumber] = None
-    ) -> List[Stream]:
+        self, recipient: ChecksumAddress, at_block: BlockNumber | None = None
+    ) -> list[Stream]:
         with db_session:
             streams = Stream.select(lambda s: s.to_address.address == recipient)
             if at_block is None:
@@ -292,7 +287,7 @@ class LlamaPayProcessor:
 
     def streams_for_token(
         self, token: ChecksumAddress, include_inactive: bool = False
-    ) -> List[Stream]:
+    ) -> list[Stream]:
         with db_session:
             streams = Stream.select(lambda s: s.token.address.address == token)
             return (
@@ -325,7 +320,7 @@ class LlamaPayProcessor:
 
     async def process_stream_for_date(
         self, stream_id: HexStr, date_obj: dt.datetime
-    ) -> Optional[StreamedFunds]:
+    ) -> StreamedFunds | None:
         entity = await _STREAMS_THREAD.run(
             StreamedFunds.get_entity, stream_id, date_obj
         )
