@@ -342,3 +342,4 @@ TRule = TypeVar(
     OtherExpenseSortRule,
     IgnoreSortRule,
 )
+
