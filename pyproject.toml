@@ -11,7 +11,7 @@ dao-treasury = "dao_treasury.main:main"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-eth-portfolio = "==0.5.0"
+eth-portfolio = "==0.5.1"
 psycopg2-binary = "==2.9.11"
 
 [tool.poetry.group.dev.dependencies]
@@ -40,7 +40,7 @@ requires = [
     "eth-retry==0.3.5",
     "eth-typing==5.2.1",
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
-    "ez-a-sync==0.33.3",
+    "ez-a-sync==0.33.9",
     "pony==0.7.19",
 ]
 build-backend = "setuptools.build_meta"
