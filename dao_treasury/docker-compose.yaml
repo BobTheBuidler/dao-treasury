@@ -8,7 +8,7 @@ volumes:
 
 services:
   grafana:
-    image: grafana/grafana:12.3.0
+    image: grafana/grafana:12.3.1
     ports:
       - 127.0.0.1:${DAO_TREASURY_GRAFANA_PORT:-3004}:3000
     environment:
