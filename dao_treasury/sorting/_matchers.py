@@ -1,6 +1,5 @@
 from logging import getLogger
 from typing import (
-    Callable,
     ClassVar,
     Dict,
     Final,
@@ -10,6 +9,7 @@ from typing import (
     TypeVar,
     final,
 )
+from collections.abc import Callable
 from collections.abc import Iterable
 
 import pony.orm
@@ -56,7 +56,7 @@ class _Matcher:
     __cache__: ClassVar[dict[str, TxGroupDbid]]
 
     @classmethod
-    def match(cls, string: str) -> Optional[TxGroupDbid]:
+    def match(cls, string: str) -> TxGroupDbid | None:
         # sourcery skip: use-next
         """Return the TxGroupDbid for a matching instance or None if no match.
 

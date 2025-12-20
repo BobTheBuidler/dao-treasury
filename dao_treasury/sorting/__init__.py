@@ -143,7 +143,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
     to_address = entry.to_address
     block = entry.block_number
 
-    txgroup_dbid: Optional[TxGroupDbid] = None
+    txgroup_dbid: TxGroupDbid | None = None
     if TreasuryWallet.check_membership(from_address, block):
         if TreasuryWallet.check_membership(to_address, block):
             if INTERNAL_TRANSFER_TXGROUP_DBID is None:
@@ -209,7 +209,7 @@ def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
     to_address = tx.to_address
     block = tx.block
 
-    txgroup_dbid: Optional[TxGroupDbid] = None
+    txgroup_dbid: TxGroupDbid | None = None
     if TreasuryWallet.check_membership(from_address, block):
         if TreasuryWallet.check_membership(tx.to_address.address, block):
             if INTERNAL_TRANSFER_TXGROUP_DBID is None:

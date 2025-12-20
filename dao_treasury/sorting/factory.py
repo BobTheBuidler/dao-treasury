@@ -181,11 +181,11 @@ class SortRuleFactory(Generic[TRule]):
             [networks] if isinstance(networks, int) else list(networks)
         )
         self.rule_type: Final = rule_type
-        self._rule: Optional[TRule] = None
+        self._rule: TRule | None = None
 
     @overload
     def __call__(
-        self, txgroup_name: TxGroupName, networks: Optional[Networks] = None
+        self, txgroup_name: TxGroupName, networks: Networks | None = None
     ) -> "SortRuleFactory":
         """Configure a nested sub‐group.
 
@@ -204,8 +204,8 @@ class SortRuleFactory(Generic[TRule]):
 
     def __call__(  # type: ignore [misc]
         self,
-        func: Union[TxGroupName, SortFunction],
-        networks: Optional[Networks] = None,
+        func: TxGroupName | SortFunction,
+        networks: Networks | None = None,
     ) -> Union["SortRuleFactory", SortFunction]:
         """Configure a nested sub‐group or register a matching function.
 
@@ -244,7 +244,7 @@ class SortRuleFactory(Generic[TRule]):
         raise ValueError(func)
 
     @property
-    def rule(self) -> Optional[TRule]:
+    def rule(self) -> TRule | None:
         """Return the created sort rule instance, if any.
 
         After decoration or a call to :meth:`match`, this property holds the

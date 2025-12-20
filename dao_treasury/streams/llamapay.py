@@ -3,10 +3,10 @@ import datetime as dt
 import decimal
 from logging import getLogger
 from typing import (
-    Callable,
     Final,
     final,
 )
+from collections.abc import Callable
 from collections.abc import Awaitable, Iterator
 
 import dank_mids
