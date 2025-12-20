@@ -11924,7 +11924,7 @@ CPyL3: ;
     CPyModule_pathlib = cpy_r_r12;
     CPy_INCREF(CPyModule_pathlib);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Callable', 'Final', 'Type', 'TypeVar', 'Union', 'final') */
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Callable', 'Final', 'TypeVar', 'Union', 'final') */
     cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing' */
     cpy_r_r15 = CPyStatic__rules___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -33302,7 +33302,7 @@ const char * const CPyLit_Str[] = {
     "\004\017Cost of Revenue\bExpenses\fOther Income\016Other Expenses",
     "\004\021FileNotFoundError\rget_or_insert\nread_bytes\tsafe_load",
     "\006\031no content in rule file: \004.yml\005.yaml\006exists\021%s does not exist\004Path",
-    "\006\apathlib\004Type\005Union\004yaml\036dao_treasury/sorting/_rules.py\aCHAINID",
+    "\005\apathlib\005Union\004yaml\036dao_treasury/sorting/_rules.py\aCHAINID",
     "\003\026dao_treasury.constants\020TopLevelCategory\022dao_treasury.rules",
     "\004\033dao_treasury.sorting._rules\r__initialized\trules_dir\vrevenue_dir",
     "\004\023cost_of_revenue_dir\fexpenses_dir\020other_income_dir\021other_expense_dir",
@@ -33375,16 +33375,16 @@ const int CPyLit_Tuple[] = {
     46, 4, 48, 49, 50, 51, 7, 53, 54, 55, 56, 57, 58, 59, 7, 27, 61, 62,
     63, 64, 65, 66, 1, 69, 1, 79, 1, 56, 1, 77, 1, 74, 1, 109, 9, 117,
     118, 119, 37, 120, 38, 121, 122, 123, 1, 124, 3, 126, 127, 127, 1,
-    385, 3, 130, 131, 132, 1, 92, 2, 135, 136, 1, 101, 1, 170, 6, 117, 37,
-    172, 122, 173, 123, 3, 174, 174, 174, 2, 385, 393, 1, 135, 1, 176, 2,
-    178, 69, 2, 193, 194, 7, 201, 37, 202, 38, 173, 123, 203, 7, 61, 62,
-    63, 64, 65, 66, 204, 3, 205, 206, 207, 1, 229, 1, 231, 5, 233, 234,
-    37, 38, 122, 1, 214, 1, 132, 1, 236, 4, 206, 238, 69, 207, 2, 255,
-    256, 1, 257, 2, 283, 284, 3, 36, 36, 36, 1, 412, 1, 279, 1, 287, 8,
-    201, 117, 289, 37, 290, 291, 122, 120, 3, 292, 261, 261, 1, 417, 1,
-    281, 1, 37, 1, 141, 1, 44, 3, 304, 297, 303, 5, 119, 37, 120, 38, 123,
-    1, 393, 3, 347, 130, 131, 1, 314, 3, 350, 351, 351, 3, 352, 138, 138,
-    2, 428, 429, 7, 233, 360, 117, 124, 290, 361, 173, 1, 362
+    384, 3, 130, 131, 132, 1, 92, 2, 135, 136, 1, 101, 1, 170, 5, 117, 37,
+    122, 172, 123, 3, 173, 173, 173, 2, 384, 392, 1, 135, 1, 175, 2, 177,
+    69, 2, 192, 193, 7, 200, 37, 201, 38, 172, 123, 202, 7, 61, 62, 63,
+    64, 65, 66, 203, 3, 204, 205, 206, 1, 228, 1, 230, 5, 232, 233, 37,
+    38, 122, 1, 213, 1, 132, 1, 235, 4, 205, 237, 69, 206, 2, 254, 255, 1,
+    256, 2, 282, 283, 3, 36, 36, 36, 1, 411, 1, 278, 1, 286, 8, 200, 117,
+    288, 37, 289, 290, 122, 120, 3, 291, 260, 260, 1, 416, 1, 280, 1, 37,
+    1, 141, 1, 44, 3, 303, 296, 302, 5, 119, 37, 120, 38, 123, 1, 392, 3,
+    346, 130, 131, 1, 313, 3, 349, 350, 350, 3, 351, 138, 138, 2, 427,
+    428, 7, 232, 359, 117, 124, 289, 360, 172, 1, 361
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_dao_treasury___sorting__internal = NULL;
