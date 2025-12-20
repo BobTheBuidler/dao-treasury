@@ -1,6 +1,6 @@
 from logging import getLogger
 from pathlib import Path
-from typing import Final, TypeVar, Union, final
+from typing import Final, TypeVar, final
 from collections.abc import Callable
 
 import pony.orm
