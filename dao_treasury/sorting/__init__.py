@@ -26,7 +26,7 @@ See Also:
 """
 
 from logging import getLogger
-from typing import Final, Optional
+from typing import Final
 
 from eth_portfolio.structs import LedgerEntry
 from evmspec.data import TransactionHash
