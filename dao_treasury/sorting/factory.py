@@ -1,4 +1,4 @@
-from typing import Any, Final, Generic, Optional, Union, final, overload
+from typing import Any, Final, Generic, Union, final, overload
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.sorting.rule import (
