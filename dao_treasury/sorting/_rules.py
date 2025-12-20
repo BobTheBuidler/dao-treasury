@@ -1,6 +1,7 @@
 from logging import getLogger
 from pathlib import Path
-from typing import Callable, Final, TypeVar, Union, final
+from typing import Final, TypeVar, final
+from collections.abc import Callable
 
 import pony.orm
 import yaml
@@ -191,9 +192,7 @@ class Rules:
 
         from dao_treasury.db import TxGroup
 
-        parent: Union[TxGroup, TxGroupDbid] = TxGroup.get_or_insert(
-            top_level_name, None
-        )
+        parent: TxGroup | TxGroupDbid = TxGroup.get_or_insert(top_level_name, None)
         parsed = yaml.safe_load(matchers.read_bytes())
         if not parsed:
             logger.warning(f"no content in rule file: {rules}")

@@ -2,12 +2,8 @@ import asyncio
 import datetime as dt
 import decimal
 from logging import getLogger
-from typing import (
-    Callable,
-    Final,
-    final,
-)
-from collections.abc import Awaitable, Iterator
+from typing import Final, final
+from collections.abc import Awaitable, Callable, Iterator
 
 import dank_mids
 import pony.orm
