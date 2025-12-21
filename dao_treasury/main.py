@@ -28,6 +28,7 @@ from pathlib import Path
 from typing import NoReturn
 
 import brownie
+import dank_mids
 import yaml
 from a_sync import create_task
 from dao_treasury._nicknames import setup_address_nicknames_in_db
