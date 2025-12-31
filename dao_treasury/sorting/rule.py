@@ -32,7 +32,7 @@ See Also:
 from collections import defaultdict
 from dataclasses import dataclass
 from logging import getLogger
-from typing import TYPE_CHECKING, DefaultDict, Final, TypeVar
+from typing import TYPE_CHECKING, DefaultDict, Final, TypeVar, cast
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
@@ -165,7 +165,8 @@ class _SortRule:
         # self.__instances__.append(self)
 
         # append new instance under its class key
-        SORT_RULES[type(self)].append(self)
+        typ = cast(type[SortRule], type(self))
+        SORT_RULES[typ].append(self)
 
     @property
     def txgroup_dbid(self) -> TxGroupDbid:
