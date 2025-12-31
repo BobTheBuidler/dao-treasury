@@ -1,6 +1,12 @@
 name: MyPy
 
-on: pull_request
+on:
+  pull_request:
+    paths:
+      - '**.py'
+      - '.github/workflows/mypy.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,19 +23,23 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.1.4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
         persist-credentials: false
         
     - name: Setup Python (faster than using Python container)
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.pyversion }}
+        cache: pip
+        cache-dependency-path: |
+            pyproject.toml
+            poetry.lock
 
     - name: Load cached Poetry installation
       id: cached-poetry
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ~/.local  # the path depends on the OS
         key: poetry-${{ runner.os }}-${{ matrix.pyversion }}-0  # increment to reset cache

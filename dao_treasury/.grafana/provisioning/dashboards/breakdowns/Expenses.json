@@ -1,0 +1,567 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Provides a detailed breakdown of DAO expenses over time, including totals and averages by period and transaction group. Intended for monitoring spending trends, identifying cost drivers, and supporting financial reporting. Use the 'Top Level' and 'Tx Group' filters to view specific expense categories. Data Links in panels allow quick navigation to filtered transaction details.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "PostgreSQL",
+      "description": "Displays the total expenses for the selected period, aggregated across all expense transaction groups. Useful for understanding overall spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Expense Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND top_category IN (${TopLevel:sqlstring}) AND txgroup_name IN (${Txgroup:sqlstring})",
+          "refId": "A",
+          "timeColumns": ["time", "ts"]
+        }
+      ],
+      "title": "Expenses",
+      "type": "stat"
+    },
+    {
+      "datasource": "PostgreSQL",
+      "description": "Shows the average expenses per month for the selected period. Useful for tracking monthly spending trends.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Expense Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 30.436875)) AS total_revenue FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND top_category IN (${TopLevel:sqlstring}) AND txgroup_name IN (${Txgroup:sqlstring})",
+          "refId": "A",
+          "timeColumns": ["time", "ts"]
+        }
+      ],
+      "title": "Monthly Expenses",
+      "type": "stat"
+    },
+    {
+      "datasource": "PostgreSQL",
+      "description": "Shows the average expenses per week for the selected period. Useful for monitoring short-term spending changes.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Expense Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24 / 7)) AS total_revenue FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND top_category IN (${TopLevel:sqlstring}) AND txgroup_name IN (${Txgroup:sqlstring})",
+          "refId": "A",
+          "timeColumns": ["time", "ts"]
+        }
+      ],
+      "title": "Weekly Expenses",
+      "type": "stat"
+    },
+    {
+      "datasource": "PostgreSQL",
+      "description": "Shows the average expenses per day for the selected period. Useful for fine-grained monitoring of spending.\n\nData Link: Clicking the value opens a filtered transactions dashboard for this period and group.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "total_revenue"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Expense Transactions For This Period",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=Expenses&from=$__from&to=$__to"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) / ((($__to - $__from) / 1000.0 / 60 / 60 / 24)) AS total_revenue FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND top_category IN (${TopLevel:sqlstring}) AND txgroup_name IN (${Txgroup:sqlstring})",
+          "refId": "A",
+          "timeColumns": ["time", "ts"]
+        }
+      ],
+      "title": "Daily Expenses",
+      "type": "stat"
+    },
+    {
+      "datasource": "PostgreSQL",
+      "description": "Time series chart of expenses by transaction group, aggregated weekly for the selected period. Useful for visualizing spending trends and identifying cost drivers.\n\nData Link: Clicking a group name opens a filtered transactions dashboard for that group and period.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-red",
+            "mode": "continuous-YlRd",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 70,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Expenses (sum)"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View ${__series.name} Transactions",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Top=${__series.name}&from=$__from&to=$__to"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": ["sum"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT to_timestamp(timestamp) AS \"timestamp\", txgroup_name AS \"TxGroup\", SUM(value_usd) AS \"Expenses\" FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 AND top_category IN (${TopLevel:sqlstring}) AND txgroup_name IN (${Txgroup:sqlstring}) GROUP BY timestamp, txgroup_name ORDER BY timestamp;",
+          "refId": "A",
+          "timeColumns": ["timestamp"]
+        }
+      ],
+      "title": "Weekly Cashflow",
+      "transformations": [
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "YYYY-WW",
+            "timeField": "timestamp",
+            "timezone": "browser",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "YYYY-WW",
+                "destinationType": "time",
+                "targetField": "timestamp"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Expenses": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "TxGroup": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "timestamp": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": ["TxGroup"],
+            "keepFields": false,
+            "naming": {
+              "asLabels": false
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "tags": ["breakdown", "expenses"],
+  "templating": {
+    "list": [
+      {
+        "name": "TopLevel",
+        "label": "Top Level",
+        "type": "query",
+        "query": "SELECT DISTINCT top_category FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000;",
+        "definition": "SELECT DISTINCT top_category FROM usdvalue_presum_expenses WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000;",
+        "description": "Filter the dashboard by top-level expense category.",
+        "includeAll": true,
+        "multi": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "refresh": 2,
+        "regex": "",
+        "sort": 5
+      },
+      {
+        "allowCustomValue": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "definition": "SELECT DISTINCT txgroup_name FROM usdvalue_presum_expenses WHERE top_category IN (${TopLevel:sqlstring}) AND timestamp >= $__from/1000 AND timestamp <= $__to/1000;",
+        "description": "Filter the dashboard by transaction group within the selected top-level categories.",
+        "includeAll": true,
+        "multi": true,
+        "label": "Tx Group",
+        "name": "Txgroup",
+        "options": [],
+        "query": "SELECT DISTINCT txgroup_name FROM usdvalue_presum_expenses WHERE top_category IN (${TopLevel:sqlstring}) AND timestamp >= $__from/1000 AND timestamp <= $__to/1000;",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6M",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Expenses Over Time",
+  "uid": "62bccd38-918c-4395-9180-8f7f911e9ddf",
+  "version": 22
+}

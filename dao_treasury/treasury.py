@@ -18,11 +18,11 @@ This is the main entry point for orchestrating DAO treasury analytics.
 from asyncio import create_task, gather
 from logging import getLogger
 from pathlib import Path
-from typing import Final, Iterable, List, Optional, Union
+from typing import Dict, Final, Iterable, List, Optional, Union
 
 import a_sync
 from a_sync.a_sync.abstract import ASyncABC
-from eth_typing import BlockNumber
+from eth_typing import BlockNumber, HexAddress
 from eth_portfolio.structs import LedgerEntry
 from eth_portfolio.typing import PortfolioBalances
 from eth_portfolio_scripts._portfolio import ExportablePortfolio
@@ -52,6 +52,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         sort_rules: Optional[Path] = None,
         start_block: int = 0,
         label: str = "your org's treasury",
+        custom_buckets: Optional[Dict[HexAddress, str]] = None,
         asynchronous: bool = False,
     ) -> None:
         """Initialize the Treasury singleton for managing DAO funds.
@@ -124,6 +125,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             start_block=start_block,
             label=label,
             load_prices=True,
+            custom_buckets=custom_buckets,
             asynchronous=asynchronous,
         )
         """An eth_portfolio.Portfolio object used for exporting tx and balance history"""

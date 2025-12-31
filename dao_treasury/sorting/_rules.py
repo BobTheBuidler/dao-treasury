@@ -1,9 +1,11 @@
 from logging import getLogger
 from pathlib import Path
-from typing import Final, Type, Union, final
+from typing import Final, TypeVar, final
+from collections.abc import Callable
 
+import pony.orm
 import yaml
-from pony.orm import db_session
+from typing_extensions import ParamSpec
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.sorting import (
@@ -15,7 +17,13 @@ from dao_treasury.sorting import (
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
 
 
+_T = TypeVar("_T")
+_P = ParamSpec("_P")
+
 logger: Final = getLogger("dao_treasury.rules")
+
+# this helper is to avoid mypy err code [untyped-decorator]
+db_session: Final[Callable[[Callable[_P, _T]], Callable[_P, _T]]] = pony.orm.db_session
 
 
 @final
@@ -108,7 +116,7 @@ class Rules:
         self.__initialized = True
 
     def __build_matchers_for_all_groups(
-        self, match_rules_filename: str, matcher_cls: Type[_Matcher]
+        self, match_rules_filename: str, matcher_cls: type[_Matcher]
     ) -> None:
         """Register one type of matcher across all top‐level categories.
 
@@ -153,7 +161,7 @@ class Rules:
         top_level_name: TopLevelCategory,
         rules: Path,
         filename: str,
-        matcher_cls: Type[_Matcher],
+        matcher_cls: type[_Matcher],
     ) -> None:
         """Load and instantiate matchers defined in a specific category directory.
 
@@ -184,9 +192,7 @@ class Rules:
 
         from dao_treasury.db import TxGroup
 
-        parent: Union[TxGroup, TxGroupDbid] = TxGroup.get_or_insert(
-            top_level_name, None
-        )
+        parent: TxGroup | TxGroupDbid = TxGroup.get_or_insert(top_level_name, None)
         parsed = yaml.safe_load(matchers.read_bytes())
         if not parsed:
             logger.warning(f"no content in rule file: {rules}")

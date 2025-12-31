@@ -29,7 +29,7 @@ Key Features
     - **Net**: Net profit/loss for the month, including both sorted and unsorted transactions.
 
 - **Data Source**
-  - Powered by the SQLite database, querying from `treasury_txs`, `txgroups`, and `txgroup_hierarchy` to aggregate monthly results.
+  - Powered by the PostgreSQL database, querying from `treasury_txs`, `txgroups`, and `txgroup_hierarchy` to aggregate monthly results.
 
 - **No Filters/Variables**
   - The dashboard does not include Grafana variables; all data is shown for the available date range.
@@ -121,7 +121,7 @@ Key Features
   - **Weekly Cashflow (Including Unsorted)**: Same as above, but includes unsorted transactions for a complete picture.
 
 - **Data Source**
-  - All panels use the SQLite database, querying the `general_ledger` and `txgroup_hierarchy` tables for up-to-date financial data.
+  - All panels use the PostgreSQL database, querying the `general_ledger` and `txgroup_hierarchy` tables for up-to-date financial data.
 
 - **Time Range**
   - Default time range is the last 6 months, but all panels respect the Grafana time picker for custom analysis periods.
@@ -198,7 +198,7 @@ Usage Tips
 Conclusion
 ~~~~~~~~~~
 
-This dashboard offers a comprehensive overview of your DAO's value transfers. By leveraging Grafana’s powerful variable filters and a direct SQLite data source, users can drill down into specific transactions over any chosen time range, chain, token, or addresses. The result is a dynamic, flexible workflow for analyzing and monitoring token movement in near-real-time.
+This dashboard offers a comprehensive overview of your DAO's value transfers. By leveraging Grafana’s powerful variable filters and a direct PostgreSQL data source, users can drill down into specific transactions over any chosen time range, chain, token, or addresses. The result is a dynamic, flexible workflow for analyzing and monitoring token movement in near-real-time.
 
 LlamaPay Streams Dashboard
 --------------------------
@@ -224,7 +224,7 @@ Key Features
     - **TxGroup**: Transaction group/category for the stream.
 
 - **Data Source**
-  - Powered by the SQLite database, querying the `streams` table and joining with `addresses` and `tokens` for metadata.
+  - Powered by the PostgreSQL database, querying the `streams` table and joining with `addresses` and `tokens` for metadata.
 
 - **No Filters/Variables**
   - The dashboard does not include Grafana variables or filters; all streams are shown.

@@ -1,16 +1,23 @@
 from logging import getLogger
-from typing import ClassVar, Dict, Final, Iterable, List, Optional, Set, final
+from typing import ClassVar, Final, TypeVar, final
+from collections.abc import Callable, Iterable
 
+import pony.orm
 from eth_typing import ChecksumAddress, HexAddress, HexStr
 from eth_utils import is_hexstr
-from pony.orm import db_session
-from typing_extensions import Self
+from typing_extensions import ParamSpec, Self
 from y import convert
 
 from dao_treasury.types import TxGroupDbid
 
 
+_T = TypeVar("_T")
+_P = ParamSpec("_P")
+
 logger: Final = getLogger("dao_treasury")
+
+# this helper is to avoid mypy err code [untyped-decorator]
+db_session: Final[Callable[[Callable[_P, _T]], Callable[_P, _T]]] = pony.orm.db_session
 
 
 class _Matcher:
@@ -35,11 +42,11 @@ class _Matcher:
         :meth:`match`
     """
 
-    __instances__: ClassVar[List[Self]]
-    __cache__: ClassVar[Dict[str, TxGroupDbid]]
+    __instances__: ClassVar[list[Self]]
+    __cache__: ClassVar[dict[str, TxGroupDbid]]
 
     @classmethod
-    def match(cls, string: str) -> Optional[TxGroupDbid]:
+    def match(cls, string: str) -> TxGroupDbid | None:
         # sourcery skip: use-next
         """Return the TxGroupDbid for a matching instance or None if no match.
 
@@ -73,7 +80,7 @@ class _Matcher:
                     return txgroup_id
             return None
 
-    def __init__(self, txgroup: TxGroupDbid, validated_values: Set[str]) -> None:
+    def __init__(self, txgroup: TxGroupDbid, validated_values: set[str]) -> None:
         """Initialize matcher with a txgroup and a set of validated strings.
 
         Ensures that the txgroup identifier is unique among instances.
@@ -117,7 +124,7 @@ class _Matcher:
         return string == self.__value if self.__one_value else string in self.values
 
     @property
-    def values(self) -> Set[HexStr]:
+    def values(self) -> set[HexStr]:
         """Set of all validated strings used for matching.
 
         Returns:
@@ -230,7 +237,7 @@ class _AddressMatcher(_HexStringMatcher):
         if not addresses:
             raise ValueError("You must provide at least one address")
 
-        validated: Set[ChecksumAddress] = set()
+        validated: set[ChecksumAddress] = set()
         for address in addresses:
             address = convert.to_address(self._validate_hexstr(address))
             for matcher in self.__instances__:
@@ -247,7 +254,7 @@ class _AddressMatcher(_HexStringMatcher):
         logger.info("%s created", self)
         self.__instances__.append(self)  # type: ignore [arg-type]
 
-    @db_session  # type: ignore [misc]
+    @db_session
     def __repr__(self) -> str:
         """Return a string representation including the full txgroup path and addresses.
 
@@ -279,8 +286,8 @@ class FromAddressMatcher(_AddressMatcher):
         TxGroupDbid(7)
     """
 
-    __instances__: ClassVar[List["FromAddressMatcher"]] = []
-    __cache__: ClassVar[Dict[ChecksumAddress, TxGroupDbid]] = {}
+    __instances__: ClassVar[list["FromAddressMatcher"]] = []
+    __cache__: ClassVar[dict[ChecksumAddress, TxGroupDbid]] = {}
 
 
 @final
@@ -296,8 +303,8 @@ class ToAddressMatcher(_AddressMatcher):
         TxGroupDbid(8)
     """
 
-    __instances__: ClassVar[List["ToAddressMatcher"]] = []
-    __cache__: ClassVar[Dict[ChecksumAddress, TxGroupDbid]] = {}
+    __instances__: ClassVar[list["ToAddressMatcher"]] = []
+    __cache__: ClassVar[dict[ChecksumAddress, TxGroupDbid]] = {}
 
 
 @final
@@ -318,8 +325,8 @@ class HashMatcher(_HexStringMatcher):
     """
 
     expected_length: ClassVar[int] = 66
-    __instances__: ClassVar[List["HashMatcher"]] = []
-    __cache__: ClassVar[Dict[HexStr, TxGroupDbid]] = {}
+    __instances__: ClassVar[list["HashMatcher"]] = []
+    __cache__: ClassVar[dict[HexStr, TxGroupDbid]] = {}
 
     def __init__(self, txgroup: TxGroupDbid, hashes: Iterable[HexStr]) -> None:
         """Initialize hash matcher ensuring unique transaction hashes.
@@ -352,7 +359,7 @@ class HashMatcher(_HexStringMatcher):
         if not hashes:
             raise ValueError("You must provide at least one transaction hash")
 
-        validated: Set[HexStr] = set()
+        validated: set[HexStr] = set()
         for txhash in hashes:
             txhash = self._validate_hexstr(txhash)
             for matcher in self.__instances__:

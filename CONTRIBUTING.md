@@ -10,8 +10,10 @@ DAO Treasury was designed to make it easy for less technical users to contribute
 2. [System Patterns and Best Practices](#system-patterns-and-best-practices)
 3. [Creating a New Dashboard](#creating-a-new-dashboard)
 4. [Editing an Existing Dashboard](#editing-an-existing-dashboard)
-5. [Submitting Your Changes](#submitting-your-changes)
-6. [Additional Notes](#additional-notes)
+5. [Important Requirements for Dashboard Contributions](#important-requirements-for-dashboard-contributions)
+6. [Dashboard Tagging Policy](#dashboard-tagging-policy)
+7. [Submitting Your Changes](#submitting-your-changes)
+8. [Additional Notes](#additional-notes)
 
 ---
 
@@ -80,6 +82,35 @@ DAO Treasury follows a set of repo-wide system patterns to ensure maintainabilit
 
 4. **Update the Repo**  
    - Overwrite the existing JSON file in the appropriate folder (for example: `.grafana/provisioning/dashboards/treasury/Treasury.json` or `.grafana/provisioning/dashboards/transactions/Treasury Transactions.json`) with your updated version.
+
+---
+
+## Important Requirements for Dashboard Contributions
+
+When contributing new dashboards or updating existing ones, please follow these important requirements to ensure quality and consistency:
+
+- **Descriptions are Required:**  
+  Every dashboard and every panel must have a clear, specific, and helpful description.  
+  - The description should explain the purpose, key metrics, and intended use.
+  - If the dashboard or panel uses filters (templating variables), describe what each filter does and how it affects the data shown.
+  - If a panel uses Data Links, explain what those links do and, if possible, provide an example use case.
+  - For longer descriptions, use newlines to break up content for readability.
+  - Avoid leaving descriptions blank or using placeholders like "No description" or "TBD".
+
+Following these requirements helps keep our dashboards user-friendly, well-documented, and easy to maintain!
+
+---
+
+## Dashboard Tagging Policy
+
+- **Purpose:**  
+  Dashboard tags are used to help users filter and discover dashboards by function, data type, or business process.
+- **Tagging Rules:**  
+  - Only use tags that are distinguishing and not universal (do not use tags like "treasury" or "reporting", they could apply to all dashboards).
+  - Tags should be concise, descriptive, and useful for filtering.
+  - Example tags: `breakdown`, `revenue`, `expenses`, `pnl`, `monthly`, `cashflow`, `operating`, `assets`, `balances`, `historical`, `unsorted`, `current`, `streams`, `llamapay`, `payments`, `transactions`, `detailed`.
+  - When adding or editing a dashboard, review the current tags in use and select those that best describe the dashboard's unique purpose.
+  - Update the documentation and tag mapping in `docs/dashboards.rst` if you introduce new tags.
 
 ---
 

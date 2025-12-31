@@ -13,7 +13,6 @@ This is the main import point for users and integrations.
 """
 
 from dao_treasury import ENVIRONMENT_VARIABLES as ENVS
-from dao_treasury._nicknames import setup_address_nicknames_in_db
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.db import TreasuryTx
 from dao_treasury.sorting import (
@@ -32,9 +31,6 @@ from dao_treasury.sorting import (
     revenue,
 )
 from dao_treasury.treasury import Treasury
-
-
-setup_address_nicknames_in_db()
 
 
 if ENVS.SQL_DEBUG:

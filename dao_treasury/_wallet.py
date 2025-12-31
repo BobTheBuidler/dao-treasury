@@ -11,7 +11,7 @@ from y.time import closest_block_after_timestamp
 from dao_treasury.constants import CHAINID
 
 
-WALLETS: Final[Dict[ChecksumAddress, "TreasuryWallet"]] = {}
+WALLETS: Final[Dict[HexAddress, "TreasuryWallet"]] = {}
 
 to_address: Final = convert.to_address
 

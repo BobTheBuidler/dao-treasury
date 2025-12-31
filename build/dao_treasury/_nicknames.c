@@ -4,11 +4,11 @@ PyMODINIT_FUNC
 PyInit__nicknames(void)
 {
     PyObject *tmp;
-    if (!(tmp = PyImport_ImportModule("bf2b4fe1f86ad2ea158b__mypyc"))) return NULL;
+    if (!(tmp = PyImport_ImportModule("dao_treasury__mypyc"))) return NULL;
     PyObject *capsule = PyObject_GetAttrString(tmp, "init_dao_treasury____nicknames");
     Py_DECREF(tmp);
     if (capsule == NULL) return NULL;
-    void *init_func = PyCapsule_GetPointer(capsule, "bf2b4fe1f86ad2ea158b__mypyc.init_dao_treasury____nicknames");
+    void *init_func = PyCapsule_GetPointer(capsule, "dao_treasury__mypyc.init_dao_treasury____nicknames");
     Py_DECREF(capsule);
     if (!init_func) {
         return NULL;

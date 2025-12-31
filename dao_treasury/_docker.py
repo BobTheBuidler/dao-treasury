@@ -14,17 +14,17 @@ This is the main entry for all Docker-based orchestration.
 """
 
 import logging
-from importlib import resources
-import subprocess
 from functools import wraps
-from typing import Any, Callable, Coroutine, Final, Iterable, Tuple, TypeVar, List
+from importlib import resources
+from typing import Any, Callable, Coroutine, Final, Literal, Tuple, TypeVar, List
 
 import eth_portfolio_scripts.docker
+from eth_portfolio_scripts.docker import docker_compose
 from typing_extensions import ParamSpec
 
 logger: Final = logging.getLogger(__name__)
 
-compose_file: Final = str(
+COMPOSE_FILE: Final = str(
     resources.files("dao_treasury").joinpath("docker-compose.yaml")
 )
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
@@ -52,10 +52,14 @@ def up(*services: str) -> None:
         :func:`down`
         :func:`_exec_command`
     """
-    # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
-    eth_portfolio_scripts.docker.up("victoria-metrics")
+    # the proper envs for victoria-metrics arent set yet when we need to start up the postgres container,
+    # but they're ready by the time we start the other containers
+    if services != ("postgres",):
+        # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
+        eth_portfolio_scripts.docker.up("victoria-metrics")
+
     build(*services)
-    print(f"starting the {', '.join(services) if services else 'grafana'} container(s)")
+    _print_notice("starting", services)
     _exec_command(["up", "-d", *services])
 
 
@@ -72,6 +76,7 @@ def down() -> None:
     See Also:
         :func:`up`
     """
+    print("stopping all dao-treasury containers")
     _exec_command(["down"])
 
 
@@ -90,8 +95,22 @@ def build(*services: str) -> None:
         :func:`up`
         :func:`_exec_command`
     """
-    print("building the grafana containers")
+    _print_notice("building", services)
     _exec_command(["build", *services])
+
+
+def _print_notice(
+    doing: Literal["building", "starting"], services: Tuple[str, ...]
+) -> None:
+    if len(services) == 1:
+        container = services[0]
+        print(f"{doing} the {container} container")
+    elif len(services) == 2:
+        first, second = services
+        print(f"{doing} the {first} and {second} containers")
+    else:
+        *all_but_last, last = services
+        print(f"{doing} the {', '.join(all_but_last)}, and {last} containers")
 
 
 _P = ParamSpec("_P")
@@ -174,17 +193,6 @@ def _exec_command(command: List[str], *, compose_options: Tuple[str, ...] = ()) 
     See Also:
         :func:`check_system`
     """
-    eth_portfolio_scripts.docker.check_system()
-    try:
-        subprocess.check_output(
-            ["docker", "compose", *compose_options, "-f", compose_file, *command]
-        )
-    except (subprocess.CalledProcessError, FileNotFoundError) as e:
-        try:
-            subprocess.check_output(
-                ["docker-compose", *compose_options, "-f", compose_file, *command]
-            )
-        except (subprocess.CalledProcessError, FileNotFoundError) as _e:
-            raise RuntimeError(
-                f"Error occurred while running {' '.join(command)}: {_e}"
-            ) from _e
+    docker_compose._exec_command(
+        command, compose_file=COMPOSE_FILE, compose_options=compose_options
+    )

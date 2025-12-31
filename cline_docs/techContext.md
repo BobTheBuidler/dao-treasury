@@ -2,7 +2,7 @@
 
 ## Technologies Used
 - Python (Pony ORM for data modeling, async utilities)
-- SQLite (local database for DAO treasury data)
+- PostgreSQL (local database for DAO treasury data)
 - Grafana (dashboarding and analytics)
 - SQL (custom views for reporting)
 - Brownie, y, and eth_portfolio for blockchain data integration

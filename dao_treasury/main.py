@@ -2,7 +2,7 @@
 
 This module parses command-line arguments, sets up environment variables for
 Grafana and its renderer, and defines the entrypoint for a one-time export of
-DAO treasury transactions. It populates the local SQLite database and starts
+DAO treasury transactions. It populates the local PostgreSQL database and starts
 the required Docker services for Grafana dashboards. Transactions are fetched
 via :class:`dao_treasury.Treasury`, sorted according to optional rules, and
 inserted using the database routines (:func:`dao_treasury.db.TreasuryTx.insert`).
@@ -25,10 +25,13 @@ import asyncio
 import logging
 import os
 from pathlib import Path
+from typing import NoReturn
 
 import brownie
+import dank_mids
 import yaml
 from a_sync import create_task
+from dao_treasury._nicknames import setup_address_nicknames_in_db
 from dao_treasury._wallet import load_wallets_from_yaml
 from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
@@ -98,6 +101,12 @@ parser.add_argument(
     default="1d",
 )
 parser.add_argument(
+    "--concurrency",
+    type=int,
+    help="The max number of historical blocks to export concurrently. default: 30",
+    default=30,
+)
+parser.add_argument(
     "--daemon",
     action="store_true",
     help="TODO: If True, run as a background daemon. Not currently supported.",
@@ -118,6 +127,18 @@ parser.add_argument(
     type=int,
     help="Port for the Grafana rendering service. Default: 8091",
     default=8091,
+)
+parser.add_argument(
+    "--custom-bucket",
+    type=str,
+    action="append",
+    help=(
+        "Custom bucket mapping for a wallet address. "
+        "Specify as 'address:bucket_name'. "
+        "Can be used multiple times. Example: "
+        "--custom-bucket '0x123:My Bucket' --custom-bucket '0x456:Other Bucket'"
+    ),
+    default=None,
 )
 
 args = parser.parse_args()
@@ -203,13 +224,36 @@ async def export(args) -> None:
             for address in addresses:
                 db.Address.set_nickname(address, nickname)
 
-    treasury = Treasury(wallets, args.sort_rules, asynchronous=True)
+    # Parse custom_buckets from --custom-bucket arguments
+    custom_buckets = None
+    if args.custom_bucket:
+        custom_buckets = {}
+        item: str
+        for item in args.custom_bucket:
+            if ":" not in item:
+                parser.error(
+                    f"Invalid format for --custom-bucket: '{item}'. Must be 'address:bucket_name'."
+                )
+            address, bucket = item.split(":", 1)
+            address = address.strip()
+            bucket = bucket.strip()
+            if not address or not bucket:
+                parser.error(
+                    f"Invalid format for --custom-bucket: '{item}'. Both address and bucket_name are required."
+                )
+            custom_buckets[address] = bucket
+
+    treasury = Treasury(
+        wallets, args.sort_rules, custom_buckets=custom_buckets, asynchronous=True
+    )
 
     # Start only the requested containers
     if args.start_renderer is True:
         _docker.up()
     else:
-        _docker.up("grafana")
+        _docker.up("grafana", "postgres")
+
+    setup_address_nicknames_in_db()
 
     # eth-portfolio needs this present
     # TODO: we need to update eth-portfolio to honor wallet join and exit times
@@ -223,13 +267,26 @@ async def export(args) -> None:
     # TODO: make this user configurable? would require some dynamic grafana dashboard files
     args.label = "Treasury"
 
-    export_task = create_task(
-        asyncio.gather(
-            export_balances(args),
-            treasury.populate_db(BlockNumber(0), brownie.chain.height),
-        )
-    )
+    async def export_transactions(treasury: Treasury) -> NoReturn:
+        # TODO: this should just be a method of Treasury class
+        from_block = BlockNumber(0)
+        while True:
+            while (to_block := await dank_mids.eth.block_number) == from_block:
+                # Once we've caught up to the chain head, we just check in 10s intervals
+                await asyncio.sleep(10)
+            await treasury.populate_db(from_block, to_block)
+            from_block = BlockNumber(to_block + 1)
 
+    async def export_forever() -> NoReturn:
+        await asyncio.gather(
+            # TODO: combine these into Treasury class to allow for only one set of logs in memory
+            export_balances(args, custom_buckets),
+            export_transactions(treasury),
+        )
+
+    export_task = create_task(export_forever())
+
+    # Let the task start doing some stuff
     await asyncio.sleep(1)
 
     # we don't need these containers since dao-treasury uses its own.

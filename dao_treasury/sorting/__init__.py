@@ -26,7 +26,7 @@ See Also:
 """
 
 from logging import getLogger
-from typing import Final, Optional
+from typing import Final
 
 from eth_portfolio.structs import LedgerEntry
 from evmspec.data import TransactionHash
@@ -88,13 +88,8 @@ __all__ = [
 
 # C constants
 TxGroup: Final = db.TxGroup
-MUST_SORT_INBOUND_TXGROUP_DBID: Final = db.must_sort_inbound_txgroup_dbid
-MUST_SORT_OUTBOUND_TXGROUP_DBID: Final = db.must_sort_outbound_txgroup_dbid
 
-INTERNAL_TRANSFER_TXGROUP_DBID: Final = TxGroup.get_dbid(
-    name="Internal Transfer",
-    parent=TxGroup.get_dbid("Ignore"),
-)
+INTERNAL_TRANSFER_TXGROUP_DBID: int | None = None
 """Database ID for the 'Internal Transfer' transaction group.
 
 This group represents transactions that occur internally between treasury-owned wallets.
@@ -104,9 +99,7 @@ See Also:
     :class:`dao_treasury.db.TxGroup`
 """
 
-OUT_OF_RANGE_TXGROUP_DBID = TxGroup.get_dbid(
-    name="Out of Range", parent=TxGroup.get_dbid("Ignore")
-)
+OUT_OF_RANGE_TXGROUP_DBID: int | None = None
 """Database ID for the 'Out of Range' transaction group.
 
 This category is assigned to transactions where neither the sender nor the recipient
@@ -143,15 +136,27 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
         :func:`sort_advanced`
         :class:`dao_treasury.sorting.HashMatcher`
     """
+    global INTERNAL_TRANSFER_TXGROUP_DBID
+    global OUT_OF_RANGE_TXGROUP_DBID
+
     from_address = entry.from_address
     to_address = entry.to_address
     block = entry.block_number
 
-    txgroup_dbid: Optional[TxGroupDbid] = None
+    txgroup_dbid: TxGroupDbid | None = None
     if TreasuryWallet.check_membership(from_address, block):
         if TreasuryWallet.check_membership(to_address, block):
+            if INTERNAL_TRANSFER_TXGROUP_DBID is None:
+                INTERNAL_TRANSFER_TXGROUP_DBID = TxGroup.get_dbid(
+                    name="Internal Transfer",
+                    parent=TxGroup.get_dbid("Ignore"),
+                )
             txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
     elif not TreasuryWallet.check_membership(to_address, block):
+        if OUT_OF_RANGE_TXGROUP_DBID is None:
+            OUT_OF_RANGE_TXGROUP_DBID = TxGroup.get_dbid(
+                name="Out of Range", parent=TxGroup.get_dbid("Ignore")
+            )
         txgroup_dbid = OUT_OF_RANGE_TXGROUP_DBID
 
     if txgroup_dbid is None:
@@ -167,14 +172,14 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
 
     if txgroup_dbid is None:
         if TreasuryWallet.check_membership(from_address, block):
-            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
+            txgroup_dbid = db.must_sort_outbound_txgroup_dbid
 
         elif TreasuryWallet.check_membership(to_address, block):
-            txgroup_dbid = MUST_SORT_INBOUND_TXGROUP_DBID
+            txgroup_dbid = db.must_sort_inbound_txgroup_dbid
 
         else:
             raise NotImplementedError("this isnt supposed to happen")
-    return txgroup_dbid  # type: ignore [no-any-return]
+    return TxGroupDbid(txgroup_dbid)
 
 
 def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
@@ -197,18 +202,30 @@ def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
         :func:`sort_basic`
         :func:`sort_advanced`
     """
+    global INTERNAL_TRANSFER_TXGROUP_DBID
+    global OUT_OF_RANGE_TXGROUP_DBID
+
     from_address = tx.from_address.address
     to_address = tx.to_address
     block = tx.block
 
-    txgroup_dbid: Optional[TxGroupDbid] = None
+    txgroup_dbid: TxGroupDbid | None = None
     if TreasuryWallet.check_membership(from_address, block):
         if TreasuryWallet.check_membership(tx.to_address.address, block):
+            if INTERNAL_TRANSFER_TXGROUP_DBID is None:
+                INTERNAL_TRANSFER_TXGROUP_DBID = TxGroup.get_dbid(
+                    name="Internal Transfer",
+                    parent=TxGroup.get_dbid("Ignore"),
+                )
             txgroup_dbid = INTERNAL_TRANSFER_TXGROUP_DBID
     elif not (
         TreasuryWallet.check_membership(tx.to_address.address, tx.block)
         or from_address in constants.DISPERSE_APP
     ):
+        if OUT_OF_RANGE_TXGROUP_DBID is None:
+            OUT_OF_RANGE_TXGROUP_DBID = TxGroup.get_dbid(
+                name="Out of Range", parent=TxGroup.get_dbid("Ignore")
+            )
         txgroup_dbid = OUT_OF_RANGE_TXGROUP_DBID
 
     if txgroup_dbid is None:
@@ -222,27 +239,27 @@ def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
 
     if txgroup_dbid is None:
         if TreasuryWallet.check_membership(from_address, block):
-            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
+            txgroup_dbid = db.must_sort_outbound_txgroup_dbid
 
         elif TreasuryWallet.check_membership(to_address.address, block):
-            txgroup_dbid = MUST_SORT_INBOUND_TXGROUP_DBID
+            txgroup_dbid = db.must_sort_inbound_txgroup_dbid
 
         elif from_address in constants.DISPERSE_APP:
-            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
+            txgroup_dbid = db.must_sort_outbound_txgroup_dbid
 
         elif from_address in constants.DISPERSE_APP:
-            txgroup_dbid = MUST_SORT_OUTBOUND_TXGROUP_DBID
+            txgroup_dbid = db.must_sort_outbound_txgroup_dbid
 
         else:
             raise NotImplementedError("this isnt supposed to happen")
 
     if txgroup_dbid not in (
-        MUST_SORT_INBOUND_TXGROUP_DBID,
-        MUST_SORT_OUTBOUND_TXGROUP_DBID,
+        db.must_sort_inbound_txgroup_dbid,
+        db.must_sort_outbound_txgroup_dbid,
     ):
         logger.info("Sorted %s to %s", tx, TxGroup.get_fullname(txgroup_dbid))
 
-    return txgroup_dbid  # type: ignore [no-any-return]
+    return TxGroupDbid(txgroup_dbid)
 
 
 async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
@@ -274,8 +291,8 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
     txgroup_dbid = sort_basic_entity(entry)
 
     if txgroup_dbid in (
-        MUST_SORT_INBOUND_TXGROUP_DBID,
-        MUST_SORT_OUTBOUND_TXGROUP_DBID,
+        db.must_sort_inbound_txgroup_dbid,
+        db.must_sort_outbound_txgroup_dbid,
     ):
         for rules in SORT_RULES.values():
             for rule in rules:
@@ -286,10 +303,10 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
                 except ContractNotVerified:
                     continue
     if txgroup_dbid not in (
-        MUST_SORT_INBOUND_TXGROUP_DBID,
-        MUST_SORT_OUTBOUND_TXGROUP_DBID,
+        db.must_sort_inbound_txgroup_dbid,
+        db.must_sort_outbound_txgroup_dbid,
     ):
         logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
         await entry._set_txgroup(txgroup_dbid)
 
-    return txgroup_dbid  # type: ignore [no-any-return]
+    return TxGroupDbid(txgroup_dbid)

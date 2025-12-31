@@ -32,16 +32,7 @@ See Also:
 from collections import defaultdict
 from dataclasses import dataclass
 from logging import getLogger
-from typing import (
-    TYPE_CHECKING,
-    DefaultDict,
-    Dict,
-    Final,
-    List,
-    Optional,
-    Type,
-    TypeVar,
-)
+from typing import TYPE_CHECKING, DefaultDict, Final, TypeVar, cast
 
 from brownie.convert.datatypes import EthAddress
 from eth_typing import HexStr
@@ -57,7 +48,7 @@ if TYPE_CHECKING:
 logger: Final = getLogger(__name__)
 _log_debug: Final = logger.debug
 
-SORT_RULES: DefaultDict[Type[SortRule], List[SortRule]] = defaultdict(list)
+SORT_RULES: DefaultDict[type[SortRule], list[SortRule]] = defaultdict(list)
 """Mapping from sort rule classes to lists of instantiated rules, in creation order per class.
 
 Each key is a subclass of :class:`~dao_treasury.types.SortRule` and the corresponding
@@ -70,7 +61,7 @@ Examples:
     'Revenue:Interest'
 """
 
-_match_all: Final[Dict[TxGroupName, List[str]]] = {}
+_match_all: Final[dict[TxGroupName, list[str]]] = {}
 """An internal cache defining which matcher attributes are used for each `txgroup`."""
 
 _MATCHING_ATTRS: Final = (
@@ -103,34 +94,32 @@ class _SortRule:
     txgroup: TxGroupName
     """Name of the transaction group to assign upon match."""
 
-    hash: Optional[HexStr] = None
+    hash: HexStr | None = None
     """Exact transaction hash to match."""
 
-    from_address: Optional[EthAddress] = None
+    from_address: EthAddress | None = None
     """Source wallet address to match."""
 
-    from_nickname: Optional[str] = None
+    from_nickname: str | None = None
     """Sender nickname (alias) to match."""
 
-    to_address: Optional[EthAddress] = None
+    to_address: EthAddress | None = None
     """Recipient wallet address to match."""
 
-    to_nickname: Optional[str] = None
+    to_nickname: str | None = None
     """Recipient nickname (alias) to match."""
 
-    token_address: Optional[EthAddress] = None
+    token_address: EthAddress | None = None
     """Token contract address to match."""
 
-    symbol: Optional[str] = None
+    symbol: str | None = None
     """Token symbol to match."""
 
-    log_index: Optional[int] = None
+    log_index: int | None = None
     """Log index within the transaction receipt to match."""
 
-    func: Optional[SortFunction] = None
+    func: SortFunction | None = None
     """Custom matching function that takes a `TreasuryTx` and returns a bool or an awaitable that returns a bool."""
-
-    # __instances__: ClassVar[List[Self]] = []
 
     def __post_init__(self) -> None:
         """Validate inputs, checksum addresses, and register the rule.
@@ -176,7 +165,8 @@ class _SortRule:
         # self.__instances__.append(self)
 
         # append new instance under its class key
-        SORT_RULES[type(self)].append(self)
+        typ = cast(type[SortRule], type(self))
+        SORT_RULES[typ].append(self)
 
     @property
     def txgroup_dbid(self) -> TxGroupDbid:

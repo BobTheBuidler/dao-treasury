@@ -1,13 +1,18 @@
 apiVersion: 1
 
 datasources:
-- name: SQLite
-  type: frser-sqlite-datasource
+- name: PostgreSQL
+  type: postgres
   isDefault: true
   editable: false
+  url: postgres:5432
+  user: dao_treasury
   jsonData:
-    path: /app/dao-treasury-data/dao-treasury.sqlite
-  secureJsonData: {}
+    database: dao_treasury
+    sslmode: "disable"
+    postgresVersion: 1801
+  secureJsonData:
+    password: dao_treasury
 
 - name: 'PROMETHEUS'
   type: 'prometheus'

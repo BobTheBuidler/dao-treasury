@@ -9,7 +9,7 @@ else:
     ext_modules = mypycify(
         [
             "dao_treasury/sorting",
-            "dao_treasury/streams",
+            # "dao_treasury/streams",
             "dao_treasury/_docker.py",
             "dao_treasury/_nicknames.py",
             "dao_treasury/_wallet.py",
@@ -20,18 +20,19 @@ else:
             "--install-types",
             "--non-interactive",
             "--disable-error-code=unused-ignore",
+            "--disable-error-code=redundant-cast",
             "--disable-error-code=import-not-found",
             # TEMPORARY
             "--disable-error-code=arg-type",
             "--disable-error-code=return-value",
-            "--disable-error-code=index",
             "--disable-error-code=attr-defined",
             "--disable-error-code=assignment",
             "--disable-error-code=union-attr",
             "--disable-error-code=call-overload",
             "--disable-error-code=var-annotated",
             "--disable-error-code=type-arg",
-        ]
+        ],
+        group_name="dao_treasury",
     )
 
 

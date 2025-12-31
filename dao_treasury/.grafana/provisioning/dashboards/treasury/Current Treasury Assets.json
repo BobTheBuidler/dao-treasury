@@ -1,0 +1,997 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Provides a real-time summary and detailed breakdown of all assets currently held in the DAO's treasury, including stablecoins, ETH, BTC, and other asset types. Useful for monitoring the DAO's current financial position, asset allocation, and recent changes. Data Links allow quick navigation to transaction details for each token.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 9,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total value of all DAO treasury assets in USD, aggregated across all wallets, asset types, and buckets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["last"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket, token)",
+          "format": "table",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Assets",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": []
+              },
+              "token": {
+                "aggregations": []
+              }
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": ["Time", "Value (sum)"]
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all stablecoins (cash & cash equivalents) held in any of the DAO's treasury wallets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 6,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["last"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (bucket, token)",
+          "format": "table",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Stablecoins",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": []
+              },
+              "token": {
+                "aggregations": []
+              }
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": ["Time", "Value (sum)"]
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all ETH and ETH-like tokens held in any of the DAO's treasury wallets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 10,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["last"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (bucket, token)",
+          "format": "table",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total ETH",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": []
+              },
+              "token": {
+                "aggregations": []
+              }
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": ["Time", "Value (sum)"]
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all BTC and BTC-like tokens held in any of the DAO's treasury wallets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 14,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["last"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (bucket, token)",
+          "format": "table",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total BTC",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": []
+              },
+              "token": {
+                "aggregations": []
+              }
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": ["Time", "Value (sum)"]
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Shows the timestamp of the most recent complete data snapshot for treasury assets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "hideFrom": {
+              "viz": false
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000)",
+          "format": "table",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Last Update",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": true,
+            "mode": "reduceFields",
+            "reducers": ["last"]
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": ["Time"]
+            }
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "Time",
+            "renamePattern": "The last snapshot was taken at:"
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Pie chart visualizing the distribution of treasury assets by bucket (e.g., stablecoins, ETH, BTC, other assets).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#0066ff",
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "BTC"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "shades"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cash & cash equivalents"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Other short term assets"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "YFI"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#0027ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 0,
+        "y": 3
+      },
+      "id": 13,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": ["percent"]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "asc"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (bucket)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "type": "piechart"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Table summarizing the latest known USD value for each asset token and bucket, including all available tokens in any of the DAO's treasury wallets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": ["sum"]
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last Known Value USD"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "basic",
+                  "type": "gauge",
+                  "valueDisplayMode": "text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 15,
+        "x": 9,
+        "y": 3
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Last Known Value USD"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
+          "format": "table",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
+          "hide": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Current Asset Summary",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "BTC": {
+                "aggregations": []
+              },
+              "Cash & cash equivalents": {
+                "aggregations": []
+              },
+              "ETH": {
+                "aggregations": []
+              },
+              "Other short term assets": {
+                "aggregations": []
+              },
+              "Time": {
+                "aggregations": ["last"],
+                "operation": "aggregate"
+              },
+              "Value": {
+                "aggregations": ["last"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "token": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Last Known Value USD": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "Last Seen": {
+                "aggregations": ["min"],
+                "operation": "aggregate"
+              },
+              "Time (last)": {
+                "aggregations": ["min"],
+                "operation": "aggregate"
+              },
+              "Value (last)": {
+                "aggregations": ["sum"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Time (last) (min)": 2,
+              "Value (last) (sum)": 1,
+              "bucket": 0
+            },
+            "renameByName": {
+              "Time (last) (min)": "Last Seen",
+              "Value (last) (sum)": "Last Known Value USD",
+              "bucket": "Bucket",
+              "token": "Token"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Detailed breakdown of the latest known USD value for each asset token and bucket, including all available tokens in any of the DAO's treasury wallets.\n\nData Link: Click any token to view all transactions for that token in the Treasury Transactions dashboard.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "text",
+            "mode": "fixed"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "token"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Transactions for ${__value.raw}",
+                    "url": "/d/b21f1092-66a4-4fb0-90ef-ed77d2becaa4?var-Token=${__value.raw}&from=now-5y&to=now"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last Known Value USD"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "basic",
+                  "type": "gauge"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 4,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Last Known Value USD"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(treasury_assets{param=\"usd value\"}<500_000_000) by (token, bucket)",
+          "format": "table",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "editorMode": "code",
+          "expr": "sum(treasury_assets{param=\"value\"}<500_000_000) by (token, bucket)",
+          "hide": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Current Asset Breakdown",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "BTC": {
+                "aggregations": []
+              },
+              "Cash & cash equivalents": {
+                "aggregations": []
+              },
+              "ETH": {
+                "aggregations": []
+              },
+              "Other short term assets": {
+                "aggregations": []
+              },
+              "Time": {
+                "aggregations": ["last"],
+                "operation": "aggregate"
+              },
+              "Value": {
+                "aggregations": ["last"],
+                "operation": "aggregate"
+              },
+              "bucket": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "token": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "disabled": true,
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": ["bucket", "token", "Value (last)"]
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Time (last)": 3,
+              "Value (last)": 2,
+              "bucket": 0,
+              "token": 1
+            },
+            "renameByName": {
+              "Time (last)": "Last Seen",
+              "Value (last)": "Last Known Value USD",
+              "bucket": "Bucket",
+              "token": "Token"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": ["assets", "current"],
+  "templating": {
+    "list": [
+      {
+        "baseFilters": [],
+        "datasource": "PROMETHEUS",
+        "filters": [],
+        "name": "Filters",
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Current Treasury Assets",
+  "uid": "ad47zqk",
+  "version": 12
+}

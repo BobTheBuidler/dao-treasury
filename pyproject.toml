@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dao-treasury"
-version = "0.0.42"
+version = "0.1.10"
 description = "Produce comprehensive financial reports for your on-chain org"
 authors = ["BobTheBuidler <bobthebuidlerdefi@gmail.com>"]
 license = "MIT"
@@ -11,13 +11,15 @@ dao-treasury = "dao_treasury.main:main"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-eth-portfolio-temp = ">=0.1.1.dev0,<0.2"
+eth-portfolio = "==0.5.4"
+psycopg2-binary = "==2.9.11"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^6.2.5"
+pytest = "==6.2.5"
 pytest-asyncio = "^0.15.1"
-mypy = ">=1.15,<1.17"
+mypy = ">=1.19,<1.20"
 types-tqdm = "*"
+types-pony = "==0.7.0.20250822"
 types-pyyaml = "*"
 
 [tool.poetry.group.docs.dependencies]
@@ -29,16 +31,17 @@ myst-parser = "*"
 requires = [
     "setuptools", 
     "wheel", 
-    "mypy[mypyc]==1.17.0", 
+    "mypy[mypyc]==1.19.0", 
     "tomli>=2.0.0; python_version < '3.11'", 
     "types-tqdm", 
+    "types-pony==0.7.0.20250822",
     "types-PyYAML",
-    "eth-brownie==1.21.0",
-    "eth-typing==4.4.0",
+    "eth-brownie==1.22.0.dev0; platform_system == 'Linux' and platform_machine != 'i686'",
+    "eth-retry==0.3.5",
+    "eth-typing==5.2.1",
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
-    "ez-a-sync>=0.32.7,<0.33",
-    "pony",
-    "pony-stubs",
+    "ez-a-sync==0.33.9",
+    "pony==0.7.19",
 ]
 build-backend = "setuptools.build_meta"
 

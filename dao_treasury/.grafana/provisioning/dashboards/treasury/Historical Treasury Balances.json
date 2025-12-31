@@ -1,0 +1,3931 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Displays real-time balances of the DAO's treasury assets, including YFI, ETH, BTC, \"cash\" (stablecoins), and other assets, as well as liabilities and debt. Useful for monitoring the DAO's current financial position and asset allocation.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 7,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total YFI and yvYFI token balances in the DAO's treasury, including both direct and vault holdings. Useful for tracking the DAO's exposure to YFI.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"balance\",token=\"YFI\"})",
+          "interval": "",
+          "legendFormat": "YFI Balance",
+          "refId": "A"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",token=\"YFI\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "YFI Value",
+          "refId": "B"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",token=\"yvYFI\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "yvYFI Value",
+          "refId": "C"
+        }
+      ],
+      "title": "YFI",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "yfi price",
+            "binary": {
+              "left": "YFI Value",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "YFI Balance"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "yvYFI Balance in YFI",
+            "binary": {
+              "left": "yvYFI Value",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "yfi price"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "YFI Balance",
+            "binary": {
+              "left": "yvYFI Balance in YFI",
+              "operator": "+",
+              "reducer": "sum",
+              "right": "YFI Balance"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all YFI and yvYFI tokens held in the DAO's treasury.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 3,
+        "y": 0
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",token=\"YFI\"}) + sum(treasury_assets{param=\"usd value\",token=\"yvYFI\"})",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "YFI ($)",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all liquid assets in the DAO's treasury, excluding YFI and other long-term assets.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "text",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 6,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\", bucket!=\"Other long term assets\"})",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Liquid",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all ETH and ETH-like tokens held in the DAO's treasury.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 9,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "ETH",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all BTC and BTC-like tokens held in the DAO's treasury.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "BTC",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all stablecoins and cash equivalents held in the DAO's treasury.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-green",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 15,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\", bucket=\"Cash & cash equivalents\"})",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Cash",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the total USD value of all outstanding debt/liabilities in the DAO's treasury.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 18,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_debt{param=\"usd value\"})",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Debt",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Displays the net USD value of cash and cash equivalents after subtracting all outstanding debt.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}) - sum(treasury_debt{param=\"usd value\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Cash - Debt",
+      "type": "stat"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Time series chart showing the USD value of all liquid assets in the DAO's treasury, grouped by asset bucket, over time.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "BTC"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ETH"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cash & cash equivalents"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Other short term assets"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": ["lastNotNull"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\", bucket!=\"Other long term assets\"}<500_000_000) by (bucket)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{bucket}}",
+          "refId": "A"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",token=\"YFI\"}) by (bucket)",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "title": "Liquid Assets",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Time series chart showing the USD value of protocol debt/liabilities in the DAO's treasury, grouped by token, over time.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": ["lastNotNull"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_debt{param=\"usd value\"}) by (token)",
+          "interval": "",
+          "legendFormat": "{{token}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Protocol Debt",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Time series chart showing the USD value of liquid assets, cash, debt, and net positions (cash minus debt, liquid assets minus debt) in the DAO's treasury over time.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": ["lastNotNull"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\",bucket!=\"Other long term assets\"}<500_000_000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Liquid Assets",
+          "refId": "C"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Cash",
+          "refId": "E"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_debt{param=\"usd value\"}<500_000_000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Debt",
+          "refId": "B"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) - sum(treasury_debt{param=\"usd value\"}<500_000_000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Cash - Debt",
+          "refId": "D"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"YFI\"}<500_000_000) - sum(treasury_debt{param=\"usd value\"}<500_000_000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Liquid Assets - Debt",
+          "refId": "A"
+        }
+      ],
+      "title": "Assets - Debt",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "PROMETHEUS",
+      "description": "Time series chart showing the ratio of total debt to total assets (excluding long-term assets) in the DAO's treasury, expressed as a percentage.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "id": 35,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_debt{param=\"usd value\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": "PROMETHEUS",
+          "exemplar": true,
+          "expr": "sum(treasury_assets{param=\"usd value\",bucket!=\"Other long term assets\"}<500_000_000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "title": "Debt to Asset Ratio",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Debt to Asset Ratio",
+            "binary": {
+              "left": "sum(treasury_debt{param=\"usd value\"})",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "sum(treasury_assets{param=\"usd value\",bucket!=\"Other long term assets\"}<500_000_000)"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 33,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": 3600000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "3Crv",
+                      "DAI",
+                      "EURS",
+                      "GHO",
+                      "GUSD",
+                      "LUSD",
+                      "LUSD3CRV-f",
+                      "RAI",
+                      "TUSD",
+                      "USDC",
+                      "USDN",
+                      "USDT",
+                      "cUSDT",
+                      "crvPlain3andSUSD",
+                      "dusd3CRV",
+                      "fUSDC",
+                      "gusd3CRV",
+                      "husd3CRV",
+                      "sDAI",
+                      "usdn3CRV",
+                      "ust3CRV",
+                      "yDAI",
+                      "yDAI+yUSDC+yUSDT+yTUSD",
+                      "yUSD",
+                      "yvCurve-3pool",
+                      "yvCurve-BUSD",
+                      "yvCurve-BUSD-f",
+                      "yvCurve-Compound",
+                      "yvCurve-Compound-f",
+                      "yvCurve-DOLA",
+                      "yvCurve-DOLA-FRAXPYUSD-f",
+                      "yvCurve-DOLA-FRXBP-f",
+                      "yvCurve-DOLA-crvUSD-f",
+                      "yvCurve-DOLA-scrvUSD-f",
+                      "yvCurve-DUSD",
+                      "yvCurve-DUSD-f",
+                      "yvCurve-EURN",
+                      "yvCurve-EURS-f",
+                      "yvCurve-FRAX",
+                      "yvCurve-GUSD",
+                      "yvCurve-HUSD",
+                      "yvCurve-IronBank",
+                      "yvCurve-IronBank-f",
+                      "yvCurve-LUSD",
+                      "yvCurve-LUSD-crvUSD-f",
+                      "yvCurve-LUSD-f",
+                      "yvCurve-MIM",
+                      "yvCurve-MIM-crvUSD-f",
+                      "yvCurve-MIM-f",
+                      "yvCurve-MIMUST",
+                      "yvCurve-OUSD-USDC-f",
+                      "yvCurve-USDC-USDT-f",
+                      "yvCurve-USDC-crvUSD-f",
+                      "yvCurve-USDN",
+                      "yvCurve-USDN-f",
+                      "yvCurve-USDP",
+                      "yvCurve-USDT-crvUSD-f",
+                      "yvCurve-alUSD",
+                      "yvCurve-alUSD-FRAXBP-f",
+                      "yvCurve-alUSD-sDOLA-f",
+                      "yvCurve-bLUSD-f",
+                      "yvCurve-mUSD",
+                      "yvCurve-mUSD-f",
+                      "yvCurve-mkUSD-USDC-f",
+                      "yvCurve-mkUSD-crvUSD-f",
+                      "yvCurve-sDOLA-scrvUSD-f",
+                      "yvCurve-sUSD",
+                      "yvCurve-sUSD-f",
+                      "yvCurveLend-crvUSD-wstETH-f",
+                      "yvDAI",
+                      "yvDAI-1",
+                      "yvDAI-2",
+                      "yvLUSD",
+                      "yvRAI",
+                      "yvTUSD",
+                      "yvUSDC",
+                      "yvUSDC-1",
+                      "yvUSDT",
+                      "yvcrvUSD-2",
+                      "yvmusd3CRV",
+                      "yyDAI+yUSDC+yUSDT+yBUSD"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": true,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 25
+          },
+          "id": 15,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Cash",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Cash",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 31,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 106
+          },
+          "id": 21,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid ETH",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid ETH",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 29,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 123
+          },
+          "id": 22,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid BTC",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid BTC",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 27,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "50WSTETH-50LDO",
+                      "AAVE",
+                      "AJNA",
+                      "ALCX",
+                      "APU",
+                      "AURA",
+                      "B-80BAL-20WETH",
+                      "BAL-20WETH-80LIT",
+                      "BORING",
+                      "BTRFLY",
+                      "CIG",
+                      "CLEV",
+                      "CNC",
+                      "COIL",
+                      "COMP",
+                      "CRV",
+                      "CTR",
+                      "CVX",
+                      "DXD",
+                      "ENS",
+                      "ERC20",
+                      "ETH2x-FLI",
+                      "ETHFI",
+                      "EURA",
+                      "FIS",
+                      "FOLD",
+                      "FXS",
+                      "GAL",
+                      "HDRN",
+                      "HOP",
+                      "ICE",
+                      "IDLE",
+                      "INV",
+                      "IQ",
+                      "JNTR/e",
+                      "JPEG",
+                      "JPEGpETH-f",
+                      "KP3R",
+                      "LDO",
+                      "LIT",
+                      "LOOKS",
+                      "LQTY",
+                      "LYXe",
+                      "MATIC",
+                      "MTV",
+                      "NEWO",
+                      "OGN",
+                      "OGV",
+                      "PAL",
+                      "PCHS",
+                      "PRISMA",
+                      "PRM",
+                      "PSP",
+                      "RBN",
+                      "RPL",
+                      "SAFE",
+                      "SAITABIT",
+                      "SD",
+                      "SIPHER",
+                      "SLP",
+                      "SNX",
+                      "SPELL",
+                      "SSV",
+                      "STG",
+                      "SWISE",
+                      "T",
+                      "T-crv/usde3CRV-f",
+                      "TKX",
+                      "TRYB3POOL-f",
+                      "ULTRA",
+                      "USDM",
+                      "USDS",
+                      "USDT",
+                      "USDe",
+                      "VIDYA",
+                      "Visit website nano-eth .net to claim rewards",
+                      "Visit website nanoeth .us to claim rewards",
+                      "X2Y2",
+                      "XEN",
+                      "XFT",
+                      "XMON",
+                      "YFED",
+                      "YFI",
+                      "ZUSD",
+                      "ZZ",
+                      "agEUREUROC-f",
+                      "bb-a-USD",
+                      "clevCVX",
+                      "crvCRVETH",
+                      "crvEURSUSDC",
+                      "cvxCRV",
+                      "cvxPrisma",
+                      "eCFX",
+                      "frxETHCVX-f",
+                      "kLP-KP3R/WETH",
+                      "lp-yCRV",
+                      "lp-yCRVv2",
+                      "lp-yPRISMA",
+                      "mkPRISMA-f",
+                      "mooConvexCRV-ETH",
+                      "pETH",
+                      "pETH-ETH-f",
+                      "sUSDS",
+                      "sUSDe",
+                      "sfrxUSD",
+                      "stkAAVE",
+                      "wUSDM",
+                      "yCRV",
+                      "yLQTY",
+                      "yRise",
+                      "ybUni-WBTC-WETH",
+                      "ydUni-DAI-WETH",
+                      "ysUSDS",
+                      "yvALCX",
+                      "yvBalancer-BoostedAaveUSD",
+                      "yvBlpFUD",
+                      "yvCurve-3Crypto-f",
+                      "yvCurve-3CryptoUSDC-f",
+                      "yvCurve-3CryptoUSDT-f",
+                      "yvCurve-3EUR",
+                      "yvCurve-3EUR-f",
+                      "yvCurve-CLEV-ETH-f",
+                      "yvCurve-CVX-ETH-f",
+                      "yvCurve-CVX-afCVX-f",
+                      "yvCurve-CVXETH",
+                      "yvCurve-DOLA-USR-f",
+                      "yvCurve-DOLA-deUSD-f",
+                      "yvCurve-DOLA-sUSDS-f",
+                      "yvCurve-DOLA-sUSDe-f",
+                      "yvCurve-DYDX-ETH-f",
+                      "yvCurve-ETH+-f",
+                      "yvCurve-EURT-USD-f",
+                      "yvCurve-EURTUSD",
+                      "yvCurve-FXS-crvUSD-f",
+                      "yvCurve-GEAR-ETH-f",
+                      "yvCurve-JPEG-pETH-f",
+                      "yvCurve-LDO-ETH-f",
+                      "yvCurve-MATIC-ETH-f",
+                      "yvCurve-OHM-FRAXBP-f",
+                      "yvCurve-PAL-ETH-f",
+                      "yvCurve-T-ETH-f",
+                      "yvCurve-TOKE-ETH-f",
+                      "yvCurve-TRYb-f",
+                      "yvCurve-TriCRV-f",
+                      "yvCurve-TriCryptoINV-f",
+                      "yvCurve-TriCryptoLLAMA-f",
+                      "yvCurve-TryLSD-f",
+                      "yvCurve-USD3-USDM-f",
+                      "yvCurve-USD3-eUSD-f",
+                      "yvCurve-USD3-sDAI-f",
+                      "yvCurve-USD3-sUSDS-f",
+                      "yvCurve-USD3-sUSDe-f",
+                      "yvCurve-USD3sUSDS-f",
+                      "yvCurve-USDC+-f",
+                      "yvCurve-USDP",
+                      "yvCurve-USDaf-SR-f",
+                      "yvCurve-USDaf-scrvUSD-f",
+                      "yvCurve-USDafscrv-f",
+                      "yvCurve-USDf-USDC-f",
+                      "yvCurve-USDf-frxUSD-f",
+                      "yvCurve-XAI-FRAXBP-f",
+                      "yvCurve-YFIETH",
+                      "yvCurve-ZUN-pxETH-f",
+                      "yvCurve-agEUR-EUROC-f",
+                      "yvCurve-cvxCRV",
+                      "yvCurve-cvxCRVv2-f",
+                      "yvCurve-d3pool",
+                      "yvCurve-dETH-f",
+                      "yvCurve-deUSD-USDC-f",
+                      "yvCurve-deUSD-USDT-f",
+                      "yvCurve-deUSDUSDT-f",
+                      "yvCurve-dgnETH-ETH+-f",
+                      "yvCurve-eUSD-USDC-f",
+                      "yvCurve-frxUSD-USDe-f",
+                      "yvCurve-frxUSDUSDf-f",
+                      "yvCurve-hyUSD-eUSD-f",
+                      "yvCurve-ibJPY-USDC",
+                      "yvCurve-ibKRW-USDC",
+                      "yvCurve-lvlUSD-USDC-f",
+                      "yvCurve-lvlUSD-slvlUSD-f",
+                      "yvCurve-msETH-f",
+                      "yvCurve-msUSD-FRAXBP-f",
+                      "yvCurve-pETH-f",
+                      "yvCurve-rETH-frxETH-f",
+                      "yvCurve-reUSD-sDOLA-f",
+                      "yvCurve-reUSD-scrvUSD-f",
+                      "yvCurve-reUSD-sfrxUSD-f",
+                      "yvCurve-sdCRVv2-f",
+                      "yvCurve-sdFXS-f",
+                      "yvCurve-sdYFI-f",
+                      "yvCurve-sdeUSD-deUSD-f",
+                      "yvCurve-sdeUSDdeUS-f",
+                      "yvCurve-tacUSD-USDT-f",
+                      "yvCurve-upYFI-f",
+                      "yvCurve-wBETH-f",
+                      "yvCurve-xETH-f",
+                      "yvCurve-ynETH-LSD-f",
+                      "yvSNX",
+                      "yvSUSHI",
+                      "yvSushi-YFI-WETH",
+                      "yvUSDS-1",
+                      "yvYFI",
+                      "yvyCRV"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": true,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 140
+          },
+          "id": 23,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Everything Else",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Everything Else",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 1033,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "showValues": false,
+                "spanNulls": 3600000,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 27
+          },
+          "id": 1015,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.2.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Cash - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Cash - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 1031,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 50
+          },
+          "id": 1021,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.2.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid ETH - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid ETH - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 1029,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 124
+          },
+          "id": 1022,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid BTC - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid BTC - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 1027,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 141
+          },
+          "id": 1023,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}<500_000_000) by (token)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Everything Else - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Everything Else - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 40,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "3Crv | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "3Crv | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "3Crv | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "DAI | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "DAI | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "DAI | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "DAI | 0xb99a40fcE04cb740EB79fC04976CA15aF69AaaaE",
+                      "EURS | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "GHO | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "GUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "LUSD | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "LUSD3CRV-f | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "RAI | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "TUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "USDC | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "USDC | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "USDC | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "USDC | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "USDC | 0xb99a40fcE04cb740EB79fC04976CA15aF69AaaaE",
+                      "USDN | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "USDN | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "USDT | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "USDT | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "USDT | 0xEf77cc176c748d291EfB6CdC982c5744fC7211c8",
+                      "USDT | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "USDT | 0xb99a40fcE04cb740EB79fC04976CA15aF69AaaaE",
+                      "cUSDT | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "crvPlain3andSUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "dusd3CRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "fUSDC | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "gusd3CRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "gusd3CRV | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "husd3CRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "sDAI | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "usdn3CRV | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "ust3CRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yDAI | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yDAI+yUSDC+yUSDT+yTUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-3pool | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-BUSD | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "yvCurve-BUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-BUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-Compound | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-Compound-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "yvCurve-DOLA-FRAXPYUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-FRXBP-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-crvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-scrvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-EURN | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-EURS-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-FRAX | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-GUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-HUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-IronBank | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "yvCurve-IronBank-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-IronBank-f | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-LUSD | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "yvCurve-LUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-LUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-LUSD-crvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-LUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-MIM | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-MIM | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-MIM-crvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-MIM-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-MIMUST | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-OUSD-USDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDC-USDT-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDC-crvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDN | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "yvCurve-USDN-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvCurve-USDP | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "yvCurve-USDT-crvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-alUSD | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-alUSD-FRAXBP-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-alUSD-sDOLA-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-bLUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-mUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-mUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-mkUSD-USDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-mkUSD-crvUSD-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvCurve-sDOLA-scrvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurveLend-crvUSD-wstETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvDAI | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvDAI | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "yvDAI-1 | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvDAI-1 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvDAI-1 | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "yvDAI-1 | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvDAI-2 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvLUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvRAI | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvTUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvUSDC | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvUSDC | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "yvUSDC | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvUSDC-1 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvUSDC-1 | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvUSDT | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvcrvUSD-2 | 0x4fc1b14cD213e7B6212145Ba4f180C3d53d1A11e",
+                      "yvcrvUSD-2 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvmusd3CRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yyDAI+yUSDC+yUSDT+yBUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": true,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 157
+          },
+          "id": 45,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (token,wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Cash by Wallet",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Cash by Wallet",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 42,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 174
+          },
+          "id": 36,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (token,wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid ETH by Wallet",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid ETH by Wallet",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 44,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 191
+          },
+          "id": 48,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (token, wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid BTC by Wallet",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid BTC by Wallet",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 47,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsZero",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byValue",
+                  "options": {
+                    "op": "gte",
+                    "reducer": "allIsNull",
+                    "value": 0
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": true,
+                      "tooltip": true,
+                      "viz": false
+                    }
+                  }
+                ]
+              },
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "50WSTETH-50LDO | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "AAVE | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "AJNA | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ALCX | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ALCX | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "APU | 0xb99a40fcE04cb740EB79fC04976CA15aF69AaaaE",
+                      "AURA | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "B-80BAL-20WETH | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "B-80BAL-20WETH | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "BAL-20WETH-80LIT | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "BORING | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "BTRFLY | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "CIG | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "CLEV | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "CNC | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "COIL | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "COMP | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "CRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "CRV | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "CRV | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "CTR | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "CVX | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "DXD | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ENS | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "ERC20 | 0x278374fFb10B7D16E7633444c13e6E565EA57c28",
+                      "ERC20 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "ETH2x-FLI | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ETHFI | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "EURA | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "FIS | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "FOLD | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "FXS | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "GAL | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "HDRN | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "HOP | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ICE | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "IDLE | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "IDLE | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "INV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "IQ | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "JNTR/e | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "JPEG | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "JPEGpETH-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "KP3R | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "LDO | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "LIT | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "LOOKS | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "LQTY | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "LYXe | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "MATIC | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "MTV | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "NEWO | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "OGN | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "OGV | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "PAL | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "PCHS | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "PRISMA | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "PRM | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "PSP | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "RBN | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "RPL | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "SAFE | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "SAFE | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "SAFE | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "SAITABIT | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "SD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "SIPHER | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "SLP | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "SNX | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "SNX | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "SPELL | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "SPELL | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "SSV | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "STG | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "STG | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "STG | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "SWISE | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "T | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "T-crv/usde3CRV-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "TKX | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "TRYB3POOL-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ULTRA | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "USDM | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "USDM | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "USDS | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "USDT | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "USDe | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "VIDYA | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "Visit website nano-eth .net to claim rewards | 0x5f0845101857d2A91627478e302357860b1598a1",
+                      "Visit website nanoeth .us to claim rewards | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "X2Y2 | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "XEN | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "XFT | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "XMON | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "YFED | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "YFED | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "YFI | 0x4fc1b14cD213e7B6212145Ba4f180C3d53d1A11e",
+                      "YFI | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "ZUSD | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "ZZ | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "agEUREUROC-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "bb-a-USD | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "bb-a-USD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "clevCVX | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "crvCRVETH | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "crvCRVETH | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "crvEURSUSDC | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "cvxCRV | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "cvxPrisma | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "cvxPrisma | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "eCFX | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "eCFX | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "eCFX | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "frxETHCVX-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "kLP-KP3R/WETH | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "lp-yCRV | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "lp-yCRV | 0x7d2aB9CA511EBD6F03971Fb417d3492aA82513f0",
+                      "lp-yCRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "lp-yCRVv2 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "lp-yPRISMA | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "mkPRISMA-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "mooConvexCRV-ETH | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "pETH | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "pETH-ETH-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "sUSDS | 0xEf77cc176c748d291EfB6CdC982c5744fC7211c8",
+                      "sUSDe | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "sfrxUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "stkAAVE | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "wUSDM | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yCRV | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yCRV | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yLQTY | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yRise | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "ybUni-WBTC-WETH | 0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B",
+                      "ydUni-DAI-WETH | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "ysUSDS | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvALCX | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvBalancer-BoostedAaveUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvBlpFUD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-3Crypto-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-3Crypto-f | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-3CryptoUSDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-3CryptoUSDT-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-3EUR | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-3EUR-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-CLEV-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-CVX-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-CVX-afCVX-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-CVXETH | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-USR-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-deUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-sUSDS-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DOLA-sUSDe-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-DYDX-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-ETH+-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-EURT-USD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-EURTUSD | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-FXS-crvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-GEAR-ETH-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvCurve-GEAR-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-JPEG-pETH-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvCurve-JPEG-pETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-LDO-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-MATIC-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-OHM-FRAXBP-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-PAL-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-T-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-TOKE-ETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-TRYb-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-TriCRV-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-TriCryptoINV-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-TriCryptoLLAMA-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-TryLSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USD3-USDM-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USD3-eUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USD3-sDAI-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USD3-sUSDS-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USD3-sUSDe-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USD3sUSDS-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDC+-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDP | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvCurve-USDP | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDaf-SR-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDaf-scrvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDafscrv-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDf-USDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-USDf-frxUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-XAI-FRAXBP-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-YFIETH | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-YFIETH | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvCurve-ZUN-pxETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-agEUR-EUROC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-cvxCRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-cvxCRVv2-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-d3pool | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-dETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-deUSD-USDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-deUSD-USDT-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-deUSDUSDT-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-dgnETH-ETH+-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-eUSD-USDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-frxUSD-USDe-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-frxUSDUSDf-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-hyUSD-eUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-ibJPY-USDC | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-ibKRW-USDC | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-lvlUSD-USDC-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-lvlUSD-slvlUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-msETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-msUSD-FRAXBP-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-pETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-rETH-frxETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-reUSD-sDOLA-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-reUSD-scrvUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-reUSD-sfrxUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sdCRVv2-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sdFXS-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sdYFI-f | 0x2C01B4AD51a67E2d8F02208F54dF9aC4c0B778B6",
+                      "yvCurve-sdYFI-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sdeUSD-deUSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-sdeUSDdeUS-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-tacUSD-USDT-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-upYFI-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-wBETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-xETH-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvCurve-ynETH-LSD-f | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvSNX | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvSNX | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvSUSHI | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvSushi-YFI-WETH | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvUSDS-1 | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvYFI | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde",
+                      "yvYFI | 0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
+                      "yvyCRV | 0x93A62dA5a14C80f265DAbC077fCEE437B1a0Efde"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": true,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 208
+          },
+          "id": 49,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}<500_000_000) by (token, wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Everything Else by Wallet",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Everything Else by Wallet",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 1045,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all liquid cash (stablecoins and equivalents) in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "showValues": false,
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 53
+          },
+          "id": 1036,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.2.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Cash & cash equivalents\"}<500_000_000) by (token,wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Cash by Wallet - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Cash by Wallet - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 1050,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all liquid ETH and ETH-like tokens in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 175
+          },
+          "id": 1037,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"ETH\"}<500_000_000) by (token,wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid ETH by Wallet - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid ETH by Wallet - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 1048,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all liquid BTC and BTC-like tokens in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 192
+          },
+          "id": 1038,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"BTC\"}<500_000_000) by (token, wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid BTC by Wallet - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid BTC by Wallet - Stacked",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "id": 1049,
+      "panels": [
+        {
+          "datasource": "PROMETHEUS",
+          "description": "Stacked time series chart showing the USD value of all other liquid assets (not ETH, BTC, or stablecoins) in the DAO's treasury, grouped by token and wallet, over time.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "currencyUSD"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 209
+          },
+          "id": 1039,
+          "options": {
+            "alertThreshold": true,
+            "legend": {
+              "calcs": ["lastNotNull"],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "multi",
+              "sort": "desc"
+            }
+          },
+          "pluginVersion": "12.1.1",
+          "targets": [
+            {
+              "datasource": "PROMETHEUS",
+              "exemplar": true,
+              "expr": "sum(treasury_assets{param=\"usd value\",bucket=\"Other short term assets\"}<500_000_000) by (token, wallet)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "{{token}} | {{wallet}}",
+              "refId": "A"
+            }
+          ],
+          "title": "Liquid Everything Else by Wallet - Stacked",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Liquid Everything Else by Wallet - Stacked",
+      "type": "row"
+    }
+  ],
+  "preload": false,
+  "refresh": "30s",
+  "schemaVersion": 42,
+  "tags": ["assets", "balances", "historical"],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Historical Treasury Balances",
+  "uid": "9_ppKhd7z",
+  "version": 13
+}

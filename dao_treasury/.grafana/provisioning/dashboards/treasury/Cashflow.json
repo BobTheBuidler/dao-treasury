@@ -18,11 +18,11 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
+  "id": 5,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -34,14 +34,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -57,34 +58,32 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE top_category = 'Revenue' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Revenue for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -96,14 +95,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -119,34 +119,32 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE top_category = 'Expenses' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Expenses for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -158,14 +156,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -181,34 +180,32 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Cost of Revenue' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE top_category = 'Cost of Revenue' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Cost of Revenue",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Cost of Revenue for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -220,14 +217,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -243,34 +241,32 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Income' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE top_category = 'Other Income' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Other Income",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Other Income for the selected period."
     },
     {
-      "datasource": "SQLite",
+      "datasource": "PostgreSQL",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -282,14 +278,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -305,35 +302,33 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT SUM(t.value_usd) AS total_revenue FROM general_ledger t JOIN txgroup_hierarchy gh USING (txgroup_id) WHERE gh.top_category = 'Other Expenses' AND t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT SUM(value_usd) AS total_revenue FROM usdvalue_presum WHERE top_category = 'Other Expenses' AND timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Other Expenses",
-      "type": "stat"
+      "type": "stat",
+      "description": "Displays the total value of all transactions sorted as Other Expenses for the selected period."
     },
     {
-      "datasource": "SQLite",
-      "description": "",
+      "datasource": "PostgreSQL",
+      "description": "Shows the net total cashflow (all Revenue and Other Income minus all Expenses, Cost of Revenue, and Other Expenses) for the selected period.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -345,14 +340,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": []
       },
@@ -368,35 +364,32 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "10.2.0",
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
-          "queryType": "table",
-          "rawQueryText": "SELECT (\n  SUM(CASE WHEN gh.top_category = 'Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Cost of Revenue' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Expenses' THEN t.value_usd ELSE 0 END)\n  + SUM(CASE WHEN gh.top_category = 'Other Income' THEN t.value_usd ELSE 0 END)\n  - SUM(CASE WHEN gh.top_category = 'Other Expenses' THEN t.value_usd ELSE 0 END)\n) AS total_net\nFROM general_ledger t\nJOIN txgroup_hierarchy gh USING (txgroup_id)\nWHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT (\n  SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)\n  - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)\n  - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)\n  + SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END)\n  - SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)\n) AS total_net\nFROM usdvalue_presum\nWHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000",
           "refId": "A",
-          "timeColumns": [
-            "time",
-            "ts"
-          ]
+          "timeColumns": ["time", "ts"]
         }
       ],
       "title": "Sorted Total",
       "type": "stat"
     },
     {
-      "datasource": "SQLite",
-      "description": "",
+      "datasource": "PostgreSQL",
+      "description": "Time series chart of all sorted cashflows, grouped by category, for the selected period. Shows Total Revenue, Total Expenses, and Net for each week, helping to analyze trends in the DAO's financial flows over time.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -409,6 +402,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "bars",
             "fillOpacity": 70,
             "gradientMode": "none",
@@ -440,14 +434,15 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "currencyUSD"
         },
         "overrides": [
           {
@@ -490,20 +485,19 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "SQLite",
-          "queryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
-          "queryType": "table",
-          "rawQueryText": "SELECT t.timestamp, SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN gh.top_category in ('Revenue', 'Other Income') THEN t.value_usd ELSE 0 END) - SUM(CASE WHEN gh.top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN t.value_usd ELSE 0 END) AS \"Net\" FROM general_ledger AS t JOIN txgroup_hierarchy gh ON t.txgroup_id = gh.txgroup_id WHERE t.timestamp >= $__from/1000 AND t.timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
+          "datasource": "PostgreSQL",
+          "format": "table",
+          "rawSql": "SELECT to_timestamp(timestamp) AS \"timestamp\", SUM(CASE WHEN top_category in ('Revenue', 'Other Income') THEN value_usd ELSE 0 END) AS \"Total Revenue\", SUM(CASE WHEN top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN value_usd ELSE 0 END) * -1 AS \"Total Expenses\", SUM(CASE WHEN top_category in ('Revenue', 'Other Income') THEN value_usd ELSE 0 END) - SUM(CASE WHEN top_category in ('Cost of Revenue','Expenses','Other Expenses') THEN value_usd ELSE 0 END) AS \"Net\" FROM usdvalue_presum WHERE timestamp >= $__from/1000 AND timestamp <= $__to/1000 GROUP BY timestamp ORDER BY timestamp;",
           "refId": "A",
-          "timeColumns": [
-            "timestamp"
-          ]
+          "timeColumns": ["timestamp"]
         }
       ],
       "title": "Weekly Cashflow",
@@ -522,6 +516,7 @@
           "options": {
             "conversions": [
               {
+                "dateFormat": "YYYY-WW",
                 "destinationType": "time",
                 "targetField": "timestamp"
               }
@@ -534,39 +529,27 @@
           "options": {
             "fields": {
               "Cost of Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Net": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Other Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Other Income": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Timestamp": {
@@ -574,15 +557,11 @@
                 "operation": "groupby"
               },
               "Total Expenses": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "Total Revenue": {
-                "aggregations": [
-                  "sum"
-                ],
+                "aggregations": ["sum"],
                 "operation": "aggregate"
               },
               "timestamp": {
@@ -596,9 +575,10 @@
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 38,
-  "tags": [],
+  "schemaVersion": 41,
+  "tags": ["cashflow"],
   "templating": {
     "list": []
   },
@@ -609,7 +589,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Total Cashflow Summary",
+  "description": "Shows all sorted cashflows, including Revenue, Cost of Revenue, Expenses, Other Income, and Other Expense, but omits transactions pending categorization. Useful for analyzing the DAO's complete sorted financial flows.",
   "uid": "7e2b1c8a-4e2d-4b7a-9c1a-2f8e6b7d9c3f",
-  "version": 1,
-  "weekStart": ""
+  "version": 107
 }

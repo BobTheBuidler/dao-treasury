@@ -1,4 +1,4 @@
-# mypy: disable-error-code="operator,valid-type,misc"
+# mypy: disable-error-code="operator,valid-type,no-untyped-call,misc"
 """
 Database models and utilities for DAO treasury reporting.
 
@@ -16,30 +16,47 @@ resolving integrity conflicts, caching transaction receipts,
 and creating SQL views for reporting.
 """
 
+import os
 import typing
-from asyncio import Semaphore
+from asyncio import Lock, Semaphore
+from collections import OrderedDict
+from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
-from os import path
-from pathlib import Path
-from typing import TYPE_CHECKING, Dict, Final, Tuple, Union, final
-from datetime import date, datetime, time, timezone
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Callable,
+    Coroutine,
+    Dict,
+    Final,
+    Literal,
+    Tuple,
+    TypeVar,
+    Union,
+    cast,
+    final,
+    overload,
+)
 
 import eth_portfolio
+import pony.orm
+import y._db.decorators
 from a_sync import AsyncThreadPoolExecutor
 from brownie import chain
 from brownie.convert.datatypes import HexString
 from brownie.exceptions import EventLookupError
 from brownie.network.event import EventDict, _EventItem
 from brownie.network.transaction import TransactionReceipt
-from eth_typing import ChecksumAddress, HexAddress, HexStr
 from eth_portfolio.structs import (
     InternalTransfer,
     LedgerEntry,
     TokenTransfer,
     Transaction,
 )
+from eth_retry import auto_retry
+from eth_typing import ChecksumAddress, HexAddress, HexStr
 from pony.orm import (
     Database,
     InterfaceError,
@@ -51,11 +68,11 @@ from pony.orm import (
     commit,
     composite_key,
     composite_index,
-    db_session,
+    rollback,
     select,
 )
+from typing_extensions import ParamSpec
 from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
-from y._db.decorators import retry_locked
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
@@ -63,21 +80,41 @@ from dao_treasury.constants import CHAINID
 from dao_treasury.types import TxGroupDbid, TxGroupName
 
 
-SQLITE_DIR = Path(path.expanduser("~")) / ".dao-treasury"
-"""Path to the directory in the user's home where the DAO treasury SQLite database is stored."""
+_T = TypeVar("_T")
+_P = ParamSpec("_P")
 
-SQLITE_DIR.mkdir(parents=True, exist_ok=True)
+EventItem = _EventItem[_EventItem[OrderedDict[str, Any]]]
 
+
+# Postgres connection parameters from environment variables (with docker-compose defaults)
+POSTGRES_USER = os.getenv("DAO_TREASURY_DB_USER", "dao_treasury")
+POSTGRES_PASSWORD = os.getenv("DAO_TREASURY_DB_PASSWORD", "dao_treasury")
+POSTGRES_DB = os.getenv("DAO_TREASURY_DB_NAME", "dao_treasury")
+POSTGRES_HOST = os.getenv("DAO_TREASURY_DB_HOST", "127.0.0.1")
+POSTGRES_PORT = int(os.getenv("DAO_TREASURY_DB_PORT", "8675"))
 
 _INSERT_THREAD = AsyncThreadPoolExecutor(1)
 _SORT_THREAD = AsyncThreadPoolExecutor(1)
+_EVENTS_THREADS = AsyncThreadPoolExecutor(16)
 _SORT_SEMAPHORE = Semaphore(50)
 
 _UTC = timezone.utc
 
 db = Database()
 
+db_ready: bool = False
+startup_lock: Final = Lock()
+
+must_sort_inbound_txgroup_dbid: TxGroupDbid = None
+must_sort_outbound_txgroup_dbid: TxGroupDbid = None
+
 logger = getLogger("dao_treasury.db")
+
+# these helpers are to avoid mypy err code [untyped-decorator]
+db_session: Callable[[Callable[_P, _T]], Callable[_P, _T]] = pony.orm.db_session
+retry_locked: Callable[[Callable[_P, _T]], Callable[_P, _T]] = (
+    y._db.decorators.retry_locked
+)
 
 
 @final
@@ -144,7 +181,7 @@ class Chain(DbEntity):
             1
         """
         with db_session:
-            return Chain.get_or_insert(chainid).chain_dbid  # type: ignore [no-any-return]
+            return cast(int, Chain.get_or_insert(chainid).chain_dbid)
 
     @staticmethod
     def get_or_insert(chainid: int) -> "Chain":
@@ -193,7 +230,7 @@ class Address(DbEntity):
     address = Required(str, index=True)
     """Checksum string of the on-chain address."""
 
-    nickname = Optional(str)
+    nickname = Optional(str, index=True)
     """Optional human-readable label (e.g., contract name or token name)."""
 
     is_contract = Required(bool, index=True, lazy=True)
@@ -237,6 +274,10 @@ class Address(DbEntity):
     def contract(self) -> Contract:
         return Contract(self.address)
 
+    @property
+    def contract_coro(self) -> Coroutine[Any, Any, Contract]:
+        return Contract.coroutine(self.address)
+
     @staticmethod
     @lru_cache(maxsize=None)
     def get_dbid(address: HexAddress) -> int:
@@ -250,7 +291,7 @@ class Address(DbEntity):
             1
         """
         with db_session:
-            return Address.get_or_insert(address).address_id  # type: ignore [no-any-return]
+            return cast(int, Address.get_or_insert(address).address_id)
 
     @staticmethod
     def get_or_insert(address: HexAddress) -> "Address":
@@ -271,7 +312,7 @@ class Address(DbEntity):
         chain_dbid = Chain.get_dbid()
 
         if entity := Address.get(chain=chain_dbid, address=checksum_address):
-            return entity  # type: ignore [no-any-return]
+            return cast(Address, entity)
 
         if _get_code(checksum_address, None).hex().removeprefix("0x"):
             try:
@@ -297,7 +338,7 @@ class Address(DbEntity):
             )
 
         commit()
-        return entity  # type: ignore [no-any-return]
+        return cast(Address, entity)
 
     @staticmethod
     def set_nickname(address: HexAddress, nickname: str) -> None:
@@ -375,7 +416,7 @@ class Token(DbEntity):
     symbol = Required(str, index=True, lazy=True)
     """Short ticker symbol for the token."""
 
-    name = Required(str, lazy=True)
+    name = Required(str, lazy=True, index=True)
     """Full human-readable name of the token."""
 
     decimals = Required(int, lazy=True)
@@ -388,11 +429,14 @@ class Token(DbEntity):
     """Inverse relation for treasury transactions involving this token."""
     # partner_harvest_event = Set('PartnerHarvestEvent', reverse="vault", lazy=True)
 
-    address = Required(Address, column="address_id")
+    address = Required(Address, column="address_id", unique=True)
     """Foreign key to the address record for this token contract."""
 
     streams = Set("Stream", reverse="token", lazy=True)
     # vesting_escrows = Set("VestingEscrow", reverse="token", lazy=True)
+
+    composite_index(chain, name)
+    composite_index(chain, symbol)
 
     def __eq__(self, other: Union["Token", Address, ChecksumAddress]) -> bool:  # type: ignore [override]
         if isinstance(other, str):
@@ -408,6 +452,10 @@ class Token(DbEntity):
         return Contract(self.address.address)
 
     @property
+    def contract_coro(self) -> Coroutine[Any, Any, Contract]:
+        return Contract.coroutine(self.address.address)
+
+    @property
     def scale(self) -> int:
         """Base for division according to `decimals`, e.g., `10**decimals`.
 
@@ -416,7 +464,7 @@ class Token(DbEntity):
             >>> t.scale
             1000000000000000000
         """
-        return 10**self.decimals  # type: ignore [no-any-return]
+        return 10 ** cast(int, self.decimals)
 
     def scale_value(self, value: int) -> Decimal:
         """Convert an integer token amount into a Decimal accounting for `decimals`.
@@ -444,7 +492,7 @@ class Token(DbEntity):
             2
         """
         with db_session:
-            return Token.get_or_insert(address).token_id  # type: ignore [no-any-return]
+            return cast(int, Token.get_or_insert(address).token_id)
 
     @staticmethod
     def get_or_insert(address: HexAddress) -> "Token":
@@ -459,7 +507,7 @@ class Token(DbEntity):
         """
         address_entity = Address.get_or_insert(address)
         if token := Token.get(address=address_entity):
-            return token  # type: ignore [no-any-return]
+            return cast(Token, token)
 
         address = address_entity.address
         if address == EEE_ADDRESS:
@@ -512,7 +560,7 @@ class Token(DbEntity):
             decimals=decimals,
         )
         commit()
-        return token  # type: ignore [no-any-return]
+        return cast(Token, token)
 
 
 class TxGroup(DbEntity):
@@ -532,13 +580,13 @@ class TxGroup(DbEntity):
     txgroup_id = PrimaryKey(int, auto=True)
     """Auto-incremented primary key for transaction groups."""
 
-    name = Required(str)
+    name = Required(str, index=True)
     """Name of the grouping category, e.g., 'Revenue', 'Expenses'."""
 
     treasury_tx = Set("TreasuryTx", reverse="txgroup", lazy=True)
     """Inverse relation for treasury transactions assigned to this group."""
 
-    parent_txgroup = Optional("TxGroup", reverse="child_txgroups")
+    parent_txgroup = Optional("TxGroup", reverse="child_txgroups", index=True)
     """Optional reference to a parent group for nesting."""
 
     composite_key(name, parent_txgroup)
@@ -614,15 +662,17 @@ class TxGroup(DbEntity):
             'Expenses'
         """
         if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
-            return txgroup  # type: ignore [no-any-return]
+            return cast(TxGroup, txgroup)
         txgroup = TxGroup(name=name, parent_txgroup=parent)
         try:
             commit()
         except TransactionIntegrityError as e:
             if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
-                return txgroup  # type: ignore [no-any-return]
+                return cast(TxGroup, txgroup)
             raise Exception(e, name, parent) from e
-        return txgroup  # type: ignore [no-any-return]
+        else:
+            db.execute("REFRESH MATERIALIZED VIEW txgroup_hierarchy;")
+        return cast(TxGroup, txgroup)
 
 
 @lru_cache(500)
@@ -708,6 +758,25 @@ class TreasuryTx(DbEntity):
     """Foreign key to the categorization group."""
 
     composite_index(chain, txgroup)
+    composite_index(chain, token)
+    composite_index(chain, from_address)
+    composite_index(chain, to_address)
+    composite_index(chain, from_address, to_address)
+    composite_index(timestamp, txgroup)
+    composite_index(timestamp, token)
+    composite_index(timestamp, from_address)
+    composite_index(timestamp, to_address)
+    composite_index(timestamp, from_address, to_address)
+    composite_index(timestamp, chain, txgroup)
+    composite_index(timestamp, chain, token)
+    composite_index(timestamp, chain, from_address)
+    composite_index(timestamp, chain, to_address)
+    composite_index(timestamp, chain, from_address, to_address)
+    composite_index(chain, timestamp, txgroup)
+    composite_index(chain, timestamp, token)
+    composite_index(chain, timestamp, from_address)
+    composite_index(chain, timestamp, to_address)
+    composite_index(chain, timestamp, from_address, to_address)
 
     @property
     def to_nickname(self) -> typing.Optional[str]:
@@ -722,16 +791,36 @@ class TreasuryTx(DbEntity):
         return self.from_address.nickname or self.from_address.address  # type: ignore [union-attr]
 
     @property
+    def token_address(self) -> ChecksumAddress:
+        return self.token.address.address
+
+    @property
     def symbol(self) -> str:
         """Ticker symbol for the transferred token."""
-        return self.token.symbol  # type: ignore [no-any-return]
+        return cast(str, self.token.symbol)
 
     @property
     def events(self) -> EventDict:
         """Decoded event logs for this transaction."""
         return self._transaction.events
 
-    def get_events(self, event_name: str) -> _EventItem:
+    async def events_async(self) -> EventDict:
+        """Asynchronously fetch decoded event logs for this transaction."""
+        tx = self._transaction
+        events = tx._events
+        if events is None:
+            events = await _EVENTS_THREADS.run(getattr, tx, "events")
+        return events
+
+    @overload
+    def get_events(
+        self, event_name: str, sync: Literal[False]
+    ) -> Coroutine[Any, Any, EventItem]: ...
+    @overload
+    def get_events(self, event_name: str, sync: bool = True) -> EventItem: ...
+    def get_events(self, event_name: str, sync: bool = True) -> EventItem:
+        if not sync:
+            return _EVENTS_THREADS.run(self.get_events, event_name)
         try:
             return self.events[event_name]
         except EventLookupError:
@@ -748,6 +837,7 @@ class TreasuryTx(DbEntity):
         return get_transaction(self.hash)
 
     @staticmethod
+    @auto_retry
     async def insert(entry: LedgerEntry) -> None:
         """Asynchronously insert and sort a ledger entry.
 
@@ -918,11 +1008,15 @@ class TreasuryTx(DbEntity):
                 must_sort_inbound_txgroup_dbid,
                 must_sort_outbound_txgroup_dbid,
             ):
+                with db_session:
+                    db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
+                    db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
+                    db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;")
                 logger.info(
                     "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
                 )
                 return None
-            return dbid  # type: ignore [no-any-return]
+            return cast(int, dbid)
 
     @staticmethod
     @retry_locked
@@ -930,25 +1024,42 @@ class TreasuryTx(DbEntity):
         with db_session:
             TreasuryTx[treasury_tx_dbid].txgroup = txgroup_dbid
             commit()
+            db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
+            db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
+            db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;")
 
 
 _stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
+
+
+def refresh_matview(name: str) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]:
+    def matview_deco(fn: Callable[_P, _T]) -> Callable[_P, _T]:
+        def matview_refresh_wrap(*args: _P.args, **kwargs: _P.kwargs) -> _T:
+            retval = fn(*args, **kwargs)
+            commit()
+            db.execute(f"REFRESH MATERIALIZED VIEW {name};")
+            commit()
+            return retval
+
+        return matview_refresh_wrap
+
+    return matview_deco
 
 
 class Stream(DbEntity):
     _table_ = "streams"
     stream_id = PrimaryKey(str)
 
-    contract = Required("Address", reverse="streams")
-    start_block = Required(int)
-    end_block = Optional(int)
+    contract = Required("Address", reverse="streams", index=True)
+    start_block = Required(int, index=True)
+    end_block = Optional(int, index=True)
     token = Required("Token", reverse="streams", index=True)
-    from_address = Required("Address", reverse="streams_from")
-    to_address = Required("Address", reverse="streams_to")
-    reason = Optional(str)
+    from_address = Required("Address", reverse="streams_from", index=True)
+    to_address = Required("Address", reverse="streams_to", index=True)
+    reason = Optional(str, index=True)
     amount_per_second = Required(Decimal, 38, 1)
-    status = Required(str, default="Active")
-    txgroup = Optional("TxGroup", reverse="streams")
+    status = Required(str, default="Active", index=True)
+    txgroup = Optional("TxGroup", reverse="streams", index=True)
 
     streamed_funds = Set("StreamedFunds", lazy=True)
 
@@ -990,10 +1101,12 @@ class Stream(DbEntity):
                 end = datetime.fromtimestamp(chain[stream.end_block].timestamp, tz=_UTC)
             return start, end
 
+    @refresh_matview("stream_ledger")
     def stop_stream(self, block: int) -> None:
         self.end_block = block
         self.status = "Stopped"
 
+    @refresh_matview("stream_ledger")
     def pause(self) -> None:
         self.status = "Paused"
 
@@ -1053,6 +1166,7 @@ class StreamedFunds(DbEntity):
 
     @classmethod
     @db_session
+    @refresh_matview("stream_ledger")
     def create_entity(
         cls,
         stream_id: str,
@@ -1077,23 +1191,56 @@ class StreamedFunds(DbEntity):
         return entity
 
 
-db.bind(
-    provider="sqlite",  # TODO: let user choose postgres with server connection params
-    filename=str(SQLITE_DIR / "dao-treasury.sqlite"),
-    create_db=True,
-)
+def init_db() -> None:
+    """Initialize the database if not yet initialized."""
+    global db_ready
+    if db_ready:
+        return
 
-db.generate_mapping(create_tables=True)
+    db.bind(
+        provider="postgres",
+        user=POSTGRES_USER,
+        password=POSTGRES_PASSWORD,
+        host=POSTGRES_HOST,
+        port=POSTGRES_PORT,
+        database=POSTGRES_DB,
+    )
+
+    db.generate_mapping(create_tables=True)
+
+    with db_session:
+        create_stream_ledger_matview()
+        create_txgroup_hierarchy_matview()
+        # create_vesting_ledger_view()
+        create_general_ledger_view()
+        create_unsorted_txs_view()
+        create_usdval_presum_matview()
+
+        # depends on usdvalue_presum
+        create_monthly_pnl_view()
+        create_usdval_presum_revenue_matview()
+        create_usdval_presum_expenses_matview()
+
+    global must_sort_inbound_txgroup_dbid
+    must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
+
+    global must_sort_outbound_txgroup_dbid
+    must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
+
+    _drop_shitcoin_txs()
+
+    db_ready = True
 
 
-def _set_address_nicknames_for_tokens() -> None:
+def set_address_nicknames_for_tokens() -> None:
     """Set address.nickname for addresses belonging to tokens."""
+    init_db()
     for address in select(a for a in Address if a.token and not a.nickname):
         address.nickname = f"Token: {address.token.name}"
         db.commit()
 
 
-def create_stream_ledger_view() -> None:
+def create_stream_ledger_matview() -> None:
     """Create or replace the SQL view `stream_ledger` for streamed funds reporting.
 
     This view joins streamed funds, streams, tokens, addresses, and txgroups
@@ -1102,60 +1249,90 @@ def create_stream_ledger_view() -> None:
     Examples:
         >>> create_stream_ledger_view()
     """
-    db.execute("""DROP VIEW IF EXISTS stream_ledger;""")
-    db.execute(
-        """
-        create view stream_ledger as
-        SELECT  'Mainnet' as chain_name,
-                cast(strftime('%s', date || ' 00:00:00') as INTEGER) as timestamp,
-                NULL as block, 
-                NULL as hash, 
-                NULL as log_index, 
-                symbol as token, 
-                d.address AS "from", 
-                d.nickname as from_nickname, 
-                e.address AS "to", 
-                e.nickname as to_nickname, 
-                amount, 
-                price, 
-                value_usd, 
-                txgroup.name as txgroup, 
-                parent.name as parent_txgroup, 
+    try:
+        db.execute(
+            """
+            DROP MATERIALIZED VIEW IF EXISTS stream_ledger CASCADE;
+            CREATE MATERIALIZED VIEW stream_ledger AS
+            SELECT
+                'Mainnet' as chain_name,
+                EXTRACT(EPOCH FROM (date::date))::integer as timestamp,
+                CAST(NULL as integer) as block,
+                NULL as hash,
+                CAST(NULL as integer) as log_index,
+                symbol as token,
+                d.address AS "from",
+                d.nickname as from_nickname,
+                e.address AS "to",
+                e.nickname as to_nickname,
+                amount,
+                price,
+                value_usd,
+                txgroup.name as txgroup,
+                parent.name as parent_txgroup,
                 txgroup.txgroup_id
-        FROM streamed_funds a
-            LEFT JOIN streams b ON a.stream = b.stream_id
-            LEFT JOIN tokens c ON b.token = c.token_id
-            LEFT JOIN addresses d ON b.from_address = d.address_id
-            LEFT JOIN addresses e ON b.to_address = e.address_id
-            LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id
-            LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id
-        """
-    )
+            FROM streamed_funds a
+                LEFT JOIN streams b ON a.stream = b.stream_id
+                LEFT JOIN tokens c ON b.token = c.token_id
+                LEFT JOIN addresses d ON b.from_address = d.address_id
+                LEFT JOIN addresses e ON b.to_address = e.address_id
+                LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id
+                LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;
+
+            """
+        )
+    except Exception as e:
+        if '"stream_ledger" is not a materialized view' not in str(e):
+            raise
+        # we're running an old schema, lets migrate it
+        rollback()
+        db.execute("DROP VIEW IF EXISTS stream_ledger CASCADE;")
+        commit()
+        create_stream_ledger_matview()
 
 
-def create_txgroup_hierarchy_view() -> None:
+def create_txgroup_hierarchy_matview() -> None:
     """Create or replace the SQL view `txgroup_hierarchy` for recursive txgroup hierarchy.
 
     This view exposes txgroup_id, top_category, and parent_txgroup for all txgroups,
     matching the recursive CTE logic used in dashboards.
     """
-    db.execute("DROP VIEW IF EXISTS txgroup_hierarchy;")
-    db.execute(
-        """
-        CREATE VIEW txgroup_hierarchy AS
-        WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
-            SELECT txgroup_id, name AS top_category, parent_txgroup
-            FROM txgroups
-            WHERE parent_txgroup IS NULL
-            UNION ALL
-            SELECT child.txgroup_id, parent.top_category, child.parent_txgroup
-            FROM txgroups AS child
-            JOIN group_hierarchy AS parent
-                ON child.parent_txgroup = parent.txgroup_id
+    try:
+        db.execute(
+            """
+            DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy CASCADE;
+            CREATE MATERIALIZED VIEW txgroup_hierarchy AS
+            WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
+                SELECT txgroup_id, name AS top_category, parent_txgroup
+                FROM txgroups
+                WHERE parent_txgroup IS NULL
+                UNION ALL
+                SELECT child.txgroup_id, parent.top_category, child.parent_txgroup
+                FROM txgroups AS child
+                JOIN group_hierarchy AS parent
+                    ON child.parent_txgroup = parent.txgroup_id
+            )
+            SELECT * FROM group_hierarchy;
+            
+            -- Indexes
+            CREATE UNIQUE INDEX idx_txgroup_hierarchy_txgroup_id
+                ON txgroup_hierarchy (txgroup_id);
+
+            CREATE INDEX idx_txgroup_hierarchy_top_category
+                ON txgroup_hierarchy (top_category);
+
+            CREATE INDEX idx_txgroup_hierarchy_parent
+                ON txgroup_hierarchy (parent_txgroup);
+            """
         )
-        SELECT * FROM group_hierarchy;
-        """
-    )
+    except Exception as e:
+        if '"txgroup_hierarchy" is not a materialized view' not in str(e):
+            raise
+        # we're running an old schema, lets migrate it
+        rollback()
+        db.execute("DROP VIEW IF EXISTS txgroup_hierarchy CASCADE;")
+        commit()
+        create_txgroup_hierarchy_matview()
 
 
 def create_vesting_ledger_view() -> None:
@@ -1171,11 +1348,12 @@ def create_vesting_ledger_view() -> None:
         """
         DROP VIEW IF EXISTS vesting_ledger;
         CREATE VIEW vesting_ledger AS
-        SELECT  d.chain_name, 
-            CAST(date AS timestamp) AS "timestamp",
-            cast(NULL as int) AS block,
+        SELECT
+            d.chain_name,
+            date::timestamp AS "timestamp",
+            CAST(NULL as integer) AS block,
             NULL AS "hash",
-            cast(NULL as int) AS "log_index",
+            CAST(NULL as integer) AS "log_index",
             c.symbol AS "token",
             e.address AS "from",
             e.nickname as from_nickname,
@@ -1187,14 +1365,14 @@ def create_vesting_ledger_view() -> None:
             g.name as txgroup,
             h.name AS parent_txgroup,
             g.txgroup_id
-        FROM vested_funds a 
+        FROM vested_funds a
         LEFT JOIN vesting_escrows b ON a.escrow = b.escrow_id
         LEFT JOIN tokens c ON b.token = c.token_id
         LEFT JOIN chains d ON c.chain = d.chain_dbid
         LEFT JOIN addresses e ON b.address = e.address_id
         LEFT JOIN addresses f ON b.recipient = f.address_id
         LEFT JOIN txgroups g ON b.txgroup = g.txgroup_id
-        left JOIN txgroups h ON g.parent_txgroup = h.txgroup_id
+        LEFT JOIN txgroups h ON g.parent_txgroup = h.txgroup_id;
     """
     )
 
@@ -1207,13 +1385,17 @@ def create_general_ledger_view() -> None:
     Examples:
         >>> create_general_ledger_view()
     """
-    db.execute("drop VIEW IF EXISTS general_ledger")
     db.execute(
         """
-        create VIEW general_ledger as
-        select *
-        from (
-            SELECT treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index, c.symbol AS token, d.address AS "from", d.nickname as from_nickname, e.address AS "to", e.nickname as to_nickname, a.amount, a.price, a.value_usd, f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id
+        DROP VIEW IF EXISTS general_ledger;
+        CREATE VIEW general_ledger AS
+        SELECT *
+        FROM (
+            SELECT
+                treasury_tx_id, b.chain_name, a.timestamp, a.block, a.hash, a.log_index,
+                c.symbol AS token, d.address AS "from", d.nickname as from_nickname,
+                e.address AS "to", e.nickname as to_nickname, a.amount, a.price, a.value_usd,
+                f.name AS txgroup, g.name AS parent_txgroup, f.txgroup_id
             FROM treasury_txs a
                 LEFT JOIN chains b ON a.chain = b.chain_dbid
                 LEFT JOIN tokens c ON a.token_id = c.token_id
@@ -1222,13 +1404,15 @@ def create_general_ledger_view() -> None:
                 LEFT JOIN txgroups f ON a.txgroup_id = f.txgroup_id
                 LEFT JOIN txgroups g ON f.parent_txgroup = g.txgroup_id
             UNION
-            SELECT -1, chain_name, timestamp, block, hash, log_index, token, "from", from_nickname, "to", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id
+            SELECT
+                -1, chain_name, timestamp, block, hash, log_index, token, "from", from_nickname,
+                "to", to_nickname, amount, price, value_usd, txgroup, parent_txgroup, txgroup_id
             FROM stream_ledger
             --UNION
             --SELECT -1, *
             --FROM vesting_ledger
         ) a
-        ORDER BY timestamp
+        ORDER BY timestamp;
         """
     )
 
@@ -1241,14 +1425,14 @@ def create_unsorted_txs_view() -> None:
     Examples:
         >>> create_unsorted_txs_view()
     """
-    db.execute("DROP VIEW IF EXISTS unsorted_txs;")
     db.execute(
         """
-        CREATE VIEW unsorted_txs as
+        DROP VIEW IF EXISTS unsorted_txs;
+        CREATE VIEW unsorted_txs AS
         SELECT *
         FROM general_ledger
         WHERE txgroup = 'Categorization Pending'
-        ORDER BY TIMESTAMP desc
+        ORDER BY timestamp DESC;
         """
     )
 
@@ -1261,53 +1445,173 @@ def create_monthly_pnl_view() -> None:
     Examples:
         >>> create_monthly_pnl_view()
     """
-    db.execute("DROP VIEW IF EXISTS monthly_pnl;")
     sql = """
+    DROP VIEW IF EXISTS monthly_pnl;
     CREATE VIEW monthly_pnl AS
-    WITH categorized AS (
-      SELECT
-        strftime('%Y-%m', datetime(t.timestamp, 'unixepoch')) AS month,
-        CASE
-          WHEN p.name IS NOT NULL THEN p.name
-          ELSE tg.name
-        END AS top_category,
-        --COALESCE(t.value_usd, 0) AS value_usd,
-        --COALESCE(t.gas_used, 0) * COALESCE(t.gas_price, 0) AS gas_cost
-      FROM treasury_txs t
-      JOIN txgroups tg ON t.txgroup = tg.txgroup_id
-      LEFT JOIN txgroups p ON tg.parent_txgroup = p.txgroup_id
-      WHERE tg.name <> 'Ignore'
+    WITH monthly AS (
+        SELECT
+            to_char(to_timestamp(timestamp), 'YYYY-MM') AS month,
+            top_category,
+            SUM(value_usd) AS value_usd
+        FROM usdvalue_presum
+        WHERE top_category <> 'Ignore'
+        GROUP BY month, top_category
     )
     SELECT
-      month,
-      SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS revenue,
-      SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS cost_of_revenue,
-      SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS expenses,
-      SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS other_income,
-      SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS other_expense,
-      (
-        SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) -
-        SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) -
-        SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) +
-        SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) -
-        SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
-      ) AS net_profit
-    FROM categorized
+        month AS "Month",
+        SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END) AS "Revenue",
+        SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END) AS "Cost of Revenue",
+        SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END) AS "Expenses",
+        (
+            SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)
+        ) AS "Operating Net",
+        SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END) AS "Other Income",
+        SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END) AS "Other Expenses",
+        (
+            SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)
+          + SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
+        ) AS "Sorted Net",
+        SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END) AS "Unsorted Income",
+        SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END) AS "Unsorted Expenses",
+        (
+            SUM(CASE WHEN top_category = 'Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Cost of Revenue' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Expenses' THEN value_usd ELSE 0 END)
+          + SUM(CASE WHEN top_category = 'Other Income' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Other Expenses' THEN value_usd ELSE 0 END)
+          + SUM(CASE WHEN top_category = 'Sort Me (Inbound)' THEN value_usd ELSE 0 END)
+          - SUM(CASE WHEN top_category = 'Sort Me (Outbound)' THEN value_usd ELSE 0 END)
+        ) AS "Net",
+        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD'))) * 1000 AS BIGINT) AS "month_start",
+        CAST(EXTRACT(EPOCH FROM (to_date(month || '-01', 'YYYY-MM-DD') + INTERVAL '1 month' - INTERVAL '1 millisecond')) * 1000 AS BIGINT) AS "month_end"
+    FROM monthly
     GROUP BY month;
     """
     db.execute(sql)
 
 
-with db_session:
-    create_stream_ledger_view()
-    create_txgroup_hierarchy_view()
-    # create_vesting_ledger_view()
-    create_general_ledger_view()
-    create_unsorted_txs_view()
-    # create_monthly_pnl_view()
+def create_usdval_presum_matview() -> None:
+    # This view presums usd value from the general_ledger view,
+    # grouped by timestamp and txgroup
+    db.execute(
+        """
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum;
+        CREATE MATERIALIZED VIEW usdvalue_presum AS
+        SELECT
+            gl.txgroup_id,
+            gh.top_category,
+            gl.timestamp,
+            SUM(value_usd) AS value_usd
+        FROM general_ledger gl
+        JOIN txgroup_hierarchy gh USING (txgroup_id)
+        GROUP BY gl.txgroup_id, gh.top_category, gl.timestamp;
+        
+        -- Indexes
+        CREATE UNIQUE INDEX idx_usdvalue_presum_txgroup_id_timestamp
+            ON usdvalue_presum (txgroup_id, timestamp);
 
-    must_sort_inbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Inbound)")
-    must_sort_outbound_txgroup_dbid = TxGroup.get_dbid(name="Sort Me (Outbound)")
+        CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_txgroup_id
+            ON usdvalue_presum (timestamp, txgroup_id);
+
+        CREATE INDEX idx_usdvalue_presum_top_category_timestamp
+            ON usdvalue_presum (top_category, timestamp);
+
+        CREATE INDEX idx_usdvalue_presum_timestamp_top_category
+            ON usdvalue_presum (timestamp, top_category);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_top_category_txgroup_id_timestamp
+            ON usdvalue_presum (top_category, txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_top_category_txgroup_id
+            ON usdvalue_presum (timestamp, top_category, txgroup_id);
+        """
+    )
+
+
+def create_usdval_presum_revenue_matview() -> None:
+    # This view is specifically for the Revenue Over Time dashboard.
+    # It presums usd value for Revenue and Other Income categories only, pre-joining txgroups and top_category.
+    db.execute(
+        """
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_revenue;
+        CREATE MATERIALIZED VIEW usdvalue_presum_revenue AS
+        SELECT
+            p.txgroup_id,
+            t.name AS txgroup_name,
+            p.top_category,
+            p.timestamp,
+            SUM(p.value_usd) AS value_usd
+        FROM usdvalue_presum p
+        JOIN txgroups t ON p.txgroup_id = t.txgroup_id
+        WHERE p.top_category IN ('Revenue', 'Other Income')
+        GROUP BY p.txgroup_id, t.name, p.top_category, p.timestamp;
+
+        -- Indexes
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_txgroup_id_timestamp
+            ON usdvalue_presum_revenue (txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_timestamp_txgroup_id
+            ON usdvalue_presum_revenue (timestamp, txgroup_id);
+
+        CREATE INDEX idx_usdvalue_presum_revenue_txgroup_name_timestamp
+            ON usdvalue_presum_revenue (txgroup_name, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_timestamp_txgroup_name
+            ON usdvalue_presum_revenue (timestamp, txgroup_name);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_id_timestamp
+            ON usdvalue_presum_revenue (top_category, txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_name_timestamp
+            ON usdvalue_presum_revenue (top_category, txgroup_name, timestamp);
+        """
+    )
+
+
+def create_usdval_presum_expenses_matview() -> None:
+    # This view is specifically for the Expenses Over Time dashboard.
+    # It presums usd value for Expenses, Cost of Revenue, and Other Expense categories only, pre-joining txgroups and top_category
+    db.execute(
+        """
+        DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_expenses;
+        CREATE MATERIALIZED VIEW usdvalue_presum_expenses AS
+        SELECT
+            p.txgroup_id,
+            g.name AS txgroup_name,
+            p.top_category,
+            p.timestamp,
+            SUM(p.value_usd) AS value_usd
+        FROM usdvalue_presum p
+        JOIN txgroup_hierarchy gh ON p.txgroup_id = gh.txgroup_id
+        JOIN txgroups g ON p.txgroup_id = g.txgroup_id
+        WHERE p.top_category IN ('Expenses', 'Cost of Revenue', 'Other Expense')
+        GROUP BY p.txgroup_id, g.name, p.top_category, p.timestamp;
+
+        -- Indexes
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_txgroup_id_timestamp
+            ON usdvalue_presum_expenses (txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_timestamp_txgroup_id
+            ON usdvalue_presum_expenses (timestamp, txgroup_id);
+
+        CREATE INDEX idx_usdvalue_presum_expenses_txgroup_name_timestamp
+            ON usdvalue_presum_expenses (txgroup_name, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_timestamp_txgroup_name
+            ON usdvalue_presum_expenses (timestamp, txgroup_name);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_id_timestamp
+            ON usdvalue_presum_expenses (top_category, txgroup_id, timestamp);
+
+        CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_name_timestamp
+            ON usdvalue_presum_expenses (top_category, txgroup_name, timestamp);
+        """
+    )
 
 
 @db_session
@@ -1403,6 +1707,3 @@ def _drop_shitcoin_txs() -> None:
             for tx in shitcoin_txs:
                 tx.delete()
             logger.info("Shitcoin tx purge complete.")
-
-
-_drop_shitcoin_txs()
