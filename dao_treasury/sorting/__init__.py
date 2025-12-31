@@ -179,7 +179,7 @@ def sort_basic(entry: LedgerEntry) -> TxGroupDbid:
 
         else:
             raise NotImplementedError("this isnt supposed to happen")
-    return txgroup_dbid  # type: ignore [no-any-return]
+    return TxGroupDbid(txgroup_dbid)
 
 
 def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
@@ -259,7 +259,7 @@ def sort_basic_entity(tx: db.TreasuryTx) -> TxGroupDbid:
     ):
         logger.info("Sorted %s to %s", tx, TxGroup.get_fullname(txgroup_dbid))
 
-    return txgroup_dbid  # type: ignore [no-any-return]
+    return TxGroupDbid(txgroup_dbid)
 
 
 async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
@@ -309,4 +309,4 @@ async def sort_advanced(entry: db.TreasuryTx) -> TxGroupDbid:
         logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
         await entry._set_txgroup(txgroup_dbid)
 
-    return txgroup_dbid  # type: ignore [no-any-return]
+    return TxGroupDbid(txgroup_dbid)
