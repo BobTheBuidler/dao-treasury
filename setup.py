@@ -25,7 +25,6 @@ else:
             # TEMPORARY
             "--disable-error-code=arg-type",
             "--disable-error-code=return-value",
-            "--disable-error-code=index",
             "--disable-error-code=attr-defined",
             "--disable-error-code=assignment",
             "--disable-error-code=union-attr",
