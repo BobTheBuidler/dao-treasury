@@ -179,7 +179,8 @@ class LlamaPayProcessor:
         if "StreamCreated" in keys:
             for event in events["StreamCreated"]:
                 from_address, *_ = event.values()
-                from_address = Address.get_or_insert(from_address).address
+                with db_session:
+                    from_address = Address.get_or_insert(from_address).address
                 if not TreasuryWallet.check_membership(
                     from_address, event.block_number
                 ):
@@ -189,7 +190,8 @@ class LlamaPayProcessor:
         if "StreamCreatedWithReason" in keys:
             for event in events["StreamCreatedWithReason"]:
                 from_address, *_ = event.values()
-                from_address = Address.get_or_insert(from_address).address
+                with db_session:
+                    from_address = Address.get_or_insert(from_address).address
                 if not TreasuryWallet.check_membership(
                     from_address, event.block_number
                 ):
