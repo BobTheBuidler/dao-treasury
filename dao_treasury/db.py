@@ -464,7 +464,7 @@ class Token(DbEntity):
             >>> t.scale
             1000000000000000000
         """
-        return 10**cast(int, self.decimals)
+        return 10 ** cast(int, self.decimals)
 
     def scale_value(self, value: int) -> Decimal:
         """Convert an integer token amount into a Decimal accounting for `decimals`.
