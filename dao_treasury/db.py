@@ -35,6 +35,7 @@ from typing import (
     Tuple,
     TypeVar,
     Union,
+    cast,
     final,
     overload,
 )
@@ -180,7 +181,7 @@ class Chain(DbEntity):
             1
         """
         with db_session:
-            return Chain.get_or_insert(chainid).chain_dbid  # type: ignore [no-any-return]
+            return cast(int, Chain.get_or_insert(chainid).chain_dbid)
 
     @staticmethod
     def get_or_insert(chainid: int) -> "Chain":
@@ -290,7 +291,7 @@ class Address(DbEntity):
             1
         """
         with db_session:
-            return Address.get_or_insert(address).address_id  # type: ignore [no-any-return]
+            return cast(int, Address.get_or_insert(address).address_id)
 
     @staticmethod
     def get_or_insert(address: HexAddress) -> "Address":
@@ -311,7 +312,7 @@ class Address(DbEntity):
         chain_dbid = Chain.get_dbid()
 
         if entity := Address.get(chain=chain_dbid, address=checksum_address):
-            return entity  # type: ignore [no-any-return]
+            return cast(Address, entity)
 
         if _get_code(checksum_address, None).hex().removeprefix("0x"):
             try:
@@ -337,7 +338,7 @@ class Address(DbEntity):
             )
 
         commit()
-        return entity  # type: ignore [no-any-return]
+        return cast(Address, entity)
 
     @staticmethod
     def set_nickname(address: HexAddress, nickname: str) -> None:
@@ -463,7 +464,7 @@ class Token(DbEntity):
             >>> t.scale
             1000000000000000000
         """
-        return 10**self.decimals  # type: ignore [no-any-return]
+        return 10 ** cast(int, self.decimals)
 
     def scale_value(self, value: int) -> Decimal:
         """Convert an integer token amount into a Decimal accounting for `decimals`.
@@ -491,7 +492,7 @@ class Token(DbEntity):
             2
         """
         with db_session:
-            return Token.get_or_insert(address).token_id  # type: ignore [no-any-return]
+            return cast(int, Token.get_or_insert(address).token_id)
 
     @staticmethod
     def get_or_insert(address: HexAddress) -> "Token":
@@ -506,7 +507,7 @@ class Token(DbEntity):
         """
         address_entity = Address.get_or_insert(address)
         if token := Token.get(address=address_entity):
-            return token  # type: ignore [no-any-return]
+            return cast(Token, token)
 
         address = address_entity.address
         if address == EEE_ADDRESS:
@@ -559,7 +560,7 @@ class Token(DbEntity):
             decimals=decimals,
         )
         commit()
-        return token  # type: ignore [no-any-return]
+        return cast(Token, token)
 
 
 class TxGroup(DbEntity):
@@ -661,17 +662,17 @@ class TxGroup(DbEntity):
             'Expenses'
         """
         if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
-            return txgroup  # type: ignore [no-any-return]
+            return cast(TxGroup, txgroup)
         txgroup = TxGroup(name=name, parent_txgroup=parent)
         try:
             commit()
         except TransactionIntegrityError as e:
             if txgroup := TxGroup.get(name=name, parent_txgroup=parent):
-                return txgroup  # type: ignore [no-any-return]
+                return cast(TxGroup, txgroup)
             raise Exception(e, name, parent) from e
         else:
             db.execute("REFRESH MATERIALIZED VIEW txgroup_hierarchy;")
-        return txgroup  # type: ignore [no-any-return]
+        return cast(TxGroup, txgroup)
 
 
 @lru_cache(500)
@@ -796,7 +797,7 @@ class TreasuryTx(DbEntity):
     @property
     def symbol(self) -> str:
         """Ticker symbol for the transferred token."""
-        return self.token.symbol  # type: ignore [no-any-return]
+        return cast(str, self.token.symbol)
 
     @property
     def events(self) -> EventDict:
@@ -1015,7 +1016,7 @@ class TreasuryTx(DbEntity):
                     "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
                 )
                 return None
-            return dbid  # type: ignore [no-any-return]
+            return cast(int, dbid)
 
     @staticmethod
     @retry_locked
