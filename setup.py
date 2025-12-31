@@ -20,6 +20,7 @@ else:
             "--install-types",
             "--non-interactive",
             "--disable-error-code=unused-ignore",
+            "--disable-error-code=redundant-cast",
             "--disable-error-code=import-not-found",
             # TEMPORARY
             "--disable-error-code=arg-type",
