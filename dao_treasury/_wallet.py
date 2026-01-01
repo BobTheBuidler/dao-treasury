@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Final, List, Optional, final
+from typing import Final, Optional, final
 
 import yaml
 from brownie.convert.datatypes import EthAddress

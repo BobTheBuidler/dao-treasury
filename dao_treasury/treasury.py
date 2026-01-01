@@ -18,7 +18,7 @@ This is the main entry point for orchestrating DAO treasury analytics.
 from asyncio import create_task, gather
 from logging import getLogger
 from pathlib import Path
-from typing import Dict, Final, List, Optional, Union
+from typing import Final, Union
 from collections.abc import Iterable
 
 import a_sync
