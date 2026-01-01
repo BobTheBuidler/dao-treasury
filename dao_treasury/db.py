@@ -1614,9 +1614,7 @@ def create_usdval_presum_expenses_matview() -> None:
 
 
 @db_session
-def _validate_integrity_error(
-    entry: LedgerEntry, log_index: int
-) -> int | None:
+def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> int | None:
     """Validate that an existing TreasuryTx matches an attempted insert on conflict.
 
     Raises AssertionError if any field deviates from the existing record.  Used
