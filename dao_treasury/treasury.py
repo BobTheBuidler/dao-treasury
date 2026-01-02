@@ -18,7 +18,8 @@ This is the main entry point for orchestrating DAO treasury analytics.
 from asyncio import create_task, gather
 from logging import getLogger
 from pathlib import Path
-from typing import Dict, Final, Iterable, List, Optional, Union
+from typing import Final, Union
+from collections.abc import Iterable
 
 import a_sync
 from a_sync.a_sync.abstract import ASyncABC
@@ -48,11 +49,11 @@ TREASURY = None
 class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
     def __init__(
         self,
-        wallets: Iterable[Union[TreasuryWallet, str]],
-        sort_rules: Optional[Path] = None,
+        wallets: Iterable[TreasuryWallet | str],
+        sort_rules: Path | None = None,
         start_block: int = 0,
         label: str = "your org's treasury",
-        custom_buckets: Optional[Dict[HexAddress, str]] = None,
+        custom_buckets: dict[HexAddress, str] | None = None,
         asynchronous: bool = False,
     ) -> None:
         """Initialize the Treasury singleton for managing DAO funds.
@@ -101,7 +102,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             )
         ASyncABC.__init__(self)
 
-        self.wallets: Final[List[TreasuryWallet]] = []
+        self.wallets: Final[list[TreasuryWallet]] = []
         """The collection of wallets owned or controlled by the on-chain org"""
 
         for wallet in wallets:

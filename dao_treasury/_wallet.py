@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Final, List, Optional, final
+from typing import Final, Optional, final
 
 import yaml
 from brownie.convert.datatypes import EthAddress
@@ -11,7 +11,7 @@ from y.time import closest_block_after_timestamp
 from dao_treasury.constants import CHAINID
 
 
-WALLETS: Final[Dict[HexAddress, "TreasuryWallet"]] = {}
+WALLETS: Final[dict[HexAddress, "TreasuryWallet"]] = {}
 
 to_address: Final = convert.to_address
 
@@ -24,19 +24,19 @@ class TreasuryWallet:
     address: EthAddress
     """The wallet address you need to include with supplemental information."""
 
-    start_block: Optional[int] = None
+    start_block: int | None = None
     """The first block at which this wallet was considered owned by the DAO, if it wasn't always included in the treasury. If `start_block` is provided, you cannot provide a `start_timestamp`."""
 
-    end_block: Optional[int] = None
+    end_block: int | None = None
     """The last block at which this wallet was considered owned by the DAO, if it wasn't always included in the treasury. If `end_block` is provided, you cannot provide an `end_timestamp`."""
 
-    start_timestamp: Optional[int] = None
+    start_timestamp: int | None = None
     """The first timestamp at which this wallet was considered owned by the DAO, if it wasn't always included in the treasury. If `start_timestamp` is provided, you cannot provide a `start_block`."""
 
-    end_timestamp: Optional[int] = None
+    end_timestamp: int | None = None
     """The last timestamp at which this wallet was considered owned by the DAO, if it wasn't always included in the treasury. If `end_timestamp` is provided, you cannot provide an `end_block`."""
 
-    networks: Optional[List[int]] = None
+    networks: list[int] | None = None
     """The networks where the DAO owns this wallet. If not provided, the wallet will be active on all networks."""
 
     def __post_init__(self) -> None:
@@ -75,7 +75,7 @@ class TreasuryWallet:
 
     @staticmethod
     def check_membership(
-        address: Optional[HexAddress], block: Optional[BlockNumber] = None
+        address: HexAddress | None, block: BlockNumber | None = None
     ) -> bool:
         if address is None:
             return False
@@ -101,7 +101,7 @@ class TreasuryWallet:
         return BlockNumber(0)
 
     @property
-    def _end_block(self) -> Optional[BlockNumber]:
+    def _end_block(self) -> BlockNumber | None:
         end_block = self.end_block
         if end_block is not None:
             return end_block
@@ -126,7 +126,7 @@ class TreasuryWallet:
         return instance
 
 
-def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
+def load_wallets_from_yaml(path: Path) -> list[TreasuryWallet]:
     """
     Load a YAML mapping of wallet addresses to configuration and return a list of TreasuryWallets.
     'timestamp' in top-level start/end is universal.
@@ -141,7 +141,7 @@ def load_wallets_from_yaml(path: Path) -> List[TreasuryWallet]:
     if not isinstance(data, dict):
         raise ValueError("Wallets YAML file must be a mapping of address to config")
 
-    wallets: List[TreasuryWallet] = []
+    wallets: list[TreasuryWallet] = []
     for address, cfg in data.items():
         # Allow bare keys
         if cfg is None:

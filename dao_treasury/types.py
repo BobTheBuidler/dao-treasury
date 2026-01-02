@@ -1,4 +1,5 @@
-from typing import TYPE_CHECKING, Awaitable, Callable, Iterable, Literal, NewType, Union
+from typing import TYPE_CHECKING, Literal, NewType, Union
+from collections.abc import Awaitable, Callable, Iterable
 
 from y import Network
 
