@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.abspath("."))
 _config.CONFIG.settings["autofetch_sources"] = False
 
 
-from dao_treasury._wallet import WALLETS, TreasuryWallet
+from dao_treasury._wallet import WALLETS
 
 
 @pytest.fixture(autouse=True)
