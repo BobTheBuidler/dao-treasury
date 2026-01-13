@@ -23932,135 +23932,135 @@ _docker___compose_wrap_ensure_containers_obj_set___3_mypyc_env__(dao_treasury___
     return 0;
 }
 
-static PyAsyncMethods _docker___compose_wrap_gen___3_151_as_async = {
-    .am_await = CPyDef__docker___compose_wrap_gen___3_151_____await__,
+static PyAsyncMethods _docker___compose_wrap_gen___3_152_as_async = {
+    .am_await = CPyDef__docker___compose_wrap_gen___3_152_____await__,
 };
-PyObject *CPyDef__docker_____mypyc__compose_wrap_gen___3_151_setup(PyObject *cpy_r_type);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151(void);
+PyObject *CPyDef__docker_____mypyc__compose_wrap_gen___3_152_setup(PyObject *cpy_r_type);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152(void);
 
 static PyObject *
-_docker___compose_wrap_gen___3_151_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+_docker___compose_wrap_gen___3_152_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
 {
-    if (type != CPyType__docker___compose_wrap_gen___3_151) {
+    if (type != CPyType__docker___compose_wrap_gen___3_152) {
         PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
         return NULL;
     }
-    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_gen___3_151_setup((PyObject*)type);
+    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_gen___3_152_setup((PyObject*)type);
     if (self == NULL)
         return NULL;
     return self;
 }
 
 static int
-_docker___compose_wrap_gen___3_151_traverse(dao_treasury____docker___compose_wrap_gen___3_151Object *self, visitproc visit, void *arg)
+_docker___compose_wrap_gen___3_152_traverse(dao_treasury____docker___compose_wrap_gen___3_152Object *self, visitproc visit, void *arg)
 {
     Py_VISIT(self->___mypyc_env__);
     return 0;
 }
 
 static int
-_docker___compose_wrap_gen___3_151_clear(dao_treasury____docker___compose_wrap_gen___3_151Object *self)
+_docker___compose_wrap_gen___3_152_clear(dao_treasury____docker___compose_wrap_gen___3_152Object *self)
 {
     Py_CLEAR(self->___mypyc_env__);
     return 0;
 }
 
 static void
-_docker___compose_wrap_gen___3_151_dealloc(dao_treasury____docker___compose_wrap_gen___3_151Object *self)
+_docker___compose_wrap_gen___3_152_dealloc(dao_treasury____docker___compose_wrap_gen___3_152Object *self)
 {
     PyObject_GC_UnTrack(self);
-    if (_docker___compose_wrap_gen___3_151_free_instance == NULL) {
-        _docker___compose_wrap_gen___3_151_free_instance = self;
+    if (_docker___compose_wrap_gen___3_152_free_instance == NULL) {
+        _docker___compose_wrap_gen___3_152_free_instance = self;
         Py_CLEAR(self->___mypyc_env__);
         return;
     }
-    CPy_TRASHCAN_BEGIN(self, _docker___compose_wrap_gen___3_151_dealloc)
-    _docker___compose_wrap_gen___3_151_clear(self);
+    CPy_TRASHCAN_BEGIN(self, _docker___compose_wrap_gen___3_152_dealloc)
+    _docker___compose_wrap_gen___3_152_clear(self);
     Py_TYPE(self)->tp_free((PyObject *)self);
     CPy_TRASHCAN_END(self)
     done: ;
 }
 
-static CPyVTableItem _docker___compose_wrap_gen___3_151_vtable[7];
+static CPyVTableItem _docker___compose_wrap_gen___3_152_vtable[7];
 static bool
-CPyDef__docker___compose_wrap_gen___3_151_trait_vtable_setup(void)
+CPyDef__docker___compose_wrap_gen___3_152_trait_vtable_setup(void)
 {
-    CPyVTableItem _docker___compose_wrap_gen___3_151_vtable_scratch[] = {
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__,
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151_____next__,
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151___send,
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151_____iter__,
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151___throw,
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151___close,
-        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_151_____await__,
+    CPyVTableItem _docker___compose_wrap_gen___3_152_vtable_scratch[] = {
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152_____mypyc_generator_helper__,
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152_____next__,
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152___send,
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152_____iter__,
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152___throw,
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152___close,
+        (CPyVTableItem)CPyDef__docker___compose_wrap_gen___3_152_____await__,
     };
-    memcpy(_docker___compose_wrap_gen___3_151_vtable, _docker___compose_wrap_gen___3_151_vtable_scratch, sizeof(_docker___compose_wrap_gen___3_151_vtable));
+    memcpy(_docker___compose_wrap_gen___3_152_vtable, _docker___compose_wrap_gen___3_152_vtable_scratch, sizeof(_docker___compose_wrap_gen___3_152_vtable));
     return 1;
 }
 
-static PyMethodDef _docker___compose_wrap_gen___3_151_methods[] = {
-    {"__internal_mypyc_setup", (PyCFunction)CPyDef__docker_____mypyc__compose_wrap_gen___3_151_setup, METH_O, NULL},
+static PyMethodDef _docker___compose_wrap_gen___3_152_methods[] = {
+    {"__internal_mypyc_setup", (PyCFunction)CPyDef__docker_____mypyc__compose_wrap_gen___3_152_setup, METH_O, NULL},
     {"__next__",
-     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_151_____next__,
+     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_152_____next__,
      METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__next__()\n--\n\n")},
     {"send",
-     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_151___send,
+     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_152___send,
      METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("send($arg)\n--\n\n")},
     {"__iter__",
-     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_151_____iter__,
+     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_152_____iter__,
      METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__iter__()\n--\n\n")},
     {"throw",
-     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_151___throw,
+     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_152___throw,
      METH_FASTCALL | METH_KEYWORDS, PyDoc_STR(NULL)},
     {"close",
-     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_151___close,
+     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_152___close,
      METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("close()\n--\n\n")},
     {"__await__",
-     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_151_____await__,
+     (PyCFunction)CPyPy__docker___compose_wrap_gen___3_152_____await__,
      METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("__await__()\n--\n\n")},
     {"__setstate__", (PyCFunction)CPyPickle_SetState, METH_O, NULL},
     {"__getstate__", (PyCFunction)CPyPickle_GetState, METH_NOARGS, NULL},
     {NULL}  /* Sentinel */
 };
 
-static PyTypeObject CPyType__docker___compose_wrap_gen___3_151_template_ = {
+static PyTypeObject CPyType__docker___compose_wrap_gen___3_152_template_ = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "compose_wrap_gen___151",
-    .tp_new = _docker___compose_wrap_gen___3_151_new,
-    .tp_dealloc = (destructor)_docker___compose_wrap_gen___3_151_dealloc,
-    .tp_traverse = (traverseproc)_docker___compose_wrap_gen___3_151_traverse,
-    .tp_clear = (inquiry)_docker___compose_wrap_gen___3_151_clear,
-    .tp_methods = _docker___compose_wrap_gen___3_151_methods,
-    .tp_iter = CPyDef__docker___compose_wrap_gen___3_151_____iter__,
-    .tp_iternext = CPyDef__docker___compose_wrap_gen___3_151_____next__,
-    .tp_as_async = &_docker___compose_wrap_gen___3_151_as_async,
-    .tp_basicsize = sizeof(dao_treasury____docker___compose_wrap_gen___3_151Object),
+    .tp_name = "compose_wrap_gen___152",
+    .tp_new = _docker___compose_wrap_gen___3_152_new,
+    .tp_dealloc = (destructor)_docker___compose_wrap_gen___3_152_dealloc,
+    .tp_traverse = (traverseproc)_docker___compose_wrap_gen___3_152_traverse,
+    .tp_clear = (inquiry)_docker___compose_wrap_gen___3_152_clear,
+    .tp_methods = _docker___compose_wrap_gen___3_152_methods,
+    .tp_iter = CPyDef__docker___compose_wrap_gen___3_152_____iter__,
+    .tp_iternext = CPyDef__docker___compose_wrap_gen___3_152_____next__,
+    .tp_as_async = &_docker___compose_wrap_gen___3_152_as_async,
+    .tp_basicsize = sizeof(dao_treasury____docker___compose_wrap_gen___3_152Object),
     .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_HAVE_GC,
-    .tp_doc = PyDoc_STR("compose_wrap_gen___151()\n--\n\n"),
+    .tp_doc = PyDoc_STR("compose_wrap_gen___152()\n--\n\n"),
 };
-static PyTypeObject *CPyType__docker___compose_wrap_gen___3_151_template = &CPyType__docker___compose_wrap_gen___3_151_template_;
+static PyTypeObject *CPyType__docker___compose_wrap_gen___3_152_template = &CPyType__docker___compose_wrap_gen___3_152_template_;
 
-PyObject *CPyDef__docker_____mypyc__compose_wrap_gen___3_151_setup(PyObject *cpy_r_type)
+PyObject *CPyDef__docker_____mypyc__compose_wrap_gen___3_152_setup(PyObject *cpy_r_type)
 {
     PyTypeObject *type = (PyTypeObject*)cpy_r_type;
-    dao_treasury____docker___compose_wrap_gen___3_151Object *self;
-    if (_docker___compose_wrap_gen___3_151_free_instance != NULL) {
-        self = _docker___compose_wrap_gen___3_151_free_instance;
-        _docker___compose_wrap_gen___3_151_free_instance = NULL;
+    dao_treasury____docker___compose_wrap_gen___3_152Object *self;
+    if (_docker___compose_wrap_gen___3_152_free_instance != NULL) {
+        self = _docker___compose_wrap_gen___3_152_free_instance;
+        _docker___compose_wrap_gen___3_152_free_instance = NULL;
         Py_SET_REFCNT(self, 1);
         PyObject_GC_Track(self);
         return (PyObject *)self;
     }
-    self = (dao_treasury____docker___compose_wrap_gen___3_151Object *)type->tp_alloc(type, 0);
+    self = (dao_treasury____docker___compose_wrap_gen___3_152Object *)type->tp_alloc(type, 0);
     if (self == NULL)
         return NULL;
-    self->vtable = _docker___compose_wrap_gen___3_151_vtable;
+    self->vtable = _docker___compose_wrap_gen___3_152_vtable;
     return (PyObject *)self;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151(void)
+PyObject *CPyDef__docker___compose_wrap_gen___3_152(void)
 {
-    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_gen___3_151_setup((PyObject *)CPyType__docker___compose_wrap_gen___3_151);
+    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_gen___3_152_setup((PyObject *)CPyType__docker___compose_wrap_gen___3_152);
     if (self == NULL)
         return NULL;
     return self;
@@ -24095,10 +24095,10 @@ int CPyExec_dao_treasury____docker(PyObject *module)
     if (unlikely(!CPyType__docker___compose_wrap_ensure_containers_obj))
         goto fail;
     CPyDef__docker___compose_wrap_ensure_containers_obj_trait_vtable_setup();
-    CPyType__docker___compose_wrap_gen___3_151 = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType__docker___compose_wrap_gen___3_151_template, NULL, modname);
-    if (unlikely(!CPyType__docker___compose_wrap_gen___3_151))
+    CPyType__docker___compose_wrap_gen___3_152 = (PyTypeObject *)CPyType_FromTemplate((PyObject *)CPyType__docker___compose_wrap_gen___3_152_template, NULL, modname);
+    if (unlikely(!CPyType__docker___compose_wrap_gen___3_152))
         goto fail;
-    CPyDef__docker___compose_wrap_gen___3_151_trait_vtable_setup();
+    CPyDef__docker___compose_wrap_gen___3_152_trait_vtable_setup();
     if (CPyGlobalsInit() < 0)
         goto fail;
     char result = CPyDef__docker_____top_level__();
@@ -24116,7 +24116,7 @@ int CPyExec_dao_treasury____docker(PyObject *module)
     Py_CLEAR(CPyType__docker___ensure_containers_env);
     Py_CLEAR(CPyType__docker___compose_wrap_ensure_containers_env);
     Py_CLEAR(CPyType__docker___compose_wrap_ensure_containers_obj);
-    Py_CLEAR(CPyType__docker___compose_wrap_gen___3_151);
+    Py_CLEAR(CPyType__docker___compose_wrap_gen___3_152);
     return -1;
 }
 static struct PyModuleDef _dockermodule = {
@@ -24712,7 +24712,7 @@ CPyL17: ;
     if (likely(PyUnicode_Check(cpy_r_r41)))
         cpy_r_r42 = cpy_r_r41;
     else {
-        CPy_TypeErrorTraceback("dao_treasury/_docker.py", "_print_notice", 112, CPyStatic__docker___globals, "str", cpy_r_r41);
+        CPy_TypeErrorTraceback("dao_treasury/_docker.py", "_print_notice", 113, CPyStatic__docker___globals, "str", cpy_r_r41);
         goto CPyL31;
     }
     cpy_r_r43 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ' the ' */
@@ -24856,7 +24856,7 @@ fail: ;
     return NULL;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
     PyObject *cpy_r_r2;
@@ -24913,9 +24913,9 @@ PyObject *CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__
     PyObject *cpy_r_r53;
     cpy_r_r0 = NULL;
     cpy_r_r1 = cpy_r_r0;
-    cpy_r_r2 = ((dao_treasury____docker___compose_wrap_gen___3_151Object *)cpy_r___mypyc_self__)->___mypyc_env__;
+    cpy_r_r2 = ((dao_treasury____docker___compose_wrap_gen___3_152Object *)cpy_r___mypyc_self__)->___mypyc_env__;
     if (unlikely(cpy_r_r2 == NULL)) {
-        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_gen___151", "__mypyc_env__", 151, CPyStatic__docker___globals);
+        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_gen___152", "__mypyc_env__", 152, CPyStatic__docker___globals);
         goto CPyL67;
     }
     CPy_INCREF_NO_IMM(cpy_r_r2);
@@ -24923,7 +24923,7 @@ CPyL1: ;
     cpy_r_r3 = ((dao_treasury____docker___compose_wrap_ensure_containers_envObject *)cpy_r_r2)->___mypyc_next_label__;
     cpy_r_r4 = ((dao_treasury____docker___compose_wrap_ensure_containers_envObject *)cpy_r_r2)->___mypyc_env__;
     if (unlikely(cpy_r_r4 == NULL)) {
-        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_env", "__mypyc_env__", 151, CPyStatic__docker___globals);
+        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_env", "__mypyc_env__", 152, CPyStatic__docker___globals);
         goto CPyL68;
     }
     CPy_INCREF_NO_IMM(cpy_r_r4);
@@ -24957,14 +24957,14 @@ CPyL5: ;
     }
     cpy_r_r10 = ((dao_treasury____docker___compose_wrap_ensure_containers_envObject *)cpy_r_r2)->___mypyc_generator_attribute__args;
     if (unlikely(cpy_r_r10 == NULL)) {
-        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_env", "args", 162, CPyStatic__docker___globals);
+        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_env", "args", 163, CPyStatic__docker___globals);
         goto CPyL71;
     }
     CPy_INCREF(cpy_r_r10);
 CPyL8: ;
     cpy_r_r11 = ((dao_treasury____docker___compose_wrap_ensure_containers_envObject *)cpy_r_r2)->___mypyc_generator_attribute__kwargs;
     if (unlikely(cpy_r_r11 == NULL)) {
-        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_env", "kwargs", 162, CPyStatic__docker___globals);
+        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_env", "kwargs", 163, CPyStatic__docker___globals);
         goto CPyL72;
     }
     CPy_INCREF(cpy_r_r11);
@@ -25338,12 +25338,12 @@ CPyL88: ;
     goto CPyL64;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____next__(PyObject *cpy_r___mypyc_self__) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____next__(PyObject *cpy_r___mypyc_self__) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
     PyObject *cpy_r_r2;
     cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r1 = CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_r0, cpy_r_r0, cpy_r_r0, cpy_r_r0, 0);
+    cpy_r_r1 = CPyDef__docker___compose_wrap_gen___3_152_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_r0, cpy_r_r0, cpy_r_r0, cpy_r_r0, 0);
     if (cpy_r_r1 == NULL) goto CPyL2;
     return cpy_r_r1;
 CPyL2: ;
@@ -25351,7 +25351,7 @@ CPyL2: ;
     return cpy_r_r2;
 }
 
-PyObject *CPyPy__docker___compose_wrap_gen___3_151_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+PyObject *CPyPy__docker___compose_wrap_gen___3_152_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
     PyObject *obj___mypyc_self__ = self;
     static const char * const kwlist[] = {0};
     static CPyArg_Parser parser = {":__next__", kwlist, 0};
@@ -25359,25 +25359,25 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151_____next__(PyObject *self, Py
         return NULL;
     }
     PyObject *arg___mypyc_self__;
-    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_151))
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_152))
         arg___mypyc_self__ = obj___mypyc_self__;
     else {
-        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___151", obj___mypyc_self__); 
+        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___152", obj___mypyc_self__); 
         goto fail;
     }
-    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_151_____next__(arg___mypyc_self__);
+    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_152_____next__(arg___mypyc_self__);
     return retval;
 fail: ;
     CPy_AddTraceback("dao_treasury/_docker.py", "__next__", -1, CPyStatic__docker___globals);
     return NULL;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
     PyObject *cpy_r_r2;
     cpy_r_r0 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r1 = CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_r0, cpy_r_r0, cpy_r_r0, cpy_r_arg, 0);
+    cpy_r_r1 = CPyDef__docker___compose_wrap_gen___3_152_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_r0, cpy_r_r0, cpy_r_r0, cpy_r_arg, 0);
     if (cpy_r_r1 == NULL) goto CPyL2;
     return cpy_r_r1;
 CPyL2: ;
@@ -25385,7 +25385,7 @@ CPyL2: ;
     return cpy_r_r2;
 }
 
-PyObject *CPyPy__docker___compose_wrap_gen___3_151___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+PyObject *CPyPy__docker___compose_wrap_gen___3_152___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
     PyObject *obj___mypyc_self__ = self;
     static const char * const kwlist[] = {"arg", 0};
     static CPyArg_Parser parser = {"O:send", kwlist, 0};
@@ -25394,26 +25394,26 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151___send(PyObject *self, PyObje
         return NULL;
     }
     PyObject *arg___mypyc_self__;
-    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_151))
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_152))
         arg___mypyc_self__ = obj___mypyc_self__;
     else {
-        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___151", obj___mypyc_self__); 
+        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___152", obj___mypyc_self__); 
         goto fail;
     }
     PyObject *arg_arg = obj_arg;
-    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_151___send(arg___mypyc_self__, arg_arg);
+    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_152___send(arg___mypyc_self__, arg_arg);
     return retval;
 fail: ;
     CPy_AddTraceback("dao_treasury/_docker.py", "send", -1, CPyStatic__docker___globals);
     return NULL;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____iter__(PyObject *cpy_r___mypyc_self__) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____iter__(PyObject *cpy_r___mypyc_self__) {
     CPy_INCREF_NO_IMM(cpy_r___mypyc_self__);
     return cpy_r___mypyc_self__;
 }
 
-PyObject *CPyPy__docker___compose_wrap_gen___3_151_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+PyObject *CPyPy__docker___compose_wrap_gen___3_152_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
     PyObject *obj___mypyc_self__ = self;
     static const char * const kwlist[] = {0};
     static CPyArg_Parser parser = {":__iter__", kwlist, 0};
@@ -25421,20 +25421,20 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151_____iter__(PyObject *self, Py
         return NULL;
     }
     PyObject *arg___mypyc_self__;
-    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_151))
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_152))
         arg___mypyc_self__ = obj___mypyc_self__;
     else {
-        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___151", obj___mypyc_self__); 
+        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___152", obj___mypyc_self__); 
         goto fail;
     }
-    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_151_____iter__(arg___mypyc_self__);
+    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_152_____iter__(arg___mypyc_self__);
     return retval;
 fail: ;
     CPy_AddTraceback("dao_treasury/_docker.py", "__iter__", -1, CPyStatic__docker___globals);
     return NULL;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
     PyObject *cpy_r_r2;
@@ -25447,7 +25447,7 @@ CPyL2: ;
     CPy_INCREF(cpy_r_r0);
     cpy_r_traceback = cpy_r_r0;
 CPyL4: ;
-    cpy_r_r1 = CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_type, cpy_r_value, cpy_r_traceback, cpy_r_r0, 0);
+    cpy_r_r1 = CPyDef__docker___compose_wrap_gen___3_152_____mypyc_generator_helper__(cpy_r___mypyc_self__, cpy_r_type, cpy_r_value, cpy_r_traceback, cpy_r_r0, 0);
     CPy_DECREF(cpy_r_value);
     CPy_DECREF(cpy_r_traceback);
     if (cpy_r_r1 == NULL) goto CPyL6;
@@ -25463,7 +25463,7 @@ CPyL8: ;
     goto CPyL4;
 }
 
-PyObject *CPyPy__docker___compose_wrap_gen___3_151___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+PyObject *CPyPy__docker___compose_wrap_gen___3_152___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
     PyObject *obj___mypyc_self__ = self;
     static const char * const kwlist[] = {"type", "value", "traceback", 0};
     static CPyArg_Parser parser = {"O|OO:throw", kwlist, 0};
@@ -25474,10 +25474,10 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151___throw(PyObject *self, PyObj
         return NULL;
     }
     PyObject *arg___mypyc_self__;
-    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_151))
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_152))
         arg___mypyc_self__ = obj___mypyc_self__;
     else {
-        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___151", obj___mypyc_self__); 
+        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___152", obj___mypyc_self__); 
         goto fail;
     }
     PyObject *arg_type = obj_type;
@@ -25493,14 +25493,14 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151___throw(PyObject *self, PyObj
     } else {
         arg_traceback = obj_traceback; 
     }
-    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_151___throw(arg___mypyc_self__, arg_type, arg_value, arg_traceback);
+    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_152___throw(arg___mypyc_self__, arg_type, arg_value, arg_traceback);
     return retval;
 fail: ;
     CPy_AddTraceback("dao_treasury/_docker.py", "throw", -1, CPyStatic__docker___globals);
     return NULL;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151___close(PyObject *cpy_r___mypyc_self__) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152___close(PyObject *cpy_r___mypyc_self__) {
     PyObject *cpy_r_r0;
     PyObject *cpy_r_r1;
     PyObject *cpy_r_r2;
@@ -25523,7 +25523,7 @@ PyObject *CPyDef__docker___compose_wrap_gen___3_151___close(PyObject *cpy_r___my
     if (cpy_r_r2 == NULL) goto CPyL3;
     cpy_r_r3 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r4 = (PyObject *)&_Py_NoneStruct;
-    cpy_r_r5 = CPyDef__docker___compose_wrap_gen___3_151___throw(cpy_r___mypyc_self__, cpy_r_r2, cpy_r_r3, cpy_r_r4);
+    cpy_r_r5 = CPyDef__docker___compose_wrap_gen___3_152___throw(cpy_r___mypyc_self__, cpy_r_r2, cpy_r_r3, cpy_r_r4);
     if (cpy_r_r5 != NULL) goto CPyL11;
 CPyL3: ;
     cpy_r_r6 = CPy_CatchError();
@@ -25579,7 +25579,7 @@ CPyL13: ;
     goto CPyL6;
 }
 
-PyObject *CPyPy__docker___compose_wrap_gen___3_151___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+PyObject *CPyPy__docker___compose_wrap_gen___3_152___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
     PyObject *obj___mypyc_self__ = self;
     static const char * const kwlist[] = {0};
     static CPyArg_Parser parser = {":close", kwlist, 0};
@@ -25587,25 +25587,25 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151___close(PyObject *self, PyObj
         return NULL;
     }
     PyObject *arg___mypyc_self__;
-    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_151))
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_152))
         arg___mypyc_self__ = obj___mypyc_self__;
     else {
-        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___151", obj___mypyc_self__); 
+        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___152", obj___mypyc_self__); 
         goto fail;
     }
-    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_151___close(arg___mypyc_self__);
+    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_152___close(arg___mypyc_self__);
     return retval;
 fail: ;
     CPy_AddTraceback("dao_treasury/_docker.py", "close", -1, CPyStatic__docker___globals);
     return NULL;
 }
 
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____await__(PyObject *cpy_r___mypyc_self__) {
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____await__(PyObject *cpy_r___mypyc_self__) {
     CPy_INCREF_NO_IMM(cpy_r___mypyc_self__);
     return cpy_r___mypyc_self__;
 }
 
-PyObject *CPyPy__docker___compose_wrap_gen___3_151_____await__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
+PyObject *CPyPy__docker___compose_wrap_gen___3_152_____await__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames) {
     PyObject *obj___mypyc_self__ = self;
     static const char * const kwlist[] = {0};
     static CPyArg_Parser parser = {":__await__", kwlist, 0};
@@ -25613,13 +25613,13 @@ PyObject *CPyPy__docker___compose_wrap_gen___3_151_____await__(PyObject *self, P
         return NULL;
     }
     PyObject *arg___mypyc_self__;
-    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_151))
+    if (likely(Py_TYPE(obj___mypyc_self__) == CPyType__docker___compose_wrap_gen___3_152))
         arg___mypyc_self__ = obj___mypyc_self__;
     else {
-        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___151", obj___mypyc_self__); 
+        CPy_TypeError("dao_treasury._docker.compose_wrap_gen___152", obj___mypyc_self__); 
         goto fail;
     }
-    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_151_____await__(arg___mypyc_self__);
+    PyObject *retval = CPyDef__docker___compose_wrap_gen___3_152_____await__(arg___mypyc_self__);
     return retval;
 fail: ;
     CPy_AddTraceback("dao_treasury/_docker.py", "__await__", -1, CPyStatic__docker___globals);
@@ -25638,7 +25638,7 @@ PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj_____call__(PyObjec
     PyObject *cpy_r_r8;
     cpy_r_r0 = ((dao_treasury____docker___compose_wrap_ensure_containers_objObject *)cpy_r___mypyc_self__)->___mypyc_env__;
     if (unlikely(cpy_r_r0 == NULL)) {
-        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_obj", "__mypyc_env__", 151, CPyStatic__docker___globals);
+        CPy_AttributeError("dao_treasury/_docker.py", "compose_wrap", "compose_wrap_ensure_containers_obj", "__mypyc_env__", 152, CPyStatic__docker___globals);
         goto CPyL8;
     }
     CPy_INCREF_NO_IMM(cpy_r_r0);
@@ -25677,16 +25677,16 @@ CPyL1: ;
         CPy_AddTraceback("dao_treasury/_docker.py", "compose_wrap", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
         goto CPyL10;
     }
-    cpy_r_r5 = CPyDef__docker___compose_wrap_gen___3_151();
+    cpy_r_r5 = CPyDef__docker___compose_wrap_gen___3_152();
     if (unlikely(cpy_r_r5 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "compose_wrap", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
         goto CPyL10;
     }
     CPy_INCREF_NO_IMM(cpy_r_r1);
-    if (((dao_treasury____docker___compose_wrap_gen___3_151Object *)cpy_r_r5)->___mypyc_env__ != NULL) {
-        CPy_DECREF_NO_IMM(((dao_treasury____docker___compose_wrap_gen___3_151Object *)cpy_r_r5)->___mypyc_env__);
+    if (((dao_treasury____docker___compose_wrap_gen___3_152Object *)cpy_r_r5)->___mypyc_env__ != NULL) {
+        CPy_DECREF_NO_IMM(((dao_treasury____docker___compose_wrap_gen___3_152Object *)cpy_r_r5)->___mypyc_env__);
     }
-    ((dao_treasury____docker___compose_wrap_gen___3_151Object *)cpy_r_r5)->___mypyc_env__ = cpy_r_r1;
+    ((dao_treasury____docker___compose_wrap_gen___3_152Object *)cpy_r_r5)->___mypyc_env__ = cpy_r_r1;
     cpy_r_r6 = 1;
     if (unlikely(!cpy_r_r6)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "compose_wrap", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
@@ -26003,18 +26003,18 @@ char CPyDef__docker_____top_level__(void) {
     PyObject *cpy_r_r24;
     PyObject *cpy_r_r25;
     PyObject *cpy_r_r26;
-    PyObject **cpy_r_r27;
-    void *cpy_r_r29;
-    void *cpy_r_r31;
-    PyObject *cpy_r_r32;
-    PyObject *cpy_r_r33;
-    PyObject *cpy_r_r34;
-    PyObject *cpy_r_r35;
-    char cpy_r_r36;
+    PyObject *cpy_r_r27;
+    PyObject *cpy_r_r28;
+    PyObject *cpy_r_r29;
+    PyObject *cpy_r_r30;
+    PyObject **cpy_r_r31;
+    void *cpy_r_r33;
+    void *cpy_r_r35;
+    PyObject *cpy_r_r36;
     PyObject *cpy_r_r37;
     PyObject *cpy_r_r38;
     PyObject *cpy_r_r39;
-    PyObject *cpy_r_r40;
+    char cpy_r_r40;
     PyObject *cpy_r_r41;
     PyObject *cpy_r_r42;
     PyObject *cpy_r_r43;
@@ -26026,50 +26026,54 @@ char CPyDef__docker_____top_level__(void) {
     PyObject *cpy_r_r49;
     PyObject *cpy_r_r50;
     PyObject *cpy_r_r51;
-    PyObject **cpy_r_r53;
+    PyObject *cpy_r_r52;
+    PyObject *cpy_r_r53;
     PyObject *cpy_r_r54;
     PyObject *cpy_r_r55;
-    PyObject *cpy_r_r56;
-    int32_t cpy_r_r57;
-    char cpy_r_r58;
+    PyObject **cpy_r_r57;
+    PyObject *cpy_r_r58;
     PyObject *cpy_r_r59;
     PyObject *cpy_r_r60;
-    PyObject *cpy_r_r61;
-    PyObject *cpy_r_r62;
+    int32_t cpy_r_r61;
+    char cpy_r_r62;
     PyObject *cpy_r_r63;
     PyObject *cpy_r_r64;
-    PyObject **cpy_r_r66;
+    PyObject *cpy_r_r65;
+    PyObject *cpy_r_r66;
     PyObject *cpy_r_r67;
     PyObject *cpy_r_r68;
-    PyObject *cpy_r_r69;
-    PyObject **cpy_r_r71;
+    PyObject **cpy_r_r70;
+    PyObject *cpy_r_r71;
     PyObject *cpy_r_r72;
     PyObject *cpy_r_r73;
-    PyObject *cpy_r_r74;
-    PyObject *cpy_r_r75;
-    int32_t cpy_r_r76;
-    char cpy_r_r77;
+    PyObject **cpy_r_r75;
+    PyObject *cpy_r_r76;
+    PyObject *cpy_r_r77;
     PyObject *cpy_r_r78;
     PyObject *cpy_r_r79;
-    PyObject *cpy_r_r80;
-    PyObject *cpy_r_r81;
-    PyObject **cpy_r_r83;
+    int32_t cpy_r_r80;
+    char cpy_r_r81;
+    PyObject *cpy_r_r82;
+    PyObject *cpy_r_r83;
     PyObject *cpy_r_r84;
     PyObject *cpy_r_r85;
-    PyObject *cpy_r_r86;
-    int32_t cpy_r_r87;
-    char cpy_r_r88;
+    PyObject **cpy_r_r87;
+    PyObject *cpy_r_r88;
     PyObject *cpy_r_r89;
     PyObject *cpy_r_r90;
-    PyObject *cpy_r_r91;
-    PyObject *cpy_r_r92;
-    PyObject **cpy_r_r94;
+    int32_t cpy_r_r91;
+    char cpy_r_r92;
+    PyObject *cpy_r_r93;
+    PyObject *cpy_r_r94;
     PyObject *cpy_r_r95;
     PyObject *cpy_r_r96;
-    PyObject *cpy_r_r97;
-    int32_t cpy_r_r98;
-    char cpy_r_r99;
-    char cpy_r_r100;
+    PyObject **cpy_r_r98;
+    PyObject *cpy_r_r99;
+    PyObject *cpy_r_r100;
+    PyObject *cpy_r_r101;
+    int32_t cpy_r_r102;
+    char cpy_r_r103;
+    char cpy_r_r104;
     cpy_r_r0 = CPyModule_builtins;
     cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r2 = cpy_r_r0 != cpy_r_r1;
@@ -26078,7 +26082,7 @@ char CPyDef__docker_____top_level__(void) {
     cpy_r_r4 = PyImport_Import(cpy_r_r3);
     if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", -1, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
     CPyModule_builtins = cpy_r_r4;
     CPy_INCREF(CPyModule_builtins);
@@ -26094,14 +26098,14 @@ CPyL3: ;
     cpy_r_r12 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'dao_treasury/_docker.py' */
     cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '<module>' */
     cpy_r_r14 = CPyImport_ImportMany(cpy_r_r10, cpy_r_r7, cpy_r_r11, cpy_r_r12, cpy_r_r13, cpy_r_r9);
-    if (!cpy_r_r14) goto CPyL28;
+    if (!cpy_r_r14) goto CPyL29;
     cpy_r_r15 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('wraps',) */
     cpy_r_r16 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'functools' */
     cpy_r_r17 = CPyStatic__docker___globals;
     cpy_r_r18 = CPyImport_ImportFromMany(cpy_r_r16, cpy_r_r15, cpy_r_r15, cpy_r_r17);
     if (unlikely(cpy_r_r18 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
     CPyModule_functools = cpy_r_r18;
     CPy_INCREF(CPyModule_functools);
@@ -26112,207 +26116,217 @@ CPyL3: ;
     cpy_r_r22 = CPyImport_ImportFromMany(cpy_r_r20, cpy_r_r19, cpy_r_r19, cpy_r_r21);
     if (unlikely(cpy_r_r22 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
     CPyModule_importlib = cpy_r_r22;
     CPy_INCREF(CPyModule_importlib);
     CPy_DECREF(cpy_r_r22);
-    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Any', 'Callable', 'Coroutine', 'Final', 'Literal',
-                                    'Tuple', 'TypeVar', 'List') */
+    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Any', 'Final', 'Literal', 'TypeVar') */
     cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing' */
     cpy_r_r25 = CPyStatic__docker___globals;
     cpy_r_r26 = CPyImport_ImportFromMany(cpy_r_r24, cpy_r_r23, cpy_r_r23, cpy_r_r25);
     if (unlikely(cpy_r_r26 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
     CPyModule_typing = cpy_r_r26;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r26);
-    cpy_r_r27 = (PyObject **)&CPyModule_eth_portfolio_scripts___docker;
-    PyObject **cpy_r_r28[1] = {cpy_r_r27};
-    cpy_r_r29 = (void *)&cpy_r_r28;
-    int64_t cpy_r_r30[1] = {21};
-    cpy_r_r31 = (void *)&cpy_r_r30;
-    cpy_r_r32 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* (('eth_portfolio_scripts.docker', 'eth_portfolio_scripts',
-                                     'eth_portfolio_scripts'),) */
-    cpy_r_r33 = CPyStatic__docker___globals;
-    cpy_r_r34 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'dao_treasury/_docker.py' */
-    cpy_r_r35 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '<module>' */
-    cpy_r_r36 = CPyImport_ImportMany(cpy_r_r32, cpy_r_r29, cpy_r_r33, cpy_r_r34, cpy_r_r35, cpy_r_r31);
-    if (!cpy_r_r36) goto CPyL28;
-    cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('docker_compose',) */
-    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'eth_portfolio_scripts.docker' */
-    cpy_r_r39 = CPyStatic__docker___globals;
-    cpy_r_r40 = CPyImport_ImportFromMany(cpy_r_r38, cpy_r_r37, cpy_r_r37, cpy_r_r39);
-    if (unlikely(cpy_r_r40 == NULL)) {
+    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Callable', 'Coroutine') */
+    cpy_r_r28 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'collections.abc' */
+    cpy_r_r29 = CPyStatic__docker___globals;
+    cpy_r_r30 = CPyImport_ImportFromMany(cpy_r_r28, cpy_r_r27, cpy_r_r27, cpy_r_r29);
+    if (unlikely(cpy_r_r30 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    CPyModule_eth_portfolio_scripts___docker = cpy_r_r40;
-    CPy_INCREF(CPyModule_eth_portfolio_scripts___docker);
-    CPy_DECREF(cpy_r_r40);
-    cpy_r_r41 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('ParamSpec',) */
-    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing_extensions' */
+    CPyModule_collections___abc = cpy_r_r30;
+    CPy_INCREF(CPyModule_collections___abc);
+    CPy_DECREF(cpy_r_r30);
+    cpy_r_r31 = (PyObject **)&CPyModule_eth_portfolio_scripts___docker;
+    PyObject **cpy_r_r32[1] = {cpy_r_r31};
+    cpy_r_r33 = (void *)&cpy_r_r32;
+    int64_t cpy_r_r34[1] = {22};
+    cpy_r_r35 = (void *)&cpy_r_r34;
+    cpy_r_r36 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* (('eth_portfolio_scripts.docker', 'eth_portfolio_scripts',
+                                     'eth_portfolio_scripts'),) */
+    cpy_r_r37 = CPyStatic__docker___globals;
+    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'dao_treasury/_docker.py' */
+    cpy_r_r39 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '<module>' */
+    cpy_r_r40 = CPyImport_ImportMany(cpy_r_r36, cpy_r_r33, cpy_r_r37, cpy_r_r38, cpy_r_r39, cpy_r_r35);
+    if (!cpy_r_r40) goto CPyL29;
+    cpy_r_r41 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('docker_compose',) */
+    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'eth_portfolio_scripts.docker' */
     cpy_r_r43 = CPyStatic__docker___globals;
     cpy_r_r44 = CPyImport_ImportFromMany(cpy_r_r42, cpy_r_r41, cpy_r_r41, cpy_r_r43);
     if (unlikely(cpy_r_r44 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    CPyModule_typing_extensions = cpy_r_r44;
-    CPy_INCREF(CPyModule_typing_extensions);
+    CPyModule_eth_portfolio_scripts___docker = cpy_r_r44;
+    CPy_INCREF(CPyModule_eth_portfolio_scripts___docker);
     CPy_DECREF(cpy_r_r44);
-    cpy_r_r45 = CPyStatic__docker___globals;
-    cpy_r_r46 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__name__' */
-    cpy_r_r47 = CPyDict_GetItem(cpy_r_r45, cpy_r_r46);
-    if (unlikely(cpy_r_r47 == NULL)) {
+    cpy_r_r45 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('ParamSpec',) */
+    cpy_r_r46 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing_extensions' */
+    cpy_r_r47 = CPyStatic__docker___globals;
+    cpy_r_r48 = CPyImport_ImportFromMany(cpy_r_r46, cpy_r_r45, cpy_r_r45, cpy_r_r47);
+    if (unlikely(cpy_r_r48 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    if (likely(PyUnicode_Check(cpy_r_r47)))
-        cpy_r_r48 = cpy_r_r47;
-    else {
-        CPy_TypeErrorTraceback("dao_treasury/_docker.py", "<module>", 25, CPyStatic__docker___globals, "str", cpy_r_r47);
-        goto CPyL28;
-    }
-    cpy_r_r49 = CPyModule_logging;
-    cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getLogger' */
-    cpy_r_r51 = CPyObject_GetAttr(cpy_r_r49, cpy_r_r50);
+    CPyModule_typing_extensions = cpy_r_r48;
+    CPy_INCREF(CPyModule_typing_extensions);
+    CPy_DECREF(cpy_r_r48);
+    cpy_r_r49 = CPyStatic__docker___globals;
+    cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '__name__' */
+    cpy_r_r51 = CPyDict_GetItem(cpy_r_r49, cpy_r_r50);
     if (unlikely(cpy_r_r51 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
         goto CPyL29;
     }
-    PyObject *cpy_r_r52[1] = {cpy_r_r48};
-    cpy_r_r53 = (PyObject **)&cpy_r_r52;
-    cpy_r_r54 = PyObject_Vectorcall(cpy_r_r51, cpy_r_r53, 1, 0);
-    CPy_DECREF(cpy_r_r51);
-    if (unlikely(cpy_r_r54 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+    if (likely(PyUnicode_Check(cpy_r_r51)))
+        cpy_r_r52 = cpy_r_r51;
+    else {
+        CPy_TypeErrorTraceback("dao_treasury/_docker.py", "<module>", 26, CPyStatic__docker___globals, "str", cpy_r_r51);
         goto CPyL29;
     }
-    CPy_DECREF(cpy_r_r48);
-    CPyStatic__docker___logger = cpy_r_r54;
-    CPy_INCREF(CPyStatic__docker___logger);
-    cpy_r_r55 = CPyStatic__docker___globals;
-    cpy_r_r56 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger' */
-    cpy_r_r57 = CPyDict_SetItem(cpy_r_r55, cpy_r_r56, cpy_r_r54);
-    CPy_DECREF(cpy_r_r54);
-    cpy_r_r58 = cpy_r_r57 >= 0;
-    if (unlikely(!cpy_r_r58)) {
-        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
-    }
-    cpy_r_r59 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'dao_treasury' */
-    cpy_r_r60 = CPyStatic__docker___globals;
-    cpy_r_r61 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'resources' */
-    cpy_r_r62 = CPyDict_GetItem(cpy_r_r60, cpy_r_r61);
-    if (unlikely(cpy_r_r62 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
-    }
-    cpy_r_r63 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'files' */
-    cpy_r_r64 = CPyObject_GetAttr(cpy_r_r62, cpy_r_r63);
-    CPy_DECREF(cpy_r_r62);
-    if (unlikely(cpy_r_r64 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
-    }
-    PyObject *cpy_r_r65[1] = {cpy_r_r59};
-    cpy_r_r66 = (PyObject **)&cpy_r_r65;
-    cpy_r_r67 = PyObject_Vectorcall(cpy_r_r64, cpy_r_r66, 1, 0);
-    CPy_DECREF(cpy_r_r64);
-    if (unlikely(cpy_r_r67 == NULL)) {
-        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
-    }
-    cpy_r_r68 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'docker-compose.yaml' */
-    cpy_r_r69 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'joinpath' */
-    PyObject *cpy_r_r70[2] = {cpy_r_r67, cpy_r_r68};
-    cpy_r_r71 = (PyObject **)&cpy_r_r70;
-    cpy_r_r72 = PyObject_VectorcallMethod(cpy_r_r69, cpy_r_r71, 9223372036854775810ULL, 0);
-    if (unlikely(cpy_r_r72 == NULL)) {
+    cpy_r_r53 = CPyModule_logging;
+    cpy_r_r54 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'getLogger' */
+    cpy_r_r55 = CPyObject_GetAttr(cpy_r_r53, cpy_r_r54);
+    if (unlikely(cpy_r_r55 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
         goto CPyL30;
     }
-    CPy_DECREF(cpy_r_r67);
-    cpy_r_r73 = PyObject_Str(cpy_r_r72);
-    CPy_DECREF(cpy_r_r72);
-    if (unlikely(cpy_r_r73 == NULL)) {
+    PyObject *cpy_r_r56[1] = {cpy_r_r52};
+    cpy_r_r57 = (PyObject **)&cpy_r_r56;
+    cpy_r_r58 = PyObject_Vectorcall(cpy_r_r55, cpy_r_r57, 1, 0);
+    CPy_DECREF(cpy_r_r55);
+    if (unlikely(cpy_r_r58 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL30;
     }
-    CPyStatic__docker___COMPOSE_FILE = cpy_r_r73;
+    CPy_DECREF(cpy_r_r52);
+    CPyStatic__docker___logger = cpy_r_r58;
+    CPy_INCREF(CPyStatic__docker___logger);
+    cpy_r_r59 = CPyStatic__docker___globals;
+    cpy_r_r60 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'logger' */
+    cpy_r_r61 = CPyDict_SetItem(cpy_r_r59, cpy_r_r60, cpy_r_r58);
+    CPy_DECREF(cpy_r_r58);
+    cpy_r_r62 = cpy_r_r61 >= 0;
+    if (unlikely(!cpy_r_r62)) {
+        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+        goto CPyL29;
+    }
+    cpy_r_r63 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'dao_treasury' */
+    cpy_r_r64 = CPyStatic__docker___globals;
+    cpy_r_r65 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'resources' */
+    cpy_r_r66 = CPyDict_GetItem(cpy_r_r64, cpy_r_r65);
+    if (unlikely(cpy_r_r66 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+        goto CPyL29;
+    }
+    cpy_r_r67 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'files' */
+    cpy_r_r68 = CPyObject_GetAttr(cpy_r_r66, cpy_r_r67);
+    CPy_DECREF(cpy_r_r66);
+    if (unlikely(cpy_r_r68 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+        goto CPyL29;
+    }
+    PyObject *cpy_r_r69[1] = {cpy_r_r63};
+    cpy_r_r70 = (PyObject **)&cpy_r_r69;
+    cpy_r_r71 = PyObject_Vectorcall(cpy_r_r68, cpy_r_r70, 1, 0);
+    CPy_DECREF(cpy_r_r68);
+    if (unlikely(cpy_r_r71 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+        goto CPyL29;
+    }
+    cpy_r_r72 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'docker-compose.yaml' */
+    cpy_r_r73 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'joinpath' */
+    PyObject *cpy_r_r74[2] = {cpy_r_r71, cpy_r_r72};
+    cpy_r_r75 = (PyObject **)&cpy_r_r74;
+    cpy_r_r76 = PyObject_VectorcallMethod(cpy_r_r73, cpy_r_r75, 9223372036854775810ULL, 0);
+    if (unlikely(cpy_r_r76 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+        goto CPyL31;
+    }
+    CPy_DECREF(cpy_r_r71);
+    cpy_r_r77 = PyObject_Str(cpy_r_r76);
+    CPy_DECREF(cpy_r_r76);
+    if (unlikely(cpy_r_r77 == NULL)) {
+        CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
+        goto CPyL29;
+    }
+    CPyStatic__docker___COMPOSE_FILE = cpy_r_r77;
     CPy_INCREF(CPyStatic__docker___COMPOSE_FILE);
-    cpy_r_r74 = CPyStatic__docker___globals;
-    cpy_r_r75 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'COMPOSE_FILE' */
-    cpy_r_r76 = CPyDict_SetItem(cpy_r_r74, cpy_r_r75, cpy_r_r73);
-    CPy_DECREF(cpy_r_r73);
-    cpy_r_r77 = cpy_r_r76 >= 0;
-    if (unlikely(!cpy_r_r77)) {
+    cpy_r_r78 = CPyStatic__docker___globals;
+    cpy_r_r79 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'COMPOSE_FILE' */
+    cpy_r_r80 = CPyDict_SetItem(cpy_r_r78, cpy_r_r79, cpy_r_r77);
+    CPy_DECREF(cpy_r_r77);
+    cpy_r_r81 = cpy_r_r80 >= 0;
+    if (unlikely(!cpy_r_r81)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    cpy_r_r78 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_P' */
-    cpy_r_r79 = CPyStatic__docker___globals;
-    cpy_r_r80 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ParamSpec' */
-    cpy_r_r81 = CPyDict_GetItem(cpy_r_r79, cpy_r_r80);
-    if (unlikely(cpy_r_r81 == NULL)) {
+    cpy_r_r82 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_P' */
+    cpy_r_r83 = CPyStatic__docker___globals;
+    cpy_r_r84 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ParamSpec' */
+    cpy_r_r85 = CPyDict_GetItem(cpy_r_r83, cpy_r_r84);
+    if (unlikely(cpy_r_r85 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    PyObject *cpy_r_r82[1] = {cpy_r_r78};
-    cpy_r_r83 = (PyObject **)&cpy_r_r82;
-    cpy_r_r84 = PyObject_Vectorcall(cpy_r_r81, cpy_r_r83, 1, 0);
-    CPy_DECREF(cpy_r_r81);
-    if (unlikely(cpy_r_r84 == NULL)) {
+    PyObject *cpy_r_r86[1] = {cpy_r_r82};
+    cpy_r_r87 = (PyObject **)&cpy_r_r86;
+    cpy_r_r88 = PyObject_Vectorcall(cpy_r_r85, cpy_r_r87, 1, 0);
+    CPy_DECREF(cpy_r_r85);
+    if (unlikely(cpy_r_r88 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    cpy_r_r85 = CPyStatic__docker___globals;
-    cpy_r_r86 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_P' */
-    cpy_r_r87 = CPyDict_SetItem(cpy_r_r85, cpy_r_r86, cpy_r_r84);
-    CPy_DECREF(cpy_r_r84);
-    cpy_r_r88 = cpy_r_r87 >= 0;
-    if (unlikely(!cpy_r_r88)) {
+    cpy_r_r89 = CPyStatic__docker___globals;
+    cpy_r_r90 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_P' */
+    cpy_r_r91 = CPyDict_SetItem(cpy_r_r89, cpy_r_r90, cpy_r_r88);
+    CPy_DECREF(cpy_r_r88);
+    cpy_r_r92 = cpy_r_r91 >= 0;
+    if (unlikely(!cpy_r_r92)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    cpy_r_r89 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_T' */
-    cpy_r_r90 = CPyStatic__docker___globals;
-    cpy_r_r91 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TypeVar' */
-    cpy_r_r92 = CPyDict_GetItem(cpy_r_r90, cpy_r_r91);
-    if (unlikely(cpy_r_r92 == NULL)) {
+    cpy_r_r93 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_T' */
+    cpy_r_r94 = CPyStatic__docker___globals;
+    cpy_r_r95 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TypeVar' */
+    cpy_r_r96 = CPyDict_GetItem(cpy_r_r94, cpy_r_r95);
+    if (unlikely(cpy_r_r96 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    PyObject *cpy_r_r93[1] = {cpy_r_r89};
-    cpy_r_r94 = (PyObject **)&cpy_r_r93;
-    cpy_r_r95 = PyObject_Vectorcall(cpy_r_r92, cpy_r_r94, 1, 0);
-    CPy_DECREF(cpy_r_r92);
-    if (unlikely(cpy_r_r95 == NULL)) {
+    PyObject *cpy_r_r97[1] = {cpy_r_r93};
+    cpy_r_r98 = (PyObject **)&cpy_r_r97;
+    cpy_r_r99 = PyObject_Vectorcall(cpy_r_r96, cpy_r_r98, 1, 0);
+    CPy_DECREF(cpy_r_r96);
+    if (unlikely(cpy_r_r99 == NULL)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
-    cpy_r_r96 = CPyStatic__docker___globals;
-    cpy_r_r97 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_T' */
-    cpy_r_r98 = CPyDict_SetItem(cpy_r_r96, cpy_r_r97, cpy_r_r95);
-    CPy_DECREF(cpy_r_r95);
-    cpy_r_r99 = cpy_r_r98 >= 0;
-    if (unlikely(!cpy_r_r99)) {
+    cpy_r_r100 = CPyStatic__docker___globals;
+    cpy_r_r101 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* '_T' */
+    cpy_r_r102 = CPyDict_SetItem(cpy_r_r100, cpy_r_r101, cpy_r_r99);
+    CPy_DECREF(cpy_r_r99);
+    cpy_r_r103 = cpy_r_r102 >= 0;
+    if (unlikely(!cpy_r_r103)) {
         CPy_AddTraceback("dao_treasury/_docker.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic__docker___globals);
-        goto CPyL28;
+        goto CPyL29;
     }
     return 1;
-CPyL28: ;
-    cpy_r_r100 = 2;
-    return cpy_r_r100;
 CPyL29: ;
-    CPy_DecRef(cpy_r_r48);
-    goto CPyL28;
+    cpy_r_r104 = 2;
+    return cpy_r_r104;
 CPyL30: ;
-    CPy_DecRef(cpy_r_r67);
-    goto CPyL28;
+    CPy_DecRef(cpy_r_r52);
+    goto CPyL29;
+CPyL31: ;
+    CPy_DecRef(cpy_r_r71);
+    goto CPyL29;
 }
 static PyMethodDef _nicknamesmodule_methods[] = {
     {"setup_address_nicknames_in_db", (PyCFunction)CPyPy__nicknames___setup_address_nicknames_in_db, METH_FASTCALL | METH_KEYWORDS, PyDoc_STR("setup_address_nicknames_in_db()\n--\n\n") /* docstring */},
@@ -32022,7 +32036,7 @@ CPyL3: ;
     CPyModule_pathlib = cpy_r_r12;
     CPy_INCREF(CPyModule_pathlib);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Dict', 'Final', 'List', 'Optional', 'final') */
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Final', 'Optional', 'final') */
     cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing' */
     cpy_r_r15 = CPyStatic__wallet___globals;
     cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
@@ -32673,98 +32687,102 @@ char CPyDef_types_____top_level__(void) {
     PyObject *cpy_r_r23;
     PyObject *cpy_r_r24;
     PyObject *cpy_r_r25;
-    tuple_T2OO cpy_r_r26;
+    PyObject *cpy_r_r26;
     PyObject *cpy_r_r27;
     PyObject *cpy_r_r28;
     PyObject *cpy_r_r29;
-    PyObject *cpy_r_r30;
-    int32_t cpy_r_r31;
-    char cpy_r_r32;
+    tuple_T2OO cpy_r_r30;
+    PyObject *cpy_r_r31;
+    PyObject *cpy_r_r32;
     PyObject *cpy_r_r33;
     PyObject *cpy_r_r34;
-    PyObject *cpy_r_r35;
-    PyObject *cpy_r_r36;
+    int32_t cpy_r_r35;
+    char cpy_r_r36;
     PyObject *cpy_r_r37;
     PyObject *cpy_r_r38;
     PyObject *cpy_r_r39;
     PyObject *cpy_r_r40;
     PyObject *cpy_r_r41;
-    tuple_T6OOOOOO cpy_r_r42;
+    PyObject *cpy_r_r42;
     PyObject *cpy_r_r43;
     PyObject *cpy_r_r44;
     PyObject *cpy_r_r45;
-    PyObject *cpy_r_r46;
-    int32_t cpy_r_r47;
-    char cpy_r_r48;
+    tuple_T6OOOOOO cpy_r_r46;
+    PyObject *cpy_r_r47;
+    PyObject *cpy_r_r48;
     PyObject *cpy_r_r49;
     PyObject *cpy_r_r50;
-    PyObject *cpy_r_r51;
-    PyObject *cpy_r_r52;
+    int32_t cpy_r_r51;
+    char cpy_r_r52;
     PyObject *cpy_r_r53;
-    PyObject **cpy_r_r55;
+    PyObject *cpy_r_r54;
+    PyObject *cpy_r_r55;
     PyObject *cpy_r_r56;
     PyObject *cpy_r_r57;
-    PyObject *cpy_r_r58;
-    int32_t cpy_r_r59;
-    char cpy_r_r60;
+    PyObject **cpy_r_r59;
+    PyObject *cpy_r_r60;
     PyObject *cpy_r_r61;
     PyObject *cpy_r_r62;
-    PyObject *cpy_r_r63;
-    int32_t cpy_r_r64;
-    char cpy_r_r65;
+    int32_t cpy_r_r63;
+    char cpy_r_r64;
+    PyObject *cpy_r_r65;
     PyObject *cpy_r_r66;
     PyObject *cpy_r_r67;
-    PyObject *cpy_r_r68;
-    PyObject *cpy_r_r69;
+    int32_t cpy_r_r68;
+    char cpy_r_r69;
     PyObject *cpy_r_r70;
     PyObject *cpy_r_r71;
     PyObject *cpy_r_r72;
     PyObject *cpy_r_r73;
-    CPyPtr cpy_r_r74;
-    CPyPtr cpy_r_r75;
+    PyObject *cpy_r_r74;
+    PyObject *cpy_r_r75;
     PyObject *cpy_r_r76;
-    tuple_T2OO cpy_r_r77;
-    PyObject *cpy_r_r78;
-    PyObject *cpy_r_r79;
+    PyObject *cpy_r_r77;
+    CPyPtr cpy_r_r78;
+    CPyPtr cpy_r_r79;
     PyObject *cpy_r_r80;
-    PyObject *cpy_r_r81;
+    tuple_T2OO cpy_r_r81;
     PyObject *cpy_r_r82;
     PyObject *cpy_r_r83;
     PyObject *cpy_r_r84;
-    CPyPtr cpy_r_r85;
-    CPyPtr cpy_r_r86;
+    PyObject *cpy_r_r85;
+    PyObject *cpy_r_r86;
     PyObject *cpy_r_r87;
     PyObject *cpy_r_r88;
-    PyObject *cpy_r_r89;
-    PyObject *cpy_r_r90;
+    CPyPtr cpy_r_r89;
+    CPyPtr cpy_r_r90;
     PyObject *cpy_r_r91;
-    tuple_T2OO cpy_r_r92;
+    PyObject *cpy_r_r92;
     PyObject *cpy_r_r93;
     PyObject *cpy_r_r94;
-    tuple_T2OO cpy_r_r95;
-    PyObject *cpy_r_r96;
+    PyObject *cpy_r_r95;
+    tuple_T2OO cpy_r_r96;
     PyObject *cpy_r_r97;
     PyObject *cpy_r_r98;
-    PyObject *cpy_r_r99;
-    int32_t cpy_r_r100;
-    char cpy_r_r101;
+    tuple_T2OO cpy_r_r99;
+    PyObject *cpy_r_r100;
+    PyObject *cpy_r_r101;
     PyObject *cpy_r_r102;
     PyObject *cpy_r_r103;
-    PyObject *cpy_r_r104;
-    PyObject *cpy_r_r105;
+    int32_t cpy_r_r104;
+    char cpy_r_r105;
     PyObject *cpy_r_r106;
     PyObject *cpy_r_r107;
     PyObject *cpy_r_r108;
     PyObject *cpy_r_r109;
     PyObject *cpy_r_r110;
-    tuple_T6OOOOOO cpy_r_r111;
+    PyObject *cpy_r_r111;
     PyObject *cpy_r_r112;
     PyObject *cpy_r_r113;
     PyObject *cpy_r_r114;
-    PyObject *cpy_r_r115;
-    int32_t cpy_r_r116;
-    char cpy_r_r117;
-    char cpy_r_r118;
+    tuple_T6OOOOOO cpy_r_r115;
+    PyObject *cpy_r_r116;
+    PyObject *cpy_r_r117;
+    PyObject *cpy_r_r118;
+    PyObject *cpy_r_r119;
+    int32_t cpy_r_r120;
+    char cpy_r_r121;
+    char cpy_r_r122;
     cpy_r_r0 = CPyModule_builtins;
     cpy_r_r1 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r2 = cpy_r_r0 != cpy_r_r1;
@@ -32773,394 +32791,404 @@ char CPyDef_types_____top_level__(void) {
     cpy_r_r4 = PyImport_Import(cpy_r_r3);
     if (unlikely(cpy_r_r4 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", -1, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL36;
     }
     CPyModule_builtins = cpy_r_r4;
     CPy_INCREF(CPyModule_builtins);
     CPy_DECREF(cpy_r_r4);
 CPyL3: ;
-    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('TYPE_CHECKING', 'Awaitable', 'Callable', 'Iterable',
-                                   'Literal', 'NewType', 'Union') */
+    cpy_r_r5 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('TYPE_CHECKING', 'Literal', 'NewType', 'Union') */
     cpy_r_r6 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'typing' */
     cpy_r_r7 = CPyStatic_types___globals;
     cpy_r_r8 = CPyImport_ImportFromMany(cpy_r_r6, cpy_r_r5, cpy_r_r5, cpy_r_r7);
     if (unlikely(cpy_r_r8 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL36;
     }
     CPyModule_typing = cpy_r_r8;
     CPy_INCREF(CPyModule_typing);
     CPy_DECREF(cpy_r_r8);
-    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Network',) */
-    cpy_r_r10 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'y' */
+    cpy_r_r9 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Awaitable', 'Callable', 'Iterable') */
+    cpy_r_r10 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'collections.abc' */
     cpy_r_r11 = CPyStatic_types___globals;
     cpy_r_r12 = CPyImport_ImportFromMany(cpy_r_r10, cpy_r_r9, cpy_r_r9, cpy_r_r11);
     if (unlikely(cpy_r_r12 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL36;
     }
-    CPyModule_y = cpy_r_r12;
-    CPy_INCREF(CPyModule_y);
+    CPyModule_collections___abc = cpy_r_r12;
+    CPy_INCREF(CPyModule_collections___abc);
     CPy_DECREF(cpy_r_r12);
-    cpy_r_r13 = CPyStatic_types___globals;
-    cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
-    cpy_r_r15 = CPyDict_GetItem(cpy_r_r13, cpy_r_r14);
-    if (unlikely(cpy_r_r15 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r16 = CPyStatic_types___globals;
-    cpy_r_r17 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Network' */
-    cpy_r_r18 = CPyDict_GetItem(cpy_r_r16, cpy_r_r17);
-    if (unlikely(cpy_r_r18 == NULL)) {
+    cpy_r_r13 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* ('Network',) */
+    cpy_r_r14 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'y' */
+    cpy_r_r15 = CPyStatic_types___globals;
+    cpy_r_r16 = CPyImport_ImportFromMany(cpy_r_r14, cpy_r_r13, cpy_r_r13, cpy_r_r15);
+    if (unlikely(cpy_r_r16 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL36;
     }
-    cpy_r_r19 = CPyStatic_types___globals;
-    cpy_r_r20 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Iterable' */
-    cpy_r_r21 = CPyDict_GetItem(cpy_r_r19, cpy_r_r20);
-    if (unlikely(cpy_r_r21 == NULL)) {
+    CPyModule_y = cpy_r_r16;
+    CPy_INCREF(CPyModule_y);
+    CPy_DECREF(cpy_r_r16);
+    cpy_r_r17 = CPyStatic_types___globals;
+    cpy_r_r18 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
+    cpy_r_r19 = CPyDict_GetItem(cpy_r_r17, cpy_r_r18);
+    if (unlikely(cpy_r_r19 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r20 = CPyStatic_types___globals;
+    cpy_r_r21 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Network' */
+    cpy_r_r22 = CPyDict_GetItem(cpy_r_r20, cpy_r_r21);
+    if (unlikely(cpy_r_r22 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL37;
     }
-    cpy_r_r22 = CPyStatic_types___globals;
-    cpy_r_r23 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Network' */
-    cpy_r_r24 = CPyDict_GetItem(cpy_r_r22, cpy_r_r23);
-    if (unlikely(cpy_r_r24 == NULL)) {
+    cpy_r_r23 = CPyStatic_types___globals;
+    cpy_r_r24 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Iterable' */
+    cpy_r_r25 = CPyDict_GetItem(cpy_r_r23, cpy_r_r24);
+    if (unlikely(cpy_r_r25 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL38;
     }
-    cpy_r_r25 = PyObject_GetItem(cpy_r_r21, cpy_r_r24);
-    CPy_DECREF(cpy_r_r21);
-    CPy_DECREF(cpy_r_r24);
-    if (unlikely(cpy_r_r25 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL37;
-    }
-    cpy_r_r26.f0 = cpy_r_r18;
-    cpy_r_r26.f1 = cpy_r_r25;
-    cpy_r_r27 = PyTuple_New(2);
-    if (unlikely(cpy_r_r27 == NULL))
-        CPyError_OutOfMemory();
-    PyObject *__tmp86 = cpy_r_r26.f0;
-    PyTuple_SET_ITEM(cpy_r_r27, 0, __tmp86);
-    PyObject *__tmp87 = cpy_r_r26.f1;
-    PyTuple_SET_ITEM(cpy_r_r27, 1, __tmp87);
-    cpy_r_r28 = PyObject_GetItem(cpy_r_r15, cpy_r_r27);
-    CPy_DECREF(cpy_r_r15);
-    CPy_DECREF(cpy_r_r27);
+    cpy_r_r26 = CPyStatic_types___globals;
+    cpy_r_r27 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Network' */
+    cpy_r_r28 = CPyDict_GetItem(cpy_r_r26, cpy_r_r27);
     if (unlikely(cpy_r_r28 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r29 = CPyStatic_types___globals;
-    cpy_r_r30 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Networks' */
-    cpy_r_r31 = CPyDict_SetItem(cpy_r_r29, cpy_r_r30, cpy_r_r28);
-    CPy_DECREF(cpy_r_r28);
-    cpy_r_r32 = cpy_r_r31 >= 0;
-    if (unlikely(!cpy_r_r32)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r33 = CPyStatic_types___globals;
-    cpy_r_r34 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Literal' */
-    cpy_r_r35 = CPyDict_GetItem(cpy_r_r33, cpy_r_r34);
-    if (unlikely(cpy_r_r35 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r36 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Revenue' */
-    cpy_r_r37 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Cost of Revenue' */
-    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Expenses' */
-    cpy_r_r39 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Other Income' */
-    cpy_r_r40 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Other Expenses' */
-    cpy_r_r41 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Ignore' */
-    CPy_INCREF(cpy_r_r36);
-    CPy_INCREF(cpy_r_r37);
-    CPy_INCREF(cpy_r_r38);
-    CPy_INCREF(cpy_r_r39);
-    CPy_INCREF(cpy_r_r40);
-    CPy_INCREF(cpy_r_r41);
-    cpy_r_r42.f0 = cpy_r_r36;
-    cpy_r_r42.f1 = cpy_r_r37;
-    cpy_r_r42.f2 = cpy_r_r38;
-    cpy_r_r42.f3 = cpy_r_r39;
-    cpy_r_r42.f4 = cpy_r_r40;
-    cpy_r_r42.f5 = cpy_r_r41;
-    cpy_r_r43 = PyTuple_New(6);
-    if (unlikely(cpy_r_r43 == NULL))
-        CPyError_OutOfMemory();
-    PyObject *__tmp88 = cpy_r_r42.f0;
-    PyTuple_SET_ITEM(cpy_r_r43, 0, __tmp88);
-    PyObject *__tmp89 = cpy_r_r42.f1;
-    PyTuple_SET_ITEM(cpy_r_r43, 1, __tmp89);
-    PyObject *__tmp90 = cpy_r_r42.f2;
-    PyTuple_SET_ITEM(cpy_r_r43, 2, __tmp90);
-    PyObject *__tmp91 = cpy_r_r42.f3;
-    PyTuple_SET_ITEM(cpy_r_r43, 3, __tmp91);
-    PyObject *__tmp92 = cpy_r_r42.f4;
-    PyTuple_SET_ITEM(cpy_r_r43, 4, __tmp92);
-    PyObject *__tmp93 = cpy_r_r42.f5;
-    PyTuple_SET_ITEM(cpy_r_r43, 5, __tmp93);
-    cpy_r_r44 = PyObject_GetItem(cpy_r_r35, cpy_r_r43);
-    CPy_DECREF(cpy_r_r35);
-    CPy_DECREF(cpy_r_r43);
-    if (unlikely(cpy_r_r44 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r45 = CPyStatic_types___globals;
-    cpy_r_r46 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TopLevelCategory' */
-    cpy_r_r47 = CPyDict_SetItem(cpy_r_r45, cpy_r_r46, cpy_r_r44);
-    CPy_DECREF(cpy_r_r44);
-    cpy_r_r48 = cpy_r_r47 >= 0;
-    if (unlikely(!cpy_r_r48)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r49 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TxGroupDbid' */
-    cpy_r_r50 = (PyObject *)&PyLong_Type;
-    cpy_r_r51 = CPyStatic_types___globals;
-    cpy_r_r52 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NewType' */
-    cpy_r_r53 = CPyDict_GetItem(cpy_r_r51, cpy_r_r52);
-    if (unlikely(cpy_r_r53 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    PyObject *cpy_r_r54[2] = {cpy_r_r49, cpy_r_r50};
-    cpy_r_r55 = (PyObject **)&cpy_r_r54;
-    cpy_r_r56 = PyObject_Vectorcall(cpy_r_r53, cpy_r_r55, 2, 0);
-    CPy_DECREF(cpy_r_r53);
-    if (unlikely(cpy_r_r56 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r57 = CPyStatic_types___globals;
-    cpy_r_r58 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TxGroupDbid' */
-    cpy_r_r59 = CPyDict_SetItem(cpy_r_r57, cpy_r_r58, cpy_r_r56);
-    CPy_DECREF(cpy_r_r56);
-    cpy_r_r60 = cpy_r_r59 >= 0;
-    if (unlikely(!cpy_r_r60)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r61 = (PyObject *)&PyUnicode_Type;
-    cpy_r_r62 = CPyStatic_types___globals;
-    cpy_r_r63 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TxGroupName' */
-    cpy_r_r64 = CPyDict_SetItem(cpy_r_r62, cpy_r_r63, cpy_r_r61);
-    cpy_r_r65 = cpy_r_r64 >= 0;
-    if (unlikely(!cpy_r_r65)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r66 = CPyStatic_types___globals;
-    cpy_r_r67 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
-    cpy_r_r68 = CPyDict_GetItem(cpy_r_r66, cpy_r_r67);
-    if (unlikely(cpy_r_r68 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r69 = CPyStatic_types___globals;
-    cpy_r_r70 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Callable' */
-    cpy_r_r71 = CPyDict_GetItem(cpy_r_r69, cpy_r_r70);
-    if (unlikely(cpy_r_r71 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL39;
     }
-    cpy_r_r72 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TreasuryTx' */
-    cpy_r_r73 = PyList_New(1);
-    if (unlikely(cpy_r_r73 == NULL)) {
+    cpy_r_r29 = PyObject_GetItem(cpy_r_r25, cpy_r_r28);
+    CPy_DECREF(cpy_r_r25);
+    CPy_DECREF(cpy_r_r28);
+    if (unlikely(cpy_r_r29 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL38;
+    }
+    cpy_r_r30.f0 = cpy_r_r22;
+    cpy_r_r30.f1 = cpy_r_r29;
+    cpy_r_r31 = PyTuple_New(2);
+    if (unlikely(cpy_r_r31 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp86 = cpy_r_r30.f0;
+    PyTuple_SET_ITEM(cpy_r_r31, 0, __tmp86);
+    PyObject *__tmp87 = cpy_r_r30.f1;
+    PyTuple_SET_ITEM(cpy_r_r31, 1, __tmp87);
+    cpy_r_r32 = PyObject_GetItem(cpy_r_r19, cpy_r_r31);
+    CPy_DECREF(cpy_r_r19);
+    CPy_DECREF(cpy_r_r31);
+    if (unlikely(cpy_r_r32 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r33 = CPyStatic_types___globals;
+    cpy_r_r34 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Networks' */
+    cpy_r_r35 = CPyDict_SetItem(cpy_r_r33, cpy_r_r34, cpy_r_r32);
+    CPy_DECREF(cpy_r_r32);
+    cpy_r_r36 = cpy_r_r35 >= 0;
+    if (unlikely(!cpy_r_r36)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r37 = CPyStatic_types___globals;
+    cpy_r_r38 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Literal' */
+    cpy_r_r39 = CPyDict_GetItem(cpy_r_r37, cpy_r_r38);
+    if (unlikely(cpy_r_r39 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r40 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Revenue' */
+    cpy_r_r41 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Cost of Revenue' */
+    cpy_r_r42 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Expenses' */
+    cpy_r_r43 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Other Income' */
+    cpy_r_r44 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Other Expenses' */
+    cpy_r_r45 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Ignore' */
+    CPy_INCREF(cpy_r_r40);
+    CPy_INCREF(cpy_r_r41);
+    CPy_INCREF(cpy_r_r42);
+    CPy_INCREF(cpy_r_r43);
+    CPy_INCREF(cpy_r_r44);
+    CPy_INCREF(cpy_r_r45);
+    cpy_r_r46.f0 = cpy_r_r40;
+    cpy_r_r46.f1 = cpy_r_r41;
+    cpy_r_r46.f2 = cpy_r_r42;
+    cpy_r_r46.f3 = cpy_r_r43;
+    cpy_r_r46.f4 = cpy_r_r44;
+    cpy_r_r46.f5 = cpy_r_r45;
+    cpy_r_r47 = PyTuple_New(6);
+    if (unlikely(cpy_r_r47 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp88 = cpy_r_r46.f0;
+    PyTuple_SET_ITEM(cpy_r_r47, 0, __tmp88);
+    PyObject *__tmp89 = cpy_r_r46.f1;
+    PyTuple_SET_ITEM(cpy_r_r47, 1, __tmp89);
+    PyObject *__tmp90 = cpy_r_r46.f2;
+    PyTuple_SET_ITEM(cpy_r_r47, 2, __tmp90);
+    PyObject *__tmp91 = cpy_r_r46.f3;
+    PyTuple_SET_ITEM(cpy_r_r47, 3, __tmp91);
+    PyObject *__tmp92 = cpy_r_r46.f4;
+    PyTuple_SET_ITEM(cpy_r_r47, 4, __tmp92);
+    PyObject *__tmp93 = cpy_r_r46.f5;
+    PyTuple_SET_ITEM(cpy_r_r47, 5, __tmp93);
+    cpy_r_r48 = PyObject_GetItem(cpy_r_r39, cpy_r_r47);
+    CPy_DECREF(cpy_r_r39);
+    CPy_DECREF(cpy_r_r47);
+    if (unlikely(cpy_r_r48 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r49 = CPyStatic_types___globals;
+    cpy_r_r50 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TopLevelCategory' */
+    cpy_r_r51 = CPyDict_SetItem(cpy_r_r49, cpy_r_r50, cpy_r_r48);
+    CPy_DECREF(cpy_r_r48);
+    cpy_r_r52 = cpy_r_r51 >= 0;
+    if (unlikely(!cpy_r_r52)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r53 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TxGroupDbid' */
+    cpy_r_r54 = (PyObject *)&PyLong_Type;
+    cpy_r_r55 = CPyStatic_types___globals;
+    cpy_r_r56 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'NewType' */
+    cpy_r_r57 = CPyDict_GetItem(cpy_r_r55, cpy_r_r56);
+    if (unlikely(cpy_r_r57 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    PyObject *cpy_r_r58[2] = {cpy_r_r53, cpy_r_r54};
+    cpy_r_r59 = (PyObject **)&cpy_r_r58;
+    cpy_r_r60 = PyObject_Vectorcall(cpy_r_r57, cpy_r_r59, 2, 0);
+    CPy_DECREF(cpy_r_r57);
+    if (unlikely(cpy_r_r60 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r61 = CPyStatic_types___globals;
+    cpy_r_r62 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TxGroupDbid' */
+    cpy_r_r63 = CPyDict_SetItem(cpy_r_r61, cpy_r_r62, cpy_r_r60);
+    CPy_DECREF(cpy_r_r60);
+    cpy_r_r64 = cpy_r_r63 >= 0;
+    if (unlikely(!cpy_r_r64)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r65 = (PyObject *)&PyUnicode_Type;
+    cpy_r_r66 = CPyStatic_types___globals;
+    cpy_r_r67 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TxGroupName' */
+    cpy_r_r68 = CPyDict_SetItem(cpy_r_r66, cpy_r_r67, cpy_r_r65);
+    cpy_r_r69 = cpy_r_r68 >= 0;
+    if (unlikely(!cpy_r_r69)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r70 = CPyStatic_types___globals;
+    cpy_r_r71 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
+    cpy_r_r72 = CPyDict_GetItem(cpy_r_r70, cpy_r_r71);
+    if (unlikely(cpy_r_r72 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r73 = CPyStatic_types___globals;
+    cpy_r_r74 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Callable' */
+    cpy_r_r75 = CPyDict_GetItem(cpy_r_r73, cpy_r_r74);
+    if (unlikely(cpy_r_r75 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL40;
     }
-    cpy_r_r74 = (CPyPtr)&((PyListObject *)cpy_r_r73)->ob_item;
-    cpy_r_r75 = *(CPyPtr *)cpy_r_r74;
-    CPy_INCREF(cpy_r_r72);
-    *(PyObject * *)cpy_r_r75 = cpy_r_r72;
-    cpy_r_r76 = (PyObject *)&PyBool_Type;
-    CPy_INCREF(cpy_r_r76);
-    cpy_r_r77.f0 = cpy_r_r73;
-    cpy_r_r77.f1 = cpy_r_r76;
-    cpy_r_r78 = PyTuple_New(2);
-    if (unlikely(cpy_r_r78 == NULL))
-        CPyError_OutOfMemory();
-    PyObject *__tmp94 = cpy_r_r77.f0;
-    PyTuple_SET_ITEM(cpy_r_r78, 0, __tmp94);
-    PyObject *__tmp95 = cpy_r_r77.f1;
-    PyTuple_SET_ITEM(cpy_r_r78, 1, __tmp95);
-    cpy_r_r79 = PyObject_GetItem(cpy_r_r71, cpy_r_r78);
-    CPy_DECREF(cpy_r_r71);
-    CPy_DECREF(cpy_r_r78);
-    if (unlikely(cpy_r_r79 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL39;
-    }
-    cpy_r_r80 = CPyStatic_types___globals;
-    cpy_r_r81 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Callable' */
-    cpy_r_r82 = CPyDict_GetItem(cpy_r_r80, cpy_r_r81);
-    if (unlikely(cpy_r_r82 == NULL)) {
+    cpy_r_r76 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TreasuryTx' */
+    cpy_r_r77 = PyList_New(1);
+    if (unlikely(cpy_r_r77 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL41;
     }
-    cpy_r_r83 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TreasuryTx' */
-    cpy_r_r84 = PyList_New(1);
-    if (unlikely(cpy_r_r84 == NULL)) {
+    cpy_r_r78 = (CPyPtr)&((PyListObject *)cpy_r_r77)->ob_item;
+    cpy_r_r79 = *(CPyPtr *)cpy_r_r78;
+    CPy_INCREF(cpy_r_r76);
+    *(PyObject * *)cpy_r_r79 = cpy_r_r76;
+    cpy_r_r80 = (PyObject *)&PyBool_Type;
+    CPy_INCREF(cpy_r_r80);
+    cpy_r_r81.f0 = cpy_r_r77;
+    cpy_r_r81.f1 = cpy_r_r80;
+    cpy_r_r82 = PyTuple_New(2);
+    if (unlikely(cpy_r_r82 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp94 = cpy_r_r81.f0;
+    PyTuple_SET_ITEM(cpy_r_r82, 0, __tmp94);
+    PyObject *__tmp95 = cpy_r_r81.f1;
+    PyTuple_SET_ITEM(cpy_r_r82, 1, __tmp95);
+    cpy_r_r83 = PyObject_GetItem(cpy_r_r75, cpy_r_r82);
+    CPy_DECREF(cpy_r_r75);
+    CPy_DECREF(cpy_r_r82);
+    if (unlikely(cpy_r_r83 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL40;
+    }
+    cpy_r_r84 = CPyStatic_types___globals;
+    cpy_r_r85 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Callable' */
+    cpy_r_r86 = CPyDict_GetItem(cpy_r_r84, cpy_r_r85);
+    if (unlikely(cpy_r_r86 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL42;
     }
-    cpy_r_r85 = (CPyPtr)&((PyListObject *)cpy_r_r84)->ob_item;
-    cpy_r_r86 = *(CPyPtr *)cpy_r_r85;
-    CPy_INCREF(cpy_r_r83);
-    *(PyObject * *)cpy_r_r86 = cpy_r_r83;
-    cpy_r_r87 = CPyStatic_types___globals;
-    cpy_r_r88 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Awaitable' */
-    cpy_r_r89 = CPyDict_GetItem(cpy_r_r87, cpy_r_r88);
-    if (unlikely(cpy_r_r89 == NULL)) {
+    cpy_r_r87 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'TreasuryTx' */
+    cpy_r_r88 = PyList_New(1);
+    if (unlikely(cpy_r_r88 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
         goto CPyL43;
     }
-    cpy_r_r90 = (PyObject *)&PyBool_Type;
-    cpy_r_r91 = PyObject_GetItem(cpy_r_r89, cpy_r_r90);
-    CPy_DECREF(cpy_r_r89);
-    if (unlikely(cpy_r_r91 == NULL)) {
+    cpy_r_r89 = (CPyPtr)&((PyListObject *)cpy_r_r88)->ob_item;
+    cpy_r_r90 = *(CPyPtr *)cpy_r_r89;
+    CPy_INCREF(cpy_r_r87);
+    *(PyObject * *)cpy_r_r90 = cpy_r_r87;
+    cpy_r_r91 = CPyStatic_types___globals;
+    cpy_r_r92 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Awaitable' */
+    cpy_r_r93 = CPyDict_GetItem(cpy_r_r91, cpy_r_r92);
+    if (unlikely(cpy_r_r93 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL43;
+        goto CPyL44;
     }
-    cpy_r_r92.f0 = cpy_r_r84;
-    cpy_r_r92.f1 = cpy_r_r91;
-    cpy_r_r93 = PyTuple_New(2);
-    if (unlikely(cpy_r_r93 == NULL))
-        CPyError_OutOfMemory();
-    PyObject *__tmp96 = cpy_r_r92.f0;
-    PyTuple_SET_ITEM(cpy_r_r93, 0, __tmp96);
-    PyObject *__tmp97 = cpy_r_r92.f1;
-    PyTuple_SET_ITEM(cpy_r_r93, 1, __tmp97);
-    cpy_r_r94 = PyObject_GetItem(cpy_r_r82, cpy_r_r93);
-    CPy_DECREF(cpy_r_r82);
+    cpy_r_r94 = (PyObject *)&PyBool_Type;
+    cpy_r_r95 = PyObject_GetItem(cpy_r_r93, cpy_r_r94);
     CPy_DECREF(cpy_r_r93);
-    if (unlikely(cpy_r_r94 == NULL)) {
+    if (unlikely(cpy_r_r95 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL41;
+        goto CPyL44;
     }
-    cpy_r_r95.f0 = cpy_r_r79;
-    cpy_r_r95.f1 = cpy_r_r94;
-    cpy_r_r96 = PyTuple_New(2);
-    if (unlikely(cpy_r_r96 == NULL))
+    cpy_r_r96.f0 = cpy_r_r88;
+    cpy_r_r96.f1 = cpy_r_r95;
+    cpy_r_r97 = PyTuple_New(2);
+    if (unlikely(cpy_r_r97 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp98 = cpy_r_r95.f0;
-    PyTuple_SET_ITEM(cpy_r_r96, 0, __tmp98);
-    PyObject *__tmp99 = cpy_r_r95.f1;
-    PyTuple_SET_ITEM(cpy_r_r96, 1, __tmp99);
-    cpy_r_r97 = PyObject_GetItem(cpy_r_r68, cpy_r_r96);
-    CPy_DECREF(cpy_r_r68);
-    CPy_DECREF(cpy_r_r96);
-    if (unlikely(cpy_r_r97 == NULL)) {
-        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
-    }
-    cpy_r_r98 = CPyStatic_types___globals;
-    cpy_r_r99 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'SortFunction' */
-    cpy_r_r100 = CPyDict_SetItem(cpy_r_r98, cpy_r_r99, cpy_r_r97);
+    PyObject *__tmp96 = cpy_r_r96.f0;
+    PyTuple_SET_ITEM(cpy_r_r97, 0, __tmp96);
+    PyObject *__tmp97 = cpy_r_r96.f1;
+    PyTuple_SET_ITEM(cpy_r_r97, 1, __tmp97);
+    cpy_r_r98 = PyObject_GetItem(cpy_r_r86, cpy_r_r97);
+    CPy_DECREF(cpy_r_r86);
     CPy_DECREF(cpy_r_r97);
-    cpy_r_r101 = cpy_r_r100 >= 0;
-    if (unlikely(!cpy_r_r101)) {
+    if (unlikely(cpy_r_r98 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL42;
+    }
+    cpy_r_r99.f0 = cpy_r_r83;
+    cpy_r_r99.f1 = cpy_r_r98;
+    cpy_r_r100 = PyTuple_New(2);
+    if (unlikely(cpy_r_r100 == NULL))
+        CPyError_OutOfMemory();
+    PyObject *__tmp98 = cpy_r_r99.f0;
+    PyTuple_SET_ITEM(cpy_r_r100, 0, __tmp98);
+    PyObject *__tmp99 = cpy_r_r99.f1;
+    PyTuple_SET_ITEM(cpy_r_r100, 1, __tmp99);
+    cpy_r_r101 = PyObject_GetItem(cpy_r_r72, cpy_r_r100);
+    CPy_DECREF(cpy_r_r72);
+    CPy_DECREF(cpy_r_r100);
+    if (unlikely(cpy_r_r101 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
     }
     cpy_r_r102 = CPyStatic_types___globals;
-    cpy_r_r103 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
-    cpy_r_r104 = CPyDict_GetItem(cpy_r_r102, cpy_r_r103);
-    if (unlikely(cpy_r_r104 == NULL)) {
+    cpy_r_r103 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'SortFunction' */
+    cpy_r_r104 = CPyDict_SetItem(cpy_r_r102, cpy_r_r103, cpy_r_r101);
+    CPy_DECREF(cpy_r_r101);
+    cpy_r_r105 = cpy_r_r104 >= 0;
+    if (unlikely(!cpy_r_r105)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL36;
     }
-    cpy_r_r105 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'RevenueSortRule' */
-    cpy_r_r106 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'CostOfRevenueSortRule' */
-    cpy_r_r107 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ExpenseSortRule' */
-    cpy_r_r108 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'OtherIncomeSortRule' */
-    cpy_r_r109 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'OtherExpenseSortRule' */
-    cpy_r_r110 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IgnoreSortRule' */
-    CPy_INCREF(cpy_r_r105);
-    CPy_INCREF(cpy_r_r106);
-    CPy_INCREF(cpy_r_r107);
-    CPy_INCREF(cpy_r_r108);
+    cpy_r_r106 = CPyStatic_types___globals;
+    cpy_r_r107 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'Union' */
+    cpy_r_r108 = CPyDict_GetItem(cpy_r_r106, cpy_r_r107);
+    if (unlikely(cpy_r_r108 == NULL)) {
+        CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
+        goto CPyL36;
+    }
+    cpy_r_r109 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'RevenueSortRule' */
+    cpy_r_r110 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'CostOfRevenueSortRule' */
+    cpy_r_r111 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'ExpenseSortRule' */
+    cpy_r_r112 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'OtherIncomeSortRule' */
+    cpy_r_r113 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'OtherExpenseSortRule' */
+    cpy_r_r114 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'IgnoreSortRule' */
     CPy_INCREF(cpy_r_r109);
     CPy_INCREF(cpy_r_r110);
-    cpy_r_r111.f0 = cpy_r_r105;
-    cpy_r_r111.f1 = cpy_r_r106;
-    cpy_r_r111.f2 = cpy_r_r107;
-    cpy_r_r111.f3 = cpy_r_r108;
-    cpy_r_r111.f4 = cpy_r_r109;
-    cpy_r_r111.f5 = cpy_r_r110;
-    cpy_r_r112 = PyTuple_New(6);
-    if (unlikely(cpy_r_r112 == NULL))
+    CPy_INCREF(cpy_r_r111);
+    CPy_INCREF(cpy_r_r112);
+    CPy_INCREF(cpy_r_r113);
+    CPy_INCREF(cpy_r_r114);
+    cpy_r_r115.f0 = cpy_r_r109;
+    cpy_r_r115.f1 = cpy_r_r110;
+    cpy_r_r115.f2 = cpy_r_r111;
+    cpy_r_r115.f3 = cpy_r_r112;
+    cpy_r_r115.f4 = cpy_r_r113;
+    cpy_r_r115.f5 = cpy_r_r114;
+    cpy_r_r116 = PyTuple_New(6);
+    if (unlikely(cpy_r_r116 == NULL))
         CPyError_OutOfMemory();
-    PyObject *__tmp100 = cpy_r_r111.f0;
-    PyTuple_SET_ITEM(cpy_r_r112, 0, __tmp100);
-    PyObject *__tmp101 = cpy_r_r111.f1;
-    PyTuple_SET_ITEM(cpy_r_r112, 1, __tmp101);
-    PyObject *__tmp102 = cpy_r_r111.f2;
-    PyTuple_SET_ITEM(cpy_r_r112, 2, __tmp102);
-    PyObject *__tmp103 = cpy_r_r111.f3;
-    PyTuple_SET_ITEM(cpy_r_r112, 3, __tmp103);
-    PyObject *__tmp104 = cpy_r_r111.f4;
-    PyTuple_SET_ITEM(cpy_r_r112, 4, __tmp104);
-    PyObject *__tmp105 = cpy_r_r111.f5;
-    PyTuple_SET_ITEM(cpy_r_r112, 5, __tmp105);
-    cpy_r_r113 = PyObject_GetItem(cpy_r_r104, cpy_r_r112);
-    CPy_DECREF(cpy_r_r104);
-    CPy_DECREF(cpy_r_r112);
-    if (unlikely(cpy_r_r113 == NULL)) {
+    PyObject *__tmp100 = cpy_r_r115.f0;
+    PyTuple_SET_ITEM(cpy_r_r116, 0, __tmp100);
+    PyObject *__tmp101 = cpy_r_r115.f1;
+    PyTuple_SET_ITEM(cpy_r_r116, 1, __tmp101);
+    PyObject *__tmp102 = cpy_r_r115.f2;
+    PyTuple_SET_ITEM(cpy_r_r116, 2, __tmp102);
+    PyObject *__tmp103 = cpy_r_r115.f3;
+    PyTuple_SET_ITEM(cpy_r_r116, 3, __tmp103);
+    PyObject *__tmp104 = cpy_r_r115.f4;
+    PyTuple_SET_ITEM(cpy_r_r116, 4, __tmp104);
+    PyObject *__tmp105 = cpy_r_r115.f5;
+    PyTuple_SET_ITEM(cpy_r_r116, 5, __tmp105);
+    cpy_r_r117 = PyObject_GetItem(cpy_r_r108, cpy_r_r116);
+    CPy_DECREF(cpy_r_r108);
+    CPy_DECREF(cpy_r_r116);
+    if (unlikely(cpy_r_r117 == NULL)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL36;
     }
-    cpy_r_r114 = CPyStatic_types___globals;
-    cpy_r_r115 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'SortRule' */
-    cpy_r_r116 = CPyDict_SetItem(cpy_r_r114, cpy_r_r115, cpy_r_r113);
-    CPy_DECREF(cpy_r_r113);
-    cpy_r_r117 = cpy_r_r116 >= 0;
-    if (unlikely(!cpy_r_r117)) {
+    cpy_r_r118 = CPyStatic_types___globals;
+    cpy_r_r119 = CPyStatics[DIFFCHECK_PLACEHOLDER]; /* 'SortRule' */
+    cpy_r_r120 = CPyDict_SetItem(cpy_r_r118, cpy_r_r119, cpy_r_r117);
+    CPy_DECREF(cpy_r_r117);
+    cpy_r_r121 = cpy_r_r120 >= 0;
+    if (unlikely(!cpy_r_r121)) {
         CPy_AddTraceback("dao_treasury/types.py", "<module>", DIFFCHECK_PLACEHOLDER, CPyStatic_types___globals);
-        goto CPyL35;
+        goto CPyL36;
     }
     return 1;
-CPyL35: ;
-    cpy_r_r118 = 2;
-    return cpy_r_r118;
 CPyL36: ;
-    CPy_DecRef(cpy_r_r15);
-    goto CPyL35;
+    cpy_r_r122 = 2;
+    return cpy_r_r122;
 CPyL37: ;
-    CPy_DecRef(cpy_r_r15);
-    CPy_DecRef(cpy_r_r18);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r19);
+    goto CPyL36;
 CPyL38: ;
-    CPy_DecRef(cpy_r_r15);
-    CPy_DecRef(cpy_r_r18);
-    CPy_DecRef(cpy_r_r21);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r19);
+    CPy_DecRef(cpy_r_r22);
+    goto CPyL36;
 CPyL39: ;
-    CPy_DecRef(cpy_r_r68);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r19);
+    CPy_DecRef(cpy_r_r22);
+    CPy_DecRef(cpy_r_r25);
+    goto CPyL36;
 CPyL40: ;
-    CPy_DecRef(cpy_r_r68);
-    CPy_DecRef(cpy_r_r71);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r72);
+    goto CPyL36;
 CPyL41: ;
-    CPy_DecRef(cpy_r_r68);
-    CPy_DecRef(cpy_r_r79);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r72);
+    CPy_DecRef(cpy_r_r75);
+    goto CPyL36;
 CPyL42: ;
-    CPy_DecRef(cpy_r_r68);
-    CPy_DecRef(cpy_r_r79);
-    CPy_DecRef(cpy_r_r82);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r72);
+    CPy_DecRef(cpy_r_r83);
+    goto CPyL36;
 CPyL43: ;
-    CPy_DecRef(cpy_r_r68);
-    CPy_DecRef(cpy_r_r79);
-    CPy_DecRef(cpy_r_r82);
-    CPy_DecRef(cpy_r_r84);
-    goto CPyL35;
+    CPy_DecRef(cpy_r_r72);
+    CPy_DecRef(cpy_r_r83);
+    CPy_DecRef(cpy_r_r86);
+    goto CPyL36;
+CPyL44: ;
+    CPy_DecRef(cpy_r_r72);
+    CPy_DecRef(cpy_r_r83);
+    CPy_DecRef(cpy_r_r86);
+    CPy_DecRef(cpy_r_r88);
+    goto CPyL36;
 }
 
 int CPyGlobalsInit(void)
@@ -33243,6 +33271,7 @@ int CPyGlobalsInit(void)
     CPyModule_functools = Py_None;
     CPyModule_importlib = Py_None;
     CPyModule_typing = Py_None;
+    CPyModule_collections___abc = Py_None;
     CPyModule_eth_portfolio_scripts___docker = Py_None;
     CPyModule_typing_extensions = Py_None;
     CPyModule_dao_treasury____nicknames = Py_None;
@@ -33270,6 +33299,7 @@ int CPyGlobalsInit(void)
     CPyModule_dao_treasury___types = Py_None;
     CPyModule_builtins = Py_None;
     CPyModule_typing = Py_None;
+    CPyModule_collections___abc = Py_None;
     CPyModule_y = Py_None;
     if (CPyStatics_Initialize(CPyStatics, CPyLit_Str, CPyLit_Bytes, CPyLit_Int, CPyLit_Float, CPyLit_Complex, CPyLit_Tuple, CPyLit_FrozenSet) < 0) {
         return -1;
@@ -33345,9 +33375,9 @@ const char * const CPyLit_Str[] = {
     "\005$stopping all dao-treasury containers\005print\004down\bbuilding\005 the ",
     "\b\n container\005 and \v containers\002, \006, and \agrafana\005wraps\fcompose_wrap",
     "\004\016docker_compose\r_exec_command\fcompose_file\017compose_options",
-    "\005\027dao_treasury/_docker.py\tfunctools\tresources\timportlib\tCoroutine",
-    "\005\aLiteral\005Tuple\004List\034eth_portfolio_scripts.docker\005files",
-    "\006\023docker-compose.yaml\bjoinpath\fCOMPOSE_FILE\ainit_db\b__exit__\t__enter__",
+    "\005\027dao_treasury/_docker.py\tfunctools\tresources\timportlib\aLiteral",
+    "\004\tCoroutine\034eth_portfolio_scripts.docker\005files\023docker-compose.yaml",
+    "\005\bjoinpath\fCOMPOSE_FILE\ainit_db\b__exit__\t__enter__",
     "\003*0x0000000000000000000000000000000000000000\fZero Address\fDisperse.app",
     "\003 set_address_nicknames_for_tokens\aAddress\fset_nickname",
     "\001\?You can only pass a start block or a start timestamp, not both.",
@@ -33368,13 +33398,13 @@ const char * const CPyLit_Str[] = {
     "\004\036Invalid start.block for chain \004 on \003end\031Invalid \'end\' for wallet ",
     "\002\tend_block9You cannot provide both an end block and an end timestamp",
     "\002\rend_timestamp\035Invalid end block for wallet ",
-    "\004\" end block. Expected integer, got \finitialized \004Dict\bOptional",
+    "\003\" end block. Expected integer, got \finitialized \bOptional",
     "\004\027dao_treasury/_wallet.py\vBlockNumber\006y.time\aWALLETS",
     "\003\024eth_portfolio._utils\reth_portfolio\vy.constants",
     "\002\031dao_treasury/constants.py\fZERO_ADDRESS",
     "\001*0xD152f549545093347A162Dce210e7293f1452150",
     "\003*0xd15fE25eD0Dba12fE05e7029C88b10C25e8880E3\fDISPERSE_APP\006_utils",
-    "\004\023SUPPRESS_ERROR_LOGS\tAwaitable\aNewType\aNetwork",
+    "\004\023SUPPRESS_ERROR_LOGS\aNewType\tAwaitable\aNetwork",
     "",
 };
 const char * const CPyLit_Bytes[] = {
@@ -33387,20 +33417,19 @@ const char * const CPyLit_Int[] = {
 const double CPyLit_Float[] = {0};
 const double CPyLit_Complex[] = {0};
 const int CPyLit_Tuple[] = {
-    67, 2, 10, 11, 1, 35, 1, 37, 1, 39, 1, 15, 1, 30, 2, 43, 17, 1, 45,
+    69, 2, 10, 11, 1, 35, 1, 37, 1, 39, 1, 15, 1, 30, 2, 43, 17, 1, 45,
     4, 47, 48, 49, 50, 7, 52, 53, 54, 55, 56, 57, 58, 7, 27, 60, 61, 62,
     63, 64, 65, 1, 68, 1, 78, 1, 55, 1, 76, 1, 73, 1, 108, 4, 116, 37,
-    117, 118, 2, 119, 120, 3, 122, 123, 123, 1, 384, 3, 126, 127, 128, 1,
+    117, 118, 2, 119, 120, 3, 122, 123, 123, 1, 381, 3, 126, 127, 128, 1,
     91, 2, 131, 132, 1, 100, 1, 166, 3, 37, 117, 118, 1, 119, 3, 168, 168,
-    168, 2, 384, 393, 1, 131, 1, 170, 2, 172, 68, 2, 187, 188, 6, 195, 37,
+    168, 2, 381, 390, 1, 131, 1, 170, 2, 172, 68, 2, 187, 188, 6, 195, 37,
     196, 197, 118, 198, 7, 60, 61, 62, 63, 64, 65, 199, 3, 200, 201, 202,
     1, 224, 1, 226, 5, 228, 229, 37, 117, 230, 1, 209, 1, 128, 1, 232, 4,
     201, 234, 68, 202, 2, 251, 252, 1, 253, 2, 279, 280, 3, 36, 36, 36, 1,
-    412, 1, 275, 1, 283, 8, 195, 119, 285, 37, 286, 287, 117, 288, 3, 289,
-    257, 257, 1, 417, 1, 277, 1, 137, 1, 43, 3, 301, 294, 300, 5, 343, 37,
-    288, 344, 118, 1, 393, 3, 346, 126, 127, 1, 311, 3, 349, 350, 350, 3,
-    351, 134, 134, 2, 427, 428, 7, 228, 359, 119, 120, 286, 360, 197, 1,
-    361
+    409, 1, 275, 1, 283, 4, 195, 37, 285, 117, 2, 119, 286, 3, 287, 257,
+    257, 1, 415, 1, 277, 1, 137, 1, 43, 3, 299, 292, 298, 3, 37, 341, 118,
+    1, 390, 3, 343, 126, 127, 1, 309, 3, 346, 347, 347, 3, 348, 134, 134,
+    2, 425, 426, 4, 228, 285, 356, 197, 3, 357, 119, 120, 1, 358
 };
 const int CPyLit_FrozenSet[] = {0};
 CPyModule *CPyModule_dao_treasury___sorting__internal = NULL;
@@ -33722,9 +33751,9 @@ CPyThreadLocal dao_treasury____docker___compose_wrap_ensure_containers_envObject
 PyTypeObject *CPyType__docker___compose_wrap_ensure_containers_obj;
 PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj(void);
 CPyThreadLocal dao_treasury____docker___compose_wrap_ensure_containers_objObject *_docker___compose_wrap_ensure_containers_obj_free_instance;
-PyTypeObject *CPyType__docker___compose_wrap_gen___3_151;
-PyObject *CPyDef__docker___compose_wrap_gen___3_151(void);
-CPyThreadLocal dao_treasury____docker___compose_wrap_gen___3_151Object *_docker___compose_wrap_gen___3_151_free_instance;
+PyTypeObject *CPyType__docker___compose_wrap_gen___3_152;
+PyObject *CPyDef__docker___compose_wrap_gen___3_152(void);
+CPyThreadLocal dao_treasury____docker___compose_wrap_gen___3_152Object *_docker___compose_wrap_gen___3_152_free_instance;
 char CPyDef__docker___up(PyObject *cpy_r_services);
 PyObject *CPyPy__docker___up(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 char CPyDef__docker___down(void);
@@ -33735,19 +33764,19 @@ char CPyDef__docker____print_notice(PyObject *cpy_r_doing, PyObject *cpy_r_servi
 PyObject *CPyPy__docker____print_notice(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj_____get__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_instance, PyObject *cpy_r_owner);
 PyObject *CPyPy__docker___compose_wrap_ensure_containers_obj_____get__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____next__(PyObject *cpy_r___mypyc_self__);
-PyObject *CPyPy__docker___compose_wrap_gen___3_151_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
-PyObject *CPyPy__docker___compose_wrap_gen___3_151___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____iter__(PyObject *cpy_r___mypyc_self__);
-PyObject *CPyPy__docker___compose_wrap_gen___3_151_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
-PyObject *CPyPy__docker___compose_wrap_gen___3_151___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151___close(PyObject *cpy_r___mypyc_self__);
-PyObject *CPyPy__docker___compose_wrap_gen___3_151___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
-PyObject *CPyDef__docker___compose_wrap_gen___3_151_____await__(PyObject *cpy_r___mypyc_self__);
-PyObject *CPyPy__docker___compose_wrap_gen___3_151_____await__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____mypyc_generator_helper__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback, PyObject *cpy_r_arg, PyObject **cpy_r_stop_iter_ptr);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____next__(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy__docker___compose_wrap_gen___3_152_____next__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152___send(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_arg);
+PyObject *CPyPy__docker___compose_wrap_gen___3_152___send(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____iter__(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy__docker___compose_wrap_gen___3_152_____iter__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152___throw(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_type, PyObject *cpy_r_value, PyObject *cpy_r_traceback);
+PyObject *CPyPy__docker___compose_wrap_gen___3_152___throw(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152___close(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy__docker___compose_wrap_gen___3_152___close(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
+PyObject *CPyDef__docker___compose_wrap_gen___3_152_____await__(PyObject *cpy_r___mypyc_self__);
+PyObject *CPyPy__docker___compose_wrap_gen___3_152_____await__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj_____call__(PyObject *cpy_r___mypyc_self__, PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
 PyObject *CPyPy__docker___compose_wrap_ensure_containers_obj_____call__(PyObject *self, PyObject *const *args, size_t nargs, PyObject *kwnames);
 PyObject *CPyDef__docker___ensure_containers(PyObject *cpy_r_fn);
