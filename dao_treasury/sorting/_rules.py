@@ -8,8 +8,12 @@ import yaml
 from typing_extensions import ParamSpec
 
 from dao_treasury.constants import CHAINID
-from dao_treasury.sorting import (FromAddressMatcher, HashMatcher,
-                                  ToAddressMatcher, _Matcher)
+from dao_treasury.sorting import (
+    FromAddressMatcher,
+    HashMatcher,
+    ToAddressMatcher,
+    _Matcher,
+)
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
 
 _T = TypeVar("_T")
