@@ -1,10 +1,15 @@
 from typing import Any, Final, Generic, Union, final, overload
 
 from dao_treasury.constants import CHAINID
-from dao_treasury.sorting.rule import (CostOfRevenueSortRule, ExpenseSortRule,
-                                       IgnoreSortRule, OtherExpenseSortRule,
-                                       OtherIncomeSortRule, RevenueSortRule,
-                                       TRule)
+from dao_treasury.sorting.rule import (
+    CostOfRevenueSortRule,
+    ExpenseSortRule,
+    IgnoreSortRule,
+    OtherExpenseSortRule,
+    OtherIncomeSortRule,
+    RevenueSortRule,
+    TRule,
+)
 from dao_treasury.types import Networks, SortFunction, TxGroupName
 
 
