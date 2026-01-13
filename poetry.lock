@@ -1627,37 +1627,37 @@ test = ["asn1tools (>=0.146.2)", "eth-hash[pysha3]", "factory-boy (>=3.0.1)", "h
 
 [[package]]
 name = "eth-portfolio"
-version = "0.5.5"
+version = "0.5.6"
 description = "eth-portfolio makes it easy to analyze your portfolio."
 optional = false
 python-versions = "<3.14,>=3.10"
 groups = ["main"]
 files = [
-    {file = "eth_portfolio-0.5.5-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:e05e5ae4d5fadd7118292d9d438ede04314b22b39bf158473afc754752ec3e1a"},
-    {file = "eth_portfolio-0.5.5-cp310-cp310-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:57582149d2d8628f36b1ea29961a2d47b49e960dde8fce7209caf113aa247b08"},
-    {file = "eth_portfolio-0.5.5-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:08316dcd8b9daadac159ba12c96e418fa91feaf78b8ea6887e54a3bf5fc0ac4f"},
-    {file = "eth_portfolio-0.5.5-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:9e642ee5d24d65b0c8909007d7615167b12b2b2c3838192ac0b133860344e758"},
-    {file = "eth_portfolio-0.5.5-cp310-cp310-win32.whl", hash = "sha256:85cafcf22c330deeb376ce7e46e72384afef83ae573c419760b6806a50f5267f"},
-    {file = "eth_portfolio-0.5.5-cp310-cp310-win_amd64.whl", hash = "sha256:bc1a57e27ddd5ed8ee3385188dd8a1911a8e5a39c561ee33759051dbf8b72d9d"},
-    {file = "eth_portfolio-0.5.5-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:521e95c24d6d816a1f2dd28f7d237ad6bd0b785938bf822e1ed3f784b995bde3"},
-    {file = "eth_portfolio-0.5.5-cp311-cp311-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:5b9f7b72aeddf144238f640d842c74bf81544301f7f927558941d17233998200"},
-    {file = "eth_portfolio-0.5.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:8bd01f6996fb4b648eb7cada06741e56d1f63bf7aea796388be073ef32bcea25"},
-    {file = "eth_portfolio-0.5.5-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:a25549cf774795dc13e07ebc4c067ce48323be4e8b2b3e3408d2c42194cb8879"},
-    {file = "eth_portfolio-0.5.5-cp311-cp311-win32.whl", hash = "sha256:2f984b148adad0225e5c88e80a942d92b9225857f9d0f33d4b9c500bbc89fd21"},
-    {file = "eth_portfolio-0.5.5-cp311-cp311-win_amd64.whl", hash = "sha256:13ce689f3392a47b027818435ef4352bb438506a2a63a840a77efa8e9f8c1f48"},
-    {file = "eth_portfolio-0.5.5-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:856a603c587941428d1d3f7459f83486fac5b76b1a1d7e21cbbc18143122c370"},
-    {file = "eth_portfolio-0.5.5-cp312-cp312-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:d8d3ddb015957a8b2c6af20da29987fbbeaf83c8ef247915fa97d92b5adc9632"},
-    {file = "eth_portfolio-0.5.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:46e29fd9dee38241d1b7262c6805a9147faa3078a17172d4fc7e1e2cf0d90519"},
-    {file = "eth_portfolio-0.5.5-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:45d084735f7fed6cfdf0637dea7b93770fc9156e86d3dc317347c1f8b06880a6"},
-    {file = "eth_portfolio-0.5.5-cp312-cp312-win32.whl", hash = "sha256:7eb78f90fe0c432a7e0696d983f3794aad2509fe85bf9065b841dba59a88ff76"},
-    {file = "eth_portfolio-0.5.5-cp312-cp312-win_amd64.whl", hash = "sha256:feed9573c27f99fe35f400c55125dcf5cc6d865a9c4caedbba42c9eaa2f2d9e6"},
-    {file = "eth_portfolio-0.5.5-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:4188f49297ca0e11069a0cf469b5ef158517060a3f0a583d9bef365db7c3af33"},
-    {file = "eth_portfolio-0.5.5-cp313-cp313-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:5c7697468cca0f59926b20e34f220f9a65c685333108cda26e6583c5678b2335"},
-    {file = "eth_portfolio-0.5.5-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:54e3e651cbaa63a7946a50ad68b670a5728777e8237020a35865b45551f67508"},
-    {file = "eth_portfolio-0.5.5-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:6b6d0b991e2b5f4728bc4590a933f6cc1bca2fabc6a23101b95865370305ea54"},
-    {file = "eth_portfolio-0.5.5-cp313-cp313-win32.whl", hash = "sha256:6d3203c8bc44ebb62dc915ac227cb0801f0747a2dcfc2cdc7475b3df71286266"},
-    {file = "eth_portfolio-0.5.5-cp313-cp313-win_amd64.whl", hash = "sha256:3b0bc3856ab8b75ca7387c67b0dd30644d6b0be7c79dd5f3f563e9c4575cf9e4"},
-    {file = "eth_portfolio-0.5.5.tar.gz", hash = "sha256:ee98f79da3d7ee91b5abad15cd18255c950003e7bf7fda6044e1a1afb9392efb"},
+    {file = "eth_portfolio-0.5.6-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:1e30dfb466bf11b2eaef243072b8b983eb2d9918fa08e69a588479513e9a4b14"},
+    {file = "eth_portfolio-0.5.6-cp310-cp310-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:a6497861bbd6907ef27f06179f3a900c779409965d8783660388550e39d7b969"},
+    {file = "eth_portfolio-0.5.6-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:938b7bc32a50367ad63352515a51fdfd80c8b852874c3991d8107b05eb1360d1"},
+    {file = "eth_portfolio-0.5.6-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:b28ece0838acbd5060a1cf30c57a71e7909f53534b9f710aaae4fbcd6324b11b"},
+    {file = "eth_portfolio-0.5.6-cp310-cp310-win32.whl", hash = "sha256:8afa5e79cc956c0899107a1a057a9f0e1547b8ef7fdbf8d022894160402b888a"},
+    {file = "eth_portfolio-0.5.6-cp310-cp310-win_amd64.whl", hash = "sha256:dad497feb0d41f43679a9033079d0f974868833d54a2d33f5e9cf9ce25541e79"},
+    {file = "eth_portfolio-0.5.6-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:e0d251bb84c14c2d837f73186f5a4568ccbed2fdbc7847ee678319c2093d7570"},
+    {file = "eth_portfolio-0.5.6-cp311-cp311-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:38e3a7663e339abff4cb34f4b2746032b4e8f19ca8e763ce4b70bf065ef2abcb"},
+    {file = "eth_portfolio-0.5.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:5602c51d22dbab80bbee49e829fb1c5853d77f2678c825e1ece0c94a5a9bb507"},
+    {file = "eth_portfolio-0.5.6-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:88aff1dda6195ae60447114619138d0be7bc8403522b729177e25b2b75dafe42"},
+    {file = "eth_portfolio-0.5.6-cp311-cp311-win32.whl", hash = "sha256:c4d0038cc78638c06c9a7556704ea5c22e7d83e723541ef0a7fb1b7c0836d094"},
+    {file = "eth_portfolio-0.5.6-cp311-cp311-win_amd64.whl", hash = "sha256:5f43652a0f880728ac279c4a28570cd1b039a85e7a4beaa13ad6c030fb457b1e"},
+    {file = "eth_portfolio-0.5.6-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:77f6e3d708e4f10f2a0554bfafebd7270201ed2de909674ce90a9b7c2491a0fe"},
+    {file = "eth_portfolio-0.5.6-cp312-cp312-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:4739ab7d676452c8f1f1ea6f7d896386eb16f049cc3e293b425986f4e2bfc35b"},
+    {file = "eth_portfolio-0.5.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:5977b2ac9f516a4895cb94a778c57e1785757e79011254708986022e378a4347"},
+    {file = "eth_portfolio-0.5.6-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:1e2eaa45a5bee7259d851c8d97cd6ec812ee95091726ac7280b423039d7e4f74"},
+    {file = "eth_portfolio-0.5.6-cp312-cp312-win32.whl", hash = "sha256:25ac9dab725f704cc13cb1358cd940d3fc595f0b463293c2ba51e20bbe7d3310"},
+    {file = "eth_portfolio-0.5.6-cp312-cp312-win_amd64.whl", hash = "sha256:f53be3bada4d974ca3b11bb1146480a2f59e08e39d236dad81c001efd311a621"},
+    {file = "eth_portfolio-0.5.6-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:9ee7284122d3d5f97b3e1cf1f4d9542f12269cd5c7461e71c453e958a8a03d5f"},
+    {file = "eth_portfolio-0.5.6-cp313-cp313-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:f249a1c44c49809514cb04d6c551341d29252f8d99c719cb92919d382b601dea"},
+    {file = "eth_portfolio-0.5.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:cf3476ff8a263d302d30e92e5ac415fcbe069b433ed113859d345f3239c6f492"},
+    {file = "eth_portfolio-0.5.6-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:37e0a1a4b9fde4ae8382114092ef55a092a4809a6af761d60da3e18c0e4f2426"},
+    {file = "eth_portfolio-0.5.6-cp313-cp313-win32.whl", hash = "sha256:d3356eb4ce13911fa9f078d337b79ae1acc1dc9e31ffb9623ca82b0aabf4f284"},
+    {file = "eth_portfolio-0.5.6-cp313-cp313-win_amd64.whl", hash = "sha256:34fd94e422e4b1a91861e2fd97a8fb0555128a43b4cb4e5b7fd848d36956d606"},
+    {file = "eth_portfolio-0.5.6.tar.gz", hash = "sha256:536407a368098be2f07d5ab202df97e932113285bb1ba243eb05bab86cb667f9"},
 ]
 
 [package.dependencies]
@@ -5928,4 +5928,4 @@ typed-envs = ">=0.2.2,<0.3"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.13"
-content-hash = "3b09ae54c2ac3c78384ce18276416821bda25533f2889e25d012837cc98d0824"
+content-hash = "c666ac3351b5f3f6837093dc69cd0cfa7d8b4d2eb43a8b0121f2ec236facc8dc"
