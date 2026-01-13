@@ -1,10 +1,9 @@
 import os
 import sys
-from dotenv import load_dotenv
 
 import pytest
 from brownie import _config
-
+from dotenv import load_dotenv
 
 if "CI" not in os.environ:
     # running locally (not in GitHub Actions)

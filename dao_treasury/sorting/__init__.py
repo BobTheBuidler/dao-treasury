@@ -34,33 +34,17 @@ from y.exceptions import ContractNotVerified
 
 from dao_treasury import constants, db
 from dao_treasury._wallet import TreasuryWallet
-from dao_treasury.sorting._matchers import (
-    _Matcher,
-    FromAddressMatcher,
-    HashMatcher,
-    ToAddressMatcher,
-)
-from dao_treasury.sorting.factory import (
-    SortRuleFactory,
-    cost_of_revenue,
-    expense,
-    ignore,
-    other_expense,
-    other_income,
-    revenue,
-)
-from dao_treasury.sorting.rule import (
-    SORT_RULES,
-    CostOfRevenueSortRule,
-    ExpenseSortRule,
-    IgnoreSortRule,
-    OtherExpenseSortRule,
-    OtherIncomeSortRule,
-    RevenueSortRule,
-)
+from dao_treasury.sorting._matchers import (FromAddressMatcher, HashMatcher,
+                                            ToAddressMatcher, _Matcher)
+from dao_treasury.sorting.factory import (SortRuleFactory, cost_of_revenue,
+                                          expense, ignore, other_expense,
+                                          other_income, revenue)
+from dao_treasury.sorting.rule import (SORT_RULES, CostOfRevenueSortRule,
+                                       ExpenseSortRule, IgnoreSortRule,
+                                       OtherExpenseSortRule,
+                                       OtherIncomeSortRule, RevenueSortRule)
 from dao_treasury.sorting.rules import *
 from dao_treasury.types import TxGroupDbid
-
 
 logger: Final = getLogger("dao_treasury.sorting")
 

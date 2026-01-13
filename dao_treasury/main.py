@@ -31,13 +31,12 @@ import brownie
 import dank_mids
 import yaml
 from a_sync import create_task
-from dao_treasury._nicknames import setup_address_nicknames_in_db
-from dao_treasury._wallet import load_wallets_from_yaml
 from eth_portfolio_scripts.balances import export_balances
 from eth_typing import BlockNumber
 
+from dao_treasury._nicknames import setup_address_nicknames_in_db
+from dao_treasury._wallet import load_wallets_from_yaml
 from dao_treasury.constants import CHAINID
-
 
 logger = logging.getLogger(__name__)
 
@@ -195,7 +194,7 @@ async def export(args) -> None:
     """
     import eth_portfolio_scripts.docker
 
-    from dao_treasury import _docker, constants, db, Treasury
+    from dao_treasury import Treasury, _docker, constants, db
 
     wallets = getattr(args, "wallet", None)
     wallets_advanced = getattr(args, "wallets", None)

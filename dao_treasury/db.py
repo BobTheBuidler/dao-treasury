@@ -20,22 +20,13 @@ import os
 import typing
 from asyncio import Lock, Semaphore
 from collections import OrderedDict
+from collections.abc import Callable, Coroutine
 from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Final,
-    Literal,
-    TypeVar,
-    Union,
-    cast,
-    final,
-    overload,
-)
-from collections.abc import Callable, Coroutine
+from typing import (TYPE_CHECKING, Any, Final, Literal, TypeVar, Union, cast,
+                    final, overload)
 
 import eth_portfolio
 import pony.orm
@@ -46,36 +37,21 @@ from brownie.convert.datatypes import HexString
 from brownie.exceptions import EventLookupError
 from brownie.network.event import EventDict, _EventItem
 from brownie.network.transaction import TransactionReceipt
-from eth_portfolio.structs import (
-    InternalTransfer,
-    LedgerEntry,
-    TokenTransfer,
-    Transaction,
-)
+from eth_portfolio.structs import (InternalTransfer, LedgerEntry,
+                                   TokenTransfer, Transaction)
 from eth_retry import auto_retry
 from eth_typing import ChecksumAddress, HexAddress, HexStr
-from pony.orm import (
-    Database,
-    InterfaceError,
-    Optional,
-    PrimaryKey,
-    Required,
-    Set,
-    TransactionIntegrityError,
-    commit,
-    composite_key,
-    composite_index,
-    rollback,
-    select,
-)
+from pony.orm import (Database, InterfaceError, Optional, PrimaryKey, Required,
+                      Set, TransactionIntegrityError, commit, composite_index,
+                      composite_key, rollback, select)
 from typing_extensions import ParamSpec
-from y import EEE_ADDRESS, Contract, Network, convert, get_block_timestamp_async
+from y import (EEE_ADDRESS, Contract, Network, convert,
+               get_block_timestamp_async)
 from y.contracts import _get_code
 from y.exceptions import ContractNotVerified
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.types import TxGroupDbid, TxGroupName
-
 
 _T = TypeVar("_T")
 _P = ParamSpec("_P")
