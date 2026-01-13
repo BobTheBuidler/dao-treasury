@@ -20,6 +20,7 @@ import os
 import typing
 from asyncio import Lock, Semaphore
 from collections import OrderedDict
+from collections.abc import Callable, Coroutine
 from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
@@ -35,7 +36,6 @@ from typing import (
     final,
     overload,
 )
-from collections.abc import Callable, Coroutine
 
 import eth_portfolio
 import pony.orm
@@ -63,8 +63,8 @@ from pony.orm import (
     Set,
     TransactionIntegrityError,
     commit,
-    composite_key,
     composite_index,
+    composite_key,
     rollback,
     select,
 )
@@ -75,7 +75,6 @@ from y.exceptions import ContractNotVerified
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.types import TxGroupDbid, TxGroupName
-
 
 _T = TypeVar("_T")
 _P = ParamSpec("_P")

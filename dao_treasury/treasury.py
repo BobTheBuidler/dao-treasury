@@ -16,17 +16,17 @@ This is the main entry point for orchestrating DAO treasury analytics.
 """
 
 from asyncio import create_task, gather
+from collections.abc import Iterable
 from logging import getLogger
 from pathlib import Path
 from typing import Final, Union
-from collections.abc import Iterable
 
 import a_sync
 from a_sync.a_sync.abstract import ASyncABC
-from eth_typing import BlockNumber, HexAddress
 from eth_portfolio.structs import LedgerEntry
 from eth_portfolio.typing import PortfolioBalances
 from eth_portfolio_scripts._portfolio import ExportablePortfolio
+from eth_typing import BlockNumber, HexAddress
 from pony.orm import db_session
 from tqdm.asyncio import tqdm_asyncio
 
@@ -35,7 +35,6 @@ from dao_treasury.constants import CHAINID
 from dao_treasury.db import TreasuryTx
 from dao_treasury.sorting._rules import Rules
 from dao_treasury.streams import llamapay
-
 
 Wallet = Union[TreasuryWallet, str]
 wallet_types = (TreasuryWallet, str)

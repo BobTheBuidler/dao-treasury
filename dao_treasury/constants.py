@@ -19,7 +19,6 @@ from typing import Final
 import eth_portfolio._utils
 import y.constants
 
-
 CHAINID: Final = y.constants.CHAINID
 # TODO: add docstring
 

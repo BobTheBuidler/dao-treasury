@@ -1,7 +1,7 @@
+from collections.abc import Callable
 from logging import getLogger
 from pathlib import Path
 from typing import Final, TypeVar, final
-from collections.abc import Callable
 
 import pony.orm
 import yaml
@@ -9,13 +9,12 @@ from typing_extensions import ParamSpec
 
 from dao_treasury.constants import CHAINID
 from dao_treasury.sorting import (
-    _Matcher,
     FromAddressMatcher,
     HashMatcher,
     ToAddressMatcher,
+    _Matcher,
 )
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
-
 
 _T = TypeVar("_T")
 _P = ParamSpec("_P")

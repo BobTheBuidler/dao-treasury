@@ -35,10 +35,10 @@ from y.exceptions import ContractNotVerified
 from dao_treasury import constants, db
 from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.sorting._matchers import (
-    _Matcher,
     FromAddressMatcher,
     HashMatcher,
     ToAddressMatcher,
+    _Matcher,
 )
 from dao_treasury.sorting.factory import (
     SortRuleFactory,
@@ -60,7 +60,6 @@ from dao_treasury.sorting.rule import (
 )
 from dao_treasury.sorting.rules import *
 from dao_treasury.types import TxGroupDbid
-
 
 logger: Final = getLogger("dao_treasury.sorting")
 

@@ -20,7 +20,6 @@ from pony.orm import db_session
 from dao_treasury import constants
 from dao_treasury.db import Address, init_db, set_address_nicknames_for_tokens
 
-
 set_nickname: Final = Address.set_nickname
 
 

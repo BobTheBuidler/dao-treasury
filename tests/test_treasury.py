@@ -1,6 +1,6 @@
-import pytest
 from unittest.mock import AsyncMock, patch
 
+import pytest
 from brownie.convert.datatypes import EthAddress
 
 from dao_treasury import Treasury, TreasuryWallet, treasury

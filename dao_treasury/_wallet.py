@@ -10,7 +10,6 @@ from y.time import closest_block_after_timestamp
 
 from dao_treasury.constants import CHAINID
 
-
 WALLETS: Final[dict[HexAddress, "TreasuryWallet"]] = {}
 
 to_address: Final = convert.to_address

@@ -1,6 +1,6 @@
+from collections.abc import Callable, Iterable
 from logging import getLogger
 from typing import ClassVar, Final, TypeVar, final
-from collections.abc import Callable, Iterable
 
 import pony.orm
 from eth_typing import ChecksumAddress, HexAddress, HexStr
@@ -9,7 +9,6 @@ from typing_extensions import ParamSpec, Self
 from y import convert
 
 from dao_treasury.types import TxGroupDbid
-
 
 _T = TypeVar("_T")
 _P = ParamSpec("_P")

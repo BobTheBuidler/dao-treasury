@@ -1,7 +1,8 @@
-import pytest
 from pathlib import Path
 
-from dao_treasury._wallet import load_wallets_from_yaml, CHAINID
+import pytest
+
+from dao_treasury._wallet import CHAINID, load_wallets_from_yaml
 
 
 def write_yaml_file(tmp_path, content: str) -> Path:

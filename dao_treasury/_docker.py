@@ -14,10 +14,10 @@ This is the main entry for all Docker-based orchestration.
 """
 
 import logging
+from collections.abc import Callable, Coroutine
 from functools import wraps
 from importlib import resources
 from typing import Any, Final, Literal, TypeVar
-from collections.abc import Callable, Coroutine
 
 import eth_portfolio_scripts.docker
 from eth_portfolio_scripts.docker import docker_compose

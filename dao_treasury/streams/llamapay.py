@@ -1,31 +1,29 @@
 import asyncio
 import datetime as dt
 import decimal
+from collections.abc import Awaitable, Callable, Iterator
 from logging import getLogger
 from typing import Final, final
-from collections.abc import Awaitable, Callable, Iterator
 
 import dank_mids
 import pony.orm
+import y
 from a_sync import AsyncThreadPoolExecutor, igather
 from brownie.network.event import _EventItem
 from eth_typing import BlockNumber, ChecksumAddress, HexAddress, HexStr
 from tqdm.asyncio import tqdm_asyncio
-
-import y
 from y.time import NoBlockFound, UnixTimestamp
 from y.utils.events import decode_logs, get_logs_asap
 
 from dao_treasury import constants
+from dao_treasury._wallet import TreasuryWallet
 from dao_treasury.db import (
+    Address,
     Stream,
     StreamedFunds,
-    Address,
     Token,
     must_sort_outbound_txgroup_dbid,
 )
-from dao_treasury._wallet import TreasuryWallet
-
 
 logger: Final = getLogger(__name__)
 

@@ -32,7 +32,6 @@ from dao_treasury.sorting import (
 )
 from dao_treasury.treasury import Treasury
 
-
 if ENVS.SQL_DEBUG:
     import pony.orm
 
