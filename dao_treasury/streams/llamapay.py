@@ -17,13 +17,8 @@ from y.utils.events import decode_logs, get_logs_asap
 
 from dao_treasury import constants
 from dao_treasury._wallet import TreasuryWallet
-from dao_treasury.db import (
-    Address,
-    Stream,
-    StreamedFunds,
-    Token,
-    must_sort_outbound_txgroup_dbid,
-)
+from dao_treasury.db import (Address, Stream, StreamedFunds, Token,
+                             must_sort_outbound_txgroup_dbid)
 
 logger: Final = getLogger(__name__)
 
