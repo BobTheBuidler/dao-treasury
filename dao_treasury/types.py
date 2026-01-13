@@ -5,11 +5,14 @@ from y import Network
 
 if TYPE_CHECKING:
     from dao_treasury.db import TreasuryTx
-    from dao_treasury.sorting.rule import (CostOfRevenueSortRule,
-                                           ExpenseSortRule, IgnoreSortRule,
-                                           OtherExpenseSortRule,
-                                           OtherIncomeSortRule,
-                                           RevenueSortRule)
+    from dao_treasury.sorting.rule import (
+        CostOfRevenueSortRule,
+        ExpenseSortRule,
+        IgnoreSortRule,
+        OtherExpenseSortRule,
+        OtherIncomeSortRule,
+        RevenueSortRule,
+    )
 
 
 Networks = Union[Network, Iterable[Network]]
