@@ -16,7 +16,8 @@ This is the main entry for all Docker-based orchestration.
 import logging
 from functools import wraps
 from importlib import resources
-from typing import Any, Callable, Coroutine, Final, Literal, Tuple, TypeVar, List
+from typing import Any, Final, Literal, TypeVar
+from collections.abc import Callable, Coroutine
 
 import eth_portfolio_scripts.docker
 from eth_portfolio_scripts.docker import docker_compose
@@ -100,7 +101,7 @@ def build(*services: str) -> None:
 
 
 def _print_notice(
-    doing: Literal["building", "starting"], services: Tuple[str, ...]
+    doing: Literal["building", "starting"], services: tuple[str, ...]
 ) -> None:
     if len(services) == 1:
         container = services[0]
@@ -168,7 +169,7 @@ def ensure_containers(
     return compose_wrap
 
 
-def _exec_command(command: List[str], *, compose_options: Tuple[str, ...] = ()) -> None:
+def _exec_command(command: list[str], *, compose_options: tuple[str, ...] = ()) -> None:
     """Execute a Docker Compose command with system checks and fallback.
 
     This internal function ensures that Docker and Docker Compose

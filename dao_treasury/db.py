@@ -27,18 +27,15 @@ from logging import getLogger
 from typing import (
     TYPE_CHECKING,
     Any,
-    Callable,
-    Coroutine,
-    Dict,
     Final,
     Literal,
-    Tuple,
     TypeVar,
     Union,
     cast,
     final,
     overload,
 )
+from collections.abc import Callable, Coroutine
 
 import eth_portfolio
 import pony.orm
@@ -361,7 +358,7 @@ class Address(DbEntity):
                 logger.info("%s nickname set to %s", entity.address, nickname)
 
     @staticmethod
-    def set_nicknames(nicknames: Dict[HexAddress, str]) -> None:
+    def set_nicknames(nicknames: dict[HexAddress, str]) -> None:
         with db_session:
             for address, nickname in nicknames.items():
                 Address.set_nickname(address, nickname)
@@ -779,7 +776,7 @@ class TreasuryTx(DbEntity):
     composite_index(chain, timestamp, from_address, to_address)
 
     @property
-    def to_nickname(self) -> typing.Optional[str]:
+    def to_nickname(self) -> str | None:
         """Human-readable label for the recipient address, if any."""
         if to_address := self.to_address:
             return to_address.nickname or to_address.address
@@ -870,7 +867,7 @@ class TreasuryTx(DbEntity):
         )
 
     @staticmethod
-    def __insert(entry: LedgerEntry, ts: int) -> typing.Optional[int]:
+    def __insert(entry: LedgerEntry, ts: int) -> int | None:
         """Synchronously insert a ledger entry record into the database.
 
         Handles both :class:`TokenTransfer` and other ledger entry types,
@@ -1029,7 +1026,7 @@ class TreasuryTx(DbEntity):
             db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;")
 
 
-_stream_metadata_cache: Final[Dict[HexStr, Tuple[ChecksumAddress, date]]] = {}
+_stream_metadata_cache: Final[dict[HexStr, tuple[ChecksumAddress, date]]] = {}
 
 
 def refresh_matview(name: str) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]:
@@ -1091,7 +1088,7 @@ class Stream(DbEntity):
             return any(sf.is_last_day for sf in Stream[stream_id].streamed_funds)
 
     @staticmethod
-    def _get_start_and_end(stream_dbid: HexStr) -> Tuple[datetime, datetime]:
+    def _get_start_and_end(stream_dbid: HexStr) -> tuple[datetime, datetime]:
         with db_session:
             stream = Stream[stream_dbid]
             start_date, end = stream.start_date, datetime.now(_UTC)
@@ -1111,7 +1108,7 @@ class Stream(DbEntity):
         self.status = "Paused"
 
     @staticmethod
-    def _get_token_and_start_date(stream_id: HexStr) -> Tuple[ChecksumAddress, date]:
+    def _get_token_and_start_date(stream_id: HexStr) -> tuple[ChecksumAddress, date]:
         try:
             return _stream_metadata_cache[stream_id]
         except KeyError:
@@ -1615,9 +1612,7 @@ def create_usdval_presum_expenses_matview() -> None:
 
 
 @db_session
-def _validate_integrity_error(
-    entry: LedgerEntry, log_index: int
-) -> typing.Optional[int]:
+def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> int | None:
     """Validate that an existing TreasuryTx matches an attempted insert on conflict.
 
     Raises AssertionError if any field deviates from the existing record.  Used
