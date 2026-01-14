@@ -185,9 +185,7 @@ setup(
     description=poetry_config["description"],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=poetry_dependencies_to_install_requires(
-        poetry_config["dependencies"]
-    ),
+    install_requires=poetry_dependencies_to_install_requires(poetry_config["dependencies"]),
     ext_modules=ext_modules,
     zip_safe=False,
     classifiers=[

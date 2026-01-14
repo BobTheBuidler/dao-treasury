@@ -8,12 +8,7 @@ import yaml
 from typing_extensions import ParamSpec
 
 from dao_treasury.constants import CHAINID
-from dao_treasury.sorting import (
-    FromAddressMatcher,
-    HashMatcher,
-    ToAddressMatcher,
-    _Matcher,
-)
+from dao_treasury.sorting import FromAddressMatcher, HashMatcher, ToAddressMatcher, _Matcher
 from dao_treasury.types import TopLevelCategory, TxGroupDbid
 
 _T = TypeVar("_T")
@@ -108,9 +103,7 @@ class Rules:
         if self.__initialized:
             raise RuntimeError("You cannot initialize the rules more than once")
         self.__build_matchers_for_all_groups("match_on_hash", HashMatcher)
-        self.__build_matchers_for_all_groups(
-            "match_on_from_address", FromAddressMatcher
-        )
+        self.__build_matchers_for_all_groups("match_on_from_address", FromAddressMatcher)
         self.__build_matchers_for_all_groups("match_on_to_address", ToAddressMatcher)
         self.__initialized = True
 

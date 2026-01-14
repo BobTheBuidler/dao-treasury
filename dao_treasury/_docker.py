@@ -25,9 +25,7 @@ from typing_extensions import ParamSpec
 
 logger: Final = logging.getLogger(__name__)
 
-COMPOSE_FILE: Final = str(
-    resources.files("dao_treasury").joinpath("docker-compose.yaml")
-)
+COMPOSE_FILE: Final = str(resources.files("dao_treasury").joinpath("docker-compose.yaml"))
 """The path of dao-treasury's docker-compose.yaml file on your machine"""
 
 
@@ -100,9 +98,7 @@ def build(*services: str) -> None:
     _exec_command(["build", *services])
 
 
-def _print_notice(
-    doing: Literal["building", "starting"], services: tuple[str, ...]
-) -> None:
+def _print_notice(doing: Literal["building", "starting"], services: tuple[str, ...]) -> None:
     if len(services) == 1:
         container = services[0]
         print(f"{doing} the {container} container")

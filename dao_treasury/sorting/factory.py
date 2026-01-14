@@ -123,9 +123,7 @@ def other_expense(
     return SortRuleFactory(txgroup, networks, OtherExpenseSortRule)
 
 
-def ignore(
-    txgroup: TxGroupName, networks: Networks = CHAINID
-) -> "SortRuleFactory[IgnoreSortRule]":
+def ignore(txgroup: TxGroupName, networks: Networks = CHAINID) -> "SortRuleFactory[IgnoreSortRule]":
     """Create a factory to register ignore sort rules for a given transaction group.
 
     Args:
@@ -177,9 +175,7 @@ class SortRuleFactory(Generic[TRule]):
             rule_type: Sort rule class (e.g., RevenueSortRule) to instantiate.
         """
         self.txgroup: Final = txgroup
-        self.networks: Final = (
-            [networks] if isinstance(networks, int) else list(networks)
-        )
+        self.networks: Final = [networks] if isinstance(networks, int) else list(networks)
         self.rule_type: Final = rule_type
         self._rule: TRule | None = None
 

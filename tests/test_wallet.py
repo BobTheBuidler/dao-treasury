@@ -212,9 +212,7 @@ def test_start_block_property(start_block, start_timestamp, expected, id):
     ],
     ids=lambda x: x if isinstance(x, str) else None,
 )
-def test_start_block_property_errors(
-    start_block, start_timestamp, expected_exception, id
-):
+def test_start_block_property_errors(start_block, start_timestamp, expected_exception, id):
     # Arrange
     address = "0x000000000000000000000000000000000000dead"
 
