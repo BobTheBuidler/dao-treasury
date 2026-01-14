@@ -62,7 +62,7 @@ jobs:
       uses: snok/install-poetry@v1
       
     - name: Save Poetry cache
-      if: ${{ env.IS_UBUNTU_32BIT != 'true' && (success() || env.TOX_RECREATE_FLAG == '-r') }}
+      if: steps.cached-poetry.outputs.cache-hit != 'true'
       uses: actions/cache/save@v5
       with:
         path: ${{ matrix.poetry_path }}
