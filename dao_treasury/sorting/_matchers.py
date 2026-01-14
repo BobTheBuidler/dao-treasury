@@ -241,9 +241,7 @@ class _AddressMatcher(_HexStringMatcher):
             address = convert.to_address(self._validate_hexstr(address))
             for matcher in self.__instances__:
                 if address in matcher:
-                    raise ValueError(
-                        f"address {address} already has a matcher: {matcher}"
-                    )
+                    raise ValueError(f"address {address} already has a matcher: {matcher}")
             if address in validated:
                 logger.warning("duplicate address %s", address)
             validated.add(address)

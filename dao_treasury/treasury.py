@@ -96,9 +96,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         """
         global TREASURY
         if TREASURY is not None:
-            raise RuntimeError(
-                f"You can only initialize one {type(self).__name__} object"
-            )
+            raise RuntimeError(f"You can only initialize one {type(self).__name__} object")
         ASyncABC.__init__(self)
 
         self.wallets: Final[list[TreasuryWallet]] = []
@@ -110,9 +108,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
             elif isinstance(wallet, TreasuryWallet):
                 self.wallets.append(wallet)
             else:
-                raise TypeError(
-                    f"`wallets` can only contain: {wallet_types}  You passed {wallet}"
-                )
+                raise TypeError(f"`wallets` can only contain: {wallet_types}  You passed {wallet}")
 
         self.sort_rules: Final = Rules(sort_rules) if sort_rules else None
 
@@ -146,9 +142,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
     def txs(self) -> a_sync.ASyncIterator[LedgerEntry]:
         return self.portfolio.ledger.all_entries
 
-    async def _insert_txs(
-        self, start_block: BlockNumber, end_block: BlockNumber
-    ) -> None:
+    async def _insert_txs(self, start_block: BlockNumber, end_block: BlockNumber) -> None:
         """Populate the database with treasury transactions in a block range.
 
         Streams ledger entries from `start_block` up to (but not including)
@@ -180,9 +174,7 @@ class Treasury(a_sync.ASyncGenericBase):  # type: ignore [misc]
         if self._llamapay is not None:
             await self._llamapay.process_streams(run_forever=True)
 
-    async def populate_db(
-        self, start_block: BlockNumber, end_block: BlockNumber
-    ) -> None:
+    async def populate_db(self, start_block: BlockNumber, end_block: BlockNumber) -> None:
         """
         Populate the database with treasury transactions and streams in parallel.
         """

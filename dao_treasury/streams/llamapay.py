@@ -17,13 +17,7 @@ from y.utils.events import decode_logs, get_logs_asap
 
 from dao_treasury import constants
 from dao_treasury._wallet import TreasuryWallet
-from dao_treasury.db import (
-    Address,
-    Stream,
-    StreamedFunds,
-    Token,
-    must_sort_outbound_txgroup_dbid,
-)
+from dao_treasury.db import Address, Stream, StreamedFunds, Token, must_sort_outbound_txgroup_dbid
 
 logger: Final = getLogger(__name__)
 
@@ -94,9 +88,7 @@ def _get_streamToStart(stream_id: HexStr) -> _StreamToStart:
     return streamToStart
 
 
-async def _get_start_timestamp(
-    stream_id: HexStr, block: BlockNumber | None = None
-) -> int:
+async def _get_start_timestamp(stream_id: HexStr, block: BlockNumber | None = None) -> int:
     streamToStart = _streamToStart_cache.get(stream_id)
     if streamToStart is None:
         streamToStart = await _STREAMS_THREAD.run(_get_streamToStart, stream_id)
@@ -161,14 +153,11 @@ class LlamaPayProcessor:
 
     async def _get_streams(self) -> None:
         await igather(
-            self._load_contract_events(stream_contract)
-            for stream_contract in self.stream_contracts
+            self._load_contract_events(stream_contract) for stream_contract in self.stream_contracts
         )
 
     async def _load_contract_events(self, stream_contract: y.Contract) -> None:
-        events = decode_logs(
-            await get_logs_asap(stream_contract.address, None, sync=False)
-        )
+        events = decode_logs(await get_logs_asap(stream_contract.address, None, sync=False))
         keys: set[str] = set(events.keys())
         for k in keys:
             if k not in self.handled_events and k not in self.skipped_events:
@@ -179,9 +168,7 @@ class LlamaPayProcessor:
                 from_address, *_ = event.values()
                 with db_session:
                     from_address = Address.get_or_insert(from_address).address
-                if not TreasuryWallet.check_membership(
-                    from_address, event.block_number
-                ):
+                if not TreasuryWallet.check_membership(from_address, event.block_number):
                     continue
                 await _STREAMS_THREAD.run(self._get_stream, event)
 
@@ -190,43 +177,31 @@ class LlamaPayProcessor:
                 from_address, *_ = event.values()
                 with db_session:
                     from_address = Address.get_or_insert(from_address).address
-                if not TreasuryWallet.check_membership(
-                    from_address, event.block_number
-                ):
+                if not TreasuryWallet.check_membership(from_address, event.block_number):
                     continue
                 await _STREAMS_THREAD.run(self._get_stream, event)
 
         if "StreamModified" in keys:
             for event in events["StreamModified"]:
                 from_address, _, _, old_stream_id, *_ = event.values()
-                if not TreasuryWallet.check_membership(
-                    from_address, event.block_number
-                ):
+                if not TreasuryWallet.check_membership(from_address, event.block_number):
                     continue
-                await _STREAMS_THREAD.run(
-                    _stop_stream, old_stream_id.hex(), event.block_number
-                )
+                await _STREAMS_THREAD.run(_stop_stream, old_stream_id.hex(), event.block_number)
                 await _STREAMS_THREAD.run(self._get_stream, event)
 
         if "StreamPaused" in keys:
             for event in events["StreamPaused"]:
                 from_address, *_, stream_id = event.values()
-                if not TreasuryWallet.check_membership(
-                    from_address, event.block_number
-                ):
+                if not TreasuryWallet.check_membership(from_address, event.block_number):
                     continue
                 await _STREAMS_THREAD.run(_pause_stream, stream_id.hex())
 
         if "StreamCancelled" in keys:
             for event in events["StreamCancelled"]:
                 from_address, *_, stream_id = event.values()
-                if not TreasuryWallet.check_membership(
-                    from_address, event.block_number
-                ):
+                if not TreasuryWallet.check_membership(from_address, event.block_number):
                     continue
-                await _STREAMS_THREAD.run(
-                    _stop_stream, stream_id.hex(), event.block_number
-                )
+                await _STREAMS_THREAD.run(_stop_stream, stream_id.hex(), event.block_number)
 
     def _get_stream(self, log: _EventItem) -> Stream:
         with db_session:
@@ -234,9 +209,7 @@ class LlamaPayProcessor:
                 from_address, to_address, amount_per_second, stream_id = log.values()
                 reason = None
             elif log.name == "StreamCreatedWithReason":
-                from_address, to_address, amount_per_second, stream_id, reason = (
-                    log.values()
-                )
+                from_address, to_address, amount_per_second, stream_id, reason = log.values()
             elif log.name == "StreamModified":
                 (
                     from_address,
@@ -277,20 +250,14 @@ class LlamaPayProcessor:
             streams = Stream.select(lambda s: s.to_address.address == recipient)
             if at_block is None:
                 return list(streams)
-            return [
-                s for s in streams if (s.end_block is None or at_block <= s.end_block)
-            ]
+            return [s for s in streams if (s.end_block is None or at_block <= s.end_block)]
 
     def streams_for_token(
         self, token: ChecksumAddress, include_inactive: bool = False
     ) -> list[Stream]:
         with db_session:
             streams = Stream.select(lambda s: s.token.address.address == token)
-            return (
-                list(streams)
-                if include_inactive
-                else [s for s in streams if s.is_alive]
-            )
+            return list(streams) if include_inactive else [s for s in streams if s.is_alive]
 
     async def process_streams(self, run_forever: bool = False) -> None:
         logger.info("Processing stream events and streamed funds...")
@@ -299,16 +266,11 @@ class LlamaPayProcessor:
         with db_session:
             streams = [s.stream_id for s in Stream.select()]
         await tqdm_asyncio.gather(
-            *(
-                self.process_stream(stream_id, run_forever=run_forever)
-                for stream_id in streams
-            ),
+            *(self.process_stream(stream_id, run_forever=run_forever) for stream_id in streams),
             desc="LlamaPay Streams",
         )
 
-    async def process_stream(
-        self, stream_id: HexStr, run_forever: bool = False
-    ) -> None:
+    async def process_stream(self, stream_id: HexStr, run_forever: bool = False) -> None:
         start, end = await _STREAMS_THREAD.run(Stream._get_start_and_end, stream_id)
         for date_obj in _generate_dates(start, end, stop_at_today=not run_forever):
             if await self.process_stream_for_date(stream_id, date_obj) is None:
@@ -317,9 +279,7 @@ class LlamaPayProcessor:
     async def process_stream_for_date(
         self, stream_id: HexStr, date_obj: dt.datetime
     ) -> StreamedFunds | None:
-        entity = await _STREAMS_THREAD.run(
-            StreamedFunds.get_entity, stream_id, date_obj
-        )
+        entity = await _STREAMS_THREAD.run(StreamedFunds.get_entity, stream_id, date_obj)
         if entity:
             return entity
 
@@ -335,9 +295,7 @@ class LlamaPayProcessor:
                 block = await get_block_at_timestamp(check_at, sync=False)
             except NoBlockFound:
                 sleep_time = (check_at - now(tz=_UTC)).total_seconds()
-                logger.debug(
-                    "no block found for %s, sleeping %ss", check_at, sleep_time
-                )
+                logger.debug("no block found for %s, sleeping %ss", check_at, sleep_time)
                 await sleep(sleep_time)
             else:
                 break

@@ -25,17 +25,7 @@ from datetime import date, datetime, time, timezone
 from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from logging import getLogger
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Final,
-    Literal,
-    TypeVar,
-    Union,
-    cast,
-    final,
-    overload,
-)
+from typing import TYPE_CHECKING, Any, Final, Literal, TypeVar, Union, cast, final, overload
 
 import eth_portfolio
 import pony.orm
@@ -46,12 +36,7 @@ from brownie.convert.datatypes import HexString
 from brownie.exceptions import EventLookupError
 from brownie.network.event import EventDict, _EventItem
 from brownie.network.transaction import TransactionReceipt
-from eth_portfolio.structs import (
-    InternalTransfer,
-    LedgerEntry,
-    TokenTransfer,
-    Transaction,
-)
+from eth_portfolio.structs import InternalTransfer, LedgerEntry, TokenTransfer, Transaction
 from eth_retry import auto_retry
 from eth_typing import ChecksumAddress, HexAddress, HexStr
 from pony.orm import (
@@ -108,9 +93,7 @@ logger = getLogger("dao_treasury.db")
 
 # these helpers are to avoid mypy err code [untyped-decorator]
 db_session: Callable[[Callable[_P, _T]], Callable[_P, _T]] = pony.orm.db_session
-retry_locked: Callable[[Callable[_P, _T]], Callable[_P, _T]] = (
-    y._db.decorators.retry_locked
-)
+retry_locked: Callable[[Callable[_P, _T]], Callable[_P, _T]] = y._db.decorators.retry_locked
 
 
 @final
@@ -312,9 +295,7 @@ class Address(DbEntity):
 
         if _get_code(checksum_address, None).hex().removeprefix("0x"):
             try:
-                nickname = (
-                    f"Contract: {Contract(checksum_address)._build['contractName']}"
-                )
+                nickname = f"Contract: {Contract(checksum_address)._build['contractName']}"
             except ContractNotVerified:
                 nickname = f"Non-Verified Contract: {checksum_address}"
 
@@ -348,9 +329,7 @@ class Address(DbEntity):
                 old = entity.nickname
                 entity.nickname = nickname
                 commit()
-                logger.info(
-                    "%s nickname changed from %s to %s", entity.address, old, nickname
-                )
+                logger.info("%s nickname changed from %s to %s", entity.address, old, nickname)
             else:
                 entity.nickname = nickname
                 commit()
@@ -542,9 +521,7 @@ class Token(DbEntity):
             decimals = 0
 
         # update address nickname for token
-        if address_entity.nickname is None or address_entity.nickname.startswith(
-            "Contract: "
-        ):
+        if address_entity.nickname is None or address_entity.nickname.startswith("Contract: "):
             # Don't overwrite any intentionally set nicknames, if applicable
             address_entity.nickname = f"Token: {name}"
 
@@ -619,9 +596,7 @@ class TxGroup(DbEntity):
 
     @staticmethod
     @lru_cache(maxsize=None)
-    def get_dbid(
-        name: TxGroupName, parent: typing.Optional["TxGroup"] = None
-    ) -> TxGroupDbid:
+    def get_dbid(name: TxGroupName, parent: typing.Optional["TxGroup"] = None) -> TxGroupDbid:
         """Get or insert a transaction group and return its database ID.
 
         Args:
@@ -644,9 +619,7 @@ class TxGroup(DbEntity):
             raise ValueError(f"TxGroup[{dbid}] not found")
 
     @staticmethod
-    def get_or_insert(
-        name: TxGroupName, parent: typing.Optional["TxGroup"]
-    ) -> "TxGroup":
+    def get_or_insert(name: TxGroupName, parent: typing.Optional["TxGroup"]) -> "TxGroup":
         """Insert or fetch a transaction group.
 
         Args:
@@ -725,9 +698,7 @@ class TreasuryTx(DbEntity):
     token = Required(Token, reverse="treasury_tx", column="token_id", index=True)
     """Foreign key to the token record used in the transfer."""
 
-    from_address = Optional(
-        Address, reverse="treasury_tx_from", column="from", index=True
-    )
+    from_address = Optional(Address, reverse="treasury_tx_from", column="from", index=True)
     """Foreign key to sender address record."""
 
     to_address = Optional(Address, reverse="treasury_tx_to", column="to", index=True)
@@ -748,9 +719,7 @@ class TreasuryTx(DbEntity):
     gas_price = Optional(Decimal, 38, 1)
     """Gas price paid, in native token units (native transfers only)."""
 
-    txgroup = Required(
-        "TxGroup", reverse="treasury_tx", column="txgroup_id", index=True
-    )
+    txgroup = Required("TxGroup", reverse="treasury_tx", column="txgroup_id", index=True)
     """Foreign key to the categorization group."""
 
     composite_index(chain, txgroup)
@@ -861,9 +830,7 @@ class TreasuryTx(DbEntity):
                     raise
 
     async def _set_txgroup(self, txgroup_dbid: TxGroupDbid) -> None:
-        await _SORT_THREAD.run(
-            TreasuryTx.__set_txgroup, self.treasury_tx_id, txgroup_dbid
-        )
+        await _SORT_THREAD.run(TreasuryTx.__set_txgroup, self.treasury_tx_id, txgroup_dbid)
 
     @staticmethod
     def __insert(entry: LedgerEntry, ts: int) -> int | None:
@@ -890,12 +857,8 @@ class TreasuryTx(DbEntity):
                     token = Token.get_dbid(EEE_ADDRESS)
                     log_index = None
                     gas = entry.gas
-                    gas_used = (
-                        entry.gas_used if isinstance(entry, InternalTransfer) else None
-                    )
-                    gas_price = (
-                        entry.gas_price if isinstance(entry, Transaction) else None
-                    )
+                    gas_used = entry.gas_used if isinstance(entry, InternalTransfer) else None
+                    gas_price = entry.gas_price if isinstance(entry, Transaction) else None
 
                 if to_address := entry.to_address:
                     to_address = Address.get_dbid(to_address)
@@ -1008,9 +971,7 @@ class TreasuryTx(DbEntity):
                     db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum;")
                     db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_revenue;")
                     db.execute("REFRESH MATERIALIZED VIEW usdvalue_presum_expenses;")
-                logger.info(
-                    "Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid)
-                )
+                logger.info("Sorted %s to %s", entry, TxGroup.get_fullname(txgroup_dbid))
                 return None
             return cast(int, dbid)
 
@@ -1172,9 +1133,7 @@ class StreamedFunds(DbEntity):
         is_last_day: bool,
     ) -> "StreamedFunds":
         stream = Stream[stream_id]
-        amount_streamed_today = round(
-            stream.amount_per_second * seconds_active / stream.scale, 18
-        )
+        amount_streamed_today = round(stream.amount_per_second * seconds_active / stream.scale, 18)
         entity = StreamedFunds(
             date=date,
             stream=stream,
@@ -1635,9 +1594,7 @@ def _validate_integrity_error(entry: LedgerEntry, log_index: int) -> int | None:
                 and tx.chain == chain_dbid
             )
         )
-        raise ValueError(
-            f"unable to `.get` due to multiple entries: {existing_objects}"
-        )
+        raise ValueError(f"unable to `.get` due to multiple entries: {existing_objects}")
     if entry.to_address:
         assert entry.to_address == existing_object.to_address.address, (
             entry.to_address,
@@ -1693,9 +1650,7 @@ def _drop_shitcoin_txs() -> None:
     """
     shitcoins = eth_portfolio.SHITCOINS[CHAINID]
     with db_session:
-        shitcoin_txs = select(
-            tx for tx in TreasuryTx if tx.token.address.address in shitcoins
-        )
+        shitcoin_txs = select(tx for tx in TreasuryTx if tx.token.address.address in shitcoins)
         if count := shitcoin_txs.count():
             logger.info(f"Purging {count} shitcoin txs from the database...")
             for tx in shitcoin_txs:

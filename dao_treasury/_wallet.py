@@ -47,9 +47,7 @@ class TreasuryWallet:
         start_timestamp = self.start_timestamp
         if start_block is not None:
             if start_timestamp is not None:
-                raise ValueError(
-                    "You can only pass a start block or a start timestamp, not both."
-                )
+                raise ValueError("You can only pass a start block or a start timestamp, not both.")
             elif start_block < 0:
                 raise ValueError("start_block can not be negative")
         if start_timestamp is not None and start_timestamp < 0:
@@ -59,9 +57,7 @@ class TreasuryWallet:
         end_timestamp = self.end_timestamp
         if end_block is not None:
             if end_timestamp is not None:
-                raise ValueError(
-                    "You can only pass an end block or an end timestamp, not both."
-                )
+                raise ValueError("You can only pass an end block or an end timestamp, not both.")
             elif end_block < 0:
                 raise ValueError("end_block can not be negative")
         if end_timestamp is not None and end_timestamp < 0:
@@ -73,9 +69,7 @@ class TreasuryWallet:
         WALLETS[addr] = self
 
     @staticmethod
-    def check_membership(
-        address: HexAddress | None, block: BlockNumber | None = None
-    ) -> bool:
+    def check_membership(address: HexAddress | None, block: BlockNumber | None = None) -> bool:
         if address is None:
             return False
         wallet = TreasuryWallet._get_instance(address)
@@ -153,9 +147,7 @@ def load_wallets_from_yaml(path: Path) -> list[TreasuryWallet]:
         # Extract optional networks list
         networks = cfg.get("networks")
         if networks:
-            if not isinstance(networks, list) or not all(
-                isinstance(n, int) for n in networks
-            ):
+            if not isinstance(networks, list) or not all(isinstance(n, int) for n in networks):
                 raise ValueError(
                     f"'networks' for wallet {address} must be a list of integers, got {networks}"
                 )
@@ -170,9 +162,7 @@ def load_wallets_from_yaml(path: Path) -> list[TreasuryWallet]:
         for key, value in start_cfg.items():
             if key == "timestamp":
                 if "start_block" in kwargs:
-                    raise ValueError(
-                        "You cannot provide both a start block and a start timestamp"
-                    )
+                    raise ValueError("You cannot provide both a start block and a start timestamp")
                 kwargs["start_timestamp"] = value
             elif key == "block":
                 if not isinstance(value, dict):
@@ -195,16 +185,12 @@ def load_wallets_from_yaml(path: Path) -> list[TreasuryWallet]:
                             )
                         kwargs["start_block"] = start_block
             else:
-                raise ValueError(
-                    f"Invalid key: {key}. Valid options are 'block' or 'timestamp'."
-                )
+                raise ValueError(f"Invalid key: {key}. Valid options are 'block' or 'timestamp'.")
 
         chain_block = start_cfg.get(str(CHAINID)) or start_cfg.get(CHAINID)
         if chain_block is not None:
             if not isinstance(chain_block, int):
-                raise ValueError(
-                    f"Invalid start.block for chain {CHAINID} on {address}"
-                )
+                raise ValueError(f"Invalid start.block for chain {CHAINID} on {address}")
             kwargs["start_block"] = chain_block
 
         # Parse end: timestamp universal, block under chain key
@@ -217,9 +203,7 @@ def load_wallets_from_yaml(path: Path) -> list[TreasuryWallet]:
         for key, value in end_cfg.items():
             if key == "timestamp":
                 if "end_block" in kwargs:
-                    raise ValueError(
-                        "You cannot provide both an end block and an end timestamp"
-                    )
+                    raise ValueError("You cannot provide both an end block and an end timestamp")
                 kwargs["end_timestamp"] = value
             elif key == "block":
                 if not isinstance(value, dict):
@@ -238,9 +222,7 @@ def load_wallets_from_yaml(path: Path) -> list[TreasuryWallet]:
                     if chainid == CHAINID:
                         kwargs["end_block"] = end_block
             else:
-                raise ValueError(
-                    f"Invalid key: {key}. Valid options are 'block' or 'timestamp'."
-                )
+                raise ValueError(f"Invalid key: {key}. Valid options are 'block' or 'timestamp'.")
 
         wallet = TreasuryWallet(**kwargs)
         print(f"initialized {wallet}")

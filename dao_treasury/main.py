@@ -242,9 +242,7 @@ async def export(args) -> None:
                 )
             custom_buckets[address] = bucket
 
-    treasury = Treasury(
-        wallets, args.sort_rules, custom_buckets=custom_buckets, asynchronous=True
-    )
+    treasury = Treasury(wallets, args.sort_rules, custom_buckets=custom_buckets, asynchronous=True)
 
     # Start only the requested containers
     if args.start_renderer is True:

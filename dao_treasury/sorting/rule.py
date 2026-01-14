@@ -204,9 +204,7 @@ class _SortRule:
             :attr:`_match_all`
         """
         if matchers := _match_all[self.txgroup]:
-            return all(
-                getattr(tx, matcher) == getattr(self, matcher) for matcher in matchers
-            )
+            return all(getattr(tx, matcher) == getattr(self, matcher) for matcher in matchers)
 
         _log_debug("checking %s for %s", tx, self.func)
         match = self.func(tx)  # type: ignore [misc]
