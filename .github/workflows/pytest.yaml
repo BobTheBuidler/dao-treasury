@@ -27,10 +27,13 @@ jobs:
         include:
         - os: ubuntu-latest
           path: ~/.cache/pip
+          poetry_path: ~/.local
         - os: macos-latest
           path: ~/Library/Caches/pip
+          poetry_path: ~/.local
         - os: windows-latest
           path: ~\AppData\Local\pip\Cache
+          poetry_path: ~\AppData\Roaming\pypoetry
 
     steps:
       - name: Check out repository code
@@ -51,7 +54,7 @@ jobs:
         id: cached-poetry
         uses: actions/cache/restore@v5
         with:
-          path: ~/.local  # the path depends on the OS
+          path: ${{ matrix.poetry_path }}
           key: poetry-${{ runner.os }}-${{ matrix.pyversion }}-0  # increment to reset cache
           
       - name: Install Poetry
@@ -59,10 +62,10 @@ jobs:
         uses: snok/install-poetry@v1
 
       - name: Save Poetry cache
-        if: steps.cached-poetry.outputs.cache-hit != 'true'
+        if: ${{ env.IS_UBUNTU_32BIT != 'true' && (success() || env.TOX_RECREATE_FLAG == '-r') }}
         uses: actions/cache/save@v5
         with:
-          path: ~/.local  # the path depends on the OS
+          path: ${{ matrix.poetry_path }}
           key: poetry-${{ runner.os }}-${{ matrix.pyversion }}-0  # increment to reset cache
 
       - name: Install Dependencies
