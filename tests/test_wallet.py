@@ -294,3 +294,4 @@ def test_end_block_property_errors(end_block, end_timestamp, expected_exception,
             end_block=end_block,
             end_timestamp=end_timestamp,
         )._end_block
+
