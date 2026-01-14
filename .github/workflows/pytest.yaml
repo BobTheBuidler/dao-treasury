@@ -62,7 +62,7 @@ jobs:
         uses: snok/install-poetry@v1
 
       - name: Save Poetry cache
-        if: steps.cached-poetry.outputs.cache-hit != 'true'
+        if: ${{ always() }}
         uses: actions/cache/save@v5
         with:
           path: ${{ matrix.poetry_path }}
