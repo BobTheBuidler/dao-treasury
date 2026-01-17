@@ -24,8 +24,11 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install Prettier
-        run: npm install --global prettier
+      - name: Install Prettier and sort-json-cli
+        run: npm install --global prettier sort-json-cli
+
+      - name: Sort JSON keys
+        run: npx sort-json-cli '**/*.json'
 
       - name: Format JSON files
         run: npx prettier --write "**/*.json"
@@ -35,6 +38,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           if [[ -n $(git status --porcelain) ]]; then
-            git commit -a -m "chore: auto-format JSON files with Prettier"
+            git commit -a -m "chore: format JSON files"
             git push
           fi
