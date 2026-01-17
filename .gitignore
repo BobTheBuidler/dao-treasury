@@ -7,7 +7,6 @@ dist/
 env/
 __pycache__/
 .env
-.worktrees
 *.o
 *.so
 *.pyd
@@ -16,3 +15,4 @@ build/**/*.py
 build/**/*.json
 build/**/*.yaml
 build/**/*.typed
+.worktrees/
