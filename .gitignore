@@ -1,13 +1,13 @@
 .hypothesis/
 .mypy_cache/
 .pytest_cache/
+.worktrees/
 cache/
 dao_treasury.egg-info/
 dist/
 env/
 __pycache__/
 .env
-.worktrees
 *.o
 *.so
 *.pyd
