@@ -60,7 +60,7 @@ jobs:
       shell: bash
 
     - name: Run MyPy
-      run: poetry run mypy ./dao_treasury --pretty --strict
+      run: poetry run mypy
       shell: bash
 
     - name: Save Poetry cache
