@@ -19,5 +19,6 @@ All agents must follow these rules:
 13) Use one of `paths` or `paths-ignore` in every workflow file to make sure workflows only run when required.
 14) Maximize the use of caching in GitHub workflow files to minimize run duration.
 15) Centralize pytest settings (flags, markers, ignore patterns, and targets) in pyproject.toml, pytest.ini, setup.cfg, or tox.ini; workflows/hooks should call pytest without inline args.
+16) Local pip install . generates build/; clean up before closing a worktree to avoid dirty state.
 
 Reference: https://www.conventionalcommits.org/en/v1.0.0/
