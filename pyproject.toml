@@ -50,10 +50,10 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.mypy]
-exclude = "^(cache/|build/|tests/)"
-
 files = ["dao_treasury"]
 strict = true
 pretty = true
+check_untyped_defs = true
+
 [tool.black]
 line-length = 100
