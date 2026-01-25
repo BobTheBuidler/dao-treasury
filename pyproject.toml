@@ -54,6 +54,7 @@ build-backend = "setuptools.build_meta"
 files = ["dao_treasury"]
 plugins = ["typed_envs.mypy_plugin"]
 strict = true
+check_untyped_defs = true
 
 [tool.black]
 line-length = 100
