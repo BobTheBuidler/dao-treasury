@@ -46,14 +46,14 @@ requires = [
     "evmspec>=0.4.1,<0.5; platform_system != 'Windows'",
     "ez-a-sync==0.33.10",
     "pony==0.7.19",
+    "typed-envs==0.2.4",
 ]
 build-backend = "setuptools.build_meta"
 
 [tool.mypy]
-exclude = "^(cache/|build/|tests/)"
-
 files = ["dao_treasury"]
+plugins = ["typed_envs.mypy_plugin"]
 strict = true
-pretty = true
+
 [tool.black]
 line-length = 100
