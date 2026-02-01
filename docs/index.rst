@@ -14,7 +14,6 @@ DAO Treasury Documentation
    API Documentation <source/modules.rst>
    dashboards
    contributing
-   security
 
 Indices and Tables
 ------------------
