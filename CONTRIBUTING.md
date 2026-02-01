@@ -54,7 +54,8 @@ logging.getLogger("y.stuck?").setLevel(logging.DEBUG)
 
 1. **Access the Grafana UI**  
    - Open Grafana in your web browser.
-   - You can login to your local deployment as an administrator with username: `admin` and password: `admin`
+   - Log in with the Grafana admin credentials you set via `GF_SECURITY_ADMIN_USER` and `GF_SECURITY_ADMIN_PASSWORD`.
+   - Anonymous access (if enabled) is Viewer-only; use admin creds to create or edit dashboards.
   
 2. **Build Your Dashboard**  
    - Click on the **"+"** icon in the sidebar and choose **Dashboard**.
@@ -83,7 +84,7 @@ logging.getLogger("y.stuck?").setLevel(logging.DEBUG)
 
 1. **Access the Existing Dashboard**  
    - Open Grafana in your web browser.
-   - Login to your local deployment as an administrator with username: `admin` and password: `admin`.
+   - Log in with the Grafana admin credentials you set via `GF_SECURITY_ADMIN_USER` and `GF_SECURITY_ADMIN_PASSWORD`.
    - Navigate to the existing dashboard you wish to modify.
    - Open the dashboard and click **Edit** to modify panels, queries, or visual styles.
 
@@ -112,6 +113,11 @@ When contributing new dashboards or updating existing ones, please follow these 
   - Avoid leaving descriptions blank or using placeholders like "No description" or "TBD".
 
 Following these requirements helps keep our dashboards user-friendly, well-documented, and easy to maintain!
+
+## Credentials and Secrets
+
+- Do not commit Grafana admin credentials, tokens, or other secrets to the repo.
+- Use environment variables and local secrets management instead.
 
 ---
 
