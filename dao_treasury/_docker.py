@@ -13,7 +13,12 @@ Key Responsibilities:
 This is the main entry for all Docker-based orchestration.
 """
 
+import base64
 import logging
+import os
+import time
+import urllib.error
+import urllib.request
 from collections.abc import Callable, Coroutine
 from functools import wraps
 from importlib import resources
@@ -57,9 +62,24 @@ def up(*services: str) -> None:
         # eth-portfolio containers must be started first so dao-treasury can attach to the eth-portfolio docker network
         eth_portfolio_scripts.docker.up("victoria-metrics")
 
+    start_grafana = _grafana_requested(services)
+    grafana_admin_user = None
+    grafana_admin_password = None
+    if start_grafana:
+        grafana_admin_user, grafana_admin_password = _require_grafana_admin_env()
+
     build(*services)
     _print_notice("starting", services)
     _exec_command(["up", "-d", *services])
+
+    if start_grafana:
+        grafana_port = _grafana_host_port()
+        _wait_for_grafana_health(grafana_port)
+        _validate_grafana_credentials(
+            grafana_admin_user,
+            grafana_admin_password,
+            grafana_port,
+        )
 
 
 def down() -> None:
@@ -193,3 +213,68 @@ def _exec_command(command: list[str], *, compose_options: tuple[str, ...] = ()) 
     docker_compose._exec_command(
         command, compose_file=COMPOSE_FILE, compose_options=compose_options
     )
+
+
+def _grafana_requested(services: tuple[str, ...]) -> bool:
+    if not services:
+        return True
+    return "grafana" in services
+
+
+def _require_grafana_admin_env() -> tuple[str, str]:
+    missing = []
+    admin_user = os.getenv("GF_SECURITY_ADMIN_USER")
+    admin_password = os.getenv("GF_SECURITY_ADMIN_PASSWORD")
+    if not admin_user:
+        missing.append("GF_SECURITY_ADMIN_USER")
+    if not admin_password:
+        missing.append("GF_SECURITY_ADMIN_PASSWORD")
+    if missing:
+        missing_list = ", ".join(missing)
+        raise RuntimeError(
+            "Grafana admin credentials are required. "
+            f"Missing environment variables: {missing_list}."
+        )
+    return admin_user, admin_password
+
+
+def _grafana_host_port() -> int:
+    return int(os.getenv("DAO_TREASURY_GRAFANA_PORT", "3004"))
+
+
+def _wait_for_grafana_health(port: int, *, timeout_seconds: int = 60) -> None:
+    deadline = time.monotonic() + timeout_seconds
+    url = f"http://127.0.0.1:{port}/api/health"
+    last_error: Exception | None = None
+    while time.monotonic() < deadline:
+        try:
+            with urllib.request.urlopen(url, timeout=2) as response:
+                if response.status == 200:
+                    return
+        except Exception as exc:  # noqa: BLE001 - keep retry loop simple
+            last_error = exc
+        time.sleep(1)
+    raise RuntimeError(
+        "Grafana health check did not become ready before timeout."
+    ) from last_error
+
+
+def _validate_grafana_credentials(user: str, password: str, port: int) -> None:
+    url = f"http://127.0.0.1:{port}/api/user"
+    token = base64.b64encode(f"{user}:{password}".encode("utf-8")).decode("ascii")
+    request = urllib.request.Request(url)
+    request.add_header("Authorization", f"Basic {token}")
+    try:
+        with urllib.request.urlopen(request, timeout=5) as response:
+            if response.status == 200:
+                return
+            raise RuntimeError(
+                "Grafana admin credential validation failed with unexpected status "
+                f"{response.status}."
+            )
+    except urllib.error.HTTPError as exc:
+        if exc.code in {401, 403}:
+            raise RuntimeError(
+                "Grafana rejected the provided admin credentials."
+            ) from exc
+        raise

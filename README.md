@@ -67,7 +67,7 @@ dao-treasury run --wallet 0x123 --network mainnet --custom-bucket "0x123:Operati
 - `--custom-bucket`: Assign a custom bucket/category to a wallet address for reporting. Specify as `address:bucket_name`. Can be used multiple times.
 
 After running the command, the export script will run continuously until you close your terminal.
-To view the dashboards, just open your browser and navigate to [http://localhost:3004](http://localhost:3004)!
+To view the dashboards, open your browser and navigate to [http://localhost:3004](http://localhost:3004) and log in with your Grafana admin credentials.
 
 ## Docker
 
@@ -78,7 +78,8 @@ When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-
   - Pre-configured with dashboards and plugins for real-time monitoring.
   - Uses persistent storage to retain dashboard settings and data.
   - Accessible locally (default port `3004`, configurable via `--grafana-port`).
-  - Supports anonymous access for convenience.
+  - Requires admin credentials via `GF_SECURITY_ADMIN_USER` and `GF_SECURITY_ADMIN_PASSWORD`.
+  - Optional anonymous access can be enabled with `DAO_TREASURY_GRAFANA_ANON_ENABLED=true`.
   - Integrates with the renderer container for dashboard image export.
   - Loads dashboards and data sources automatically via provisioning files.
 
