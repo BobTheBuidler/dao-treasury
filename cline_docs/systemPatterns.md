@@ -85,18 +85,19 @@ class TreasuryTx(db.Entity):
 ```yaml
 services:
   grafana:
-    image: grafana/grafana:10.2.0
+    image: grafana/grafana:12.3.1
     ports:
       - 127.0.0.1:3004:3000
     environment:
-      - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER:?Set GF_SECURITY_ADMIN_USER}
-      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD:?Set GF_SECURITY_ADMIN_PASSWORD}
+      - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER:?}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD:?}
       - GF_AUTH_ANONYMOUS_ENABLED=${DAO_TREASURY_GRAFANA_ANON_ENABLED:-false}
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:
       - grafana_data:/var/lib/grafana
 ```
+For the canonical Grafana auth behavior and required env vars, see `README.md`.
 
 **Testing Example (pytest):**
 ```python
