@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DAO Treasury Documentation &mdash; dao-treasury  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -104,6 +104,10 @@
 <li><p>You’ll also need <a class="reference external" href="https://www.docker.com/get-started/">Docker</a> installed on your system. If on MacOS, you will need to leave Docker Desktop open while DAO Treasury is running.</p></li>
 </ul>
 </section>
+<section id="debug-logging">
+<h2>Debug logging<a class="headerlink" href="#debug-logging" title="Link to this heading"></a></h2>
+<p>DAO Treasury relies on ypricemagic for price lookups. If you need to spot long-running price calls, enable the <code class="docutils literal notranslate"><span class="pre">y.stuck?</span></code> logger at DEBUG. Details: <a class="reference internal" href="#CONTRIBUTING.md#y-stuck-logger"><span class="xref myst">y.stuck? logger</span></a>.</p>
+</section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dao-treasury
@@ -144,7 +148,7 @@ dao-treasury<span class="w"> </span>run<span class="w"> </span>--wallet<span cla
 <li><p><code class="docutils literal notranslate"><span class="pre">--custom-bucket</span></code>: Assign a custom bucket/category to a wallet address for reporting. Specify as <code class="docutils literal notranslate"><span class="pre">address:bucket_name</span></code>. Can be used multiple times.</p></li>
 </ul>
 <p>After running the command, the export script will run continuously until you close your terminal.
-To view the dashboards, just open your browser and navigate to <a class="reference external" href="http://localhost:3004">http://localhost:3004</a>!</p>
+To view the dashboards, open your browser and navigate to <a class="reference external" href="http://localhost:3004">http://localhost:3004</a>. Log in with the Grafana admin credentials you set via <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_PASSWORD</span></code> (or enable anonymous access with <code class="docutils literal notranslate"><span class="pre">DAO_TREASURY_GRAFANA_ANON_ENABLED=true</span></code>).</p>
 </section>
 <section id="docker">
 <h2>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h2>
@@ -156,7 +160,10 @@ To view the dashboards, just open your browser and navigate to <a class="referen
 <li><p>Pre-configured with dashboards and plugins for real-time monitoring.</p></li>
 <li><p>Uses persistent storage to retain dashboard settings and data.</p></li>
 <li><p>Accessible locally (default port <code class="docutils literal notranslate"><span class="pre">3004</span></code>, configurable via <code class="docutils literal notranslate"><span class="pre">--grafana-port</span></code>).</p></li>
-<li><p>Supports anonymous access for convenience.</p></li>
+<li><p>Requires login by default using <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_PASSWORD</span></code>.</p></li>
+<li><p>Optional anonymous access via <code class="docutils literal notranslate"><span class="pre">DAO_TREASURY_GRAFANA_ANON_ENABLED=true</span></code> (Viewer-only).</p></li>
+<li><p>Sign-ups are disabled for safety.</p></li>
+<li><p>Validates admin credentials on startup and fails fast if they are incorrect.</p></li>
 <li><p>Integrates with the renderer container for dashboard image export.</p></li>
 <li><p>Loads dashboards and data sources automatically via provisioning files.</p></li>
 </ul>

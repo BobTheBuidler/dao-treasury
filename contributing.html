@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contributing to DAO Treasury &mdash; dao-treasury  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -51,9 +51,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#system-patterns-and-best-practices">System Patterns and Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#y-stuck-logger">y.stuck? logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-new-dashboard">Creating a New Dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#editing-an-existing-dashboard">Editing an Existing Dashboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#important-requirements-for-dashboard-contributions">Important Requirements for Dashboard Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credentials-and-secrets">Credentials and Secrets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dashboard-tagging-policy">Dashboard Tagging Policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#submitting-your-changes">Submitting Your Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a></li>
@@ -121,13 +123,26 @@
 </ul>
 </section>
 <hr class="docutils" />
+<section id="y-stuck-logger">
+<h2>y.stuck? logger<a class="headerlink" href="#y-stuck-logger" title="Link to this heading"></a></h2>
+<p>DAO Treasury relies on ypricemagic for price lookups. ypricemagic wraps long-running async calls with a DEBUG logger named <code class="docutils literal notranslate"><span class="pre">y.stuck?</span></code>. It only emits when the logger is enabled for DEBUG, and logs “module.function still executing after Xm with args … kwargs …” every 5 minutes until completion.</p>
+<p>Enable it locally when debugging slow price calls:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;y.stuck?&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
 <section id="creating-a-new-dashboard">
 <h2>Creating a New Dashboard<a class="headerlink" href="#creating-a-new-dashboard" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p><strong>Access the Grafana UI</strong></p>
 <ul class="simple">
 <li><p>Open Grafana in your web browser.</p></li>
-<li><p>You can login to your local deployment as an administrator with username: <code class="docutils literal notranslate"><span class="pre">admin</span></code> and password: <code class="docutils literal notranslate"><span class="pre">admin</span></code></p></li>
+<li><p>Log in with the Grafana admin credentials you set via <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_PASSWORD</span></code>.</p></li>
+<li><p>Anonymous access (if enabled) is Viewer-only; use admin creds to create or edit dashboards.</p></li>
 </ul>
 </li>
 <li><p><strong>Build Your Dashboard</strong></p>
@@ -170,7 +185,7 @@
 <li><p><strong>Access the Existing Dashboard</strong></p>
 <ul class="simple">
 <li><p>Open Grafana in your web browser.</p></li>
-<li><p>Login to your local deployment as an administrator with username: <code class="docutils literal notranslate"><span class="pre">admin</span></code> and password: <code class="docutils literal notranslate"><span class="pre">admin</span></code>.</p></li>
+<li><p>Log in with the Grafana admin credentials you set via <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">GF_SECURITY_ADMIN_PASSWORD</span></code>.</p></li>
 <li><p>Navigate to the existing dashboard you wish to modify.</p></li>
 <li><p>Open the dashboard and click <strong>Edit</strong> to modify panels, queries, or visual styles.</p></li>
 </ul>
@@ -210,6 +225,13 @@ Every dashboard and every panel must have a clear, specific, and helpful descrip
 </li>
 </ul>
 <p>Following these requirements helps keep our dashboards user-friendly, well-documented, and easy to maintain!</p>
+</section>
+<section id="credentials-and-secrets">
+<h2>Credentials and Secrets<a class="headerlink" href="#credentials-and-secrets" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Do not commit Grafana admin credentials, tokens, or other secrets to the repo.</p></li>
+<li><p>Use environment variables and local secrets management instead.</p></li>
+</ul>
 </section>
 <hr class="docutils" />
 <section id="dashboard-tagging-policy">
