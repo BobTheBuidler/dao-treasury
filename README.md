@@ -63,7 +63,6 @@ dao-treasury run --wallet 0x123 --network mainnet --custom-bucket "0x123:Operati
 - `--grafana-port`: Set the port for the Grafana dashboard where you can view data (default: 3004)
 - `--renderer-port`: Set the port for the report rendering service (default: 8091)
 - `--victoria-port`: Set the port for the Victoria metrics reporting endpoint (default: 8430)
-- `--start-renderer`: If set, both the Grafana and renderer containers will be started for dashboard image export. By default, only the grafana container is started.
 - `--custom-bucket`: Assign a custom bucket/category to a wallet address for reporting. Specify as `address:bucket_name`. Can be used multiple times.
 
 After running the command, the export script will run continuously until you close your terminal.
@@ -90,18 +89,17 @@ When you run DAO Treasury, [eth-portfolio](https://github.com/BobTheBuidler/eth-
   - Enables Grafana to export dashboards as images for reporting or sharing.
   - Operates on port `8091` by default (configurable via `--renderer-port`).
   - Tightly integrated with the Grafana container for seamless image rendering.
-  - **Note:** The renderer container is only started if you pass the `--start-renderer` CLI flag.
 
 **How it works:**
 1. DAO Treasury collects and exports treasury data.
 2. Grafana displays this data in pre-built dashboards for analysis and reporting.
-3. The renderer container allows dashboards to be exported as images directly from Grafana (if enabled).
+3. The renderer container allows dashboards to be exported as images directly from Grafana.
 
 **Additional Information:**
 - All containers are orchestrated via Docker Compose and started automatically as needed.
 - Grafana provisioning ensures dashboards and data sources are set up out-of-the-box.
 - All dashboard data and settings are persisted for durability.
-- Dashboard images can be generated for reporting via the renderer (if enabled).
+- Dashboard images can be generated for reporting via the renderer.
 
 ## Screenshots
 
