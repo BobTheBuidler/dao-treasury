@@ -254,14 +254,12 @@ def _wait_for_grafana_health(port: int, *, timeout_seconds: int = 60) -> None:
         except Exception as exc:  # noqa: BLE001 - keep retry loop simple
             last_error = exc
         time.sleep(1)
-    raise RuntimeError(
-        "Grafana health check did not become ready before timeout."
-    ) from last_error
+    raise RuntimeError("Grafana health check did not become ready before timeout.") from last_error
 
 
 def _validate_grafana_credentials(user: str, password: str, port: int) -> None:
     url = f"http://127.0.0.1:{port}/api/user"
-    token = base64.b64encode(f"{user}:{password}".encode("utf-8")).decode("ascii")
+    token = base64.b64encode(f"{user}:{password}".encode()).decode("ascii")
     request = urllib.request.Request(url)
     request.add_header("Authorization", f"Basic {token}")
     try:
@@ -274,7 +272,5 @@ def _validate_grafana_credentials(user: str, password: str, port: int) -> None:
             )
     except urllib.error.HTTPError as exc:
         if exc.code in {401, 403}:
-            raise RuntimeError(
-                "Grafana rejected the provided admin credentials."
-            ) from exc
+            raise RuntimeError("Grafana rejected the provided admin credentials.") from exc
         raise

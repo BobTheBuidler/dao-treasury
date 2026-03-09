@@ -1205,8 +1205,7 @@ def create_stream_ledger_matview() -> None:
         >>> create_stream_ledger_view()
     """
     try:
-        db.execute(
-            """
+        db.execute("""
             DROP MATERIALIZED VIEW IF EXISTS stream_ledger CASCADE;
             CREATE MATERIALIZED VIEW stream_ledger AS
             SELECT
@@ -1234,8 +1233,7 @@ def create_stream_ledger_matview() -> None:
                 LEFT JOIN txgroups txgroup ON b.txgroup = txgroup.txgroup_id
                 LEFT JOIN txgroups parent ON txgroup.parent_txgroup = parent.txgroup_id;
 
-            """
-        )
+            """)
     except Exception as e:
         if '"stream_ledger" is not a materialized view' not in str(e):
             raise
@@ -1253,8 +1251,7 @@ def create_txgroup_hierarchy_matview() -> None:
     matching the recursive CTE logic used in dashboards.
     """
     try:
-        db.execute(
-            """
+        db.execute("""
             DROP MATERIALIZED VIEW IF EXISTS txgroup_hierarchy CASCADE;
             CREATE MATERIALIZED VIEW txgroup_hierarchy AS
             WITH RECURSIVE group_hierarchy (txgroup_id, top_category, parent_txgroup) AS (
@@ -1278,8 +1275,7 @@ def create_txgroup_hierarchy_matview() -> None:
 
             CREATE INDEX idx_txgroup_hierarchy_parent
                 ON txgroup_hierarchy (parent_txgroup);
-            """
-        )
+            """)
     except Exception as e:
         if '"txgroup_hierarchy" is not a materialized view' not in str(e):
             raise
@@ -1299,8 +1295,7 @@ def create_vesting_ledger_view() -> None:
     Examples:
         >>> create_vesting_ledger_view()
     """
-    db.execute(
-        """
+    db.execute("""
         DROP VIEW IF EXISTS vesting_ledger;
         CREATE VIEW vesting_ledger AS
         SELECT
@@ -1328,8 +1323,7 @@ def create_vesting_ledger_view() -> None:
         LEFT JOIN addresses f ON b.recipient = f.address_id
         LEFT JOIN txgroups g ON b.txgroup = g.txgroup_id
         LEFT JOIN txgroups h ON g.parent_txgroup = h.txgroup_id;
-    """
-    )
+    """)
 
 
 def create_general_ledger_view() -> None:
@@ -1340,8 +1334,7 @@ def create_general_ledger_view() -> None:
     Examples:
         >>> create_general_ledger_view()
     """
-    db.execute(
-        """
+    db.execute("""
         DROP VIEW IF EXISTS general_ledger;
         CREATE VIEW general_ledger AS
         SELECT *
@@ -1368,8 +1361,7 @@ def create_general_ledger_view() -> None:
             --FROM vesting_ledger
         ) a
         ORDER BY timestamp;
-        """
-    )
+        """)
 
 
 def create_unsorted_txs_view() -> None:
@@ -1380,16 +1372,14 @@ def create_unsorted_txs_view() -> None:
     Examples:
         >>> create_unsorted_txs_view()
     """
-    db.execute(
-        """
+    db.execute("""
         DROP VIEW IF EXISTS unsorted_txs;
         CREATE VIEW unsorted_txs AS
         SELECT *
         FROM general_ledger
         WHERE txgroup = 'Categorization Pending'
         ORDER BY timestamp DESC;
-        """
-    )
+        """)
 
 
 def create_monthly_pnl_view() -> None:
@@ -1453,8 +1443,7 @@ def create_monthly_pnl_view() -> None:
 def create_usdval_presum_matview() -> None:
     # This view presums usd value from the general_ledger view,
     # grouped by timestamp and txgroup
-    db.execute(
-        """
+    db.execute("""
         DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum;
         CREATE MATERIALIZED VIEW usdvalue_presum AS
         SELECT
@@ -1484,15 +1473,13 @@ def create_usdval_presum_matview() -> None:
 
         CREATE UNIQUE INDEX idx_usdvalue_presum_timestamp_top_category_txgroup_id
             ON usdvalue_presum (timestamp, top_category, txgroup_id);
-        """
-    )
+        """)
 
 
 def create_usdval_presum_revenue_matview() -> None:
     # This view is specifically for the Revenue Over Time dashboard.
     # It presums usd value for Revenue and Other Income categories only, pre-joining txgroups and top_category.
-    db.execute(
-        """
+    db.execute("""
         DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_revenue;
         CREATE MATERIALIZED VIEW usdvalue_presum_revenue AS
         SELECT
@@ -1524,15 +1511,13 @@ def create_usdval_presum_revenue_matview() -> None:
 
         CREATE UNIQUE INDEX idx_usdvalue_presum_revenue_top_category_txgroup_name_timestamp
             ON usdvalue_presum_revenue (top_category, txgroup_name, timestamp);
-        """
-    )
+        """)
 
 
 def create_usdval_presum_expenses_matview() -> None:
     # This view is specifically for the Expenses Over Time dashboard.
     # It presums usd value for Expenses, Cost of Revenue, and Other Expense categories only, pre-joining txgroups and top_category
-    db.execute(
-        """
+    db.execute("""
         DROP MATERIALIZED VIEW IF EXISTS usdvalue_presum_expenses;
         CREATE MATERIALIZED VIEW usdvalue_presum_expenses AS
         SELECT
@@ -1565,8 +1550,7 @@ def create_usdval_presum_expenses_matview() -> None:
 
         CREATE UNIQUE INDEX idx_usdvalue_presum_expenses_top_category_txgroup_name_timestamp
             ON usdvalue_presum_expenses (top_category, txgroup_name, timestamp);
-        """
-    )
+        """)
 
 
 @db_session
