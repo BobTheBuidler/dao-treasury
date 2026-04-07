@@ -44,7 +44,7 @@ requires = [
     "eth-retry==0.3.7",
     "eth-typing==5.2.1",
     "evmspec>=0.5.1,<0.6; platform_system != 'Windows'",
-    "ez-a-sync==0.33.10",
+    "ez-a-sync==0.34.2",
     "pony==0.7.19",
     "typed-envs==0.2.4",
 ]
