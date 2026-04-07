@@ -283,7 +283,7 @@ typedef struct {
     CPyVTableItem *vtable;
     PyObject *___mypyc_self__;
     PyObject *_fn;
-    PyObject *_compose_wrap;
+    PyObject *___mypyc_generator_attribute__compose_wrap;
 } dao_treasury____docker___ensure_containers_envObject;
 
 typedef struct {
@@ -309,6 +309,7 @@ typedef struct {
     CPyVTableItem *vtable;
     vectorcallfunc vectorcall;
     PyObject *___mypyc_env__;
+    PyObject *___cpyfunction__;
 } dao_treasury____docker___compose_wrap_ensure_containers_objObject;
 
 typedef struct {
