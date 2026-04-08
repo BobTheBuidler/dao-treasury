@@ -19,7 +19,7 @@ pytest = "==6.2.5"
 pytest-asyncio = "^0.15.1"
 mypy = ">=1.20,<1.21"
 types-tqdm = "*"
-types-pony = "==0.7.0.20250822"
+types-pony = "==0.7.0.20260408"
 types-pyyaml = "*"
 
 [tool.poetry.group.docs.dependencies]

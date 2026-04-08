@@ -5299,14 +5299,14 @@ typing_extensions = ">=4.7"
 
 [[package]]
 name = "types-pony"
-version = "0.7.0.20250822"
+version = "0.7.0.20260408"
 description = "Typing stubs for pony"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "types_pony-0.7.0.20250822-py3-none-any.whl", hash = "sha256:e717b3c60a40500a072b5f56755a367ba1596bb8b99f639430bada8b1a6f86a3"},
-    {file = "types_pony-0.7.0.20250822.tar.gz", hash = "sha256:6823320f96b81edcd5f58833095a2bd7e9aab3e549d4896f220cbd9af28107c0"},
+    {file = "types_pony-0.7.0.20260408-py3-none-any.whl", hash = "sha256:3221a90bc73e4aebbd1ad27d8139b8aa2e15d4b68bcd1a41846f555ad2451787"},
+    {file = "types_pony-0.7.0.20260408.tar.gz", hash = "sha256:1562c216904f8b9930a656db7d1c4476473be4ef373f5126958029b9ebdcfa14"},
 ]
 
 [package.dependencies]
@@ -6021,4 +6021,4 @@ typed-envs = ">=0.2.2,<0.3"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.13"
-content-hash = "20def33b424911f98dfcba45712abbd2318033771ccc4610769a54be3df879e4"
+content-hash = "598a1b783aff5ec9d462306dbd01e8a89361f371f907f8f3b1df5b81e8017d04"
