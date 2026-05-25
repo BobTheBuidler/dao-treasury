@@ -23,22 +23,6 @@
 static PyAsyncMethods sorting___sort_advanced_gen_as_async = {
     .am_await = CPyDef_sorting___sort_advanced_gen_____await__,
 };
-PyObject *CPyDef_sorting_____mypyc__sort_advanced_gen_setup(PyObject *cpy_r_type);
-PyObject *CPyDef_sorting___sort_advanced_gen(void);
-
-static PyObject *
-sorting___sort_advanced_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-{
-    if (type != CPyType_sorting___sort_advanced_gen) {
-        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-        return NULL;
-    }
-    PyObject *self = CPyDef_sorting_____mypyc__sort_advanced_gen_setup((PyObject*)type);
-    if (self == NULL)
-        return NULL;
-    return self;
-}
-
 static int
 sorting___sort_advanced_gen_traverse(dao_treasury___sorting___sort_advanced_genObject *self, visitproc visit, void *arg)
 {
@@ -62,7 +46,8 @@ sorting___sort_advanced_gen_traverse(dao_treasury___sorting___sort_advanced_genO
     Py_VISIT(self->___mypyc_temp__10.f0);
     Py_VISIT(self->___mypyc_temp__10.f1);
     Py_VISIT(self->___mypyc_temp__10.f2);
-    return 0;
+    int rv = 0;
+    return rv;
 }
 
 static int
@@ -134,6 +119,22 @@ sorting___sort_advanced_gen_dealloc(dao_treasury___sorting___sort_advanced_genOb
     Py_TYPE(self)->tp_free((PyObject *)self);
     CPy_TRASHCAN_END(self)
     done: ;
+}
+
+PyObject *CPyDef_sorting_____mypyc__sort_advanced_gen_setup(PyObject *cpy_r_type);
+PyObject *CPyDef_sorting___sort_advanced_gen(void);
+
+static PyObject *
+sorting___sort_advanced_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+{
+    if (type != CPyType_sorting___sort_advanced_gen) {
+        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+        return NULL;
+    }
+    PyObject *self = CPyDef_sorting_____mypyc__sort_advanced_gen_setup((PyObject*)type);
+    if (self == NULL)
+        return NULL;
+    return self;
 }
 
 static CPyVTableItem sorting___sort_advanced_gen_vtable[7];
@@ -6406,25 +6407,6 @@ CPyL18: ;
                 static PySequenceMethods _matchers____Matcher_as_sequence = {
                     .sq_contains = CPyDunder___contains___matchers____Matcher,
                 };
-                PyObject *CPyDef__matchers_____mypyc___3_Matcher_setup(PyObject *cpy_r_type);
-                PyObject *CPyDef__matchers____Matcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_validated_values);
-                
-                static PyObject *
-                _matchers____Matcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                {
-                    if (type != CPyType__matchers____Matcher) {
-                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                        return NULL;
-                    }
-                    PyObject *self = CPyDef__matchers_____mypyc___3_Matcher_setup((PyObject*)type);
-                    if (self == NULL)
-                        return NULL;
-                    PyObject *ret = CPyPy__matchers____Matcher_____init__(self, args, kwds);
-                    if (ret == NULL)
-                        return NULL;
-                    return self;
-                }
-                
                 static int
                 _matchers____Matcher_traverse(dao_treasury___sorting____matchers____MatcherObject *self, visitproc visit, void *arg)
                 {
@@ -6433,7 +6415,8 @@ CPyL18: ;
                     }
                     Py_VISIT(self->___value);
                     Py_VISIT(self->___values);
-                    return 0;
+                    int rv = 0;
+                    return rv;
                 }
                 
                 static int
@@ -6458,6 +6441,28 @@ CPyL18: ;
                     Py_TYPE(self)->tp_free((PyObject *)self);
                     CPy_TRASHCAN_END(self)
                     done: ;
+                }
+                
+                PyObject *CPyDef__matchers_____mypyc___3_Matcher_setup(PyObject *cpy_r_type);
+                PyObject *CPyDef__matchers____Matcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_validated_values);
+                
+                static PyObject *
+                _matchers____Matcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                {
+                    if (type != CPyType__matchers____Matcher) {
+                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                        return NULL;
+                    }
+                    PyObject *self = CPyDef__matchers_____mypyc___3_Matcher_setup((PyObject*)type);
+                    if (self == NULL)
+                        return NULL;
+                    PyObject *ret = CPyPy__matchers____Matcher_____init__(self, args, kwds);
+                    if (ret == NULL) {
+                            Py_DECREF(self);
+                            return NULL;
+                    }
+                    Py_DECREF(ret);
+                    return self;
                 }
                 
                 static CPyVTableItem _matchers____Matcher_vtable[4];
@@ -6724,25 +6729,6 @@ CPyL18: ;
                     return CPyDef__matchers____Matcher___values((PyObject *) self);
                 }
                 
-                PyObject *CPyDef__matchers_____mypyc___3_HexStringMatcher_setup(PyObject *cpy_r_type);
-                PyObject *CPyDef__matchers____HexStringMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_validated_values);
-                
-                static PyObject *
-                _matchers____HexStringMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                {
-                    if (type != CPyType__matchers____HexStringMatcher) {
-                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                        return NULL;
-                    }
-                    PyObject *self = CPyDef__matchers_____mypyc___3_HexStringMatcher_setup((PyObject*)type);
-                    if (self == NULL)
-                        return NULL;
-                    PyObject *ret = CPyPy__matchers____Matcher_____init__(self, args, kwds);
-                    if (ret == NULL)
-                        return NULL;
-                    return self;
-                }
-                
                 static int
                 _matchers____HexStringMatcher_traverse(dao_treasury___sorting____matchers____HexStringMatcherObject *self, visitproc visit, void *arg)
                 {
@@ -6751,7 +6737,8 @@ CPyL18: ;
                     }
                     Py_VISIT(self->___value);
                     Py_VISIT(self->___values);
-                    return 0;
+                    int rv = 0;
+                    return rv;
                 }
                 
                 static int
@@ -6776,6 +6763,28 @@ CPyL18: ;
                     Py_TYPE(self)->tp_free((PyObject *)self);
                     CPy_TRASHCAN_END(self)
                     done: ;
+                }
+                
+                PyObject *CPyDef__matchers_____mypyc___3_HexStringMatcher_setup(PyObject *cpy_r_type);
+                PyObject *CPyDef__matchers____HexStringMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_validated_values);
+                
+                static PyObject *
+                _matchers____HexStringMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                {
+                    if (type != CPyType__matchers____HexStringMatcher) {
+                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                        return NULL;
+                    }
+                    PyObject *self = CPyDef__matchers_____mypyc___3_HexStringMatcher_setup((PyObject*)type);
+                    if (self == NULL)
+                        return NULL;
+                    PyObject *ret = CPyPy__matchers____Matcher_____init__(self, args, kwds);
+                    if (ret == NULL) {
+                            Py_DECREF(self);
+                            return NULL;
+                    }
+                    Py_DECREF(ret);
+                    return self;
                 }
                 
                 static CPyVTableItem _matchers____HexStringMatcher_vtable[5];
@@ -6861,25 +6870,6 @@ CPyL18: ;
                 {
                     return 0;
                 }
-                PyObject *CPyDef__matchers_____mypyc___3_AddressMatcher_setup(PyObject *cpy_r_type);
-                PyObject *CPyDef__matchers____AddressMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_addresses);
-                
-                static PyObject *
-                _matchers____AddressMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                {
-                    if (type != CPyType__matchers____AddressMatcher) {
-                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                        return NULL;
-                    }
-                    PyObject *self = CPyDef__matchers_____mypyc___3_AddressMatcher_setup((PyObject*)type);
-                    if (self == NULL)
-                        return NULL;
-                    PyObject *ret = CPyPy__matchers____AddressMatcher_____init__(self, args, kwds);
-                    if (ret == NULL)
-                        return NULL;
-                    return self;
-                }
-                
                 static int
                 _matchers____AddressMatcher_traverse(dao_treasury___sorting____matchers____AddressMatcherObject *self, visitproc visit, void *arg)
                 {
@@ -6888,7 +6878,8 @@ CPyL18: ;
                     }
                     Py_VISIT(self->___value);
                     Py_VISIT(self->___values);
-                    return 0;
+                    int rv = 0;
+                    return rv;
                 }
                 
                 static int
@@ -6913,6 +6904,28 @@ CPyL18: ;
                     Py_TYPE(self)->tp_free((PyObject *)self);
                     CPy_TRASHCAN_END(self)
                     done: ;
+                }
+                
+                PyObject *CPyDef__matchers_____mypyc___3_AddressMatcher_setup(PyObject *cpy_r_type);
+                PyObject *CPyDef__matchers____AddressMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_addresses);
+                
+                static PyObject *
+                _matchers____AddressMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                {
+                    if (type != CPyType__matchers____AddressMatcher) {
+                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                        return NULL;
+                    }
+                    PyObject *self = CPyDef__matchers_____mypyc___3_AddressMatcher_setup((PyObject*)type);
+                    if (self == NULL)
+                        return NULL;
+                    PyObject *ret = CPyPy__matchers____AddressMatcher_____init__(self, args, kwds);
+                    if (ret == NULL) {
+                            Py_DECREF(self);
+                            return NULL;
+                    }
+                    Py_DECREF(ret);
+                    return self;
                 }
                 
                 static CPyVTableItem _matchers____AddressMatcher_vtable[7];
@@ -7000,25 +7013,6 @@ CPyL18: ;
                 }
                 
                 
-                PyObject *CPyDef__matchers_____mypyc__FromAddressMatcher_setup(PyObject *cpy_r_type);
-                PyObject *CPyDef__matchers___FromAddressMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_addresses);
-                
-                static PyObject *
-                _matchers___FromAddressMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                {
-                    if (type != CPyType__matchers___FromAddressMatcher) {
-                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                        return NULL;
-                    }
-                    PyObject *self = CPyDef__matchers_____mypyc__FromAddressMatcher_setup((PyObject*)type);
-                    if (self == NULL)
-                        return NULL;
-                    PyObject *ret = CPyPy__matchers____AddressMatcher_____init__(self, args, kwds);
-                    if (ret == NULL)
-                        return NULL;
-                    return self;
-                }
-                
                 static int
                 _matchers___FromAddressMatcher_traverse(dao_treasury___sorting____matchers___FromAddressMatcherObject *self, visitproc visit, void *arg)
                 {
@@ -7027,7 +7021,8 @@ CPyL18: ;
                     }
                     Py_VISIT(self->___value);
                     Py_VISIT(self->___values);
-                    return 0;
+                    int rv = 0;
+                    return rv;
                 }
                 
                 static int
@@ -7052,6 +7047,28 @@ CPyL18: ;
                     Py_TYPE(self)->tp_free((PyObject *)self);
                     CPy_TRASHCAN_END(self)
                     done: ;
+                }
+                
+                PyObject *CPyDef__matchers_____mypyc__FromAddressMatcher_setup(PyObject *cpy_r_type);
+                PyObject *CPyDef__matchers___FromAddressMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_addresses);
+                
+                static PyObject *
+                _matchers___FromAddressMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                {
+                    if (type != CPyType__matchers___FromAddressMatcher) {
+                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                        return NULL;
+                    }
+                    PyObject *self = CPyDef__matchers_____mypyc__FromAddressMatcher_setup((PyObject*)type);
+                    if (self == NULL)
+                        return NULL;
+                    PyObject *ret = CPyPy__matchers____AddressMatcher_____init__(self, args, kwds);
+                    if (ret == NULL) {
+                            Py_DECREF(self);
+                            return NULL;
+                    }
+                    Py_DECREF(ret);
+                    return self;
                 }
                 
                 static CPyVTableItem _matchers___FromAddressMatcher_vtable[7];
@@ -7131,25 +7148,6 @@ CPyL18: ;
                 }
                 
                 
-                PyObject *CPyDef__matchers_____mypyc__ToAddressMatcher_setup(PyObject *cpy_r_type);
-                PyObject *CPyDef__matchers___ToAddressMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_addresses);
-                
-                static PyObject *
-                _matchers___ToAddressMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                {
-                    if (type != CPyType__matchers___ToAddressMatcher) {
-                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                        return NULL;
-                    }
-                    PyObject *self = CPyDef__matchers_____mypyc__ToAddressMatcher_setup((PyObject*)type);
-                    if (self == NULL)
-                        return NULL;
-                    PyObject *ret = CPyPy__matchers____AddressMatcher_____init__(self, args, kwds);
-                    if (ret == NULL)
-                        return NULL;
-                    return self;
-                }
-                
                 static int
                 _matchers___ToAddressMatcher_traverse(dao_treasury___sorting____matchers___ToAddressMatcherObject *self, visitproc visit, void *arg)
                 {
@@ -7158,7 +7156,8 @@ CPyL18: ;
                     }
                     Py_VISIT(self->___value);
                     Py_VISIT(self->___values);
-                    return 0;
+                    int rv = 0;
+                    return rv;
                 }
                 
                 static int
@@ -7183,6 +7182,28 @@ CPyL18: ;
                     Py_TYPE(self)->tp_free((PyObject *)self);
                     CPy_TRASHCAN_END(self)
                     done: ;
+                }
+                
+                PyObject *CPyDef__matchers_____mypyc__ToAddressMatcher_setup(PyObject *cpy_r_type);
+                PyObject *CPyDef__matchers___ToAddressMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_addresses);
+                
+                static PyObject *
+                _matchers___ToAddressMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                {
+                    if (type != CPyType__matchers___ToAddressMatcher) {
+                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                        return NULL;
+                    }
+                    PyObject *self = CPyDef__matchers_____mypyc__ToAddressMatcher_setup((PyObject*)type);
+                    if (self == NULL)
+                        return NULL;
+                    PyObject *ret = CPyPy__matchers____AddressMatcher_____init__(self, args, kwds);
+                    if (ret == NULL) {
+                            Py_DECREF(self);
+                            return NULL;
+                    }
+                    Py_DECREF(ret);
+                    return self;
                 }
                 
                 static CPyVTableItem _matchers___ToAddressMatcher_vtable[7];
@@ -7267,25 +7288,6 @@ CPyL18: ;
                 {
                     return 0;
                 }
-                PyObject *CPyDef__matchers_____mypyc__HashMatcher_setup(PyObject *cpy_r_type);
-                PyObject *CPyDef__matchers___HashMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_hashes);
-                
-                static PyObject *
-                _matchers___HashMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                {
-                    if (type != CPyType__matchers___HashMatcher) {
-                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                        return NULL;
-                    }
-                    PyObject *self = CPyDef__matchers_____mypyc__HashMatcher_setup((PyObject*)type);
-                    if (self == NULL)
-                        return NULL;
-                    PyObject *ret = CPyPy__matchers___HashMatcher_____init__(self, args, kwds);
-                    if (ret == NULL)
-                        return NULL;
-                    return self;
-                }
-                
                 static int
                 _matchers___HashMatcher_traverse(dao_treasury___sorting____matchers___HashMatcherObject *self, visitproc visit, void *arg)
                 {
@@ -7294,7 +7296,8 @@ CPyL18: ;
                     }
                     Py_VISIT(self->___value);
                     Py_VISIT(self->___values);
-                    return 0;
+                    int rv = 0;
+                    return rv;
                 }
                 
                 static int
@@ -7319,6 +7322,28 @@ CPyL18: ;
                     Py_TYPE(self)->tp_free((PyObject *)self);
                     CPy_TRASHCAN_END(self)
                     done: ;
+                }
+                
+                PyObject *CPyDef__matchers_____mypyc__HashMatcher_setup(PyObject *cpy_r_type);
+                PyObject *CPyDef__matchers___HashMatcher(CPyTagged cpy_r_txgroup, PyObject *cpy_r_hashes);
+                
+                static PyObject *
+                _matchers___HashMatcher_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                {
+                    if (type != CPyType__matchers___HashMatcher) {
+                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                        return NULL;
+                    }
+                    PyObject *self = CPyDef__matchers_____mypyc__HashMatcher_setup((PyObject*)type);
+                    if (self == NULL)
+                        return NULL;
+                    PyObject *ret = CPyPy__matchers___HashMatcher_____init__(self, args, kwds);
+                    if (ret == NULL) {
+                            Py_DECREF(self);
+                            return NULL;
+                    }
+                    Py_DECREF(ret);
+                    return self;
                 }
                 
                 static CPyVTableItem _matchers___HashMatcher_vtable[7];
@@ -10805,25 +10830,6 @@ CPyL113: ;
                     {
                         return 0;
                     }
-                    PyObject *CPyDef__rules_____mypyc__Rules_setup(PyObject *cpy_r_type);
-                    PyObject *CPyDef__rules___Rules(PyObject *cpy_r_path);
-                    
-                    static PyObject *
-                    _rules___Rules_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                    {
-                        if (type != CPyType__rules___Rules) {
-                            PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                            return NULL;
-                        }
-                        PyObject *self = CPyDef__rules_____mypyc__Rules_setup((PyObject*)type);
-                        if (self == NULL)
-                            return NULL;
-                        PyObject *ret = CPyPy__rules___Rules_____init__(self, args, kwds);
-                        if (ret == NULL)
-                            return NULL;
-                        return self;
-                    }
-                    
                     static int
                     _rules___Rules_traverse(dao_treasury___sorting____rules___RulesObject *self, visitproc visit, void *arg)
                     {
@@ -10834,7 +10840,8 @@ CPyL113: ;
                         Py_VISIT(self->_other_income_dir);
                         Py_VISIT(self->_other_expense_dir);
                         Py_VISIT(self->_ignore_dir);
-                        return 0;
+                        int rv = 0;
+                        return rv;
                     }
                     
                     static int
@@ -10859,6 +10866,28 @@ CPyL113: ;
                         Py_TYPE(self)->tp_free((PyObject *)self);
                         CPy_TRASHCAN_END(self)
                         done: ;
+                    }
+                    
+                    PyObject *CPyDef__rules_____mypyc__Rules_setup(PyObject *cpy_r_type);
+                    PyObject *CPyDef__rules___Rules(PyObject *cpy_r_path);
+                    
+                    static PyObject *
+                    _rules___Rules_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                    {
+                        if (type != CPyType__rules___Rules) {
+                            PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                            return NULL;
+                        }
+                        PyObject *self = CPyDef__rules_____mypyc__Rules_setup((PyObject*)type);
+                        if (self == NULL)
+                            return NULL;
+                        PyObject *ret = CPyPy__rules___Rules_____init__(self, args, kwds);
+                        if (ret == NULL) {
+                                Py_DECREF(self);
+                                return NULL;
+                        }
+                        Py_DECREF(ret);
+                        return self;
                     }
                     
                     static CPyVTableItem _rules___Rules_vtable[5];
@@ -13213,25 +13242,6 @@ CPyL58: ;
                         {
                             return 0;
                         }
-                        PyObject *CPyDef_factory_____mypyc__SortRuleFactory_setup(PyObject *cpy_r_type);
-                        PyObject *CPyDef_factory___SortRuleFactory(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
-                        
-                        static PyObject *
-                        factory___SortRuleFactory_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                        {
-                            if (type != CPyType_factory___SortRuleFactory) {
-                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                return NULL;
-                            }
-                            PyObject *self = CPyDef_factory_____mypyc__SortRuleFactory_setup((PyObject*)type);
-                            if (self == NULL)
-                                return NULL;
-                            PyObject *ret = CPyPy_factory___SortRuleFactory_____init__(self, args, kwds);
-                            if (ret == NULL)
-                                return NULL;
-                            return self;
-                        }
-                        
                         static int
                         factory___SortRuleFactory_traverse(dao_treasury___sorting___factory___SortRuleFactoryObject *self, visitproc visit, void *arg)
                         {
@@ -13239,8 +13249,10 @@ CPyL58: ;
                             Py_VISIT(self->_networks);
                             Py_VISIT(self->_rule_type);
                             Py_VISIT(self->__rule);
-                            PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                            return 0;
+                            int rv = 0;
+                            rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                            if (rv != 0) return rv;
+                            return rv;
                         }
                         
                         static int
@@ -13263,6 +13275,28 @@ CPyL58: ;
                             Py_TYPE(self)->tp_free((PyObject *)self);
                             CPy_TRASHCAN_END(self)
                             done: ;
+                        }
+                        
+                        PyObject *CPyDef_factory_____mypyc__SortRuleFactory_setup(PyObject *cpy_r_type);
+                        PyObject *CPyDef_factory___SortRuleFactory(PyObject *cpy_r_txgroup, PyObject *cpy_r_networks, PyObject *cpy_r_rule_type);
+                        
+                        static PyObject *
+                        factory___SortRuleFactory_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                        {
+                            if (type != CPyType_factory___SortRuleFactory) {
+                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                return NULL;
+                            }
+                            PyObject *self = CPyDef_factory_____mypyc__SortRuleFactory_setup((PyObject*)type);
+                            if (self == NULL)
+                                return NULL;
+                            PyObject *ret = CPyPy_factory___SortRuleFactory_____init__(self, args, kwds);
+                            if (ret == NULL) {
+                                    Py_DECREF(self);
+                                    return NULL;
+                            }
+                            Py_DECREF(ret);
+                            return self;
                         }
                         
                         static CPyVTableItem factory___SortRuleFactory_vtable[5];
@@ -15290,26 +15324,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3__SortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3__SortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3__SortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3__SortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3__SortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3__SortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3__SortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3__SortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -15331,6 +15350,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3__SortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3__SortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3__SortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3__SortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3__SortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3__SortRule_obj_vtable[2];
@@ -15413,26 +15448,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule___txgroup_dbid__SortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc__txgroup_dbid__SortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___txgroup_dbid__SortRule_obj(void);
-                            
-                            static PyObject *
-                            rule___txgroup_dbid__SortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___txgroup_dbid__SortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__txgroup_dbid__SortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___txgroup_dbid__SortRule_obj_traverse(dao_treasury___sorting___rule___txgroup_dbid__SortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -15454,6 +15474,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__txgroup_dbid__SortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___txgroup_dbid__SortRule_obj(void);
+                            
+                            static PyObject *
+                            rule___txgroup_dbid__SortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___txgroup_dbid__SortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__txgroup_dbid__SortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___txgroup_dbid__SortRule_obj_vtable[2];
@@ -15536,26 +15572,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule___match__SortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc__match__SortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___match__SortRule_obj(void);
-                            
-                            static PyObject *
-                            rule___match__SortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___match__SortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__match__SortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___match__SortRule_obj_traverse(dao_treasury___sorting___rule___match__SortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -15577,6 +15598,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__match__SortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___match__SortRule_obj(void);
+                            
+                            static PyObject *
+                            rule___match__SortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___match__SortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__match__SortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___match__SortRule_obj_vtable[2];
@@ -15658,22 +15695,6 @@ CPyL39: ;
                             static PyAsyncMethods rule___match__SortRule_gen_as_async = {
                                 .am_await = CPyDef_rule___match__SortRule_gen_____await__,
                             };
-                            PyObject *CPyDef_rule_____mypyc__match__SortRule_gen_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___match__SortRule_gen(void);
-                            
-                            static PyObject *
-                            rule___match__SortRule_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___match__SortRule_gen) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__match__SortRule_gen_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___match__SortRule_gen_traverse(dao_treasury___sorting___rule___match__SortRule_genObject *self, visitproc visit, void *arg)
                             {
@@ -15687,7 +15708,8 @@ CPyL39: ;
                                 Py_VISIT(self->___mypyc_temp__3.f0);
                                 Py_VISIT(self->___mypyc_temp__3.f1);
                                 Py_VISIT(self->___mypyc_temp__3.f2);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -15731,6 +15753,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__match__SortRule_gen_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___match__SortRule_gen(void);
+                            
+                            static PyObject *
+                            rule___match__SortRule_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___match__SortRule_gen) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__match__SortRule_gen_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___match__SortRule_gen_vtable[7];
@@ -15832,26 +15870,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule___match__InboundSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc__match__InboundSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___match__InboundSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule___match__InboundSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___match__InboundSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__match__InboundSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___match__InboundSortRule_obj_traverse(dao_treasury___sorting___rule___match__InboundSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -15873,6 +15896,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__match__InboundSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___match__InboundSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule___match__InboundSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___match__InboundSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__match__InboundSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___match__InboundSortRule_obj_vtable[2];
@@ -15954,22 +15993,6 @@ CPyL39: ;
                             static PyAsyncMethods rule___match__InboundSortRule_gen_as_async = {
                                 .am_await = CPyDef_rule___match__InboundSortRule_gen_____await__,
                             };
-                            PyObject *CPyDef_rule_____mypyc__match__InboundSortRule_gen_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___match__InboundSortRule_gen(void);
-                            
-                            static PyObject *
-                            rule___match__InboundSortRule_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___match__InboundSortRule_gen) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__match__InboundSortRule_gen_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___match__InboundSortRule_gen_traverse(dao_treasury___sorting___rule___match__InboundSortRule_genObject *self, visitproc visit, void *arg)
                             {
@@ -15979,7 +16002,8 @@ CPyL39: ;
                                 Py_VISIT(self->___mypyc_temp__5.f0);
                                 Py_VISIT(self->___mypyc_temp__5.f1);
                                 Py_VISIT(self->___mypyc_temp__5.f2);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16014,6 +16038,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__match__InboundSortRule_gen_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___match__InboundSortRule_gen(void);
+                            
+                            static PyObject *
+                            rule___match__InboundSortRule_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___match__InboundSortRule_gen) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__match__InboundSortRule_gen_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___match__InboundSortRule_gen_vtable[7];
@@ -16114,26 +16154,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule___match__OutboundSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc__match__OutboundSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___match__OutboundSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule___match__OutboundSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___match__OutboundSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__match__OutboundSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___match__OutboundSortRule_obj_traverse(dao_treasury___sorting___rule___match__OutboundSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16155,6 +16180,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__match__OutboundSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___match__OutboundSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule___match__OutboundSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___match__OutboundSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__match__OutboundSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___match__OutboundSortRule_obj_vtable[2];
@@ -16236,22 +16277,6 @@ CPyL39: ;
                             static PyAsyncMethods rule___match__OutboundSortRule_gen_as_async = {
                                 .am_await = CPyDef_rule___match__OutboundSortRule_gen_____await__,
                             };
-                            PyObject *CPyDef_rule_____mypyc__match__OutboundSortRule_gen_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule___match__OutboundSortRule_gen(void);
-                            
-                            static PyObject *
-                            rule___match__OutboundSortRule_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule___match__OutboundSortRule_gen) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc__match__OutboundSortRule_gen_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule___match__OutboundSortRule_gen_traverse(dao_treasury___sorting___rule___match__OutboundSortRule_genObject *self, visitproc visit, void *arg)
                             {
@@ -16261,7 +16286,8 @@ CPyL39: ;
                                 Py_VISIT(self->___mypyc_temp__7.f0);
                                 Py_VISIT(self->___mypyc_temp__7.f1);
                                 Py_VISIT(self->___mypyc_temp__7.f2);
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16296,6 +16322,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc__match__OutboundSortRule_gen_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule___match__OutboundSortRule_gen(void);
+                            
+                            static PyObject *
+                            rule___match__OutboundSortRule_gen_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule___match__OutboundSortRule_gen) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc__match__OutboundSortRule_gen_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule___match__OutboundSortRule_gen_vtable[7];
@@ -16396,26 +16438,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3_RevenueSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_RevenueSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3_RevenueSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3_RevenueSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3_RevenueSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_RevenueSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3_RevenueSortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3_RevenueSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16437,6 +16464,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_RevenueSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3_RevenueSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3_RevenueSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3_RevenueSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_RevenueSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3_RevenueSortRule_obj_vtable[2];
@@ -16519,26 +16562,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_CostOfRevenueSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3_CostOfRevenueSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3_CostOfRevenueSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_CostOfRevenueSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3_CostOfRevenueSortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3_CostOfRevenueSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16560,6 +16588,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_CostOfRevenueSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3_CostOfRevenueSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3_CostOfRevenueSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3_CostOfRevenueSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_CostOfRevenueSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3_CostOfRevenueSortRule_obj_vtable[2];
@@ -16642,26 +16686,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3_ExpenseSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_ExpenseSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3_ExpenseSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3_ExpenseSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3_ExpenseSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_ExpenseSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3_ExpenseSortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3_ExpenseSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16683,6 +16712,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_ExpenseSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3_ExpenseSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3_ExpenseSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3_ExpenseSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_ExpenseSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3_ExpenseSortRule_obj_vtable[2];
@@ -16765,26 +16810,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_OtherIncomeSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3_OtherIncomeSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3_OtherIncomeSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_OtherIncomeSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3_OtherIncomeSortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3_OtherIncomeSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16806,6 +16836,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_OtherIncomeSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3_OtherIncomeSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3_OtherIncomeSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3_OtherIncomeSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_OtherIncomeSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3_OtherIncomeSortRule_obj_vtable[2];
@@ -16888,26 +16934,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_OtherExpenseSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3_OtherExpenseSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3_OtherExpenseSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_OtherExpenseSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3_OtherExpenseSortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3_OtherExpenseSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -16929,6 +16960,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_OtherExpenseSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3_OtherExpenseSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3_OtherExpenseSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3_OtherExpenseSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_OtherExpenseSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3_OtherExpenseSortRule_obj_vtable[2];
@@ -17011,26 +17058,11 @@ CPyL39: ;
                                 instance = instance ? instance : Py_None;
                                 return CPyDef_rule_____post_init___3_IgnoreSortRule_obj_____get__(self, instance, owner);
                             }
-                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_IgnoreSortRule_obj_setup(PyObject *cpy_r_type);
-                            PyObject *CPyDef_rule_____post_init___3_IgnoreSortRule_obj(void);
-                            
-                            static PyObject *
-                            rule_____post_init___3_IgnoreSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                            {
-                                if (type != CPyType_rule_____post_init___3_IgnoreSortRule_obj) {
-                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                    return NULL;
-                                }
-                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_IgnoreSortRule_obj_setup((PyObject*)type);
-                                if (self == NULL)
-                                    return NULL;
-                                return self;
-                            }
-                            
                             static int
                             rule_____post_init___3_IgnoreSortRule_obj_traverse(dao_treasury___sorting___rule_____post_init___3_IgnoreSortRule_objObject *self, visitproc visit, void *arg)
                             {
-                                return 0;
+                                int rv = 0;
+                                return rv;
                             }
                             
                             static int
@@ -17052,6 +17084,22 @@ CPyL39: ;
                                 Py_TYPE(self)->tp_free((PyObject *)self);
                                 CPy_TRASHCAN_END(self)
                                 done: ;
+                            }
+                            
+                            PyObject *CPyDef_rule_____mypyc___3__post_init___3_IgnoreSortRule_obj_setup(PyObject *cpy_r_type);
+                            PyObject *CPyDef_rule_____post_init___3_IgnoreSortRule_obj(void);
+                            
+                            static PyObject *
+                            rule_____post_init___3_IgnoreSortRule_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                            {
+                                if (type != CPyType_rule_____post_init___3_IgnoreSortRule_obj) {
+                                    PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                    return NULL;
+                                }
+                                PyObject *self = CPyDef_rule_____mypyc___3__post_init___3_IgnoreSortRule_obj_setup((PyObject*)type);
+                                if (self == NULL)
+                                    return NULL;
+                                return self;
                             }
                             
                             static CPyVTableItem rule_____post_init___3_IgnoreSortRule_obj_vtable[2];
@@ -24924,29 +24972,14 @@ CPyL300: ;
     goto CPyL259;
 }
                                 
-                                PyObject *CPyDef__docker_____mypyc__ensure_containers_env_setup(PyObject *cpy_r_type);
-                                PyObject *CPyDef__docker___ensure_containers_env(void);
-                                
-                                static PyObject *
-                                _docker___ensure_containers_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                {
-                                    if (type != CPyType__docker___ensure_containers_env) {
-                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                        return NULL;
-                                    }
-                                    PyObject *self = CPyDef__docker_____mypyc__ensure_containers_env_setup((PyObject*)type);
-                                    if (self == NULL)
-                                        return NULL;
-                                    return self;
-                                }
-                                
                                 static int
                                 _docker___ensure_containers_env_traverse(dao_treasury____docker___ensure_containers_envObject *self, visitproc visit, void *arg)
                                 {
                                     Py_VISIT(self->___mypyc_self__);
                                     Py_VISIT(self->_fn);
                                     Py_VISIT(self->___mypyc_generator_attribute__compose_wrap);
-                                    return 0;
+                                    int rv = 0;
+                                    return rv;
                                 }
                                 
                                 static int
@@ -24974,6 +25007,22 @@ CPyL300: ;
                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                     CPy_TRASHCAN_END(self)
                                     done: ;
+                                }
+                                
+                                PyObject *CPyDef__docker_____mypyc__ensure_containers_env_setup(PyObject *cpy_r_type);
+                                PyObject *CPyDef__docker___ensure_containers_env(void);
+                                
+                                static PyObject *
+                                _docker___ensure_containers_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                {
+                                    if (type != CPyType__docker___ensure_containers_env) {
+                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                        return NULL;
+                                    }
+                                    PyObject *self = CPyDef__docker_____mypyc__ensure_containers_env_setup((PyObject*)type);
+                                    if (self == NULL)
+                                        return NULL;
+                                    return self;
                                 }
                                 
                                 static CPyVTableItem _docker___ensure_containers_env_vtable[1];
@@ -25041,22 +25090,6 @@ CPyL300: ;
                                 }
                                 
                                 
-                                PyObject *CPyDef__docker_____mypyc__compose_wrap_ensure_containers_env_setup(PyObject *cpy_r_type);
-                                PyObject *CPyDef__docker___compose_wrap_ensure_containers_env(void);
-                                
-                                static PyObject *
-                                _docker___compose_wrap_ensure_containers_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                {
-                                    if (type != CPyType__docker___compose_wrap_ensure_containers_env) {
-                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                        return NULL;
-                                    }
-                                    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_ensure_containers_env_setup((PyObject*)type);
-                                    if (self == NULL)
-                                        return NULL;
-                                    return self;
-                                }
-                                
                                 static int
                                 _docker___compose_wrap_ensure_containers_env_traverse(dao_treasury____docker___compose_wrap_ensure_containers_envObject *self, visitproc visit, void *arg)
                                 {
@@ -25073,7 +25106,8 @@ CPyL300: ;
                                     Py_VISIT(self->___mypyc_temp__1.f1);
                                     Py_VISIT(self->___mypyc_temp__1.f2);
                                     Py_VISIT(self->___mypyc_temp__2);
-                                    return 0;
+                                    int rv = 0;
+                                    return rv;
                                 }
                                 
                                 static int
@@ -25123,6 +25157,22 @@ CPyL300: ;
                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                     CPy_TRASHCAN_END(self)
                                     done: ;
+                                }
+                                
+                                PyObject *CPyDef__docker_____mypyc__compose_wrap_ensure_containers_env_setup(PyObject *cpy_r_type);
+                                PyObject *CPyDef__docker___compose_wrap_ensure_containers_env(void);
+                                
+                                static PyObject *
+                                _docker___compose_wrap_ensure_containers_env_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                {
+                                    if (type != CPyType__docker___compose_wrap_ensure_containers_env) {
+                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                        return NULL;
+                                    }
+                                    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_ensure_containers_env_setup((PyObject*)type);
+                                    if (self == NULL)
+                                        return NULL;
+                                    return self;
                                 }
                                 
                                 static CPyVTableItem _docker___compose_wrap_ensure_containers_env_vtable[1];
@@ -25196,29 +25246,15 @@ CPyL300: ;
                                     instance = instance ? instance : Py_None;
                                     return CPyDef__docker___compose_wrap_ensure_containers_obj_____get__(self, instance, owner);
                                 }
-                                PyObject *CPyDef__docker_____mypyc__compose_wrap_ensure_containers_obj_setup(PyObject *cpy_r_type);
-                                PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj(void);
-                                
-                                static PyObject *
-                                _docker___compose_wrap_ensure_containers_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                {
-                                    if (type != CPyType__docker___compose_wrap_ensure_containers_obj) {
-                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                        return NULL;
-                                    }
-                                    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_ensure_containers_obj_setup((PyObject*)type);
-                                    if (self == NULL)
-                                        return NULL;
-                                    return self;
-                                }
-                                
                                 static int
                                 _docker___compose_wrap_ensure_containers_obj_traverse(dao_treasury____docker___compose_wrap_ensure_containers_objObject *self, visitproc visit, void *arg)
                                 {
                                     Py_VISIT(self->___mypyc_env__);
                                     Py_VISIT(self->___cpyfunction__);
-                                    PyObject_VisitManagedDict((PyObject *)self, visit, arg);
-                                    return 0;
+                                    int rv = 0;
+                                    rv = PyObject_VisitManagedDict((PyObject *)self, visit, arg);
+                                    if (rv != 0) return rv;
+                                    return rv;
                                 }
                                 
                                 static int
@@ -25245,6 +25281,22 @@ CPyL300: ;
                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                     CPy_TRASHCAN_END(self)
                                     done: ;
+                                }
+                                
+                                PyObject *CPyDef__docker_____mypyc__compose_wrap_ensure_containers_obj_setup(PyObject *cpy_r_type);
+                                PyObject *CPyDef__docker___compose_wrap_ensure_containers_obj(void);
+                                
+                                static PyObject *
+                                _docker___compose_wrap_ensure_containers_obj_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                {
+                                    if (type != CPyType__docker___compose_wrap_ensure_containers_obj) {
+                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                        return NULL;
+                                    }
+                                    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_ensure_containers_obj_setup((PyObject*)type);
+                                    if (self == NULL)
+                                        return NULL;
+                                    return self;
                                 }
                                 
                                 static CPyVTableItem _docker___compose_wrap_ensure_containers_obj_vtable[9];
@@ -25501,27 +25553,12 @@ CPyL300: ;
                                 static PyAsyncMethods _docker___compose_wrap_gen___3_168_as_async = {
                                     .am_await = CPyDef__docker___compose_wrap_gen___3_168_____await__,
                                 };
-                                PyObject *CPyDef__docker_____mypyc__compose_wrap_gen___3_168_setup(PyObject *cpy_r_type);
-                                PyObject *CPyDef__docker___compose_wrap_gen___3_168(void);
-                                
-                                static PyObject *
-                                _docker___compose_wrap_gen___3_168_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                {
-                                    if (type != CPyType__docker___compose_wrap_gen___3_168) {
-                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                        return NULL;
-                                    }
-                                    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_gen___3_168_setup((PyObject*)type);
-                                    if (self == NULL)
-                                        return NULL;
-                                    return self;
-                                }
-                                
                                 static int
                                 _docker___compose_wrap_gen___3_168_traverse(dao_treasury____docker___compose_wrap_gen___3_168Object *self, visitproc visit, void *arg)
                                 {
                                     Py_VISIT(self->___mypyc_env__);
-                                    return 0;
+                                    int rv = 0;
+                                    return rv;
                                 }
                                 
                                 static int
@@ -25545,6 +25582,22 @@ CPyL300: ;
                                     Py_TYPE(self)->tp_free((PyObject *)self);
                                     CPy_TRASHCAN_END(self)
                                     done: ;
+                                }
+                                
+                                PyObject *CPyDef__docker_____mypyc__compose_wrap_gen___3_168_setup(PyObject *cpy_r_type);
+                                PyObject *CPyDef__docker___compose_wrap_gen___3_168(void);
+                                
+                                static PyObject *
+                                _docker___compose_wrap_gen___3_168_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                {
+                                    if (type != CPyType__docker___compose_wrap_gen___3_168) {
+                                        PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                        return NULL;
+                                    }
+                                    PyObject *self = CPyDef__docker_____mypyc__compose_wrap_gen___3_168_setup((PyObject*)type);
+                                    if (self == NULL)
+                                        return NULL;
+                                    return self;
                                 }
                                 
                                 static CPyVTableItem _docker___compose_wrap_gen___3_168_vtable[7];
@@ -30527,22 +30580,6 @@ CPyL17: ;
     return cpy_r_r47;
 }
                                         
-                                        PyObject *CPyDef__wallet_____mypyc__TreasuryWallet_setup(PyObject *cpy_r_type);
-                                        PyObject *CPyDef__wallet___TreasuryWallet(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
-                                        
-                                        static PyObject *
-                                        _wallet___TreasuryWallet_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-                                        {
-                                            if (type != CPyType__wallet___TreasuryWallet) {
-                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
-                                                return NULL;
-                                            }
-                                            PyObject *self = CPyDef__wallet_____mypyc__TreasuryWallet_setup((PyObject*)type);
-                                            if (self == NULL)
-                                                return NULL;
-                                            return self;
-                                        }
-                                        
                                         static int
                                         _wallet___TreasuryWallet_traverse(dao_treasury____wallet___TreasuryWalletObject *self, visitproc visit, void *arg)
                                         {
@@ -30552,7 +30589,8 @@ CPyL17: ;
                                             Py_VISIT(self->_start_timestamp);
                                             Py_VISIT(self->_end_timestamp);
                                             Py_VISIT(self->_networks);
-                                            return 0;
+                                            int rv = 0;
+                                            return rv;
                                         }
                                         
                                         static int
@@ -30576,6 +30614,22 @@ CPyL17: ;
                                             Py_TYPE(self)->tp_free((PyObject *)self);
                                             CPy_TRASHCAN_END(self)
                                             done: ;
+                                        }
+                                        
+                                        PyObject *CPyDef__wallet_____mypyc__TreasuryWallet_setup(PyObject *cpy_r_type);
+                                        PyObject *CPyDef__wallet___TreasuryWallet(PyObject *cpy_r_args, PyObject *cpy_r_kwargs);
+                                        
+                                        static PyObject *
+                                        _wallet___TreasuryWallet_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+                                        {
+                                            if (type != CPyType__wallet___TreasuryWallet) {
+                                                PyErr_SetString(PyExc_TypeError, "interpreted classes cannot inherit from compiled");
+                                                return NULL;
+                                            }
+                                            PyObject *self = CPyDef__wallet_____mypyc__TreasuryWallet_setup((PyObject*)type);
+                                            if (self == NULL)
+                                                return NULL;
+                                            return self;
                                         }
                                         
                                         static CPyVTableItem _wallet___TreasuryWallet_vtable[5];
@@ -31932,6 +31986,7 @@ CPyL23: ;
     cpy_r_r27 = cpy_r_r26;
     goto CPyL48;
 CPyL24: ;
+    CPy_INCREF(cpy_r_r4);
     if (likely(cpy_r_r4 != Py_None))
         cpy_r_r28 = cpy_r_r4;
     else {
@@ -31939,6 +31994,7 @@ CPyL24: ;
         goto CPyL54;
     }
     cpy_r_r29 = CPyDef__wallet___TreasuryWallet____start_block(cpy_r_r28);
+    CPy_DECREF_NO_IMM(cpy_r_r28);
     if (unlikely(cpy_r_r29 == CPY_INT_TAG)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", DIFFCHECK_PLACEHOLDER, CPyStatic__wallet___globals);
         goto CPyL54;
@@ -31951,7 +32007,7 @@ CPyL26: ;
     }
     if (unlikely(cpy_r_r30 == CPY_INT_TAG)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", DIFFCHECK_PLACEHOLDER, CPyStatic__wallet___globals);
-        goto CPyL54;
+        goto CPyL59;
     }
     cpy_r_r31 = cpy_r_r29 & 1;
     cpy_r_r32 = cpy_r_r31 != 0;
@@ -31968,15 +32024,17 @@ CPyL30: ;
     cpy_r_r38 = (Py_ssize_t)cpy_r_r29 <= (Py_ssize_t)cpy_r_r30;
     cpy_r_r37 = cpy_r_r38;
 CPyL31: ;
+    CPyTagged_DECREF(cpy_r_r29);
     CPyTagged_DECREF(cpy_r_r30);
     if (cpy_r_r37) {
         goto CPyL33;
     } else
-        goto CPyL59;
+        goto CPyL60;
 CPyL32: ;
     cpy_r_r39 = cpy_r_r37;
     goto CPyL47;
 CPyL33: ;
+    CPy_INCREF(cpy_r_r4);
     if (likely(cpy_r_r4 != Py_None))
         cpy_r_r40 = cpy_r_r4;
     else {
@@ -31984,6 +32042,7 @@ CPyL33: ;
         goto CPyL54;
     }
     cpy_r_r41 = CPyDef__wallet___TreasuryWallet____end_block(cpy_r_r40);
+    CPy_DECREF_NO_IMM(cpy_r_r40);
     if (unlikely(cpy_r_r41 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", DIFFCHECK_PLACEHOLDER, CPyStatic__wallet___globals);
         goto CPyL54;
@@ -31991,8 +32050,9 @@ CPyL33: ;
 CPyL35: ;
     cpy_r_r42 = (PyObject *)&_Py_NoneStruct;
     cpy_r_r43 = cpy_r_r41 == cpy_r_r42;
+    CPy_DECREF(cpy_r_r41);
     if (cpy_r_r43) {
-        goto CPyL60;
+        goto CPyL61;
     } else
         goto CPyL37;
 CPyL36: ;
@@ -32003,12 +32063,13 @@ CPyL37: ;
         cpy_r_r45 = cpy_r_r4;
     else {
         CPy_TypeErrorTraceback("dao_treasury/_wallet.py", "check_membership", 83, CPyStatic__wallet___globals, "dao_treasury._wallet.TreasuryWallet", cpy_r_r4);
-        goto CPyL54;
+        goto CPyL52;
     }
     cpy_r_r46 = CPyDef__wallet___TreasuryWallet____end_block(cpy_r_r45);
+    CPy_DECREF_NO_IMM(cpy_r_r45);
     if (unlikely(cpy_r_r46 == NULL)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", DIFFCHECK_PLACEHOLDER, CPyStatic__wallet___globals);
-        goto CPyL54;
+        goto CPyL52;
     }
 CPyL39: ;
     if (likely(PyLong_Check(cpy_r_r46)))
@@ -32016,9 +32077,10 @@ CPyL39: ;
     else {
         CPy_TypeError("int", cpy_r_r46); cpy_r_r47 = CPY_INT_TAG;
     }
+    CPy_DECREF(cpy_r_r46);
     if (unlikely(cpy_r_r47 == CPY_INT_TAG)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", DIFFCHECK_PLACEHOLDER, CPyStatic__wallet___globals);
-        goto CPyL54;
+        goto CPyL52;
     }
     if (likely(PyLong_Check(cpy_r_block)))
         cpy_r_r48 = CPyTagged_FromObject(cpy_r_block);
@@ -32028,7 +32090,7 @@ CPyL39: ;
     CPy_DECREF(cpy_r_block);
     if (unlikely(cpy_r_r48 == CPY_INT_TAG)) {
         CPy_AddTraceback("dao_treasury/_wallet.py", "check_membership", DIFFCHECK_PLACEHOLDER, CPyStatic__wallet___globals);
-        goto CPyL61;
+        goto CPyL62;
     }
     cpy_r_r49 = cpy_r_r47 & 1;
     cpy_r_r50 = cpy_r_r49 != 0;
@@ -32047,7 +32109,6 @@ CPyL44: ;
 CPyL45: ;
     CPyTagged_DECREF(cpy_r_r47);
     CPyTagged_DECREF(cpy_r_r48);
-    CPy_DECREF(cpy_r_r4);
     cpy_r_r44 = cpy_r_r55;
 CPyL46: ;
     cpy_r_r39 = cpy_r_r44;
@@ -32091,15 +32152,19 @@ CPyL58: ;
     CPy_DECREF(cpy_r_r4);
     goto CPyL23;
 CPyL59: ;
-    CPy_DECREF(cpy_r_block);
-    CPy_DECREF(cpy_r_r4);
-    goto CPyL32;
+    CPy_DecRef(cpy_r_block);
+    CPy_DecRef(cpy_r_r4);
+    CPyTagged_DecRef(cpy_r_r29);
+    goto CPyL49;
 CPyL60: ;
     CPy_DECREF(cpy_r_block);
     CPy_DECREF(cpy_r_r4);
-    goto CPyL36;
+    goto CPyL32;
 CPyL61: ;
-    CPy_DecRef(cpy_r_r4);
+    CPy_DECREF(cpy_r_block);
+    CPy_DECREF(cpy_r_r4);
+    goto CPyL36;
+CPyL62: ;
     CPyTagged_DecRef(cpy_r_r47);
     goto CPyL49;
 }
