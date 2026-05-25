@@ -17,7 +17,7 @@ psycopg2-binary = "==2.9.11"
 [tool.poetry.group.dev.dependencies]
 pytest = "==6.2.5"
 pytest-asyncio = "^0.15.1"
-mypy = ">=2.1,<2.2"
+mypy = ">=2.0,<2.1"
 types-tqdm = "*"
 types-pony = "==0.7.0.20250822"
 types-pyyaml = "*"
@@ -34,7 +34,7 @@ myst-parser = [
 requires = [
     "setuptools", 
     "wheel", 
-    "mypy[mypyc]==1.20.1", 
+    "mypy[mypyc]==2.0.0", 
     "tomli>=2.0.0; python_version < '3.11'", 
     "types-tqdm", 
     "types-pony==0.7.0.20250822",
