@@ -17,7 +17,7 @@ psycopg2-binary = "==2.9.11"
 [tool.poetry.group.dev.dependencies]
 pytest = "==9.1.1"
 pytest-asyncio = "^1.4.0"
-mypy = ">=1.20,<1.21"
+mypy = ">=2.1,<2.2"
 types-tqdm = "*"
 types-pony = "==0.7.0.20250822"
 types-pyyaml = "*"
