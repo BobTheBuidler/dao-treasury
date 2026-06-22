@@ -1,14 +1,28 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update build-system mypyc requirement",
+      "managerFilePatterns": ["/(^|/)pyproject\\.toml$/"],
+      "matchStrings": ["\"mypy\\[mypyc\\]==(?<currentValue>[^\"]+)\""],
+      "depNameTemplate": "mypy",
+      "packageNameTemplate": "mypy",
+      "datasourceTemplate": "pypi",
+      "versioningTemplate": "pep440",
+      "depTypeTemplate": "build-system.requires"
+    }
+  ],
   "packageRules": [
     {
       "description": "Update Poetry mypy and build-system mypyc together",
-      "matchFileNames": ["pyproject.toml"],
+      "matchFileNames": ["/(^|/)pyproject\\.toml$/"],
       "matchDatasources": ["pypi"],
       "matchPackageNames": ["mypy"],
       "groupName": "mypy",
-      "groupSlug": "mypy"
+      "groupSlug": "mypy",
+      "separateMajorMinor": false
     }
   ]
 }
