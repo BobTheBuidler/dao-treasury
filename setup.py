@@ -31,7 +31,6 @@ else:
             "--disable-error-code=union-attr",
             "--disable-error-code=call-overload",
             "--disable-error-code=var-annotated",
-            "--disable-error-code=no-any-return",
             "--disable-error-code=type-arg",
         ],
         group_name="dao_treasury",
