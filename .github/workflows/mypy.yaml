@@ -46,7 +46,7 @@ jobs:
 
     - name: Restore cached Poetry installation
       id: cached-poetry
-      uses: actions/cache/restore@v5
+      uses: actions/cache/restore@v6
       with:
         path: ${{ matrix.poetry_path }}
         key: poetry-${{ runner.os }}-${{ matrix.pyversion }}-0  # increment to reset cache
@@ -65,7 +65,7 @@ jobs:
 
     - name: Save Poetry cache
       if: ${{ always() }}
-      uses: actions/cache/save@v5
+      uses: actions/cache/save@v6
       with:
         path: ${{ matrix.poetry_path }}
         key: poetry-${{ runner.os }}-${{ matrix.pyversion }}-0  # increment to reset cache
