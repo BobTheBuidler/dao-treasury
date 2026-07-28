@@ -2,21 +2,19 @@
 #define MYPYC_NATIVE_dao_treasury_H
 #include <Python.h>
 #include <CPy.h>
+#ifndef MYPYC_DECLARED_tuple_T1O
+#define MYPYC_DECLARED_tuple_T1O
+typedef struct tuple_T1O {
+    PyObject *f0;
+} tuple_T1O;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T2OO
 #define MYPYC_DECLARED_tuple_T2OO
 typedef struct tuple_T2OO {
     PyObject *f0;
     PyObject *f1;
 } tuple_T2OO;
-#endif
-
-#ifndef MYPYC_DECLARED_tuple_T3CIO
-#define MYPYC_DECLARED_tuple_T3CIO
-typedef struct tuple_T3CIO {
-    char f0;
-    CPyTagged f1;
-    PyObject *f2;
-} tuple_T3CIO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T3OOO
@@ -28,6 +26,13 @@ typedef struct tuple_T3OOO {
 } tuple_T3OOO;
 #endif
 
+#ifndef MYPYC_DECLARED_tuple_T0
+#define MYPYC_DECLARED_tuple_T0
+typedef struct tuple_T0 {
+    int empty_struct_error_flag;
+} tuple_T0;
+#endif
+
 #ifndef MYPYC_DECLARED_tuple_T4CIOO
 #define MYPYC_DECLARED_tuple_T4CIOO
 typedef struct tuple_T4CIOO {
@@ -36,6 +41,15 @@ typedef struct tuple_T4CIOO {
     PyObject *f2;
     PyObject *f3;
 } tuple_T4CIOO;
+#endif
+
+#ifndef MYPYC_DECLARED_tuple_T3CIO
+#define MYPYC_DECLARED_tuple_T3CIO
+typedef struct tuple_T3CIO {
+    char f0;
+    CPyTagged f1;
+    PyObject *f2;
+} tuple_T3CIO;
 #endif
 
 #ifndef MYPYC_DECLARED_tuple_T8OOOOOOOO
@@ -52,20 +66,6 @@ typedef struct tuple_T8OOOOOOOO {
 } tuple_T8OOOOOOOO;
 #endif
 
-#ifndef MYPYC_DECLARED_tuple_T1O
-#define MYPYC_DECLARED_tuple_T1O
-typedef struct tuple_T1O {
-    PyObject *f0;
-} tuple_T1O;
-#endif
-
-#ifndef MYPYC_DECLARED_tuple_T0
-#define MYPYC_DECLARED_tuple_T0
-typedef struct tuple_T0 {
-    int empty_struct_error_flag;
-} tuple_T0;
-#endif
-
 #ifndef MYPYC_DECLARED_tuple_T6OOOOOO
 #define MYPYC_DECLARED_tuple_T6OOOOOO
 typedef struct tuple_T6OOOOOO {
@@ -77,6 +77,57 @@ typedef struct tuple_T6OOOOOO {
     PyObject *f5;
 } tuple_T6OOOOOO;
 #endif
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *_fn;
+    PyObject *___mypyc_generator_attribute__compose_wrap;
+} dao_treasury____docker___ensure_containers_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_self__;
+    PyObject *___mypyc_env__;
+    PyObject *___mypyc_generator_attribute__args;
+    PyObject *___mypyc_generator_attribute__kwargs;
+    PyObject *_type;
+    PyObject *_value;
+    PyObject *_traceback;
+    PyObject *_arg;
+    PyObject **_stop_iter_ptr;
+    int32_t ___mypyc_next_label__;
+    PyObject *___mypyc_temp__0;
+    tuple_T3OOO ___mypyc_temp__1;
+    PyObject *___mypyc_temp__2;
+} dao_treasury____docker___compose_wrap_ensure_containers_envObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    vectorcallfunc vectorcall;
+    PyObject *___mypyc_env__;
+    PyObject *___cpyfunction__;
+} dao_treasury____docker___compose_wrap_ensure_containers_objObject;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *___mypyc_env__;
+} dao_treasury____docker___compose_wrap_gen___3_168Object;
+
+typedef struct {
+    PyObject_HEAD
+    CPyVTableItem *vtable;
+    PyObject *_address;
+    PyObject *_start_block;
+    PyObject *_end_block;
+    PyObject *_start_timestamp;
+    PyObject *_end_timestamp;
+    PyObject *_networks;
+} dao_treasury____wallet___TreasuryWalletObject;
 
 typedef struct {
     PyObject_HEAD
@@ -277,56 +328,5 @@ typedef struct {
     CPyVTableItem *vtable;
     vectorcallfunc vectorcall;
 } dao_treasury___sorting___rule_____post_init___3_IgnoreSortRule_objObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
-    PyObject *_fn;
-    PyObject *___mypyc_generator_attribute__compose_wrap;
-} dao_treasury____docker___ensure_containers_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_self__;
-    PyObject *___mypyc_env__;
-    PyObject *___mypyc_generator_attribute__args;
-    PyObject *___mypyc_generator_attribute__kwargs;
-    PyObject *_type;
-    PyObject *_value;
-    PyObject *_traceback;
-    PyObject *_arg;
-    PyObject **_stop_iter_ptr;
-    int32_t ___mypyc_next_label__;
-    PyObject *___mypyc_temp__0;
-    tuple_T3OOO ___mypyc_temp__1;
-    PyObject *___mypyc_temp__2;
-} dao_treasury____docker___compose_wrap_ensure_containers_envObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    vectorcallfunc vectorcall;
-    PyObject *___mypyc_env__;
-    PyObject *___cpyfunction__;
-} dao_treasury____docker___compose_wrap_ensure_containers_objObject;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *___mypyc_env__;
-} dao_treasury____docker___compose_wrap_gen___3_168Object;
-
-typedef struct {
-    PyObject_HEAD
-    CPyVTableItem *vtable;
-    PyObject *_address;
-    PyObject *_start_block;
-    PyObject *_end_block;
-    PyObject *_start_timestamp;
-    PyObject *_end_timestamp;
-    PyObject *_networks;
-} dao_treasury____wallet___TreasuryWalletObject;
 
 #endif
